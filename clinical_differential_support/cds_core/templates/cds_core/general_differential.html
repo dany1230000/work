@@ -77,7 +77,9 @@
       <span class="tag">{{ catalog_quality.summary.warning_count }} warnings</span>
     </p>
     <h3>下一步資料工作 / Next catalog work</h3>
-    <pre class="command">py -B manage.py export_general_differential_review_seed --pretty</pre>
+    <pre class="command">py -B manage.py export_general_differential_review_seed --pretty
+py -B manage.py validate_general_differential_review_seed
+py -B manage.py export_general_differential_batch_template --pretty</pre>
     <ol>
       {% for action in catalog_quality.next_actions|slice:":3" %}
         <li>

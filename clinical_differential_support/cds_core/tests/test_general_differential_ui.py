@@ -34,6 +34,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "0 blocking issues")
         self.assertContains(response, "Convert static catalog to reviewed data import")
         self.assertContains(response, "export_general_differential_review_seed")
+        self.assertContains(response, "validate_general_differential_review_seed")
+        self.assertContains(response, "export_general_differential_batch_template")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
