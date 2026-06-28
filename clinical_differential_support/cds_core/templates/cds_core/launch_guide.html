@@ -1,0 +1,241 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <h2>本機控制台 / Local Control Panel</h2>
+  <p class="secondary">Launch Control</p>
+  <p>
+    目前下一步：
+    <strong>步驟 {{ report.current_step.step_number }}/{{ report.current_step.total_steps }} -
+    {{ report.current_step.title_zh }}</strong>
+  </p>
+  <p>
+    控制台狀態 / Control status:
+    <span class="status {{ report.operator_summary.status }}">{{ report.operator_summary.status }}</span>
+    {{ report.operator_summary.title_zh }} / {{ report.operator_summary.title_en }}
+  </p>
+  <p class="secondary">
+    Final Verification:
+    {{ report.final_verification.gate_status }} /
+    {{ report.final_verification.latest_evidence_status }}
+  </p>
+</section>
+
+<section class="panel">
+  <h2>本機設定助手 / Local Setup Assistant</h2>
+  <p>
+    狀態 / Status:
+    <span class="status {{ report.setup_assistant.status }}">{{ report.setup_assistant.status }}</span>
+    exit_code={{ report.setup_assistant.exit_code }}
+  </p>
+  <p class="secondary">
+    這個命令只檢查本機下一步，不會建立、列印或保存密碼。
+    This command only reports the next local action; it does not create, print, or store passwords.
+  </p>
+  <p><strong>Windows 雙擊入口 / Windows Entry</strong></p>
+  <div class="command-row">
+    <div id="setup-assistant-windows-command" class="command">{{ report.setup_assistant.windows_entry_command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="setup-assistant-windows-command">可複製命令 / Copy Command</button>
+  </div>
+  <p class="secondary">
+    也可以在檔案總管直接打開 `clinical_differential_support\Next_Step.cmd`。
+    You can also open `clinical_differential_support\Next_Step.cmd` directly from File Explorer.
+  </p>
+  <p><strong>Shell 命令 / Shell Command</strong></p>
+  <div class="command-row">
+    <div id="setup-assistant-command" class="command">{{ report.setup_assistant.command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="setup-assistant-command">可複製命令 / Copy Command</button>
+  </div>
+  <p><a class="button-link" href="{{ report.setup_assistant.url }}">打開控制台 / Open Launch Control</a></p>
+</section>
+
+<section class="panel">
+  <h2>最終版完成判斷 / Final Project Gate</h2>
+  <p>
+    狀態 / Status:
+    <span class="status {{ report.project_completion.status }}">{{ report.project_completion.status }}</span>
+    exit_code={{ report.project_completion.exit_code }}
+  </p>
+  <p class="secondary">
+    用這個 gate 判斷整個專案是否已是本機最終版，或還差哪一個手動步驟。
+    Use this gate to decide whether the project is locally final-complete or which manual step remains.
+  </p>
+  <div class="command-row">
+    <div id="final-check-windows-command" class="command">{{ report.project_completion.windows_entry_command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="final-check-windows-command">可複製命令 / Copy Command</button>
+  </div>
+  <p><a class="button-link" href="{{ report.project_completion.url }}">打開最終判斷 / Open Final Gate</a></p>
+  <p class="secondary">{{ report.project_completion.url }}</p>
+</section>
+
+<section class="panel">
+  <h2>部署操作中心 / Deployment Operations Center</h2>
+  <p>
+    狀態 / Status:
+    <span class="status {{ report.deployment_status.status }}">{{ report.deployment_status.status }}</span>
+    exit_code={{ report.deployment_status.exit_code }}
+  </p>
+  <p class="secondary">
+    本機 final_complete 後，這裡會告訴你部署到 Render 前還缺哪個外部步驟。
+    After local final_complete, this shows the next external deployment step.
+  </p>
+  <div class="command-row">
+    <div id="deploy-status-windows-command" class="command">{{ report.deployment_status.windows_entry_command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="deploy-status-windows-command">可複製命令 / Copy Command</button>
+  </div>
+  <p><a class="button-link" href="{{ report.deployment_status.url }}">打開部署操作中心 / Open Deployment Operations Center</a></p>
+  <p class="secondary">{{ report.deployment_status.url }}</p>
+</section>
+
+<section class="panel">
+  <h2>環境檢查 / Environment Checks</h2>
+  <div class="control-grid">
+    {% for check in report.environment_checks %}
+      <article class="control-card">
+        <h3>{{ check.title_zh }}</h3>
+        <p class="secondary">{{ check.title_en }}</p>
+        <p><span class="status {{ check.status }}">{{ check.status }}</span></p>
+        <p>{{ check.value }}</p>
+        <p class="secondary">{{ check.detail_zh }} / {{ check.detail_en }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>手動阻擋 / Manual Blockers</h2>
+  {% if report.manual_blockers %}
+    <div class="control-grid">
+      {% for blocker in report.manual_blockers %}
+        <article class="control-card">
+          <h3>{{ blocker.title_zh }}</h3>
+          <p class="secondary">{{ blocker.title_en }}</p>
+          <p>{{ blocker.detail_zh }}</p>
+          <p class="secondary">{{ blocker.detail_en }}</p>
+          {% if blocker.manual_only %}
+            <p><strong>不可自動建立密碼 / Passwords stay manual</strong></p>
+          {% endif %}
+          {% if blocker.entry_command %}
+            <p><strong>Windows Entry</strong></p>
+            <div class="command-row">
+              <div id="blocker-entry-command-{{ forloop.counter }}" class="command">{{ blocker.entry_command }}</div>
+              <button type="button" class="secondary-button" data-copy-target="blocker-entry-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+            </div>
+          {% endif %}
+          {% if blocker.raw_command %}
+            <p class="secondary">Raw Django command</p>
+            <div class="command-row">
+              <div id="blocker-raw-command-{{ forloop.counter }}" class="command">{{ blocker.raw_command }}</div>
+              <button type="button" class="secondary-button" data-copy-target="blocker-raw-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+            </div>
+          {% endif %}
+          {% if blocker.command and not blocker.entry_command %}
+            <div class="command-row">
+              <div id="blocker-command-{{ forloop.counter }}" class="command">{{ blocker.command }}</div>
+              <button type="button" class="secondary-button" data-copy-target="blocker-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+            </div>
+          {% endif %}
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty">目前沒有手動 blocker。No manual blockers.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>驗收證據 / Verification Evidence</h2>
+  <div class="control-grid">
+    <article class="control-card">
+      <h3>Final Verification Gate</h3>
+      <p><span class="status {{ report.final_verification.latest_evidence_status }}">{{ report.final_verification.latest_evidence_status }}</span></p>
+      <p>Gate: {{ report.final_verification.gate_status }}</p>
+      <p>Commands: {{ report.final_verification.command_count }}</p>
+      <p>Failed: {{ report.final_verification.failed_command_count }}</p>
+      <p><a class="button-link" href="{{ report.final_verification.url }}">打開 / Open</a></p>
+    </article>
+    <article class="control-card">
+      <h3>Next Action Gate</h3>
+      <p><span class="status {{ report.next_actions.first_action_status }}">{{ report.next_actions.first_action_status }}</span></p>
+      <p>{{ report.next_actions.completion_status }}</p>
+      <p>{{ report.next_actions.first_action }}</p>
+      <p><a class="button-link" href="{{ report.next_actions.url }}">打開 / Open</a></p>
+    </article>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>一步一步啟動導覽</h2>
+  <p class="secondary">Step-by-step Launch Guide</p>
+</section>
+
+<section class="step-list">
+  {% for step in report.steps %}
+    <article class="step {{ step.status }}">
+      <h3>
+        步驟 {{ step.step_number }}/{{ step.total_steps }}
+        {% if step.status == "current" %}[現在 / Now]{% endif %}
+        {% if step.status == "done" %}[已完成 / Done]{% endif %}
+        {% if step.status == "ready" %}[可執行 / Ready]{% endif %}
+        {% if step.status == "locked" %}[等待 / Waiting]{% endif %}
+        {{ step.title_zh }}
+      </h3>
+      <p class="secondary">{{ step.title_en }}</p>
+      {% if step.status == "current" %}
+        <p><strong>現在做這個 / Do this now</strong></p>
+      {% endif %}
+      <p>{{ step.detail_zh }}</p>
+      <p class="secondary">{{ step.detail_en }}</p>
+      {% if step.entry_command %}
+        <p><strong>Windows Entry</strong></p>
+        <div class="command-row">
+          <div id="step-entry-command-{{ forloop.counter }}" class="command">{{ step.entry_command }}</div>
+          <button type="button" class="secondary-button" data-copy-target="step-entry-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+        </div>
+      {% endif %}
+      {% if step.raw_command %}
+        <p class="secondary">Raw Django command</p>
+        <div class="command-row">
+          <div id="step-raw-command-{{ forloop.counter }}" class="command">{{ step.raw_command }}</div>
+          <button type="button" class="secondary-button" data-copy-target="step-raw-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+        </div>
+      {% endif %}
+      {% if step.command and not step.entry_command %}
+        <div class="command-row">
+          <div id="step-command-{{ forloop.counter }}" class="command">{{ step.command }}</div>
+          <button type="button" class="secondary-button" data-copy-target="step-command-{{ forloop.counter }}">可複製命令 / Copy Command</button>
+        </div>
+      {% endif %}
+      {% if step.manual_required %}
+        <p class="secondary">手動步驟 / Manual step</p>
+      {% endif %}
+      {% if step.url %}
+        <p><a class="button-link" href="{{ step.url }}">打開 / Open</a></p>
+        <p class="secondary">{{ step.url }}</p>
+      {% endif %}
+      {% if step.secondary_url %}
+        <p><a href="{{ step.secondary_url }}">下載交接包 / Download handoff bundle</a></p>
+        <p class="secondary">{{ step.secondary_url }}</p>
+      {% endif %}
+    </article>
+  {% endfor %}
+</section>
+
+<script>
+document.addEventListener("click", function (event) {
+  var button = event.target.closest("[data-copy-target]");
+  if (!button || !navigator.clipboard) {
+    return;
+  }
+  var target = document.getElementById(button.getAttribute("data-copy-target"));
+  if (!target) {
+    return;
+  }
+  navigator.clipboard.writeText(target.textContent.trim()).then(function () {
+    button.textContent = "已複製 / Copied";
+  });
+});
+</script>
+{% endblock %}

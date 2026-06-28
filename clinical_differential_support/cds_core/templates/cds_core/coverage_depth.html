@@ -1,0 +1,131 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">返回治理 / Back to governance</a>
+  <h2>覆蓋深度審查</h2>
+  <p class="secondary">Coverage Depth Review</p>
+  <p class="secondary">
+    Summary-only review of chief complaint coverage, case depth, rule depth, source freshness, and next project actions.
+  </p>
+  <p>
+    <a href="{% url 'cds_core:export_coverage_depth_json' %}">覆蓋深度 JSON / Coverage depth JSON</a>
+    |
+    <a href="{% url 'cds_core:source_freshness' %}">來源新鮮度審查 / Source Freshness Audit</a>
+    |
+    <a href="{% url 'cds_core:next_actions' %}">下一步工作台 / Next Action Workbench</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ report.summary.chief_complaint_count }}</span>
+    <h3>主訴</h3>
+    <p class="secondary">Chief complaints</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.clinical_item_count }}</span>
+    <h3>臨床項目</h3>
+    <p class="secondary">Clinical items</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.rule_count }}</span>
+    <h3>規則</h3>
+    <p class="secondary">Active rules</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.case_count }}</span>
+    <h3>案例</h3>
+    <p class="secondary">Validation cases</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.complaints_with_gaps }}</span>
+    <h3>缺口主訴</h3>
+    <p class="secondary">Complaints with gaps</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>主訴覆蓋</h2>
+  <p class="secondary">Complaint coverage</p>
+  <table>
+    <thead>
+      <tr>
+        <th>主訴 / Complaint</th>
+        <th>項目 / Items</th>
+        <th>來源 / Sources</th>
+        <th>規則 / Rules</th>
+        <th>案例 / Cases</th>
+        <th>缺口 / Gaps</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for complaint in report.complaints %}
+        <tr>
+          <td>
+            <strong>{{ complaint.title }}</strong><br>
+            <span class="secondary">{{ complaint.slug }}</span>
+          </td>
+          <td>{{ complaint.clinical_item_count }}<br><span class="secondary">approved {{ complaint.approved_item_count }}</span></td>
+          <td>{{ complaint.source_count }}</td>
+          <td>{{ complaint.rule_count }}</td>
+          <td>{{ complaint.case_count }}<br><span class="secondary">failed {{ complaint.failed_case_count }}</span></td>
+          <td>
+            {% if complaint.gap_codes %}
+              {% for code in complaint.gap_codes %}
+                <span class="tag">{{ code }}</span>
+              {% endfor %}
+            {% else %}
+              <span class="tag">no_gap</span>
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>下一步</h2>
+  <p class="secondary">Next actions</p>
+  <table>
+    <thead>
+      <tr>
+        <th>優先 / Priority</th>
+        <th>Action</th>
+        <th>Reason</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for action in report.next_actions %}
+        <tr>
+          <td>{{ action.priority }}</td>
+          <td>
+            <strong>{{ action.title_zh }}</strong><br>
+            <span class="secondary">{{ action.title_en }}</span>
+          </td>
+          <td>
+            {{ action.reason_zh }}<br>
+            <span class="secondary">{{ action.reason_en }}</span>
+          </td>
+          <td>{{ action.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>來源新鮮度</h2>
+  <p class="secondary">Source freshness</p>
+  <ul class="review-list">
+    <li>總來源 / Sources: {{ report.summary.source_count }}</li>
+    <li>逾期來源 / Stale sources: {{ report.source_freshness.stale_source_count }}</li>
+    <li>缺 publication date / Missing publication date: {{ report.source_freshness.missing_publication_date_count }}</li>
+    <li>逾期門檻 / Stale threshold: {{ report.source_freshness.stale_threshold_date }}</li>
+  </ul>
+</section>
+{% endblock %}

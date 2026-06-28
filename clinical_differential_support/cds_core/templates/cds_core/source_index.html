@@ -1,0 +1,41 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">返回治理總覽 / Back to governance</a>
+  {% if request.user.is_staff %}
+    <p>
+      <a href="{% url 'cds_core:source_create' %}">新增來源 / New source</a>
+      |
+      <a href="{% url 'cds_core:source_freshness' %}">來源新鮮度審查 / Source Freshness Audit</a>
+    </p>
+  {% endif %}
+  <h2>來源庫</h2>
+  <p class="secondary">Source library</p>
+  <table>
+    <thead>
+      <tr>
+        <th>來源 / Source</th>
+        <th>版本 / Version</th>
+        <th>Clinical items</th>
+        <th>Access</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for source in sources %}
+        <tr>
+          <td>
+            <strong><a href="{% url 'cds_core:source_detail' source.pk %}">{{ source.publisher }}</a></strong><br>
+            <span class="secondary">{{ source.title }}</span>
+          </td>
+          <td>{{ source.version_label }}</td>
+          <td>{{ source.clinicalitem_set.count }}</td>
+          <td>{{ source.access_date }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

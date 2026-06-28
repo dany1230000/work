@@ -1,0 +1,148 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">返回治理總覽 / Back to governance</a>
+  {% if request.user.is_staff %}
+    <p><a href="{% url 'cds_core:review_item_edit' detail.item.pk %}">編輯草稿 / Edit draft</a></p>
+  {% endif %}
+  <h2>臨床項目審核</h2>
+  <p class="secondary">Clinical Item Review</p>
+  <h3>{{ detail.item.primary_title }}</h3>
+  <p class="secondary">{{ detail.item.secondary_title }}</p>
+  <p>{{ detail.item.primary_summary }}</p>
+  <p class="secondary">{{ detail.item.secondary_summary }}</p>
+  <p>
+    <span class="tag">{{ detail.item.get_item_type_display }}</span>
+    <span class="tag">{{ detail.item.get_urgency_display }}</span>
+    <span class="tag">{{ detail.item.get_status_display }}</span>
+    <span class="tag">{{ detail.item.version_label }}</span>
+  </p>
+  <p>
+    {% if detail.item.last_reviewed_at %}
+      <strong>最後審核 / Last reviewed:</strong> {{ detail.item.last_reviewed_at }}
+    {% endif %}
+    {% if detail.item.review_due_at %}
+      <br><strong>下次審核 / Review due:</strong> {{ detail.item.review_due_at }}
+    {% endif %}
+  </p>
+</section>
+
+<section class="panel">
+  <h2>審核決策</h2>
+  <p class="secondary">Review decision</p>
+  {% if request.user.is_staff %}
+    <form method="post" action="{% url 'cds_core:review_item_decision' detail.item.pk %}">
+      {% csrf_token %}
+      {% for field in decision_form %}
+        <div class="field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+          {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+      <button type="submit">送出審核決策 / Submit review decision</button>
+    </form>
+  {% else %}
+    <div class="empty">需要 staff 帳號才能送出審核決策。 Staff access is required to submit review decisions.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>來源 / Sources</h2>
+  {% if detail.sources %}
+    <ul class="review-list">
+      {% for source in detail.sources %}
+        <li>
+          <strong>{{ source.publisher }}</strong> - <a href="{{ source.url }}">{{ source.title }}</a><br>
+          <span class="secondary">
+            {{ source.version_label }}
+            {% if source.publication_date %} | Publication: {{ source.publication_date }}{% endif %}
+            | Accessed: {{ source.access_date }}
+          </span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">此項目尚未連結來源。No sources are linked to this item.</div>
+  {% endif %}
+  {% if request.user.is_staff %}
+    <form method="post" action="{% url 'cds_core:review_item_sources' detail.item.pk %}">
+      {% csrf_token %}
+      <h3>管理來源連結</h3>
+      <p class="secondary">Manage source links</p>
+      {% for field in source_link_form %}
+        <div class="field">
+          <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {{ field }}
+          {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+          {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+      <button type="submit">更新來源連結 / Update source links</button>
+    </form>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>規則觸發 / Rule triggers</h2>
+  {% if detail.rules %}
+    <table>
+      <thead>
+        <tr>
+          <th>規則 / Rule</th>
+          <th>優先序 / Priority</th>
+          <th>條件 / Condition</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for rule in detail.rules %}
+          <tr>
+            <td>{{ rule.slug }}</td>
+            <td>{{ rule.priority }}</td>
+            <td>{{ rule.condition }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="empty">此項目尚未連結規則。No rules are linked to this item.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>審核提示 / Review prompts</h2>
+  {% if detail.item.missing_questions %}
+    <p><strong>下次應問 / Ask next:</strong> {{ detail.item.missing_questions|join:", " }}</p>
+  {% endif %}
+  {% if detail.item.supporting_findings %}
+    <p><strong>支持發現 / Supporting findings:</strong> {{ detail.item.supporting_findings|join:", " }}</p>
+  {% endif %}
+  {% if detail.item.opposing_findings %}
+    <p><strong>反向發現 / Opposing findings:</strong> {{ detail.item.opposing_findings|join:", " }}</p>
+  {% endif %}
+  {% if not detail.item.missing_questions and not detail.item.supporting_findings and not detail.item.opposing_findings %}
+    <div class="empty">此項目目前沒有額外審核提示。No additional review prompts are stored for this item.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>稽核紀錄 / Audit trail</h2>
+  {% if detail.audit_events %}
+    <ul class="review-list">
+      {% for event in detail.audit_events %}
+        <li>
+          <strong>{{ event.get_event_type_display }}</strong><br>
+          <span class="secondary">{{ event.created_at }}{% if event.actor %} | {{ event.actor }}{% endif %}</span>
+          {% if event.notes %}<p>{{ event.notes }}</p>{% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">目前尚無稽核紀錄。No audit events have been recorded for this item.</div>
+  {% endif %}
+</section>
+{% endblock %}

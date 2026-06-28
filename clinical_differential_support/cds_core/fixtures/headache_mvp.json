@@ -1,0 +1,724 @@
+[
+  {
+    "model": "cds_core.chiefcomplaint",
+    "pk": 1,
+    "fields": {
+      "slug": "headache",
+      "title": "Headache",
+      "summary": "Structured clinician reference pathway for headache assessment."
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 1,
+    "fields": {
+      "publisher": "NICE",
+      "title": "Headaches in over 12s: diagnosis and management",
+      "url": "https://www.nice.org.uk/guidance/cg150/chapter/recommendations",
+      "publication_date": "2012-09-19",
+      "access_date": "2026-06-22",
+      "version_label": "CG150"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 2,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Headache",
+      "url": "https://acsearch.acr.org/docs/69482/Narrative/",
+      "publication_date": null,
+      "access_date": "2026-06-22",
+      "version_label": "Headache"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 3,
+    "fields": {
+      "publisher": "IHS",
+      "title": "International Classification of Headache Disorders 3rd edition",
+      "url": "https://ichd-3.org/",
+      "publication_date": null,
+      "access_date": "2026-06-22",
+      "version_label": "ICHD-3"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 4,
+    "fields": {
+      "publisher": "FDA",
+      "title": "Clinical Decision Support Software Guidance",
+      "url": "https://www.fda.gov/media/109618/download",
+      "publication_date": "2026-01-29",
+      "access_date": "2026-06-22",
+      "version_label": "CDS guidance"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 5,
+    "fields": {
+      "publisher": "IMDRF",
+      "title": "Software as a Medical Device: Clinical Evaluation",
+      "url": "https://www.imdrf.org/documents/software-medical-device-samd-clinical-evaluation",
+      "publication_date": null,
+      "access_date": "2026-06-22",
+      "version_label": "SaMD clinical evaluation"
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 1,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Thunderclap headache",
+      "summary": "Sudden severe headache reaching peak intensity quickly should trigger urgent assessment for dangerous secondary causes.",
+      "title_zh": "雷擊樣頭痛",
+      "title_en": "Thunderclap headache",
+      "summary_zh": "突然發生且快速達到最高強度的嚴重頭痛，應優先評估危險性次發原因。",
+      "summary_en": "Sudden severe headache reaching peak intensity quickly should trigger urgent assessment for dangerous secondary causes.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Exact time to peak intensity", "Neurologic symptoms", "Neck stiffness", "Exertional trigger"],
+      "supporting_findings": ["rapid peak intensity", "severe intensity"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 2,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Fever or meningism",
+      "summary": "Headache with fever or meningism should raise concern for CNS infection or other urgent secondary causes.",
+      "title_zh": "發燒或腦膜刺激徵象",
+      "title_en": "Fever or meningism",
+      "summary_zh": "頭痛合併發燒或腦膜刺激徵象時，應提高對中樞神經感染或其他緊急次發原因的警覺。",
+      "summary_en": "Headache with fever or meningism should raise concern for CNS infection or other urgent secondary causes.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Fever", "Neck stiffness", "Rash", "Altered mental status"],
+      "supporting_findings": ["fever", "meningism"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 3,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "New neurologic deficit",
+      "summary": "A new focal neurologic deficit with headache requires urgent clinician assessment for secondary causes.",
+      "title_zh": "新發神經學缺損",
+      "title_en": "New neurologic deficit",
+      "summary_zh": "頭痛合併新發局部神經學缺損時，需緊急評估可能的次發原因。",
+      "summary_en": "A new focal neurologic deficit with headache requires urgent clinician assessment for secondary causes.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Weakness", "Speech disturbance", "Visual field deficit", "Seizure"],
+      "supporting_findings": ["neurologic deficit"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 4,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Altered mental status",
+      "summary": "Headache with altered mental status is an urgent red flag and should not be treated as routine primary headache.",
+      "title_zh": "意識或精神狀態改變",
+      "title_en": "Altered mental status",
+      "summary_zh": "頭痛合併意識或精神狀態改變屬於緊急紅旗，不應視為一般原發性頭痛處理。",
+      "summary_en": "Headache with altered mental status is an urgent red flag and should not be treated as routine primary headache.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Confusion", "Drowsiness", "Seizure", "Toxic/metabolic features"],
+      "supporting_findings": ["altered mental status"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 5,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Recent head trauma",
+      "summary": "Recent head trauma changes the headache pathway and should trigger trauma-focused assessment.",
+      "title_zh": "近期頭部外傷",
+      "title_en": "Recent head trauma",
+      "summary_zh": "近期頭部外傷會改變頭痛評估路徑，應進入外傷導向的臨床評估。",
+      "summary_en": "Recent head trauma changes the headache pathway and should trigger trauma-focused assessment.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Mechanism", "Loss of consciousness", "Anticoagulant use", "Vomiting"],
+      "supporting_findings": ["recent trauma"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 6,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Immunocompromised status",
+      "summary": "Immunocompromised status broadens secondary-headache concern and should lower threshold for urgent assessment.",
+      "title_zh": "免疫功能低下",
+      "title_en": "Immunocompromised status",
+      "summary_zh": "免疫功能低下會擴大次發性頭痛的鑑別範圍，應降低緊急評估門檻。",
+      "summary_en": "Immunocompromised status broadens secondary-headache concern and should lower threshold for urgent assessment.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Immunosuppressive drugs", "HIV status if known", "Transplant history", "Fever"],
+      "supporting_findings": ["immunocompromised"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 7,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "History of malignancy",
+      "summary": "Cancer history with new or changing headache should prompt consideration of secondary causes.",
+      "title_zh": "惡性腫瘤病史",
+      "title_en": "History of malignancy",
+      "summary_zh": "有惡性腫瘤病史且出現新發或型態改變的頭痛時，應考慮次發原因。",
+      "summary_en": "Cancer history with new or changing headache should prompt consideration of secondary causes.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Cancer type", "Current treatment", "Neurologic symptoms", "Pattern change"],
+      "supporting_findings": ["malignancy history"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 8,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Giant cell arteritis concern",
+      "summary": "New headache in an older adult with jaw claudication or compatible symptoms should raise concern for giant cell arteritis.",
+      "title_zh": "巨細胞動脈炎疑慮",
+      "title_en": "Giant cell arteritis concern",
+      "summary_zh": "年長者新發頭痛合併下顎跛行或相容症狀時，應提高對巨細胞動脈炎的警覺。",
+      "summary_en": "New headache in an older adult with jaw claudication or compatible symptoms should raise concern for giant cell arteritis.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Jaw claudication", "Scalp tenderness", "Visual symptoms", "Age"],
+      "supporting_findings": ["age over 50", "jaw claudication"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 9,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "red_flag",
+      "title": "Acute angle-closure glaucoma concern",
+      "summary": "Headache with acute eye pain or redness should prompt eye-focused urgent assessment.",
+      "title_zh": "急性隅角閉鎖性青光眼疑慮",
+      "title_en": "Acute angle-closure glaucoma concern",
+      "summary_zh": "頭痛合併急性眼痛或眼紅時，應安排眼科導向的緊急評估。",
+      "summary_en": "Headache with acute eye pain or redness should prompt eye-focused urgent assessment.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Eye redness", "Halos", "Vision change", "Nausea"],
+      "supporting_findings": ["eye pain redness"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 10,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "differential",
+      "title": "Migraine consideration",
+      "summary": "Consider migraine when recurrent headache has compatible associated symptoms such as photophobia or nausea and no urgent red flags dominate.",
+      "title_zh": "偏頭痛鑑別考量",
+      "title_en": "Migraine consideration",
+      "summary_zh": "反覆頭痛合併畏光、噁心等相容症狀，且無緊急紅旗主導時，可納入偏頭痛鑑別。",
+      "summary_en": "Consider migraine when recurrent headache has compatible associated symptoms such as photophobia or nausea and no urgent red flags dominate.",
+      "urgency": "routine",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Duration", "Pulsating quality", "Activity limitation", "Aura features"],
+      "supporting_findings": ["recurrent pattern", "photophobia", "nausea"],
+      "opposing_findings": ["red flags"]
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 11,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "differential",
+      "title": "Tension-type headache consideration",
+      "summary": "Consider tension-type headache when bilateral pressure-like headache features are present and red flags are absent.",
+      "title_zh": "緊縮型頭痛鑑別考量",
+      "title_en": "Tension-type headache consideration",
+      "summary_zh": "雙側壓迫感頭痛且未出現紅旗時，可納入緊縮型頭痛鑑別。",
+      "summary_en": "Consider tension-type headache when bilateral pressure-like headache features are present and red flags are absent.",
+      "urgency": "routine",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Duration", "Activity aggravation", "Nausea", "Photophobia"],
+      "supporting_findings": ["bilateral pressure"],
+      "opposing_findings": ["red flags"]
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 12,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "differential",
+      "title": "Cluster headache consideration",
+      "summary": "Consider cluster headache when severe unilateral orbital or temporal pain occurs with ipsilateral autonomic features.",
+      "title_zh": "叢發性頭痛鑑別考量",
+      "title_en": "Cluster headache consideration",
+      "summary_zh": "嚴重單側眼眶或顳部疼痛合併同側自律神經症狀時，可納入叢發性頭痛鑑別。",
+      "summary_en": "Consider cluster headache when severe unilateral orbital or temporal pain occurs with ipsilateral autonomic features.",
+      "urgency": "soon",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Attack duration", "Autonomic features", "Restlessness", "Episode periodicity"],
+      "supporting_findings": ["unilateral orbital pain", "autonomic features"],
+      "opposing_findings": ["red flags"]
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 13,
+    "fields": {
+      "chief_complaint": 1,
+      "item_type": "medication_safety",
+      "title": "Medication-overuse pattern",
+      "summary": "Frequent headache with frequent acute medication use should prompt medication-overuse review and source-based counseling by the clinician.",
+      "title_zh": "藥物過度使用型態",
+      "title_en": "Medication-overuse pattern",
+      "summary_zh": "頻繁頭痛合併頻繁使用急性止痛藥時，臨床人員應評估藥物過度使用並依來源進行衛教。",
+      "summary_en": "Frequent headache with frequent acute medication use should prompt medication-overuse review and source-based counseling by the clinician.",
+      "urgency": "soon",
+      "status": "approved",
+      "version_label": "MVP-1",
+      "last_reviewed_at": "2026-06-22",
+      "review_due_at": "2026-12-22",
+      "missing_questions": ["Medication class", "Use days per month", "Caffeine use", "Preventive therapy"],
+      "supporting_findings": ["frequent headache days", "frequent acute medication days"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 1,
+    "fields": {"clinical_item": 1, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 2,
+    "fields": {"clinical_item": 1, "source": 2}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 3,
+    "fields": {"clinical_item": 2, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 4,
+    "fields": {"clinical_item": 3, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 5,
+    "fields": {"clinical_item": 4, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 6,
+    "fields": {"clinical_item": 5, "source": 2}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 7,
+    "fields": {"clinical_item": 6, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 8,
+    "fields": {"clinical_item": 7, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 9,
+    "fields": {"clinical_item": 8, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 10,
+    "fields": {"clinical_item": 9, "source": 1}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 11,
+    "fields": {"clinical_item": 10, "source": 3}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 12,
+    "fields": {"clinical_item": 11, "source": 3}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 13,
+    "fields": {"clinical_item": 12, "source": 3}
+  },
+  {
+    "model": "cds_core.clinicalitemsource",
+    "pk": 14,
+    "fields": {"clinical_item": 13, "source": 1}
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 1,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 1,
+      "slug": "rf_thunderclap",
+      "condition": {"all": [{"field": "onset_peak_minutes", "operator": "lte", "value": 5}, {"field": "severe_intensity", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg150", "acr_headache"],
+      "priority": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 2,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 2,
+      "slug": "rf_fever_meningism",
+      "condition": {"any": [{"field": "fever", "operator": "equals", "value": true}, {"field": "meningism", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg150"],
+      "priority": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 3,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 3,
+      "slug": "rf_neurologic_deficit",
+      "condition": {"field": "neurologic_deficit", "operator": "equals", "value": true},
+      "source_ids": ["nice_cg150"],
+      "priority": 3,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 4,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 4,
+      "slug": "rf_altered_mental_status",
+      "condition": {"field": "altered_mental_status", "operator": "equals", "value": true},
+      "source_ids": ["nice_cg150"],
+      "priority": 4,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 5,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 5,
+      "slug": "rf_recent_trauma",
+      "condition": {"field": "recent_trauma", "operator": "equals", "value": true},
+      "source_ids": ["acr_headache"],
+      "priority": 5,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 6,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 6,
+      "slug": "rf_immunocompromised",
+      "condition": {"field": "immunocompromised", "operator": "equals", "value": true},
+      "source_ids": ["nice_cg150"],
+      "priority": 6,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 7,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 7,
+      "slug": "rf_malignancy_history",
+      "condition": {"field": "malignancy_history", "operator": "equals", "value": true},
+      "source_ids": ["nice_cg150"],
+      "priority": 7,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 8,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 8,
+      "slug": "rf_giant_cell_arteritis",
+      "condition": {"all": [{"field": "age", "operator": "gte", "value": 50}, {"field": "jaw_claudication", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg150"],
+      "priority": 8,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 9,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 9,
+      "slug": "rf_eye_pain_redness",
+      "condition": {"field": "eye_pain_redness", "operator": "equals", "value": true},
+      "source_ids": ["nice_cg150"],
+      "priority": 9,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 10,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 10,
+      "slug": "dx_migraine",
+      "condition": {"all": [{"field": "recurrent_pattern", "operator": "equals", "value": true}, {"any": [{"field": "photophobia", "operator": "equals", "value": true}, {"field": "nausea", "operator": "equals", "value": true}]}]},
+      "source_ids": ["ichd3"],
+      "priority": 50,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 11,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 11,
+      "slug": "dx_tension_type",
+      "condition": {"field": "bilateral_pressure", "operator": "equals", "value": true},
+      "source_ids": ["ichd3"],
+      "priority": 60,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 12,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 12,
+      "slug": "dx_cluster",
+      "condition": {"all": [{"field": "unilateral_orbital_pain", "operator": "equals", "value": true}, {"field": "autonomic_features", "operator": "equals", "value": true}]},
+      "source_ids": ["ichd3"],
+      "priority": 61,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 13,
+    "fields": {
+      "chief_complaint": 1,
+      "output_item": 13,
+      "slug": "safety_medication_overuse",
+      "condition": {"all": [{"field": "headache_days_per_month", "operator": "gte", "value": 15}, {"field": "acute_medication_days_per_month", "operator": "gte", "value": 10}]},
+      "source_ids": ["nice_cg150"],
+      "priority": 40,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 1,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "thunderclap-headache",
+      "title_zh": "雷擊樣頭痛病例",
+      "title_en": "Thunderclap headache case",
+      "summary_zh": "模擬一位突然嚴重頭痛並在 1 分鐘內達最高強度的非病人情境。",
+      "summary_en": "A non-patient scenario with sudden severe headache reaching peak intensity within 1 minute.",
+      "findings": {"onset_peak_minutes": 1, "severe_intensity": true},
+      "expected_item_titles": ["Thunderclap headache"],
+      "display_order": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 2,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "fever-meningism-headache",
+      "title_zh": "發燒與腦膜刺激病例",
+      "title_en": "Fever and meningism headache case",
+      "summary_zh": "模擬頭痛合併發燒與腦膜刺激徵象的非病人情境。",
+      "summary_en": "A non-patient scenario with headache plus fever and meningism.",
+      "findings": {"fever": true, "meningism": true},
+      "expected_item_titles": ["Fever or meningism"],
+      "display_order": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 3,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "neurologic-deficit-headache",
+      "title_zh": "新發神經學缺損病例",
+      "title_en": "New neurologic deficit headache case",
+      "summary_zh": "模擬頭痛合併新發局部神經學缺損的非病人情境。",
+      "summary_en": "A non-patient scenario with headache plus new focal neurologic deficit.",
+      "findings": {"neurologic_deficit": true},
+      "expected_item_titles": ["New neurologic deficit"],
+      "display_order": 3,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 4,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "altered-mental-status-headache",
+      "title_zh": "意識改變病例",
+      "title_en": "Altered mental status headache case",
+      "summary_zh": "模擬頭痛合併意識或精神狀態改變的非病人情境。",
+      "summary_en": "A non-patient scenario with headache plus altered mental status.",
+      "findings": {"altered_mental_status": true},
+      "expected_item_titles": ["Altered mental status"],
+      "display_order": 4,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 5,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "recent-trauma-headache",
+      "title_zh": "近期頭部外傷病例",
+      "title_en": "Recent head trauma headache case",
+      "summary_zh": "模擬近期頭部外傷後出現頭痛的非病人情境。",
+      "summary_en": "A non-patient scenario with headache after recent head trauma.",
+      "findings": {"recent_trauma": true},
+      "expected_item_titles": ["Recent head trauma"],
+      "display_order": 5,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 6,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "immunocompromised-headache",
+      "title_zh": "免疫功能低下頭痛病例",
+      "title_en": "Immunocompromised headache case",
+      "summary_zh": "模擬免疫功能低下者出現頭痛的非病人情境。",
+      "summary_en": "A non-patient scenario with headache in an immunocompromised context.",
+      "findings": {"immunocompromised": true},
+      "expected_item_titles": ["Immunocompromised status"],
+      "display_order": 6,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 7,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "malignancy-history-headache",
+      "title_zh": "惡性腫瘤病史頭痛病例",
+      "title_en": "Malignancy history headache case",
+      "summary_zh": "模擬有惡性腫瘤病史且出現新發頭痛的非病人情境。",
+      "summary_en": "A non-patient scenario with new headache and malignancy history.",
+      "findings": {"malignancy_history": true},
+      "expected_item_titles": ["History of malignancy"],
+      "display_order": 7,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 8,
+    "fields": {
+      "chief_complaint": 1,
+      "slug": "giant-cell-arteritis-headache",
+      "title_zh": "巨細胞動脈炎疑慮病例",
+      "title_en": "Giant cell arteritis concern case",
+      "summary_zh": "模擬 55 歲以上合併下顎跛行的新發頭痛非病人情境。",
+      "summary_en": "A non-patient scenario with new headache after age 50 plus jaw claudication.",
+      "findings": {"age": 55, "jaw_claudication": true},
+      "expected_item_titles": ["Giant cell arteritis concern"],
+      "display_order": 8,
+      "active": true
+    }
+  }
+]

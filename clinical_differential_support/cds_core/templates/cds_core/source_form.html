@@ -1,0 +1,26 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:source_index' %}">返回來源庫 / Back to source library</a>
+  {% if source %}
+    <p><a href="{% url 'cds_core:source_detail' source.pk %}">返回來源詳情 / Back to source detail</a></p>
+  {% endif %}
+  <h2>{{ page_title }}</h2>
+  <p class="secondary">{{ page_title_en }}</p>
+  <form method="post">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="field">
+        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+        {{ field }}
+        {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+        {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
+      </div>
+    {% endfor %}
+    <button type="submit">{{ submit_label }}</button>
+  </form>
+</section>
+{% endblock %}

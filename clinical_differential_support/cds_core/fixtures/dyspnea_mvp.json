@@ -1,0 +1,416 @@
+[
+  {
+    "model": "cds_core.chiefcomplaint",
+    "pk": 4,
+    "fields": {
+      "slug": "dyspnea",
+      "title": "Dyspnea",
+      "summary": "Structured clinician reference pathway for dyspnea assessment."
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 14,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Acute Respiratory Illness in Immunocompetent Patients",
+      "url": "https://acsearch.acr.org/docs/69446/narrative/",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "ACR acute respiratory illness immunocompetent"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 15,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Acute Respiratory Illness in Immunocompromised Patients",
+      "url": "https://acsearch.acr.org/docs/69447/Narrative/",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "ACR acute respiratory illness immunocompromised"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 16,
+    "fields": {
+      "publisher": "NICE",
+      "title": "Chronic heart failure in adults: diagnosis and management",
+      "url": "https://www.nice.org.uk/guidance/ng106",
+      "publication_date": "2018-09-12",
+      "access_date": "2026-06-24",
+      "version_label": "NICE NG106"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 17,
+    "fields": {
+      "publisher": "NHS England",
+      "title": "Adult breathlessness pathway (pre-diagnosis): diagnostic pathway support tool",
+      "url": "https://www.england.nhs.uk/long-read/adult-breathlessness-pathway-pre-diagnosis-diagnostic-pathway-support-tool/",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "NHS adult breathlessness pathway"
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 30,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "red_flag",
+      "title": "Critical dyspnea emergency prompt",
+      "summary": "Severe dyspnea with hypoxemia, cyanosis, inability to speak, altered mental status, or unstable vital signs should trigger emergency-level clinician escalation.",
+      "title_zh": "危急呼吸困難急症提示",
+      "title_en": "Critical dyspnea emergency prompt",
+      "summary_zh": "嚴重呼吸困難合併低血氧、發紺、無法完整說句子、意識改變或生命徵象不穩時，應啟動急症等級的臨床升級評估。",
+      "summary_en": "Severe dyspnea with hypoxemia, cyanosis, inability to speak, altered mental status, or unstable vital signs should trigger emergency-level clinician escalation.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Oxygen saturation", "Respiratory rate", "Ability to speak", "Mental status", "Vital signs"],
+      "supporting_findings": ["severe dyspnea", "hypoxemia", "cyanosis", "unable to speak", "altered mental status"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 31,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "red_flag",
+      "title": "Time-sensitive cardiopulmonary red flags",
+      "summary": "Acute dyspnea with chest pain, syncope, hemoptysis, or unilateral leg swelling should prompt consideration of time-sensitive cardiopulmonary causes in the appropriate clinical setting.",
+      "title_zh": "具時間敏感性的心肺警訊",
+      "title_en": "Time-sensitive cardiopulmonary red flags",
+      "summary_zh": "急性呼吸困難合併胸痛、暈厥、咯血或單側腿部腫脹時，應在合適臨床情境中考量具時間敏感性的心肺原因。",
+      "summary_en": "Acute dyspnea with chest pain, syncope, hemoptysis, or unilateral leg swelling should prompt consideration of time-sensitive cardiopulmonary causes in the appropriate clinical setting.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Chest pain", "Syncope", "Hemoptysis", "Leg swelling", "VTE risk factors"],
+      "supporting_findings": ["acute dyspnea", "chest pain", "syncope", "hemoptysis", "unilateral leg swelling"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 32,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "workup",
+      "title": "Acute respiratory illness imaging pathway",
+      "summary": "Acute dyspnea with cough, fever, abnormal vital signs, or positive respiratory examination should prompt structured respiratory illness assessment and source-based imaging consideration.",
+      "title_zh": "急性呼吸道疾病影像評估路徑",
+      "title_en": "Acute respiratory illness imaging pathway",
+      "summary_zh": "急性呼吸困難合併咳嗽、發燒、生命徵象異常或呼吸系統理學檢查陽性時，應進入結構化呼吸道疾病評估並依來源考量影像。",
+      "summary_en": "Acute dyspnea with cough, fever, abnormal vital signs, or positive respiratory examination should prompt structured respiratory illness assessment and source-based imaging consideration.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Cough", "Fever", "Respiratory examination", "Oxygen saturation"],
+      "supporting_findings": ["acute dyspnea", "cough", "fever", "abnormal vital signs"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 33,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "red_flag",
+      "title": "Immunocompromised acute respiratory illness prompt",
+      "summary": "Immunocompromised status with acute respiratory symptoms should lower the threshold for urgent assessment and source-based imaging review.",
+      "title_zh": "免疫低下急性呼吸道疾病提示",
+      "title_en": "Immunocompromised acute respiratory illness prompt",
+      "summary_zh": "免疫功能低下者若出現急性呼吸症狀，應降低急迫評估門檻，並依來源與當地流程進行影像評估。",
+      "summary_en": "Immunocompromised status with acute respiratory symptoms should lower the threshold for urgent assessment and source-based imaging review.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Immunosuppression type", "Fever", "Cough", "Recent infection exposure"],
+      "supporting_findings": ["immunocompromised", "acute dyspnea", "fever", "cough"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 34,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "workup",
+      "title": "Heart failure suspicion pathway",
+      "summary": "Dyspnea with orthopnea, paroxysmal nocturnal dyspnea, edema, or recent weight gain should prompt structured heart-failure suspicion review and source-aligned diagnostic testing.",
+      "title_zh": "疑似心衰竭評估路徑",
+      "title_en": "Heart failure suspicion pathway",
+      "summary_zh": "呼吸困難合併端坐呼吸、陣發性夜間呼吸困難、水腫或近期體重增加時，應進入結構化心衰竭疑慮評估與來源一致的診斷檢查流程。",
+      "summary_en": "Dyspnea with orthopnea, paroxysmal nocturnal dyspnea, edema, or recent weight gain should prompt structured heart-failure suspicion review and source-aligned diagnostic testing.",
+      "urgency": "soon",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Orthopnea", "Paroxysmal nocturnal dyspnea", "Leg edema", "NT-proBNP availability", "ECG"],
+      "supporting_findings": ["orthopnea", "leg edema", "paroxysmal nocturnal dyspnea", "recent weight gain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 35,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "workup",
+      "title": "Chronic persistent breathlessness diagnostic pathway",
+      "summary": "Breathlessness persisting over 8 weeks should prompt a multi-factorial diagnostic pathway that documents history, examination, basic tests, and reassessment rather than a single-cause assumption.",
+      "title_zh": "慢性持續呼吸困難診斷路徑",
+      "title_en": "Chronic persistent breathlessness diagnostic pathway",
+      "summary_zh": "持續超過 8 週的呼吸困難應進入多因素診斷路徑，記錄病史、理學檢查、基礎檢查與再評估，而不是假設單一原因。",
+      "summary_en": "Breathlessness persisting over 8 weeks should prompt a multi-factorial diagnostic pathway that documents history, examination, basic tests, and reassessment rather than a single-cause assumption.",
+      "urgency": "soon",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Duration", "Smoking history", "BMI", "ECG", "NT-proBNP", "Chest X-ray", "Spirometry"],
+      "supporting_findings": ["chronic persistent breathlessness", "duration over 8 weeks", "smoking history"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 36,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "workup",
+      "title": "Airflow obstruction exacerbation pattern",
+      "summary": "Dyspnea with wheeze or known asthma/COPD should prompt structured airflow-obstruction review, while checking for complicating features such as fever or chest pain.",
+      "title_zh": "氣流阻塞惡化型態",
+      "title_en": "Airflow obstruction exacerbation pattern",
+      "summary_zh": "呼吸困難合併喘鳴或已知氣喘/COPD 時，應進入結構化氣流阻塞評估，同時確認是否有發燒、胸痛等複雜特徵。",
+      "summary_en": "Dyspnea with wheeze or known asthma/COPD should prompt structured airflow-obstruction review, while checking for complicating features such as fever or chest pain.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Wheeze", "Known asthma or COPD", "Fever", "Chest pain", "Peak flow or spirometry history"],
+      "supporting_findings": ["wheeze", "known asthma or COPD", "acute dyspnea"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 37,
+    "fields": {
+      "chief_complaint": 4,
+      "item_type": "management",
+      "title": "Structured dyspnea reassessment",
+      "summary": "Clinically stable dyspnea still needs documented onset, trajectory, red flags, oxygen saturation, functional impact, and reassessment plan.",
+      "title_zh": "呼吸困難結構化再評估",
+      "title_en": "Structured dyspnea reassessment",
+      "summary_zh": "目前穩定的呼吸困難仍需記錄起始時間、變化趨勢、警訊、血氧、功能影響與再評估安排。",
+      "summary_en": "Clinically stable dyspnea still needs documented onset, trajectory, red flags, oxygen saturation, functional impact, and reassessment plan.",
+      "urgency": "routine",
+      "status": "approved",
+      "version_label": "MVP-4",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Onset", "Trajectory", "Oxygen saturation", "Functional impact", "Reassessment timing"],
+      "supporting_findings": ["acute dyspnea", "chronic dyspnea", "clinically stable"],
+      "opposing_findings": []
+    }
+  },
+  {"model": "cds_core.clinicalitemsource", "pk": 301, "fields": {"clinical_item": 30, "source": 17}},
+  {"model": "cds_core.clinicalitemsource", "pk": 302, "fields": {"clinical_item": 30, "source": 14}},
+  {"model": "cds_core.clinicalitemsource", "pk": 303, "fields": {"clinical_item": 31, "source": 17}},
+  {"model": "cds_core.clinicalitemsource", "pk": 304, "fields": {"clinical_item": 31, "source": 14}},
+  {"model": "cds_core.clinicalitemsource", "pk": 305, "fields": {"clinical_item": 32, "source": 14}},
+  {"model": "cds_core.clinicalitemsource", "pk": 306, "fields": {"clinical_item": 33, "source": 15}},
+  {"model": "cds_core.clinicalitemsource", "pk": 307, "fields": {"clinical_item": 34, "source": 16}},
+  {"model": "cds_core.clinicalitemsource", "pk": 308, "fields": {"clinical_item": 34, "source": 17}},
+  {"model": "cds_core.clinicalitemsource", "pk": 309, "fields": {"clinical_item": 35, "source": 17}},
+  {"model": "cds_core.clinicalitemsource", "pk": 310, "fields": {"clinical_item": 35, "source": 16}},
+  {"model": "cds_core.clinicalitemsource", "pk": 311, "fields": {"clinical_item": 36, "source": 14}},
+  {"model": "cds_core.clinicalitemsource", "pk": 312, "fields": {"clinical_item": 36, "source": 17}},
+  {"model": "cds_core.clinicalitemsource", "pk": 313, "fields": {"clinical_item": 37, "source": 17}},
+  {
+    "model": "cds_core.rule",
+    "pk": 30,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 30,
+      "slug": "dyspnea_critical_emergency",
+      "condition": {"any": [{"field": "hypoxemia", "operator": "equals", "value": true}, {"field": "cyanosis", "operator": "equals", "value": true}, {"field": "inability_to_speak", "operator": "equals", "value": true}, {"field": "altered_mental_status", "operator": "equals", "value": true}, {"field": "hemodynamic_instability", "operator": "equals", "value": true}, {"all": [{"field": "severe_dyspnea", "operator": "equals", "value": true}, {"field": "acute_dyspnea", "operator": "equals", "value": true}]}]},
+      "source_ids": ["nhs_adult_breathlessness_pathway", "acr_acute_respiratory_illness_immunocompetent"],
+      "priority": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 31,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 31,
+      "slug": "dyspnea_cardiopulmonary_red_flags",
+      "condition": {"all": [{"field": "acute_dyspnea", "operator": "equals", "value": true}, {"any": [{"field": "chest_pain", "operator": "equals", "value": true}, {"field": "syncope", "operator": "equals", "value": true}, {"field": "hemoptysis", "operator": "equals", "value": true}, {"field": "unilateral_leg_swelling", "operator": "equals", "value": true}]}]},
+      "source_ids": ["nhs_adult_breathlessness_pathway", "acr_acute_respiratory_illness_immunocompetent"],
+      "priority": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 32,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 32,
+      "slug": "dyspnea_acute_respiratory_illness",
+      "condition": {"all": [{"field": "acute_dyspnea", "operator": "equals", "value": true}, {"any": [{"field": "cough", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}, {"field": "hypoxemia", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_acute_respiratory_illness_immunocompetent"],
+      "priority": 20,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 33,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 33,
+      "slug": "dyspnea_immunocompromised_ari",
+      "condition": {"all": [{"field": "immunocompromised", "operator": "equals", "value": true}, {"any": [{"field": "acute_dyspnea", "operator": "equals", "value": true}, {"field": "cough", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_acute_respiratory_illness_immunocompromised"],
+      "priority": 10,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 34,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 34,
+      "slug": "dyspnea_heart_failure_suspicion",
+      "condition": {"any": [{"all": [{"field": "orthopnea", "operator": "equals", "value": true}, {"field": "leg_edema", "operator": "equals", "value": true}]}, {"all": [{"field": "paroxysmal_nocturnal_dyspnea", "operator": "equals", "value": true}, {"field": "leg_edema", "operator": "equals", "value": true}]}, {"all": [{"field": "weight_gain", "operator": "equals", "value": true}, {"field": "leg_edema", "operator": "equals", "value": true}]}, {"all": [{"field": "dyspnea_duration_weeks", "operator": "gte", "value": 2}, {"field": "leg_edema", "operator": "equals", "value": true}]}]},
+      "source_ids": ["nice_ng106", "nhs_adult_breathlessness_pathway"],
+      "priority": 40,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 35,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 35,
+      "slug": "dyspnea_chronic_persistent",
+      "condition": {"any": [{"field": "chronic_persistent_breathlessness", "operator": "equals", "value": true}, {"field": "dyspnea_duration_weeks", "operator": "gte", "value": 8}]},
+      "source_ids": ["nhs_adult_breathlessness_pathway", "nice_ng106"],
+      "priority": 50,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 36,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 36,
+      "slug": "dyspnea_airflow_obstruction_pattern",
+      "condition": {"all": [{"any": [{"field": "wheeze", "operator": "equals", "value": true}, {"field": "known_asthma_copd", "operator": "equals", "value": true}]}, {"any": [{"field": "acute_dyspnea", "operator": "equals", "value": true}, {"field": "severe_dyspnea", "operator": "equals", "value": true}, {"field": "cough", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_acute_respiratory_illness_immunocompetent", "nhs_adult_breathlessness_pathway"],
+      "priority": 60,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 37,
+    "fields": {
+      "chief_complaint": 4,
+      "output_item": 37,
+      "slug": "dyspnea_structured_reassessment",
+      "condition": {"any": [{"field": "acute_dyspnea", "operator": "equals", "value": true}, {"field": "chronic_persistent_breathlessness", "operator": "equals", "value": true}, {"field": "clinically_stable", "operator": "equals", "value": true}, {"field": "dyspnea_duration_weeks", "operator": "present"}]},
+      "source_ids": ["nhs_adult_breathlessness_pathway"],
+      "priority": 80,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 16,
+    "fields": {
+      "chief_complaint": 4,
+      "slug": "acute-febrile-dyspnea",
+      "title_zh": "急性發燒呼吸困難案例",
+      "title_en": "Acute febrile dyspnea case",
+      "summary_zh": "非病人案例：急性呼吸困難合併咳嗽與發燒，用於驗證急性呼吸道疾病路徑。",
+      "summary_en": "A non-patient scenario with acute dyspnea, cough, and fever for pathway validation.",
+      "findings": {"acute_dyspnea": true, "cough": true, "fever": true},
+      "expected_item_titles": ["Acute respiratory illness imaging pathway", "Structured dyspnea reassessment"],
+      "display_order": 40,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 17,
+    "fields": {
+      "chief_complaint": 4,
+      "slug": "critical-hypoxemic-dyspnea",
+      "title_zh": "危急低血氧呼吸困難案例",
+      "title_en": "Critical hypoxemic dyspnea case",
+      "summary_zh": "非病人案例：急性嚴重呼吸困難合併低血氧，用於驗證急症提示。",
+      "summary_en": "A non-patient scenario with acute severe dyspnea and hypoxemia.",
+      "findings": {"acute_dyspnea": true, "severe_dyspnea": true, "hypoxemia": true},
+      "expected_item_titles": ["Critical dyspnea emergency prompt", "Acute respiratory illness imaging pathway", "Structured dyspnea reassessment"],
+      "display_order": 41,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 18,
+    "fields": {
+      "chief_complaint": 4,
+      "slug": "heart-failure-pattern-dyspnea",
+      "title_zh": "疑似心衰竭呼吸困難案例",
+      "title_en": "Heart failure pattern dyspnea case",
+      "summary_zh": "非病人案例：端坐呼吸合併下肢水腫，用於驗證心衰竭疑慮路徑。",
+      "summary_en": "A non-patient scenario with orthopnea and leg edema.",
+      "findings": {"orthopnea": true, "leg_edema": true},
+      "expected_item_titles": ["Heart failure suspicion pathway"],
+      "display_order": 42,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 19,
+    "fields": {
+      "chief_complaint": 4,
+      "slug": "chronic-persistent-dyspnea",
+      "title_zh": "慢性持續呼吸困難案例",
+      "title_en": "Chronic persistent dyspnea case",
+      "summary_zh": "非病人案例：呼吸困難持續 10 週，用於驗證慢性 breathlessness 診斷路徑。",
+      "summary_en": "A non-patient scenario with breathlessness persisting for 10 weeks.",
+      "findings": {"chronic_persistent_breathlessness": true, "dyspnea_duration_weeks": 10, "smoking_history": true},
+      "expected_item_titles": ["Chronic persistent breathlessness diagnostic pathway", "Structured dyspnea reassessment"],
+      "display_order": 43,
+      "active": true
+    }
+  }
+]

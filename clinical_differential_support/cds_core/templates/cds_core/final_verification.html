@@ -1,0 +1,105 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:next_actions' %}">返回下一步工作台 / Back to next actions</a>
+  <h2>最終驗收門檻</h2>
+  <p class="secondary">Final Verification Gate</p>
+  <div class="message">Gate status: {{ report.gate_status }}</div>
+  <p>
+    <a href="{% url 'cds_core:export_final_verification_json' %}">最終驗收 JSON / Final verification JSON</a>
+    |
+    <a href="{% url 'cds_core:release_readiness' %}">交付整備報告 / Release Readiness Report</a>
+    |
+    <a href="{% url 'cds_core:export_handoff_bundle_zip' %}">交付 ZIP / Handoff bundle ZIP</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ report.readiness.clinical_item_count }}</span>
+    <h3>治理項目</h3>
+    <p class="secondary">Clinical items</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.readiness.source_gap_count }}</span>
+    <h3>來源缺口</h3>
+    <p class="secondary">Source gaps</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.readiness.review_due_count }}</span>
+    <h3>到期審核</h3>
+    <p class="secondary">Due reviews</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.readiness.failed_case_count }}</span>
+    <h3>失敗病例</h3>
+    <p class="secondary">Failed validation cases</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>最新驗收證據</h2>
+  <p class="secondary">Latest evidence</p>
+  <p>
+    <span class="tag">{{ report.latest_evidence.status }}</span>
+    <span class="tag">{{ report.latest_evidence.command_count }} commands</span>
+  </p>
+  {% if report.latest_evidence.status == "verified" %}
+    <p>
+      Recorded at: {{ report.latest_evidence.generated_at }}<br>
+      <span class="secondary">Gate at recording: {{ report.latest_evidence.gate_status_at_recording }}</span>
+    </p>
+  {% else %}
+    <p>
+      Recorder command:<br>
+      <code>{{ report.evidence_policy.recorder_command }}</code>
+    </p>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>下一步</h2>
+  <p class="secondary">Next action</p>
+  <p>
+    <strong>{{ report.next_action.title_zh }}</strong><br>
+    <span class="secondary">{{ report.next_action.title_en }} | {{ report.next_action.action_id }} | {{ report.next_action.status }}</span>
+  </p>
+</section>
+
+<section class="panel">
+  <h2>必跑命令</h2>
+  <p class="secondary">Required commands</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Command</th>
+        <th>Expected result</th>
+        <th>Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for command in report.required_commands %}
+        <tr>
+          <td><code>{{ command.command }}</code><br><span class="secondary">{{ command.command_id }}</span></td>
+          <td>{{ command.expected_result }}</td>
+          <td>{{ command.evidence_status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>交付匯出</h2>
+  <p class="secondary">Handoff exports after commands pass</p>
+  <ul class="review-list">
+    <li>Release readiness: {{ report.handoff_exports.release_readiness }}</li>
+    <li>Release evidence JSON: {{ report.handoff_exports.release_evidence_json }}</li>
+    <li>Handoff report Markdown: {{ report.handoff_exports.handoff_report_markdown }}</li>
+    <li>Handoff bundle ZIP: {{ report.handoff_exports.handoff_bundle_zip }}</li>
+  </ul>
+</section>
+{% endblock %}

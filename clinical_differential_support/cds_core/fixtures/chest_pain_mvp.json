@@ -1,0 +1,404 @@
+[
+  {
+    "model": "cds_core.chiefcomplaint",
+    "pk": 2,
+    "fields": {
+      "slug": "chest-pain",
+      "title": "Chest pain",
+      "summary": "Structured clinician reference pathway for chest pain assessment."
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 6,
+    "fields": {
+      "publisher": "NICE",
+      "title": "Recent-onset chest pain of suspected cardiac origin: assessment and diagnosis",
+      "url": "https://www.nice.org.uk/guidance/cg95",
+      "publication_date": "2010-03-24",
+      "access_date": "2026-06-24",
+      "version_label": "CG95"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 7,
+    "fields": {
+      "publisher": "AHA/ACC",
+      "title": "2021 Guideline for the Evaluation and Diagnosis of Chest Pain",
+      "url": "https://professional.heart.org/en/science-news/2021-guideline-for-the-evaluation-and-diagnosis-of-chest-pain",
+      "publication_date": "2021-10-28",
+      "access_date": "2026-06-24",
+      "version_label": "2021 chest pain guideline"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 8,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Chest Pain-Possible Acute Coronary Syndrome",
+      "url": "https://acsearch.acr.org/docs/69403/Narrative/",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "Chest Pain-Possible ACS"
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 14,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "red_flag",
+      "title": "Possible acute coronary syndrome",
+      "summary": "Acute chest pain, pressure, anginal equivalents, diaphoresis, or concerning radiation should trigger structured ACS assessment rather than routine reassurance.",
+      "title_zh": "可能急性冠心症候群",
+      "title_en": "Possible acute coronary syndrome",
+      "summary_zh": "急性胸痛、胸悶壓迫感、心絞痛等同症狀、冒冷汗或疑似放射痛時，應進入結構化 ACS 評估，而不是例行安撫。",
+      "summary_en": "Acute chest pain, pressure, anginal equivalents, diaphoresis, or concerning radiation should trigger structured ACS assessment rather than routine reassurance.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["ECG timing", "Troponin workflow", "Hemodynamic status", "Pain radiation"],
+      "supporting_findings": ["ongoing chest pain", "chest pressure", "diaphoresis", "radiation to arm or jaw"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 15,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "red_flag",
+      "title": "Hemodynamic instability with chest pain",
+      "summary": "Chest pain with unstable vital signs, syncope, or severe dyspnea requires emergency escalation and should not remain in routine outpatient workflow.",
+      "title_zh": "胸痛合併血流動力不穩定",
+      "title_en": "Hemodynamic instability with chest pain",
+      "summary_zh": "胸痛合併生命徵象不穩、昏厥或嚴重呼吸困難時，需要急診等級升級，不應停留在例行門診流程。",
+      "summary_en": "Chest pain with unstable vital signs, syncope, or severe dyspnea requires emergency escalation and should not remain in routine outpatient workflow.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Blood pressure", "Perfusion", "Syncope", "Respiratory distress"],
+      "supporting_findings": ["hemodynamic instability", "syncope", "severe dyspnea"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 16,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "red_flag",
+      "title": "Life-threatening nonischemic chest pain concern",
+      "summary": "Tearing pain to the back, pleuritic pain with dyspnea, or dyspnea with unilateral leg swelling should prompt consideration of time-sensitive nonischemic causes.",
+      "title_zh": "危及生命的非缺血性胸痛警訊",
+      "title_en": "Life-threatening nonischemic chest pain concern",
+      "summary_zh": "撕裂痛放射到背部、胸膜性疼痛合併呼吸困難，或呼吸困難合併單側下肢腫脹時，應考慮需要即時處理的非缺血性原因。",
+      "summary_en": "Tearing pain to the back, pleuritic pain with dyspnea, or dyspnea with unilateral leg swelling should prompt consideration of time-sensitive nonischemic causes.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Tearing quality", "Back radiation", "Pleuritic pattern", "Leg swelling"],
+      "supporting_findings": ["tearing pain radiating to back", "pleuritic pain with dyspnea", "unilateral leg swelling with dyspnea"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 17,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "workup",
+      "title": "ECG and high-sensitivity troponin workflow",
+      "summary": "Acute chest pain assessment should include ECG and serial cardiac troponin workflow according to local emergency protocol.",
+      "title_zh": "心電圖與高敏感度肌鈣蛋白流程",
+      "title_en": "ECG and high-sensitivity troponin workflow",
+      "summary_zh": "急性胸痛評估應依照在地急診流程納入心電圖與連續心肌肌鈣蛋白檢測。",
+      "summary_en": "Acute chest pain assessment should include ECG and serial cardiac troponin workflow according to local emergency protocol.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Initial ECG", "Repeat ECG need", "Troponin assay", "Local chest pain pathway"],
+      "supporting_findings": ["acute chest pain", "ACS features", "anginal equivalents"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 18,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "workup",
+      "title": "Structured risk assessment pathway",
+      "summary": "Use evidence-based diagnostic protocols to estimate risk in acute or stable chest pain instead of relying on unstructured impression alone.",
+      "title_zh": "結構化風險評估路徑",
+      "title_en": "Structured risk assessment pathway",
+      "summary_zh": "急性或穩定型胸痛應使用以證據為基礎的診斷流程估計風險，不應只依賴非結構化印象。",
+      "summary_en": "Use evidence-based diagnostic protocols to estimate risk in acute or stable chest pain instead of relying on unstructured impression alone.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Risk protocol", "CAD risk factors", "Symptom pattern", "Prior testing"],
+      "supporting_findings": ["acute chest pain", "stable exertional chest pain", "clinically stable chest pain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 19,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "workup",
+      "title": "Stable angina diagnostic pathway",
+      "summary": "Stable exertional chest discomfort relieved by rest suggests possible angina and should be evaluated through a structured stable chest pain pathway.",
+      "title_zh": "穩定型心絞痛診斷路徑",
+      "title_en": "Stable angina diagnostic pathway",
+      "summary_zh": "運動誘發且休息緩解的穩定胸部不適，提示可能心絞痛，應進入結構化穩定胸痛評估路徑。",
+      "summary_en": "Stable exertional chest discomfort relieved by rest suggests possible angina and should be evaluated through a structured stable chest pain pathway.",
+      "urgency": "soon",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Exertional trigger", "Relief with rest", "Duration", "Known CAD"],
+      "supporting_findings": ["stable exertional chest pain", "relieved by rest"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 20,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "workup",
+      "title": "Low-to-intermediate ACS imaging consideration",
+      "summary": "For low-to-intermediate probability of ACS, imaging selection should align with local protocol and appropriateness criteria.",
+      "title_zh": "低至中等 ACS 可能性的影像選擇",
+      "title_en": "Low-to-intermediate ACS imaging consideration",
+      "summary_zh": "低至中等 ACS 可能性時，影像檢查選擇應符合在地流程與適當性準則。",
+      "summary_en": "For low-to-intermediate probability of ACS, imaging selection should align with local protocol and appropriateness criteria.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["ACS probability", "ECG interpretation", "Troponin status", "Local imaging availability"],
+      "supporting_findings": ["low-to-intermediate ACS probability", "stable exertional chest pain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 21,
+    "fields": {
+      "chief_complaint": 2,
+      "item_type": "management",
+      "title": "Shared decision-making for stable chest pain",
+      "summary": "Clinically stable patients should receive decision support that discusses risk, testing options, radiation exposure, costs, and alternatives.",
+      "title_zh": "穩定胸痛的共同決策",
+      "title_en": "Shared decision-making for stable chest pain",
+      "summary_zh": "臨床穩定者應以共同決策討論風險、檢查選項、輻射暴露、成本與替代方案。",
+      "summary_en": "Clinically stable patients should receive decision support that discusses risk, testing options, radiation exposure, costs, and alternatives.",
+      "urgency": "routine",
+      "status": "approved",
+      "version_label": "MVP-2",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Patient values", "Testing options", "Radiation concerns", "Local costs"],
+      "supporting_findings": ["clinically stable", "stable chest pain"],
+      "opposing_findings": []
+    }
+  },
+  {"model": "cds_core.clinicalitemsource", "pk": 101, "fields": {"clinical_item": 14, "source": 6}},
+  {"model": "cds_core.clinicalitemsource", "pk": 102, "fields": {"clinical_item": 14, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 103, "fields": {"clinical_item": 14, "source": 8}},
+  {"model": "cds_core.clinicalitemsource", "pk": 104, "fields": {"clinical_item": 15, "source": 6}},
+  {"model": "cds_core.clinicalitemsource", "pk": 105, "fields": {"clinical_item": 15, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 106, "fields": {"clinical_item": 16, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 107, "fields": {"clinical_item": 17, "source": 6}},
+  {"model": "cds_core.clinicalitemsource", "pk": 108, "fields": {"clinical_item": 17, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 109, "fields": {"clinical_item": 18, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 110, "fields": {"clinical_item": 19, "source": 6}},
+  {"model": "cds_core.clinicalitemsource", "pk": 111, "fields": {"clinical_item": 19, "source": 7}},
+  {"model": "cds_core.clinicalitemsource", "pk": 112, "fields": {"clinical_item": 20, "source": 8}},
+  {"model": "cds_core.clinicalitemsource", "pk": 113, "fields": {"clinical_item": 21, "source": 7}},
+  {
+    "model": "cds_core.rule",
+    "pk": 14,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 14,
+      "slug": "chest_possible_acs",
+      "condition": {"any": [{"field": "ongoing_chest_pain", "operator": "equals", "value": true}, {"field": "chest_pressure", "operator": "equals", "value": true}, {"field": "radiation_left_arm_jaw", "operator": "equals", "value": true}, {"field": "diaphoresis", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg95", "aha_acc_2021_chest_pain", "acr_chest_pain_acs"],
+      "priority": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 15,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 15,
+      "slug": "chest_hemodynamic_instability",
+      "condition": {"any": [{"field": "hemodynamic_instability", "operator": "equals", "value": true}, {"field": "syncope", "operator": "equals", "value": true}, {"field": "severe_dyspnea", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg95", "aha_acc_2021_chest_pain"],
+      "priority": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 16,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 16,
+      "slug": "chest_life_threatening_nonischemic",
+      "condition": {"any": [{"field": "tearing_radiating_back", "operator": "equals", "value": true}, {"all": [{"field": "pleuritic_pain", "operator": "equals", "value": true}, {"field": "dyspnea", "operator": "equals", "value": true}]}, {"all": [{"field": "unilateral_leg_swelling", "operator": "equals", "value": true}, {"field": "dyspnea", "operator": "equals", "value": true}]}]},
+      "source_ids": ["aha_acc_2021_chest_pain"],
+      "priority": 3,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 17,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 17,
+      "slug": "chest_ecg_troponin_workflow",
+      "condition": {"any": [{"field": "ongoing_chest_pain", "operator": "equals", "value": true}, {"field": "chest_pressure", "operator": "equals", "value": true}, {"field": "radiation_left_arm_jaw", "operator": "equals", "value": true}, {"field": "diaphoresis", "operator": "equals", "value": true}, {"field": "hemodynamic_instability", "operator": "equals", "value": true}, {"field": "syncope", "operator": "equals", "value": true}, {"field": "severe_dyspnea", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg95", "aha_acc_2021_chest_pain"],
+      "priority": 10,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 18,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 18,
+      "slug": "chest_structured_risk_assessment",
+      "condition": {"any": [{"field": "ongoing_chest_pain", "operator": "equals", "value": true}, {"field": "chest_pressure", "operator": "equals", "value": true}, {"field": "stable_exertional_chest_pain", "operator": "equals", "value": true}, {"field": "clinically_stable", "operator": "equals", "value": true}]},
+      "source_ids": ["aha_acc_2021_chest_pain"],
+      "priority": 20,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 19,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 19,
+      "slug": "chest_stable_angina_pathway",
+      "condition": {"all": [{"field": "stable_exertional_chest_pain", "operator": "equals", "value": true}, {"field": "relieved_by_rest", "operator": "equals", "value": true}]},
+      "source_ids": ["nice_cg95", "aha_acc_2021_chest_pain"],
+      "priority": 50,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 20,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 20,
+      "slug": "chest_low_intermediate_acs_imaging",
+      "condition": {"any": [{"field": "low_intermediate_acs_probability", "operator": "equals", "value": true}, {"all": [{"field": "stable_exertional_chest_pain", "operator": "equals", "value": true}, {"field": "age", "operator": "gte", "value": 40}]}]},
+      "source_ids": ["acr_chest_pain_acs"],
+      "priority": 60,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 21,
+    "fields": {
+      "chief_complaint": 2,
+      "output_item": 21,
+      "slug": "chest_shared_decision_stable",
+      "condition": {"all": [{"field": "clinically_stable", "operator": "equals", "value": true}, {"any": [{"field": "stable_exertional_chest_pain", "operator": "equals", "value": true}, {"field": "low_intermediate_acs_probability", "operator": "equals", "value": true}]}]},
+      "source_ids": ["aha_acc_2021_chest_pain"],
+      "priority": 70,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 9,
+    "fields": {
+      "chief_complaint": 2,
+      "slug": "acute-acs-chest-pain",
+      "title_zh": "急性疑似 ACS 胸痛病例",
+      "title_en": "Acute possible ACS chest pain case",
+      "summary_zh": "非病人情境：仍有胸痛並冒冷汗，用於驗證 ACS 與 ECG/troponin workflow。",
+      "summary_en": "A non-patient scenario with ongoing chest pain and diaphoresis for ACS workflow validation.",
+      "findings": {"ongoing_chest_pain": true, "diaphoresis": true},
+      "expected_item_titles": ["Possible acute coronary syndrome", "ECG and high-sensitivity troponin workflow", "Structured risk assessment pathway"],
+      "display_order": 20,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 10,
+    "fields": {
+      "chief_complaint": 2,
+      "slug": "stable-exertional-chest-pain",
+      "title_zh": "穩定運動誘發胸痛病例",
+      "title_en": "Stable exertional chest pain case",
+      "summary_zh": "非病人情境：運動誘發且休息可緩解，用於驗證穩定胸痛路徑。",
+      "summary_en": "A non-patient scenario with stable exertional pain relieved by rest.",
+      "findings": {"stable_exertional_chest_pain": true, "relieved_by_rest": true, "clinically_stable": true},
+      "expected_item_titles": ["Stable angina diagnostic pathway", "Structured risk assessment pathway", "Shared decision-making for stable chest pain"],
+      "display_order": 21,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 11,
+    "fields": {
+      "chief_complaint": 2,
+      "slug": "nonischemic-high-risk-chest-pain",
+      "title_zh": "非缺血性高風險胸痛病例",
+      "title_en": "Nonischemic high-risk chest pain case",
+      "summary_zh": "非病人情境：撕裂感並放射到背部，用於驗證危及生命的非缺血性胸痛警訊。",
+      "summary_en": "A non-patient scenario with tearing pain radiating to the back.",
+      "findings": {"tearing_radiating_back": true},
+      "expected_item_titles": ["Life-threatening nonischemic chest pain concern"],
+      "display_order": 22,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 20,
+    "fields": {
+      "chief_complaint": 2,
+      "slug": "low-intermediate-acs-chest-pain",
+      "title_zh": "低到中度 ACS 機率胸痛案例",
+      "title_en": "Low-to-intermediate ACS probability chest pain case",
+      "summary_zh": "非病人案例：目前穩定且 ACS 機率低到中度，用於驗證影像考量與共同決策路徑。",
+      "summary_en": "A non-patient scenario with clinically stable chest pain and low-to-intermediate ACS probability.",
+      "findings": {"low_intermediate_acs_probability": true, "clinically_stable": true},
+      "expected_item_titles": ["Low-to-intermediate ACS imaging consideration", "Structured risk assessment pathway", "Shared decision-making for stable chest pain"],
+      "display_order": 23,
+      "active": true
+    }
+  }
+]

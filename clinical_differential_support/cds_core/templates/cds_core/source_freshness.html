@@ -1,0 +1,133 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:source_index' %}">返回來源庫 / Back to source library</a>
+  <h2>來源新鮮度審查</h2>
+  <p class="secondary">Source Freshness Audit</p>
+  <p class="secondary">
+    Staff-only metadata audit for access dates, publication-date gaps, and source refresh planning.
+  </p>
+  <p>
+    <a href="{% url 'cds_core:export_source_freshness_json' %}">來源新鮮度 JSON / Source freshness JSON</a>
+    |
+    <a href="{% url 'cds_core:coverage_depth' %}">覆蓋深度審查 / Coverage Depth Review</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ report.summary.source_count }}</span>
+    <h3>來源</h3>
+    <p class="secondary">Sources</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.current_source_count }}</span>
+    <h3>目前新鮮</h3>
+    <p class="secondary">Current sources</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.stale_source_count }}</span>
+    <h3>逾期</h3>
+    <p class="secondary">Stale sources</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.missing_publication_date_count }}</span>
+    <h3>缺出版日</h3>
+    <p class="secondary">Missing publication date</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>publication date 缺口政策</h2>
+  <p class="secondary">Publication date gap policy</p>
+  <p>
+    <strong>{{ report.publication_date_gap_policy.policy_id }}</strong>
+  </p>
+  <p>
+    {{ report.publication_date_gap_policy.rule_zh }}<br>
+    <span class="secondary">{{ report.publication_date_gap_policy.rule_en }}</span>
+  </p>
+  <p>
+    {{ report.publication_date_gap_policy.completion_condition_zh }}<br>
+    <span class="secondary">{{ report.publication_date_gap_policy.completion_condition_en }}</span>
+  </p>
+  <p>
+    <span class="tag">{{ report.publication_date_gap_policy.review_status }}</span>
+    <span class="tag">{{ report.publication_date_gap_policy.manual_review_trigger }}</span>
+  </p>
+</section>
+
+<section class="panel">
+  <h2>下一步</h2>
+  <p class="secondary">Next actions</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Priority</th>
+        <th>Action</th>
+        <th>Reason</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for action in report.next_actions %}
+        <tr>
+          <td>{{ action.priority }}</td>
+          <td>
+            <strong>{{ action.title_zh }}</strong><br>
+            <span class="secondary">{{ action.title_en }} | {{ action.action_id }}</span>
+          </td>
+          <td>
+            {{ action.reason_zh }}<br>
+            <span class="secondary">{{ action.reason_en }}</span>
+          </td>
+          <td>{{ action.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>來源清單</h2>
+  <p class="secondary">Source rows</p>
+  <table>
+    <thead>
+      <tr>
+        <th>來源 / Source</th>
+        <th>版本 / Version</th>
+        <th>存取 / Access</th>
+        <th>出版日 / Publication</th>
+        <th>狀態 / Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for source in report.sources %}
+        <tr>
+          <td>
+            <strong><a href="{{ source.url }}">{{ source.publisher }}</a></strong><br>
+            <span class="secondary">{{ source.title }}</span>
+          </td>
+          <td>{{ source.version_label }}</td>
+          <td>{{ source.access_date }}<br><span class="secondary">{{ source.days_since_access }} days</span></td>
+          <td>
+            {% if source.publication_date %}
+              {{ source.publication_date }}
+            {% else %}
+              <span class="tag">{{ source.publication_date_status }}</span><br>
+              <span class="secondary">{{ source.publication_date_review_status }}</span>
+            {% endif %}
+          </td>
+          <td>
+            <span class="tag">{{ source.freshness_status }}</span><br>
+            <span class="secondary">{{ source.clinical_item_count }} linked items</span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}

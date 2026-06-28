@@ -1,0 +1,22 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+<section class="panel">
+  <h2>病例模擬</h2>
+  <p class="secondary">Case Simulation</p>
+  <p>使用預先審核的非病人資料情境，驗證頭痛規則引擎是否觸發預期輸出。</p>
+  <p class="secondary">Use reviewed non-patient scenarios to validate expected headache pathway outputs.</p>
+  {% for scenario in scenarios %}
+    <article class="item">
+      <h3><a href="{% url 'cds_core:case_detail' scenario.slug %}">{{ scenario.primary_title }}</a></h3>
+      <p class="secondary">{{ scenario.secondary_title }}</p>
+      <p>{{ scenario.primary_summary }}</p>
+      <p class="secondary">{{ scenario.secondary_summary }}</p>
+      <a href="{% url 'cds_core:case_detail' scenario.slug %}">執行情境 / Run scenario</a>
+    </article>
+  {% empty %}
+    <div class="empty">尚無病例模擬資料。No case scenarios are available.</div>
+  {% endfor %}
+</section>
+{% endblock %}

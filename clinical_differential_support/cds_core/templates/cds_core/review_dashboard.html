@@ -1,0 +1,176 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <h2>臨床內容治理</h2>
+  <p class="secondary">Clinical Governance</p>
+  <p>集中檢視 MVP 臨床內容的審核狀態、來源覆蓋、到期審核、案例驗證與稽核軌跡。</p>
+  <p class="secondary">Review status, source coverage, due reviews, case validation, and audit trail for the MVP knowledge base.</p>
+  <p>
+    <a href="{% url 'cds_core:review_queue' %}">審核佇列 / Reviewer Queue</a>
+    |
+    <a href="{% url 'cds_core:source_index' %}">來源庫 / Source library</a>
+  </p>
+  {% if request.user.is_staff %}
+    <section>
+      <h3>治理匯出</h3>
+      <p class="secondary">Governance exports</p>
+      <p>
+        <a href="{% url 'cds_core:next_actions' %}">下一步工作台 / Next Action Workbench</a>
+        |
+        <a href="{% url 'cds_core:coverage_depth' %}">覆蓋深度審查 / Coverage Depth Review</a>
+        |
+        <a href="{% url 'cds_core:source_freshness' %}">來源新鮮度審查 / Source Freshness Audit</a>
+        |
+        <a href="{% url 'cds_core:release_readiness' %}">交付整備報告 / Release Readiness Report</a>
+        |
+        <a href="{% url 'cds_core:export_clinical_items_csv' %}">臨床項目 CSV / Clinical item CSV</a>
+        |
+        <a href="{% url 'cds_core:export_sources_csv' %}">來源 CSV / Source CSV</a>
+      </p>
+    </section>
+  {% endif %}
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ dashboard.total_items }}</span>
+    <h3>臨床項目</h3>
+    <p class="secondary">Clinical items</p>
+  </article>
+  <article>
+    <span class="metric">{{ dashboard.status_counts.approved }}</span>
+    <h3>已核准</h3>
+    <p class="secondary">Approved</p>
+  </article>
+  <article>
+    <span class="metric">{{ dashboard.source_gap_items|length }}</span>
+    <h3>來源缺口</h3>
+    <p class="secondary">Source gaps</p>
+  </article>
+  <article>
+    <span class="metric">{{ dashboard.case_rows|length }}</span>
+    <h3>案例驗證</h3>
+    <p class="secondary">Case validation</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>臨床項目清單</h2>
+  <p class="secondary">Clinical item inventory</p>
+  {% if request.user.is_staff %}
+    <p><a href="{% url 'cds_core:review_item_create' %}">新增臨床項目 / New clinical item</a></p>
+  {% endif %}
+  <table>
+    <thead>
+      <tr>
+        <th>項目 / Item</th>
+        <th>類型 / Type</th>
+        <th>審核 / Review</th>
+        <th>狀態 / Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in dashboard.clinical_items %}
+        <tr>
+          <td>
+            <strong><a href="{% url 'cds_core:review_item_detail' item.pk %}">{{ item.primary_title }}</a></strong><br>
+            <span class="secondary">{{ item.secondary_title }}</span>
+          </td>
+          <td>{{ item.get_item_type_display }}<br><span class="secondary">{{ item.get_urgency_display }}</span></td>
+          <td>
+            {% if item.last_reviewed_at %}最後審核 / Last reviewed: {{ item.last_reviewed_at }}<br>{% endif %}
+            {% if item.review_due_at %}下次審核 / Review due: {{ item.review_due_at }}{% endif %}
+          </td>
+          <td>{{ item.get_status_display }}<br><span class="secondary">{{ item.version_label }}</span></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>來源覆蓋</h2>
+  <p class="secondary">Source coverage</p>
+  {% if dashboard.source_gap_items %}
+    <ul class="review-list">
+      {% for item in dashboard.source_gap_items %}
+        <li>
+          <strong>{{ item.primary_title }}</strong><br>
+          <span class="secondary">{{ item.secondary_title }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">目前沒有缺少來源的臨床項目。No clinical items are missing sources.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>到期審核</h2>
+  <p class="secondary">Review due</p>
+  {% if dashboard.review_due_items %}
+    <ul class="review-list">
+      {% for item in dashboard.review_due_items %}
+        <li>
+          <strong>{{ item.primary_title }}</strong><br>
+          <span class="secondary">{{ item.review_due_at }} | {{ item.secondary_title }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">目前沒有到期審核項目。No content is currently due for review.</div>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>案例驗證</h2>
+  <p class="secondary">Case validation</p>
+  <table>
+    <thead>
+      <tr>
+        <th>案例 / Case</th>
+        <th>匹配 / Matched</th>
+        <th>狀態 / Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for row in dashboard.case_rows %}
+        <tr>
+          <td>
+            <strong>{{ row.scenario.primary_title }}</strong><br>
+            <span class="secondary">{{ row.scenario.secondary_title }}</span>
+          </td>
+          <td>{{ row.matched_count }} / {{ row.expected_count }}</td>
+          <td>
+            {% if row.all_matched %}
+              通過 / Passed
+            {% else %}
+              缺少：{{ row.missing_titles|join:", " }} / Missing expected output
+            {% endif %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>最近稽核紀錄</h2>
+  <p class="secondary">Recent audit trail</p>
+  {% if dashboard.recent_audit_events %}
+    <ul class="review-list">
+      {% for event in dashboard.recent_audit_events %}
+        <li>
+          <strong>{{ event.clinical_item.primary_title }}</strong><br>
+          <span class="secondary">{{ event.get_event_type_display }} | {{ event.created_at }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">目前尚無稽核紀錄。No audit events have been recorded yet.</div>
+  {% endif %}
+</section>
+{% endblock %}

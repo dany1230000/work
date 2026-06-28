@@ -1,0 +1,48 @@
+from django.test import TestCase
+from django.urls import reverse
+
+
+class LaunchGuidePageTests(TestCase):
+    fixtures = [
+        "headache_mvp.json",
+        "chest_pain_mvp.json",
+        "abdominal_pain_mvp.json",
+        "dyspnea_mvp.json",
+    ]
+
+    def test_public_launch_guide_renders_numbered_steps_and_current_action(self):
+        response = self.client.get(reverse("cds_core:launch_guide"))
+        body = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "本機控制台 / Local Control Panel")
+        self.assertContains(response, "環境檢查 / Environment Checks")
+        self.assertContains(response, "手動阻擋 / Manual Blockers")
+        self.assertContains(response, "可複製命令 / Copy Command")
+        self.assertContains(response, "不可自動建立密碼")
+        self.assertContains(response, "驗收證據 / Verification Evidence")
+        self.assertContains(response, "本機設定助手 / Local Setup Assistant")
+        self.assertContains(response, "Next_Step.cmd")
+        self.assertContains(response, "local_setup_assistant.py")
+        self.assertContains(response, "最終版完成判斷 / Final Project Gate")
+        self.assertContains(response, "Final_Check.cmd")
+        self.assertContains(response, "/completion/")
+        self.assertContains(response, "Deployment Operations Center")
+        self.assertContains(response, "Deploy_Status.cmd")
+        self.assertContains(response, "/deployment/")
+        self.assertContains(response, "Create_Staff_Reviewer.cmd")
+        self.assertContains(response, "一步一步")
+        self.assertContains(response, "步驟 1/6")
+        self.assertContains(response, "建立本機 staff reviewer 帳號")
+        self.assertContains(response, "現在做這個")
+        self.assertContains(response, "Final Verification Gate")
+        self.assertContains(response, "Reviewer Login")
+        self.assertNotIn("�", body)
+
+    def test_launch_guide_is_linked_from_shared_navigation(self):
+        response = self.client.get(reverse("cds_core:launch_guide"))
+
+        self.assertContains(response, "啟動導覽 / Launch Guide")
+        self.assertContains(response, reverse("cds_core:launch_guide"))
+        self.assertContains(response, "Deployment")
+        self.assertContains(response, reverse("cds_core:deployment_status"))

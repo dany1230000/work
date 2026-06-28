@@ -1,0 +1,97 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <h2>部署操作中心 / Deployment Operations Center</h2>
+  <p>
+    狀態 / Status:
+    <span class="status {{ report.status }}">{{ report.status }}</span>
+    exit_code={{ report.exit_code }}
+  </p>
+  <p class="secondary">
+    This page tells you the next deployment step. It does not deploy publicly by itself.
+  </p>
+  <div class="command-row">
+    <div id="deploy-status-command" class="command">{{ report.windows_entry_command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="deploy-status-command">可複製命令 / Copy Command</button>
+  </div>
+  <p class="secondary">{{ report.deployment_url }}</p>
+</section>
+
+<section class="panel">
+  <h2>Deployment Checks</h2>
+  <div class="control-grid">
+    {% for check in report.deployment_checks %}
+      <article class="control-card">
+        <h3>{{ check.title_zh }}</h3>
+        <p class="secondary">{{ check.title_en }}</p>
+        <p><span class="status {{ check.status }}">{{ check.status }}</span></p>
+        <p>{{ check.value }}</p>
+        <p class="secondary">{{ check.detail_zh }} / {{ check.detail_en }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Next Deployment Action</h2>
+  <p><strong>{{ report.next_action.action_id }}</strong></p>
+  <p>{{ report.next_action.title_zh }}</p>
+  <p class="secondary">{{ report.next_action.title_en }}</p>
+  <p>{{ report.next_action.detail_zh }}</p>
+  <p class="secondary">{{ report.next_action.detail_en }}</p>
+  {% if report.next_action.command %}
+    <div class="command-row">
+      <div id="deployment-next-command" class="command">{{ report.next_action.command }}</div>
+      <button type="button" class="secondary-button" data-copy-target="deployment-next-command">可複製命令 / Copy Command</button>
+    </div>
+  {% endif %}
+  {% if report.next_action.url %}
+    <p><a class="button-link" href="{{ report.next_action.url }}">打開 / Open</a></p>
+    <p class="secondary">{{ report.next_action.url }}</p>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>Step-by-step Deployment</h2>
+  <div class="step-list">
+    {% for step in report.steps %}
+      <article class="step {{ step.status }}">
+        <h3>
+          Step {{ step.step_number }}/{{ step.total_steps }}
+          {{ step.title_zh }} / {{ step.title_en }}
+        </h3>
+        <p><span class="status {{ step.status }}">{{ step.status }}</span></p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>Safety Scope</h2>
+  <ul>
+    <li>Does not create, print, or store passwords.</li>
+    <li>No patient-identifying data, diagnosis orders, treatment orders, or medication orders.</li>
+    <li>No clinical production approval and no public deployment claim.</li>
+    <li>No trading, broker API, live orders, or real capital behavior.</li>
+  </ul>
+</section>
+
+<script>
+document.addEventListener("click", function (event) {
+  var button = event.target.closest("[data-copy-target]");
+  if (!button || !navigator.clipboard) {
+    return;
+  }
+  var target = document.getElementById(button.getAttribute("data-copy-target"));
+  if (!target) {
+    return;
+  }
+  navigator.clipboard.writeText(target.textContent.trim()).then(function () {
+    button.textContent = "已複製 / Copied";
+  });
+});
+</script>
+{% endblock %}

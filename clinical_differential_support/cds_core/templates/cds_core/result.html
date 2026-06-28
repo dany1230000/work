@@ -1,0 +1,10 @@
+{% for entry in result.outputs %}
+  <article class="item {{ entry.item.item_type }}">
+    <h3>{{ entry.item.primary_title }}</h3>
+    <p class="secondary">{{ entry.item.secondary_title }}</p>
+    <p>{{ entry.item.primary_summary }}</p>
+    <p class="secondary">{{ entry.item.secondary_summary }}</p>
+  </article>
+{% empty %}
+  <div class="empty">{{ result.empty_state }}</div>
+{% endfor %}

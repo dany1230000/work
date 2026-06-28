@@ -1,0 +1,65 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+{% include "cds_core/includes/symptom_workflow.html" %}
+<div class="grid">
+  <section class="panel">
+    <h2>頭痛結構化問診</h2>
+    <p class="secondary">Headache Intake</p>
+    <form method="post">
+      {% csrf_token %}
+      {% for field in form %}
+        <div class="field {% if field.field.widget.input_type == 'checkbox' %}check{% endif %}">
+          {% if field.field.widget.input_type == 'checkbox' %}
+            {{ field }} <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+          {% else %}
+            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+          {% endif %}
+          {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
+          {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
+        </div>
+      {% endfor %}
+      <button type="submit">評估參考路徑 / Evaluate reference pathway</button>
+    </form>
+  </section>
+  <section class="panel">
+    <h2>參考輸出</h2>
+    <p class="secondary">Reference Output</p>
+    {% if result %}
+      {% if result.outputs %}
+        {% for entry in result.outputs %}
+          <article class="item {{ entry.item.item_type }}">
+            <h3>{{ entry.item.primary_title }}</h3>
+            <p class="secondary">{{ entry.item.secondary_title }}</p>
+            <p>{{ entry.item.primary_summary }}</p>
+            <p class="secondary">{{ entry.item.secondary_summary }}</p>
+            <p>
+              <span class="tag">{{ entry.item.get_item_type_display }}</span>
+              <span class="tag">{{ entry.item.get_urgency_display }}</span>
+              <span class="tag">{{ entry.item.get_status_display }}</span>
+              <span class="tag">{{ entry.item.version_label }}</span>
+            </p>
+            <p><strong>為什麼顯示 / Why shown:</strong> {{ entry.explanation }}</p>
+            {% if entry.item.missing_questions %}
+              <p><strong>下一步要問 / Ask next:</strong> {{ entry.item.missing_questions|join:", " }}</p>
+            {% endif %}
+            <div class="source">
+              <strong>來源 / Sources:</strong>
+              {% for source in entry.sources %}
+                <a href="{{ source.url }}">{{ source.publisher }} {{ source.version_label }}</a>{% if not forloop.last %}; {% endif %}
+              {% endfor %}
+              {% if entry.item.last_reviewed_at %} | 最後審核 / Last reviewed: {{ entry.item.last_reviewed_at }}{% endif %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="empty">{{ result.empty_state }}</div>
+      {% endif %}
+    {% else %}
+      <div class="empty">請輸入結構化發現以評估頭痛參考路徑。Enter structured findings to evaluate the headache reference pathway.</div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

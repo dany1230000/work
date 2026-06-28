@@ -1,0 +1,169 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">返回治理 / Back to governance</a>
+  <h2>下一步工作台</h2>
+  <p class="secondary">Next Action Workbench</p>
+  {% if plan.completion_status == "not_final_beyond_headache" %}
+    <div class="message error">目前只有 {{ plan.coverage.current_count }} 個主訴，還不是多主訴專業版。Current coverage has {{ plan.coverage.current_count }} chief complaint only; this is not the final multi-complaint version.</div>
+  {% elif plan.completion_status == "ready_for_regression_gate" %}
+    <div class="message">下游審查已通過，下一步是 regression/smoke gate。Status: {{ plan.completion_status }}</div>
+  {% else %}
+    <div class="message">目前狀態：{{ plan.completion_status }} / Current status: {{ plan.completion_status }}</div>
+  {% endif %}
+  <p class="secondary">
+    This page is generated from the current governed database state and shows the next project actions without exposing detailed clinical content.
+  </p>
+  <p>
+    <a href="{% url 'cds_core:export_next_actions_json' %}">下一步 JSON / Next actions JSON</a>
+    |
+    <a href="{% url 'cds_core:coverage_depth' %}">覆蓋深度審查 / Coverage Depth Review</a>
+    |
+    <a href="{% url 'cds_core:source_freshness' %}">來源新鮮度審查 / Source Freshness Audit</a>
+    |
+    <a href="{% url 'cds_core:final_verification' %}">最終驗收門檻 / Final Verification Gate</a>
+    |
+    <a href="{% url 'cds_core:release_readiness' %}">交付整備報告 / Release Readiness Report</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ plan.coverage.current_count }}</span>
+    <h3>目前主訴</h3>
+    <p class="secondary">Current chief complaints</p>
+  </article>
+  <article>
+    <span class="metric">{{ plan.coverage.minimum_next_stage_count }}</span>
+    <h3>下一階段最低目標</h3>
+    <p class="secondary">Minimum next-stage target</p>
+  </article>
+  <article>
+    <span class="metric">{{ plan.coverage.gap_count }}</span>
+    <h3>主訴缺口</h3>
+    <p class="secondary">Coverage gap</p>
+  </article>
+  <article>
+    <span class="metric">{{ plan.governance.clinical_item_count }}</span>
+    <h3>治理項目</h3>
+    <p class="secondary">Governed clinical items</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>覆蓋範圍</h2>
+  <p class="secondary">Coverage</p>
+  <div class="grid">
+    <div>
+      <h3>已建立主訴</h3>
+      <p class="secondary">Existing chief complaints</p>
+      <ul class="review-list">
+        {% for complaint in plan.coverage.current_chief_complaints %}
+          <li>
+            <strong>{{ complaint.title }}</strong><br>
+            <span class="secondary">{{ complaint.slug }}</span>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div>
+      <h3>下一個目標</h3>
+      <p class="secondary">Next target</p>
+      <p><strong>{{ plan.coverage.next_target.title_zh }}</strong></p>
+      <p class="secondary">{{ plan.coverage.next_target.title_en }} | {{ plan.coverage.next_target.slug }}</p>
+    </div>
+  </div>
+</section>
+
+{% if plan.downstream_readiness.status != "not_applicable_until_expansion_complete" %}
+<section class="panel">
+  <h2>下游整備狀態</h2>
+  <p class="secondary">Downstream readiness</p>
+  <p><span class="tag">{{ plan.downstream_readiness.status }}</span></p>
+  <div class="grid">
+    <div>
+      <h3>覆蓋深度</h3>
+      <p class="secondary">Coverage depth</p>
+      <ul class="review-list">
+        <li>主訴數 / Chief complaints: {{ plan.downstream_readiness.coverage_depth.chief_complaint_count }}</li>
+        <li>有缺口主訴 / Complaints with gaps: {{ plan.downstream_readiness.coverage_depth.complaints_with_gaps }}</li>
+        <li>驗證病例 / Validation cases: {{ plan.downstream_readiness.coverage_depth.case_count }}</li>
+        <li>第一動作 / First action: {{ plan.downstream_readiness.coverage_depth.first_action }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>來源新鮮度</h3>
+      <p class="secondary">Source freshness</p>
+      <ul class="review-list">
+        <li>來源數 / Sources: {{ plan.downstream_readiness.source_freshness.source_count }}</li>
+        <li>逾期來源 / Stale sources: {{ plan.downstream_readiness.source_freshness.stale_source_count }}</li>
+        <li>缺 publication date: {{ plan.downstream_readiness.source_freshness.missing_publication_date_count }}</li>
+        <li>政策 / Policy: {{ plan.downstream_readiness.source_freshness.publication_date_gap_policy }}</li>
+        <li>第一動作 / First action: {{ plan.downstream_readiness.source_freshness.first_action }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="panel">
+  <h2>下一步</h2>
+  <p class="secondary">Prioritized next actions</p>
+  <table>
+    <thead>
+      <tr>
+        <th>優先 / Priority</th>
+        <th>動作 / Action</th>
+        <th>理由 / Reason</th>
+        <th>狀態 / Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for action in plan.next_actions %}
+        <tr>
+          <td>{{ action.priority }}</td>
+          <td>
+            <strong>{{ action.title_zh }}</strong><br>
+            <span class="secondary">{{ action.title_en }} | {{ action.action_id }}</span>
+          </td>
+          <td>
+            {{ action.reason_zh }}<br>
+            <span class="secondary">{{ action.reason_en }}</span>
+          </td>
+          <td>
+            {{ action.status }}<br>
+            <span class="secondary">{{ action.deliverable_en }}</span>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel">
+  <h2>治理檢查</h2>
+  <p class="secondary">Governance checks</p>
+  <div class="grid">
+    <div>
+      <h3>內容狀態</h3>
+      <p class="secondary">Content status</p>
+      <ul class="review-list">
+        <li>未核准項目 / Non-approved items: {{ plan.governance.non_approved_count }}</li>
+        <li>來源缺口 / Source gaps: {{ plan.governance.source_gap_count }}</li>
+        <li>到期審核 / Due reviews: {{ plan.governance.review_due_count }}</li>
+      </ul>
+    </div>
+    <div>
+      <h3>病例驗證</h3>
+      <p class="secondary">Case validation</p>
+      <ul class="review-list">
+        <li>測試病例 / Validation cases: {{ plan.governance.case_validation_count }}</li>
+        <li>失敗病例 / Failed cases: {{ plan.governance.failed_case_count }}</li>
+      </ul>
+    </div>
+  </div>
+</section>
+{% endblock %}

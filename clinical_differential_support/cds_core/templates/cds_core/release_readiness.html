@@ -1,0 +1,132 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">返回治理 / Back to governance</a>
+  <h2>交付整備報告</h2>
+  <p class="secondary">Release Readiness Report</p>
+  {% if report.ready_for_handoff %}
+    <div class="message">已可交付。Ready for handoff.</div>
+  {% else %}
+    <div class="message error">仍有治理 blocker。Needs governance work.</div>
+  {% endif %}
+  <p class="secondary">
+    This report checks approval status, source coverage, due reviews, and case validation before handoff.
+  </p>
+  <p>
+    <a href="{% url 'cds_core:next_actions' %}">下一步工作台 / Next Action Workbench</a>
+    |
+    <a href="{% url 'cds_core:coverage_depth' %}">覆蓋深度審查 / Coverage Depth Review</a>
+    |
+    <a href="{% url 'cds_core:final_verification' %}">最終驗收門檻 / Final Verification Gate</a>
+    |
+    <a href="{% url 'cds_core:export_clinical_items_csv' %}">臨床項目 CSV / Clinical item CSV</a>
+    |
+    <a href="{% url 'cds_core:export_sources_csv' %}">來源 CSV / Source CSV</a>
+    |
+    <a href="{% url 'cds_core:export_release_evidence_json' %}">交付證據 JSON / Release evidence JSON</a>
+    |
+    <a href="{% url 'cds_core:export_handoff_report_markdown' %}">交付報告 Markdown / Handoff report Markdown</a>
+    |
+    <a href="{% url 'cds_core:export_handoff_bundle_zip' %}">交付 ZIP / Handoff bundle ZIP</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ report.total_items }}</span>
+    <h3>臨床項目</h3>
+    <p class="secondary">Clinical items</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.approved_count }}</span>
+    <h3>已核准</h3>
+    <p class="secondary">Approved</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.non_approved_count }}</span>
+    <h3>未核准</h3>
+    <p class="secondary">Non-approved</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.source_gap_count }}</span>
+    <h3>來源缺口</h3>
+    <p class="secondary">Source gaps</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.review_due_count }}</span>
+    <h3>到期審核</h3>
+    <p class="secondary">Review due</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.failed_case_count }}</span>
+    <h3>病例失敗</h3>
+    <p class="secondary">Case validation failures</p>
+  </article>
+</section>
+
+<section class="panel">
+  <h2>治理 blocker</h2>
+  <p class="secondary">Governance blockers</p>
+  <div class="grid">
+    <div>
+      <h3>未核准項目</h3>
+      <p class="secondary">Non-approved items</p>
+      {% if report.non_approved_items %}
+        <ul class="review-list">
+          {% for item in report.non_approved_items %}
+            <li><a href="{% url 'cds_core:review_item_detail' item.pk %}">{{ item.primary_title }}</a><br><span class="secondary">{{ item.get_status_display }} | {{ item.secondary_title }}</span></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="empty">所有臨床項目都已核准。All clinical items are approved.</div>
+      {% endif %}
+    </div>
+    <div>
+      <h3>來源缺口</h3>
+      <p class="secondary">Source gaps</p>
+      {% if report.source_gap_items %}
+        <ul class="review-list">
+          {% for item in report.source_gap_items %}
+            <li><a href="{% url 'cds_core:review_item_detail' item.pk %}">{{ item.primary_title }}</a><br><span class="secondary">{{ item.secondary_title }}</span></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="empty">沒有來源缺口。No source gaps.</div>
+      {% endif %}
+    </div>
+    <div>
+      <h3>到期審核</h3>
+      <p class="secondary">Review due</p>
+      {% if report.review_due_items %}
+        <ul class="review-list">
+          {% for item in report.review_due_items %}
+            <li><a href="{% url 'cds_core:review_item_detail' item.pk %}">{{ item.primary_title }}</a><br><span class="secondary">{{ item.review_due_at }} | {{ item.secondary_title }}</span></li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <div class="empty">沒有到期審核項目。No due reviews.</div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<section class="panel">
+  <h2>病例驗證</h2>
+  <p class="secondary">Case validation</p>
+  {% if report.failed_case_rows %}
+    <ul class="review-list">
+      {% for row in report.failed_case_rows %}
+        <li>
+          <strong>{{ row.scenario.primary_title }}</strong><br>
+          <span class="secondary">Missing: {{ row.missing_titles|join:", " }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="empty">全部 {{ report.case_count }} 個病例驗證都通過。All {{ report.case_count }} case validations passed.</div>
+  {% endif %}
+</section>
+{% endblock %}

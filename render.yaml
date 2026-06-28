@@ -1,0 +1,31 @@
+databases:
+  - name: clinical-differential-support-db
+    databaseName: clinical_differential_support
+    user: clinical_differential_support
+    plan: free
+
+services:
+  - type: web
+    name: clinical-differential-support
+    runtime: python
+    plan: free
+    buildCommand: bash ./clinical_differential_support/build.sh
+    startCommand: cd clinical_differential_support && gunicorn clinical_differential_support.wsgi:application --bind 0.0.0.0:$PORT
+    healthCheckPath: /health/
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: clinical-differential-support-db
+          property: connectionString
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "0"
+      - key: DJANGO_SECURE_SSL_REDIRECT
+        value: "1"
+      - key: DJANGO_DB_SSL_REQUIRE
+        value: "1"
+      - key: DJANGO_SECURE_HSTS_SECONDS
+        value: "31536000"
+      - key: WEB_CONCURRENCY
+        value: "4"

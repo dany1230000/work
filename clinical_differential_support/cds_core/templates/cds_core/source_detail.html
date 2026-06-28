@@ -1,0 +1,51 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:source_index' %}">返回來源庫 / Back to source library</a>
+  {% if request.user.is_staff %}
+    <p><a href="{% url 'cds_core:source_edit' source.pk %}">編輯來源 / Edit source</a></p>
+  {% endif %}
+  <h2>來源詳情</h2>
+  <p class="secondary">Source detail</p>
+  <h3>{{ source.publisher }}</h3>
+  <p><a href="{{ source.url }}">{{ source.title }}</a></p>
+  <p>
+    <span class="tag">{{ source.version_label }}</span>
+    {% if source.publication_date %}<span class="tag">Publication: {{ source.publication_date }}</span>{% endif %}
+    <span class="tag">Accessed: {{ source.access_date }}</span>
+  </p>
+</section>
+
+<section class="panel">
+  <h2>連結臨床項目</h2>
+  <p class="secondary">Linked clinical items</p>
+  {% if linked_items %}
+    <table>
+      <thead>
+        <tr>
+          <th>項目 / Item</th>
+          <th>類型 / Type</th>
+          <th>狀態 / Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in linked_items %}
+          <tr>
+            <td>
+              <strong><a href="{% url 'cds_core:review_item_detail' item.pk %}">{{ item.primary_title }}</a></strong><br>
+              <span class="secondary">{{ item.secondary_title }}</span>
+            </td>
+            <td>{{ item.get_item_type_display }}<br><span class="secondary">{{ item.get_urgency_display }}</span></td>
+            <td>{{ item.get_status_display }}<br><span class="secondary">{{ item.version_label }}</span></td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="empty">此來源尚未連結臨床項目。No clinical items are linked to this source.</div>
+  {% endif %}
+</section>
+{% endblock %}

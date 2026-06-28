@@ -1,0 +1,114 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <h2>最終版完成判斷 / Final Project Gate</h2>
+  <p>
+    狀態 / Status:
+    <span class="status {{ report.status }}">{{ report.status }}</span>
+    exit_code={{ report.exit_code }}
+  </p>
+  <p class="secondary">
+    這個頁面只彙整本機完成條件，不會建立帳號、列印密碼、保存密碼或略過登入。
+    This page summarizes local completion checks only; it does not create accounts,
+    print passwords, store passwords, or bypass login.
+    Does not create, print, or store passwords.
+  </p>
+  <div class="command-row">
+    <div id="final-check-command" class="command">{{ report.final_check.command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="final-check-command">可複製命令 / Copy Command</button>
+  </div>
+  <p class="secondary">{{ report.completion_url }}</p>
+</section>
+
+<section class="panel">
+  <h2>完成條件 / Completion Checks</h2>
+  <div class="control-grid">
+    {% for check in report.completion_checks %}
+      <article class="control-card">
+        <h3>{{ check.title_zh }}</h3>
+        <p class="secondary">{{ check.title_en }}</p>
+        <p><span class="status {{ check.status }}">{{ check.status }}</span></p>
+        <p>{{ check.value }}</p>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>下一步 / Next Action</h2>
+  <p><strong>{{ report.next_action.action_id }}</strong></p>
+  <p>{{ report.next_action.title_zh }}</p>
+  <p class="secondary">{{ report.next_action.title_en }}</p>
+  <p>{{ report.next_action.detail_zh }}</p>
+  <p class="secondary">{{ report.next_action.detail_en }}</p>
+  {% if report.next_action.command %}
+    <div class="command-row">
+      <div id="completion-next-command" class="command">{{ report.next_action.command }}</div>
+      <button type="button" class="secondary-button" data-copy-target="completion-next-command">可複製命令 / Copy Command</button>
+    </div>
+  {% endif %}
+  {% if report.next_action.raw_command %}
+    <p class="secondary">Raw Django command</p>
+    <div class="command-row">
+      <div id="completion-next-raw-command" class="command">{{ report.next_action.raw_command }}</div>
+      <button type="button" class="secondary-button" data-copy-target="completion-next-raw-command">可複製命令 / Copy Command</button>
+    </div>
+  {% endif %}
+  {% if report.next_action.url %}
+    <p><a class="button-link" href="{{ report.next_action.url }}">打開 / Open</a></p>
+    <p class="secondary">{{ report.next_action.url }}</p>
+  {% endif %}
+</section>
+
+<section class="panel">
+  <h2>部署操作中心 / Deployment Operations Center</h2>
+  <p class="secondary">
+    本機最終版完成後，下一個非本機步驟由部署操作中心判斷。
+    After local final-complete, deployment status shows the next non-local step.
+  </p>
+  <div class="command-row">
+    <div id="completion-deploy-command" class="command">{{ report.deployment_status.windows_entry_command }}</div>
+    <button type="button" class="secondary-button" data-copy-target="completion-deploy-command">可複製命令 / Copy Command</button>
+  </div>
+  <p><a class="button-link" href="{{ report.deployment_status.url }}">打開部署操作中心 / Open Deployment Operations Center</a></p>
+  <p class="secondary">{{ report.deployment_status.url }}</p>
+</section>
+
+<section class="panel">
+  <h2>驗收證據 / Verification Evidence</h2>
+  <div class="control-grid">
+    <article class="control-card">
+      <h3>Final Verification</h3>
+      <p>Gate: {{ report.final_verification.gate_status }}</p>
+      <p>Evidence: {{ report.final_verification.latest_evidence_status }}</p>
+      <p>Commands: {{ report.final_verification.command_count }}</p>
+      <p>Failed: {{ report.final_verification.failed_command_count }}</p>
+    </article>
+    <article class="control-card">
+      <h3>Next Action Gate</h3>
+      <p>{{ report.next_actions.completion_status }}</p>
+      <p>{{ report.next_actions.first_action }}</p>
+      <p>{{ report.next_actions.first_action_status }}</p>
+    </article>
+  </div>
+</section>
+
+<script>
+document.addEventListener("click", function (event) {
+  var button = event.target.closest("[data-copy-target]");
+  if (!button || !navigator.clipboard) {
+    return;
+  }
+  var target = document.getElementById(button.getAttribute("data-copy-target"));
+  if (!target) {
+    return;
+  }
+  navigator.clipboard.writeText(target.textContent.trim()).then(function () {
+    button.textContent = "已複製 / Copied";
+  });
+});
+</script>
+{% endblock %}

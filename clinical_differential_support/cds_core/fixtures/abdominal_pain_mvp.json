@@ -1,0 +1,427 @@
+[
+  {
+    "model": "cds_core.chiefcomplaint",
+    "pk": 3,
+    "fields": {
+      "slug": "abdominal-pain",
+      "title": "Abdominal pain",
+      "summary": "Structured clinician reference pathway for abdominal pain assessment."
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 9,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Acute Nonlocalized Abdominal Pain",
+      "url": "https://acsearch.acr.org/docs/69467/narrative",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "ACR acute nonlocalized abdominal pain"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 10,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Right Lower Quadrant Pain",
+      "url": "https://acsearch.acr.org/docs/69357/narrative/",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "ACR RLQ suspected appendicitis"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 11,
+    "fields": {
+      "publisher": "ACR",
+      "title": "ACR Appropriateness Criteria: Right Upper Quadrant Pain",
+      "url": "https://acsearch.acr.org/docs/69474/Narrative",
+      "publication_date": null,
+      "access_date": "2026-06-24",
+      "version_label": "ACR RUQ pain"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 12,
+    "fields": {
+      "publisher": "NICE",
+      "title": "Ectopic pregnancy and miscarriage: diagnosis and initial management",
+      "url": "https://www.nice.org.uk/guidance/ng126",
+      "publication_date": "2019-04-17",
+      "access_date": "2026-06-24",
+      "version_label": "NICE NG126"
+    }
+  },
+  {
+    "model": "cds_core.source",
+    "pk": 13,
+    "fields": {
+      "publisher": "WSES/JAMA Surgery",
+      "title": "Diagnosis and Treatment of Acute Appendicitis: 2025 Edition of the WSES Jerusalem Guidelines",
+      "url": "https://jamanetwork.com/journals/jamasurgery/article-abstract/2844195",
+      "publication_date": "2026-01-28",
+      "access_date": "2026-06-24",
+      "version_label": "WSES 2025 appendicitis"
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 22,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "red_flag",
+      "title": "Surgical abdomen or peritonitis concern",
+      "summary": "Abdominal pain with peritoneal signs, rigidity, severe generalized pain, or unstable vital signs should trigger urgent escalation and should not remain in routine outpatient workflow.",
+      "title_zh": "腹膜炎或外科急腹症警訊",
+      "title_en": "Surgical abdomen or peritonitis concern",
+      "summary_zh": "腹痛合併反彈痛、肌肉防衛、板狀腹、劇烈廣泛性疼痛或生命徵象不穩時，應啟動急症升級評估，不能停留在一般門診流程。",
+      "summary_en": "Abdominal pain with peritoneal signs, rigidity, severe generalized pain, or unstable vital signs should trigger urgent escalation and should not remain in routine outpatient workflow.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Vital signs", "Peritoneal signs", "Pain distribution", "Surgical history"],
+      "supporting_findings": ["rebound or guarding", "rigid abdomen", "hemodynamic instability", "severe generalized abdominal pain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 23,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "workup",
+      "title": "Right lower quadrant appendicitis pathway",
+      "summary": "Right lower quadrant pain with fever, leukocytosis, migration, or localized peritoneal features should prompt a structured appendicitis-oriented diagnostic pathway aligned with local emergency resources.",
+      "title_zh": "右下腹疑似闌尾炎路徑",
+      "title_en": "Right lower quadrant appendicitis pathway",
+      "summary_zh": "右下腹痛合併發燒、白血球升高、疼痛轉移或局部腹膜刺激徵象時，應進入結構化闌尾炎評估路徑，並依當地急症資源安排。",
+      "summary_en": "Right lower quadrant pain with fever, leukocytosis, migration, or localized peritoneal features should prompt a structured appendicitis-oriented diagnostic pathway aligned with local emergency resources.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Pain migration", "Fever", "Leukocytosis", "Pregnancy status"],
+      "supporting_findings": ["right lower quadrant pain", "fever", "leukocytosis", "migration to RLQ"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 24,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "workup",
+      "title": "Right upper quadrant biliary pathway",
+      "summary": "Right upper quadrant pain with postprandial pattern, jaundice, fever, or vomiting should prompt structured biliary-disease assessment and source-based imaging consideration.",
+      "title_zh": "右上腹膽道疾病評估路徑",
+      "title_en": "Right upper quadrant biliary pathway",
+      "summary_zh": "右上腹痛合併飯後加劇、黃疸、發燒或嘔吐時，應進入結構化膽道疾病評估，並依來源建議與當地流程考量影像。",
+      "summary_en": "Right upper quadrant pain with postprandial pattern, jaundice, fever, or vomiting should prompt structured biliary-disease assessment and source-based imaging consideration.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Postprandial pattern", "Jaundice", "Fever", "Prior gallbladder disease"],
+      "supporting_findings": ["right upper quadrant pain", "postprandial pain", "jaundice", "vomiting"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 25,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "red_flag",
+      "title": "Early pregnancy and ectopic pregnancy safety prompt",
+      "summary": "Possible early pregnancy with abdominal pain, bleeding, syncope, or positive pregnancy test should trigger ectopic-pregnancy safety assessment rather than routine abdominal-pain triage.",
+      "title_zh": "早期妊娠與子宮外孕安全提示",
+      "title_en": "Early pregnancy and ectopic pregnancy safety prompt",
+      "summary_zh": "可能早期妊娠者若有腹痛、陰道出血、暈厥或驗孕陽性，應啟動子宮外孕安全評估，而不是只當作一般腹痛分流。",
+      "summary_en": "Possible early pregnancy with abdominal pain, bleeding, syncope, or positive pregnancy test should trigger ectopic-pregnancy safety assessment rather than routine abdominal-pain triage.",
+      "urgency": "emergent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Pregnancy test", "Last menstrual period", "Vaginal bleeding", "Syncope or shoulder-tip pain"],
+      "supporting_findings": ["pregnancy possible", "positive pregnancy test", "vaginal bleeding", "syncope"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 26,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "workup",
+      "title": "Acute nonlocalized abdominal pain with fever pathway",
+      "summary": "Acute nonlocalized abdominal pain with fever should prompt structured assessment for time-sensitive intra-abdominal causes and imaging consideration according to local clinician workflow.",
+      "title_zh": "急性非定位腹痛合併發燒路徑",
+      "title_en": "Acute nonlocalized abdominal pain with fever pathway",
+      "summary_zh": "急性非定位腹痛合併發燒時，應結構化評估具時間敏感性的腹內原因，並依當地臨床流程考量影像。",
+      "summary_en": "Acute nonlocalized abdominal pain with fever should prompt structured assessment for time-sensitive intra-abdominal causes and imaging consideration according to local clinician workflow.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Fever pattern", "Pain location", "Recent surgery", "Immunocompromised status"],
+      "supporting_findings": ["generalized abdominal pain", "fever"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 27,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "red_flag",
+      "title": "Postoperative abdominal pain and fever prompt",
+      "summary": "Recent abdominal surgery with fever or worsening abdominal pain should trigger a postoperative-complication pathway and urgent clinician reassessment.",
+      "title_zh": "術後腹痛合併發燒提示",
+      "title_en": "Postoperative abdominal pain and fever prompt",
+      "summary_zh": "近期腹部手術後若出現發燒或腹痛惡化，應進入術後併發症評估路徑並安排急迫臨床再評估。",
+      "summary_en": "Recent abdominal surgery with fever or worsening abdominal pain should trigger a postoperative-complication pathway and urgent clinician reassessment.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Operation date", "Procedure type", "Fever", "Wound or drain findings"],
+      "supporting_findings": ["recent abdominal surgery", "fever", "worsening abdominal pain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 28,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "red_flag",
+      "title": "Neutropenic or immunocompromised abdominal pain prompt",
+      "summary": "Neutropenia or immunocompromised status with abdominal pain or fever should lower the threshold for urgent assessment and source-based imaging consideration.",
+      "title_zh": "嗜中性白血球低下或免疫低下腹痛提示",
+      "title_en": "Neutropenic or immunocompromised abdominal pain prompt",
+      "summary_zh": "嗜中性白血球低下或免疫功能低下者若有腹痛或發燒，應降低急迫評估門檻，並依來源與當地流程考量影像。",
+      "summary_en": "Neutropenia or immunocompromised status with abdominal pain or fever should lower the threshold for urgent assessment and source-based imaging consideration.",
+      "urgency": "urgent",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Neutrophil count", "Immunosuppressive therapy", "Fever", "Pain location"],
+      "supporting_findings": ["neutropenia", "immunocompromised", "fever", "abdominal pain"],
+      "opposing_findings": []
+    }
+  },
+  {
+    "model": "cds_core.clinicalitem",
+    "pk": 29,
+    "fields": {
+      "chief_complaint": 3,
+      "item_type": "management",
+      "title": "Structured abdominal pain reassessment",
+      "summary": "Clinically stable abdominal-pain presentations should still document location, trajectory, red flags, pregnancy status when relevant, and a reassessment plan rather than a one-step reassurance.",
+      "title_zh": "腹痛結構化再評估",
+      "title_en": "Structured abdominal pain reassessment",
+      "summary_zh": "目前穩定的腹痛仍應記錄位置、變化趨勢、警訊、必要時的妊娠狀態，以及再評估安排，而不是一次性安撫結案。",
+      "summary_en": "Clinically stable abdominal-pain presentations should still document location, trajectory, red flags, pregnancy status when relevant, and a reassessment plan rather than a one-step reassurance.",
+      "urgency": "routine",
+      "status": "approved",
+      "version_label": "MVP-3",
+      "last_reviewed_at": "2026-06-24",
+      "review_due_at": "2026-12-24",
+      "missing_questions": ["Pain trajectory", "Location", "Red flags", "Reassessment timing"],
+      "supporting_findings": ["clinically stable", "localized abdominal pain", "generalized abdominal pain"],
+      "opposing_findings": []
+    }
+  },
+  {"model": "cds_core.clinicalitemsource", "pk": 201, "fields": {"clinical_item": 22, "source": 9}},
+  {"model": "cds_core.clinicalitemsource", "pk": 202, "fields": {"clinical_item": 22, "source": 13}},
+  {"model": "cds_core.clinicalitemsource", "pk": 203, "fields": {"clinical_item": 23, "source": 10}},
+  {"model": "cds_core.clinicalitemsource", "pk": 204, "fields": {"clinical_item": 23, "source": 13}},
+  {"model": "cds_core.clinicalitemsource", "pk": 205, "fields": {"clinical_item": 24, "source": 11}},
+  {"model": "cds_core.clinicalitemsource", "pk": 206, "fields": {"clinical_item": 25, "source": 12}},
+  {"model": "cds_core.clinicalitemsource", "pk": 207, "fields": {"clinical_item": 26, "source": 9}},
+  {"model": "cds_core.clinicalitemsource", "pk": 208, "fields": {"clinical_item": 27, "source": 9}},
+  {"model": "cds_core.clinicalitemsource", "pk": 209, "fields": {"clinical_item": 28, "source": 9}},
+  {"model": "cds_core.clinicalitemsource", "pk": 210, "fields": {"clinical_item": 29, "source": 9}},
+  {"model": "cds_core.clinicalitemsource", "pk": 211, "fields": {"clinical_item": 29, "source": 10}},
+  {"model": "cds_core.clinicalitemsource", "pk": 212, "fields": {"clinical_item": 29, "source": 11}},
+  {
+    "model": "cds_core.rule",
+    "pk": 22,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 22,
+      "slug": "abdominal_surgical_peritonitis",
+      "condition": {"any": [{"field": "rebound_guarding", "operator": "equals", "value": true}, {"field": "rigid_abdomen", "operator": "equals", "value": true}, {"field": "hemodynamic_instability", "operator": "equals", "value": true}, {"all": [{"field": "severe_abdominal_pain", "operator": "equals", "value": true}, {"field": "generalized_abdominal_pain", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_acute_nonlocalized_abdominal_pain", "wses_2025_appendicitis"],
+      "priority": 1,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 23,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 25,
+      "slug": "abdominal_pregnancy_ectopic",
+      "condition": {"all": [{"any": [{"field": "pregnancy_possible", "operator": "equals", "value": true}, {"field": "positive_pregnancy_test", "operator": "equals", "value": true}]}, {"any": [{"field": "vaginal_bleeding", "operator": "equals", "value": true}, {"field": "syncope", "operator": "equals", "value": true}, {"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "severe_abdominal_pain", "operator": "equals", "value": true}]}]},
+      "source_ids": ["nice_ng126"],
+      "priority": 2,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 24,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 23,
+      "slug": "abdominal_rlq_appendicitis",
+      "condition": {"all": [{"field": "right_lower_quadrant_pain", "operator": "equals", "value": true}, {"any": [{"field": "fever", "operator": "equals", "value": true}, {"field": "leukocytosis", "operator": "equals", "value": true}, {"field": "migration_to_rlq", "operator": "equals", "value": true}, {"field": "rebound_guarding", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_rlq_suspected_appendicitis", "wses_2025_appendicitis"],
+      "priority": 10,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 25,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 24,
+      "slug": "abdominal_ruq_biliary",
+      "condition": {"all": [{"field": "right_upper_quadrant_pain", "operator": "equals", "value": true}, {"any": [{"field": "postprandial_ruq_pain", "operator": "equals", "value": true}, {"field": "jaundice", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}, {"field": "vomiting", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_ruq_pain"],
+      "priority": 20,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 26,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 26,
+      "slug": "abdominal_nonlocalized_fever",
+      "condition": {"all": [{"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}]},
+      "source_ids": ["acr_acute_nonlocalized_abdominal_pain"],
+      "priority": 30,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 27,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 27,
+      "slug": "abdominal_postoperative_fever",
+      "condition": {"all": [{"field": "recent_abdominal_surgery", "operator": "equals", "value": true}, {"any": [{"field": "fever", "operator": "equals", "value": true}, {"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "severe_abdominal_pain", "operator": "equals", "value": true}]}]},
+      "source_ids": ["acr_acute_nonlocalized_abdominal_pain"],
+      "priority": 35,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 28,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 28,
+      "slug": "abdominal_neutropenic_immunocompromised",
+      "condition": {"any": [{"all": [{"field": "neutropenia", "operator": "equals", "value": true}, {"any": [{"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}]}]}, {"all": [{"field": "immunocompromised", "operator": "equals", "value": true}, {"any": [{"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "fever", "operator": "equals", "value": true}]}]}]},
+      "source_ids": ["acr_acute_nonlocalized_abdominal_pain"],
+      "priority": 40,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.rule",
+    "pk": 29,
+    "fields": {
+      "chief_complaint": 3,
+      "output_item": 29,
+      "slug": "abdominal_structured_reassessment",
+      "condition": {"any": [{"field": "generalized_abdominal_pain", "operator": "equals", "value": true}, {"field": "right_lower_quadrant_pain", "operator": "equals", "value": true}, {"field": "right_upper_quadrant_pain", "operator": "equals", "value": true}, {"field": "clinically_stable", "operator": "equals", "value": true}]},
+      "source_ids": ["acr_acute_nonlocalized_abdominal_pain", "acr_rlq_suspected_appendicitis", "acr_ruq_pain"],
+      "priority": 80,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 12,
+    "fields": {
+      "chief_complaint": 3,
+      "slug": "nonlocalized-fever-abdominal-pain",
+      "title_zh": "非定位腹痛合併發燒案例",
+      "title_en": "Nonlocalized fever abdominal pain case",
+      "summary_zh": "非病人案例：廣泛性腹痛合併發燒，用於驗證非定位腹痛路徑。",
+      "summary_en": "A non-patient scenario with generalized abdominal pain and fever for pathway validation.",
+      "findings": {"generalized_abdominal_pain": true, "fever": true},
+      "expected_item_titles": ["Acute nonlocalized abdominal pain with fever pathway", "Structured abdominal pain reassessment"],
+      "display_order": 30,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 13,
+    "fields": {
+      "chief_complaint": 3,
+      "slug": "rlq-appendicitis-abdominal-pain",
+      "title_zh": "右下腹疑似闌尾炎案例",
+      "title_en": "Right lower quadrant suspected appendicitis case",
+      "summary_zh": "非病人案例：右下腹痛合併發燒與白血球升高，用於驗證闌尾炎評估路徑。",
+      "summary_en": "A non-patient scenario with right lower quadrant pain, fever, and leukocytosis.",
+      "findings": {"right_lower_quadrant_pain": true, "fever": true, "leukocytosis": true},
+      "expected_item_titles": ["Right lower quadrant appendicitis pathway", "Structured abdominal pain reassessment"],
+      "display_order": 31,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 14,
+    "fields": {
+      "chief_complaint": 3,
+      "slug": "ruq-biliary-abdominal-pain",
+      "title_zh": "右上腹疑似膽道疾病案例",
+      "title_en": "Right upper quadrant biliary case",
+      "summary_zh": "非病人案例：右上腹痛合併飯後疼痛，用於驗證膽道疾病評估路徑。",
+      "summary_en": "A non-patient scenario with right upper quadrant pain and postprandial pattern.",
+      "findings": {"right_upper_quadrant_pain": true, "postprandial_ruq_pain": true},
+      "expected_item_titles": ["Right upper quadrant biliary pathway", "Structured abdominal pain reassessment"],
+      "display_order": 32,
+      "active": true
+    }
+  },
+  {
+    "model": "cds_core.casescenario",
+    "pk": 15,
+    "fields": {
+      "chief_complaint": 3,
+      "slug": "early-pregnancy-abdominal-pain",
+      "title_zh": "早期妊娠腹痛合併出血案例",
+      "title_en": "Early pregnancy abdominal pain with bleeding case",
+      "summary_zh": "非病人案例：可能懷孕、驗孕陽性且合併陰道出血，用於驗證子宮外孕安全提示。",
+      "summary_en": "A non-patient scenario with possible pregnancy, positive pregnancy test, and vaginal bleeding.",
+      "findings": {"pregnancy_possible": true, "positive_pregnancy_test": true, "vaginal_bleeding": true},
+      "expected_item_titles": ["Early pregnancy and ectopic pregnancy safety prompt"],
+      "display_order": 33,
+      "active": true
+    }
+  }
+]

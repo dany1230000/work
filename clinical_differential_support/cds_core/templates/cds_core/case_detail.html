@@ -1,0 +1,49 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+<section class="panel">
+  <h2>{{ scenario.primary_title }}</h2>
+  <p class="secondary">{{ scenario.secondary_title }}</p>
+  <p>{{ scenario.primary_summary }}</p>
+  <p class="secondary">{{ scenario.secondary_summary }}</p>
+  <h3>結構化發現 / Structured Findings</h3>
+  <dl>
+    {% for key, value in scenario.findings.items %}
+      <dt>{{ key }}</dt>
+      <dd>{{ value }}</dd>
+    {% endfor %}
+  </dl>
+</section>
+
+<section class="panel">
+  <h2>預期輸出檢核</h2>
+  <p class="secondary">Expected Output Check</p>
+  {% for expected in evaluation.expected_outputs %}
+    <div class="item">
+      <strong>{{ expected.title }}</strong>
+      {% if expected.matched %}
+        <span class="tag">符合預期 / Matched</span>
+      {% else %}
+        <span class="tag">未符合 / Missing</span>
+      {% endif %}
+    </div>
+  {% endfor %}
+</section>
+
+<section class="panel">
+  <h2>實際路徑輸出</h2>
+  <p class="secondary">Actual Pathway Output</p>
+  {% for entry in evaluation.pathway_result.outputs %}
+    <article class="item {{ entry.item.item_type }}">
+      <h3>{{ entry.item.primary_title }}</h3>
+      <p class="secondary">{{ entry.item.secondary_title }}</p>
+      <p>{{ entry.item.primary_summary }}</p>
+      <p class="secondary">{{ entry.item.secondary_summary }}</p>
+      <p><strong>為什麼顯示 / Why shown:</strong> {{ entry.explanation }}</p>
+    </article>
+  {% empty %}
+    <div class="empty">{{ evaluation.pathway_result.empty_state }}</div>
+  {% endfor %}
+</section>
+{% endblock %}
