@@ -23,8 +23,8 @@ class HeadachePathwayTests(TestCase):
         for findings, expected_title in scenarios:
             with self.subTest(expected_title=expected_title):
                 result = evaluate_headache_pathway(findings)
-        titles = [entry["item"].title for entry in result["outputs"]]
-        self.assertIn(expected_title, titles)
+                titles = [entry["item"].title for entry in result["outputs"]]
+                self.assertIn(expected_title, titles)
 
     def test_view_shows_professional_safety_copy_and_sources(self):
         response = self.client.post(
@@ -32,10 +32,10 @@ class HeadachePathwayTests(TestCase):
             {"onset_peak_minutes": "1", "severe_intensity": "on"},
         )
 
-        self.assertContains(response, "For qualified medical professionals")
-        self.assertContains(response, "Reference support only")
-        self.assertContains(response, "限合格醫療專業人員使用")
-        self.assertContains(response, "僅供參考")
+        self.assertContains(response, "僅供合格醫療專業人員")
+        self.assertContains(response, "請勿輸入病人識別資料")
+        self.assertContains(response, "For qualified medical professionals only")
+        self.assertContains(response, "Do not enter patient-identifying data")
         self.assertContains(response, "雷擊樣頭痛")
         self.assertContains(response, "Thunderclap headache")
         self.assertContains(response, "NICE")
@@ -48,8 +48,8 @@ class HeadachePathwayTests(TestCase):
         content = response.content.decode("utf-8")
 
         self.assertLess(content.index("雷擊樣頭痛"), content.index("Thunderclap headache"))
-        self.assertContains(response, "為什麼顯示")
-        self.assertContains(response, "Why shown")
+        self.assertContains(response, "顯示原因 / Why shown")
+        self.assertContains(response, "下一步要問 / Ask next")
 
     def test_red_flags_sort_before_routine_considerations(self):
         result = evaluate_headache_pathway(

@@ -1,0 +1,39 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="dashboard-hero">
+  <div class="hero-panel">
+    <h2>工作台 / Dashboard</h2>
+    <p>先選擇主訴，再輸入結構化臨床發現，最後依照輸出的「下一步要問」補齊關鍵資訊。</p>
+    <p class="secondary">Choose a chief complaint, enter structured findings, then use the ask-next prompts to gather missing key information.</p>
+  </div>
+  <div class="hero-panel">
+    <h2>下一步 / Next Steps</h2>
+    <ol class="next-list">
+      <li><span class="step-badge">1</span><span>選擇最接近的主訴。 / Choose the closest chief complaint.</span></li>
+      <li><span class="step-badge">2</span><span>勾選或輸入已知臨床發現。 / Enter known clinical findings.</span></li>
+      <li><span class="step-badge">3</span><span>查看參考輸出與下一步問題。 / Review reference output and ask-next prompts.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="complaint-grid" aria-label="Chief complaint workflows">
+  {% for workflow in workflows %}
+    <article class="card complaint-card">
+      <h3>{{ workflow.title_zh }} / {{ workflow.title_en }}</h3>
+      <p>{{ workflow.description_zh }}</p>
+      <p class="secondary">{{ workflow.description_en }}</p>
+      <a class="button-link" href="{{ workflow.url }}">開始評估 / Start</a>
+    </article>
+  {% endfor %}
+</section>
+
+<section class="panel" style="margin-top: 1rem;">
+  <h2>系統狀態 / System Status</h2>
+  <p>公開部署已啟用；若要確認目前版本與部署健康狀態，請查看部署狀態頁。</p>
+  <p class="secondary">Public deployment is available. Use Deployment Status to confirm the current version and health state.</p>
+  <a class="button-link secondary-link" href="{% url 'cds_core:deployment_status' %}">查看部署狀態 / View Deployment Status</a>
+</section>
+{% endblock %}

@@ -3,6 +3,7 @@
 {% block content %}
 <div class="safety">{{ safety_copy }}</div>
 {% include "cds_core/includes/symptom_workflow.html" %}
+<p><a class="button-link secondary-link" href="{% url 'cds_core:home' %}">回工作台 / Back to Dashboard</a></p>
 <div class="grid">
   <section class="panel">
     <h2>頭痛結構化問診</h2>
@@ -18,10 +19,10 @@
             {{ field }}
           {% endif %}
           {% if field.help_text %}<small>{{ field.help_text }}</small>{% endif %}
-          {% for error in field.errors %}<div class="error">{{ error }}</div>{% endfor %}
+          {% for error in field.errors %}<div class="message error">{{ error }}</div>{% endfor %}
         </div>
       {% endfor %}
-      <button type="submit">評估參考路徑 / Evaluate reference pathway</button>
+      <button type="submit">產生參考輸出 / Evaluate reference pathway</button>
     </form>
   </section>
   <section class="panel">
@@ -41,7 +42,7 @@
               <span class="tag">{{ entry.item.get_status_display }}</span>
               <span class="tag">{{ entry.item.version_label }}</span>
             </p>
-            <p><strong>為什麼顯示 / Why shown:</strong> {{ entry.explanation }}</p>
+            <p><strong>顯示原因 / Why shown:</strong> {{ entry.explanation }}</p>
             {% if entry.item.missing_questions %}
               <p><strong>下一步要問 / Ask next:</strong> {{ entry.item.missing_questions|join:", " }}</p>
             {% endif %}
@@ -50,7 +51,7 @@
               {% for source in entry.sources %}
                 <a href="{{ source.url }}">{{ source.publisher }} {{ source.version_label }}</a>{% if not forloop.last %}; {% endif %}
               {% endfor %}
-              {% if entry.item.last_reviewed_at %} | 最後審核 / Last reviewed: {{ entry.item.last_reviewed_at }}{% endif %}
+              {% if entry.item.last_reviewed_at %} | 最後審查 / Last reviewed: {{ entry.item.last_reviewed_at }}{% endif %}
             </div>
           </article>
         {% endfor %}
@@ -58,7 +59,7 @@
         <div class="empty">{{ result.empty_state }}</div>
       {% endif %}
     {% else %}
-      <div class="empty">請輸入結構化發現以評估頭痛參考路徑。Enter structured findings to evaluate the headache reference pathway.</div>
+      <div class="empty">請先輸入結構化發現，系統會產生頭痛參考路徑輸出。 / Enter structured findings to evaluate the headache reference pathway.</div>
     {% endif %}
   </section>
 </div>

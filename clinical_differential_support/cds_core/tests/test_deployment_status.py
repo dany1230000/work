@@ -206,6 +206,47 @@ class DeploymentStatusTests(TestCase):
         self.assertEqual(checks["render_cli"]["status"], "skipped")
         self.assertEqual(report["public_deployment"]["render_deploy_id"], "dep-test")
 
+    def test_report_skips_render_cli_probe_when_public_deploy_is_verified(self):
+        from cds_core.deployment_status import (
+            CommandProbeResult,
+            build_deployment_status_report,
+        )
+        from cds_core.git_publish_status import PUBLISH_STATUS_COMMAND
+
+        self.create_staff_reviewer()
+        tmp_dir, final_evidence_path = self.verified_evidence_path()
+        public_tmp_dir, public_evidence_path = self.public_deploy_evidence_path()
+        self.addCleanup(tmp_dir.cleanup)
+        self.addCleanup(public_tmp_dir.cleanup)
+        calls = []
+
+        def runner(command, cwd):
+            calls.append(command)
+            if command == PUBLISH_STATUS_COMMAND:
+                return CommandProbeResult(exit_code=0, stdout="", stderr="")
+            if command == "git branch --show-current":
+                return CommandProbeResult(exit_code=0, stdout="master\n", stderr="")
+            if command == "git remote -v":
+                return CommandProbeResult(
+                    exit_code=0,
+                    stdout="origin https://github.com/example/cds.git (fetch)",
+                    stderr="",
+                )
+            if command.startswith("render "):
+                raise AssertionError("Render CLI should not be probed after live public evidence.")
+            raise AssertionError(f"Unexpected command: {command}")
+
+        report = build_deployment_status_report(
+            today=date(2026, 6, 28),
+            evidence_path=final_evidence_path,
+            deployment_evidence_path=public_evidence_path,
+            command_runner=runner,
+        )
+
+        self.assertEqual(report["status"], "public_deploy_live")
+        self.assertNotIn("render --version", calls)
+        self.assertNotIn("render whoami -o json", calls)
+
     def test_report_advances_to_dashboard_when_remote_cli_and_auth_exist(self):
         from cds_core.deployment_status import build_deployment_status_report
 

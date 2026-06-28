@@ -5,7 +5,8 @@ from . import views
 app_name = "cds_core"
 
 urlpatterns = [
-    path("", views.headache_workspace, name="headache"),
+    path("", views.home_dashboard, name="home"),
+    path("headache/", views.headache_workspace, name="headache"),
     path("launch/", views.launch_guide, name="launch_guide"),
     path("completion/", views.completion_gate, name="completion_gate"),
     path("deployment/", views.deployment_status, name="deployment_status"),

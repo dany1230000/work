@@ -392,6 +392,120 @@ class DyspneaIntakeForm(forms.Form):
     )
 
 
+NO_PATIENT_ID_HELP = "請勿輸入病人識別資料。 / Do not enter patient identifiers in this MVP."
+
+
+INTAKE_FORM_LABELS = {
+    "HeadacheIntakeForm": {
+        "age": "年齡 / Age",
+        "onset_peak_minutes": "達到最痛時間（分鐘） / Time to peak, minutes",
+        "headache_days_per_month": "每月頭痛天數 / Headache days/month",
+        "acute_medication_days_per_month": "每月急性止痛藥使用天數 / Acute medication days/month",
+        "severe_intensity": "嚴重疼痛 / Severe intensity",
+        "fever": "發燒 / Fever",
+        "meningism": "腦膜刺激徵象 / Meningism",
+        "neurologic_deficit": "神經學缺損 / Neurologic deficit",
+        "altered_mental_status": "意識或精神狀態改變 / Altered mental status",
+        "recent_trauma": "近期頭部外傷 / Recent trauma",
+        "immunocompromised": "免疫功能低下 / Immunocompromised",
+        "malignancy_history": "惡性腫瘤病史 / Malignancy history",
+        "jaw_claudication": "下顎跛行 / Jaw claudication",
+        "eye_pain_redness": "眼痛或眼紅 / Eye pain/redness",
+        "unilateral_orbital_pain": "單側眼眶疼痛 / Unilateral orbital pain",
+        "autonomic_features": "自律神經症狀 / Autonomic features",
+        "photophobia": "畏光 / Photophobia",
+        "nausea": "噁心 / Nausea",
+        "recurrent_pattern": "反覆發作型態 / Recurrent pattern",
+        "bilateral_pressure": "雙側壓迫感 / Bilateral pressure",
+        "clinician_notes": "臨床備註 / Clinician notes",
+    },
+    "ChestPainIntakeForm": {
+        "age": "年齡 / Age",
+        "symptom_duration_minutes": "症狀持續時間（分鐘） / Symptom duration, minutes",
+        "ongoing_chest_pain": "持續胸痛 / Ongoing chest pain",
+        "chest_pressure": "胸部壓迫或緊縮感 / Pressure or tightness",
+        "radiation_left_arm_jaw": "放射到手臂、下顎或上腹 / Radiation to arm, jaw, or upper abdomen",
+        "diaphoresis": "冒冷汗 / Diaphoresis",
+        "severe_dyspnea": "嚴重呼吸困難 / Severe dyspnea",
+        "syncope": "暈厥或近暈厥 / Syncope or near-syncope",
+        "hemodynamic_instability": "血流動力不穩 / Hemodynamic instability",
+        "tearing_radiating_back": "撕裂樣疼痛放射到背部 / Tearing pain radiating to back",
+        "pleuritic_pain": "吸氣或胸膜性疼痛 / Pleuritic pain",
+        "dyspnea": "呼吸困難 / Dyspnea",
+        "unilateral_leg_swelling": "單側腿部腫脹 / Unilateral leg swelling",
+        "stable_exertional_chest_pain": "穩定活動誘發胸痛 / Stable exertional chest pain",
+        "relieved_by_rest": "休息可緩解 / Relieved by rest",
+        "low_intermediate_acs_probability": "低至中等 ACS 可能性 / Low-to-intermediate ACS probability",
+        "clinically_stable": "臨床穩定 / Clinically stable",
+        "clinician_notes": "臨床備註 / Clinician notes",
+    },
+    "AbdominalPainIntakeForm": {
+        "age": "年齡 / Age",
+        "pain_duration_hours": "腹痛持續時間（小時） / Pain duration, hours",
+        "generalized_abdominal_pain": "廣泛或無法定位腹痛 / Generalized or nonlocalized abdominal pain",
+        "severe_abdominal_pain": "嚴重腹痛 / Severe abdominal pain",
+        "rebound_guarding": "反彈痛或肌性防禦 / Rebound tenderness or guarding",
+        "rigid_abdomen": "腹部僵硬 / Rigid abdomen",
+        "hemodynamic_instability": "血流動力不穩 / Hemodynamic instability",
+        "fever": "發燒 / Fever",
+        "right_lower_quadrant_pain": "右下腹痛 / Right lower quadrant pain",
+        "leukocytosis": "白血球增多 / Leukocytosis",
+        "migration_to_rlq": "疼痛轉移到右下腹 / Migration to right lower quadrant",
+        "right_upper_quadrant_pain": "右上腹痛 / Right upper quadrant pain",
+        "postprandial_ruq_pain": "飯後右上腹痛 / Postprandial right upper quadrant pain",
+        "jaundice": "黃疸 / Jaundice",
+        "vomiting": "嘔吐 / Vomiting",
+        "abdominal_distension": "腹脹 / Abdominal distension",
+        "no_flatus": "未排氣 / No flatus",
+        "recent_abdominal_surgery": "近期腹部手術 / Recent abdominal surgery",
+        "neutropenia": "嗜中性球低下 / Neutropenia",
+        "immunocompromised": "免疫功能低下 / Immunocompromised",
+        "pregnancy_possible": "可能懷孕 / Pregnancy possible",
+        "positive_pregnancy_test": "驗孕陽性 / Positive pregnancy test",
+        "vaginal_bleeding": "陰道出血 / Vaginal bleeding",
+        "syncope": "暈厥或近暈厥 / Syncope or near-syncope",
+        "clinically_stable": "臨床穩定 / Clinically stable",
+        "clinician_notes": "臨床備註 / Clinician notes",
+    },
+    "DyspneaIntakeForm": {
+        "age": "年齡 / Age",
+        "dyspnea_duration_hours": "呼吸困難持續時間（小時） / Dyspnea duration, hours",
+        "dyspnea_duration_weeks": "呼吸困難持續時間（週） / Dyspnea duration, weeks",
+        "acute_dyspnea": "急性呼吸困難 / Acute dyspnea",
+        "chronic_persistent_breathlessness": "慢性持續呼吸困難超過 8 週 / Chronic persistent breathlessness over 8 weeks",
+        "severe_dyspnea": "嚴重呼吸困難 / Severe dyspnea",
+        "hypoxemia": "低血氧或新發氧飽和下降 / Hypoxemia or new oxygen desaturation",
+        "cyanosis": "發紺 / Cyanosis",
+        "inability_to_speak": "無法完整說句子 / Unable to speak in sentences",
+        "altered_mental_status": "意識改變、混亂或躁動 / Altered mental status, confusion, or agitation",
+        "hemodynamic_instability": "血流動力不穩 / Hemodynamic instability",
+        "chest_pain": "胸痛 / Chest pain",
+        "syncope": "暈厥或近暈厥 / Syncope or near-syncope",
+        "hemoptysis": "咳血 / Hemoptysis",
+        "unilateral_leg_swelling": "單側腿部腫脹 / Unilateral leg swelling",
+        "cough": "咳嗽 / Cough",
+        "fever": "發燒 / Fever",
+        "immunocompromised": "免疫功能低下 / Immunocompromised",
+        "wheeze": "喘鳴 / Wheeze",
+        "known_asthma_copd": "已知氣喘或 COPD / Known asthma or COPD",
+        "orthopnea": "端坐呼吸 / Orthopnea",
+        "paroxysmal_nocturnal_dyspnea": "陣發性夜間呼吸困難 / Paroxysmal nocturnal dyspnea",
+        "leg_edema": "下肢水腫 / Leg edema",
+        "weight_gain": "近期體重增加 / Recent weight gain",
+        "smoking_history": "吸菸史 / Smoking history",
+        "clinically_stable": "臨床穩定 / Clinically stable",
+        "clinician_notes": "臨床備註 / Clinician notes",
+    },
+}
+
+
+def localize_intake_form_labels(form_class) -> None:
+    for field_name, label in INTAKE_FORM_LABELS.get(form_class.__name__, {}).items():
+        form_class.base_fields[field_name].label = label
+    if "clinician_notes" in form_class.base_fields:
+        form_class.base_fields["clinician_notes"].help_text = NO_PATIENT_ID_HELP
+
+
 class ChestPainIntakeForm(forms.Form):
     age = forms.IntegerField(label="年齡 (Age)", min_value=0, max_value=120, required=False)
     symptom_duration_minutes = forms.IntegerField(

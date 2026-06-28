@@ -4,28 +4,28 @@
 <div class="safety">{{ safety_copy }}</div>
 
 <section class="workflow">
-  <h2>審核流程 / Review Workflow</h2>
+  <h2>審核工作流程 / Review Workflow</h2>
   <div class="workflow-steps">
     <div class="workflow-step">
       <strong>步驟 1/3</strong>
       先處理來源缺口 / Resolve source gaps first
-      <p class="secondary">沒有來源的項目不能視為可交付內容。</p>
+      <p class="secondary">沒有來源的項目不可視為完成審核。 / Items without sources are not review-ready.</p>
     </div>
     <div class="workflow-step">
       <strong>步驟 2/3</strong>
-      處理到期審核 / Review due items
-      <p class="secondary">依照到期日與急迫度排序處理。</p>
+      檢查到期審核 / Review due items
+      <p class="secondary">確認摘要、規則、適用條件與最後審查日期。 / Confirm summaries, rules, applicability, and review dates.</p>
     </div>
     <div class="workflow-step">
       <strong>步驟 3/3</strong>
-      打開項目並記錄決策 / Open the item and record a decision
-      <p class="secondary">每次核准、要求修改或退回都要留下審核備註。</p>
+      開啟項目並記錄決策 / Open the item and record a decision
+      <p class="secondary">每次核准或退回都會留下審核紀錄。 / Every approval or requested change is recorded.</p>
     </div>
   </div>
 </section>
 
 <section class="panel">
-  <a href="{% url 'cds_core:review_dashboard' %}">返回治理總覽 / Back to governance</a>
+  <a href="{% url 'cds_core:review_dashboard' %}">回內容治理 / Back to governance</a>
   <h2>審核佇列</h2>
   <p class="secondary">Reviewer Queue</p>
   <form method="get">
@@ -44,7 +44,7 @@
         </select>
       </div>
       <div class="field">
-        <label for="id_urgency">急迫度 / Urgency</label>
+        <label for="id_urgency">急迫性 / Urgency</label>
         <select id="id_urgency" name="urgency">
           <option value="">全部 / All</option>
           {% for option in queue.urgency_choices %}
@@ -75,7 +75,7 @@
   </article>
   <article>
     <span class="metric">{{ queue.in_review_items|length }}</span>
-    <h3>待審核</h3>
+    <h3>審核中</h3>
     <p class="secondary">In review</p>
   </article>
   <article>
@@ -86,7 +86,7 @@
 </section>
 
 <section class="panel">
-  <h2>優先處理</h2>
+  <h2>優先工作</h2>
   <p class="secondary">Priority work</p>
   <div class="grid">
     <div>
@@ -99,7 +99,7 @@
           {% endfor %}
         </ul>
       {% else %}
-        <div class="empty">目前沒有來源缺口。No source gaps.</div>
+        <div class="empty">目前沒有來源缺口。 / No source gaps.</div>
       {% endif %}
     </div>
     <div>
@@ -112,7 +112,7 @@
           {% endfor %}
         </ul>
       {% else %}
-        <div class="empty">目前沒有到期審核項目。No due reviews.</div>
+        <div class="empty">目前沒有到期審核項目。 / No due reviews.</div>
       {% endif %}
     </div>
     <div>
@@ -125,14 +125,14 @@
           {% endfor %}
         </ul>
       {% else %}
-        <div class="empty">目前沒有要求修改項目。No changes requested.</div>
+        <div class="empty">目前沒有要求修改的項目。 / No changes requested.</div>
       {% endif %}
     </div>
   </div>
 </section>
 
 <section class="panel">
-  <h2>審核者紀錄</h2>
+  <h2>審核紀錄</h2>
   <p class="secondary">Reviewer notes</p>
   {% if queue.recent_review_records %}
     <ul class="review-list">
@@ -145,7 +145,7 @@
       {% endfor %}
     </ul>
   {% else %}
-    <div class="empty">目前沒有審核者紀錄。No reviewer notes have been recorded yet.</div>
+    <div class="empty">目前尚無審核紀錄。 / No reviewer notes have been recorded yet.</div>
   {% endif %}
 </section>
 
@@ -160,7 +160,7 @@
           <th>狀態 / Status</th>
           <th>來源 / Sources</th>
           <th>審核 / Review</th>
-          <th>標記 / Flags</th>
+          <th>旗標 / Flags</th>
         </tr>
       </thead>
       <tbody>
@@ -173,7 +173,7 @@
             <td>{{ item.get_status_display }}<br><span class="secondary">{{ item.get_urgency_display }}</span></td>
             <td>{{ item.source_count }}</td>
             <td>
-              {% if item.last_reviewed_at %}最後審核 / Last reviewed: {{ item.last_reviewed_at }}<br>{% endif %}
+              {% if item.last_reviewed_at %}最後審查 / Last reviewed: {{ item.last_reviewed_at }}<br>{% endif %}
               {% if item.review_due_at %}下次審核 / Review due: {{ item.review_due_at }}{% endif %}
             </td>
             <td>
@@ -185,7 +185,7 @@
       </tbody>
     </table>
   {% else %}
-    <div class="empty">沒有符合篩選的臨床項目。No clinical items match the current filters.</div>
+    <div class="empty">沒有符合目前篩選條件的臨床項目。 / No clinical items match the current filters.</div>
   {% endif %}
 </section>
 {% endblock %}

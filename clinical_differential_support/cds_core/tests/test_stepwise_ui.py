@@ -10,6 +10,20 @@ MOJIBAKE_MARKERS = [
     "\ue87c",
     "\ue956",
     "\uefdc",
+    "蝯",
+    "甇",
+    "銝",
+    "撖",
+    "靘",
+    "雿",
+    "瘝",
+    "摰",
+    "隢",
+    "頛",
+    "璆",
+    "摮",
+    "蝬",
+    "餃",
 ]
 
 
@@ -26,15 +40,29 @@ class StepwiseUiTests(TestCase):
             with self.subTest(marker=marker):
                 self.assertNotIn(marker, body)
 
+    def test_home_dashboard_shows_next_steps_and_all_workflows(self):
+        response = self.client.get(reverse("cds_core:home"))
+        body = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "工作台 / Dashboard")
+        self.assertContains(response, "下一步 / Next Steps")
+        self.assertContains(response, "頭痛 / Headache")
+        self.assertContains(response, "胸痛 / Chest pain")
+        self.assertContains(response, "腹痛 / Abdominal pain")
+        self.assertContains(response, "呼吸困難 / Dyspnea")
+        self.assertContains(response, "開始評估 / Start")
+        self.assert_no_mojibake(body)
+
     def test_public_symptom_pages_show_a_three_step_workflow(self):
         route_expectations = [
-            ("headache", "頭痛結構化問診", "Headache Intake"),
-            ("chest_pain", "胸痛結構化問診", "Chest Pain Intake"),
-            ("abdominal_pain", "腹痛結構化問診", "Abdominal Pain Intake"),
-            ("dyspnea", "呼吸困難結構化問診", "Dyspnea Intake"),
+            ("headache", "頭痛結構化問診", "Headache Intake", "達到最痛時間（分鐘） / Time to peak, minutes"),
+            ("chest_pain", "胸痛結構化問診", "Chest Pain Intake", "持續胸痛 / Ongoing chest pain"),
+            ("abdominal_pain", "腹痛結構化問診", "Abdominal Pain Intake", "腹痛持續時間（小時） / Pain duration, hours"),
+            ("dyspnea", "呼吸困難結構化問診", "Dyspnea Intake", "急性呼吸困難 / Acute dyspnea"),
         ]
 
-        for route_name, title_zh, title_en in route_expectations:
+        for route_name, title_zh, title_en, field_label in route_expectations:
             with self.subTest(route_name=route_name):
                 response = self.client.get(reverse(f"cds_core:{route_name}"))
                 body = response.content.decode("utf-8")
@@ -42,14 +70,15 @@ class StepwiseUiTests(TestCase):
                 self.assertEqual(response.status_code, 200)
                 self.assertContains(response, title_zh)
                 self.assertContains(response, title_en)
-                self.assertContains(response, "操作步驟 / Workflow")
+                self.assertContains(response, "三步驟工作流程 / 3-Step Workflow")
                 self.assertContains(response, "步驟 1/3")
-                self.assertContains(response, "輸入結構化發現")
+                self.assertContains(response, "輸入結構化發現 / Enter structured findings")
                 self.assertContains(response, "步驟 2/3")
-                self.assertContains(response, "按下評估")
+                self.assertContains(response, "執行參考路徑 / Run the reference pathway")
                 self.assertContains(response, "步驟 3/3")
-                self.assertContains(response, "查看下一步要問")
-                self.assertNotIn("結構化 finding", body)
+                self.assertContains(response, "檢視下一步問題 / Review ask-next prompts")
+                self.assertContains(response, "產生參考輸出 / Evaluate reference pathway")
+                self.assertContains(response, field_label)
                 self.assert_no_mojibake(body)
 
     def test_reviewer_login_shows_staff_access_steps(self):
@@ -59,13 +88,13 @@ class StepwiseUiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "審核者登入")
         self.assertContains(response, "Reviewer Login")
-        self.assertContains(response, "操作步驟 / Workflow")
+        self.assertContains(response, "三步驟工作流程 / 3-Step Workflow")
         self.assertContains(response, "步驟 1/3")
-        self.assertContains(response, "輸入 staff 帳號")
+        self.assertContains(response, "輸入 staff 帳號 / Enter staff credentials")
         self.assertContains(response, "步驟 2/3")
-        self.assertContains(response, "登入審核佇列")
+        self.assertContains(response, "開啟審核佇列 / Open the reviewer queue")
         self.assertContains(response, "步驟 3/3")
-        self.assertContains(response, "處理來源缺口")
+        self.assertContains(response, "先處理來源缺口 / Handle source gaps first")
         self.assert_no_mojibake(body)
 
     def test_review_queue_shows_prioritized_review_steps(self):
@@ -75,11 +104,11 @@ class StepwiseUiTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "審核佇列")
         self.assertContains(response, "Reviewer Queue")
-        self.assertContains(response, "審核流程 / Review Workflow")
+        self.assertContains(response, "審核工作流程 / Review Workflow")
         self.assertContains(response, "步驟 1/3")
-        self.assertContains(response, "先處理來源缺口")
+        self.assertContains(response, "先處理來源缺口 / Resolve source gaps first")
         self.assertContains(response, "步驟 2/3")
-        self.assertContains(response, "處理到期審核")
+        self.assertContains(response, "檢查到期審核 / Review due items")
         self.assertContains(response, "步驟 3/3")
-        self.assertContains(response, "打開項目並記錄決策")
+        self.assertContains(response, "開啟項目並記錄決策 / Open the item and record a decision")
         self.assert_no_mojibake(body)

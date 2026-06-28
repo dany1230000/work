@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.db import DatabaseError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 
 from .auth import staff_required
 from .bundle import build_handoff_bundle_zip
@@ -30,6 +30,7 @@ from .forms import (
     HeadacheIntakeForm,
     ReviewDecisionForm,
     SourceForm,
+    localize_intake_form_labels,
 )
 from .governance import (
     build_release_readiness_report,
@@ -139,6 +140,80 @@ DEPLOYMENT_STATUS_SAFETY_COPY = (
 )
 
 
+CLINICIAN_SAFETY_COPY = (
+    "僅供合格醫療專業人員作為參考支援；不是診斷、治療、用藥或醫囑。"
+    "請勿輸入病人識別資料。 "
+    "For qualified medical professionals only. Reference support, not a diagnosis, "
+    "treatment, medication, or clinical order. Do not enter patient-identifying data."
+)
+
+CASE_SAFETY_COPY = (
+    "案例使用非病人測試資料，用於規則驗證與教學審閱。 "
+    "Case simulations use non-patient fixture data for rule validation and teaching review."
+)
+
+GOVERNANCE_SAFETY_COPY = (
+    "內容治理區僅供合格醫療專業人員審閱 MVP 內容、來源與驗證案例。 "
+    "Clinical governance is for qualified medical professionals to review MVP content, sources, and validation cases."
+)
+
+ITEM_REVIEW_SAFETY_COPY = (
+    "審核頁用於檢查內容、來源、規則與稽核紀錄；不是臨床指令。 "
+    "Review pages inspect content, sources, rules, and audit history; they are not clinical orders."
+)
+
+DRAFT_SAFETY_COPY = (
+    "草稿僅供內容治理使用；正式可用仍需要審核決策。 "
+    "Drafts are for content governance only; approval still requires a review decision."
+)
+
+READINESS_SAFETY_COPY = (
+    "發布準備度僅供 staff 內容治理使用；不代表臨床部署核准。 "
+    "Release readiness is for staff content governance only and is not clinical deployment approval."
+)
+
+REVIEWER_ACCESS_SAFETY_COPY = (
+    "審核者登入僅供 staff 內容治理使用。請勿輸入病人識別資料、診斷指令或治療指令。 "
+    "Staff reviewer access is for content governance only. Reference support only. "
+    "Do not enter patient identifiers, diagnosis orders, or treatment orders."
+)
+
+NEXT_ACTION_SAFETY_COPY = (
+    "下一步工作台僅供 staff 內容治理與專案規劃使用；不是臨床部署、診斷或治療指示。 "
+    "Next Action Workbench is for staff content governance and project planning only."
+)
+
+COVERAGE_DEPTH_SAFETY_COPY = (
+    "覆蓋深度審查僅供 staff 內容治理與專案規劃使用，不包含病人資料或臨床指令。 "
+    "Coverage Depth Review is for staff governance and planning; it contains no patient data or clinical orders."
+)
+
+SOURCE_FRESHNESS_SAFETY_COPY = (
+    "來源新鮮度稽核僅供 staff 內容治理使用；不會自動編輯來源或推論日期。 "
+    "Source Freshness Audit is for staff content governance only and does not automatically edit sources or infer dates."
+)
+
+FINAL_VERIFICATION_SAFETY_COPY = (
+    "最終驗證閘門僅供 staff 內容治理與交付檢查使用；不儲存病人資料，也不核准臨床部署。 "
+    "Final Verification Gate is for staff governance and handoff checks only."
+)
+
+PROJECT_COMPLETION_SAFETY_COPY = (
+    "最終專案閘門只總結本機完成度；不建立帳號、不略過登入、不儲存密碼或病人資料，也不核准臨床使用。 "
+    "Final Project Gate summarizes local readiness only and does not approve clinical deployment."
+)
+
+DEPLOYMENT_STATUS_SAFETY_COPY = (
+    "部署狀態頁只回報下一步與健康檢查；不建立遠端、不登入 Render、不儲存憑證或病人資料，也不核准臨床正式使用。 "
+    "Deployment Operations Center reports next steps and health only; it does not authenticate, store credentials, or approve clinical production use."
+)
+
+LOCAL_LAUNCH_SAFETY_COPY = (
+    "啟動導覽只回報本機下一步；不建立帳號、不略過登入、不儲存密碼或病人資料，也不核准臨床部署。 "
+    "Local launch guidance only; it does not create accounts, bypass login, store patient data, or approve clinical deployment."
+)
+
+
 class ReviewerLoginView(LoginView):
     template_name = "cds_core/review_login.html"
     redirect_authenticated_user = False
@@ -193,6 +268,47 @@ def health_check(request):
     )
 
 
+def home_dashboard(request):
+    workflows = [
+        {
+            "title_zh": "頭痛",
+            "title_en": "Headache",
+            "description_zh": "用紅旗、偏頭痛、緊縮型與叢發型特徵，產生參考輸出與下一步問題。",
+            "description_en": "Use red flags and headache phenotype features to generate reference output and ask-next prompts.",
+            "url": reverse("cds_core:headache"),
+        },
+        {
+            "title_zh": "胸痛",
+            "title_en": "Chest pain",
+            "description_zh": "檢查急性冠心症、主動脈、肺栓塞與穩定型胸痛相關提示。",
+            "description_en": "Review prompts for ACS, aortic, pulmonary embolism, and stable exertional chest pain patterns.",
+            "url": reverse("cds_core:chest_pain"),
+        },
+        {
+            "title_zh": "腹痛",
+            "title_en": "Abdominal pain",
+            "description_zh": "依腹痛位置、腹膜刺激、感染、阻塞與懷孕相關風險整理下一步。",
+            "description_en": "Organize next steps by location, peritoneal signs, infection, obstruction, and pregnancy-related risks.",
+            "url": reverse("cds_core:abdominal_pain"),
+        },
+        {
+            "title_zh": "呼吸困難",
+            "title_en": "Dyspnea",
+            "description_zh": "以急性與慢性呼吸困難、低氧、胸痛、感染與心肺線索產生提示。",
+            "description_en": "Generate prompts from acute/chronic dyspnea, hypoxemia, chest pain, infection, and cardiopulmonary clues.",
+            "url": reverse("cds_core:dyspnea"),
+        },
+    ]
+    return render(
+        request,
+        "cds_core/home.html",
+        {
+            "workflows": workflows,
+            "safety_copy": CLINICIAN_SAFETY_COPY,
+        },
+    )
+
+
 def launch_guide(request):
     return render(
         request,
@@ -205,6 +321,7 @@ def launch_guide(request):
                 "Local launch guidance only; it does not create accounts, "
                 "bypass login, store patient data, or approve clinical deployment."
             ),
+            "safety_copy": LOCAL_LAUNCH_SAFETY_COPY,
         },
     )
 
@@ -235,6 +352,7 @@ def deployment_status(request):
 
 def headache_workspace(request):
     result = None
+    localize_intake_form_labels(HeadacheIntakeForm)
     form = HeadacheIntakeForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         result = evaluate_headache_pathway(form.cleaned_data)
@@ -251,6 +369,7 @@ def headache_workspace(request):
 
 def chest_pain_workspace(request):
     result = None
+    localize_intake_form_labels(ChestPainIntakeForm)
     form = ChestPainIntakeForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         result = evaluate_chest_pain_pathway(form.cleaned_data)
@@ -267,6 +386,7 @@ def chest_pain_workspace(request):
 
 def abdominal_pain_workspace(request):
     result = None
+    localize_intake_form_labels(AbdominalPainIntakeForm)
     form = AbdominalPainIntakeForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         result = evaluate_abdominal_pain_pathway(form.cleaned_data)
@@ -283,6 +403,7 @@ def abdominal_pain_workspace(request):
 
 def dyspnea_workspace(request):
     result = None
+    localize_intake_form_labels(DyspneaIntakeForm)
     form = DyspneaIntakeForm(request.POST or None)
     if request.method == "POST" and form.is_valid():
         result = evaluate_dyspnea_pathway(form.cleaned_data)

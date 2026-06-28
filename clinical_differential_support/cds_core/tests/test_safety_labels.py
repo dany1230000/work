@@ -8,10 +8,10 @@ class SafetyLabelTests(TestCase):
     def test_clinician_pages_include_safety_scope(self):
         response = self.client.get(reverse("cds_core:headache"))
 
-        self.assertContains(response, "限合格醫療專業人員使用")
-        self.assertContains(response, "非診斷或治療醫囑")
-        self.assertContains(response, "For qualified medical professionals")
-        self.assertContains(response, "not a diagnosis or treatment order")
+        self.assertContains(response, "僅供合格醫療專業人員")
+        self.assertContains(response, "請勿輸入病人識別資料")
+        self.assertContains(response, "For qualified medical professionals only")
+        self.assertContains(response, "not a diagnosis, treatment, medication, or clinical order")
 
     def test_clinician_pages_avoid_unsafe_labels(self):
         response = self.client.post(

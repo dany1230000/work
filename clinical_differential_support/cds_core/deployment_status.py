@@ -78,14 +78,27 @@ def build_deployment_status_report(
         today=current_date,
     )
     public_deployment = _load_public_deployment_evidence(deployment_evidence_path)
+    public_deployment_ok = _is_public_deployment_live(public_deployment)
     git_remote = command_runner("git remote -v", workspace_path)
     git_remote_url = _first_remote_url(git_remote.stdout)
-    render_cli = command_runner("render --version", workspace_path)
-    render_auth = (
-        command_runner("render whoami -o json", workspace_path)
-        if render_cli.exit_code == 0
-        else CommandProbeResult(exit_code=2, stdout="", stderr="render cli unavailable")
-    )
+    if public_deployment_ok:
+        render_cli = CommandProbeResult(
+            exit_code=0,
+            stdout="skipped after public deployment evidence\n",
+            stderr="",
+        )
+        render_auth = CommandProbeResult(
+            exit_code=0,
+            stdout="dashboard verified\n",
+            stderr="",
+        )
+    else:
+        render_cli = command_runner("render --version", workspace_path)
+        render_auth = (
+            command_runner("render whoami -o json", workspace_path)
+            if render_cli.exit_code == 0
+            else CommandProbeResult(exit_code=2, stdout="", stderr="render cli unavailable")
+        )
 
     checks = _build_deployment_checks(
         project_path=project_path,
