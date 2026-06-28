@@ -693,7 +693,7 @@ CONDITIONS = [
         "urgency": "routine",
         "summary_zh": "雙側壓迫感、非突發且無紅旗時可考慮。",
         "summary_en": "Bilateral pressure-like headache without sudden onset or red flags can fit this pattern.",
-        "signals": {},
+        "signals": {"severe_pain": 1, "fatigue": 1},
         "synonyms": ["tension headache", "tension-type headache"],
         "ask_next": ["確認沒有紅旗、藥物過度使用、視覺症狀或感染線索。 / Confirm no red flags, medication overuse, visual symptoms, or infection clues."],
         "source_ids": ["merck_professional"],

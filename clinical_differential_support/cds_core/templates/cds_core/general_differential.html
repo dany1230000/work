@@ -61,6 +61,35 @@
   </section>
 
   <section class="panel">
+    <h2>Catalog 治理 / Catalog governance</h2>
+    <p class="secondary">
+      {{ catalog_quality.summary.condition_count }} conditions,
+      {{ catalog_quality.summary.source_count }} sources,
+      {{ catalog_quality.summary.blocking_issue_count }} blocking issues.
+      Target: {{ catalog_quality.summary.expansion_target_condition_count }} reviewed entries.
+    </p>
+    <p>
+      {% if catalog_quality.summary.ready_for_public_reference %}
+        <span class="tag">ready for clinician reference</span>
+      {% else %}
+        <span class="tag">blocked</span>
+      {% endif %}
+      <span class="tag">{{ catalog_quality.summary.warning_count }} warnings</span>
+    </p>
+    <h3>下一步資料工作 / Next catalog work</h3>
+    <ol>
+      {% for action in catalog_quality.next_actions|slice:":3" %}
+        <li>
+          <strong>{{ action.title_zh }}</strong>
+          <span class="secondary">/ {{ action.title_en }}</span>
+          <br>
+          <span class="secondary">{{ action.reason_en }}</span>
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+  <section class="panel">
     <h2>參考輸出 / Reference Output</h2>
     {% if result %}
       <p class="secondary">

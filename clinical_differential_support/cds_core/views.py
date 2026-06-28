@@ -45,6 +45,9 @@ from .general_differential import (
     evaluate_general_differential,
     get_general_differential_catalog_summary,
 )
+from .differential_catalog_quality import (
+    build_general_differential_catalog_quality_report,
+)
 from .handoff import build_handoff_report_markdown
 from .local_launch import build_local_launch_status
 from .models import AuditEvent, CaseScenario, ClinicalItem, ReviewRecord, Source
@@ -339,6 +342,7 @@ def general_differential_workspace(request):
         {
             "form": form,
             "catalog_summary": get_general_differential_catalog_summary(),
+            "catalog_quality": build_general_differential_catalog_quality_report(),
             "result": result,
             "safety_copy": CLINICIAN_SAFETY_COPY,
         },

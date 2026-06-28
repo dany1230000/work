@@ -30,6 +30,9 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "starter catalog")
         self.assertContains(response, f"{len(CONDITIONS)} conditions")
         self.assertContains(response, f"{len(SOURCES)} sources")
+        self.assertContains(response, "Catalog governance")
+        self.assertContains(response, "0 blocking issues")
+        self.assertContains(response, "Convert static catalog to reviewed data import")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
