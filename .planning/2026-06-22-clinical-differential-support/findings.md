@@ -9,6 +9,7 @@
 - The repository has many existing dirty changes, especially under `tw_quant_v2`; this planning work should avoid touching unrelated files.
 - 2026-06-28 publish finding: the root Git HEAD tracks `tw_quant_v2/`, so a direct root push would publish unrelated trading research. The clinical app should be published from an isolated clinical-only tree instead.
 - 2026-06-28 deployment finding: Render Blueprint URL for the pushed clinical repository redirects to Render sign-in when no authenticated Dashboard session is available; deployment cannot continue autonomously without user account authorization.
+- 2026-06-28 deployment finding: once authenticated, the Render Blueprint page reads `render.yaml` from `dany1230000/work`, lists database `clinical-differential-support-db` and web service `clinical-differential-support`, and exposes a final `Deploy Blueprint` button that creates cloud resources.
 
 ## Shared Conversation Findings
 

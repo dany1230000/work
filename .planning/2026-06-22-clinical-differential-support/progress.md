@@ -1180,3 +1180,6 @@
 - Render redirected to `https://dashboard.render.com/login?next=%2Fblueprint%2Fnew%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2Fdany1230000%2Fwork`.
 - Stopped at the Render sign-in page because continuing requires Render account login, GitHub OAuth, account creation, or credential/API-key handling.
 - Kept the Render sign-in page open for the user to authenticate and continue the Blueprint flow.
+- The browser later reached the Render `New Blueprint` page for `dany1230000/work`, showing it will create database `clinical-differential-support-db` and web service `clinical-differential-support`.
+- Filled Blueprint Name with `clinical-differential-support`.
+- Stopped before clicking `Deploy Blueprint` because that button creates Render cloud resources and may affect account costs; explicit user confirmation is required.

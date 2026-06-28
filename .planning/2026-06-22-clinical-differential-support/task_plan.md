@@ -150,12 +150,13 @@ Status: complete
 - Stop before Render CLI installation, Render login, Render deployment, cloud account creation, or secret handling.
 
 ### Phase 16: Render Dashboard Sign-In Handoff
-Status: blocked_external
+Status: awaiting_confirmation
 
 - Open the Render Blueprint deeplink for the pushed clinical-only GitHub repository.
 - Confirm whether the Render Dashboard can create the Blueprint without additional authentication.
 - Stop at Render sign-in, GitHub OAuth, account creation, or any credential/API-key prompt.
 - Keep the Render page available for the user to complete authentication.
+- Stop before clicking `Deploy Blueprint` because that creates Render cloud resources and can affect account costs.
 - After the user authenticates and applies the Blueprint, verify the public deployment health endpoint and deployment logs.
 
 ## Decisions
@@ -178,6 +179,7 @@ Status: blocked_external
 | 2026-06-28 | Configure the user-provided GitHub URL as `origin` without pushing. | The existing remote assistant requires an explicit `--push` flag for push operations; the user supplied a URL but not a push instruction. |
 | 2026-06-28 | Publish through an isolated clinical-only Git tree instead of pushing the root repository history. | The current root HEAD tracks `tw_quant_v2/`; a direct push would publish unrelated trading research and violate the scoped clinical deployment boundary. |
 | 2026-06-28 | Stop Render automation at the sign-in page. | Render deployment now requires user account authentication and possibly GitHub OAuth; credentials and account authorization are outside the safe autonomous boundary. |
+| 2026-06-28 | Require explicit confirmation before clicking `Deploy Blueprint`. | The Render page states it will create a PostgreSQL database and web service, and future Blueprint syncs may affect costs. |
 
 ## Errors Encountered
 
