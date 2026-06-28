@@ -1,6 +1,8 @@
 from django.test import TestCase
 from django.urls import reverse
 
+from cds_core.differential_catalog import CONDITIONS, SOURCES
+
 
 class GeneralDifferentialUiTests(TestCase):
     fixtures = [
@@ -26,6 +28,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "步驟 4/4")
         self.assertContains(response, "不包含病人識別資料")
         self.assertContains(response, "starter catalog")
+        self.assertContains(response, f"{len(CONDITIONS)} conditions")
+        self.assertContains(response, f"{len(SOURCES)} sources")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -51,4 +55,6 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "下一步要問 / Ask next")
         self.assertContains(response, "American Heart Association")
         self.assertContains(response, "starter catalog")
+        self.assertContains(response, f"{len(CONDITIONS)} conditions")
+        self.assertContains(response, f"{len(SOURCES)} sources")
         self.assertContains(response, "不是 diagnosis order")

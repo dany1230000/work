@@ -32,7 +32,12 @@
 <div class="grid">
   <section class="panel">
     <h2>輸入資料 / Input</h2>
-    <p class="secondary">Coverage: starter catalog. Use this to organize first-pass differential diagnosis, then verify with clinical judgment and local standards.</p>
+    <p class="secondary">
+      Coverage: starter catalog {{ catalog_summary.catalog_version }}
+      - {{ catalog_summary.condition_count }} conditions,
+      {{ catalog_summary.source_count }} sources.
+      Use this to organize first-pass differential diagnosis, then verify with clinical judgment and local standards.
+    </p>
     <form method="post">
       {% csrf_token %}
       <div class="field">
@@ -59,7 +64,9 @@
     <h2>參考輸出 / Reference Output</h2>
     {% if result %}
       <p class="secondary">
-        Coverage: starter catalog {{ result.coverage.catalog_version }}.
+        Coverage: starter catalog {{ result.coverage.catalog_version }}
+        - {{ result.coverage.condition_count }} conditions,
+        {{ result.coverage.source_count }} sources.
         {{ result.coverage.limitation_en }}
       </p>
       <p>{{ result.coverage.limitation_zh }}</p>

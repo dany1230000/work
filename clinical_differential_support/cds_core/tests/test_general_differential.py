@@ -65,3 +65,20 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "stroke_tia")
         self.assertTrue(top["matched_text_search"])
         self.assertEqual(top["urgency"], "emergent")
+
+    def test_catalog_has_broad_cross_system_seed_conditions(self):
+        result = evaluate_general_differential({"query": "", "findings": []})
+
+        self.assertGreaterEqual(result["coverage"]["condition_count"], 50)
+        expectations = [
+            ("migraine", "migraine"),
+            ("dvt", "deep_vein_thrombosis"),
+            ("pancreatitis", "acute_pancreatitis"),
+            ("thyroid storm", "thyroid_storm"),
+            ("suicide risk", "suicide_self_harm_risk"),
+            ("heat stroke", "heat_stroke"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)

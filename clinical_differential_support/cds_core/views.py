@@ -41,7 +41,10 @@ from .governance import (
     build_review_item_detail,
     build_review_queue,
 )
-from .general_differential import evaluate_general_differential
+from .general_differential import (
+    evaluate_general_differential,
+    get_general_differential_catalog_summary,
+)
 from .handoff import build_handoff_report_markdown
 from .local_launch import build_local_launch_status
 from .models import AuditEvent, CaseScenario, ClinicalItem, ReviewRecord, Source
@@ -335,6 +338,7 @@ def general_differential_workspace(request):
         "cds_core/general_differential.html",
         {
             "form": form,
+            "catalog_summary": get_general_differential_catalog_summary(),
             "result": result,
             "safety_copy": CLINICIAN_SAFETY_COPY,
         },

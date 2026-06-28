@@ -13,6 +13,14 @@ from .differential_catalog import (
 )
 
 
+def get_general_differential_catalog_summary() -> dict[str, Any]:
+    return {
+        "catalog_version": CATALOG_VERSION,
+        "condition_count": len(CONDITIONS),
+        "source_count": len(SOURCES),
+    }
+
+
 def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any]:
     selected_findings = {
         str(finding)
@@ -57,9 +65,9 @@ def _score_condition(
         finding for finding in selected_findings if finding in signals
     ]
     score = sum(signals[finding] for finding in matched_findings)
-    matched_text_search = _matches_query(condition, query)
-    if matched_text_search:
-        score += 7
+    query_match_score = _query_match_score(condition, query)
+    matched_text_search = query_match_score > 0
+    score += query_match_score
 
     return {
         "slug": condition["slug"],
@@ -77,16 +85,29 @@ def _score_condition(
     }
 
 
-def _matches_query(condition: dict[str, Any], query: str) -> bool:
+def _query_match_score(condition: dict[str, Any], query: str) -> int:
     if not query:
-        return False
-    haystacks = [
-        condition["slug"].replace("_", " "),
+        return 0
+    normalized_query = query.strip().lower()
+    synonyms = [synonym.lower() for synonym in condition.get("synonyms", [])]
+    names = [
         condition["name_en"].lower(),
         condition["name_zh"].lower(),
-        *(synonym.lower() for synonym in condition.get("synonyms", [])),
     ]
-    return any(query in value or value in query for value in haystacks)
+    slug_text = condition["slug"].replace("_", " ")
+
+    if normalized_query in synonyms:
+        return 12
+    if normalized_query in names or normalized_query == slug_text:
+        return 11
+
+    tokenized_terms = [slug_text, *names, *synonyms]
+    for term in tokenized_terms:
+        if normalized_query in term.split():
+            return 9
+    if any(normalized_query in term or term in normalized_query for term in tokenized_terms):
+        return 7
+    return 0
 
 
 def _build_global_ask_next(
