@@ -1169,3 +1169,14 @@
 - Pushed isolated `master` to `https://github.com/dany1230000/work.git`; remote `refs/heads/master` resolved to `5d52173a6a7e18f5545b68aa304c9e1119f67294`.
 - Verified remote `origin/master` tree has 203 tracked files and no `tw_quant_v2/`, `shop_report_lite/`, root `AGENTS.md`, root `pyproject.toml`, SQLite DB, or generated `verification_artifacts/` files.
 - Marked Phase 15 complete locally; a final completion-record sync to the isolated publish repo remains before final verification.
+
+## 2026-06-28 Render Dashboard Handoff Update
+
+- User asked to continue after the clinical-only GitHub publish.
+- Verified Render CLI is not installed locally: `render --version` failed with command-not-found.
+- Verified `https://github.com/dany1230000/work.git` has remote `refs/heads/master` at `4ac3d5987917eb134da62c86547663b59026945d`.
+- Verified Deployment Status remains `ready_for_render_cli_install`; local final gate, Render Blueprint, runtime dependencies, Git publish package, and Git remote checks all passed.
+- Opened the Render Blueprint deeplink: `https://dashboard.render.com/blueprint/new?repo=https://github.com/dany1230000/work`.
+- Render redirected to `https://dashboard.render.com/login?next=%2Fblueprint%2Fnew%3Frepo%3Dhttps%3A%2F%2Fgithub.com%2Fdany1230000%2Fwork`.
+- Stopped at the Render sign-in page because continuing requires Render account login, GitHub OAuth, account creation, or credential/API-key handling.
+- Kept the Render sign-in page open for the user to authenticate and continue the Blueprint flow.

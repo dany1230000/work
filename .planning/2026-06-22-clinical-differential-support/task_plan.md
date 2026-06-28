@@ -149,6 +149,15 @@ Status: complete
 - Verify local Publish Status remains `publish_package_ready`, Final Check remains `final_complete`, and Deployment Status stops at the Render CLI/Dashboard handoff.
 - Stop before Render CLI installation, Render login, Render deployment, cloud account creation, or secret handling.
 
+### Phase 16: Render Dashboard Sign-In Handoff
+Status: blocked_external
+
+- Open the Render Blueprint deeplink for the pushed clinical-only GitHub repository.
+- Confirm whether the Render Dashboard can create the Blueprint without additional authentication.
+- Stop at Render sign-in, GitHub OAuth, account creation, or any credential/API-key prompt.
+- Keep the Render page available for the user to complete authentication.
+- After the user authenticates and applies the Blueprint, verify the public deployment health endpoint and deployment logs.
+
 ## Decisions
 
 | Date | Decision | Rationale |
@@ -168,6 +177,7 @@ Status: complete
 | 2026-06-28 | Stop remote/deploy automation at the missing Git remote URL and missing deployment tooling. | Render requires a pushed Git repo, `gh` and Render CLI are missing locally, and the available GitHub connector cannot create a new repository. |
 | 2026-06-28 | Configure the user-provided GitHub URL as `origin` without pushing. | The existing remote assistant requires an explicit `--push` flag for push operations; the user supplied a URL but not a push instruction. |
 | 2026-06-28 | Publish through an isolated clinical-only Git tree instead of pushing the root repository history. | The current root HEAD tracks `tw_quant_v2/`; a direct push would publish unrelated trading research and violate the scoped clinical deployment boundary. |
+| 2026-06-28 | Stop Render automation at the sign-in page. | Render deployment now requires user account authentication and possibly GitHub OAuth; credentials and account authorization are outside the safe autonomous boundary. |
 
 ## Errors Encountered
 
