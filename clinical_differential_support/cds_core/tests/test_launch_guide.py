@@ -1,4 +1,7 @@
+from django.core.cache import cache
+from django.db import connection
 from django.test import TestCase
+from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 
 
@@ -9,6 +12,9 @@ class LaunchGuidePageTests(TestCase):
         "abdominal_pain_mvp.json",
         "dyspnea_mvp.json",
     ]
+
+    def setUp(self):
+        cache.clear()
 
     def test_public_launch_guide_renders_numbered_steps_and_current_action(self):
         response = self.client.get(reverse("cds_core:launch_guide"))
@@ -38,7 +44,22 @@ class LaunchGuidePageTests(TestCase):
         self.assertContains(response, "現在要做 / Do this now")
         self.assertContains(response, "Final Verification Gate")
         self.assertContains(response, "Reviewer Login")
+        self.assertContains(response, "refresh=1")
         self.assertNotIn("嚙", body)
+
+    def test_launch_guide_reuses_cached_report_on_normal_navigation(self):
+        url = reverse("cds_core:launch_guide")
+
+        self.client.get(url)
+        with CaptureQueriesContext(connection) as queries:
+            response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertLess(
+            len(queries),
+            80,
+            "Launch Guide should reuse the cached status report on ordinary navigation.",
+        )
 
     def test_launch_guide_is_linked_from_shared_navigation(self):
         response = self.client.get(reverse("cds_core:launch_guide"))

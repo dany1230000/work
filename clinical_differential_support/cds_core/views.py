@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.core.cache import cache
 from django.db import DatabaseError
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -214,6 +215,11 @@ LOCAL_LAUNCH_SAFETY_COPY = (
 )
 
 
+STATUS_REPORT_CACHE_SECONDS = 300
+LAUNCH_GUIDE_REPORT_CACHE_KEY = "cds_core:launch_guide_report:v1"
+DEPLOYMENT_STATUS_REPORT_CACHE_KEY = "cds_core:deployment_status_report:v1"
+
+
 class ReviewerLoginView(LoginView):
     template_name = "cds_core/review_login.html"
     redirect_authenticated_user = False
@@ -309,12 +315,39 @@ def home_dashboard(request):
     )
 
 
+def _refresh_requested(request):
+    return request.GET.get("refresh") == "1"
+
+
+def _cached_status_report(cache_key, refresh_requested, report_builder):
+    if not refresh_requested:
+        cached_report = cache.get(cache_key)
+        if cached_report is not None:
+            return cached_report, {
+                "cache_status": "cached",
+                "ttl_seconds": STATUS_REPORT_CACHE_SECONDS,
+            }
+
+    report = report_builder()
+    cache.set(cache_key, report, STATUS_REPORT_CACHE_SECONDS)
+    return report, {
+        "cache_status": "refreshed" if refresh_requested else "generated",
+        "ttl_seconds": STATUS_REPORT_CACHE_SECONDS,
+    }
+
+
 def launch_guide(request):
+    report, report_cache = _cached_status_report(
+        LAUNCH_GUIDE_REPORT_CACHE_KEY,
+        _refresh_requested(request),
+        build_local_launch_status,
+    )
     return render(
         request,
         "cds_core/launch_guide.html",
         {
-            "report": build_local_launch_status(),
+            "report": report,
+            "report_cache": report_cache,
             "safety_copy": (
                 "本頁只提供本機啟動與治理導覽，不建立帳號、不略過登入、"
                 "不包含病人資料，也不是臨床部署核准。 "
@@ -338,13 +371,19 @@ def completion_gate(request):
 
 
 def deployment_status(request):
+    report, report_cache = _cached_status_report(
+        DEPLOYMENT_STATUS_REPORT_CACHE_KEY,
+        _refresh_requested(request),
+        lambda: build_deployment_status_report(
+            deployment_evidence_path=default_public_deployment_evidence_path()
+        ),
+    )
     return render(
         request,
         "cds_core/deployment_status.html",
         {
-            "report": build_deployment_status_report(
-                deployment_evidence_path=default_public_deployment_evidence_path()
-            ),
+            "report": report,
+            "report_cache": report_cache,
             "safety_copy": DEPLOYMENT_STATUS_SAFETY_COPY,
         },
     )

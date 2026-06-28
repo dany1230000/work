@@ -45,6 +45,10 @@ class StepwiseUiTests(TestCase):
         body = response.content.decode("utf-8")
 
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'id="app-main"')
+        self.assertContains(response, "data-fast-nav-root")
+        self.assertContains(response, "data-fast-nav-progress")
+        self.assertContains(response, "fetch(targetUrl")
         self.assertContains(response, "工作台 / Dashboard")
         self.assertContains(response, "下一步 / Next Steps")
         self.assertContains(response, "頭痛 / Headache")

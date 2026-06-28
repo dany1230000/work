@@ -13,6 +13,11 @@
   <p class="secondary">
     This page tells you the next deployment step. It does not deploy publicly by itself.
   </p>
+  <p class="secondary">
+    報告狀態 / Report cache:
+    {{ report_cache.cache_status }} ({{ report_cache.ttl_seconds }}s)
+  </p>
+  <p><a class="button-link secondary-link" href="?refresh=1">重新整理狀態 / Refresh status</a></p>
   <div class="command-row">
     <div id="deploy-status-command" class="command">{{ report.windows_entry_command }}</div>
     <button type="button" class="secondary-button" data-copy-target="deploy-status-command">可複製命令 / Copy Command</button>

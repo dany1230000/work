@@ -7,7 +7,10 @@ from pathlib import Path
 from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
+from django.core.cache import cache
+from django.db import connection
 from django.test import TestCase
+from django.test.utils import CaptureQueriesContext
 from django.urls import reverse
 
 
@@ -18,6 +21,9 @@ class DeploymentStatusTests(TestCase):
         "abdominal_pain_mvp.json",
         "dyspnea_mvp.json",
     ]
+
+    def setUp(self):
+        cache.clear()
 
     def create_staff_reviewer(self):
         return get_user_model().objects.create_user(
@@ -392,7 +398,22 @@ class DeploymentStatusTests(TestCase):
         self.assertContains(response, "Deployment Checks")
         self.assertContains(response, "Next Deployment Action")
         self.assertContains(response, "Deploy_Status.cmd")
+        self.assertContains(response, "refresh=1")
         self.assertNotContains(response, "DJANGO_SUPERUSER_PASSWORD")
+
+    def test_deployment_status_reuses_cached_report_on_normal_navigation(self):
+        url = reverse("cds_core:deployment_status")
+
+        self.client.get(url)
+        with CaptureQueriesContext(connection) as queries:
+            response = self.client.get(url)
+
+        self.assertEqual(response.status_code, 200)
+        self.assertLess(
+            len(queries),
+            80,
+            "Deployment Status should reuse the cached status report on ordinary navigation.",
+        )
 
     def test_docs_link_to_deployment_status_entrypoints(self):
         project_dir = Path(__file__).resolve().parents[2]

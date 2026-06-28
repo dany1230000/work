@@ -198,6 +198,32 @@
       margin-bottom: .5rem;
     }
     .message.error { background: #fff4f4; border-left-color: var(--danger); }
+    .fast-nav-progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 1000;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+      pointer-events: none;
+    }
+    .fast-nav-progress::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 100%;
+      background: #56c7bc;
+      transition: width .18s ease, opacity .18s ease;
+      opacity: 0;
+    }
+    body.is-fast-loading .fast-nav-progress::before {
+      width: 68%;
+      opacity: 1;
+    }
+    body.is-fast-loaded .fast-nav-progress::before {
+      width: 100%;
+      opacity: 0;
+    }
     .source { font-size: .9rem; color: #324155; }
     .secondary { color: var(--muted); font-size: .94rem; margin-top: -.25rem; }
     .auth-panel { max-width: 520px; }
@@ -277,6 +303,7 @@
   </style>
 </head>
 <body>
+  <div class="fast-nav-progress" data-fast-nav-progress aria-hidden="true"></div>
   <header>
     <div class="brand-row">
       <div>
@@ -307,7 +334,7 @@
       {% endif %}
     </nav>
   </header>
-  <main>
+  <main id="app-main" data-fast-nav-root tabindex="-1">
     {% if messages %}
       <div class="messages">
         {% for message in messages %}
@@ -317,5 +344,132 @@
     {% endif %}
     {% block content %}{% endblock %}
   </main>
+  <script>
+  (function () {
+    var main = document.querySelector("[data-fast-nav-root]");
+    var progress = document.querySelector("[data-fast-nav-progress]");
+    if (!main || !window.fetch || !window.DOMParser || !window.history) {
+      return;
+    }
+
+    function sameOriginUrl(rawUrl) {
+      try {
+        return new URL(rawUrl, window.location.href);
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function shouldHandleLink(event, link) {
+      if (
+        event.defaultPrevented ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        event.button !== 0 ||
+        link.target ||
+        link.hasAttribute("download") ||
+        link.dataset.noFastNav === "true"
+      ) {
+        return false;
+      }
+      var url = sameOriginUrl(link.href);
+      if (!url || url.origin !== window.location.origin) {
+        return false;
+      }
+      if (url.hash && url.pathname === window.location.pathname && url.search === window.location.search) {
+        return false;
+      }
+      if (/\/review\/exports\//.test(url.pathname) || /\.(json|csv|zip|md)$/i.test(url.pathname)) {
+        return false;
+      }
+      return true;
+    }
+
+    function startProgress() {
+      if (!progress) {
+        return;
+      }
+      document.body.classList.remove("is-fast-loaded");
+      document.body.classList.add("is-fast-loading");
+    }
+
+    function stopProgress() {
+      if (!progress) {
+        return;
+      }
+      document.body.classList.remove("is-fast-loading");
+      document.body.classList.add("is-fast-loaded");
+      window.setTimeout(function () {
+        document.body.classList.remove("is-fast-loaded");
+      }, 220);
+    }
+
+    function replaceMainFromHtml(html, targetUrl, pushHistory) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var nextMain = doc.querySelector("[data-fast-nav-root]");
+      if (!nextMain) {
+        window.location.href = targetUrl;
+        return;
+      }
+      main.innerHTML = nextMain.innerHTML;
+      document.title = doc.title || document.title;
+      if (pushHistory) {
+        window.history.pushState({ fastNav: true }, "", targetUrl);
+      }
+      main.focus({ preventScroll: true });
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    function loadIntoMain(targetUrl, pushHistory) {
+      startProgress();
+      fetch(targetUrl, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-Fast-Nav": "1"
+        },
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Navigation failed");
+          }
+          return response.text();
+        })
+        .then(function (html) {
+          replaceMainFromHtml(html, targetUrl, pushHistory);
+        })
+        .catch(function () {
+          window.location.href = targetUrl;
+        })
+        .finally(stopProgress);
+    }
+
+    document.addEventListener("click", function (event) {
+      var copyButton = event.target.closest("[data-copy-target]");
+      if (copyButton && navigator.clipboard) {
+        var target = document.getElementById(copyButton.getAttribute("data-copy-target"));
+        if (target) {
+          navigator.clipboard.writeText(target.textContent.trim()).then(function () {
+            copyButton.textContent = "已複製 / Copied";
+          });
+          return;
+        }
+      }
+
+      var link = event.target.closest("a[href]");
+      if (!link || !shouldHandleLink(event, link)) {
+        return;
+      }
+      event.preventDefault();
+      loadIntoMain(link.href, true);
+    });
+
+    window.addEventListener("popstate", function () {
+      loadIntoMain(window.location.href, false);
+    });
+  })();
+  </script>
 </body>
 </html>
