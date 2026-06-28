@@ -32,6 +32,8 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "clinical_differential_support.s
 from django.conf import settings
 print(json.dumps({
     "allowed_hosts": list(settings.ALLOWED_HOSTS),
+    "cache_backend": settings.CACHES["default"]["BACKEND"],
+    "cache_location": settings.CACHES["default"].get("LOCATION", ""),
     "csrf_trusted_origins": list(getattr(settings, "CSRF_TRUSTED_ORIGINS", [])),
     "database_engine": settings.DATABASES["default"]["ENGINE"],
     "debug": settings.DEBUG,
@@ -72,6 +74,11 @@ print(json.dumps({
         self.assertIn("clinical.example.com", payload["allowed_hosts"])
         self.assertIn("clinical-render.onrender.com", payload["allowed_hosts"])
         self.assertEqual(payload["database_engine"], "django.db.backends.postgresql")
+        self.assertEqual(
+            payload["cache_backend"],
+            "django.core.cache.backends.db.DatabaseCache",
+        )
+        self.assertEqual(payload["cache_location"], "cds_status_cache")
         self.assertIn("whitenoise.middleware.WhiteNoiseMiddleware", payload["middleware"])
         self.assertTrue(payload["static_root"].endswith("staticfiles"))
         self.assertEqual(
@@ -139,6 +146,7 @@ print(json.dumps({
             "pip install -r clinical_differential_support/requirements.txt",
             "collectstatic --no-input",
             "migrate --run-syncdb",
+            "createcachetable",
             "loaddata headache_mvp chest_pain_mvp abdominal_pain_mvp dyspnea_mvp",
         ]:
             with self.subTest(expected=expected):
