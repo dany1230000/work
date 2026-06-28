@@ -32,19 +32,27 @@ def main(argv=None, command_runner=None):
     )
     parser.add_argument("--base-url", default="http://127.0.0.1:8000")
     parser.add_argument("--evidence-path", default=None)
+    parser.add_argument("--deployment-evidence-path", default=None)
     parser.add_argument("--json", action="store_true")
     args = parser.parse_args(argv)
 
     ensure_django()
     from cds_core.deployment_status import (
         build_deployment_status_report,
+        default_public_deployment_evidence_path,
         default_command_runner,
         format_deployment_status_report,
     )
 
+    deployment_evidence_path = (
+        Path(args.deployment_evidence_path)
+        if args.deployment_evidence_path
+        else default_public_deployment_evidence_path()
+    )
     report = build_deployment_status_report(
         base_url=args.base_url,
         evidence_path=args.evidence_path,
+        deployment_evidence_path=deployment_evidence_path,
         command_runner=command_runner or default_command_runner,
     )
     if args.json:

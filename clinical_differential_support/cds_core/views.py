@@ -8,7 +8,10 @@ from django.urls import reverse_lazy
 from .auth import staff_required
 from .bundle import build_handoff_bundle_zip
 from .coverage_depth import build_coverage_depth_report
-from .deployment_status import build_deployment_status_report
+from .deployment_status import (
+    build_deployment_status_report,
+    default_public_deployment_evidence_path,
+)
 from .evidence import build_release_evidence_package
 from .exports import (
     CLINICAL_ITEM_EXPORT_HEADERS,
@@ -222,7 +225,9 @@ def deployment_status(request):
         request,
         "cds_core/deployment_status.html",
         {
-            "report": build_deployment_status_report(),
+            "report": build_deployment_status_report(
+                deployment_evidence_path=default_public_deployment_evidence_path()
+            ),
             "safety_copy": DEPLOYMENT_STATUS_SAFETY_COPY,
         },
     )

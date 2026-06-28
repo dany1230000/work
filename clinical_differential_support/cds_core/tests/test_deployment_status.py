@@ -63,6 +63,28 @@ class DeploymentStatusTests(TestCase):
         )
         return tmp_dir, evidence_path
 
+    def public_deploy_evidence_path(self):
+        tmp_dir = tempfile.TemporaryDirectory()
+        evidence_path = Path(tmp_dir.name) / "render-public-deployment.json"
+        evidence_path.write_text(
+            json.dumps(
+                {
+                    "artifact_type": "render_public_deployment_verification",
+                    "status": "live",
+                    "service_url": "https://clinical-differential-support.onrender.com",
+                    "health_url": "https://clinical-differential-support.onrender.com/health/",
+                    "http_status": 200,
+                    "checks": {"database": "ok"},
+                    "render_service_id": "srv-test",
+                    "render_deploy_id": "dep-test",
+                    "commit": "abc1234",
+                    "verified_at": "2026-06-28T11:24:51+08:00",
+                }
+            ),
+            encoding="utf-8",
+        )
+        return tmp_dir, evidence_path
+
     def runner(
         self,
         git_remote_stdout="",
@@ -154,6 +176,35 @@ class DeploymentStatusTests(TestCase):
         self.assertEqual(report["status"], "ready_for_render_cli_install")
         self.assertEqual(report["next_action"]["action_id"], "install_or_use_render_dashboard")
         self.assertIn("Render Dashboard", report["next_action"]["detail_en"])
+
+    def test_report_reports_public_deploy_live_when_verified_evidence_exists(self):
+        from cds_core.deployment_status import build_deployment_status_report
+
+        self.create_staff_reviewer()
+        tmp_dir, final_evidence_path = self.verified_evidence_path()
+        public_tmp_dir, public_evidence_path = self.public_deploy_evidence_path()
+        self.addCleanup(tmp_dir.cleanup)
+        self.addCleanup(public_tmp_dir.cleanup)
+
+        report = build_deployment_status_report(
+            today=date(2026, 6, 28),
+            evidence_path=final_evidence_path,
+            deployment_evidence_path=public_evidence_path,
+            command_runner=self.runner(
+                git_remote_stdout="origin https://github.com/example/cds.git (fetch)",
+                render_version_exit=1,
+            ),
+        )
+
+        checks = {check["check_id"]: check for check in report["deployment_checks"]}
+        self.assertEqual(report["status"], "public_deploy_live")
+        self.assertEqual(report["exit_code"], 0)
+        self.assertEqual(report["next_action"]["action_id"], "monitor_public_deploy")
+        self.assertEqual(report["external_blockers"], [])
+        self.assertEqual(checks["public_deploy"]["status"], "passed")
+        self.assertEqual(checks["public_deploy"]["value"], "https://clinical-differential-support.onrender.com")
+        self.assertEqual(checks["render_cli"]["status"], "skipped")
+        self.assertEqual(report["public_deployment"]["render_deploy_id"], "dep-test")
 
     def test_report_advances_to_dashboard_when_remote_cli_and_auth_exist(self):
         from cds_core.deployment_status import build_deployment_status_report

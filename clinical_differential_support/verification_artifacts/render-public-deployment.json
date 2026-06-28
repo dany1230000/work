@@ -1,0 +1,23 @@
+{
+  "artifact_type": "render_public_deployment_verification",
+  "status": "live",
+  "service": "clinical_differential_support",
+  "service_url": "https://clinical-differential-support.onrender.com",
+  "health_url": "https://clinical-differential-support.onrender.com/health/",
+  "http_status": 200,
+  "checks": {
+    "database": "ok"
+  },
+  "render_service_id": "srv-d9092tf7f7vs73cg0eg0",
+  "render_deploy_id": "dep-d9097fsvikkc738r8il0",
+  "commit": "5edd4bff33090a16d1fa511e29ed1b8bf3638cf6",
+  "remote_url": "https://github.com/dany1230000/work.git",
+  "branch": "master",
+  "verified_at": "2026-06-28T11:24:51+08:00",
+  "verified_by": "Render Dashboard logs and public health endpoint",
+  "safety_scope": {
+    "contains_credentials": false,
+    "contains_patient_data": false,
+    "approves_clinical_production_use": false
+  }
+}
