@@ -26,6 +26,22 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
             "convert_static_catalog_to_reviewed_data_import",
         )
 
+    def test_pulmonary_bucket_counts_respiratory_catalog_entries(self):
+        report = build_general_differential_catalog_quality_report()
+        pulmonary = report["system_buckets"]["Pulmonary"]
+
+        self.assertGreaterEqual(pulmonary["condition_count"], 6)
+        self.assertEqual(pulmonary["gap_count"], 0)
+        self.assertEqual(pulmonary["status"], "target_met")
+
+    def test_hematology_oncology_bucket_reaches_starter_depth(self):
+        report = build_general_differential_catalog_quality_report()
+        hematology_oncology = report["system_buckets"]["Hematology/Oncology"]
+
+        self.assertGreaterEqual(hematology_oncology["condition_count"], 6)
+        self.assertEqual(hematology_oncology["gap_count"], 0)
+        self.assertEqual(hematology_oncology["status"], "target_met")
+
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])
         duplicate = deepcopy(CONDITIONS[1])

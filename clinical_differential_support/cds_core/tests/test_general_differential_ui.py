@@ -36,6 +36,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "export_general_differential_review_seed")
         self.assertContains(response, "validate_general_differential_review_seed")
         self.assertContains(response, "export_general_differential_batch_template")
+        self.assertContains(response, "Recent cancer treatment")
+        self.assertContains(response, "Easy bruising or bleeding")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 

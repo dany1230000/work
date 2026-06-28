@@ -105,7 +105,11 @@ def _query_match_score(condition: dict[str, Any], query: str) -> int:
     for term in tokenized_terms:
         if normalized_query in term.split():
             return 9
-    if any(normalized_query in term or term in normalized_query for term in tokenized_terms):
+    if any(
+        normalized_query in term
+        or (len(term) >= 4 and term in normalized_query)
+        for term in tokenized_terms
+    ):
         return 7
     return 0
 

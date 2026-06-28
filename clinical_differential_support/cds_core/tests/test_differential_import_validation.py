@@ -4,6 +4,7 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import SimpleTestCase
 
+from cds_core.differential_catalog import CONDITIONS, SOURCES
 from cds_core.differential_catalog_import import (
     build_general_differential_batch_template,
     validate_general_differential_review_payload,
@@ -20,8 +21,8 @@ class GeneralDifferentialImportValidationTests(SimpleTestCase):
         report = validate_general_differential_review_payload(payload)
 
         self.assertTrue(report["valid"])
-        self.assertEqual(report["summary"]["condition_count"], 57)
-        self.assertEqual(report["summary"]["source_count"], 8)
+        self.assertEqual(report["summary"]["condition_count"], len(CONDITIONS))
+        self.assertEqual(report["summary"]["source_count"], len(SOURCES))
         self.assertEqual(report["summary"]["blocking_issue_count"], 0)
 
     def test_validator_rejects_patient_data_and_unknown_source(self):
@@ -59,5 +60,5 @@ class GeneralDifferentialImportValidationCommandTests(SimpleTestCase):
 
         output = stdout.getvalue()
         self.assertIn("READY", output)
-        self.assertIn("57 conditions", output)
+        self.assertIn(f"{len(CONDITIONS)} conditions", output)
         self.assertIn("blocking issues: 0", output)

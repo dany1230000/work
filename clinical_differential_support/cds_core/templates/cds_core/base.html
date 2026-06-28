@@ -314,7 +314,7 @@
         <span class="nav-user">Reviewer: {{ request.user.username }}</span>
       {% endif %}
     </div>
-    <nav aria-label="Primary">
+    <nav aria-label="Primary" data-fast-nav-prefetch="true">
       <a href="{% url 'cds_core:home' %}">工作台 / Dashboard</a>
       <a href="{% url 'cds_core:general_differential' %}">通用鑑別 / General differential</a>
       <a href="{% url 'cds_core:headache' %}">頭痛 / Headache</a>
@@ -349,6 +349,16 @@
   (function () {
     var main = document.querySelector("[data-fast-nav-root]");
     var progress = document.querySelector("[data-fast-nav-progress]");
+    var FAST_NAV_CACHE_TTL_MS = 120000;
+    var fastNavCache = new Map();
+    var PREFETCH_PATHS = {
+      "/": true,
+      "/differential/": true,
+      "/headache/": true,
+      "/chest-pain/": true,
+      "/abdominal-pain/": true,
+      "/dyspnea/": true
+    };
     if (!main || !window.fetch || !window.DOMParser || !window.history) {
       return;
     }
@@ -359,6 +369,55 @@
       } catch (error) {
         return null;
       }
+    }
+
+    function cacheKey(rawUrl) {
+      var url = sameOriginUrl(rawUrl);
+      if (!url) {
+        return null;
+      }
+      return url.pathname + url.search;
+    }
+
+    function isCacheableUrl(rawUrl) {
+      var url = sameOriginUrl(rawUrl);
+      if (!url || url.origin !== window.location.origin) {
+        return false;
+      }
+      if (url.search || !PREFETCH_PATHS[url.pathname]) {
+        return false;
+      }
+      return true;
+    }
+
+    function getCachedPage(rawUrl) {
+      if (!isCacheableUrl(rawUrl)) {
+        return null;
+      }
+      var key = cacheKey(rawUrl);
+      var cachedPage = key ? fastNavCache.get(key) : null;
+      if (!cachedPage) {
+        return null;
+      }
+      if (Date.now() - cachedPage.cachedAt > FAST_NAV_CACHE_TTL_MS) {
+        fastNavCache.delete(key);
+        return null;
+      }
+      return cachedPage;
+    }
+
+    function rememberPage(rawUrl, html) {
+      if (!isCacheableUrl(rawUrl)) {
+        return;
+      }
+      var key = cacheKey(rawUrl);
+      if (!key) {
+        return;
+      }
+      fastNavCache.set(key, {
+        cachedAt: Date.now(),
+        html: html
+      });
     }
 
     function shouldHandleLink(event, link) {
@@ -414,6 +473,7 @@
         window.location.href = targetUrl;
         return;
       }
+      rememberPage(targetUrl, html);
       main.innerHTML = nextMain.innerHTML;
       document.title = doc.title || document.title;
       if (pushHistory) {
@@ -424,6 +484,11 @@
     }
 
     function loadIntoMain(targetUrl, pushHistory) {
+      var cachedPage = getCachedPage(targetUrl);
+      if (cachedPage) {
+        replaceMainFromHtml(cachedPage.html, targetUrl, pushHistory);
+        return;
+      }
       startProgress();
       fetch(targetUrl, {
         headers: {
@@ -445,6 +510,50 @@
           window.location.href = targetUrl;
         })
         .finally(stopProgress);
+    }
+
+    function prefetchPrimaryNavigation() {
+      var nav = document.querySelector("nav[data-fast-nav-prefetch]");
+      if (!nav) {
+        return;
+      }
+      var links = Array.prototype.slice.call(nav.querySelectorAll("a[href]"));
+      links.forEach(function (link) {
+        var url = sameOriginUrl(link.href);
+        if (
+          !url ||
+          !isCacheableUrl(url.href) ||
+          getCachedPage(url.href) ||
+          url.href === window.location.href
+        ) {
+          return;
+        }
+        fetch(url.href, {
+          headers: {
+            "X-Requested-With": "XMLHttpRequest",
+            "X-Fast-Nav": "1"
+          },
+          credentials: "same-origin"
+        })
+          .then(function (response) {
+            if (!response.ok) {
+              throw new Error("Prefetch failed");
+            }
+            return response.text();
+          })
+          .then(function (html) {
+            rememberPage(url.href, html);
+          })
+          .catch(function () {});
+      });
+    }
+
+    function scheduleFastNavPrefetch() {
+      if (window.requestIdleCallback) {
+        window.requestIdleCallback(prefetchPrimaryNavigation, { timeout: 1600 });
+        return;
+      }
+      window.setTimeout(prefetchPrimaryNavigation, 450);
     }
 
     document.addEventListener("click", function (event) {
@@ -470,6 +579,9 @@
     window.addEventListener("popstate", function () {
       loadIntoMain(window.location.href, false);
     });
+
+    rememberPage(window.location.href, document.documentElement.outerHTML);
+    scheduleFastNavPrefetch();
   })();
   </script>
 </body>

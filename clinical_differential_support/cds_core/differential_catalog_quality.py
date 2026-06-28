@@ -29,7 +29,7 @@ REQUIRED_SOURCE_FIELDS = ("publisher", "title", "url")
 
 SYSTEM_BUCKET_TARGETS = {
     "Cardiovascular": {"tokens": ("Cardiovascular", "Vascular"), "target": 8},
-    "Pulmonary": {"tokens": ("Pulmonary",), "target": 6},
+    "Pulmonary": {"tokens": ("Pulmonary", "Respiratory"), "target": 6},
     "Infectious": {"tokens": ("Infectious",), "target": 8},
     "Neurologic": {"tokens": ("Neurologic",), "target": 8},
     "Gastrointestinal/Hepatic": {
@@ -38,7 +38,10 @@ SYSTEM_BUCKET_TARGETS = {
     },
     "Renal/Urologic": {"tokens": ("Renal", "Urologic"), "target": 6},
     "Endocrine/Metabolic": {"tokens": ("Endocrine", "Metabolic"), "target": 6},
-    "Hematology/Oncology": {"tokens": ("Hematology", "Oncology"), "target": 6},
+    "Hematology/Oncology": {
+        "tokens": ("Hematology", "Hematologic", "Oncology"),
+        "target": 6,
+    },
     "Mental health": {"tokens": ("Mental health",), "target": 6},
     "Toxicology/Environmental": {
         "tokens": ("Toxicology", "Environmental"),

@@ -77,8 +77,30 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("thyroid storm", "thyroid_storm"),
             ("suicide risk", "suicide_self_harm_risk"),
             ("heat stroke", "heat_stroke"),
+            ("febrile neutropenia", "febrile_neutropenia"),
+            ("tumor lysis", "tumor_lysis_syndrome"),
+            ("spinal cord compression", "metastatic_spinal_cord_compression"),
+            ("hypercalcemia of malignancy", "hypercalcemia_of_malignancy"),
+            ("acute leukemia", "acute_leukemia"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_recent_cancer_treatment_fever_prioritizes_febrile_neutropenia(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "fever",
+                    "recent_cancer_treatment",
+                    "immunocompromised",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "febrile_neutropenia")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("recent_cancer_treatment", top["matched_findings"])

@@ -4,6 +4,7 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import SimpleTestCase
 
+from cds_core.differential_catalog import CONDITIONS, SOURCES
 from cds_core.differential_catalog_review_seed import (
     build_general_differential_review_seed,
 )
@@ -17,13 +18,13 @@ class GeneralDifferentialReviewSeedTests(SimpleTestCase):
             seed["format_version"],
             "general-differential-review-seed-v1",
         )
-        self.assertEqual(seed["catalog"]["condition_count"], 57)
-        self.assertEqual(seed["catalog"]["source_count"], 8)
+        self.assertEqual(seed["catalog"]["condition_count"], len(CONDITIONS))
+        self.assertEqual(seed["catalog"]["source_count"], len(SOURCES))
         self.assertTrue(seed["safety_scope"]["clinician_only"])
         self.assertTrue(seed["safety_scope"]["review_required_before_publication"])
         self.assertFalse(seed["safety_scope"]["contains_patient_data"])
-        self.assertEqual(len(seed["conditions"]), 57)
-        self.assertEqual(len(seed["sources"]), 8)
+        self.assertEqual(len(seed["conditions"]), len(CONDITIONS))
+        self.assertEqual(len(seed["sources"]), len(SOURCES))
 
         first = seed["conditions"][0]
         self.assertIn("slug", first)
@@ -52,5 +53,5 @@ class GeneralDifferentialReviewSeedCommandTests(SimpleTestCase):
             payload["format_version"],
             "general-differential-review-seed-v1",
         )
-        self.assertEqual(payload["catalog"]["condition_count"], 57)
+        self.assertEqual(payload["catalog"]["condition_count"], len(CONDITIONS))
         self.assertEqual(payload["catalog"]["quality"]["blocking_issue_count"], 0)
