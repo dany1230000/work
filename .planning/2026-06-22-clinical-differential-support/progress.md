@@ -1164,3 +1164,8 @@
 - Built a binary-safe isolated publish tree with 203 files and top-level entries limited to `.planning`, `clinical_differential_support`, `docs`, and `render.yaml`.
 - Verified the isolated tree has no `tw_quant_v2/`, `shop_report_lite/`, SQLite DB, static build, or generated `verification_artifacts/` files.
 - Scanned the isolated tree for credential/trading markers; matches were limited to explicit safety-prohibition text and test-only fake passwords.
+- Initial temp repo commit failed because the temp repo lacked local Git author identity; copied the main repo's local `Codex <codex@example.local>` identity into temp repo local config only.
+- Created isolated publish commit `5d52173 feat: publish clinical deployment package` with 203 files.
+- Pushed isolated `master` to `https://github.com/dany1230000/work.git`; remote `refs/heads/master` resolved to `5d52173a6a7e18f5545b68aa304c9e1119f67294`.
+- Verified remote `origin/master` tree has 203 tracked files and no `tw_quant_v2/`, `shop_report_lite/`, root `AGENTS.md`, root `pyproject.toml`, SQLite DB, or generated `verification_artifacts/` files.
+- Marked Phase 15 complete locally; a final completion-record sync to the isolated publish repo remains before final verification.

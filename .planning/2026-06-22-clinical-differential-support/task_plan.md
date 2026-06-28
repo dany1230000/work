@@ -140,7 +140,7 @@ Status: complete
 - Stop before push, Render login, Render deployment, CLI installation, or credential handling.
 
 ### Phase 15: Clean GitHub Publish
-Status: in_progress
+Status: complete
 
 - Avoid a direct root `git push` because the current repository HEAD also tracks `tw_quant_v2/`.
 - Build an isolated clinical-only publish tree from the verified package paths.
@@ -184,3 +184,4 @@ Status: in_progress
 | Phase 13 remote setup cannot proceed autonomously | `git remote -v` is empty, `gh` is missing, Render CLI is missing, and the GitHub connector exposes existing-repo tools but no repository creation tool | Recorded the exact external blocker and next command; did not create remote, push, install tools, or handle credentials |
 | Phase 15 direct root push would include unrelated tracked files | `git ls-tree -r --name-only HEAD` showed `tw_quant_v2/` is tracked in the same repository | Switched to an isolated clinical-only publish tree before pushing to the GitHub remote |
 | Phase 15 PowerShell pipe corrupted `git archive` tar stream | `git archive HEAD -- ... | tar -x` returned `tar.exe: Unrecognized archive format` | Use `git archive -o <tar>` and then `tar -xf <tar>` so the archive stays binary-safe |
+| Phase 15 temp Git repo lacked author identity | Initial isolated repo commit failed with `Author identity unknown` | Copied the main repo's local `Codex <codex@example.local>` identity into the temp repo's local Git config and committed without changing global Git config |
