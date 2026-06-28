@@ -399,6 +399,7 @@ class DeploymentStatusTests(TestCase):
         self.assertContains(response, "Next Deployment Action")
         self.assertContains(response, "Deploy_Status.cmd")
         self.assertContains(response, "refresh=1")
+        self.assertContains(response, "process-local")
         self.assertNotContains(response, "DJANGO_SUPERUSER_PASSWORD")
 
     def test_deployment_status_reuses_cached_report_on_normal_navigation(self):

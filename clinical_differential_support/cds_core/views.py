@@ -1,5 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.views import LoginView, LogoutView
+from django.conf import settings
 from django.core.cache import cache
 from django.db import DatabaseError
 from django.http import HttpResponse, JsonResponse
@@ -319,12 +320,20 @@ def _refresh_requested(request):
     return request.GET.get("refresh") == "1"
 
 
+def _status_report_cache_scope():
+    backend = settings.CACHES["default"]["BACKEND"]
+    if backend == "django.core.cache.backends.db.DatabaseCache":
+        return "shared"
+    return "process-local"
+
+
 def _cached_status_report(cache_key, refresh_requested, report_builder):
     if not refresh_requested:
         cached_report = cache.get(cache_key)
         if cached_report is not None:
             return cached_report, {
                 "cache_status": "cached",
+                "cache_scope": _status_report_cache_scope(),
                 "ttl_seconds": STATUS_REPORT_CACHE_SECONDS,
             }
 
@@ -332,6 +341,7 @@ def _cached_status_report(cache_key, refresh_requested, report_builder):
     cache.set(cache_key, report, STATUS_REPORT_CACHE_SECONDS)
     return report, {
         "cache_status": "refreshed" if refresh_requested else "generated",
+        "cache_scope": _status_report_cache_scope(),
         "ttl_seconds": STATUS_REPORT_CACHE_SECONDS,
     }
 

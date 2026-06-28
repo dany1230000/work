@@ -23,6 +23,7 @@ Use a narrow two-part fix:
 2. Add short-lived status report caching for expensive public status pages.
    - Cache Launch Control and Deployment Operations Center reports for a 5-minute TTL.
    - Use a shared database cache on Render so all Gunicorn workers reuse the same status report.
+   - Show the cache scope in the status pages for deployment verification.
    - Provide a `refresh=1` query parameter and visible refresh link for forced recomputation.
    - Keep CLI commands uncached by default so scripts still report current command-line state.
 

@@ -45,6 +45,7 @@ class LaunchGuidePageTests(TestCase):
         self.assertContains(response, "Final Verification Gate")
         self.assertContains(response, "Reviewer Login")
         self.assertContains(response, "refresh=1")
+        self.assertContains(response, "process-local")
         self.assertNotIn("嚙", body)
 
     def test_launch_guide_reuses_cached_report_on_normal_navigation(self):
