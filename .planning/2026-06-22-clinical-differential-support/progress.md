@@ -1194,3 +1194,14 @@
 - Confirmed local launch had used `migrate --run-syncdb`, while Render `build.sh` used plain `migrate`.
 - Updated `clinical_differential_support/build.sh` to run `migrate --run-syncdb` before loading fixtures.
 - Updated deployment readiness test and deployment docs to require/document `migrate --run-syncdb`.
+
+## 2026-06-28 Render Deploy Recovery Complete
+
+- Ran full local Django regression: 203 tests passed.
+- Ran `manage.py check`: no issues.
+- Ran `manage.py migrate --run-syncdb --noinput`: unmigrated `cds_core` sync path executed without error.
+- Committed the root scoped fix as `d1ae7b6`.
+- Synced the same six-file fix into the clinical-only publish repository and pushed `2a246ba` to `dany1230000/work.git`.
+- Render auto-deployed commit `2a246ba` as deploy `dep-d9096a99rddc73a8ure0`.
+- Render Dashboard showed the latest deploy as `live`.
+- Public health check succeeded at `https://clinical-differential-support.onrender.com/health/` with status 200 and database ok.

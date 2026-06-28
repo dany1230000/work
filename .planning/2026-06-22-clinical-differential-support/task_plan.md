@@ -160,7 +160,7 @@ Status: awaiting_confirmation
 - After the user authenticates and applies the Blueprint, verify the public deployment health endpoint and deployment logs.
 
 ### Phase 17: Render Build Failure Fix
-Status: in_progress
+Status: complete
 
 - Read the failed Render deploy logs before changing code.
 - Fix the confirmed production build failure without changing clinical behavior.
@@ -190,6 +190,7 @@ Status: in_progress
 | 2026-06-28 | Stop Render automation at the sign-in page. | Render deployment now requires user account authentication and possibly GitHub OAuth; credentials and account authorization are outside the safe autonomous boundary. |
 | 2026-06-28 | Require explicit confirmation before clicking `Deploy Blueprint`. | The Render page states it will create a PostgreSQL database and web service, and future Blueprint syncs may affect costs. |
 | 2026-06-28 | Fix Render build by adding `--run-syncdb` to the production build migration command. | Render logs show fixture loading failed because `cds_core_chiefcomplaint` did not exist; `cds_core` has no migrations and needs syncdb table creation before `loaddata`. |
+| 2026-06-28 | Treat Render deploy `dep-d9096a99rddc73a8ure0` as the remote completion gate for this fix. | The deploy is for pushed commit `2a246ba`, Dashboard reports it as `live`, and the public `/health/` endpoint returns 200 with database ok. |
 
 ## Errors Encountered
 
