@@ -80,6 +80,16 @@ SOURCES = {
         "title": "High calcium levels",
         "url": "https://cancer.ca/en/treatments/side-effects/high-calcium-levels",
     },
+    "merck_urinary_retention": {
+        "publisher": "Merck Manual Professional",
+        "title": "Urinary Retention",
+        "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/voiding-disorders/urinary-retention",
+    },
+    "niddk_urinary_retention": {
+        "publisher": "NIDDK",
+        "title": "Symptoms and Causes of Urinary Retention",
+        "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/urinary-retention/symptoms-causes",
+    },
 }
 
 FINDING_GROUPS = [
@@ -142,6 +152,7 @@ FINDING_GROUPS = [
             ("gi_bleeding", "GI bleeding", "腸胃道出血"),
             ("jaundice", "Jaundice", "黃疸"),
             ("dysuria", "Dysuria", "排尿疼痛"),
+            ("inability_to_void", "Inability to void", "無法排尿"),
             ("flank_pain", "Flank pain", "腰側痛"),
             ("pelvic_pain", "Pelvic pain", "骨盆痛"),
         ],
@@ -816,6 +827,32 @@ CONDITIONS = [
         "synonyms": ["uti", "cystitis", "urinary infection"],
         "ask_next": ["確認發燒、腰痛、懷孕、男性、免疫低下與反覆感染。 / Check fever, flank pain, pregnancy, male sex, immunocompromise, and recurrence."],
         "source_ids": ["merck_professional"],
+    },
+    {
+        "slug": "acute_urinary_retention",
+        "name_zh": "急性尿滯留",
+        "name_en": "Acute urinary retention",
+        "system": "Urologic/Urinary",
+        "urgency": "emergent",
+        "summary_zh": "無法排尿、下腹脹痛或膀胱膨脹感時，需優先辨識急性尿滯留與阻塞風險。",
+        "summary_en": "Inability to void with lower abdominal pain, distention, or bladder fullness should prioritize acute urinary retention.",
+        "signals": {
+            "inability_to_void": 6,
+            "abdominal_pain": 2,
+            "severe_pain": 2,
+            "dysuria": 1,
+            "neurologic_deficit": 1,
+        },
+        "synonyms": [
+            "urinary retention",
+            "acute urinary retention",
+            "unable to urinate",
+            "cannot void",
+        ],
+        "ask_next": [
+            "確認最後排尿時間、下腹膨脹/疼痛、尿量、前列腺或神經病史、近期手術/麻醉、抗膽鹼或鴉片類藥物。 / Clarify last void, suprapubic distention or pain, urine output, prostate or neurologic history, recent surgery or anesthesia, and anticholinergic or opioid exposure.",
+        ],
+        "source_ids": ["merck_urinary_retention", "niddk_urinary_retention"],
     },
     {
         "slug": "gastroenteritis",

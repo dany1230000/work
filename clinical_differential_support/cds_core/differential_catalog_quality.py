@@ -36,7 +36,7 @@ SYSTEM_BUCKET_TARGETS = {
         "tokens": ("Gastrointestinal", "Hepatic"),
         "target": 10,
     },
-    "Renal/Urologic": {"tokens": ("Renal", "Urologic"), "target": 6},
+    "Renal/Urologic": {"tokens": ("Renal", "Urologic", "Urinary"), "target": 6},
     "Endocrine/Metabolic": {"tokens": ("Endocrine", "Metabolic"), "target": 6},
     "Hematology/Oncology": {
         "tokens": ("Hematology", "Hematologic", "Oncology"),
@@ -220,7 +220,7 @@ def _build_next_actions(
             "status": "ready_to_start",
             "title_zh": "把靜態 catalog 轉成可審核資料匯入",
             "title_en": "Convert static catalog to reviewed data import",
-            "reason_zh": "57 個條目的 starter catalog 已可用，但大規模擴充需要版本化資料檔、審核欄位與匯入驗證。",
+            "reason_zh": f"{summary['condition_count']} 個條目的 starter catalog 已可用，但大規模擴充需要版本化資料檔、審核欄位與匯入驗證。",
             "reason_en": "The starter catalog is usable; large-scale expansion needs versioned data files, review fields, and import validation.",
         },
         {

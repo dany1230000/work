@@ -25,6 +25,10 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
             report["next_actions"][0]["action_id"],
             "convert_static_catalog_to_reviewed_data_import",
         )
+        self.assertIn(
+            str(report["summary"]["condition_count"]),
+            report["next_actions"][0]["reason_zh"],
+        )
 
     def test_pulmonary_bucket_counts_respiratory_catalog_entries(self):
         report = build_general_differential_catalog_quality_report()
@@ -41,6 +45,14 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertGreaterEqual(hematology_oncology["condition_count"], 6)
         self.assertEqual(hematology_oncology["gap_count"], 0)
         self.assertEqual(hematology_oncology["status"], "target_met")
+
+    def test_renal_urologic_bucket_counts_urinary_catalog_entries(self):
+        report = build_general_differential_catalog_quality_report()
+        renal_urologic = report["system_buckets"]["Renal/Urologic"]
+
+        self.assertGreaterEqual(renal_urologic["condition_count"], 6)
+        self.assertEqual(renal_urologic["gap_count"], 0)
+        self.assertEqual(renal_urologic["status"], "target_met")
 
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])

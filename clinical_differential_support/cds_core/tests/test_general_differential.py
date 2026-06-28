@@ -82,6 +82,7 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("spinal cord compression", "metastatic_spinal_cord_compression"),
             ("hypercalcemia of malignancy", "hypercalcemia_of_malignancy"),
             ("acute leukemia", "acute_leukemia"),
+            ("urinary retention", "acute_urinary_retention"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -104,3 +105,20 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "febrile_neutropenia")
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("recent_cancer_treatment", top["matched_findings"])
+
+    def test_inability_to_void_prioritizes_acute_urinary_retention(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "inability_to_void",
+                    "severe_pain",
+                    "abdominal_pain",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_urinary_retention")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("inability_to_void", top["matched_findings"])
