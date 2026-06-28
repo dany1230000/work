@@ -1,0 +1,113 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="workflow">
+  <h2>通用鑑別工作台 / General Differential Workbench</h2>
+  <div class="workflow-steps">
+    <div class="workflow-step">
+      <strong>步驟 1/4</strong>
+      先確認立即安全狀態 / Check immediate safety
+      <p class="secondary">先看 ABC、生命徵象、血氧、意識與是否需要急救，不包含病人識別資料。</p>
+    </div>
+    <div class="workflow-step">
+      <strong>步驟 2/4</strong>
+      輸入主訴或疾病搜尋 / Enter complaint or condition search
+      <p class="secondary">可輸入中文或英文疾病名稱，例如 chest pain、stroke、sepsis。</p>
+    </div>
+    <div class="workflow-step">
+      <strong>步驟 3/4</strong>
+      勾選已知發現 / Select known findings
+      <p class="secondary">只輸入臨床發現，不輸入姓名、病歷號、電話或地址。</p>
+    </div>
+    <div class="workflow-step">
+      <strong>步驟 4/4</strong>
+      檢視排序與下一步 / Review ranking and ask-next
+      <p class="secondary">結果是 reference support，不是 diagnosis order 或 treatment order。</p>
+    </div>
+  </div>
+</section>
+
+<div class="grid">
+  <section class="panel">
+    <h2>輸入資料 / Input</h2>
+    <p class="secondary">Coverage: starter catalog. Use this to organize first-pass differential diagnosis, then verify with clinical judgment and local standards.</p>
+    <form method="post">
+      {% csrf_token %}
+      <div class="field">
+        <label for="{{ form.query.id_for_label }}">{{ form.query.label }}</label>
+        {{ form.query }}
+        {% for error in form.query.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        <label>{{ form.findings.label }}</label>
+        {{ form.findings }}
+        {% for error in form.findings.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+      </div>
+      <div class="field">
+        <label for="{{ form.clinician_notes.id_for_label }}">{{ form.clinician_notes.label }}</label>
+        {{ form.clinician_notes }}
+        {% if form.clinician_notes.help_text %}<small>{{ form.clinician_notes.help_text }}</small>{% endif %}
+        {% for error in form.clinician_notes.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+      </div>
+      <button type="submit">產生鑑別排序 / Generate differential ranking</button>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>參考輸出 / Reference Output</h2>
+    {% if result %}
+      <p class="secondary">
+        Coverage: starter catalog {{ result.coverage.catalog_version }}.
+        {{ result.coverage.limitation_en }}
+      </p>
+      <p>{{ result.coverage.limitation_zh }}</p>
+      {% if result.results %}
+        {% for entry in result.results %}
+          <article class="item">
+            <h3>{{ entry.name_zh }}</h3>
+            <p class="secondary">{{ entry.name_en }}</p>
+            <p>{{ entry.summary_zh }}</p>
+            <p class="secondary">{{ entry.summary_en }}</p>
+            <p>
+              <span class="tag">{{ entry.urgency }}</span>
+              <span class="tag">{{ entry.system }}</span>
+              <span class="tag">score {{ entry.score }}</span>
+              {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
+            </p>
+            {% if entry.matched_findings %}
+              <p><strong>符合發現 / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
+            {% endif %}
+            <p><strong>下一步要問 / Ask next:</strong> {{ entry.ask_next|join:" " }}</p>
+            <div class="source">
+              <strong>來源 / Sources:</strong>
+              {% for source in entry.sources %}
+                <a href="{{ source.url }}">{{ source.publisher }} - {{ source.title }}</a>{% if not forloop.last %}; {% endif %}
+              {% endfor %}
+            </div>
+          </article>
+        {% endfor %}
+      {% else %}
+        <div class="empty">
+          目前沒有足夠發現可排序。請先確認生命徵象與紅旗，再補問下列問題。
+          / Not enough findings to rank yet. Confirm vital signs and red flags, then ask the prompts below.
+        </div>
+      {% endif %}
+      <section style="margin-top: 1rem;">
+        <h3>下一步要問 / Ask next</h3>
+        <ul>
+          {% for prompt in result.ask_next %}
+            <li>{{ prompt }}</li>
+          {% endfor %}
+        </ul>
+      </section>
+    {% else %}
+      <div class="empty">
+        先從主訴搜尋或已知發現開始。這個 starter catalog 會列出必須優先排除的疾病與下一步問題。
+        / Start with complaint search or known findings. This starter catalog ranks must-not-miss conditions and ask-next prompts.
+      </div>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

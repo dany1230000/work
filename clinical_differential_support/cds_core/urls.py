@@ -6,6 +6,7 @@ app_name = "cds_core"
 
 urlpatterns = [
     path("", views.home_dashboard, name="home"),
+    path("differential/", views.general_differential_workspace, name="general_differential"),
     path("headache/", views.headache_workspace, name="headache"),
     path("launch/", views.launch_guide, name="launch_guide"),
     path("completion/", views.completion_gate, name="completion_gate"),

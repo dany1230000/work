@@ -1,5 +1,6 @@
 from django import forms
 
+from .differential_catalog import FINDING_GROUPS
 from .models import ClinicalItem, ReviewRecord, Source
 
 
@@ -149,6 +150,43 @@ class ClinicalItemSourceLinkForm(forms.Form):
         selected_sources = list(self.cleaned_data["sources"])
         self.item.sources.set(selected_sources)
         return selected_sources
+
+
+def _general_finding_choices():
+    return [
+        (
+            f"{group['group_en']} / {group['group_zh']}",
+            [
+                (slug, f"{title_en} / {title_zh}")
+                for slug, title_en, title_zh in group["findings"]
+            ],
+        )
+        for group in FINDING_GROUPS
+    ]
+
+
+class GeneralDifferentialForm(forms.Form):
+    query = forms.CharField(
+        label="主訴或疾病搜尋 / Complaint or condition search",
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "例如：胸痛、stroke、sepsis / e.g. chest pain, stroke, sepsis"
+            }
+        ),
+    )
+    findings = forms.MultipleChoiceField(
+        label="已知臨床發現 / Known clinical findings",
+        choices=_general_finding_choices(),
+        required=False,
+        widget=forms.CheckboxSelectMultiple,
+    )
+    clinician_notes = forms.CharField(
+        label="非識別性臨床備註 / Non-identifying clinician notes",
+        required=False,
+        widget=forms.Textarea(attrs={"rows": 2}),
+        help_text="請勿輸入姓名、病歷號、電話、地址或其他病人識別資料。 / Do not enter patient identifiers.",
+    )
 
 
 class HeadacheIntakeForm(forms.Form):

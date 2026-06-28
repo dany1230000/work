@@ -29,6 +29,7 @@ from .forms import (
     ClinicalItemSourceLinkForm,
     ChestPainIntakeForm,
     DyspneaIntakeForm,
+    GeneralDifferentialForm,
     HeadacheIntakeForm,
     ReviewDecisionForm,
     SourceForm,
@@ -40,6 +41,7 @@ from .governance import (
     build_review_item_detail,
     build_review_queue,
 )
+from .general_differential import evaluate_general_differential
 from .handoff import build_handoff_report_markdown
 from .local_launch import build_local_launch_status
 from .models import AuditEvent, CaseScenario, ClinicalItem, ReviewRecord, Source
@@ -278,6 +280,13 @@ def health_check(request):
 def home_dashboard(request):
     workflows = [
         {
+            "title_zh": "通用鑑別",
+            "title_en": "General differential",
+            "description_zh": "從跨系統紅旗、主訴搜尋與已知發現開始，產生必須排除的疾病與下一步問題。",
+            "description_en": "Start from cross-system red flags, complaint search, and known findings to rank must-not-miss conditions and ask-next prompts.",
+            "url": reverse("cds_core:general_differential"),
+        },
+        {
             "title_zh": "頭痛",
             "title_en": "Headache",
             "description_zh": "用紅旗、偏頭痛、緊縮型與叢發型特徵，產生參考輸出與下一步問題。",
@@ -311,6 +320,22 @@ def home_dashboard(request):
         "cds_core/home.html",
         {
             "workflows": workflows,
+            "safety_copy": CLINICIAN_SAFETY_COPY,
+        },
+    )
+
+
+def general_differential_workspace(request):
+    result = None
+    form = GeneralDifferentialForm(request.POST or None)
+    if request.method == "POST" and form.is_valid():
+        result = evaluate_general_differential(form.cleaned_data)
+    return render(
+        request,
+        "cds_core/general_differential.html",
+        {
+            "form": form,
+            "result": result,
             "safety_copy": CLINICIAN_SAFETY_COPY,
         },
     )
