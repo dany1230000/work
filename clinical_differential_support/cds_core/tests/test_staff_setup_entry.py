@@ -84,7 +84,11 @@ class StaffSetupEntryTests(TestCase):
         launch_report, setup_report, completion_report = self.build_reports()
 
         launch_blocker = launch_report["manual_blockers"][0]
-        launch_step = launch_report["steps"][0]
+        launch_step = next(
+            step
+            for step in launch_report["steps"]
+            if step["action_id"] == "create_staff_reviewer"
+        )
         setup_blocker = setup_report["manual_blockers"][0]
         completion_action = completion_report["next_action"]
 

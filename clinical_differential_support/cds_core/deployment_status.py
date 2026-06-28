@@ -362,6 +362,9 @@ def _file_check(check_id: str, path: Path, title_zh: str, title_en: str) -> dict
 
 
 def _deployment_status(checks: dict[str, dict[str, str]]) -> str:
+    if checks["public_deploy"]["status"] == "passed":
+        return "public_deploy_live"
+
     local_check_ids = {
         "local_final_gate",
         "render_blueprint",
@@ -375,8 +378,6 @@ def _deployment_status(checks: dict[str, dict[str, str]]) -> str:
         return "ready_for_publish_package"
     if checks["git_remote"]["status"] != "passed":
         return "ready_for_remote_setup"
-    if checks["public_deploy"]["status"] == "passed":
-        return "public_deploy_live"
     if checks["render_cli"]["status"] != "passed":
         return "ready_for_render_cli_install"
     if checks["render_auth"]["status"] != "passed":
@@ -472,6 +473,7 @@ def _build_steps(status: str) -> list[dict[str, str | int]]:
         ("authenticate_render", "登入 Render", "Authenticate Render"),
         ("open_render_blueprint", "套用 Render Blueprint", "Apply Render Blueprint"),
         ("verify_public_deploy", "驗證公開部署", "Verify public deployment"),
+        ("monitor_public_deploy", "監控公開部署", "Monitor public deployment"),
     ]
     current_action = _next_action(status, "")["action_id"]
     steps = []

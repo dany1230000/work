@@ -4,6 +4,7 @@ import tempfile
 from contextlib import redirect_stdout
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -247,6 +248,40 @@ class DeploymentStatusTests(TestCase):
         self.assertNotIn("render --version", calls)
         self.assertNotIn("render whoami -o json", calls)
 
+    def test_public_deploy_live_does_not_require_local_sqlite_schema(self):
+        from cds_core.deployment_status import build_deployment_status_report
+
+        public_tmp_dir, public_evidence_path = self.public_deploy_evidence_path()
+        self.addCleanup(public_tmp_dir.cleanup)
+        missing_database = {
+            "database_ready": False,
+            "missing_tables": ["auth_user", "cds_core_chiefcomplaint"],
+            "error": "",
+        }
+
+        with patch(
+            "cds_core.local_launch._inspect_local_database",
+            return_value=missing_database,
+        ):
+            report = build_deployment_status_report(
+                today=date(2026, 6, 28),
+                deployment_evidence_path=public_evidence_path,
+                command_runner=self.runner(
+                    git_remote_stdout="origin https://github.com/example/cds.git (fetch)",
+                    render_version_exit=1,
+                ),
+            )
+
+        checks = {check["check_id"]: check for check in report["deployment_checks"]}
+        self.assertEqual(report["status"], "public_deploy_live")
+        self.assertEqual(report["exit_code"], 0)
+        self.assertEqual(report["next_action"]["action_id"], "monitor_public_deploy")
+        self.assertEqual(checks["public_deploy"]["status"], "passed")
+        self.assertEqual(
+            checks["local_final_gate"]["value"],
+            "manual_setup_required",
+        )
+
     def test_report_advances_to_dashboard_when_remote_cli_and_auth_exist(self):
         from cds_core.deployment_status import build_deployment_status_report
 
@@ -299,11 +334,18 @@ class DeploymentStatusTests(TestCase):
         self.create_staff_reviewer()
         tmp_dir, evidence_path = self.verified_evidence_path()
         self.addCleanup(tmp_dir.cleanup)
+        deployment_evidence_path = Path(tmp_dir.name) / "missing-public-deploy.json"
 
         json_stdout = io.StringIO()
         with redirect_stdout(json_stdout):
             exit_code = main(
-                ["--json", "--evidence-path", str(evidence_path)],
+                [
+                    "--json",
+                    "--evidence-path",
+                    str(evidence_path),
+                    "--deployment-evidence-path",
+                    str(deployment_evidence_path),
+                ],
                 command_runner=self.runner(git_remote_stdout=""),
             )
 
@@ -316,7 +358,12 @@ class DeploymentStatusTests(TestCase):
         text_stdout = io.StringIO()
         with redirect_stdout(text_stdout):
             main(
-                ["--evidence-path", str(evidence_path)],
+                [
+                    "--evidence-path",
+                    str(evidence_path),
+                    "--deployment-evidence-path",
+                    str(deployment_evidence_path),
+                ],
                 command_runner=self.runner(git_remote_stdout=""),
             )
         text = text_stdout.getvalue()

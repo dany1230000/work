@@ -5,14 +5,25 @@ from pathlib import Path
 from typing import Any
 
 from django.contrib.auth import get_user_model
+from django.db import connection
+from django.db.utils import DatabaseError, OperationalError, ProgrammingError
 from django.utils import timezone
 
-from .final_verification import RECORDER_COMMAND, build_final_verification_gate
+from .final_verification import (
+    RECORDER_COMMAND,
+    build_final_verification_gate,
+    load_latest_evidence,
+)
 from .models import ChiefComplaint, ClinicalItem
 from .next_actions import build_next_action_plan
 
 
 DEFAULT_BASE_URL = "http://127.0.0.1:8000"
+INITIALIZE_LOCAL_DATABASE_COMMAND = (
+    r"py -B .\clinical_differential_support\manage.py migrate --run-syncdb && "
+    r"py -B .\clinical_differential_support\manage.py loaddata "
+    r"headache_mvp chest_pain_mvp abdominal_pain_mvp dyspnea_mvp"
+)
 CREATE_STAFF_COMMAND = r"py -B .\clinical_differential_support\manage.py createsuperuser"
 CREATE_STAFF_REVIEWER_ENTRY_COMMAND = (
     r"clinical_differential_support\Create_Staff_Reviewer.cmd"
@@ -53,12 +64,23 @@ def build_local_launch_status(
     current_date = today or timezone.localdate()
     normalized_base_url = base_url.rstrip("/")
     urls = _build_urls(normalized_base_url)
-    staff_account_exists = get_user_model().objects.filter(is_staff=True).exists()
-    next_action_plan = build_next_action_plan(today=current_date)
-    final_gate = build_final_verification_gate(
-        today=current_date,
-        evidence_path=evidence_path,
-    )
+    database_state = _inspect_local_database()
+    database_ready = bool(database_state["database_ready"])
+    if database_ready:
+        staff_account_exists = get_user_model().objects.filter(is_staff=True).exists()
+        chief_complaint_count = ChiefComplaint.objects.count()
+        clinical_item_count = ClinicalItem.objects.count()
+        next_action_plan = build_next_action_plan(today=current_date)
+        final_gate = build_final_verification_gate(
+            today=current_date,
+            evidence_path=evidence_path,
+        )
+    else:
+        staff_account_exists = False
+        chief_complaint_count = 0
+        clinical_item_count = 0
+        next_action_plan = _build_database_setup_next_action_plan(current_date)
+        final_gate = _build_database_setup_final_gate(current_date, evidence_path)
 
     report = {
         "report_type": "local_launch_status",
@@ -67,9 +89,12 @@ def build_local_launch_status(
         "base_url": normalized_base_url,
         "urls": urls,
         "environment": {
+            "database_ready": database_ready,
+            "missing_database_tables": database_state["missing_tables"],
+            "database_error": database_state.get("error", ""),
             "staff_account_exists": staff_account_exists,
-            "chief_complaint_count": ChiefComplaint.objects.count(),
-            "clinical_item_count": ClinicalItem.objects.count(),
+            "chief_complaint_count": chief_complaint_count,
+            "clinical_item_count": clinical_item_count,
         },
         "next_actions": {
             "completion_status": next_action_plan["completion_status"],
@@ -207,10 +232,15 @@ def _build_urls(base_url: str) -> dict[str, str]:
 
 
 def _build_operator_summary(report: dict[str, Any]) -> dict[str, str]:
+    database_ready = report["environment"]["database_ready"]
     staff_exists = report["environment"]["staff_account_exists"]
     evidence_verified = _evidence_verified(report)
 
-    if not staff_exists:
+    if not database_ready:
+        status = "needs_database_setup"
+        title_zh = "初始化本機資料庫"
+        title_en = "Initialize the local database"
+    elif not staff_exists:
         status = "needs_manual_setup"
         title_zh = "需要先建立本機審核者"
         title_en = "Create the local reviewer first"
@@ -231,6 +261,8 @@ def _build_operator_summary(report: dict[str, Any]) -> dict[str, str]:
 
 
 def _build_environment_checks(report: dict[str, Any]) -> list[dict[str, str]]:
+    database_ready = report["environment"]["database_ready"]
+    missing_tables = report["environment"].get("missing_database_tables", [])
     staff_exists = report["environment"]["staff_account_exists"]
     chief_count = report["environment"]["chief_complaint_count"]
     item_count = report["environment"]["clinical_item_count"]
@@ -241,11 +273,24 @@ def _build_environment_checks(report: dict[str, Any]) -> list[dict[str, str]]:
 
     return [
         {
+            "check_id": "local_database",
+            "status": "passed" if database_ready else "action_required",
+            "title_zh": "本機資料庫",
+            "title_en": "Local database",
+            "value": "ready"
+            if database_ready
+            else f"missing tables: {', '.join(missing_tables)}",
+            "detail_zh": "需要先建立 SQLite schema 並載入內建臨床 fixture。",
+            "detail_en": "Requires SQLite schema and bundled clinical fixtures.",
+        },
+        {
             "check_id": "staff_reviewer",
             "status": "passed" if staff_exists else "action_required",
             "title_zh": "Staff reviewer 帳號",
             "title_en": "Staff reviewer account",
-            "value": "exists" if staff_exists else "missing",
+            "value": "exists"
+            if staff_exists
+            else ("blocked_by_database_setup" if not database_ready else "missing"),
             "detail_zh": "治理頁面需要 staff 帳號。",
             "detail_en": "Governance pages require a staff account.",
         },
@@ -260,7 +305,9 @@ def _build_environment_checks(report: dict[str, Any]) -> list[dict[str, str]]:
         },
         {
             "check_id": "governed_content",
-            "status": "passed" if chief_count > 0 and item_count > 0 else "failed",
+            "status": "passed"
+            if chief_count > 0 and item_count > 0
+            else "action_required",
             "title_zh": "治理內容資料",
             "title_en": "Governed content data",
             "value": f"{chief_count} complaints / {item_count} items",
@@ -280,6 +327,20 @@ def _build_environment_checks(report: dict[str, Any]) -> list[dict[str, str]]:
 
 
 def _build_manual_blockers(report: dict[str, Any]) -> list[dict[str, str | bool]]:
+    if not report["environment"]["database_ready"]:
+        return [
+            {
+                "action_id": "initialize_local_database",
+                "title_zh": "初始化本機資料庫",
+                "title_en": "Initialize the local database",
+                "detail_zh": "先建立本機 SQLite schema 並載入內建 fixture，狀態中心才能讀取下一步。",
+                "detail_en": "Create the local SQLite schema and load bundled fixtures before status tools read the next step.",
+                "command": INITIALIZE_LOCAL_DATABASE_COMMAND,
+                "manual_only": False,
+                "does_not_store_credentials": True,
+            }
+        ]
+
     if not report["environment"]["staff_account_exists"]:
         return [
             {
@@ -360,11 +421,28 @@ def _evidence_verified(report: dict[str, Any]) -> bool:
 
 
 def _build_steps(report: dict[str, Any]) -> list[dict[str, str | int]]:
+    database_ready = report["environment"]["database_ready"]
     staff_exists = report["environment"]["staff_account_exists"]
     evidence_verified = _evidence_verified(report)
-    current_action = _current_action_id(staff_exists, evidence_verified)
+    current_action = _current_action_id(
+        database_ready=database_ready,
+        staff_exists=staff_exists,
+        evidence_verified=evidence_verified,
+    )
 
     definitions = [
+        {
+            "action_id": "initialize_local_database",
+            "title_zh": "初始化本機資料庫",
+            "title_en": "Initialize the local database",
+            "detail_zh": "建立 SQLite schema 並載入頭痛、胸痛、腹痛、呼吸困難 fixture。",
+            "detail_en": "Create the SQLite schema and load headache, chest-pain, abdominal-pain, and dyspnea fixtures.",
+            "command": INITIALIZE_LOCAL_DATABASE_COMMAND,
+            "command_kind": "local_shell",
+            "manual_required": False,
+            "url": report["urls"]["launch_guide"],
+            "done": database_ready,
+        },
         {
             "action_id": "create_staff_reviewer",
             "title_zh": "建立本機 staff reviewer 帳號",
@@ -450,6 +528,7 @@ def _build_steps(report: dict[str, Any]) -> list[dict[str, str | int]]:
             action_id=action_id,
             is_done=bool(definition["done"]),
             current_action=current_action,
+            database_ready=database_ready,
             staff_exists=staff_exists,
             evidence_verified=evidence_verified,
         )
@@ -463,7 +542,13 @@ def _build_steps(report: dict[str, Any]) -> list[dict[str, str | int]]:
     return steps
 
 
-def _current_action_id(staff_exists: bool, evidence_verified: bool) -> str:
+def _current_action_id(
+    database_ready: bool,
+    staff_exists: bool,
+    evidence_verified: bool,
+) -> str:
+    if not database_ready:
+        return "initialize_local_database"
     if not staff_exists:
         return "create_staff_reviewer"
     if not evidence_verified:
@@ -475,6 +560,7 @@ def _step_status(
     action_id: str,
     is_done: bool,
     current_action: str,
+    database_ready: bool,
     staff_exists: bool,
     evidence_verified: bool,
 ) -> str:
@@ -482,7 +568,13 @@ def _step_status(
         return "done"
     if action_id == current_action:
         return "current"
-    if action_id in {"create_staff_reviewer", "run_final_verification_recorder"}:
+    if not database_ready:
+        return "locked"
+    if action_id in {
+        "initialize_local_database",
+        "create_staff_reviewer",
+        "run_final_verification_recorder",
+    }:
         return "locked"
     if staff_exists and evidence_verified:
         return "ready"
@@ -497,3 +589,141 @@ def _find_current_step(steps: list[dict[str, Any]]) -> dict[str, Any]:
         if step["status"] == "ready":
             return step
     return steps[-1]
+
+
+def _inspect_local_database() -> dict[str, Any]:
+    required_tables = _required_local_tables()
+    try:
+        existing_tables = set(connection.introspection.table_names())
+    except (DatabaseError, OperationalError, ProgrammingError, OSError) as error:
+        return {
+            "database_ready": False,
+            "missing_tables": sorted(required_tables),
+            "error": str(error),
+        }
+
+    missing_tables = sorted(required_tables - existing_tables)
+    return {
+        "database_ready": not missing_tables,
+        "missing_tables": missing_tables,
+        "error": "",
+    }
+
+
+def _required_local_tables() -> set[str]:
+    return {
+        get_user_model()._meta.db_table,
+        ChiefComplaint._meta.db_table,
+        ClinicalItem._meta.db_table,
+    }
+
+
+def _build_database_setup_next_action_plan(current_date: date) -> dict[str, Any]:
+    return {
+        "plan_type": "next_action_plan",
+        "service": "clinical_differential_support",
+        "audience": "staff_content_governance",
+        "generated_on": current_date.isoformat(),
+        "completion_status": "local_database_setup_required",
+        "coverage": {
+            "current_count": 0,
+            "minimum_next_stage_count": 4,
+            "gap_count": 4,
+            "headache_only": False,
+            "current_chief_complaints": [],
+            "next_target": {
+                "slug": "initialize-local-database",
+                "title_zh": "初始化本機資料庫",
+                "title_en": "Initialize local database",
+            },
+        },
+        "governance": {
+            "clinical_item_count": 0,
+            "case_validation_count": 0,
+            "failed_case_count": 0,
+            "source_gap_count": 0,
+            "non_approved_count": 0,
+            "review_due_count": 0,
+        },
+        "downstream_readiness": {
+            "status": "blocked_until_local_database_initialized",
+            "coverage_depth": None,
+            "source_freshness": None,
+        },
+        "next_actions": [
+            {
+                "priority": 1,
+                "action_id": "initialize_local_database",
+                "status": "ready_to_start",
+                "title_zh": "初始化本機資料庫",
+                "title_en": "Initialize the local database",
+                "reason_zh": "本機 SQLite schema 尚未建立，無法讀取治理內容或下一步狀態。",
+                "reason_en": "The local SQLite schema is not initialized, so governed content and next-step status cannot be read.",
+                "deliverable_en": "Run migrations and load bundled fixtures.",
+            }
+        ],
+        "safety_scope": {
+            "staff_only": True,
+            "summary_only": True,
+            "no_source_urls": True,
+            "no_detailed_clinical_item_text": True,
+            "no_patient_identifying_data": True,
+            "no_diagnosis_order": True,
+            "no_treatment_order": True,
+            "no_medication_order": True,
+            "no_trading_or_broker_behavior": True,
+        },
+    }
+
+
+def _build_database_setup_final_gate(
+    current_date: date,
+    evidence_path: str | Path | None,
+) -> dict[str, Any]:
+    return {
+        "report_type": "final_verification_gate",
+        "service": "clinical_differential_support",
+        "audience": "staff_content_governance",
+        "generated_on": current_date.isoformat(),
+        "gate_status": "blocked_until_local_database_initialized",
+        "readiness": {
+            "ready_for_handoff": False,
+            "clinical_item_count": 0,
+            "approved_count": 0,
+            "source_gap_count": 0,
+            "review_due_count": 0,
+            "failed_case_count": 0,
+        },
+        "next_action_gate": {
+            "completion_status": "local_database_setup_required",
+            "first_action": "initialize_local_database",
+            "first_action_status": "ready_to_start",
+            "downstream_status": "blocked_until_local_database_initialized",
+        },
+        "required_commands": [],
+        "next_action": {
+            "action_id": "initialize_local_database",
+            "status": "ready_to_start",
+            "title_zh": "初始化本機資料庫",
+            "title_en": "Initialize the local database",
+        },
+        "latest_evidence": load_latest_evidence(evidence_path=evidence_path),
+        "handoff_exports": {},
+        "evidence_policy": {
+            "external_command_output_required": True,
+            "do_not_embed_command_output_in_app": True,
+            "recorder_command": RECORDER_COMMAND,
+            "future_recorder_needed_for_persistent_evidence": False,
+        },
+        "safety_scope": {
+            "staff_only": True,
+            "summary_only": True,
+            "no_source_urls": True,
+            "no_detailed_clinical_item_text": True,
+            "no_patient_identifying_data": True,
+            "no_diagnosis_order": True,
+            "no_treatment_order": True,
+            "no_medication_order": True,
+            "no_trading_or_broker_behavior": True,
+        },
+    }

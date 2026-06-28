@@ -16,8 +16,8 @@ class DocumentationEntryTests(SimpleTestCase):
         content = quick_start.read_text(encoding="utf-8-sig")
 
         self.assertIn("下一步", content)
-        self.assertIn("步驟 1/6", content)
-        self.assertIn("步驟 6/6", content)
+        self.assertIn("步驟 1/7", content)
+        self.assertIn("步驟 7/7", content)
         self.assertIn("現在做這個", content)
         self.assertIn("http://127.0.0.1:8000/review/login/", content)
         self.assertIn("Final Verification Gate", content)

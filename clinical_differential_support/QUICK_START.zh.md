@@ -58,11 +58,23 @@ clinical_differential_support\Next_Step.cmd
 
 ## 下一步
 
-現在做這個：步驟 1/6。
+現在做這個：步驟 1/7。
 
-## 步驟 1/6：建立本機 staff reviewer 帳號
+## 步驟 1/7：初始化本機資料庫
 
 狀態：現在
+
+執行：
+
+```powershell
+py -B .\clinical_differential_support\manage.py migrate --run-syncdb && py -B .\clinical_differential_support\manage.py loaddata headache_mvp chest_pain_mvp abdominal_pain_mvp dyspnea_mvp
+```
+
+這會建立本機 SQLite schema，並載入頭痛、胸痛、腹痛、呼吸困難的內建 fixture。沒有這一步，Next Step、Final Check 和 Deployment Status 只能顯示資料庫尚未初始化。
+
+## 步驟 2/7：建立本機 staff reviewer 帳號
+
+狀態：等待步驟 1 完成
 
 執行：
 
@@ -80,7 +92,7 @@ py -B .\clinical_differential_support\manage.py createsuperuser
 
 注意：只建立本機測試帳號，不要使用真實工作密碼。
 
-## 步驟 2/6：確認最終驗收證據
+## 步驟 3/7：確認最終驗收證據
 
 狀態：已完成
 
@@ -90,9 +102,9 @@ py -B .\clinical_differential_support\manage.py createsuperuser
 py -B .\clinical_differential_support\scripts\record_final_verification_evidence.py --overwrite
 ```
 
-## 步驟 3/6：啟動本機 server
+## 步驟 4/7：啟動本機 server
 
-狀態：等待步驟 1 完成
+狀態：等待步驟 1 和步驟 2 完成
 
 執行：
 
@@ -106,9 +118,9 @@ clinical_differential_support\Start_Local_Server.cmd
 http://127.0.0.1:8000/launch/
 ```
 
-## 步驟 4/6：登入 staff reviewer
+## 步驟 5/7：登入 staff reviewer
 
-狀態：等待步驟 1 和步驟 3 完成
+狀態：等待步驟 2 和步驟 4 完成
 
 打開：
 
@@ -116,7 +128,7 @@ http://127.0.0.1:8000/launch/
 http://127.0.0.1:8000/review/login/
 ```
 
-## 步驟 5/6：查看 Next Action Workbench
+## 步驟 6/7：查看 Next Action Workbench
 
 狀態：等待登入完成
 
@@ -128,7 +140,7 @@ http://127.0.0.1:8000/review/next-actions/
 
 用途：確認系統現在建議的下一個專案動作。
 
-## 步驟 6/6：查看 Final Verification Gate 並下載交接包
+## 步驟 7/7：查看 Final Verification Gate 並下載交接包
 
 狀態：等待登入完成
 

@@ -2,6 +2,7 @@ import json
 import tempfile
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 from django.contrib.auth import get_user_model
 from django.test import TestCase
@@ -54,20 +55,25 @@ class LocalLaunchStatusTests(TestCase):
 
         self.assertEqual(report["report_type"], "local_launch_status")
         self.assertEqual(report["operator_summary"]["status"], "needs_manual_setup")
+        self.assertTrue(report["environment"]["database_ready"])
         self.assertFalse(report["environment"]["staff_account_exists"])
-        self.assertEqual(report["environment_checks"][0]["check_id"], "staff_reviewer")
-        self.assertEqual(report["environment_checks"][0]["status"], "action_required")
+        self.assertEqual(report["environment_checks"][0]["check_id"], "local_database")
+        self.assertEqual(report["environment_checks"][0]["status"], "passed")
+        self.assertEqual(report["environment_checks"][1]["check_id"], "staff_reviewer")
+        self.assertEqual(report["environment_checks"][1]["status"], "action_required")
         self.assertEqual(report["manual_blockers"][0]["action_id"], "create_staff_reviewer")
         self.assertTrue(report["manual_blockers"][0]["manual_only"])
         self.assertTrue(report["manual_blockers"][0]["does_not_store_credentials"])
         self.assertEqual(report["next_step"]["action_id"], "create_staff_reviewer")
-        self.assertEqual(report["current_step"]["step_number"], 1)
-        self.assertEqual(report["steps"][0]["status"], "current")
-        self.assertEqual(report["steps"][0]["action_id"], "create_staff_reviewer")
-        self.assertTrue(report["steps"][0]["manual_required"])
-        self.assertEqual(report["steps"][0]["command_kind"], "manual_shell")
-        self.assertEqual(report["steps"][1]["status"], "locked")
+        self.assertEqual(report["current_step"]["step_number"], 2)
+        self.assertEqual(report["steps"][0]["status"], "done")
+        self.assertEqual(report["steps"][0]["action_id"], "initialize_local_database")
+        self.assertEqual(report["steps"][1]["status"], "current")
+        self.assertEqual(report["steps"][1]["action_id"], "create_staff_reviewer")
+        self.assertTrue(report["steps"][1]["manual_required"])
+        self.assertEqual(report["steps"][1]["command_kind"], "manual_shell")
         self.assertEqual(report["steps"][2]["status"], "locked")
+        self.assertEqual(report["steps"][3]["status"], "locked")
         self.assertIn("Create_Staff_Reviewer.cmd", report["next_step"]["command"])
         self.assertIn("createsuperuser", report["next_step"]["raw_command"])
         self.assertEqual(
@@ -75,6 +81,39 @@ class LocalLaunchStatusTests(TestCase):
             "http://127.0.0.1:8000/review/next-actions/",
         )
         self.assertTrue(report["safety_scope"]["staff_only_for_governance"])
+
+    def test_status_tells_user_to_initialize_database_when_schema_is_missing(self):
+        missing_database = {
+            "database_ready": False,
+            "missing_tables": ["auth_user", "cds_core_chiefcomplaint"],
+            "error": "",
+        }
+
+        with patch(
+            "cds_core.local_launch._inspect_local_database",
+            return_value=missing_database,
+        ):
+            report = self.build_report()
+
+        self.assertEqual(report["operator_summary"]["status"], "needs_database_setup")
+        self.assertFalse(report["environment"]["database_ready"])
+        self.assertEqual(report["environment_checks"][0]["check_id"], "local_database")
+        self.assertEqual(report["environment_checks"][0]["status"], "action_required")
+        self.assertEqual(report["manual_blockers"][0]["action_id"], "initialize_local_database")
+        self.assertEqual(report["next_step"]["action_id"], "initialize_local_database")
+        self.assertIn("migrate --run-syncdb", report["next_step"]["command"])
+        self.assertIn("loaddata headache_mvp", report["next_step"]["command"])
+        self.assertEqual(report["current_step"]["step_number"], 1)
+        self.assertEqual(report["steps"][0]["status"], "current")
+        self.assertEqual(report["steps"][1]["status"], "locked")
+        self.assertEqual(
+            report["final_verification"]["gate_status"],
+            "blocked_until_local_database_initialized",
+        )
+        self.assertEqual(
+            report["next_actions"]["completion_status"],
+            "local_database_setup_required",
+        )
 
     def test_status_runs_recorder_when_staff_exists_but_evidence_is_missing(self):
         self.create_staff_reviewer()
@@ -84,18 +123,19 @@ class LocalLaunchStatusTests(TestCase):
         self.assertEqual(report["operator_summary"]["status"], "needs_verification")
         self.assertTrue(report["environment"]["staff_account_exists"])
         self.assertEqual(report["environment_checks"][0]["status"], "passed")
-        self.assertEqual(report["environment_checks"][1]["check_id"], "final_evidence")
-        self.assertEqual(report["environment_checks"][1]["status"], "action_required")
+        self.assertEqual(report["environment_checks"][2]["check_id"], "final_evidence")
+        self.assertEqual(report["environment_checks"][2]["status"], "action_required")
         self.assertEqual(
             report["manual_blockers"][0]["action_id"],
             "run_final_verification_recorder",
         )
         self.assertEqual(report["final_verification"]["latest_evidence_status"], "not_recorded")
         self.assertEqual(report["next_step"]["action_id"], "run_final_verification_recorder")
-        self.assertEqual(report["current_step"]["step_number"], 2)
+        self.assertEqual(report["current_step"]["step_number"], 3)
         self.assertEqual(report["steps"][0]["status"], "done")
-        self.assertEqual(report["steps"][1]["status"], "current")
-        self.assertEqual(report["steps"][2]["status"], "locked")
+        self.assertEqual(report["steps"][1]["status"], "done")
+        self.assertEqual(report["steps"][2]["status"], "current")
+        self.assertEqual(report["steps"][3]["status"], "locked")
         self.assertIn(
             "record_final_verification_evidence.py",
             report["next_step"]["command"],
@@ -111,13 +151,14 @@ class LocalLaunchStatusTests(TestCase):
         self.assertTrue(all(check["status"] == "passed" for check in report["environment_checks"]))
         self.assertEqual(report["next_step"]["action_id"], "start_local_server")
         self.assertIn("Start_Local_Server.cmd", report["next_step"]["command"])
-        self.assertEqual(report["current_step"]["step_number"], 3)
+        self.assertEqual(report["current_step"]["step_number"], 4)
         self.assertEqual(report["steps"][0]["status"], "done")
         self.assertEqual(report["steps"][1]["status"], "done")
-        self.assertEqual(report["steps"][2]["status"], "current")
-        self.assertEqual(report["steps"][3]["status"], "ready")
+        self.assertEqual(report["steps"][2]["status"], "done")
+        self.assertEqual(report["steps"][3]["status"], "current")
+        self.assertEqual(report["steps"][4]["status"], "ready")
         self.assertEqual(
-            report["steps"][5]["url"],
+            report["steps"][6]["url"],
             "http://127.0.0.1:8000/review/final-verification/",
         )
         self.assertEqual(report["final_verification"]["latest_evidence_status"], "verified")
@@ -130,8 +171,8 @@ class LocalLaunchStatusTests(TestCase):
         output = format_local_launch_status(report)
 
         self.assertIn("一步一步", output)
-        self.assertIn("步驟 1/6", output)
-        self.assertIn("步驟 3/6", output)
+        self.assertIn("步驟 1/7", output)
+        self.assertIn("步驟 4/7", output)
         self.assertIn("現在", output)
         self.assertIn("Final Verification Gate", output)
         self.assertIn("http://127.0.0.1:8000/", output)
