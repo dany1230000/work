@@ -85,7 +85,7 @@ Render Blueprint 已處理必要值：
 
 1. 安裝 requirements
 2. `collectstatic --no-input`
-3. `migrate`
+3. `migrate --run-syncdb`
 4. 載入已審核的 MVP fixtures
 
 它不會建立 superuser、不會讀取密碼、不會列印密碼。

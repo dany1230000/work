@@ -159,6 +159,15 @@ Status: awaiting_confirmation
 - Stop before clicking `Deploy Blueprint` because that creates Render cloud resources and can affect account costs.
 - After the user authenticates and applies the Blueprint, verify the public deployment health endpoint and deployment logs.
 
+### Phase 17: Render Build Failure Fix
+Status: in_progress
+
+- Read the failed Render deploy logs before changing code.
+- Fix the confirmed production build failure without changing clinical behavior.
+- Verify the build script creates unmigrated `cds_core` tables before fixture loading.
+- Push the scoped fix through the clinical-only publish tree.
+- Let Render auto-sync/redeploy and verify `/health/` on the public URL.
+
 ## Decisions
 
 | Date | Decision | Rationale |
@@ -180,6 +189,7 @@ Status: awaiting_confirmation
 | 2026-06-28 | Publish through an isolated clinical-only Git tree instead of pushing the root repository history. | The current root HEAD tracks `tw_quant_v2/`; a direct push would publish unrelated trading research and violate the scoped clinical deployment boundary. |
 | 2026-06-28 | Stop Render automation at the sign-in page. | Render deployment now requires user account authentication and possibly GitHub OAuth; credentials and account authorization are outside the safe autonomous boundary. |
 | 2026-06-28 | Require explicit confirmation before clicking `Deploy Blueprint`. | The Render page states it will create a PostgreSQL database and web service, and future Blueprint syncs may affect costs. |
+| 2026-06-28 | Fix Render build by adding `--run-syncdb` to the production build migration command. | Render logs show fixture loading failed because `cds_core_chiefcomplaint` did not exist; `cds_core` has no migrations and needs syncdb table creation before `loaddata`. |
 
 ## Errors Encountered
 
@@ -197,3 +207,4 @@ Status: awaiting_confirmation
 | Phase 15 direct root push would include unrelated tracked files | `git ls-tree -r --name-only HEAD` showed `tw_quant_v2/` is tracked in the same repository | Switched to an isolated clinical-only publish tree before pushing to the GitHub remote |
 | Phase 15 PowerShell pipe corrupted `git archive` tar stream | `git archive HEAD -- ... | tar -x` returned `tar.exe: Unrecognized archive format` | Use `git archive -o <tar>` and then `tar -xf <tar>` so the archive stays binary-safe |
 | Phase 15 temp Git repo lacked author identity | Initial isolated repo commit failed with `Author identity unknown` | Copied the main repo's local `Codex <codex@example.local>` identity into the temp repo's local Git config and committed without changing global Git config |
+| Phase 17 first Render deploy failed during build | Render deploy `dep-d9092tn7f7vs73cg0ep0` exited with status 1 while loading `headache_mvp.json`; log showed `relation "cds_core_chiefcomplaint" does not exist` | Update Render build migration command from `migrate` to `migrate --run-syncdb` so unmigrated `cds_core` tables are created before fixtures load |

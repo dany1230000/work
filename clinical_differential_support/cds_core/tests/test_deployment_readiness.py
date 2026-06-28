@@ -138,7 +138,7 @@ print(json.dumps({
         for expected in [
             "pip install -r clinical_differential_support/requirements.txt",
             "collectstatic --no-input",
-            "migrate",
+            "migrate --run-syncdb",
             "loaddata headache_mvp chest_pain_mvp abdominal_pain_mvp dyspnea_mvp",
         ]:
             with self.subTest(expected=expected):

@@ -1183,3 +1183,14 @@
 - The browser later reached the Render `New Blueprint` page for `dany1230000/work`, showing it will create database `clinical-differential-support-db` and web service `clinical-differential-support`.
 - Filled Blueprint Name with `clinical-differential-support`.
 - Stopped before clicking `Deploy Blueprint` because that button creates Render cloud resources and may affect account costs; explicit user confirmation is required.
+
+## 2026-06-28 Render Build Failure Fix Update
+
+- User confirmed they clicked the Render deploy button.
+- Read the Render Blueprint sync page and found web service `clinical-differential-support` at `https://clinical-differential-support.onrender.com`.
+- Render created database `clinical-differential-support-db`, but the first web service deploy failed for commit `ff008dd`.
+- Read deploy logs for `dep-d9092tn7f7vs73cg0ep0`.
+- Root cause: fixture loading failed with `django.db.utils.ProgrammingError`; `headache_mvp.json` could not load `cds_core.ChiefComplaint(pk=1)` because relation `cds_core_chiefcomplaint` did not exist.
+- Confirmed local launch had used `migrate --run-syncdb`, while Render `build.sh` used plain `migrate`.
+- Updated `clinical_differential_support/build.sh` to run `migrate --run-syncdb` before loading fixtures.
+- Updated deployment readiness test and deployment docs to require/document `migrate --run-syncdb`.
