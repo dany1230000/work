@@ -39,6 +39,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Recent cancer treatment")
         self.assertContains(response, "Easy bruising or bleeding")
         self.assertContains(response, "Inability to void")
+        self.assertContains(response, "Vaginal discharge")
+        self.assertContains(response, "Cervical motion tenderness")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -67,3 +69,27 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, f"{len(CONDITIONS)} conditions")
         self.assertContains(response, f"{len(SOURCES)} sources")
         self.assertContains(response, "不是 diagnosis order")
+
+    def test_posted_gynecologic_findings_show_pid_toa_and_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "pelvic_pain",
+                    "fever",
+                    "vaginal_discharge",
+                    "cervical_motion_tenderness",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "骨盆腔發炎性疾病")
+        self.assertContains(response, "Pelvic inflammatory disease")
+        self.assertContains(response, "輸卵管卵巢膿瘍")
+        self.assertContains(response, "Tubo-ovarian abscess")
+        self.assertContains(response, "下一步要問 / Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "CDC")

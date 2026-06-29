@@ -38,8 +38,8 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
 
     results.sort(
         key=lambda item: (
-            URGENCY_ORDER.get(item["urgency"], 99),
             -item["score"],
+            URGENCY_ORDER.get(item["urgency"], 99),
             item["name_en"],
         )
     )

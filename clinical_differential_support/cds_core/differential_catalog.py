@@ -90,6 +90,31 @@ SOURCES = {
         "title": "Symptoms and Causes of Urinary Retention",
         "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/urinary-retention/symptoms-causes",
     },
+    "merck_pid": {
+        "publisher": "Merck Manual Professional",
+        "title": "Pelvic Inflammatory Disease (PID)",
+        "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/vaginitis-cervicitis-and-pelvic-inflammatory-disease/pelvic-inflammatory-disease-pid",
+    },
+    "cdc_pid": {
+        "publisher": "CDC",
+        "title": "Pelvic Inflammatory Disease (PID) - STI Treatment Guidelines",
+        "url": "https://www.cdc.gov/std/treatment-guidelines/pid.htm",
+    },
+    "acog_acute_aub": {
+        "publisher": "ACOG",
+        "title": "Management of Acute Abnormal Uterine Bleeding in Nonpregnant Reproductive-Aged Women",
+        "url": "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2013/04/management-of-acute-abnormal-uterine-bleeding-in-nonpregnant-reproductive-aged-women",
+    },
+    "merck_vaginal_bleeding": {
+        "publisher": "Merck Manual Professional",
+        "title": "Vaginal Bleeding",
+        "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/vaginal-bleeding",
+    },
+    "merck_abnormal_uterine_bleeding": {
+        "publisher": "Merck Manual Professional",
+        "title": "Abnormal Uterine Bleeding",
+        "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/abnormal-uterine-bleeding/abnormal-uterine-bleeding",
+    },
 }
 
 FINDING_GROUPS = [
@@ -155,6 +180,19 @@ FINDING_GROUPS = [
             ("inability_to_void", "Inability to void", "無法排尿"),
             ("flank_pain", "Flank pain", "腰側痛"),
             ("pelvic_pain", "Pelvic pain", "骨盆痛"),
+        ],
+    },
+    {
+        "group_zh": "婦科",
+        "group_en": "Gynecologic",
+        "findings": [
+            ("vaginal_bleeding", "Vaginal bleeding", "陰道出血"),
+            ("vaginal_discharge", "Vaginal discharge", "陰道分泌物"),
+            (
+                "cervical_motion_tenderness",
+                "Cervical motion tenderness",
+                "子宮頸移動痛",
+            ),
         ],
     },
     {
@@ -1178,6 +1216,95 @@ CONDITIONS = [
         "synonyms": ["gerd", "reflux", "heartburn"],
         "ask_next": ["先確認 ACS 紅旗；再問吞嚥困難、體重減輕、出血、夜間症狀與藥物。 / First check ACS red flags; then ask dysphagia, weight loss, bleeding, nocturnal symptoms, and medications."],
         "source_ids": ["merck_professional"],
+    },
+    {
+        "slug": "pelvic_inflammatory_disease",
+        "name_zh": "骨盆腔發炎性疾病",
+        "name_en": "Pelvic inflammatory disease",
+        "system": "Gynecologic/Infectious",
+        "urgency": "urgent",
+        "summary_zh": "骨盆或下腹痛合併發燒、陰道分泌物、不規則出血或子宮頸移動痛時需納入。",
+        "summary_en": "Pelvic or lower abdominal pain with fever, discharge, irregular bleeding, or cervical motion tenderness should include PID.",
+        "signals": {
+            "pelvic_pain": 5,
+            "fever": 2,
+            "vaginal_discharge": 4,
+            "cervical_motion_tenderness": 5,
+            "vaginal_bleeding": 1,
+            "dysuria": 1,
+            "pregnancy_possible": 1,
+        },
+        "synonyms": [
+            "pelvic inflammatory disease",
+            "pid",
+            "salpingitis",
+            "endometritis",
+        ],
+        "ask_next": [
+            "確認下腹/骨盆痛、發燒、陰道分泌物或不規則出血、子宮頸移動痛/子宮或附件壓痛、懷孕可能與是否排除外科急症。 / Clarify lower abdominal or pelvic pain, fever, discharge or irregular bleeding, cervical motion, uterine or adnexal tenderness, pregnancy possibility, and whether surgical emergencies are excluded.",
+        ],
+        "source_ids": ["merck_pid", "cdc_pid"],
+    },
+    {
+        "slug": "tubo_ovarian_abscess",
+        "name_zh": "輸卵管卵巢膿瘍",
+        "name_en": "Tubo-ovarian abscess",
+        "system": "Gynecologic/Infectious",
+        "urgency": "emergent",
+        "summary_zh": "骨盆痛合併發燒、劇痛、嘔吐、陰道分泌物或血流不穩時需優先排除。",
+        "summary_en": "Pelvic pain with fever, severe pain, vomiting, discharge, or instability should prioritize tubo-ovarian abscess.",
+        "signals": {
+            "pelvic_pain": 5,
+            "fever": 4,
+            "vaginal_discharge": 3,
+            "cervical_motion_tenderness": 4,
+            "severe_pain": 2,
+            "vomiting": 2,
+            "hemodynamic_instability": 4,
+            "pregnancy_possible": 1,
+        },
+        "synonyms": [
+            "tubo-ovarian abscess",
+            "tubo ovarian abscess",
+            "toa",
+            "adnexal abscess",
+        ],
+        "ask_next": [
+            "確認發燒高度、毒性外觀、單側或雙側骨盆痛、分泌物、嘔吐、腹膜刺激、妊娠狀態與是否需要急症婦科/影像評估。 / Clarify fever severity, toxic appearance, unilateral or bilateral pelvic pain, discharge, vomiting, peritoneal signs, pregnancy status, and need for urgent gynecologic or imaging evaluation.",
+        ],
+        "source_ids": ["merck_pid", "cdc_pid"],
+    },
+    {
+        "slug": "acute_abnormal_uterine_bleeding",
+        "name_zh": "急性異常子宮出血",
+        "name_en": "Acute abnormal uterine bleeding",
+        "system": "Gynecologic/Hematologic",
+        "urgency": "emergent",
+        "summary_zh": "大量或急性陰道/子宮出血合併昏厥、血流不穩或貧血線索時需立即分層。",
+        "summary_en": "Heavy or acute vaginal or uterine bleeding with syncope, instability, or anemia clues needs immediate risk stratification.",
+        "signals": {
+            "vaginal_bleeding": 6,
+            "hemodynamic_instability": 6,
+            "syncope": 4,
+            "easy_bruising_bleeding": 2,
+            "fatigue": 1,
+            "pelvic_pain": 1,
+        },
+        "synonyms": [
+            "acute abnormal uterine bleeding",
+            "abnormal uterine bleeding",
+            "aub",
+            "heavy vaginal bleeding",
+            "heavy uterine bleeding",
+        ],
+        "ask_next": [
+            "確認出血量與時間、生命徵象/昏厥、是否有妊娠檢測資訊、貧血或凝血病史、抗凝血藥、產後或停經狀態與婦科急症需求。 / Clarify bleeding volume and timing, vital signs or syncope, whether pregnancy testing information is available, anemia or bleeding disorder history, anticoagulants, postpartum or postmenopausal status, and gynecologic emergency need.",
+        ],
+        "source_ids": [
+            "acog_acute_aub",
+            "merck_vaginal_bleeding",
+            "merck_abnormal_uterine_bleeding",
+        ],
     },
     {
         "slug": "ovarian_torsion",

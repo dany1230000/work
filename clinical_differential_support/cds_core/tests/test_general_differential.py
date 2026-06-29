@@ -83,6 +83,9 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("hypercalcemia of malignancy", "hypercalcemia_of_malignancy"),
             ("acute leukemia", "acute_leukemia"),
             ("urinary retention", "acute_urinary_retention"),
+            ("pelvic inflammatory disease", "pelvic_inflammatory_disease"),
+            ("tubo ovarian abscess", "tubo_ovarian_abscess"),
+            ("acute abnormal uterine bleeding", "acute_abnormal_uterine_bleeding"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -122,3 +125,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "acute_urinary_retention")
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("inability_to_void", top["matched_findings"])
+
+    def test_pelvic_pain_fever_discharge_prioritizes_pid_and_toa(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "pelvic_pain",
+                    "fever",
+                    "vaginal_discharge",
+                    "cervical_motion_tenderness",
+                ],
+            }
+        )
+
+        self.assertEqual(result["results"][0]["slug"], "tubo_ovarian_abscess")
+        slugs = [entry["slug"] for entry in result["results"][:5]]
+        self.assertIn("tubo_ovarian_abscess", slugs)
+        self.assertIn("pelvic_inflammatory_disease", slugs)
+        self.assertIn("cervical_motion_tenderness", result["results"][0]["matched_findings"])
+
+    def test_vaginal_bleeding_instability_prioritizes_acute_abnormal_uterine_bleeding(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "vaginal_bleeding",
+                    "hemodynamic_instability",
+                    "syncope",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_abnormal_uterine_bleeding")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("vaginal_bleeding", top["matched_findings"])
