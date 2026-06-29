@@ -4,7 +4,7 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import SimpleTestCase
 
-from cds_core.differential_catalog import CONDITIONS
+from cds_core.differential_catalog import CONDITIONS, SOURCES
 from cds_core.differential_catalog_quality import (
     build_general_differential_catalog_quality_report,
 )
@@ -43,6 +43,16 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
 
         self.assertGreaterEqual(report["summary"]["condition_count"], 86)
         self.assertGreaterEqual(report["summary"]["source_count"], 59)
+        self.assertEqual(report["summary"]["blocking_issue_count"], 0)
+        self.assertTrue(report["summary"]["ready_for_public_reference"])
+
+    def test_common_ambulatory_batch_expands_catalog_depth(self):
+        report = build_general_differential_catalog_quality_report()
+
+        self.assertGreaterEqual(report["summary"]["condition_count"], 100)
+        self.assertGreaterEqual(report["summary"]["source_count"], 72)
+        self.assertGreaterEqual(len(CONDITIONS), 100)
+        self.assertGreaterEqual(len(SOURCES), 72)
         self.assertEqual(report["summary"]["blocking_issue_count"], 0)
         self.assertTrue(report["summary"]["ready_for_public_reference"])
 

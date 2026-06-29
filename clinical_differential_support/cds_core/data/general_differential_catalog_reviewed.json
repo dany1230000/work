@@ -1,13 +1,13 @@
 ﻿{
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-06-28",
-    "condition_count": 86,
-    "source_count": 59,
+    "catalog_version": "general-differential-starter-2026-06-29",
+    "condition_count": 100,
+    "source_count": 75,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-06-28",
-      "condition_count": 86,
-      "source_count": 59,
+      "catalog_version": "general-differential-starter-2026-06-29",
+      "condition_count": 100,
+      "source_count": 75,
       "blocking_issue_count": 0,
       "warning_count": 51,
       "ready_for_public_reference": true,
@@ -2478,6 +2478,407 @@
       "source_ids": [
         "merck_professional"
       ]
+    },
+    {
+      "slug": "acute_otitis_media",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u4e2d\u8033\u708e",
+      "name_en": "Acute otitis media",
+      "system": "ENT/Infectious/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "\u8033\u75db\u5408\u4f75\u767c\u71d2\u3001\u807d\u529b\u8b8a\u5316\u6216\u4e0a\u547c\u5438\u9053\u75c7\u72c0\u6642\uff0c\u61c9\u7d0d\u5165\u6025\u6027\u4e2d\u8033\u708e\u4e26\u8a55\u4f30\u5e74\u9f61\u3001\u56b4\u91cd\u5ea6\u8207\u4f75\u767c\u75c7\u8b66\u8a0a\u3002",
+      "summary_en": "Ear pain with fever, hearing symptoms, or upper respiratory symptoms should include acute otitis media and severity assessment.",
+      "signals": {
+        "ear_pain": 6,
+        "fever": 2,
+        "hearing_loss_tinnitus": 2,
+        "nasal_congestion_rhinorrhea": 1
+      },
+      "synonyms": [
+        "acute otitis media",
+        "otitis media",
+        "middle ear infection",
+        "aom"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8033\u75db\u5074\u5225\u3001\u767c\u71d2\u3001\u807d\u529b\u4e0b\u964d\u3001\u8033\u6f0f\u3001\u8fd1\u671f\u611f\u5192\u3001\u5e74\u9f61\u3001\u514d\u75ab\u72c0\u614b\u8207\u4e73\u7a81\u708e\u6216\u9871\u5167\u4f75\u767c\u8b66\u8a0a\u3002 / Clarify laterality, fever, hearing change, otorrhea, recent URI, age, immune status, and mastoid or intracranial complication clues."
+      ],
+      "source_ids": [
+        "merck_otitis_media_acute",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_otitis_externa",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u5916\u8033\u9053\u708e",
+      "name_en": "Acute otitis externa",
+      "system": "ENT/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u8033\u75db\u5408\u4f75\u8033\u5c4f\u58d3\u75db\u3001\u8033\u5206\u6ccc\u7269\u6216\u6e38\u6cf3/\u5c40\u90e8\u523a\u6fc0\u8108\u7d61\u6642\uff0c\u61c9\u8003\u616e\u6025\u6027\u5916\u8033\u9053\u708e\u3002",
+      "summary_en": "Ear pain with tragal tenderness, canal discharge, or local irritation should include acute otitis externa.",
+      "signals": {
+        "ear_discharge_or_tragal_tenderness": 7,
+        "ear_pain": 3,
+        "fever": 1
+      },
+      "synonyms": [
+        "acute otitis externa",
+        "otitis externa",
+        "swimmer's ear",
+        "external ear infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8033\u5c4f\u6216\u727d\u62c9\u8033\u5ed3\u662f\u5426\u75bc\u75db\u3001\u8033\u9053\u816b\u8139\u6216\u5206\u6ccc\u7269\u3001\u7cd6\u5c3f\u75c5\u6216\u514d\u75ab\u4f4e\u4e0b\u3001\u767c\u71d2\uff0c\u4ee5\u53ca\u60e1\u6027\u5916\u8033\u9053\u708e\u8b66\u8a0a\u3002 / Check tragal or pinna tenderness, canal swelling or discharge, diabetes or immunocompromise, fever, and malignant external otitis red flags."
+      ],
+      "source_ids": [
+        "merck_external_otitis_acute",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_sinusitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u9f3b\u7ac7\u708e",
+      "name_en": "Acute sinusitis",
+      "system": "ENT/Respiratory/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u9f3b\u585e\u6d41\u9f3b\u6c34\u5408\u4f75\u81c9\u90e8\u6216\u9f3b\u7ac7\u75bc\u75db\u58d3\u8feb\u611f\u3001\u767c\u71d2\u6216\u75c5\u7a0b\u60e1\u5316\u6642\uff0c\u61c9\u7d0d\u5165\u6025\u6027\u9f3b\u7ac7\u708e\u3002",
+      "summary_en": "Nasal congestion or rhinorrhea with facial/sinus pain, fever, or worsening course should include acute sinusitis.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "facial_sinus_pain_pressure": 6,
+        "fever": 2,
+        "cough_sputum": 1
+      },
+      "synonyms": [
+        "acute sinusitis",
+        "sinus infection",
+        "rhinosinusitis",
+        "sinus pain"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c7\u72c0\u5929\u6578\u3001\u662f\u5426\u5148\u597d\u8f49\u5f8c\u60e1\u5316\u3001\u55ae\u5074\u81c9\u75db\u3001\u81bf\u6027\u9f3b\u6d95\u3001\u767c\u71d2\u3001\u773c\u7736\u6216\u795e\u7d93\u4f75\u767c\u8b66\u8a0a\u3002 / Clarify duration, double-worsening, unilateral facial pain, purulent drainage, fever, and orbital or neurologic complication clues."
+      ],
+      "source_ids": [
+        "merck_sinusitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "streptococcal_pharyngitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "A \u7fa4\u93c8\u7403\u83cc\u54bd\u5589\u708e",
+      "name_en": "Streptococcal pharyngitis",
+      "system": "ENT/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u5589\u56a8\u75db\u5408\u4f75\u767c\u71d2\u3001\u6241\u6843\u817a\u6ef2\u51fa\u7269\u6216\u524d\u9838\u90e8\u6dcb\u5df4\u7d50\u58d3\u75db\u6642\uff0c\u61c9\u8003\u616e A \u7fa4\u93c8\u7403\u83cc\u54bd\u5589\u708e\u4e26\u8207\u75c5\u6bd2\u6027\u75c7\u72c0\u5340\u5206\u3002",
+      "summary_en": "Sore throat with fever, tonsillar exudate, or tender anterior cervical nodes should include group A strep pharyngitis.",
+      "signals": {
+        "sore_throat": 4,
+        "tonsillar_exudate_or_tender_nodes": 7,
+        "fever": 3
+      },
+      "synonyms": [
+        "strep throat",
+        "streptococcal pharyngitis",
+        "group a strep pharyngitis",
+        "tonsillitis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u54b3\u55fd\u662f\u5426\u7f3a\u5e2d\u3001\u767c\u71d2\u3001\u524d\u9838\u90e8\u6dcb\u5df4\u7d50\u58d3\u75db\u3001\u6241\u6843\u817a\u6ef2\u51fa\u7269\u3001\u7329\u7d05\u71b1\u76ae\u75b9\u3001\u5e74\u9f61\u8207\u662f\u5426\u9700\u8981\u6aa2\u6e2c\u3002 / Clarify cough absence, fever, tender anterior cervical nodes, tonsillar exudate, scarlatiniform rash, age, and testing need."
+      ],
+      "source_ids": [
+        "cdc_strep_throat",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "infectious_mononucleosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u50b3\u67d3\u6027\u55ae\u6838\u7403\u589e\u591a\u75c7",
+      "name_en": "Infectious mononucleosis",
+      "system": "ENT/Infectious/Hematologic",
+      "urgency": "soon",
+      "summary_zh": "\u5589\u56a8\u75db\u3001\u767c\u71d2\u3001\u75b2\u5026\u5408\u4f75\u5f8c\u9838\u90e8\u6dcb\u5df4\u7d50\u816b\u5927\u6642\uff0c\u61c9\u7d0d\u5165 EBV \u76f8\u95dc\u50b3\u67d3\u6027\u55ae\u6838\u7403\u589e\u591a\u75c7\u3002",
+      "summary_en": "Sore throat, fever, fatigue, and posterior cervical adenopathy should include EBV-associated infectious mononucleosis.",
+      "signals": {
+        "sore_throat": 3,
+        "fever": 2,
+        "fatigue": 4,
+        "posterior_cervical_adenopathy": 6
+      },
+      "synonyms": [
+        "infectious mononucleosis",
+        "mono",
+        "ebv infection",
+        "glandular fever"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75b2\u5026\u7a0b\u5ea6\u3001\u5f8c\u9838\u6dcb\u5df4\u7d50\u3001\u809d\u813e\u816b\u5927\u6216\u5de6\u4e0a\u8179\u75db\u3001\u76ae\u75b9\u3001\u66b4\u9732\u53f2\uff0c\u4ee5\u53ca\u904b\u52d5\u6216\u813e\u81df\u7834\u88c2\u98a8\u96aa\u3002 / Clarify fatigue, posterior nodes, hepatosplenomegaly or LUQ pain, rash, exposure, and activity or splenic rupture risk."
+      ],
+      "source_ids": [
+        "cdc_ebv_mono",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "allergic_rhinitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u904e\u654f\u6027\u9f3b\u708e",
+      "name_en": "Allergic rhinitis",
+      "system": "Allergy/ENT/Respiratory",
+      "urgency": "routine",
+      "summary_zh": "\u9f3b\u585e\u3001\u6d41\u9f3b\u6c34\u3001\u6253\u5674\u568f\u3001\u773c\u9f3b\u6414\u7662\u6216\u6d41\u6dda\uff0c\u4e14\u8207\u5b63\u7bc0\u6216\u66b4\u9732\u76f8\u95dc\u6642\uff0c\u61c9\u8003\u616e\u904e\u654f\u6027\u9f3b\u708e\u3002",
+      "summary_en": "Congestion, rhinorrhea, sneezing, itching, or watery eyes with seasonal or exposure pattern should include allergic rhinitis.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "itchy_sneezing_watery_eyes": 7,
+        "cough_sputum": 1
+      },
+      "synonyms": [
+        "allergic rhinitis",
+        "hay fever",
+        "seasonal allergies",
+        "allergy runny nose"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5b63\u7bc0\u6027\u3001\u5875\u87ce/\u82b1\u7c89/\u52d5\u7269\u66b4\u9732\u3001\u773c\u9f3b\u6414\u7662\u3001\u5598\u9cf4\u6216\u6c23\u5598\u8108\u7d61\uff0c\u4ee5\u53ca\u611f\u67d3\u6216\u9f3b\u7ac7\u708e\u8b66\u8a0a\u3002 / Clarify seasonality, dust/pollen/animal exposure, eye or nasal itching, wheeze/asthma context, and infection or sinusitis red flags."
+      ],
+      "source_ids": [
+        "merck_allergic_rhinitis",
+        "cdc_allergens_pollen"
+      ]
+    },
+    {
+      "slug": "benign_paroxysmal_positional_vertigo",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u826f\u6027\u9663\u767c\u6027\u59ff\u52e2\u6027\u7729\u6688",
+      "name_en": "Benign paroxysmal positional vertigo",
+      "system": "ENT/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u77ed\u66ab\u3001\u53cd\u8986\u3001\u7531\u982d\u4f4d\u6539\u8b8a\u8a98\u767c\u7684\u7729\u6688\uff0c\u4e14\u6c92\u6709\u4e2d\u6a1e\u795e\u7d93\u7d05\u65d7\u6642\uff0c\u61c9\u7d0d\u5165 BPPV\u3002",
+      "summary_en": "Brief recurrent vertigo triggered by head position change without central neurologic red flags should include BPPV.",
+      "signals": {
+        "vertigo": 4,
+        "positional_vertigo": 8,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "benign paroxysmal positional vertigo",
+        "bppv",
+        "positional vertigo",
+        "brief vertigo turning head"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7729\u6688\u662f\u5426\u7531\u7ffb\u8eab\u6216\u62ac\u982d\u8a98\u767c\u3001\u6bcf\u6b21\u6301\u7e8c\u6642\u9593\u3001\u773c\u9707\u3001\u807d\u529b\u75c7\u72c0\uff0c\u4ee5\u53ca\u8907\u8996\u3001\u69cb\u97f3\u3001\u80a2\u9ad4\u7121\u529b\u6216\u6b65\u614b\u5931\u8abf\u7b49\u4e2d\u6a1e\u7d05\u65d7\u3002 / Clarify positional trigger, episode duration, nystagmus, hearing symptoms, and central red flags such as diplopia, dysarthria, weakness, or ataxia."
+      ],
+      "source_ids": [
+        "merck_bppv",
+        "merck_dizziness_vertigo"
+      ]
+    },
+    {
+      "slug": "vestibular_neuritis_labyrinthitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u524d\u5ead\u795e\u7d93\u708e\u6216\u8ff7\u8def\u708e",
+      "name_en": "Vestibular neuritis or labyrinthitis",
+      "system": "ENT/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u6301\u7e8c\u6027\u7729\u6688\u3001\u5641\u5fc3\u5614\u5410\u6216\u6b65\u614b\u4e0d\u7a69\uff0c\u5c24\u5176\u6709\u75c5\u6bd2\u524d\u9a45\u6216\u807d\u529b\u75c7\u72c0\u6642\uff0c\u61c9\u7d0d\u5165\u524d\u5ead\u795e\u7d93\u708e/\u8ff7\u8def\u708e\u4e26\u6392\u9664\u4e2d\u6a1e\u75c5\u56e0\u3002",
+      "summary_en": "Continuous vertigo with nausea/vomiting, gait symptoms, viral prodrome, or hearing symptoms should include vestibular neuritis or labyrinthitis while excluding central causes.",
+      "signals": {
+        "vertigo": 4,
+        "continuous_vertigo": 7,
+        "vomiting": 2,
+        "hearing_loss_tinnitus": 3
+      },
+      "synonyms": [
+        "vestibular neuritis",
+        "labyrinthitis",
+        "acute vestibular syndrome",
+        "continuous vertigo"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6301\u7e8c\u7729\u6688\u3001\u6b65\u614b\u4e0d\u7a69\u3001\u8fd1\u671f\u75c5\u6bd2\u75c7\u72c0\u3001\u807d\u529b\u4e0b\u964d\u6216\u8033\u9cf4\uff0c\u4e26\u6aa2\u67e5\u65b0\u795e\u7d93\u7f3a\u640d\u6216\u5c0f\u8166/\u8166\u5e79\u7d05\u65d7\u3002 / Clarify continuous vertigo, gait instability, viral prodrome, hearing loss or tinnitus, and new neurologic or cerebellar/brainstem red flags."
+      ],
+      "source_ids": [
+        "merck_dizziness_vertigo",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_gout_flare",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u75db\u98a8\u767c\u4f5c",
+      "name_en": "Acute gout flare",
+      "system": "Rheumatologic/Musculoskeletal",
+      "urgency": "soon",
+      "summary_zh": "\u6025\u6027\u7d05\u816b\u71b1\u75db\u95dc\u7bc0\uff0c\u5c24\u5176\u7b2c\u4e00\u8e60\u8dbe\u95dc\u7bc0\u6216\u5178\u578b\u53cd\u8986\u767c\u4f5c\u6642\uff0c\u61c9\u7d0d\u5165\u6025\u6027\u75db\u98a8\uff0c\u540c\u6642\u4e0d\u80fd\u5ffd\u7565\u611f\u67d3\u6027\u95dc\u7bc0\u708e\u3002",
+      "summary_en": "Acute painful swollen joint, especially first MTP involvement or recurrent typical attacks, should include gout while septic arthritis remains an exclusion priority.",
+      "signals": {
+        "acute_joint_pain_swelling": 5,
+        "podagra_or_first_mtp_pain": 8,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "acute gout flare",
+        "gout",
+        "podagra",
+        "first mtp arthritis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u53d7\u5f71\u97ff\u95dc\u7bc0\u3001\u767c\u4f5c\u901f\u5ea6\u3001\u7b2c\u4e00\u8e60\u8dbe\u95dc\u7bc0\u3001\u65e2\u5f80\u75db\u98a8\u3001\u767c\u71d2\u6216\u514d\u75ab\u4f4e\u4e0b\uff0c\u4e26\u6392\u9664\u611f\u67d3\u6027\u95dc\u7bc0\u708e\u8b66\u8a0a\u3002 / Clarify joint involved, speed of onset, first MTP involvement, prior gout, fever or immunocompromise, and septic arthritis red flags."
+      ],
+      "source_ids": [
+        "nice_gout",
+        "niams_gout"
+      ]
+    },
+    {
+      "slug": "cauda_equina_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u99ac\u5c3e\u75c7\u5019\u7fa4",
+      "name_en": "Cauda equina syndrome",
+      "system": "Neurologic/Musculoskeletal/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u4e0b\u80cc\u75db\u5408\u4f75\u99ac\u978d\u5340\u9ebb\u6728\u3001\u8180\u80f1\u6216\u8178\u9053\u529f\u80fd\u7570\u5e38\u3001\u9032\u884c\u6027\u96d9\u5074\u4e0b\u80a2\u7121\u529b\u6642\uff0c\u5fc5\u9808\u512a\u5148\u6392\u9664\u99ac\u5c3e\u75c7\u5019\u7fa4\u3002",
+      "summary_en": "Low back pain with saddle anesthesia, bladder/bowel dysfunction, or progressive bilateral leg weakness must prioritize cauda equina syndrome.",
+      "signals": {
+        "low_back_pain": 3,
+        "saddle_anesthesia": 10,
+        "bladder_bowel_dysfunction": 8,
+        "progressive_bilateral_leg_weakness": 5,
+        "neurologic_deficit": 2
+      },
+      "synonyms": [
+        "cauda equina syndrome",
+        "cauda equina",
+        "saddle anesthesia back pain",
+        "urinary retention back pain"
+      ],
+      "ask_next": [
+        "\u7acb\u5373\u78ba\u8a8d\u5c3f\u6eef\u7559\u6216\u5931\u7981\u3001\u809b\u9580\u62ec\u7d04\u808c/\u6703\u9670\u611f\u89ba\u3001\u96d9\u5074\u5750\u9aa8\u795e\u7d93\u75db\u6216\u7121\u529b\u3001\u767c\u75c5\u6642\u9593\u3001\u764c\u75c7/\u611f\u67d3/\u5916\u50b7\u8108\u7d61\u8207\u6025\u75c7\u5f71\u50cf\u8a55\u4f30\u9700\u6c42\u3002 / Immediately clarify urinary retention or incontinence, anal tone/perineal sensation, bilateral sciatica or weakness, onset time, cancer/infection/trauma context, and emergency imaging need."
+      ],
+      "source_ids": [
+        "merck_cauda_equina",
+        "nice_sciatica_red_flags"
+      ]
+    },
+    {
+      "slug": "dehydration_volume_depletion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u812b\u6c34\u6216\u8840\u5bb9\u91cf\u4e0d\u8db3",
+      "name_en": "Dehydration or volume depletion",
+      "system": "Metabolic/Renal/Pediatric",
+      "urgency": "urgent",
+      "summary_zh": "\u9032\u98df\u559d\u6c34\u4e0d\u8db3\u3001\u5614\u5410\u3001\u5c3f\u91cf\u6e1b\u5c11\u3001\u59ff\u52e2\u6027\u982d\u6688\u6216\u8840\u6d41\u4e0d\u7a69\u6642\uff0c\u61c9\u8a55\u4f30\u812b\u6c34\u6216\u8840\u5bb9\u91cf\u4e0d\u8db3\u3002",
+      "summary_en": "Poor intake, vomiting, decreased urine output, orthostatic symptoms, or instability should prompt dehydration or volume depletion assessment.",
+      "signals": {
+        "poor_oral_intake_dehydration": 6,
+        "decreased_urine_output": 4,
+        "vomiting": 2,
+        "orthostatic_lightheadedness": 2,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "dehydration",
+        "volume depletion",
+        "poor oral intake",
+        "decreased urine output"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u651d\u53d6\u91cf\u3001\u5614\u5410\u8179\u7009\u3001\u5c3f\u91cf\u3001\u53e3\u6e34\u6216\u9ecf\u819c\u4e7e\u71e5\u3001\u9ad4\u91cd\u8b8a\u5316\u3001\u59ff\u52e2\u6027\u75c7\u72c0\u3001\u751f\u547d\u5fb5\u8c61\u8207\u5152\u7ae5/\u9ad8\u9f61/\u814e\u81df\u98a8\u96aa\u3002 / Clarify intake, vomiting/diarrhea, urine output, thirst or dry mucosa, weight change, orthostatic symptoms, vital signs, and pediatric/older adult/renal risk."
+      ],
+      "source_ids": [
+        "merck_dehydration_children",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vasovagal_orthostatic_syncope",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8840\u7ba1\u8ff7\u8d70\u6216\u59ff\u52e2\u6027\u660f\u53a5",
+      "name_en": "Vasovagal or orthostatic syncope",
+      "system": "Cardiovascular/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u660f\u53a5\u5408\u4f75\u7ad9\u7acb\u8a98\u767c\u3001\u812b\u6c34\u8108\u7d61\u3001\u524d\u9a45\u982d\u6688\u6216\u5641\u5fc3\u6642\uff0c\u61c9\u7d0d\u5165\u8840\u7ba1\u8ff7\u8d70\u6216\u59ff\u52e2\u6027\u660f\u53a5\uff0c\u540c\u6642\u6392\u9664\u5fc3\u56e0\u6027\u7d05\u65d7\u3002",
+      "summary_en": "Syncope with standing trigger, volume depletion context, or prodromal lightheadedness should include vasovagal or orthostatic syncope while cardiac red flags are checked.",
+      "signals": {
+        "syncope": 4,
+        "orthostatic_lightheadedness": 7,
+        "poor_oral_intake_dehydration": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "orthostatic syncope",
+        "vasovagal syncope",
+        "fainting standing up",
+        "orthostatic hypotension"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u59ff\u52e2\u8a98\u767c\u3001\u524d\u9a45\u75c7\u72c0\u3001\u6301\u7e8c\u6642\u9593\u3001\u6062\u5fa9\u60c5\u5f62\u3001\u7528\u85e5\u8207\u812b\u6c34\u8108\u7d61\uff0c\u540c\u6642\u6aa2\u67e5\u80f8\u75db\u3001\u5fc3\u60b8\u3001\u904b\u52d5\u4e2d\u660f\u53a5\u3001\u5bb6\u65cf\u731d\u6b7b\u6216\u795e\u7d93\u7f3a\u640d\u3002 / Clarify posture trigger, prodrome, duration, recovery, medications and dehydration context, while checking chest pain, palpitations, exertional syncope, family sudden death, or neurologic deficit."
+      ],
+      "source_ids": [
+        "merck_syncope",
+        "merck_orthostatic_hypotension"
+      ]
+    },
+    {
+      "slug": "low_back_pain_radiculopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e0b\u80cc\u75db\u6216\u8170\u690e\u795e\u7d93\u6839\u75c5\u8b8a",
+      "name_en": "Low back pain or lumbar radiculopathy",
+      "system": "Musculoskeletal/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u4e0b\u80cc\u75db\u5408\u4f75\u653e\u5c04\u75db\u6216\u795e\u7d93\u75c7\u72c0\u6642\uff0c\u61c9\u7d0d\u5165\u8170\u690e\u795e\u7d93\u6839\u75c5\u8b8a\uff1b\u82e5\u6709\u99ac\u978d\u9ebb\u6728\u3001\u8180\u80f1\u8178\u9053\u7570\u5e38\u6216\u9032\u884c\u6027\u7121\u529b\u5247\u8f49\u70ba\u6025\u75c7\u7d05\u65d7\u3002",
+      "summary_en": "Low back pain with radiating or neurologic symptoms should include lumbar radiculopathy; saddle anesthesia, bladder/bowel dysfunction, or progressive weakness are emergency red flags.",
+      "signals": {
+        "low_back_pain": 5,
+        "neurologic_deficit": 1,
+        "progressive_bilateral_leg_weakness": 1
+      },
+      "synonyms": [
+        "lumbar radiculopathy",
+        "sciatica",
+        "low back pain",
+        "back pain radiating leg"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u5206\u5e03\u3001\u817f\u90e8\u653e\u5c04\u75db\u3001\u9ebb\u6728\u6216\u7121\u529b\u3001\u5916\u50b7/\u764c\u75c7/\u611f\u67d3\u98a8\u96aa\uff0c\u4e26\u4e3b\u52d5\u8a62\u554f\u99ac\u978d\u9ebb\u6728\u3001\u5c3f\u6eef\u7559\u6216\u5927\u5c0f\u4fbf\u5931\u7981\u3002 / Clarify pain distribution, leg radiation, numbness or weakness, trauma/cancer/infection risk, and actively ask about saddle anesthesia, urinary retention, or incontinence."
+      ],
+      "source_ids": [
+        "nice_sciatica_red_flags",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "allergic_conjunctivitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u904e\u654f\u6027\u7d50\u819c\u708e",
+      "name_en": "Allergic conjunctivitis",
+      "system": "Ophthalmologic/Allergy",
+      "urgency": "routine",
+      "summary_zh": "\u773c\u775b\u7662\u7d05\u3001\u6d41\u6dda\uff0c\u5e38\u5408\u4f75\u904e\u654f\u6027\u9f3b\u708e\u6216\u66b4\u9732\u8108\u7d61\u6642\uff0c\u61c9\u8003\u616e\u904e\u654f\u6027\u7d50\u819c\u708e\uff1b\u75bc\u75db\u3001\u754f\u5149\u6216\u8996\u529b\u4e0b\u964d\u9700\u53e6\u67e5\u7d05\u65d7\u3002",
+      "summary_en": "Itchy red watery eyes with allergic rhinitis or exposure pattern should include allergic conjunctivitis; pain, photophobia, or vision loss are red flags.",
+      "signals": {
+        "itchy_red_watery_eyes": 8,
+        "itchy_sneezing_watery_eyes": 3,
+        "eye_pain_redness": 1
+      },
+      "synonyms": [
+        "allergic conjunctivitis",
+        "eye allergies",
+        "itchy watery eyes",
+        "allergy red eyes"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6414\u7662\u3001\u96d9\u773c\u6216\u55ae\u773c\u3001\u6d41\u6dda\u3001\u904e\u654f\u9f3b\u708e\u3001\u66b4\u9732\u53f2\uff0c\u4e26\u6aa2\u67e5\u75bc\u75db\u3001\u754f\u5149\u3001\u8996\u529b\u4e0b\u964d\u3001\u96b1\u5f62\u773c\u93e1\u6216\u89d2\u819c\u98a8\u96aa\u3002 / Clarify itching, bilateral versus unilateral symptoms, tearing, allergic rhinitis, exposure history, and check pain, photophobia, vision loss, contact lens use, or corneal risk."
+      ],
+      "source_ids": [
+        "merck_allergic_rhinitis",
+        "cdc_allergens_pollen"
+      ]
     }
   ],
   "sources": [
@@ -2834,6 +3235,102 @@
       "publisher": "CDC",
       "title": "About Kawasaki Disease",
       "url": "https://www.cdc.gov/kawasaki/about/index.html"
+    },
+    {
+      "source_id": "cdc_strep_throat",
+      "publisher": "CDC",
+      "title": "Clinical Guidance for Group A Streptococcal Pharyngitis",
+      "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/strep-throat.html"
+    },
+    {
+      "source_id": "cdc_ebv_mono",
+      "publisher": "CDC",
+      "title": "About Epstein-Barr Virus and Infectious Mononucleosis",
+      "url": "https://www.cdc.gov/epstein-barr/about/index.html"
+    },
+    {
+      "source_id": "merck_otitis_media_acute",
+      "publisher": "Merck Manual Professional",
+      "title": "Otitis Media (Acute)",
+      "url": "https://www.msdmanuals.com/professional/ear-nose-and-throat-disorders/middle-ear-and-tympanic-membrane-disorders/otitis-media-acute"
+    },
+    {
+      "source_id": "merck_external_otitis_acute",
+      "publisher": "Merck Manual Professional",
+      "title": "External Otitis (Acute)",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/external-ear-disorders/external-otitis-acute"
+    },
+    {
+      "source_id": "merck_sinusitis",
+      "publisher": "Merck Manual",
+      "title": "Sinusitis",
+      "url": "https://www.merckmanuals.com/home/ear-nose-and-throat-disorders/nose-and-sinus-disorders/sinusitis"
+    },
+    {
+      "source_id": "merck_allergic_rhinitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Allergic Rhinitis",
+      "url": "https://www.merckmanuals.com/professional/immunology-allergic-disorders/allergic-autoimmune-and-other-hypersensitivity-disorders/allergic-rhinitis"
+    },
+    {
+      "source_id": "cdc_allergens_pollen",
+      "publisher": "CDC",
+      "title": "Allergens and Pollen",
+      "url": "https://www.cdc.gov/climate-health/php/effects/allergens-and-pollen.html"
+    },
+    {
+      "source_id": "merck_bppv",
+      "publisher": "Merck Manual Professional",
+      "title": "Benign Paroxysmal Positional Vertigo",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/inner-ear-disorders/benign-paroxysmal-positional-vertigo"
+    },
+    {
+      "source_id": "merck_dizziness_vertigo",
+      "publisher": "Merck Manual Professional",
+      "title": "Dizziness and Vertigo",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/approach-to-the-patient-with-ear-problems/dizziness-and-vertigo"
+    },
+    {
+      "source_id": "nice_gout",
+      "publisher": "NICE CKS",
+      "title": "Gout",
+      "url": "https://cks.nice.org.uk/topics/gout/management/"
+    },
+    {
+      "source_id": "niams_gout",
+      "publisher": "NIAMS",
+      "title": "Gout",
+      "url": "https://www.niams.nih.gov/health-topics/gout"
+    },
+    {
+      "source_id": "merck_cauda_equina",
+      "publisher": "Merck Manual Professional",
+      "title": "Cauda Equina Syndrome",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/spinal-cord-disorders/cauda-equina-syndrome"
+    },
+    {
+      "source_id": "nice_sciatica_red_flags",
+      "publisher": "NICE CKS",
+      "title": "Sciatica (lumbar radiculopathy): Red flag symptoms and signs",
+      "url": "https://cks.nice.org.uk/topics/sciatica-lumbar-radiculopathy/diagnosis/red-flag-symptoms-signs/"
+    },
+    {
+      "source_id": "merck_dehydration_children",
+      "publisher": "Merck Manual Professional",
+      "title": "Dehydration in Children",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/dehydration-and-fluid-therapy-in-children/dehydration-in-children"
+    },
+    {
+      "source_id": "merck_syncope",
+      "publisher": "Merck Manual Professional",
+      "title": "Syncope",
+      "url": "https://www.msdmanuals.com/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/syncope"
+    },
+    {
+      "source_id": "merck_orthostatic_hypotension",
+      "publisher": "Merck Manual Professional",
+      "title": "Orthostatic Hypotension",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/orthostatic-hypotension"
     }
   ]
 }
