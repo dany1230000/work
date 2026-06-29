@@ -78,6 +78,14 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(skin_soft_tissue["gap_count"], 0)
         self.assertEqual(skin_soft_tissue["status"], "target_met")
 
+    def test_cardiovascular_bucket_reaches_starter_depth(self):
+        report = build_general_differential_catalog_quality_report()
+        cardiovascular = report["system_buckets"]["Cardiovascular"]
+
+        self.assertGreaterEqual(cardiovascular["condition_count"], 8)
+        self.assertEqual(cardiovascular["gap_count"], 0)
+        self.assertEqual(cardiovascular["status"], "target_met")
+
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])
         duplicate = deepcopy(CONDITIONS[1])

@@ -92,6 +92,9 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("skin abscess", "skin_abscess"),
             ("shingles", "herpes_zoster"),
             ("stevens-johnson syndrome", "stevens_johnson_syndrome_ten"),
+            ("pericarditis", "acute_pericarditis_myocarditis"),
+            ("myocarditis", "acute_pericarditis_myocarditis"),
+            ("acute limb ischemia", "acute_limb_ischemia"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -254,3 +257,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "herpes_zoster")
         self.assertEqual(top["urgency"], "urgent")
         self.assertIn("vesicular_dermatomal_rash", top["matched_findings"])
+
+    def test_positional_pleuritic_chest_pain_prioritizes_pericarditis_myocarditis(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "positional_pleuritic_chest_pain",
+                    "pleuritic_pain",
+                    "dyspnea",
+                    "tachycardia",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_pericarditis_myocarditis")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("positional_pleuritic_chest_pain", top["matched_findings"])
+        self.assertIn("Merck Manual Professional", [source["publisher"] for source in top["sources"]])
+
+    def test_acute_limb_pain_pallor_pulselessness_prioritizes_limb_ischemia(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "acute_limb_pain_pallor_pulselessness",
+                    "severe_pain",
+                    "neurologic_deficit",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_limb_ischemia")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("acute_limb_pain_pallor_pulselessness", top["matched_findings"])

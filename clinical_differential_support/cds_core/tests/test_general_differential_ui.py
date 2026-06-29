@@ -47,6 +47,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Purulent skin lesion")
         self.assertContains(response, "Vesicular dermatomal rash")
         self.assertContains(response, "Mucosal lesions")
+        self.assertContains(response, "Positional or pleuritic chest pain")
+        self.assertContains(response, "Acute limb pain, pallor, or pulselessness")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -146,3 +148,26 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "emergent")
         self.assertContains(response, "Merck Manual Professional")
         self.assertContains(response, "DermNet")
+
+    def test_posted_cardiovascular_findings_show_pericarditis_limb_ischemia_and_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "positional_pleuritic_chest_pain",
+                    "acute_limb_pain_pallor_pulselessness",
+                    "severe_pain",
+                    "neurologic_deficit",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Acute pericarditis or myocarditis")
+        self.assertContains(response, "Acute limb ischemia")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "Society for Vascular Surgery")
