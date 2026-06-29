@@ -133,6 +133,52 @@
     margin-bottom: 0.75rem;
   }
 
+  .complaint-preset-panel {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.65rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .complaint-preset-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 0.55rem;
+  }
+
+  .active-preset-label {
+    color: var(--muted);
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .complaint-preset-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 0.4rem;
+  }
+
+  .complaint-preset-button {
+    border: 1px solid #c7d2de;
+    border-radius: 4px;
+    background: #ffffff;
+    color: var(--ink);
+    padding: 0.5rem 0.55rem;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+
+  .complaint-preset-button:hover,
+  .complaint-preset-button.is-active {
+    background: #e8f5ee;
+    border-color: var(--primary);
+    color: var(--primary-dark);
+  }
+
   .finding-filter label {
     margin-bottom: 0.35rem;
   }
@@ -389,6 +435,21 @@
         <section class="finding-picker" id="finding-selection">
           <h3>依系統勾選 / Select by system</h3>
           <div class="finding-filter" data-finding-filter-form="true">
+            <div class="complaint-preset-panel" data-complaint-preset-bar="true">
+              <div class="complaint-preset-title">
+                <span>先選主訴 / Start by complaint</span>
+                <span class="active-preset-label" data-active-preset-label="true">全部 findings / All</span>
+              </div>
+              <div class="complaint-preset-grid">
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="安全 / Safety" data-finding-preset-query="immediate safety" data-finding-preset-mode="any">安全 / Safety</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="胸痛/心悸 / Chest" data-finding-preset-query="cardiopulmonary" data-finding-preset-mode="any">胸痛/心悸 / Chest</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="神經/頭痛 / Neuro" data-finding-preset-query="neurologic headache" data-finding-preset-mode="any">神經/頭痛 / Neuro</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="腹部/泌尿 / Abdomen" data-finding-preset-query="abdominal urinary gynecologic pelvic" data-finding-preset-mode="any">腹部/泌尿 / Abdomen</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="發燒/皮疹 / Fever rash" data-finding-preset-query="infectious metabolic skin fever rash" data-finding-preset-mode="any">發燒/皮疹 / Fever rash</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="眼耳鼻牙 / Eye ENT dental" data-finding-preset-query="eye ear throat dental stridor" data-finding-preset-mode="any">眼耳鼻牙 / Eye ENT dental</button>
+                <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="孕產/性健康 / Pregnancy sexual" data-finding-preset-query="gynecologic pregnancy vaginal urethral scrotal genital" data-finding-preset-mode="any">孕產/性健康 / Pregnancy sexual</button>
+              </div>
+            </div>
             <label for="finding-filter-input">快速篩選 findings / Filter findings</label>
             <div class="finding-filter-row">
               <input

@@ -481,6 +481,8 @@
       var clearButton = filter.querySelector("[data-clear-finding-filter]");
       var matchCount = filter.querySelector("[data-finding-match-count]");
       var noMatches = filter.querySelector("[data-no-finding-matches]");
+      var presetButtons = Array.prototype.slice.call(filter.querySelectorAll("[data-finding-preset]"));
+      var activePresetLabel = filter.querySelector("[data-active-preset-label]");
       var groups = Array.prototype.slice.call(root.querySelectorAll("[data-finding-group]"));
       var options = Array.prototype.slice.call(root.querySelectorAll("[data-finding-option]"));
       if (!input || !selectedOnlyToggle || !clearButton || !groups.length || !options.length) {
@@ -491,6 +493,35 @@
       function optionIsSelected(option) {
         var checkbox = option.querySelector('input[type="checkbox"]');
         return option.dataset.findingSelected === "true" || Boolean(checkbox && checkbox.checked);
+      }
+
+      function escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+
+      function termMatchesSearchIndex(searchIndex, term) {
+        var boundaryPattern = new RegExp("(^|[^a-z0-9])" + escapeRegExp(term) + "([^a-z0-9]|$)");
+        return boundaryPattern.test(searchIndex);
+      }
+
+      function findingMatchesQuery(searchIndex, query) {
+        if (!query) {
+          return true;
+        }
+        if (searchIndex.indexOf(query) !== -1) {
+          return true;
+        }
+        if (input.dataset.findingQueryMode !== "any") {
+          return false;
+        }
+        return query.split(/\s+/).some(function (term) {
+          return term && termMatchesSearchIndex(searchIndex, term);
+        });
+      }
+
+      function setFindingQuery(value, mode) {
+        input.value = value || "";
+        input.dataset.findingQueryMode = mode || "phrase";
       }
 
       function applyFindingFilter() {
@@ -504,7 +535,7 @@
           groupOptions.forEach(function (option) {
             var searchIndex = normalizeFilterText(option.dataset.findingSearchIndex);
             var selected = optionIsSelected(option);
-            var matchesQuery = !query || searchIndex.indexOf(query) !== -1;
+            var matchesQuery = findingMatchesQuery(searchIndex, query);
             var visible = matchesQuery && (!selectedOnly || selected);
             option.hidden = !visible;
             if (visible) {
@@ -526,11 +557,39 @@
         }
       }
 
-      input.addEventListener("input", applyFindingFilter);
+      function setActivePreset(activeButton) {
+        presetButtons.forEach(function (button) {
+          button.classList.toggle("is-active", button === activeButton);
+          button.setAttribute("aria-pressed", button === activeButton ? "true" : "false");
+        });
+        if (activePresetLabel) {
+          activePresetLabel.textContent = activeButton ? activeButton.dataset.findingPresetLabel : "全部 findings / All";
+        }
+      }
+
+      function initializeFindingPresets() {
+        presetButtons.forEach(function (button) {
+          button.setAttribute("aria-pressed", "false");
+          button.addEventListener("click", function () {
+            setFindingQuery(button.dataset.findingPresetQuery, button.dataset.findingPresetMode);
+            selectedOnlyToggle.checked = false;
+            setActivePreset(button);
+            applyFindingFilter();
+            input.focus();
+          });
+        });
+      }
+
+      input.addEventListener("input", function () {
+        input.dataset.findingQueryMode = "phrase";
+        setActivePreset(null);
+        applyFindingFilter();
+      });
       selectedOnlyToggle.addEventListener("change", applyFindingFilter);
       clearButton.addEventListener("click", function () {
-        input.value = "";
+        setFindingQuery("", "phrase");
         selectedOnlyToggle.checked = false;
+        setActivePreset(null);
         applyFindingFilter();
         input.focus();
       });
@@ -544,6 +603,7 @@
           applyFindingFilter();
         });
       });
+      initializeFindingPresets();
       applyFindingFilter();
     }
 
