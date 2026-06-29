@@ -45,6 +45,7 @@ from .general_differential import (
     evaluate_general_differential,
     get_general_differential_catalog_summary,
 )
+from .differential_catalog import FINDING_GROUPS
 from .differential_catalog_quality import (
     build_general_differential_catalog_quality_report,
 )
@@ -334,19 +335,48 @@ def home_dashboard(request):
 def general_differential_workspace(request):
     result = None
     form = GeneralDifferentialForm(request.POST or None)
+    selected_findings = request.POST.getlist("findings") if request.method == "POST" else []
     if request.method == "POST" and form.is_valid():
         result = evaluate_general_differential(form.cleaned_data)
+        selected_findings = form.cleaned_data.get("findings", selected_findings)
     return render(
         request,
         "cds_core/general_differential.html",
         {
             "form": form,
+            "finding_groups": _build_finding_groups(selected_findings),
+            "selected_findings": selected_findings,
             "catalog_summary": get_general_differential_catalog_summary(),
             "catalog_quality": build_general_differential_catalog_quality_report(),
             "result": result,
             "safety_copy": CLINICIAN_SAFETY_COPY,
         },
     )
+
+
+def _build_finding_groups(selected_findings):
+    selected = set(selected_findings)
+    groups = []
+    for group in FINDING_GROUPS:
+        findings = [
+            {
+                "slug": slug,
+                "title_en": title_en,
+                "title_zh": title_zh,
+                "selected": slug in selected,
+            }
+            for slug, title_en, title_zh in group["findings"]
+        ]
+        groups.append(
+            {
+                "group_en": group["group_en"],
+                "group_zh": group["group_zh"],
+                "count": len(findings),
+                "selected_count": sum(1 for finding in findings if finding["selected"]),
+                "findings": findings,
+            }
+        )
+    return groups
 
 
 def _refresh_requested(request):

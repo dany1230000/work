@@ -23,13 +23,19 @@ class GeneralDifferentialUiTests(TestCase):
         response = self.client.get(reverse("cds_core:general_differential"))
 
         self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-compact-differential-layout="true"')
+        self.assertContains(response, 'data-step="safety"')
+        self.assertContains(response, 'data-step="findings"')
+        self.assertContains(response, 'data-step="results"')
         self.assertContains(response, "通用鑑別工作台 / General Differential Workbench")
-        self.assertContains(response, "步驟 1/4")
-        self.assertContains(response, "步驟 4/4")
+        self.assertContains(response, "下一步 / Next step")
         self.assertContains(response, "不包含病人識別資料")
         self.assertContains(response, "starter catalog")
         self.assertContains(response, f"{len(CONDITIONS)} conditions")
         self.assertContains(response, f"{len(SOURCES)} sources")
+        self.assertContains(response, 'class="finding-group"')
+        self.assertContains(response, "<summary>")
+        self.assertContains(response, 'class="compact-governance"')
         self.assertContains(response, "Catalog governance")
         self.assertContains(response, "0 blocking issues")
         self.assertContains(response, "Convert static catalog to reviewed data import")
@@ -65,6 +71,30 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Persistent fever with mucocutaneous changes")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
+
+    def test_posted_findings_put_results_before_catalog_governance(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertLess(content.index('data-result-card="true"'), content.index("Catalog governance"))
+        self.assertContains(response, 'class="next-step-panel"')
+        self.assertContains(response, "下一步 / Ask next")
+        self.assertContains(response, "已選 findings / Selected findings")
+        self.assertContains(response, 'name="findings" value="chest_pain" checked')
 
     def test_posted_findings_show_ranked_conditions_ask_next_and_sources(self):
         response = self.client.post(

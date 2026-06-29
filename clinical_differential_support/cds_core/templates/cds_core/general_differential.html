@@ -1,152 +1,417 @@
 {% extends "cds_core/base.html" %}
 
 {% block content %}
-<div class="safety">{{ safety_copy }}</div>
+<style>
+  .differential-workbench {
+    display: grid;
+    gap: 1rem;
+  }
 
-<section class="workflow">
-  <h2>通用鑑別工作台 / General Differential Workbench</h2>
-  <div class="workflow-steps">
-    <div class="workflow-step">
-      <strong>步驟 1/4</strong>
-      先確認立即安全狀態 / Check immediate safety
-      <p class="secondary">先看 ABC、生命徵象、血氧、意識與是否需要急救，不包含病人識別資料。</p>
-    </div>
-    <div class="workflow-step">
-      <strong>步驟 2/4</strong>
-      輸入主訴或疾病搜尋 / Enter complaint or condition search
-      <p class="secondary">可輸入中文或英文疾病名稱，例如 chest pain、stroke、sepsis。</p>
-    </div>
-    <div class="workflow-step">
-      <strong>步驟 3/4</strong>
-      勾選已知發現 / Select known findings
-      <p class="secondary">只輸入臨床發現，不輸入姓名、病歷號、電話或地址。</p>
-    </div>
-    <div class="workflow-step">
-      <strong>步驟 4/4</strong>
-      檢視排序與下一步 / Review ranking and ask-next
-      <p class="secondary">結果是 reference support，不是 diagnosis order 或 treatment order。</p>
-    </div>
-  </div>
-</section>
+  .compact-hero,
+  .input-panel,
+  .output-panel,
+  .compact-governance {
+    border: 1px solid var(--line);
+    background: #ffffff;
+    border-radius: 6px;
+    padding: 1rem;
+  }
 
-<div class="grid">
-  <section class="panel">
-    <h2>輸入資料 / Input</h2>
+  .compact-hero h2,
+  .input-panel h2,
+  .output-panel h2 {
+    margin-top: 0;
+  }
+
+  .step-strip {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .step-pill {
+    min-height: 7rem;
+    border: 1px solid #d5dde7;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.85rem;
+  }
+
+  .step-pill strong,
+  .step-pill span {
+    display: block;
+  }
+
+  .step-pill span {
+    margin-top: 0.4rem;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .workbench-grid {
+    display: grid;
+    grid-template-columns: minmax(300px, 420px) minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .field {
+    margin-bottom: 0.85rem;
+  }
+
+  .field input[type="text"],
+  .field textarea {
+    width: 100%;
+  }
+
+  .selected-summary {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .selected-summary h3,
+  .finding-picker h3 {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+  }
+
+  .selected-chip-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .selected-chip {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #c7d2de;
+    border-radius: 999px;
+    background: #ffffff;
+    color: #23313f;
+    padding: 0.2rem 0.55rem;
+    font-size: 0.9rem;
+  }
+
+  .finding-stack {
+    display: grid;
+    gap: 0.5rem;
+  }
+
+  .finding-group {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  .finding-group summary {
+    cursor: pointer;
+    padding: 0.7rem 0.75rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .finding-options {
+    display: grid;
+    gap: 0.3rem;
+    border-top: 1px solid #e4e9ef;
+    padding: 0.65rem 0.75rem 0.75rem;
+  }
+
+  .finding-option {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.45rem;
+    align-items: start;
+    border-radius: 4px;
+    padding: 0.35rem;
+    line-height: 1.35;
+  }
+
+  .finding-option:hover {
+    background: #eef4f8;
+  }
+
+  .sticky-action {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 0.75rem;
+    margin: 1rem 0;
+  }
+
+  .result-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .result-card {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.9rem;
+  }
+
+  .result-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .result-head h3 {
+    margin: 0;
+  }
+
+  .next-step-panel {
+    border: 1px solid #b8d8d1;
+    border-radius: 6px;
+    background: #eef8f6;
+    padding: 0.75rem;
+    margin-top: 0.75rem;
+  }
+
+  .next-step-panel h3,
+  .next-step-panel h4 {
+    margin-top: 0;
+  }
+
+  .source-list {
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 0.75rem;
+  }
+
+  .compact-governance summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .governance-body {
+    border-top: 1px solid #e4e9ef;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  @media (max-width: 860px) {
+    .step-strip,
+    .workbench-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .step-pill {
+      min-height: auto;
+    }
+
+    .sticky-action {
+      position: static;
+    }
+  }
+</style>
+
+<div class="differential-workbench" data-compact-differential-layout="true">
+  <div class="safety">{{ safety_copy }}</div>
+
+  <section class="compact-hero">
+    <h2>通用鑑別工作台 / General Differential Workbench</h2>
     <p class="secondary">
       Coverage: starter catalog {{ catalog_summary.catalog_version }}
-      - {{ catalog_summary.condition_count }} conditions,
-      {{ catalog_summary.source_count }} sources.
-      Use this to organize first-pass differential diagnosis, then verify with clinical judgment and local standards.
+      · {{ catalog_summary.condition_count }} conditions
+      · {{ catalog_summary.source_count }} sources.
+      Reference support only; 不是 diagnosis order、treatment order 或 medication order。
     </p>
-    <form method="post">
-      {% csrf_token %}
-      <div class="field">
-        <label for="{{ form.query.id_for_label }}">{{ form.query.label }}</label>
-        {{ form.query }}
-        {% for error in form.query.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+    <div class="step-strip">
+      <div class="step-pill" data-step="safety">
+        <strong>1. 安全 / Safety</strong>
+        <span>先看 ABC、vitals、意識、紅旗；不包含病人識別資料。</span>
       </div>
-      <div class="field">
-        <label>{{ form.findings.label }}</label>
-        {{ form.findings }}
-        {% for error in form.findings.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+      <div class="step-pill" data-step="findings">
+        <strong>2. 發現 / Findings</strong>
+        <span>依系統勾選已知 findings，避免在長清單裡來回找。</span>
       </div>
-      <div class="field">
-        <label for="{{ form.clinician_notes.id_for_label }}">{{ form.clinician_notes.label }}</label>
-        {{ form.clinician_notes }}
-        {% if form.clinician_notes.help_text %}<small>{{ form.clinician_notes.help_text }}</small>{% endif %}
-        {% for error in form.clinician_notes.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+      <div class="step-pill" data-step="results">
+        <strong>3. 下一步 / Next step</strong>
+        <span>先看鑑別排序、來源與下一步要問，再回頭補資料。</span>
       </div>
-      <button type="submit">產生鑑別排序 / Generate differential ranking</button>
-    </form>
+    </div>
   </section>
 
-  <section class="panel">
-    <h2>Catalog 治理 / Catalog governance</h2>
-    <p class="secondary">
-      {{ catalog_quality.summary.condition_count }} conditions,
-      {{ catalog_quality.summary.source_count }} sources,
-      {{ catalog_quality.summary.blocking_issue_count }} blocking issues.
-      Target: {{ catalog_quality.summary.expansion_target_condition_count }} reviewed entries.
-    </p>
-    <p>
-      {% if catalog_quality.summary.ready_for_public_reference %}
-        <span class="tag">ready for clinician reference</span>
-      {% else %}
-        <span class="tag">blocked</span>
-      {% endif %}
-      <span class="tag">{{ catalog_quality.summary.warning_count }} warnings</span>
-    </p>
-    <h3>下一步資料工作 / Next catalog work</h3>
-    <pre class="command">py -B manage.py export_general_differential_review_seed --pretty
-py -B manage.py validate_general_differential_review_seed
-py -B manage.py export_general_differential_batch_template --pretty</pre>
-    <ol>
-      {% for action in catalog_quality.next_actions|slice:":3" %}
-        <li>
-          <strong>{{ action.title_zh }}</strong>
-          <span class="secondary">/ {{ action.title_en }}</span>
-          <br>
-          <span class="secondary">{{ action.reason_en }}</span>
-        </li>
-      {% endfor %}
-    </ol>
-  </section>
+  <div class="workbench-grid">
+    <section class="input-panel">
+      <h2>輸入 / Input</h2>
+      <form method="post">
+        {% csrf_token %}
+        <div class="field">
+          <label for="{{ form.query.id_for_label }}">{{ form.query.label }}</label>
+          {{ form.query }}
+          {% for error in form.query.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+        </div>
 
-  <section class="panel">
-    <h2>參考輸出 / Reference Output</h2>
-    {% if result %}
-      <p class="secondary">
-        Coverage: starter catalog {{ result.coverage.catalog_version }}
-        - {{ result.coverage.condition_count }} conditions,
-        {{ result.coverage.source_count }} sources.
-        {{ result.coverage.limitation_en }}
-      </p>
-      <p>{{ result.coverage.limitation_zh }}</p>
-      {% if result.results %}
-        {% for entry in result.results %}
-          <article class="item">
-            <h3>{{ entry.name_zh }}</h3>
-            <p class="secondary">{{ entry.name_en }}</p>
-            <p>{{ entry.summary_zh }}</p>
-            <p class="secondary">{{ entry.summary_en }}</p>
-            <p>
-              <span class="tag">{{ entry.urgency }}</span>
-              <span class="tag">{{ entry.system }}</span>
-              <span class="tag">score {{ entry.score }}</span>
-              {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
-            </p>
-            {% if entry.matched_findings %}
-              <p><strong>符合發現 / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
-            {% endif %}
-            <p><strong>下一步要問 / Ask next:</strong> {{ entry.ask_next|join:" " }}</p>
-            <div class="source">
-              <strong>來源 / Sources:</strong>
-              {% for source in entry.sources %}
-                <a href="{{ source.url }}">{{ source.publisher }} - {{ source.title }}</a>{% if not forloop.last %}; {% endif %}
+        <div class="field">
+          <label for="{{ form.clinician_notes.id_for_label }}">{{ form.clinician_notes.label }}</label>
+          {{ form.clinician_notes }}
+          {% if form.clinician_notes.help_text %}<small>{{ form.clinician_notes.help_text }}</small>{% endif %}
+          {% for error in form.clinician_notes.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+        </div>
+
+        <section class="selected-summary">
+          <h3>已選 findings / Selected findings</h3>
+          {% if selected_findings %}
+            <div class="selected-chip-list">
+              {% for group in finding_groups %}
+                {% for finding in group.findings %}
+                  {% if finding.selected %}
+                    <span class="selected-chip">{{ finding.title_en }} / {{ finding.title_zh }}</span>
+                  {% endif %}
+                {% endfor %}
               {% endfor %}
             </div>
-          </article>
-        {% endfor %}
-      {% else %}
-        <div class="empty">
-          目前沒有足夠發現可排序。請先確認生命徵象與紅旗，再補問下列問題。
-          / Not enough findings to rank yet. Confirm vital signs and red flags, then ask the prompts below.
+          {% else %}
+            <p class="secondary">尚未勾選 findings / No findings selected yet.</p>
+          {% endif %}
+        </section>
+
+        <div class="sticky-action">
+          <button type="submit">產生鑑別排序 / Generate differential ranking</button>
         </div>
+
+        <section class="finding-picker">
+          <h3>依系統勾選 / Select by system</h3>
+          <div class="finding-stack">
+            {% for group in finding_groups %}
+              <details class="finding-group" {% if group.selected_count %}open{% endif %}>
+                <summary><span>{{ group.group_zh }} / {{ group.group_en }}</span><span class="tag">{{ group.selected_count }}/{{ group.count }}</span></summary>
+                <div class="finding-options">
+                  {% for finding in group.findings %}
+                    <label class="finding-option">
+                      <input type="checkbox" name="findings" value="{{ finding.slug }}"{% if finding.selected %} checked{% endif %}>
+                      <span>{{ finding.title_en }} / {{ finding.title_zh }}</span>
+                    </label>
+                  {% endfor %}
+                </div>
+              </details>
+            {% endfor %}
+          </div>
+          {% for error in form.findings.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+        </section>
+      </form>
+    </section>
+
+    <section class="output-panel">
+      <h2>參考輸出 / Reference Output</h2>
+      {% if result %}
+        <p class="secondary">
+          Coverage: starter catalog {{ result.coverage.catalog_version }}
+          · {{ result.coverage.condition_count }} conditions
+          · {{ result.coverage.source_count }} sources.
+          {{ result.coverage.limitation_en }}
+        </p>
+        <p>{{ result.coverage.limitation_zh }}</p>
+        {% if result.results %}
+          <div class="result-list">
+            {% for entry in result.results %}
+              <article class="result-card" data-result-card="true">
+                <div class="result-head">
+                  <div>
+                    <h3>{{ entry.name_zh }}</h3>
+                    <p class="secondary">{{ entry.name_en }}</p>
+                  </div>
+                  <span class="tag">{{ entry.urgency }}</span>
+                </div>
+                <p>{{ entry.summary_zh }}</p>
+                <p class="secondary">{{ entry.summary_en }}</p>
+                <p>
+                  <span class="tag">{{ entry.system }}</span>
+                  <span class="tag">score {{ entry.score }}</span>
+                  {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
+                </p>
+                {% if entry.matched_findings %}
+                  <p><strong>符合 findings / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
+                {% endif %}
+                <section class="next-step-panel">
+                  <h4>下一步 / Ask next</h4>
+                  <p class="secondary">下一步要問 / Ask next</p>
+                  <ul>
+                    {% for prompt in entry.ask_next %}
+                      <li>{{ prompt }}</li>
+                    {% endfor %}
+                  </ul>
+                </section>
+                <div class="source-list">
+                  <strong>來源 / Sources:</strong>
+                  {% for source in entry.sources %}
+                    <a href="{{ source.url }}">{{ source.publisher }} - {{ source.title }}</a>
+                  {% endfor %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="empty">
+            目前 findings 不足以排序。先確認生命徵象、紅旗與主訴，再補充下列問題。
+            / Not enough findings to rank yet. Confirm vital signs and red flags, then ask the prompts below.
+          </div>
+        {% endif %}
+        <section class="next-step-panel">
+          <h3>下一步 / Ask next</h3>
+          <p class="secondary">下一步要問 / Ask next</p>
+          <ul>
+            {% for prompt in result.ask_next %}
+              <li>{{ prompt }}</li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% else %}
+        <section class="next-step-panel">
+          <h3>下一步 / Next step</h3>
+          <ol>
+            <li>先確認 ABC、vitals、意識與 red flags。</li>
+            <li>輸入主訴，或直接在左側依系統勾選 findings。</li>
+            <li>送出後先看排名與 ask-next，再決定要補哪些資料。</li>
+          </ol>
+        </section>
       {% endif %}
-      <section style="margin-top: 1rem;">
-        <h3>下一步要問 / Ask next</h3>
-        <ul>
-          {% for prompt in result.ask_next %}
-            <li>{{ prompt }}</li>
-          {% endfor %}
-        </ul>
-      </section>
-    {% else %}
-      <div class="empty">
-        先從主訴搜尋或已知發現開始。這個 starter catalog 會列出必須優先排除的疾病與下一步問題。
-        / Start with complaint search or known findings. This starter catalog ranks must-not-miss conditions and ask-next prompts.
-      </div>
-    {% endif %}
-  </section>
+    </section>
+  </div>
+
+  <details class="compact-governance">
+    <summary>
+      Catalog governance · {{ catalog_quality.summary.condition_count }} conditions ·
+      {{ catalog_quality.summary.source_count }} sources ·
+      {{ catalog_quality.summary.blocking_issue_count }} blocking issues
+    </summary>
+    <div class="governance-body">
+      <p class="secondary">
+        Target: {{ catalog_quality.summary.expansion_target_condition_count }} reviewed entries.
+        {% if catalog_quality.summary.ready_for_public_reference %}
+          <span class="tag">ready for clinician reference</span>
+        {% else %}
+          <span class="tag">blocked</span>
+        {% endif %}
+        <span class="tag">{{ catalog_quality.summary.warning_count }} warnings</span>
+      </p>
+      <h3>下一步資料治理 / Next catalog work</h3>
+      <pre class="command">py -B manage.py export_general_differential_review_seed --pretty
+py -B manage.py validate_general_differential_review_seed
+py -B manage.py export_general_differential_batch_template --pretty</pre>
+      <ol>
+        {% for action in catalog_quality.next_actions|slice:":3" %}
+          <li>
+            <strong>{{ action.title_zh }}</strong>
+            <span class="secondary">/ {{ action.title_en }}</span>
+            <br>
+            <span class="secondary">{{ action.reason_en }}</span>
+          </li>
+        {% endfor %}
+      </ol>
+    </div>
+  </details>
 </div>
 {% endblock %}
