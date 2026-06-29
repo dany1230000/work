@@ -49,9 +49,11 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             )
 
         self.assertEqual(summary["catalog_version"], "reviewed-runtime-test")
+        self.assertEqual(summary["runtime_source"], "reviewed runtime catalog")
         self.assertEqual(summary["condition_count"], 1)
         self.assertEqual(summary["source_count"], 1)
         self.assertEqual(result["coverage"]["catalog_version"], "reviewed-runtime-test")
+        self.assertEqual(result["coverage"]["runtime_source"], "reviewed runtime catalog")
         self.assertEqual(result["results"][0]["slug"], "reviewed_runtime_only_condition")
         self.assertEqual(result["results"][0]["sources"][0]["publisher"], "Reviewed Source")
 

@@ -41,6 +41,7 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "下一步 / Next step")
         self.assertContains(response, "不包含病人識別資料")
         self.assertContains(response, "starter catalog")
+        self.assertContains(response, "Runtime source: packaged reviewed catalog data")
         self.assertContains(response, f"{len(CONDITIONS)} conditions")
         self.assertContains(response, f"{len(SOURCES)} sources")
         self.assertContains(response, 'class="finding-group"')

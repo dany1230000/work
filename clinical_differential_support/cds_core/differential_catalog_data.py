@@ -53,6 +53,7 @@ def build_runtime_catalog_from_review_payload(payload: dict[str, Any]) -> dict[s
             "catalog_version",
             "unknown-reviewed-catalog",
         ),
+        "runtime_source": "packaged reviewed catalog data",
         "sources": sources,
         "conditions": conditions,
     }

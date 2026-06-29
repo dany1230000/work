@@ -12,6 +12,7 @@ def get_general_differential_catalog_summary() -> dict[str, Any]:
     runtime_catalog = get_general_differential_runtime_catalog()
     return {
         "catalog_version": runtime_catalog["catalog_version"],
+        "runtime_source": runtime_catalog.get("runtime_source", "reviewed runtime catalog"),
         "condition_count": len(runtime_catalog["conditions"]),
         "source_count": len(runtime_catalog["sources"]),
     }
@@ -48,6 +49,10 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "ask_next": _build_global_ask_next(results, selected_findings),
         "coverage": {
             "catalog_version": runtime_catalog["catalog_version"],
+            "runtime_source": runtime_catalog.get(
+                "runtime_source",
+                "reviewed runtime catalog",
+            ),
             "condition_count": len(conditions),
             "source_count": len(sources),
             "limitation_zh": "這是 starter catalog，不是完整疾病資料庫；未命中不代表排除疾病。",
