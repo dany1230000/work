@@ -62,6 +62,14 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(gynecologic["gap_count"], 0)
         self.assertEqual(gynecologic["status"], "target_met")
 
+    def test_mental_health_bucket_reaches_starter_depth(self):
+        report = build_general_differential_catalog_quality_report()
+        mental_health = report["system_buckets"]["Mental health"]
+
+        self.assertGreaterEqual(mental_health["condition_count"], 6)
+        self.assertEqual(mental_health["gap_count"], 0)
+        self.assertEqual(mental_health["status"], "target_met")
+
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])
         duplicate = deepcopy(CONDITIONS[1])

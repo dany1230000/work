@@ -41,6 +41,9 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Inability to void")
         self.assertContains(response, "Vaginal discharge")
         self.assertContains(response, "Cervical motion tenderness")
+        self.assertContains(response, "Suicidal ideation")
+        self.assertContains(response, "Hallucinations or delusions")
+        self.assertContains(response, "Decreased need for sleep")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -93,3 +96,27 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "下一步要問 / Ask next")
         self.assertContains(response, "Merck Manual Professional")
         self.assertContains(response, "CDC")
+
+    def test_posted_mental_health_findings_show_safety_and_psychosis_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "suicidal_ideation",
+                    "self_harm_behavior",
+                    "hallucinations_delusions",
+                    "severe_agitation",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "自殺或自傷風險")
+        self.assertContains(response, "Suicide or self-harm risk")
+        self.assertContains(response, "急性精神病性症狀")
+        self.assertContains(response, "Acute psychosis")
+        self.assertContains(response, "下一步要問 / Ask next")
+        self.assertContains(response, "NIMH")
+        self.assertContains(response, "NICE")
