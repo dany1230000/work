@@ -96,6 +96,7 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("myocarditis", "acute_pericarditis_myocarditis"),
             ("acute limb ischemia", "acute_limb_ischemia"),
             ("mesenteric ischemia", "acute_mesenteric_ischemia"),
+            ("carbon monoxide poisoning", "carbon_monoxide_poisoning"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -314,3 +315,23 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("pain_out_of_proportion_to_exam", top["matched_findings"])
         self.assertIn("World Society of Emergency Surgery", [source["publisher"] for source in top["sources"]])
+
+    def test_combustion_exposure_with_multiple_patients_prioritizes_carbon_monoxide(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "carbon_monoxide_or_combustion_exposure",
+                    "multiple_people_same_symptoms",
+                    "altered_mental_status",
+                    "syncope",
+                    "vomiting",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "carbon_monoxide_poisoning")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("carbon_monoxide_or_combustion_exposure", top["matched_findings"])
+        self.assertIn("CDC", [source["publisher"] for source in top["sources"]])

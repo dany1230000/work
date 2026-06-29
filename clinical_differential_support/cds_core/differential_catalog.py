@@ -40,6 +40,11 @@ SOURCES = {
         "title": "Sepsis Signs and Symptoms",
         "url": "https://www.cdc.gov/sepsis/communication-resources/gaos-signs-symptoms.html",
     },
+    "cdc_carbon_monoxide_clinical_guidance": {
+        "publisher": "CDC",
+        "title": "Clinical Guidance for Carbon Monoxide Poisoning",
+        "url": "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html",
+    },
     "nice_chest_pain": {
         "publisher": "NICE CKS",
         "title": "Chest pain",
@@ -79,6 +84,11 @@ SOURCES = {
         "publisher": "Merck Manual Professional",
         "title": "Acute Mesenteric Ischemia",
         "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-mesenteric-ischemia",
+    },
+    "merck_carbon_monoxide_poisoning": {
+        "publisher": "Merck Manual Professional",
+        "title": "Carbon Monoxide Poisoning",
+        "url": "https://www.merckmanuals.com/home/injuries-and-poisoning/poisoning/carbon-monoxide-poisoning",
     },
     "svs_acute_limb_ischemia": {
         "publisher": "Society for Vascular Surgery",
@@ -364,6 +374,22 @@ FINDING_GROUPS = [
                 "binge_eating_loss_of_control",
                 "Binge eating with loss of control",
                 "暴食且失控感",
+            ),
+        ],
+    },
+    {
+        "group_zh": "毒物與環境暴露",
+        "group_en": "Toxicology and environmental",
+        "findings": [
+            (
+                "carbon_monoxide_or_combustion_exposure",
+                "Carbon monoxide or combustion exposure",
+                "一氧化碳或燃燒暴露",
+            ),
+            (
+                "multiple_people_same_symptoms",
+                "Multiple people with similar symptoms",
+                "多人出現相似症狀",
             ),
         ],
     },
@@ -1453,6 +1479,39 @@ CONDITIONS = [
         "synonyms": ["overdose", "toxicity", "poisoning", "ingestion"],
         "ask_next": ["確認藥物清單、劑量、時間、意圖、共同攝入、心電圖與毒物中心。 / Check medication list, dose, timing, intent, co-ingestions, ECG, and poison control."],
         "source_ids": ["merck_professional"],
+    },
+    {
+        "slug": "carbon_monoxide_poisoning",
+        "name_zh": "一氧化碳中毒",
+        "name_en": "Carbon monoxide poisoning",
+        "system": "Toxicology/Environmental",
+        "urgency": "emergent",
+        "summary_zh": "燃燒或密閉空間暴露後出現意識改變、昏厥、嘔吐、胸痛或多人相似症狀時需優先排除。",
+        "summary_en": "Prioritize after combustion or enclosed-space exposure, especially with altered mental status, syncope, vomiting, chest pain, or multiple people with similar symptoms.",
+        "signals": {
+            "carbon_monoxide_or_combustion_exposure": 8,
+            "multiple_people_same_symptoms": 5,
+            "altered_mental_status": 3,
+            "syncope": 3,
+            "vomiting": 2,
+            "dyspnea": 2,
+            "chest_pain": 2,
+            "tachycardia": 1,
+        },
+        "synonyms": [
+            "carbon monoxide poisoning",
+            "co poisoning",
+            "carbon monoxide exposure",
+            "combustion exposure",
+        ],
+        "ask_next": [
+            "確認是否有瓦斯、暖爐、發電機、車庫、火災或密閉空間燃燒暴露，以及同住或同場域多人是否有相似症狀。 / Ask about gas, heaters, generators, garages, fire, or enclosed combustion exposure, and whether others in the same setting have similar symptoms.",
+            "確認頭痛、暈眩、虛弱、嘔吐、胸痛、呼吸困難、意識改變、昏厥與心血管/神經高風險表現。 / Check headache, dizziness, weakness, vomiting, chest pain, dyspnea, altered mental status, syncope, and cardiovascular or neurologic high-risk features.",
+        ],
+        "source_ids": [
+            "cdc_carbon_monoxide_clinical_guidance",
+            "merck_carbon_monoxide_poisoning",
+        ],
     },
     {
         "slug": "serotonin_syndrome",

@@ -51,6 +51,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Acute limb pain, pallor, or pulselessness")
         self.assertContains(response, "Pain out of proportion to exam")
         self.assertContains(response, "Bloody diarrhea")
+        self.assertContains(response, "Carbon monoxide or combustion exposure")
+        self.assertContains(response, "Multiple people with similar symptoms")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -196,3 +198,26 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Ask next")
         self.assertContains(response, "Merck Manual Professional")
         self.assertContains(response, "World Society of Emergency Surgery")
+
+    def test_posted_toxicology_findings_show_carbon_monoxide_and_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "carbon_monoxide_or_combustion_exposure",
+                    "multiple_people_same_symptoms",
+                    "altered_mental_status",
+                    "syncope",
+                    "vomiting",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Carbon monoxide poisoning")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "CDC")
+        self.assertContains(response, "Merck Manual Professional")

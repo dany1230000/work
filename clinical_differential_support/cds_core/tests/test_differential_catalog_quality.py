@@ -94,6 +94,14 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(gastrointestinal_hepatic["gap_count"], 0)
         self.assertEqual(gastrointestinal_hepatic["status"], "target_met")
 
+    def test_toxicology_environmental_bucket_reaches_starter_depth(self):
+        report = build_general_differential_catalog_quality_report()
+        toxicology_environmental = report["system_buckets"]["Toxicology/Environmental"]
+
+        self.assertGreaterEqual(toxicology_environmental["condition_count"], 6)
+        self.assertEqual(toxicology_environmental["gap_count"], 0)
+        self.assertEqual(toxicology_environmental["status"], "target_met")
+
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])
         duplicate = deepcopy(CONDITIONS[1])
