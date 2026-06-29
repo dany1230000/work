@@ -1,0 +1,2460 @@
+﻿{
+  "format_version": "general-differential-review-seed-v1",
+  "catalog": {
+    "catalog_version": "general-differential-starter-2026-06-28",
+    "condition_count": 76,
+    "source_count": 46,
+    "quality": {
+      "catalog_version": "general-differential-starter-2026-06-28",
+      "condition_count": 76,
+      "source_count": 46,
+      "blocking_issue_count": 0,
+      "warning_count": 43,
+      "ready_for_public_reference": true,
+      "expansion_target_condition_count": 200
+    }
+  },
+  "safety_scope": {
+    "clinician_only": true,
+    "review_required_before_publication": true,
+    "contains_patient_data": false,
+    "no_diagnosis_order": true,
+    "no_treatment_order": true,
+    "no_medication_order": true
+  },
+  "import_policy": {
+    "review_status_default": "seed_needs_clinician_review",
+    "required_blocking_gate": "validate_general_differential_catalog",
+    "source_backed_required": true,
+    "patient_identifiers_allowed": false
+  },
+  "conditions": [
+    {
+      "slug": "acute_coronary_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u51a0\u5fc3\u75c7",
+      "name_en": "Acute coronary syndrome",
+      "system": "Cardiovascular",
+      "urgency": "emergent",
+      "summary_zh": "\u80f8\u75db\u5408\u4f75\u547c\u5438\u56f0\u96e3\u3001\u5192\u51b7\u6c57\u3001\u624b\u81c2\u6216\u4e0b\u984e\u653e\u5c04\u75db\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Prioritize when chest pain occurs with dyspnea, diaphoresis, or arm/jaw radiation.",
+      "signals": {
+        "chest_pain": 4,
+        "dyspnea": 2,
+        "diaphoresis": 3,
+        "radiating_arm_jaw_pain": 4,
+        "hemodynamic_instability": 4,
+        "syncope": 2
+      },
+      "synonyms": [
+        "heart attack",
+        "myocardial infarction",
+        "acs",
+        "angina"
+      ],
+      "ask_next": [
+        "\u7acb\u5373\u78ba\u8a8d\u5fc3\u96fb\u5716 ECG\u3001\u8840\u58d3\u3001\u8840\u6c27\u3001\u75bc\u75db\u958b\u59cb\u6642\u9593\u8207\u662f\u5426\u6301\u7e8c\u3002 / Check ECG, blood pressure, oxygen saturation, onset time, and whether pain persists.",
+        "\u88dc\u554f\u5192\u51b7\u6c57\u3001\u5641\u5fc3\u3001\u4e0b\u984e\u6216\u624b\u81c2\u653e\u5c04\u75db\u3001\u65e2\u5f80\u51a0\u5fc3\u75c5\u8207\u5371\u96aa\u56e0\u5b50\u3002 / Ask about diaphoresis, nausea, jaw/arm radiation, CAD history, and risk factors."
+      ],
+      "source_ids": [
+        "aha_heart_attack",
+        "nice_chest_pain"
+      ]
+    },
+    {
+      "slug": "acute_pericarditis_myocarditis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u5fc3\u5305\u819c\u708e\u6216\u5fc3\u808c\u708e",
+      "name_en": "Acute pericarditis or myocarditis",
+      "system": "Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u59ff\u52e2\u6027\u6216\u80f8\u819c\u6027\u80f8\u75db\u5408\u4f75\u547c\u5438\u56f0\u96e3\u3001\u767c\u71d2\u3001\u5fc3\u60b8\u6216\u5fc3\u8df3\u904e\u5feb\u6642\u9700\u7d0d\u5165\u5fc3\u5305\u819c\u708e/\u5fc3\u808c\u708e\u3002",
+      "summary_en": "Include when positional or pleuritic chest pain occurs with dyspnea, fever, palpitations, or tachycardia.",
+      "signals": {
+        "positional_pleuritic_chest_pain": 6,
+        "pleuritic_pain": 3,
+        "chest_pain": 2,
+        "dyspnea": 2,
+        "tachycardia": 2,
+        "fever": 1,
+        "syncope": 2
+      },
+      "synonyms": [
+        "pericarditis",
+        "myocarditis",
+        "myopericarditis",
+        "chest pain leaning forward"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u80f8\u75db\u662f\u5426\u53d7\u59ff\u52e2\u3001\u6df1\u547c\u5438\u3001\u54b3\u55fd\u6216\u5e73\u8eba\u5f71\u97ff\uff0c\u4e26\u8a18\u9304\u8d77\u59cb\u6642\u9593\u8207\u6301\u7e8c\u6027\u3002 / Ask whether pain changes with position, deep breathing, cough, or lying supine, and clarify onset and persistence.",
+        "\u78ba\u8a8d\u767c\u71d2\u6216\u75c5\u6bd2\u524d\u9a45\u75c7\u72c0\u3001\u547c\u5438\u56f0\u96e3\u3001\u5fc3\u60b8\u3001\u660f\u53a5\u3001\u8840\u6d41\u4e0d\u7a69\u3001ECG/\u5fc3\u808c\u9175\u7d20\u8207\u5fc3\u5305\u7a4d\u6db2\u98a8\u96aa\u3002 / Check fever or viral prodrome, dyspnea, palpitations, syncope, instability, ECG/troponin clues, and pericardial effusion risk."
+      ],
+      "source_ids": [
+        "merck_pericarditis",
+        "merck_myocarditis",
+        "aha_pericarditis_symptoms"
+      ]
+    },
+    {
+      "slug": "stroke_tia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e2d\u98a8\u6216\u77ed\u66ab\u6027\u8166\u7f3a\u8840",
+      "name_en": "Stroke or TIA",
+      "system": "Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u55ae\u5074\u7121\u529b\u3001\u8a00\u8a9e\u6216\u8996\u89ba\u6539\u8b8a\u3001\u795e\u7d93\u5b78\u7f3a\u640d\u9700\u7acb\u5373\u8655\u7406\u3002",
+      "summary_en": "Sudden unilateral weakness, speech/vision changes, or focal deficit require urgent action.",
+      "signals": {
+        "neurologic_deficit": 4,
+        "unilateral_weakness": 5,
+        "speech_vision_changes": 5,
+        "altered_mental_status": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "stroke",
+        "tia",
+        "cva",
+        "mini stroke"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6700\u5f8c\u6b63\u5e38\u6642\u9593\u3001FAST/BE-FAST \u5fb5\u8c61\u3001\u6297\u51dd\u8840\u85e5\u8207\u8840\u7cd6\u3002 / Confirm last-known-well time, FAST/BE-FAST signs, anticoagulants, and glucose.",
+        "\u4e0d\u8981\u5ef6\u8aa4\u6025\u6027\u4e2d\u98a8\u6d41\u7a0b\uff1b\u9700\u8981\u6025\u8a3a/\u4e2d\u98a8\u5718\u968a\u8a55\u4f30\u3002 / Do not delay acute stroke pathway evaluation."
+      ],
+      "source_ids": [
+        "asa_stroke"
+      ]
+    },
+    {
+      "slug": "sepsis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6557\u8840\u75c7",
+      "name_en": "Sepsis",
+      "system": "Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u611f\u67d3\u8868\u73fe\u5408\u4f75\u610f\u8b58\u6539\u8b8a\u3001\u547c\u5438\u56f0\u96e3\u3001\u4f4e\u8840\u58d3\u6216\u5fc3\u640f\u904e\u901f\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Suspect when infection features occur with confusion, dyspnea, hypotension, or tachycardia.",
+      "signals": {
+        "fever": 3,
+        "hypothermia": 3,
+        "altered_mental_status": 4,
+        "tachycardia": 3,
+        "dyspnea": 2,
+        "hemodynamic_instability": 5,
+        "immunocompromised": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "sepsis",
+        "septic shock",
+        "infection shock"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u611f\u67d3\u4f86\u6e90\u3001\u8840\u58d3\u3001\u547c\u5438\u983b\u7387\u3001\u5c3f\u91cf\u3001\u4e73\u9178\u8207\u5668\u5b98\u704c\u6d41\u72c0\u614b\u3002 / Check infection source, blood pressure, respiratory rate, urine output, lactate, and perfusion.",
+        "\u82e5\u4e0d\u7a69\u5b9a\uff0c\u4f9d\u6025\u75c7\u6d41\u7a0b\u8655\u7406\uff0c\u4e0d\u7b49\u5f85\u5b8c\u6574\u9451\u5225\u5217\u8868\u3002 / If unstable, follow emergency care pathways without waiting for a full list."
+      ],
+      "source_ids": [
+        "cdc_sepsis",
+        "cdc_sepsis_signs"
+      ]
+    },
+    {
+      "slug": "febrile_neutropenia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u767c\u71b1\u6027\u55dc\u4e2d\u6027\u7403\u4f4e\u4e0b",
+      "name_en": "Febrile neutropenia",
+      "system": "Hematology/Oncology/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u8fd1\u671f\u764c\u75c7\u6cbb\u7642\u6216\u514d\u75ab\u4f4e\u4e0b\u5408\u4f75\u767c\u71d2\u6642\uff0c\u9700\u512a\u5148\u7d0d\u5165\u767c\u71b1\u6027\u55dc\u4e2d\u6027\u7403\u4f4e\u4e0b\u8207\u611f\u67d3\u98a8\u96aa\u3002",
+      "summary_en": "Prioritize when fever occurs after recent cancer therapy or with immunocompromise.",
+      "signals": {
+        "fever": 5,
+        "recent_cancer_treatment": 4,
+        "immunocompromised": 3,
+        "altered_mental_status": 2,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "febrile neutropenia",
+        "neutropenic fever",
+        "neutropenic sepsis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6700\u8fd1\u5316\u7642/\u653e\u7642/\u514d\u75ab\u6cbb\u7642\u6642\u9593\u3001\u6700\u9ad8\u9ad4\u6eab\u3001ANC \u6216\u6700\u8fd1 CBC\u3001\u611f\u67d3\u7076\u3001\u8840\u58d3\u8207\u610f\u8b58\u72c0\u614b\u3002 / Clarify recent chemotherapy, radiation, or immunotherapy timing, maximum temperature, ANC or recent CBC, infection source, blood pressure, and mental status."
+      ],
+      "source_ids": [
+        "merck_neutropenia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tumor_lysis_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u816b\u7624\u6eb6\u89e3\u75c7\u5019\u7fa4",
+      "name_en": "Tumor lysis syndrome",
+      "system": "Hematology/Oncology/Metabolic",
+      "urgency": "emergent",
+      "summary_zh": "\u764c\u75c7\u6cbb\u7642\u5f8c\u51fa\u73fe\u5614\u5410\u3001\u610f\u8b58\u6539\u8b8a\u3001\u812b\u6c34\u6216\u5faa\u74b0\u4e0d\u7a69\u6642\uff0c\u9700\u60f3\u5230\u816b\u7624\u6eb6\u89e3\u9020\u6210\u7684\u4ee3\u8b1d\u7570\u5e38\u3002",
+      "summary_en": "Consider after cancer therapy when vomiting, mental status change, dehydration, or instability suggests metabolic derangement.",
+      "signals": {
+        "recent_cancer_treatment": 5,
+        "vomiting": 2,
+        "altered_mental_status": 2,
+        "extreme_thirst_polyuria": 1,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "tumor lysis",
+        "tumour lysis",
+        "tls",
+        "tumor lysis syndrome"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u764c\u75c7\u985e\u578b\u8207\u6cbb\u7642\u6642\u9593\u3001\u814e\u529f\u80fd\u3001\u5c3f\u91cf\u3001\u9240\u78f7\u9223\u5c3f\u9178\u8b8a\u5316\u3001\u5fc3\u5f8b\u6216\u62bd\u6410\u75c7\u72c0\u3002 / Clarify cancer type and treatment timing, renal function, urine output, potassium, phosphate, calcium, uric acid changes, rhythm, or seizure symptoms."
+      ],
+      "source_ids": [
+        "merck_cancer_therapy_adverse_effects",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "metastatic_spinal_cord_compression",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8f49\u79fb\u6027\u810a\u9ad3\u58d3\u8feb",
+      "name_en": "Metastatic spinal cord compression",
+      "system": "Oncology/Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "\u5df2\u77e5\u764c\u75c7\u5408\u4f75\u80cc\u75db\u3001\u9aa8\u75db\u3001\u795e\u7d93\u7f3a\u640d\u6216\u8180\u80f1\u8178\u9053\u529f\u80fd\u6539\u8b8a\u6642\uff0c\u9700\u512a\u5148\u6392\u9664\u810a\u9ad3\u58d3\u8feb\u3002",
+      "summary_en": "Known cancer with back or bone pain, neurologic deficit, or bladder/bowel dysfunction requires urgent exclusion.",
+      "signals": {
+        "known_cancer": 5,
+        "bone_back_pain": 4,
+        "neurologic_deficit": 4,
+        "unilateral_weakness": 3,
+        "bladder_bowel_dysfunction": 5,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "spinal cord compression",
+        "mscc",
+        "metastatic spinal cord compression"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u764c\u75c7\u53f2\u3001\u80cc\u75db\u4f4d\u7f6e\u8207\u9032\u5c55\u3001\u6b65\u614b\u3001\u808c\u529b\u3001\u611f\u89ba\u3001\u53cd\u5c04\u3001\u978d\u5340\u611f\u89ba\u8207\u8180\u80f1\u8178\u9053\u529f\u80fd\u3002 / Clarify cancer history, back pain location and tempo, gait, strength, sensation, reflexes, saddle sensation, and bladder or bowel function."
+      ],
+      "source_ids": [
+        "nice_spinal_metastases_mscc",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypercalcemia_of_malignancy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u60e1\u6027\u816b\u7624\u76f8\u95dc\u9ad8\u8840\u9223",
+      "name_en": "Hypercalcemia of malignancy",
+      "system": "Oncology/Metabolic",
+      "urgency": "urgent",
+      "summary_zh": "\u5df2\u77e5\u764c\u75c7\u5408\u4f75\u610f\u8b58\u6539\u8b8a\u3001\u5614\u5410\u3001\u591a\u6e34\u591a\u5c3f\u3001\u812b\u6c34\u6216\u865b\u5f31\u6642\uff0c\u9700\u7d0d\u5165\u9ad8\u8840\u9223\u76f8\u95dc\u98a8\u96aa\u3002",
+      "summary_en": "Known cancer with confusion, vomiting, thirst/polyuria, dehydration, or weakness should prompt hypercalcemia consideration.",
+      "signals": {
+        "known_cancer": 4,
+        "altered_mental_status": 3,
+        "vomiting": 2,
+        "fatigue": 2,
+        "extreme_thirst_polyuria": 2,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "hypercalcemia of malignancy",
+        "high calcium cancer",
+        "hcm",
+        "malignant hypercalcemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u764c\u75c7\u53f2\u3001\u88dc\u5145\u54c1\u6216\u85e5\u7269\u3001\u53e3\u6e34\u591a\u5c3f\u3001\u4fbf\u79d8\u3001\u610f\u8b58\u72c0\u614b\u3001\u812b\u6c34\u8207\u8fd1\u671f\u9223/\u814e\u529f\u80fd\u6578\u503c\u3002 / Clarify cancer history, supplements or medications, thirst/polyuria, constipation, mental status, dehydration, and recent calcium or renal values."
+      ],
+      "source_ids": [
+        "canadian_cancer_hypercalcemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_leukemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u767d\u8840\u75c5",
+      "name_en": "Acute leukemia",
+      "system": "Hematology/Oncology",
+      "urgency": "urgent",
+      "summary_zh": "\u75b2\u5026\u3001\u767c\u71d2\u3001\u5bb9\u6613\u7600\u9752\u51fa\u8840\u3001\u9aa8\u75db\u6216\u9ad4\u91cd\u6e1b\u8f15\u7d44\u5408\u6642\uff0c\u9700\u7d0d\u5165\u6025\u6027\u767d\u8840\u75c5\u8207\u8840\u7403\u7570\u5e38\u3002",
+      "summary_en": "Fatigue, fever, easy bruising or bleeding, bone pain, or weight loss should include acute leukemia in the differential.",
+      "signals": {
+        "fatigue": 2,
+        "fever": 2,
+        "easy_bruising_bleeding": 5,
+        "bone_back_pain": 3,
+        "weight_loss": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "acute leukemia",
+        "all",
+        "aml",
+        "leukaemia",
+        "leukemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7600\u9752\u51fa\u8840\u3001\u611f\u67d3\u3001\u9aa8\u75db\u3001\u6dcb\u5df4\u7d50\u6216\u809d\u813e\u816b\u5927\u3001CBC \u5dee\u7570\u8a08\u6578\u8207\u5468\u908a\u8840\u62b9\u7247\u8cc7\u8a0a\u3002 / Clarify bruising or bleeding, infection, bone pain, lymph nodes or hepatosplenomegaly, CBC differential, and peripheral smear information."
+      ],
+      "source_ids": [
+        "merck_all",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pulmonary_embolism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80ba\u6813\u585e",
+      "name_en": "Pulmonary embolism",
+      "system": "Cardiopulmonary",
+      "urgency": "emergent",
+      "summary_zh": "\u547c\u5438\u56f0\u96e3\u3001\u80f8\u819c\u6027\u80f8\u75db\u3001\u54b3\u8840\u3001\u55ae\u5074\u817f\u816b\u6216\u5fc3\u640f\u904e\u901f\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Consider with dyspnea, pleuritic pain, hemoptysis, unilateral leg swelling, or tachycardia.",
+      "signals": {
+        "dyspnea": 4,
+        "pleuritic_pain": 3,
+        "hemoptysis": 3,
+        "unilateral_leg_swelling": 3,
+        "tachycardia": 2,
+        "chest_pain": 2,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "pe",
+        "pulmonary embolus",
+        "embolism"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d VTE \u98a8\u96aa\u3001\u8fd1\u671f\u624b\u8853/\u81e5\u5e8a\u3001\u764c\u75c7\u3001\u61f7\u5b55\u3001\u8840\u6c27\u8207\u662f\u5426\u4f11\u514b\u3002 / Check VTE risks, recent surgery/immobility, cancer, pregnancy, oxygenation, and shock."
+      ],
+      "source_ids": [
+        "nice_chest_pain",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "aortic_dissection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e3b\u52d5\u8108\u525d\u96e2",
+      "name_en": "Aortic dissection",
+      "system": "Cardiovascular",
+      "urgency": "emergent",
+      "summary_zh": "\u6495\u88c2\u6a23\u80f8\u80cc\u75db\u3001\u795e\u7d93\u75c7\u72c0\u3001\u660f\u53a5\u6216\u8840\u6d41\u4e0d\u7a69\u9700\u7acb\u5373\u6392\u9664\u3002",
+      "summary_en": "Tearing chest/back pain with neurologic symptoms, syncope, or instability is high risk.",
+      "signals": {
+        "chest_pain": 3,
+        "tearing_back_pain": 5,
+        "syncope": 2,
+        "neurologic_deficit": 2,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "dissection",
+        "aortic catastrophe"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u7a81\u7136\u3001\u6495\u88c2\u6216\u79fb\u52d5\uff0c\u96d9\u5074\u8840\u58d3/\u8108\u640f\u5dee\u3001\u795e\u7d93\u7f3a\u640d\u8207\u99ac\u51e1\u7279\u5fb5\u3002 / Clarify sudden tearing/migrating pain, pulse/BP differential, neurologic deficits, and connective tissue risk."
+      ],
+      "source_ids": [
+        "nice_chest_pain",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_limb_ischemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u80a2\u9ad4\u7f3a\u8840",
+      "name_en": "Acute limb ischemia",
+      "system": "Vascular/Cardiovascular",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u80a2\u9ad4\u5287\u75db\u3001\u84bc\u767d\u3001\u51b0\u51b7\u3001\u611f\u89ba\u7570\u5e38\u3001\u7121\u8108\u6216\u7121\u529b\u6642\u9700\u512a\u5148\u6392\u9664\u6025\u6027\u80a2\u9ad4\u7f3a\u8840\u3002",
+      "summary_en": "Sudden severe limb pain with pallor, coldness, sensory change, pulselessness, or weakness is a limb-threatening pattern.",
+      "signals": {
+        "acute_limb_pain_pallor_pulselessness": 7,
+        "severe_pain": 3,
+        "neurologic_deficit": 2,
+        "hemodynamic_instability": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "acute limb ischemia",
+        "arterial occlusion",
+        "cold pulseless limb",
+        "limb ischemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d 6 Ps\uff1apain\u3001pallor\u3001pulselessness\u3001paresthesia\u3001paralysis\u3001poikilothermia\uff0c\u4e26\u8a18\u9304\u75c7\u72c0\u958b\u59cb\u6642\u9593\u3002 / Check the 6 Ps: pain, pallor, pulselessness, paresthesia, paralysis, and poikilothermia, and document onset time.",
+        "\u78ba\u8a8d\u5fc3\u623f\u986b\u52d5\u3001\u8840\u7ba1\u75c5\u53f2\u3001\u6297\u51dd\u8840\u72c0\u614b\u3001\u5916\u50b7/\u4ecb\u5165\u53f2\u3001\u611f\u89ba\u6216\u904b\u52d5\u7f3a\u640d\u8207\u8840\u6d41\u4e0d\u7a69\u3002 / Ask about atrial fibrillation, vascular history, anticoagulation, trauma or procedure history, sensory or motor deficits, and instability."
+      ],
+      "source_ids": [
+        "merck_acute_limb_ischemia",
+        "svs_acute_limb_ischemia"
+      ]
+    },
+    {
+      "slug": "meningitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8166\u819c\u708e",
+      "name_en": "Meningitis",
+      "system": "Neurologic/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u767c\u71d2\u3001\u9838\u90e8\u50f5\u786c\u3001\u610f\u8b58\u6539\u8b8a\u6216\u514d\u75ab\u4f4e\u4e0b\u5408\u4f75\u982d\u75db\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Consider with fever, neck stiffness, altered mental status, or immunocompromise.",
+      "signals": {
+        "fever": 3,
+        "neck_stiffness": 5,
+        "altered_mental_status": 4,
+        "immunocompromised": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "meningitis",
+        "cns infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u76ae\u75b9\u3001\u5149\u754f\u3001\u514d\u75ab\u72c0\u614b\u3001\u6297\u751f\u7d20\u524d\u8840\u57f9\u8207\u662f\u5426\u9700\u8981\u6025\u8a3a\u8655\u7f6e\u3002 / Ask about rash, photophobia, immune status, cultures before antibiotics, and emergency care needs."
+      ],
+      "source_ids": [
+        "merck_headache_red_flags",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "subarachnoid_hemorrhage",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8718\u86db\u819c\u4e0b\u8154\u51fa\u8840",
+      "name_en": "Subarachnoid hemorrhage",
+      "system": "Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "\u96f7\u64ca\u6a23\u982d\u75db\u6216\u6578\u79d2\u5167\u9054\u6700\u75db\u7a0b\u5ea6\u6642\u5fc5\u9808\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Thunderclap headache or maximal intensity within seconds is a must-not-miss pattern.",
+      "signals": {
+        "thunderclap_headache": 6,
+        "neck_stiffness": 2,
+        "altered_mental_status": 2,
+        "neurologic_deficit": 2,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "sah",
+        "subarachnoid bleed",
+        "thunderclap"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9054\u5cf0\u6642\u9593\u3001\u660f\u53a5\u3001\u9838\u90e8\u50f5\u786c\u3001\u6297\u51dd\u8840\u85e5\u8207\u795e\u7d93\u7f3a\u640d\u3002 / Confirm time to peak, syncope, neck stiffness, anticoagulants, and neurologic deficits."
+      ],
+      "source_ids": [
+        "merck_headache_red_flags"
+      ]
+    },
+    {
+      "slug": "appendicitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u95cc\u5c3e\u708e",
+      "name_en": "Appendicitis",
+      "system": "Abdominal",
+      "urgency": "urgent",
+      "summary_zh": "\u53f3\u4e0b\u8179\u75db\u3001\u767c\u71d2\u3001\u5614\u5410\u6216\u53cd\u5f48\u75db\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Include with right lower quadrant pain, fever, vomiting, or peritoneal signs.",
+      "signals": {
+        "abdominal_pain": 2,
+        "rlq_pain": 5,
+        "fever": 2,
+        "vomiting": 2,
+        "rebound_guarding": 3
+      },
+      "synonyms": [
+        "appendix",
+        "rlq"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u79fb\u8f49\u3001\u98df\u617e\u3001\u53cd\u5f48\u75db\u3001\u9632\u79a6\u3001\u61f7\u5b55\u53ef\u80fd\u8207\u662f\u5426\u9700\u5f71\u50cf/\u5916\u79d1\u8a55\u4f30\u3002 / Ask about migration, appetite, rebound/guarding, pregnancy possibility, imaging, and surgical evaluation."
+      ],
+      "source_ids": [
+        "nice_acute_abdomen"
+      ]
+    },
+    {
+      "slug": "ectopic_pregnancy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5b50\u5bae\u5916\u5b55",
+      "name_en": "Ectopic pregnancy",
+      "system": "Obstetric/Gynecologic",
+      "urgency": "emergent",
+      "summary_zh": "\u53ef\u80fd\u61f7\u5b55\u8005\u51fa\u73fe\u9aa8\u76c6\u6216\u8179\u75db\u3001\u660f\u53a5\u6216\u8840\u6d41\u4e0d\u7a69\u6642\u4e0d\u53ef\u6f0f\u6389\u3002",
+      "summary_en": "Must not miss in possible pregnancy with pelvic/abdominal pain, syncope, or instability.",
+      "signals": {
+        "pregnancy_possible": 5,
+        "pelvic_pain": 4,
+        "abdominal_pain": 2,
+        "syncope": 3,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "ectopic",
+        "tubal pregnancy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u598a\u5a20\u72c0\u614b\u3001\u672b\u6b21\u6708\u7d93\u3001\u9670\u9053\u51fa\u8840\u3001\u6688\u53a5\u8207\u8840\u6d41\u52d5\u529b\u3002 / Confirm pregnancy status, LMP, vaginal bleeding, syncope, and hemodynamics."
+      ],
+      "source_ids": [
+        "nice_acute_abdomen",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "anaphylaxis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u904e\u654f\u6027\u4f11\u514b",
+      "name_en": "Anaphylaxis",
+      "system": "Allergy/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u81c9\u5507\u820c\u816b\u3001\u76ae\u75b9\u3001\u547c\u5438\u7a98\u8feb\u6216\u8840\u6d41\u4e0d\u7a69\u9700\u7acb\u5373\u8655\u7f6e\u3002",
+      "summary_en": "Facial/lip/tongue swelling, rash, respiratory distress, or instability needs immediate action.",
+      "signals": {
+        "facial_lip_tongue_swelling": 5,
+        "rash": 3,
+        "respiratory_distress": 5,
+        "wheeze": 2,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "anaphylaxis",
+        "allergic shock",
+        "angioedema"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u66b4\u9732\u7269\u3001\u6c23\u9053\u816b\u8139\u3001\u5598\u9cf4\u3001\u8840\u58d3\u8207\u662f\u5426\u9700\u7acb\u5373\u6025\u6551\u3002 / Identify exposure, airway swelling, wheeze, blood pressure, and emergency treatment need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80ba\u708e",
+      "name_en": "Pneumonia",
+      "system": "Respiratory/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u767c\u71d2\u3001\u54b3\u55fd\u75f0\u3001\u547c\u5438\u56f0\u96e3\u6216\u4f4e\u6c27\u8868\u73fe\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Consider with fever, cough/sputum, dyspnea, or hypoxemia features.",
+      "signals": {
+        "fever": 3,
+        "cough_sputum": 4,
+        "dyspnea": 3,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "pneumonia",
+        "lung infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8840\u6c27\u3001\u547c\u5438\u983b\u7387\u3001\u80f8\u75db\u3001\u75f0\u6027\u8cea\u3001\u5171\u75c5\u8207\u662f\u5426\u9700\u8981\u5f71\u50cf\u3002 / Check oxygenation, respiratory rate, chest pain, sputum, comorbidities, and imaging need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "heart_failure_exacerbation",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5fc3\u8870\u7aed\u60e1\u5316",
+      "name_en": "Heart failure exacerbation",
+      "system": "Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u547c\u5438\u56f0\u96e3\u5408\u4f75\u7aef\u5750\u547c\u5438\u3001\u6c34\u816b\u6216\u80f8\u75db\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Dyspnea with orthopnea, edema, or chest pain may reflect heart failure exacerbation.",
+      "signals": {
+        "dyspnea": 3,
+        "orthopnea_edema": 5,
+        "chest_pain": 1,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "heart failure",
+        "chf",
+        "pulmonary edema"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ad4\u91cd\u8b8a\u5316\u3001\u7aef\u5750\u547c\u5438\u3001\u4e0b\u80a2\u6c34\u816b\u3001\u5fc3\u81df\u75c5\u53f2\u3001\u8840\u6c27\u8207\u80f8\u75db\u3002 / Ask about weight change, orthopnea, edema, cardiac history, oxygenation, and chest pain."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "asthma_copd_exacerbation",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6c23\u5598\u6216 COPD \u6025\u6027\u60e1\u5316",
+      "name_en": "Asthma or COPD exacerbation",
+      "system": "Respiratory",
+      "urgency": "urgent",
+      "summary_zh": "\u5598\u9cf4\u3001\u547c\u5438\u56f0\u96e3\u3001\u54b3\u55fd\u75f0\u6216\u547c\u5438\u7a98\u8feb\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Wheeze, dyspnea, cough/sputum, or respiratory distress should trigger this pathway.",
+      "signals": {
+        "wheeze": 5,
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "respiratory_distress": 4
+      },
+      "synonyms": [
+        "asthma",
+        "copd",
+        "bronchospasm"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u65e2\u5f80\u6c23\u5598/COPD\u3001\u5438\u5165\u85e5\u53cd\u61c9\u3001\u8840\u6c27\u3001\u8aaa\u8a71\u80fd\u529b\u8207\u6c89\u9ed8\u80f8\u3002 / Check asthma/COPD history, inhaler response, oxygenation, speech ability, and silent chest."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_angle_closure_glaucoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u9685\u89d2\u9589\u9396\u6027\u9752\u5149\u773c",
+      "name_en": "Acute angle-closure glaucoma",
+      "system": "Ophthalmologic",
+      "urgency": "emergent",
+      "summary_zh": "\u773c\u75db\u3001\u7d05\u773c\u3001\u982d\u75db\u3001\u5641\u5fc3\u6216\u8996\u89ba\u6539\u8b8a\u6642\u9700\u6025\u75c7\u8655\u7406\u3002",
+      "summary_en": "Eye pain/redness with headache, nausea, or vision change can be an emergency.",
+      "signals": {
+        "eye_pain_redness": 5,
+        "severe_pain": 2,
+        "vomiting": 1,
+        "speech_vision_changes": 2
+      },
+      "synonyms": [
+        "glaucoma",
+        "acute glaucoma"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8996\u529b\u3001\u77b3\u5b54\u3001\u773c\u58d3\u98a8\u96aa\u3001\u5641\u5fc3\u5614\u5410\u8207\u662f\u5426\u9700\u773c\u79d1\u6025\u8a3a\u3002 / Check vision, pupil, IOP risk, nausea/vomiting, and urgent ophthalmology need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gi_bleed",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8178\u80c3\u9053\u51fa\u8840",
+      "name_en": "Gastrointestinal bleeding",
+      "system": "Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "\u9ed1\u4fbf\u3001\u5410\u8840\u3001\u8840\u4fbf\u3001\u660f\u53a5\u6216\u8840\u6d41\u4e0d\u7a69\u6642\u9700\u512a\u5148\u8a55\u4f30\u3002",
+      "summary_en": "Melena, hematemesis, hematochezia, syncope, or instability requires prompt assessment.",
+      "signals": {
+        "gi_bleeding": 5,
+        "syncope": 2,
+        "hemodynamic_instability": 4,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "gi bleed",
+        "melena",
+        "hematemesis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u51fa\u8840\u578b\u614b\u3001\u91cf\u3001\u6297\u51dd\u8840\u85e5\u3001\u8840\u58d3\u5fc3\u8df3\u3001\u8ca7\u8840\u75c7\u72c0\u8207\u809d\u75c5\u53f2\u3002 / Clarify bleeding type/volume, anticoagulants, vitals, anemia symptoms, and liver disease."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "diabetic_ketoacidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7cd6\u5c3f\u75c5\u916e\u9178\u4e2d\u6bd2",
+      "name_en": "Diabetic ketoacidosis",
+      "system": "Metabolic",
+      "urgency": "emergent",
+      "summary_zh": "\u591a\u6e34\u591a\u5c3f\u3001\u5614\u5410\u3001\u8179\u75db\u3001\u610f\u8b58\u6539\u8b8a\u6216\u547c\u5438\u7570\u5e38\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Thirst/polyuria with vomiting, abdominal pain, altered mental status, or abnormal breathing is high risk.",
+      "signals": {
+        "extreme_thirst_polyuria": 4,
+        "vomiting": 2,
+        "abdominal_pain": 2,
+        "altered_mental_status": 3,
+        "respiratory_distress": 2
+      },
+      "synonyms": [
+        "dka",
+        "ketoacidosis",
+        "diabetic ketoacidosis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8840\u7cd6\u3001\u916e\u9ad4\u3001\u812b\u6c34\u3001\u611f\u67d3\u8a98\u56e0\u3001\u80f0\u5cf6\u7d20\u4e2d\u65b7\u8207\u610f\u8b58\u72c0\u614b\u3002 / Check glucose, ketones, dehydration, infection triggers, insulin omission, and mental status."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypoglycemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4f4e\u8840\u7cd6",
+      "name_en": "Hypoglycemia",
+      "system": "Metabolic",
+      "urgency": "emergent",
+      "summary_zh": "\u610f\u8b58\u6539\u8b8a\u3001\u660f\u53a5\u3001\u5192\u6c57\u6216\u4f4e\u8840\u7cd6\u98a8\u96aa\u8005\u9700\u7acb\u5373\u78ba\u8a8d\u8840\u7cd6\u3002",
+      "summary_en": "Altered mental status, syncope, sweating, or hypoglycemia risk should trigger glucose check.",
+      "signals": {
+        "hypoglycemia_risk": 5,
+        "altered_mental_status": 4,
+        "syncope": 2,
+        "diaphoresis": 2
+      },
+      "synonyms": [
+        "low glucose",
+        "low blood sugar",
+        "hypoglycemia"
+      ],
+      "ask_next": [
+        "\u7acb\u5373\u78ba\u8a8d\u6307\u5c16\u8840\u7cd6\u3001\u7cd6\u5c3f\u75c5\u85e5\u7269\u3001\u9032\u98df\u72c0\u6cc1\u8207\u610f\u8b58\u5b89\u5168\u3002 / Check point-of-care glucose, diabetes medications, intake, and mental status safety."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "temporal_arteritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5de8\u7d30\u80de\u52d5\u8108\u708e",
+      "name_en": "Giant cell arteritis",
+      "system": "Vascular/Rheumatologic",
+      "urgency": "urgent",
+      "summary_zh": "50\u6b72\u5f8c\u65b0\u767c\u982d\u75db\u3001\u4e0b\u984e\u8ddb\u884c\u6216\u8996\u89ba\u75c7\u72c0\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "New headache after age 50 with jaw claudication or visual symptoms is high risk.",
+      "signals": {
+        "new_headache_after_50": 5,
+        "jaw_claudication": 4,
+        "speech_vision_changes": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "giant cell arteritis",
+        "temporal arteritis",
+        "gca"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5e74\u9f61\u3001\u9873\u90e8\u58d3\u75db\u3001\u4e0b\u984e\u8ddb\u884c\u3001\u8996\u89ba\u75c7\u72c0\u8207\u8fd1\u7aef\u808c\u75db\u3002 / Confirm age, temporal tenderness, jaw claudication, visual symptoms, and proximal myalgia."
+      ],
+      "source_ids": [
+        "merck_headache_red_flags"
+      ]
+    },
+    {
+      "slug": "pyelonephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u814e\u76c2\u814e\u708e",
+      "name_en": "Pyelonephritis",
+      "system": "Urinary/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u767c\u71d2\u3001\u8170\u5074\u75db\u8207\u6392\u5c3f\u75c7\u72c0\u652f\u6301\u4e0a\u6ccc\u5c3f\u9053\u611f\u67d3\u3002",
+      "summary_en": "Fever, flank pain, and urinary symptoms support upper urinary tract infection.",
+      "signals": {
+        "fever": 3,
+        "flank_pain": 4,
+        "dysuria": 3,
+        "vomiting": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "kidney infection",
+        "pyelo",
+        "pyelonephritis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u71d2\u3001\u8170\u5074\u6572\u75db\u3001\u6392\u5c3f\u75c7\u72c0\u3001\u61f7\u5b55\u3001\u6557\u8840\u75c7\u5fb5\u8c61\u8207\u5614\u5410\u3002 / Ask about fever, CVA tenderness, urinary symptoms, pregnancy, sepsis signs, and vomiting."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "biliary_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u81bd\u9053\u75be\u75c5\u6216\u81bd\u56ca\u708e",
+      "name_en": "Biliary disease or cholecystitis",
+      "system": "Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "\u53f3\u4e0a\u8179\u75db\u3001\u98ef\u5f8c\u75bc\u75db\u3001\u767c\u71d2\u6216\u9ec3\u75b8\u6642\u9700\u8003\u616e\u81bd\u9053\u75be\u75c5\u3002",
+      "summary_en": "RUQ pain, postprandial pain, fever, or jaundice suggests biliary pathology.",
+      "signals": {
+        "ruq_pain": 4,
+        "postprandial_ruq_pain": 3,
+        "fever": 2,
+        "jaundice": 3,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "cholecystitis",
+        "cholangitis",
+        "gallbladder",
+        "biliary"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ec3\u75b8\u3001\u767c\u71d2\u3001Murphy sign\u3001\u98ef\u5f8c\u75db\u3001\u809d\u81bd\u80f0\u6aa2\u9a57\u8207\u662f\u5426\u611f\u67d3\u3002 / Check jaundice, fever, Murphy sign, postprandial pain, hepatobiliary labs, and infection."
+      ],
+      "source_ids": [
+        "nice_acute_abdomen",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "viral_respiratory_infection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u75c5\u6bd2\u6027\u547c\u5438\u9053\u611f\u67d3",
+      "name_en": "Viral respiratory infection",
+      "system": "Respiratory/Infectious",
+      "urgency": "routine",
+      "summary_zh": "\u54b3\u55fd\u3001\u767c\u71d2\u3001\u75b2\u5026\u4f46\u7121\u4e0d\u7a69\u5b9a\u6216\u547c\u5438\u7a98\u8feb\u6642\u5217\u5165\u5e38\u898b\u539f\u56e0\u3002",
+      "summary_en": "Common when cough, fever, and fatigue occur without instability or respiratory distress.",
+      "signals": {
+        "cough_sputum": 3,
+        "fever": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "cold",
+        "flu",
+        "covid",
+        "viral infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8840\u6c27\u3001\u547c\u5438\u7a98\u8feb\u3001\u514d\u75ab\u72c0\u614b\u3001\u66b4\u9732\u53f2\u8207\u9700\u8981\u6aa2\u6e2c\u6216\u9694\u96e2\u3002 / Check oxygenation, distress, immune status, exposure, and testing/isolation needs."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "panic_anxiety",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6050\u614c\u6216\u7126\u616e\u76f8\u95dc\u75c7\u72c0",
+      "name_en": "Panic or anxiety-related symptoms",
+      "system": "Mental health",
+      "urgency": "soon",
+      "summary_zh": "\u5728\u6392\u9664\u6025\u6027\u5fc3\u80ba\u3001\u795e\u7d93\u3001\u4ee3\u8b1d\u98a8\u96aa\u5f8c\uff0c\u53ef\u7d0d\u5165\u7126\u616e\u6216\u6050\u614c\u3002",
+      "summary_en": "Consider only after acute cardiopulmonary, neurologic, and metabolic risks are addressed.",
+      "signals": {
+        "dyspnea": 1,
+        "chest_pain": 1,
+        "tachycardia": 1,
+        "diaphoresis": 1
+      },
+      "synonyms": [
+        "panic",
+        "anxiety",
+        "panic attack"
+      ],
+      "ask_next": [
+        "\u5148\u78ba\u8a8d\u6c92\u6709 ACS\u3001\u80ba\u6813\u585e\u3001\u4f4e\u8840\u7cd6\u3001\u7532\u72c0\u817a\u6216\u7269\u8cea\u76f8\u95dc\u98a8\u96aa\u3002 / First rule out ACS, PE, hypoglycemia, thyroid, or substance-related risk."
+      ],
+      "source_ids": [
+        "nimh_panic_disorder",
+        "nhs_panic_disorder"
+      ]
+    },
+    {
+      "slug": "deep_vein_thrombosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6df1\u90e8\u975c\u8108\u6813\u585e",
+      "name_en": "Deep vein thrombosis",
+      "system": "Vascular",
+      "urgency": "urgent",
+      "summary_zh": "\u55ae\u5074\u4e0b\u80a2\u816b\u8139\u6216\u75bc\u75db\u6642\u9700\u8003\u616e\uff0c\u4e26\u8a55\u4f30\u80ba\u6813\u585e\u98a8\u96aa\u3002",
+      "summary_en": "Consider with unilateral leg swelling or pain, and assess pulmonary embolism risk.",
+      "signals": {
+        "unilateral_leg_swelling": 5,
+        "dyspnea": 1,
+        "pleuritic_pain": 1
+      },
+      "synonyms": [
+        "dvt",
+        "deep vein thrombosis",
+        "leg clot"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d VTE \u98a8\u96aa\u3001\u8fd1\u671f\u624b\u8853\u3001\u81e5\u5e8a\u3001\u764c\u75c7\u3001\u61f7\u5b55\u8207\u80ba\u6813\u585e\u75c7\u72c0\u3002 / Check VTE risks, recent surgery, immobility, cancer, pregnancy, and PE symptoms."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pneumothorax",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6c23\u80f8",
+      "name_en": "Pneumothorax",
+      "system": "Respiratory",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u80f8\u75db\u6216\u547c\u5438\u56f0\u96e3\uff0c\u5c24\u5176\u5916\u50b7\u6216\u547c\u5438\u7a98\u8feb\u6642\u9700\u6392\u9664\u3002",
+      "summary_en": "Sudden chest pain or dyspnea, especially with trauma or distress, should prompt exclusion.",
+      "signals": {
+        "chest_pain": 3,
+        "dyspnea": 4,
+        "respiratory_distress": 4,
+        "recent_trauma": 3
+      },
+      "synonyms": [
+        "pneumothorax",
+        "collapsed lung"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u5f35\u529b\u6c23\u80f8\u8868\u73fe\u3001\u5916\u50b7\u3001\u8840\u6c27\u3001\u547c\u5438\u97f3\u4e0d\u5c0d\u7a31\u8207\u8840\u6d41\u4e0d\u7a69\u3002 / Check tension features, trauma, oxygenation, asymmetric breath sounds, and instability."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypertensive_emergency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9ad8\u8840\u58d3\u6025\u75c7",
+      "name_en": "Hypertensive emergency",
+      "system": "Cardiovascular",
+      "urgency": "emergent",
+      "summary_zh": "\u56b4\u91cd\u9ad8\u8840\u58d3\u5408\u4f75\u795e\u7d93\u3001\u80f8\u75db\u3001\u547c\u5438\u56f0\u96e3\u6216\u814e\u529f\u80fd\u98a8\u96aa\u6642\u9700\u6025\u75c7\u8a55\u4f30\u3002",
+      "summary_en": "Severe hypertension with neurologic, chest, dyspnea, or kidney-risk features needs urgent evaluation.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "chest_pain": 2,
+        "dyspnea": 2,
+        "altered_mental_status": 3
+      },
+      "synonyms": [
+        "hypertensive emergency",
+        "malignant hypertension"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8840\u58d3\u6578\u503c\u3001\u7d42\u7aef\u5668\u5b98\u640d\u50b7\u75c7\u72c0\u3001\u7528\u85e5\u4e2d\u65b7\u8207\u598a\u5a20\u76f8\u95dc\u98a8\u96aa\u3002 / Confirm BP, end-organ symptoms, medication interruption, and pregnancy-related risk."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_pancreatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u80f0\u81df\u708e",
+      "name_en": "Acute pancreatitis",
+      "system": "Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "\u4e0a\u8179\u75db\u3001\u5614\u5410\u3001\u81bd\u9053\u7dda\u7d22\u6216\u9152\u7cbe\u76f8\u95dc\u98a8\u96aa\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Consider with upper abdominal pain, vomiting, biliary clues, or alcohol-related risk.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 3,
+        "ruq_pain": 1,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "pancreatitis",
+        "acute pancreatitis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u653e\u5c04\u5230\u80cc\u90e8\u3001\u9152\u7cbe\u3001\u81bd\u77f3\u3001\u4e09\u9178\u7518\u6cb9\u8102\u8207\u812b\u6c34\u6216\u4f11\u514b\u3002 / Ask about back radiation, alcohol, gallstones, triglycerides, dehydration, or shock."
+      ],
+      "source_ids": [
+        "merck_professional",
+        "nice_acute_abdomen"
+      ]
+    },
+    {
+      "slug": "bowel_obstruction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8178\u963b\u585e",
+      "name_en": "Bowel obstruction",
+      "system": "Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "\u8179\u75db\u5408\u4f75\u5614\u5410\u3001\u8179\u8139\u3001\u505c\u6b62\u6392\u6c23\u6392\u4fbf\u6216\u624b\u8853\u53f2\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Abdominal pain with vomiting, distension, obstipation, or surgical history suggests obstruction.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 3,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "bowel obstruction",
+        "intestinal obstruction",
+        "sbo"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8179\u8139\u3001\u6392\u6c23\u6392\u4fbf\u3001\u624b\u8853\u53f2\u3001\u759d\u6c23\u3001\u767c\u71d2\u8207\u8179\u819c\u523a\u6fc0\u3002 / Check distension, flatus/stool, surgery, hernia, fever, and peritoneal signs."
+      ],
+      "source_ids": [
+        "nice_acute_abdomen",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "peritonitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8179\u819c\u708e\u6216\u6025\u8179\u75c7",
+      "name_en": "Peritonitis or acute abdomen",
+      "system": "Gastrointestinal",
+      "urgency": "emergent",
+      "summary_zh": "\u53cd\u5f48\u75db\u3001\u9632\u79a6\u3001\u5287\u70c8\u8179\u75db\u6216\u8840\u6d41\u4e0d\u7a69\u6642\u9700\u6025\u75c7\u8655\u7406\u3002",
+      "summary_en": "Rebound, guarding, severe abdominal pain, or instability requires urgent action.",
+      "signals": {
+        "abdominal_pain": 3,
+        "rebound_guarding": 6,
+        "severe_pain": 2,
+        "hemodynamic_instability": 4,
+        "fever": 2
+      },
+      "synonyms": [
+        "peritonitis",
+        "acute abdomen",
+        "surgical abdomen"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9632\u79a6\u3001\u53cd\u5f48\u75db\u3001\u767c\u71d2\u3001\u8840\u6d41\u52d5\u529b\u8207\u662f\u5426\u9700\u6025\u8a3a\u5916\u79d1\u8a55\u4f30\u3002 / Confirm guarding, rebound, fever, hemodynamics, and surgical emergency need."
+      ],
+      "source_ids": [
+        "nice_acute_abdomen"
+      ]
+    },
+    {
+      "slug": "acute_mesenteric_ischemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u8178\u7e6b\u819c\u7f3a\u8840",
+      "name_en": "Acute mesenteric ischemia",
+      "system": "Gastrointestinal/Vascular",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u5287\u70c8\u8179\u75db\uff0c\u5c24\u5176\u75bc\u75db\u8207\u7406\u5b78\u6aa2\u67e5\u4e0d\u6210\u6bd4\u4f8b\u3001\u5408\u4f75\u5614\u5410\u6216\u8840\u6027\u8179\u7009\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Sudden severe abdominal pain, especially pain out of proportion to exam with vomiting or bloody diarrhea, is a must-not-miss pattern.",
+      "signals": {
+        "pain_out_of_proportion_to_exam": 8,
+        "abdominal_pain": 3,
+        "severe_pain": 3,
+        "vomiting": 2,
+        "bloody_diarrhea": 3,
+        "gi_bleeding": 2,
+        "hemodynamic_instability": 2,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "acute mesenteric ischemia",
+        "mesenteric ischemia",
+        "intestinal ischemia",
+        "bowel ischemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8179\u75db\u662f\u5426\u7a81\u767c\u3001\u5287\u70c8\u3001\u5b9a\u4f4d\u4e0d\u660e\uff0c\u4e26\u8a55\u4f30\u662f\u5426\u8207\u89f8\u8a3a\u6216\u7406\u5b78\u6aa2\u67e5\u4e0d\u6210\u6bd4\u4f8b\u3002 / Clarify whether abdominal pain is sudden, severe, poorly localized, and out of proportion to exam findings.",
+        "\u78ba\u8a8d\u5fc3\u623f\u986b\u52d5\u3001\u52d5\u8108\u7ca5\u6a23\u786c\u5316\u3001\u8fd1\u671f\u5fc3\u808c\u6897\u585e\u3001\u4f4e\u8840\u6d41\u72c0\u614b\u3001\u5614\u5410\u3001\u8179\u7009\u3001\u8840\u4fbf\u3001\u8179\u819c\u708e\u5fb5\u8c61\u8207\u8840\u6d41\u4e0d\u7a69\u3002 / Check atrial fibrillation, atherosclerotic disease, recent MI, low-flow states, vomiting, diarrhea, blood in stool, peritonitis signs, and instability."
+      ],
+      "source_ids": [
+        "merck_acute_mesenteric_ischemia",
+        "wses_acute_mesenteric_ischemia"
+      ]
+    },
+    {
+      "slug": "nephrolithiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u814e\u7d50\u77f3\u6216\u8f38\u5c3f\u7ba1\u7d50\u77f3",
+      "name_en": "Nephrolithiasis or ureteral stone",
+      "system": "Urinary",
+      "urgency": "soon",
+      "summary_zh": "\u8170\u5074\u7d5e\u75db\u3001\u8840\u5c3f\u6216\u5641\u5fc3\u5614\u5410\u6642\u5217\u5165\uff0c\u4f46\u9700\u6392\u9664\u611f\u67d3\u963b\u585e\u3002",
+      "summary_en": "Flank colic, hematuria, or vomiting suggests stone; exclude infected obstruction.",
+      "signals": {
+        "flank_pain": 5,
+        "vomiting": 1,
+        "dysuria": 1,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "kidney stone",
+        "renal colic",
+        "nephrolithiasis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u71d2\u3001\u55ae\u814e\u3001\u61f7\u5b55\u3001\u5c3f\u91cf\u3001\u8840\u5c3f\u8207\u611f\u67d3\u5fb5\u8c61\u3002 / Check fever, solitary kidney, pregnancy, urine output, hematuria, and infection signs."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "uncomplicated_uti",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e0b\u6ccc\u5c3f\u9053\u611f\u67d3",
+      "name_en": "Lower urinary tract infection",
+      "system": "Urinary",
+      "urgency": "routine",
+      "summary_zh": "\u6392\u5c3f\u75bc\u75db\u3001\u983b\u5c3f\u6216\u6025\u5c3f\u4f46\u7121\u767c\u71d2\u8170\u75db\u6642\u53ef\u8003\u616e\u3002",
+      "summary_en": "Dysuria, frequency, or urgency without fever/flank pain may fit lower UTI.",
+      "signals": {
+        "dysuria": 5,
+        "fever": 1
+      },
+      "synonyms": [
+        "uti",
+        "cystitis",
+        "urinary infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u71d2\u3001\u8170\u75db\u3001\u61f7\u5b55\u3001\u7537\u6027\u3001\u514d\u75ab\u4f4e\u4e0b\u8207\u53cd\u8986\u611f\u67d3\u3002 / Check fever, flank pain, pregnancy, male sex, immunocompromise, and recurrence."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_urinary_retention",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u5c3f\u6eef\u7559",
+      "name_en": "Acute urinary retention",
+      "system": "Urologic/Urinary",
+      "urgency": "emergent",
+      "summary_zh": "\u7121\u6cd5\u6392\u5c3f\u3001\u4e0b\u8179\u8139\u75db\u6216\u8180\u80f1\u81a8\u8139\u611f\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u6025\u6027\u5c3f\u6eef\u7559\u8207\u963b\u585e\u98a8\u96aa\u3002",
+      "summary_en": "Inability to void with lower abdominal pain, distention, or bladder fullness should prioritize acute urinary retention.",
+      "signals": {
+        "inability_to_void": 6,
+        "abdominal_pain": 2,
+        "severe_pain": 2,
+        "dysuria": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "urinary retention",
+        "acute urinary retention",
+        "unable to urinate",
+        "cannot void"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6700\u5f8c\u6392\u5c3f\u6642\u9593\u3001\u4e0b\u8179\u81a8\u8139/\u75bc\u75db\u3001\u5c3f\u91cf\u3001\u524d\u5217\u817a\u6216\u795e\u7d93\u75c5\u53f2\u3001\u8fd1\u671f\u624b\u8853/\u9ebb\u9189\u3001\u6297\u81bd\u9e7c\u6216\u9d09\u7247\u985e\u85e5\u7269\u3002 / Clarify last void, suprapubic distention or pain, urine output, prostate or neurologic history, recent surgery or anesthesia, and anticholinergic or opioid exposure."
+      ],
+      "source_ids": [
+        "merck_urinary_retention",
+        "niddk_urinary_retention"
+      ]
+    },
+    {
+      "slug": "gastroenteritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8178\u80c3\u708e",
+      "name_en": "Gastroenteritis",
+      "system": "Gastrointestinal/Infectious",
+      "urgency": "routine",
+      "summary_zh": "\u5614\u5410\u3001\u8179\u75db\u3001\u767c\u71d2\u6216\u7fa4\u805a\u66b4\u9732\u6642\u5217\u5165\u5e38\u898b\u539f\u56e0\u3002",
+      "summary_en": "Vomiting, abdominal pain, fever, or exposure clusters can suggest gastroenteritis.",
+      "signals": {
+        "vomiting": 4,
+        "abdominal_pain": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "gastroenteritis",
+        "stomach flu",
+        "food poisoning"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u812b\u6c34\u3001\u8840\u4fbf\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u65c5\u904a\u3001\u98df\u7269\u66b4\u9732\u8207\u8179\u819c\u523a\u6fc0\u3002 / Check dehydration, bloody stool, immunocompromise, travel, food exposure, and peritoneal signs."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "migraine",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u504f\u982d\u75db",
+      "name_en": "Migraine",
+      "system": "Neurologic",
+      "urgency": "routine",
+      "summary_zh": "\u53cd\u8986\u982d\u75db\u5408\u4f75\u5641\u5fc3\u3001\u754f\u5149\u6216\u985e\u4f3c\u65e2\u5f80\u578b\u614b\u6642\u53ef\u8003\u616e\uff1b\u9700\u5148\u6392\u9664\u7d05\u65d7\u3002",
+      "summary_en": "Recurrent headache with nausea, photophobia, or prior pattern can fit migraine after red flags are excluded.",
+      "signals": {
+        "vomiting": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "migraine",
+        "migraine headache"
+      ],
+      "ask_next": [
+        "\u5148\u78ba\u8a8d\u96f7\u64ca\u6a23\u982d\u75db\u3001\u795e\u7d93\u7f3a\u640d\u3001\u767c\u71d2\u3001\u9838\u50f5\u786c\u3001\u5916\u50b7\u820750\u6b72\u5f8c\u65b0\u767c\u3002 / First check thunderclap, neurologic deficit, fever, neck stiffness, trauma, and new headache after 50."
+      ],
+      "source_ids": [
+        "merck_headache_red_flags",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tension_type_headache",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7dca\u7e2e\u578b\u982d\u75db",
+      "name_en": "Tension-type headache",
+      "system": "Neurologic",
+      "urgency": "routine",
+      "summary_zh": "\u96d9\u5074\u58d3\u8feb\u611f\u3001\u975e\u7a81\u767c\u4e14\u7121\u7d05\u65d7\u6642\u53ef\u8003\u616e\u3002",
+      "summary_en": "Bilateral pressure-like headache without sudden onset or red flags can fit this pattern.",
+      "signals": {
+        "severe_pain": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "tension headache",
+        "tension-type headache"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6c92\u6709\u7d05\u65d7\u3001\u85e5\u7269\u904e\u5ea6\u4f7f\u7528\u3001\u8996\u89ba\u75c7\u72c0\u6216\u611f\u67d3\u7dda\u7d22\u3002 / Confirm no red flags, medication overuse, visual symptoms, or infection clues."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "intracranial_mass",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9871\u5167\u816b\u7624\u6216\u4f54\u4f4d\u75c5\u7076",
+      "name_en": "Intracranial mass lesion",
+      "system": "Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "\u764c\u75c7\u53f2\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u795e\u7d93\u7f3a\u640d\u621650\u6b72\u5f8c\u65b0\u767c\u982d\u75db\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Cancer history, immunocompromise, neurologic deficit, or new headache after 50 raises concern.",
+      "signals": {
+        "new_headache_after_50": 3,
+        "neurologic_deficit": 3,
+        "immunocompromised": 2,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "brain tumor",
+        "intracranial mass",
+        "metastasis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u764c\u75c7\u53f2\u3001\u7672\u7647\u3001\u6668\u9593\u5614\u5410\u3001\u9032\u884c\u6027\u60e1\u5316\u8207\u795e\u7d93\u7f3a\u640d\u3002 / Ask about cancer, seizure, morning vomiting, progression, and neurologic deficits."
+      ],
+      "source_ids": [
+        "merck_headache_red_flags",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "concussion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8166\u9707\u76ea\u6216\u8f15\u5ea6\u8166\u5916\u50b7",
+      "name_en": "Concussion or mild traumatic brain injury",
+      "system": "Trauma/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u8fd1\u671f\u982d\u90e8\u5916\u50b7\u5f8c\u982d\u75db\u3001\u6688\u7729\u3001\u5614\u5410\u6216\u610f\u8b58\u6539\u8b8a\u9700\u8a55\u4f30\u3002",
+      "summary_en": "Headache, dizziness, vomiting, or mental status change after head trauma needs assessment.",
+      "signals": {
+        "recent_trauma": 5,
+        "vomiting": 1,
+        "altered_mental_status": 3,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "concussion",
+        "mild tbi",
+        "head injury"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5931\u53bb\u610f\u8b58\u3001\u6297\u51dd\u8840\u85e5\u3001\u53cd\u8986\u5614\u5410\u3001\u795e\u7d93\u7f3a\u640d\u8207\u982d\u75db\u60e1\u5316\u3002 / Check loss of consciousness, anticoagulants, repeated vomiting, deficits, and worsening headache."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "thyroid_storm",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7532\u72c0\u817a\u98a8\u66b4",
+      "name_en": "Thyroid storm",
+      "system": "Endocrine",
+      "urgency": "emergent",
+      "summary_zh": "\u767c\u71d2\u3001\u5fc3\u640f\u904e\u901f\u3001\u610f\u8b58\u6539\u8b8a\u6216\u56b4\u91cd\u5168\u8eab\u75c7\u72c0\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Fever, tachycardia, altered mental status, or severe systemic illness can suggest thyroid storm.",
+      "signals": {
+        "fever": 2,
+        "tachycardia": 4,
+        "altered_mental_status": 3,
+        "diaphoresis": 1
+      },
+      "synonyms": [
+        "thyroid storm",
+        "thyrotoxicosis crisis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7532\u4ea2\u75c5\u53f2\u3001\u8a98\u767c\u611f\u67d3\u3001\u9ad4\u6eab\u3001\u5fc3\u5f8b\u3001\u8178\u80c3\u75c7\u72c0\u8207\u610f\u8b58\u3002 / Check hyperthyroidism history, infection trigger, temperature, rhythm, GI symptoms, and mentation."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypothyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7532\u72c0\u817a\u4f4e\u4e0b",
+      "name_en": "Hypothyroidism",
+      "system": "Endocrine",
+      "urgency": "routine",
+      "summary_zh": "\u75b2\u5026\u3001\u9ad4\u91cd\u8b8a\u5316\u3001\u6015\u51b7\u6216\u5fc3\u640f\u6162\u7b49\u6162\u6027\u8868\u73fe\u6642\u53ef\u7d0d\u5165\u3002",
+      "summary_en": "Fatigue, weight change, cold intolerance, or bradycardic chronic presentations may fit.",
+      "signals": {
+        "fatigue": 2,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "hypothyroid",
+        "hypothyroidism",
+        "myxedema"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c7\u72c0\u6642\u9593\u8ef8\u3001\u85e5\u7269\u3001\u7532\u72c0\u817a\u75c5\u53f2\u8207\u662f\u5426\u6709\u4f4e\u9ad4\u6eab\u6216\u610f\u8b58\u6539\u8b8a\u3002 / Check timeline, medications, thyroid history, hypothermia, and mental status."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "adrenal_crisis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u814e\u4e0a\u817a\u5371\u8c61",
+      "name_en": "Adrenal crisis",
+      "system": "Endocrine",
+      "urgency": "emergent",
+      "summary_zh": "\u8840\u6d41\u4e0d\u7a69\u3001\u5614\u5410\u3001\u8179\u75db\u3001\u75b2\u5026\u6216\u985e\u56fa\u9187\u4e2d\u65b7\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Instability, vomiting, abdominal pain, fatigue, or steroid interruption can suggest adrenal crisis.",
+      "signals": {
+        "hemodynamic_instability": 4,
+        "vomiting": 2,
+        "abdominal_pain": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "adrenal crisis",
+        "adrenal insufficiency"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u985e\u56fa\u9187\u4f7f\u7528\u3001\u4e2d\u65b7\u3001\u611f\u67d3\u58d3\u529b\u3001\u4f4e\u8840\u58d3\u3001\u4f4e\u8840\u7cd6\u8207\u96fb\u89e3\u8cea\u3002 / Check steroid use/cessation, infection stress, hypotension, hypoglycemia, and electrolytes."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "anemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8ca7\u8840",
+      "name_en": "Anemia",
+      "system": "Hematologic",
+      "urgency": "soon",
+      "summary_zh": "\u75b2\u5026\u3001\u547c\u5438\u56f0\u96e3\u3001\u660f\u53a5\u6216\u8178\u80c3\u9053\u51fa\u8840\u7dda\u7d22\u6642\u53ef\u7d0d\u5165\u3002",
+      "summary_en": "Fatigue, dyspnea, syncope, or GI bleeding clues can suggest anemia.",
+      "signals": {
+        "fatigue": 3,
+        "dyspnea": 1,
+        "syncope": 1,
+        "gi_bleeding": 3
+      },
+      "synonyms": [
+        "anemia",
+        "anaemia",
+        "low hemoglobin"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u51fa\u8840\u3001\u6708\u7d93\u3001\u9ed1\u4fbf\u3001\u71df\u990a\u3001\u6162\u6027\u75c5\u3001\u5fc3\u80ba\u75c7\u72c0\u8207 CBC\u3002 / Ask about bleeding, menses, melena, nutrition, chronic disease, cardiopulmonary symptoms, and CBC."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "malignancy_red_flag",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u60e1\u6027\u816b\u7624\u8b66\u8a0a",
+      "name_en": "Malignancy red-flag pattern",
+      "system": "Oncology",
+      "urgency": "soon",
+      "summary_zh": "\u975e\u9810\u671f\u9ad4\u91cd\u6e1b\u8f15\u3001\u75b2\u5026\u3001\u591c\u9593\u75c7\u72c0\u6216\u5c40\u90e8\u6301\u7e8c\u75c7\u72c0\u9700\u5b89\u6392\u8a55\u4f30\u3002",
+      "summary_en": "Unintentional weight loss, fatigue, night symptoms, or persistent focal symptoms need evaluation.",
+      "signals": {
+        "weight_loss": 5,
+        "fatigue": 1,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "cancer",
+        "malignancy",
+        "weight loss"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ad4\u91cd\u6e1b\u8f15\u5e45\u5ea6\u3001\u591c\u6c57\u3001\u767c\u71d2\u3001\u51fa\u8840\u3001\u5c40\u90e8\u75c7\u72c0\u8207\u7be9\u6aa2\u53f2\u3002 / Check amount of weight loss, night sweats, fever, bleeding, focal symptoms, and screening history."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_psychosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u7cbe\u795e\u75c5\u6027\u75c7\u72c0",
+      "name_en": "Acute psychosis",
+      "system": "Mental health/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "\u5e7b\u89ba\u3001\u5984\u60f3\u3001\u601d\u8003\u6216\u884c\u70ba\u6df7\u4e82\u3001\u56b4\u91cd\u6fc0\u52d5\u6216\u65b0\u767c\u7cbe\u795e\u75c5\u6027\u75c7\u72c0\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Hallucinations, delusions, disorganized thinking or behavior, severe agitation, or new psychotic symptoms should be included.",
+      "signals": {
+        "hallucinations_delusions": 5,
+        "severe_agitation": 3,
+        "altered_mental_status": 2,
+        "substance_use_concern": 1,
+        "suicidal_ideation": 1,
+        "self_harm_behavior": 1
+      },
+      "synonyms": [
+        "acute psychosis",
+        "first episode psychosis",
+        "psychosis",
+        "hallucinations",
+        "delusions"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8d77\u59cb\u6642\u9593\u3001\u5e7b\u89ba/\u5984\u60f3\u5167\u5bb9\u3001\u601d\u8003\u6216\u884c\u70ba\u6df7\u4e82\u3001\u6fc0\u52d5\u7a0b\u5ea6\u3001\u7269\u8cea\u6216\u85e5\u7269\u66b4\u9732\u3001\u8b6b\u5984/\u795e\u7d93/\u5167\u5206\u6ccc\u7b49\u91ab\u7642\u539f\u56e0\u8207\u81ea\u50b7/\u50b7\u4eba\u5b89\u5168\u98a8\u96aa\u3002 / Clarify onset, hallucination or delusion content, disorganized thought or behavior, agitation, substance or medication exposure, delirium, neurologic, endocrine or other medical causes, and self-harm or violence safety risk."
+      ],
+      "source_ids": [
+        "nice_psychosis",
+        "camh_psychosis_screening",
+        "merck_psychosis_medical_condition"
+      ]
+    },
+    {
+      "slug": "mania_or_hypomania",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8e81\u75c7\u6216\u8f15\u8e81\u75c7\u767c\u4f5c",
+      "name_en": "Mania or hypomania",
+      "system": "Mental health",
+      "urgency": "urgent",
+      "summary_zh": "\u7761\u7720\u9700\u6c42\u964d\u4f4e\u3001\u6d3b\u52d5\u91cf\u6216\u8a9e\u901f\u589e\u52a0\u3001\u885d\u52d5\u9ad8\u98a8\u96aa\u884c\u70ba\u6216\u7cbe\u795e\u75c5\u6027\u75c7\u72c0\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Decreased need for sleep, increased activity or pressured speech, risky impulsive behavior, or psychotic symptoms should include mania or hypomania.",
+      "signals": {
+        "decreased_need_for_sleep": 5,
+        "risky_impulsive_behavior": 5,
+        "severe_agitation": 2,
+        "hallucinations_delusions": 2,
+        "substance_use_concern": 1,
+        "suicidal_ideation": 1
+      },
+      "synonyms": [
+        "mania",
+        "hypomania",
+        "manic episode",
+        "bipolar mania",
+        "bipolar disorder"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7761\u7720\u9700\u6c42\u3001\u7cbe\u529b/\u6d3b\u52d5\u91cf\u3001\u8a9e\u901f\u6216\u601d\u7dd2\u5954\u9038\u3001\u8a87\u5927\u3001\u885d\u52d5\u98a8\u96aa\u884c\u70ba\u3001\u7cbe\u795e\u75c5\u6027\u75c7\u72c0\u3001\u7269\u8cea/\u85e5\u7269\u8a98\u767c\u8207\u7acb\u5373\u5b89\u5168\u98a8\u96aa\u3002 / Clarify sleep need, energy or activity, pressured speech or racing thoughts, grandiosity, risky impulsive behavior, psychotic symptoms, substance or medication triggers, and immediate safety risk."
+      ],
+      "source_ids": [
+        "nice_bipolar",
+        "merck_bipolar"
+      ]
+    },
+    {
+      "slug": "eating_disorder_medical_risk",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u98f2\u98df\u969c\u7919\u8207\u91ab\u7642\u98a8\u96aa",
+      "name_en": "Eating disorder with medical risk",
+      "system": "Mental health/Metabolic",
+      "urgency": "urgent",
+      "summary_zh": "\u9650\u5236\u98f2\u98df\u3001\u9ad4\u91cd\u6050\u61fc\u3001\u66b4\u98df\u6216\u6e05\u9664\u884c\u70ba\u5408\u4f75\u9ad4\u91cd\u4e0b\u964d\u3001\u660f\u53a5\u3001\u4f4e\u8840\u7cd6\u6216\u5614\u5410\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Restrictive eating, weight fear, bingeing, or purging with weight loss, syncope, hypoglycemia, or vomiting should be included.",
+      "signals": {
+        "restrictive_eating_or_weight_fear": 5,
+        "purging_behavior": 5,
+        "binge_eating_loss_of_control": 3,
+        "weight_loss": 4,
+        "vomiting": 2,
+        "syncope": 3,
+        "hypoglycemia_risk": 3,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "eating disorder",
+        "anorexia nervosa",
+        "bulimia nervosa",
+        "binge eating disorder",
+        "purging"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9650\u5236\u98f2\u98df\u3001\u66b4\u98df/\u6e05\u9664\u884c\u70ba\u3001\u9ad4\u91cd\u8b8a\u5316\u3001\u660f\u53a5/\u5fc3\u60b8\u3001\u5614\u5410\u6216\u7009\u85e5/\u5229\u5c3f\u5291\u4f7f\u7528\u3001\u4f4e\u8840\u7cd6\u6216\u96fb\u89e3\u8cea\u98a8\u96aa\u3001\u81ea\u50b7\u98a8\u96aa\u8207\u662f\u5426\u6709\u91ab\u7642\u4e0d\u7a69\u5b9a\u3002 / Clarify restriction, bingeing or purging, weight trajectory, syncope or palpitations, vomiting or laxative/diuretic use, hypoglycemia or electrolyte risk, self-harm risk, and medical instability."
+      ],
+      "source_ids": [
+        "nimh_eating_disorders",
+        "merck_anorexia_nervosa",
+        "merck_bulimia_nervosa"
+      ]
+    },
+    {
+      "slug": "depression",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6182\u9b31\u75c7\u72c0",
+      "name_en": "Depressive symptoms",
+      "system": "Mental health",
+      "urgency": "soon",
+      "summary_zh": "\u75b2\u5026\u3001\u7761\u7720\u6216\u98df\u617e\u6539\u8b8a\u3001\u60c5\u7dd2\u4f4e\u843d\u6642\u53ef\u7d0d\u5165\uff1b\u9700\u4e3b\u52d5\u8a55\u4f30\u81ea\u50b7\u98a8\u96aa\u3002",
+      "summary_en": "Low mood with fatigue, sleep, or appetite change can fit; screen for self-harm risk.",
+      "signals": {
+        "fatigue": 2,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "depression",
+        "depressive symptoms",
+        "low mood"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u81ea\u6bba\u610f\u5ff5\u3001\u81ea\u50b7\u8a08\u756b\u3001\u7cbe\u795e\u75c5\u75c7\u72c0\u3001\u7269\u8cea\u4f7f\u7528\u8207\u652f\u6301\u7cfb\u7d71\u3002 / Check suicidal ideation, self-harm plan, psychosis, substances, and supports."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "suicide_self_harm_risk",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u81ea\u6bba\u6216\u81ea\u50b7\u98a8\u96aa",
+      "name_en": "Suicide or self-harm risk",
+      "system": "Mental health/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u4efb\u4f55\u81ea\u6bba\u610f\u5ff5\u3001\u8a08\u756b\u3001\u8fd1\u671f\u81ea\u50b7\u6216\u5b89\u5168\u7591\u616e\u90fd\u9700\u7acb\u5373\u5b89\u5168\u8a55\u4f30\u3002",
+      "summary_en": "Any suicidal ideation, plan, recent self-harm, or safety concern requires immediate safety assessment.",
+      "signals": {
+        "suicidal_ideation": 6,
+        "self_harm_behavior": 6,
+        "severe_agitation": 2,
+        "substance_use_concern": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "suicide risk",
+        "self harm",
+        "suicidal ideation",
+        "self-harm"
+      ],
+      "ask_next": [
+        "\u76f4\u63a5\u8a62\u554f\u610f\u5ff5\u3001\u8a08\u756b\u3001\u624b\u6bb5\u3001\u6642\u9593\u3001\u4fdd\u8b77\u56e0\u5b50\u8207\u662f\u5426\u9700\u8981\u7acb\u5373\u5b89\u5168\u8655\u7f6e\u3002 / Ask directly about ideation, plan, means, timing, protective factors, and immediate safety needs."
+      ],
+      "source_ids": [
+        "nimh_suicide_warning_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "delirium",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8b6b\u5984",
+      "name_en": "Delirium",
+      "system": "Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "\u6025\u6027\u610f\u8b58\u6216\u6ce8\u610f\u529b\u6ce2\u52d5\u9700\u627e\u611f\u67d3\u3001\u4ee3\u8b1d\u3001\u85e5\u7269\u6216\u4e2d\u6a1e\u75c5\u56e0\u3002",
+      "summary_en": "Acute fluctuating attention or consciousness requires evaluation for infection, metabolic, medication, or CNS causes.",
+      "signals": {
+        "altered_mental_status": 5,
+        "fever": 1,
+        "hypoglycemia_risk": 1
+      },
+      "synonyms": [
+        "delirium",
+        "acute confusion"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u57fa\u6e96\u8a8d\u77e5\u3001\u6025\u6027\u6642\u9593\u8ef8\u3001\u611f\u67d3\u3001\u85e5\u7269\u3001\u75bc\u75db\u3001\u5c3f\u6eef\u7559\u3001\u4f4e\u6c27\u8207\u8840\u7cd6\u3002 / Check baseline cognition, acute timeline, infection, medications, pain, retention, hypoxia, and glucose."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "medication_toxicity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u85e5\u7269\u6216\u6bd2\u7269\u4e2d\u6bd2",
+      "name_en": "Medication or toxic ingestion",
+      "system": "Toxicology",
+      "urgency": "emergent",
+      "summary_zh": "\u610f\u8b58\u6539\u8b8a\u3001\u660f\u53a5\u3001\u5fc3\u640f\u904e\u901f\u3001\u5614\u5410\u6216\u81ea\u50b7\u7591\u616e\u6642\u9700\u8a62\u554f\u66b4\u9732\u3002",
+      "summary_en": "Altered mental status, syncope, tachycardia, vomiting, or self-harm concern should prompt exposure history.",
+      "signals": {
+        "altered_mental_status": 4,
+        "syncope": 2,
+        "tachycardia": 2,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "overdose",
+        "toxicity",
+        "poisoning",
+        "ingestion"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u85e5\u7269\u6e05\u55ae\u3001\u5291\u91cf\u3001\u6642\u9593\u3001\u610f\u5716\u3001\u5171\u540c\u651d\u5165\u3001\u5fc3\u96fb\u5716\u8207\u6bd2\u7269\u4e2d\u5fc3\u3002 / Check medication list, dose, timing, intent, co-ingestions, ECG, and poison control."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "carbon_monoxide_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e00\u6c27\u5316\u78b3\u4e2d\u6bd2",
+      "name_en": "Carbon monoxide poisoning",
+      "system": "Toxicology/Environmental",
+      "urgency": "emergent",
+      "summary_zh": "\u71c3\u71d2\u6216\u5bc6\u9589\u7a7a\u9593\u66b4\u9732\u5f8c\u51fa\u73fe\u610f\u8b58\u6539\u8b8a\u3001\u660f\u53a5\u3001\u5614\u5410\u3001\u80f8\u75db\u6216\u591a\u4eba\u76f8\u4f3c\u75c7\u72c0\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Prioritize after combustion or enclosed-space exposure, especially with altered mental status, syncope, vomiting, chest pain, or multiple people with similar symptoms.",
+      "signals": {
+        "carbon_monoxide_or_combustion_exposure": 8,
+        "multiple_people_same_symptoms": 5,
+        "altered_mental_status": 3,
+        "syncope": 3,
+        "vomiting": 2,
+        "dyspnea": 2,
+        "chest_pain": 2,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "carbon monoxide poisoning",
+        "co poisoning",
+        "carbon monoxide exposure",
+        "combustion exposure"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6709\u74e6\u65af\u3001\u6696\u7210\u3001\u767c\u96fb\u6a5f\u3001\u8eca\u5eab\u3001\u706b\u707d\u6216\u5bc6\u9589\u7a7a\u9593\u71c3\u71d2\u66b4\u9732\uff0c\u4ee5\u53ca\u540c\u4f4f\u6216\u540c\u5834\u57df\u591a\u4eba\u662f\u5426\u6709\u76f8\u4f3c\u75c7\u72c0\u3002 / Ask about gas, heaters, generators, garages, fire, or enclosed combustion exposure, and whether others in the same setting have similar symptoms.",
+        "\u78ba\u8a8d\u982d\u75db\u3001\u6688\u7729\u3001\u865b\u5f31\u3001\u5614\u5410\u3001\u80f8\u75db\u3001\u547c\u5438\u56f0\u96e3\u3001\u610f\u8b58\u6539\u8b8a\u3001\u660f\u53a5\u8207\u5fc3\u8840\u7ba1/\u795e\u7d93\u9ad8\u98a8\u96aa\u8868\u73fe\u3002 / Check headache, dizziness, weakness, vomiting, chest pain, dyspnea, altered mental status, syncope, and cardiovascular or neurologic high-risk features."
+      ],
+      "source_ids": [
+        "cdc_carbon_monoxide_clinical_guidance",
+        "merck_carbon_monoxide_poisoning"
+      ]
+    },
+    {
+      "slug": "serotonin_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8840\u6e05\u7d20\u75c7\u5019\u7fa4",
+      "name_en": "Serotonin syndrome",
+      "system": "Toxicology/Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "\u767c\u71d2\u3001\u5fc3\u640f\u904e\u901f\u3001\u610f\u8b58\u6539\u8b8a\u3001\u5192\u6c57\u6216\u76f8\u95dc\u85e5\u7269\u66b4\u9732\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Fever, tachycardia, altered mental status, diaphoresis, or serotonergic exposure suggests risk.",
+      "signals": {
+        "fever": 2,
+        "tachycardia": 3,
+        "altered_mental_status": 3,
+        "diaphoresis": 2
+      },
+      "synonyms": [
+        "serotonin syndrome",
+        "ssri toxicity"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d SSRI/SNRI/MAOI\u3001\u6b62\u75db\u85e5\u3001\u5a1b\u6a02\u7528\u85e5\u3001\u808c\u9663\u6523\u3001\u53cd\u5c04\u4ea2\u9032\u8207\u9ad4\u6eab\u3002 / Check serotonergic drugs, analgesics, recreational drugs, clonus, hyperreflexia, and temperature."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "heat_stroke",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u71b1\u4e2d\u6691",
+      "name_en": "Heat stroke",
+      "system": "Environmental",
+      "urgency": "emergent",
+      "summary_zh": "\u9ad8\u6eab\u66b4\u9732\u5408\u4f75\u610f\u8b58\u6539\u8b8a\u3001\u767c\u71d2\u6216\u8840\u6d41\u4e0d\u7a69\u9700\u7acb\u5373\u8655\u7406\u3002",
+      "summary_en": "Heat exposure with altered mental status, hyperthermia, or instability is an emergency.",
+      "signals": {
+        "fever": 3,
+        "altered_mental_status": 4,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "heat stroke",
+        "hyperthermia",
+        "heat illness"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u74b0\u5883\u66b4\u9732\u3001\u6838\u5fc3\u9ad4\u6eab\u3001\u610f\u8b58\u3001\u812b\u6c34\u3001\u6a6b\u7d0b\u808c\u6eb6\u89e3\u8207\u7acb\u5373\u964d\u6eab\u3002 / Check exposure, core temperature, mental status, dehydration, rhabdomyolysis, and cooling need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypothermia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4f4e\u9ad4\u6eab\u75c7",
+      "name_en": "Hypothermia",
+      "system": "Environmental",
+      "urgency": "emergent",
+      "summary_zh": "\u4f4e\u6eab\u66b4\u9732\u6216\u4f4e\u9ad4\u6eab\u5408\u4f75\u610f\u8b58\u6539\u8b8a\u3001\u5fc3\u5f8b\u6216\u8840\u6d41\u554f\u984c\u6642\u9700\u6025\u75c7\u8655\u7406\u3002",
+      "summary_en": "Cold exposure or hypothermia with mental status, rhythm, or hemodynamic issues is high risk.",
+      "signals": {
+        "hypothermia": 5,
+        "altered_mental_status": 3,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "hypothermia",
+        "cold exposure"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6838\u5fc3\u9ad4\u6eab\u3001\u66b4\u9732\u6642\u9593\u3001\u5fc3\u5f8b\u3001\u8840\u7cd6\u3001\u5916\u50b7\u8207\u5fa9\u6eab\u5b89\u5168\u3002 / Check core temperature, exposure duration, rhythm, glucose, trauma, and rewarming safety."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cellulitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8702\u7aa9\u6027\u7d44\u7e54\u708e",
+      "name_en": "Cellulitis",
+      "system": "Skin/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u76ae\u819a\u7d05\u816b\u71b1\u75db\u5408\u4f75\u767c\u71d2\u6216\u514d\u75ab\u4f4e\u4e0b\u6642\u9700\u8a55\u4f30\u611f\u67d3\u56b4\u91cd\u5ea6\u3002",
+      "summary_en": "Skin erythema, warmth, swelling, and pain with fever or immunocompromise needs severity assessment.",
+      "signals": {
+        "rash": 3,
+        "fever": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "cellulitis",
+        "skin infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7bc4\u570d\u64f4\u5927\u3001\u75bc\u75db\u7a0b\u5ea6\u3001\u81bf\u760d\u3001\u7cd6\u5c3f\u75c5\u3001\u514d\u75ab\u4f4e\u4e0b\u8207\u58de\u6b7b\u611f\u67d3\u7d05\u65d7\u3002 / Check spread, pain severity, abscess, diabetes, immunocompromise, and necrotizing red flags."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "necrotizing_soft_tissue_infection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u58de\u6b7b\u6027\u8edf\u7d44\u7e54\u611f\u67d3",
+      "name_en": "Necrotizing soft tissue infection",
+      "system": "Skin/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u5287\u75db\u3001\u8840\u6d41\u4e0d\u7a69\u3001\u767c\u71d2\u6216\u5feb\u901f\u60e1\u5316\u76ae\u819a\u611f\u67d3\u9700\u7acb\u5373\u6392\u9664\u3002",
+      "summary_en": "Severe pain, instability, fever, or rapidly worsening skin infection must be excluded.",
+      "signals": {
+        "severe_pain": 4,
+        "fever": 3,
+        "hemodynamic_instability": 4,
+        "rash": 2,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "necrotizing fasciitis",
+        "nsti",
+        "flesh eating"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u8d85\u51fa\u5916\u89c0\u3001\u5feb\u901f\u64f4\u5927\u3001\u6c34\u6ce1\u3001\u76ae\u819a\u58de\u6b7b\u3001\u4f11\u514b\u8207\u5916\u79d1\u6025\u75c7\u9700\u6c42\u3002 / Check pain out of proportion, rapid spread, bullae, necrosis, shock, and surgical emergency need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "skin_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u76ae\u819a\u6216\u8edf\u7d44\u7e54\u81bf\u760d",
+      "name_en": "Skin or soft tissue abscess",
+      "system": "Skin/Soft tissue/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u5c40\u90e8\u5316\u81bf\u3001\u7d05\u816b\u71b1\u75db\u3001\u58d3\u75db\u6216\u767c\u71d2\u6642\u9700\u8207\u8702\u7aa9\u6027\u7d44\u7e54\u708e\u53ca\u6df1\u90e8\u611f\u67d3\u5340\u5206\u3002",
+      "summary_en": "Purulence, localized warmth, swelling, tenderness, or fever should distinguish abscess from cellulitis or deeper infection.",
+      "signals": {
+        "purulent_skin_lesion": 5,
+        "rash": 2,
+        "fever": 2,
+        "severe_pain": 1,
+        "immunocompromised": 1,
+        "rapidly_spreading_skin_infection": 1
+      },
+      "synonyms": [
+        "skin abscess",
+        "cutaneous abscess",
+        "soft tissue abscess",
+        "boil",
+        "furuncle"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6709\u81bf\u6db2\u6216\u6ce2\u52d5\u611f\u3001\u7d05\u816b\u71b1\u75db\u7bc4\u570d\u3001\u767c\u71d2\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u5feb\u901f\u64f4\u5927\u3001\u6df1\u90e8\u4f4d\u7f6e\u8207\u662f\u5426\u9700\u7a0b\u5e8f\u6216\u5f71\u50cf\u8a55\u4f30\u3002 / Clarify purulence or fluctuance, erythema/warmth/tenderness extent, fever, immunocompromise, rapid spread, deep location, and need for procedural or imaging evaluation."
+      ],
+      "source_ids": [
+        "merck_abscesses",
+        "idsa_ssti_guideline"
+      ]
+    },
+    {
+      "slug": "herpes_zoster",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5e36\u72c0\u75b1\u75b9",
+      "name_en": "Herpes zoster (shingles)",
+      "system": "Skin/Neurologic/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u75bc\u75db\u3001\u523a\u75db\u6216\u6414\u7662\u5f8c\u51fa\u73fe\u55ae\u5074\u76ae\u7bc0\u6c34\u6ce1\u75b9\uff0c\u5c24\u5176\u773c\u90e8\u6216\u514d\u75ab\u4f4e\u4e0b\u8005\u9700\u512a\u5148\u8fa8\u8b58\u3002",
+      "summary_en": "Pain, tingling, or itching followed by unilateral dermatomal vesicles should identify herpes zoster, especially with eye involvement or immunocompromise.",
+      "signals": {
+        "vesicular_dermatomal_rash": 6,
+        "severe_pain": 2,
+        "rash": 2,
+        "eye_pain_redness": 4,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "shingles",
+        "herpes zoster",
+        "zoster",
+        "dermatomal vesicular rash"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u76ae\u75b9\u662f\u5426\u6cbf\u55ae\u5074\u76ae\u7bc0\u3001\u75bc\u75db/\u523a\u75db\u5148\u65bc\u76ae\u75b9\u3001\u773c\u8033\u53d7\u4fb5\u72af\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u6563\u64ad\u6027\u76ae\u75b9\u8207\u795e\u7d93\u4f75\u767c\u75c7\u7dda\u7d22\u3002 / Clarify unilateral dermatomal distribution, pain or tingling before rash, eye or ear involvement, immunocompromise, disseminated rash, and neurologic complication clues."
+      ],
+      "source_ids": [
+        "cdc_shingles_clinical_features",
+        "cdc_shingles_clinical_overview"
+      ]
+    },
+    {
+      "slug": "stevens_johnson_syndrome_ten",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u53f2\u8482\u6587\u65af-\u5f37\u68ee\u75c7\u5019\u7fa4 / \u6bd2\u6027\u8868\u76ae\u58de\u6b7b\u6eb6\u89e3\u75c7",
+      "name_en": "Stevens-Johnson syndrome / toxic epidermal necrolysis",
+      "system": "Skin/Soft tissue/Toxicology",
+      "urgency": "emergent",
+      "summary_zh": "\u65b0\u7528\u85e5\u5f8c\u767c\u71d2\u3001\u76ae\u75b9\u5feb\u901f\u64f4\u5927\u3001\u9ecf\u819c\u75c5\u7076\u3001\u76ae\u819a\u6c34\u6ce1\u6216\u812b\u843d\u6642\u9700\u7acb\u5373\u6392\u9664\u3002",
+      "summary_en": "Fever, rapidly spreading rash, mucosal lesions, blistering, or sloughing after medication exposure must raise SJS/TEN concern.",
+      "signals": {
+        "mucosal_lesions": 6,
+        "skin_sloughing_or_blistering": 6,
+        "new_medication_exposure": 4,
+        "rash": 4,
+        "fever": 3,
+        "severe_pain": 2,
+        "eye_pain_redness": 1
+      },
+      "synonyms": [
+        "stevens-johnson syndrome",
+        "sjs",
+        "toxic epidermal necrolysis",
+        "ten",
+        "sjs ten"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8fd1\u671f\u65b0\u85e5\u6216\u9ad8\u98a8\u96aa\u85e5\u7269\u3001\u767c\u71d2\u3001\u76ae\u75b9\u64f4\u5927\u901f\u5ea6\u3001\u53e3\u773c\u751f\u6b96\u5668\u9ecf\u819c\u75c5\u7076\u3001\u76ae\u819a\u6c34\u6ce1/\u812b\u843d\u3001\u75bc\u75db\u3001\u9ad4\u8868\u9762\u7a4d\u8207\u8840\u6d41\u52d5\u529b\u3002 / Clarify recent new or high-risk medications, fever, rash spread, oral/ocular/genital mucosal lesions, blistering or sloughing, pain, body surface area, and hemodynamics."
+      ],
+      "source_ids": [
+        "merck_sjs_ten",
+        "dermnet_sjs_ten"
+      ]
+    },
+    {
+      "slug": "acute_liver_failure",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u809d\u8870\u7aed",
+      "name_en": "Acute liver failure",
+      "system": "Hepatic",
+      "urgency": "emergent",
+      "summary_zh": "\u9ec3\u75b8\u5408\u4f75\u610f\u8b58\u6539\u8b8a\u3001\u51fa\u8840\u6216\u6bd2\u7269/\u85e5\u7269\u66b4\u9732\u9700\u6025\u75c7\u8a55\u4f30\u3002",
+      "summary_en": "Jaundice with altered mental status, bleeding, or toxic/medication exposure is high risk.",
+      "signals": {
+        "jaundice": 4,
+        "altered_mental_status": 4,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "acute liver failure",
+        "hepatic failure"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u4e59\u91af\u80fa\u915a\u3001\u75c5\u6bd2\u6027\u809d\u708e\u3001\u9152\u7cbe\u3001\u51dd\u8840\u3001\u4f4e\u8840\u7cd6\u8207\u8166\u75c5\u8b8a\u3002 / Check acetaminophen, viral hepatitis, alcohol, coagulation, hypoglycemia, and encephalopathy."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_kidney_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u814e\u640d\u50b7",
+      "name_en": "Acute kidney injury",
+      "system": "Renal",
+      "urgency": "urgent",
+      "summary_zh": "\u5c3f\u91cf\u4e0b\u964d\u3001\u812b\u6c34\u3001\u611f\u67d3\u3001\u85e5\u7269\u6216\u963b\u585e\u7dda\u7d22\u6642\u9700\u8003\u616e\u3002",
+      "summary_en": "Reduced urine output, dehydration, infection, medications, or obstruction clues can suggest AKI.",
+      "signals": {
+        "hemodynamic_instability": 2,
+        "dysuria": 1,
+        "flank_pain": 1,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "aki",
+        "acute kidney injury",
+        "renal failure"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5c3f\u91cf\u3001\u814e\u6bd2\u6027\u85e5\u7269\u3001\u812b\u6c34\u3001\u611f\u67d3\u3001\u963b\u585e\u3001\u96fb\u89e3\u8cea\u8207\u808c\u9178\u9150\u3002 / Check urine output, nephrotoxins, dehydration, infection, obstruction, electrolytes, and creatinine."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "covid_influenza",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "COVID-19 \u6216\u6d41\u611f\u6a23\u75be\u75c5",
+      "name_en": "COVID-19 or influenza-like illness",
+      "system": "Respiratory/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u767c\u71d2\u3001\u54b3\u55fd\u3001\u75b2\u5026\u6216\u547c\u5438\u75c7\u72c0\u6642\u5217\u5165\uff0c\u4f46\u9700\u770b\u4f4e\u6c27\u8207\u9ad8\u98a8\u96aa\u65cf\u7fa4\u3002",
+      "summary_en": "Fever, cough, fatigue, or respiratory symptoms fit; assess oxygenation and high-risk status.",
+      "signals": {
+        "fever": 3,
+        "cough_sputum": 3,
+        "fatigue": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "covid",
+        "influenza",
+        "flu",
+        "ili"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u66b4\u9732\u3001\u75ab\u82d7\u3001\u9ad8\u98a8\u96aa\u5171\u75c5\u3001\u8840\u6c27\u3001\u547c\u5438\u7a98\u8feb\u8207\u6aa2\u6e2c\u6642\u6a5f\u3002 / Check exposure, vaccination, high-risk comorbidities, oxygenation, distress, and testing timing."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tuberculosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7d50\u6838\u75c5",
+      "name_en": "Tuberculosis",
+      "system": "Respiratory/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u6162\u6027\u54b3\u55fd\u3001\u9ad4\u91cd\u6e1b\u8f15\u3001\u767c\u71d2\u6216\u514d\u75ab\u4f4e\u4e0b\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Chronic cough, weight loss, fever, or immunocompromise should prompt consideration.",
+      "signals": {
+        "cough_sputum": 2,
+        "weight_loss": 4,
+        "fever": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "tb",
+        "tuberculosis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u54b3\u55fd\u6642\u9593\u3001\u591c\u6c57\u3001\u63a5\u89f8\u53f2\u3001\u65c5\u5c45\u3001\u514d\u75ab\u72c0\u614b\u8207\u611f\u67d3\u7ba1\u5236\u9700\u6c42\u3002 / Check cough duration, night sweats, contacts, travel/residence, immune status, and infection control."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "peptic_ulcer_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6d88\u5316\u6027\u6f70\u760d",
+      "name_en": "Peptic ulcer disease",
+      "system": "Gastrointestinal",
+      "urgency": "soon",
+      "summary_zh": "\u4e0a\u8179\u75db\u3001\u8178\u80c3\u9053\u51fa\u8840\u3001NSAID \u6216\u5e7d\u9580\u87ba\u65cb\u687f\u83cc\u98a8\u96aa\u6642\u53ef\u7d0d\u5165\u3002",
+      "summary_en": "Epigastric pain, GI bleeding, NSAID exposure, or H. pylori risk can fit.",
+      "signals": {
+        "abdominal_pain": 2,
+        "gi_bleeding": 3,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "peptic ulcer",
+        "pud",
+        "gastric ulcer",
+        "duodenal ulcer"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ed1\u4fbf\u3001\u5410\u8840\u3001NSAID\u3001\u6297\u51dd\u8840\u85e5\u3001\u9ad4\u91cd\u6e1b\u8f15\u8207\u7a7f\u5b54\u7d05\u65d7\u3002 / Check melena, hematemesis, NSAIDs, anticoagulants, weight loss, and perforation red flags."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gerd",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80c3\u98df\u9053\u9006\u6d41",
+      "name_en": "Gastroesophageal reflux disease",
+      "system": "Gastrointestinal",
+      "urgency": "routine",
+      "summary_zh": "\u80f8\u53e3\u707c\u71b1\u6216\u98ef\u5f8c/\u8eba\u4e0b\u60e1\u5316\u53ef\u7d0d\u5165\uff0c\u4f46\u9700\u5148\u6392\u9664\u5fc3\u80ba\u7d05\u65d7\u3002",
+      "summary_en": "Heartburn or postprandial/recumbent worsening can fit after cardiopulmonary red flags are excluded.",
+      "signals": {
+        "chest_pain": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "gerd",
+        "reflux",
+        "heartburn"
+      ],
+      "ask_next": [
+        "\u5148\u78ba\u8a8d ACS \u7d05\u65d7\uff1b\u518d\u554f\u541e\u56a5\u56f0\u96e3\u3001\u9ad4\u91cd\u6e1b\u8f15\u3001\u51fa\u8840\u3001\u591c\u9593\u75c7\u72c0\u8207\u85e5\u7269\u3002 / First check ACS red flags; then ask dysphagia, weight loss, bleeding, nocturnal symptoms, and medications."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pelvic_inflammatory_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9aa8\u76c6\u8154\u767c\u708e\u6027\u75be\u75c5",
+      "name_en": "Pelvic inflammatory disease",
+      "system": "Gynecologic/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u9aa8\u76c6\u6216\u4e0b\u8179\u75db\u5408\u4f75\u767c\u71d2\u3001\u9670\u9053\u5206\u6ccc\u7269\u3001\u4e0d\u898f\u5247\u51fa\u8840\u6216\u5b50\u5bae\u9838\u79fb\u52d5\u75db\u6642\u9700\u7d0d\u5165\u3002",
+      "summary_en": "Pelvic or lower abdominal pain with fever, discharge, irregular bleeding, or cervical motion tenderness should include PID.",
+      "signals": {
+        "pelvic_pain": 5,
+        "fever": 2,
+        "vaginal_discharge": 4,
+        "cervical_motion_tenderness": 5,
+        "vaginal_bleeding": 1,
+        "dysuria": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "pelvic inflammatory disease",
+        "pid",
+        "salpingitis",
+        "endometritis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u4e0b\u8179/\u9aa8\u76c6\u75db\u3001\u767c\u71d2\u3001\u9670\u9053\u5206\u6ccc\u7269\u6216\u4e0d\u898f\u5247\u51fa\u8840\u3001\u5b50\u5bae\u9838\u79fb\u52d5\u75db/\u5b50\u5bae\u6216\u9644\u4ef6\u58d3\u75db\u3001\u61f7\u5b55\u53ef\u80fd\u8207\u662f\u5426\u6392\u9664\u5916\u79d1\u6025\u75c7\u3002 / Clarify lower abdominal or pelvic pain, fever, discharge or irregular bleeding, cervical motion, uterine or adnexal tenderness, pregnancy possibility, and whether surgical emergencies are excluded."
+      ],
+      "source_ids": [
+        "merck_pid",
+        "cdc_pid"
+      ]
+    },
+    {
+      "slug": "tubo_ovarian_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8f38\u5375\u7ba1\u5375\u5de2\u81bf\u760d",
+      "name_en": "Tubo-ovarian abscess",
+      "system": "Gynecologic/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u9aa8\u76c6\u75db\u5408\u4f75\u767c\u71d2\u3001\u5287\u75db\u3001\u5614\u5410\u3001\u9670\u9053\u5206\u6ccc\u7269\u6216\u8840\u6d41\u4e0d\u7a69\u6642\u9700\u512a\u5148\u6392\u9664\u3002",
+      "summary_en": "Pelvic pain with fever, severe pain, vomiting, discharge, or instability should prioritize tubo-ovarian abscess.",
+      "signals": {
+        "pelvic_pain": 5,
+        "fever": 4,
+        "vaginal_discharge": 3,
+        "cervical_motion_tenderness": 4,
+        "severe_pain": 2,
+        "vomiting": 2,
+        "hemodynamic_instability": 4,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "tubo-ovarian abscess",
+        "tubo ovarian abscess",
+        "toa",
+        "adnexal abscess"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u71d2\u9ad8\u5ea6\u3001\u6bd2\u6027\u5916\u89c0\u3001\u55ae\u5074\u6216\u96d9\u5074\u9aa8\u76c6\u75db\u3001\u5206\u6ccc\u7269\u3001\u5614\u5410\u3001\u8179\u819c\u523a\u6fc0\u3001\u598a\u5a20\u72c0\u614b\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u5a66\u79d1/\u5f71\u50cf\u8a55\u4f30\u3002 / Clarify fever severity, toxic appearance, unilateral or bilateral pelvic pain, discharge, vomiting, peritoneal signs, pregnancy status, and need for urgent gynecologic or imaging evaluation."
+      ],
+      "source_ids": [
+        "merck_pid",
+        "cdc_pid"
+      ]
+    },
+    {
+      "slug": "acute_abnormal_uterine_bleeding",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u7570\u5e38\u5b50\u5bae\u51fa\u8840",
+      "name_en": "Acute abnormal uterine bleeding",
+      "system": "Gynecologic/Hematologic",
+      "urgency": "emergent",
+      "summary_zh": "\u5927\u91cf\u6216\u6025\u6027\u9670\u9053/\u5b50\u5bae\u51fa\u8840\u5408\u4f75\u660f\u53a5\u3001\u8840\u6d41\u4e0d\u7a69\u6216\u8ca7\u8840\u7dda\u7d22\u6642\u9700\u7acb\u5373\u5206\u5c64\u3002",
+      "summary_en": "Heavy or acute vaginal or uterine bleeding with syncope, instability, or anemia clues needs immediate risk stratification.",
+      "signals": {
+        "vaginal_bleeding": 6,
+        "hemodynamic_instability": 6,
+        "syncope": 4,
+        "easy_bruising_bleeding": 2,
+        "fatigue": 1,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "acute abnormal uterine bleeding",
+        "abnormal uterine bleeding",
+        "aub",
+        "heavy vaginal bleeding",
+        "heavy uterine bleeding"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u51fa\u8840\u91cf\u8207\u6642\u9593\u3001\u751f\u547d\u5fb5\u8c61/\u660f\u53a5\u3001\u662f\u5426\u6709\u598a\u5a20\u6aa2\u6e2c\u8cc7\u8a0a\u3001\u8ca7\u8840\u6216\u51dd\u8840\u75c5\u53f2\u3001\u6297\u51dd\u8840\u85e5\u3001\u7522\u5f8c\u6216\u505c\u7d93\u72c0\u614b\u8207\u5a66\u79d1\u6025\u75c7\u9700\u6c42\u3002 / Clarify bleeding volume and timing, vital signs or syncope, whether pregnancy testing information is available, anemia or bleeding disorder history, anticoagulants, postpartum or postmenopausal status, and gynecologic emergency need."
+      ],
+      "source_ids": [
+        "acog_acute_aub",
+        "merck_vaginal_bleeding",
+        "merck_abnormal_uterine_bleeding"
+      ]
+    },
+    {
+      "slug": "ovarian_torsion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5375\u5de2\u626d\u8f49",
+      "name_en": "Ovarian torsion",
+      "system": "Gynecologic",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u55ae\u5074\u9aa8\u76c6\u75db\u3001\u5614\u5410\u6216\u61f7\u5b55\u53ef\u80fd\u6642\u9700\u6025\u75c7\u8a55\u4f30\u3002",
+      "summary_en": "Sudden unilateral pelvic pain with vomiting or pregnancy possibility needs urgent evaluation.",
+      "signals": {
+        "pelvic_pain": 5,
+        "vomiting": 2,
+        "pregnancy_possible": 1,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "ovarian torsion",
+        "adnexal torsion"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u7a81\u7136\u6027\u3001\u55ae\u5074\u4f4d\u7f6e\u3001\u5614\u5410\u3001\u5375\u5de2\u56ca\u816b\u53f2\u3001\u598a\u5a20\u8207\u5a66\u79d1\u6025\u75c7\u9700\u6c42\u3002 / Check sudden onset, unilateral location, vomiting, ovarian cyst history, pregnancy, and gynecologic emergency need."
+      ],
+      "source_ids": [
+        "merck_professional",
+        "nice_acute_abdomen"
+      ]
+    },
+    {
+      "slug": "testicular_torsion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u776a\u4e38\u626d\u8f49",
+      "name_en": "Testicular torsion",
+      "system": "Urologic",
+      "urgency": "emergent",
+      "summary_zh": "\u7a81\u767c\u776a\u4e38\u6216\u4e0b\u8179/\u8179\u80a1\u6e9d\u75db\u4f34\u5641\u5fc3\u5614\u5410\u6642\u9700\u7acb\u5373\u6392\u9664\u3002",
+      "summary_en": "Sudden testicular, lower abdominal, or groin pain with nausea/vomiting must be excluded.",
+      "signals": {
+        "abdominal_pain": 1,
+        "vomiting": 2,
+        "severe_pain": 3
+      },
+      "synonyms": [
+        "testicular torsion",
+        "torsion"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9670\u56ca\u75bc\u75db\u3001\u4f4d\u7f6e\u3001\u53cd\u5c04\u3001\u767c\u4f5c\u6642\u9593\u3001\u5614\u5410\u8207\u7acb\u5373\u6ccc\u5c3f\u79d1\u9700\u6c42\u3002 / Check scrotal pain, position, reflex, onset time, vomiting, and urgent urology need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    }
+  ],
+  "sources": [
+    {
+      "source_id": "aha_heart_attack",
+      "publisher": "American Heart Association",
+      "title": "Warning Signs of a Heart Attack",
+      "url": "https://www.heart.org/en/health-topics/heart-attack/warning-signs-of-a-heart-attack"
+    },
+    {
+      "source_id": "aha_pericarditis_symptoms",
+      "publisher": "American Heart Association",
+      "title": "Symptoms and Diagnosis of Pericarditis",
+      "url": "https://www.heart.org/en/health-topics/pericarditis/symptoms-and-diagnosis-of-pericarditis"
+    },
+    {
+      "source_id": "asa_stroke",
+      "publisher": "American Stroke Association",
+      "title": "Stroke Symptoms and Warning Signs",
+      "url": "https://www.stroke.org/en/about-stroke/stroke-symptoms"
+    },
+    {
+      "source_id": "cdc_sepsis",
+      "publisher": "CDC",
+      "title": "Sepsis",
+      "url": "https://www.cdc.gov/sepsis/index.html"
+    },
+    {
+      "source_id": "cdc_sepsis_signs",
+      "publisher": "CDC",
+      "title": "Sepsis Signs and Symptoms",
+      "url": "https://www.cdc.gov/sepsis/communication-resources/gaos-signs-symptoms.html"
+    },
+    {
+      "source_id": "cdc_carbon_monoxide_clinical_guidance",
+      "publisher": "CDC",
+      "title": "Clinical Guidance for Carbon Monoxide Poisoning",
+      "url": "https://www.cdc.gov/carbon-monoxide/hcp/clinical-guidance/index.html"
+    },
+    {
+      "source_id": "nice_chest_pain",
+      "publisher": "NICE CKS",
+      "title": "Chest pain",
+      "url": "https://cks.nice.org.uk/topics/chest-pain/"
+    },
+    {
+      "source_id": "nice_acute_abdomen",
+      "publisher": "NICE CKS",
+      "title": "Abdominal pain - acute",
+      "url": "https://cks.nice.org.uk/topics/abdominal-pain-acute/"
+    },
+    {
+      "source_id": "merck_professional",
+      "publisher": "Merck Manual Professional",
+      "title": "Professional clinical reference",
+      "url": "https://www.merckmanuals.com/professional"
+    },
+    {
+      "source_id": "merck_headache_red_flags",
+      "publisher": "Merck Manual Professional",
+      "title": "Matching Red Flag Findings With a Cause for Headache",
+      "url": "https://www.merckmanuals.com/professional/multimedia/table/matching-red-flag-findings-with-a-cause-for-headache"
+    },
+    {
+      "source_id": "merck_pericarditis",
+      "publisher": "Merck Manual Professional",
+      "title": "Pericarditis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/myocarditis-and-pericarditis/pericarditis"
+    },
+    {
+      "source_id": "merck_myocarditis",
+      "publisher": "Merck Manual Professional",
+      "title": "Myocarditis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/myocarditis-and-pericarditis/myocarditis"
+    },
+    {
+      "source_id": "merck_acute_limb_ischemia",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Limb Ischemia",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-artery-disorders/acute-limb-ischemia"
+    },
+    {
+      "source_id": "merck_acute_mesenteric_ischemia",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Mesenteric Ischemia",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/acute-mesenteric-ischemia"
+    },
+    {
+      "source_id": "merck_carbon_monoxide_poisoning",
+      "publisher": "Merck Manual Professional",
+      "title": "Carbon Monoxide Poisoning",
+      "url": "https://www.merckmanuals.com/home/injuries-and-poisoning/poisoning/carbon-monoxide-poisoning"
+    },
+    {
+      "source_id": "svs_acute_limb_ischemia",
+      "publisher": "Society for Vascular Surgery",
+      "title": "A Guide for Patients: Acute Limb Ischemia",
+      "url": "https://vascular.org/sites/default/files/2025-12/SVS_YVH_AcuteLimbIschemia.pdf"
+    },
+    {
+      "source_id": "wses_acute_mesenteric_ischemia",
+      "publisher": "World Society of Emergency Surgery",
+      "title": "Acute mesenteric ischemia: updated guidelines",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9580452/"
+    },
+    {
+      "source_id": "merck_neutropenia",
+      "publisher": "Merck Manual Professional",
+      "title": "Neutropenia",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/leukopenias/neutropenia"
+    },
+    {
+      "source_id": "merck_cancer_therapy_adverse_effects",
+      "publisher": "Merck Manual Professional",
+      "title": "Management of Adverse Effects of Cancer Therapy",
+      "url": "https://www.merckmanuals.com/professional/oncology/principles-of-cancer-therapy/management-of-adverse-effects-of-cancer-therapy"
+    },
+    {
+      "source_id": "nice_spinal_metastases_mscc",
+      "publisher": "NICE",
+      "title": "Spinal metastases and metastatic spinal cord compression",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK595817/"
+    },
+    {
+      "source_id": "merck_all",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Lymphoblastic Leukemia (ALL)",
+      "url": "https://www.merckmanuals.com/professional/oncology/leukemias/acute-lymphoblastic-leukemia-all"
+    },
+    {
+      "source_id": "canadian_cancer_hypercalcemia",
+      "publisher": "Canadian Cancer Society",
+      "title": "High calcium levels",
+      "url": "https://cancer.ca/en/treatments/side-effects/high-calcium-levels"
+    },
+    {
+      "source_id": "merck_urinary_retention",
+      "publisher": "Merck Manual Professional",
+      "title": "Urinary Retention",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/voiding-disorders/urinary-retention"
+    },
+    {
+      "source_id": "niddk_urinary_retention",
+      "publisher": "NIDDK",
+      "title": "Symptoms and Causes of Urinary Retention",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/urinary-retention/symptoms-causes"
+    },
+    {
+      "source_id": "merck_pid",
+      "publisher": "Merck Manual Professional",
+      "title": "Pelvic Inflammatory Disease (PID)",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/vaginitis-cervicitis-and-pelvic-inflammatory-disease/pelvic-inflammatory-disease-pid"
+    },
+    {
+      "source_id": "cdc_pid",
+      "publisher": "CDC",
+      "title": "Pelvic Inflammatory Disease (PID) - STI Treatment Guidelines",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/pid.htm"
+    },
+    {
+      "source_id": "acog_acute_aub",
+      "publisher": "ACOG",
+      "title": "Management of Acute Abnormal Uterine Bleeding in Nonpregnant Reproductive-Aged Women",
+      "url": "https://www.acog.org/clinical/clinical-guidance/committee-opinion/articles/2013/04/management-of-acute-abnormal-uterine-bleeding-in-nonpregnant-reproductive-aged-women"
+    },
+    {
+      "source_id": "merck_vaginal_bleeding",
+      "publisher": "Merck Manual Professional",
+      "title": "Vaginal Bleeding",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/symptoms-of-gynecologic-disorders/vaginal-bleeding"
+    },
+    {
+      "source_id": "merck_abnormal_uterine_bleeding",
+      "publisher": "Merck Manual Professional",
+      "title": "Abnormal Uterine Bleeding",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/abnormal-uterine-bleeding/abnormal-uterine-bleeding"
+    },
+    {
+      "source_id": "nimh_suicide_warning_signs",
+      "publisher": "NIMH",
+      "title": "Warning Signs of Suicide",
+      "url": "https://www.nimh.nih.gov/health/publications/warning-signs-of-suicide"
+    },
+    {
+      "source_id": "nice_psychosis",
+      "publisher": "NICE",
+      "title": "Psychosis and schizophrenia in adults: prevention and management",
+      "url": "https://www.nice.org.uk/guidance/cg178"
+    },
+    {
+      "source_id": "camh_psychosis_screening",
+      "publisher": "CAMH",
+      "title": "Psychosis: Screening and Assessment",
+      "url": "https://www.camh.ca/en/professionals/treating-conditions-and-disorders/psychosis/psychosis---screening-and-assessment"
+    },
+    {
+      "source_id": "merck_psychosis_medical_condition",
+      "publisher": "Merck Manual Professional",
+      "title": "Psychotic Disorder Due to Another Medical Condition",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/schizophrenia-and-related-disorders/psychotic-disorder-due-to-another-medical-condition"
+    },
+    {
+      "source_id": "nice_bipolar",
+      "publisher": "NICE",
+      "title": "Bipolar disorder: assessment and management",
+      "url": "https://www.nice.org.uk/guidance/cg185"
+    },
+    {
+      "source_id": "merck_bipolar",
+      "publisher": "Merck Manual Professional",
+      "title": "Bipolar Disorders",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/mood-disorders/bipolar-disorders"
+    },
+    {
+      "source_id": "nimh_panic_disorder",
+      "publisher": "NIMH",
+      "title": "Panic Disorder: What You Need to Know",
+      "url": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms"
+    },
+    {
+      "source_id": "nhs_panic_disorder",
+      "publisher": "NHS",
+      "title": "Panic disorder",
+      "url": "https://www.nhs.uk/mental-health/conditions/panic-disorder/"
+    },
+    {
+      "source_id": "nimh_eating_disorders",
+      "publisher": "NIMH",
+      "title": "Eating Disorders: What You Need to Know",
+      "url": "https://www.nimh.nih.gov/health/publications/eating-disorders"
+    },
+    {
+      "source_id": "merck_anorexia_nervosa",
+      "publisher": "Merck Manual Professional",
+      "title": "Anorexia Nervosa",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/feeding-and-eating-disorders/anorexia-nervosa"
+    },
+    {
+      "source_id": "merck_bulimia_nervosa",
+      "publisher": "Merck Manual Professional",
+      "title": "Bulimia Nervosa",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/feeding-and-eating-disorders/bulimia-nervosa"
+    },
+    {
+      "source_id": "merck_abscesses",
+      "publisher": "Merck Manual Professional",
+      "title": "Abscesses",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/biology-of-infectious-disease/abscesses"
+    },
+    {
+      "source_id": "idsa_ssti_guideline",
+      "publisher": "IDSA",
+      "title": "Skin and Soft Tissue Infections Guideline",
+      "url": "https://www.idsociety.org/practice-guideline/skin-and-soft-tissue-infections/"
+    },
+    {
+      "source_id": "cdc_shingles_clinical_features",
+      "publisher": "CDC",
+      "title": "Clinical Features of Shingles (Herpes Zoster)",
+      "url": "https://www.cdc.gov/shingles/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_shingles_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Shingles (Herpes Zoster)",
+      "url": "https://www.cdc.gov/shingles/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "merck_sjs_ten",
+      "publisher": "Merck Manual Professional",
+      "title": "Stevens-Johnson Syndrome (SJS) and Toxic Epidermal Necrolysis (TEN)",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/hypersensitivity-and-reactive-skin-disorders/stevens-johnson-syndrome-sjs-and-toxic-epidermal-necrolysis-ten"
+    },
+    {
+      "source_id": "dermnet_sjs_ten",
+      "publisher": "DermNet",
+      "title": "Stevens Johnson Syndrome / Toxic Epidermal Necrolysis",
+      "url": "https://dermnetnz.org/topics/stevens-johnson-syndrome-toxic-epidermal-necrolysis"
+    }
+  ]
+}
