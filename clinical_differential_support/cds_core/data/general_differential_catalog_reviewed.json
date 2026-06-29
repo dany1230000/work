@@ -2,14 +2,14 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-28",
-    "condition_count": 80,
-    "source_count": 53,
+    "condition_count": 86,
+    "source_count": 59,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-28",
-      "condition_count": 80,
-      "source_count": 53,
+      "condition_count": 86,
+      "source_count": 59,
       "blocking_issue_count": 0,
-      "warning_count": 45,
+      "warning_count": 51,
       "ready_for_public_reference": true,
       "expansion_target_condition_count": 200
     }
@@ -156,6 +156,36 @@
       "source_ids": [
         "cdc_sepsis",
         "cdc_sepsis_signs"
+      ]
+    },
+    {
+      "slug": "kawasaki_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5ddd\u5d0e\u6c0f\u75c7",
+      "name_en": "Kawasaki disease",
+      "system": "Pediatric/Infectious/Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u6301\u7e8c\u767c\u71d2\u5408\u4f75\u76ae\u75b9\u3001\u773c\u7d05\u3001\u5634\u5507/\u53e3\u8154\u8b8a\u5316\u3001\u624b\u8db3\u7d05\u816b\u6216\u9838\u90e8\u6dcb\u5df4\u7d50\u816b\u6642\uff0c\u9700\u7d0d\u5165\u5ddd\u5d0e\u6c0f\u75c7\u8207\u5fc3\u8840\u7ba1\u4f75\u767c\u98a8\u96aa\u3002",
+      "summary_en": "Persistent fever with rash, red eyes, mouth or lip changes, hand/foot swelling or redness, or cervical lymphadenopathy should include Kawasaki disease and cardiovascular complication risk.",
+      "signals": {
+        "persistent_fever_mucocutaneous_changes": 10,
+        "fever": 4,
+        "rash": 3,
+        "eye_pain_redness": 2,
+        "facial_lip_tongue_swelling": 2,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "kawasaki disease",
+        "kawasaki",
+        "mucocutaneous lymph node syndrome",
+        "persistent fever red eyes rash"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u71d2\u5929\u6578\u3001\u76ae\u75b9\u3001\u975e\u5316\u81bf\u6027\u7d50\u819c\u5145\u8840\u3001\u5634\u5507\u6216\u53e3\u8154\u8b8a\u5316\u3001\u624b\u8db3\u7d05\u816b\u6216\u812b\u76ae\u3001\u9838\u90e8\u6dcb\u5df4\u7d50\u3001\u5e74\u9f61\u8108\u7d61\uff0c\u4ee5\u53ca\u5fc3\u81df\u6216\u4f11\u514b\u8b66\u8a0a\u3002 / Clarify fever duration, rash, nonpurulent conjunctival redness, lip or oral changes, hand or foot swelling/redness/peeling, cervical lymph nodes, age context, and cardiac or shock red flags."
+      ],
+      "source_ids": [
+        "cdc_kawasaki"
       ]
     },
     {
@@ -598,6 +628,94 @@
       ]
     },
     {
+      "slug": "epiglottitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6703\u53ad\u708e",
+      "name_en": "Epiglottitis",
+      "system": "ENT/Respiratory/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u56b4\u91cd\u5589\u56a8\u75db\u3001\u541e\u56a5\u56f0\u96e3\u3001\u6d41\u53e3\u6c34\u3001\u767c\u71d2\u3001\u5598\u9cf4\u6216\u547c\u5438\u7a98\u8feb\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u4e0a\u547c\u5438\u9053\u5a01\u8105\u3002",
+      "summary_en": "Severe sore throat with dysphagia, drooling, fever, stridor, or respiratory distress should prioritize epiglottitis.",
+      "signals": {
+        "severe_sore_throat_drooling_or_stridor": 10,
+        "fever": 3,
+        "respiratory_distress": 5,
+        "severe_pain": 2,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "epiglottitis",
+        "supraglottitis",
+        "drooling stridor",
+        "airway sore throat"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6709\u541e\u56a5\u56f0\u96e3\u3001\u6d41\u53e3\u6c34\u3001\u5598\u9cf4\u3001\u5750\u59ff\u524d\u50be\u3001\u767c\u71d2\u3001\u8072\u97f3\u6539\u8b8a\u3001\u547c\u5438\u7a98\u8feb\u3001\u5152\u7ae5\u6216\u514d\u75ab\u4f4e\u4e0b\uff0c\u4ee5\u53ca\u662f\u5426\u9700\u8981\u7acb\u5373\u6c23\u9053\u98a8\u96aa\u8a55\u4f30\u3002 / Clarify dysphagia, drooling, stridor, tripod or leaning posture, fever, voice change, respiratory distress, pediatric or immunocompromised context, and immediate airway-risk assessment need."
+      ],
+      "source_ids": [
+        "merck_epiglottitis"
+      ]
+    },
+    {
+      "slug": "peritonsillar_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6241\u6843\u817a\u5468\u570d\u81bf\u760d",
+      "name_en": "Peritonsillar abscess",
+      "system": "ENT/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u56b4\u91cd\u55ae\u5074\u5589\u56a8\u75db\u5408\u4f75\u5f35\u53e3\u56f0\u96e3\u3001\u542b\u7cca\u8072\u3001\u61f8\u96cd\u5782\u504f\u79fb\u6216\u6241\u6843\u817a\u5468\u570d\u816b\u8139\u6642\uff0c\u9700\u7d0d\u5165\u6241\u6843\u817a\u5468\u570d\u81bf\u760d\u3002",
+      "summary_en": "Severe unilateral sore throat with trismus, muffled voice, uvular deviation, or peritonsillar swelling should prioritize peritonsillar abscess.",
+      "signals": {
+        "trismus_muffled_voice_uvula_deviation": 9,
+        "severe_sore_throat_drooling_or_stridor": 2,
+        "fever": 2,
+        "severe_pain": 3,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "peritonsillar abscess",
+        "quinsy",
+        "hot potato voice",
+        "uvular deviation"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u55ae\u5074\u5589\u56a8\u75db\u3001\u541e\u56a5\u75db\u3001\u5f35\u53e3\u56f0\u96e3\u3001\u542b\u7cca\u8072\u3001\u61f8\u96cd\u5782\u504f\u79fb\u3001\u6241\u6843\u817a\u5468\u570d\u81a8\u9686\u3001\u767c\u71d2\uff0c\u4ee5\u53ca\u6df1\u9838\u90e8\u611f\u67d3\u6216\u6c23\u9053\u8b66\u8a0a\u3002 / Clarify unilateral sore throat, odynophagia, trismus, muffled voice, uvular deviation, peritonsillar bulge, fever, and deep neck infection or airway red flags."
+      ],
+      "source_ids": [
+        "msd_peritonsillar_abscess"
+      ]
+    },
+    {
+      "slug": "retropharyngeal_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u54bd\u5f8c\u81bf\u760d",
+      "name_en": "Retropharyngeal abscess",
+      "system": "ENT/Infectious/Respiratory",
+      "urgency": "emergent",
+      "summary_zh": "\u5589\u56a8\u75db\u3001\u767c\u71d2\u3001\u9838\u90e8\u50f5\u786c\u6216\u816b\u8139\u3001\u541e\u56a5\u56f0\u96e3\u3001\u5598\u9cf4\u6216\u547c\u5438\u7a98\u8feb\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u6df1\u9838\u90e8\u611f\u67d3\u3002",
+      "summary_en": "Sore throat with fever, neck stiffness or swelling, dysphagia, stridor, or respiratory distress should prioritize retropharyngeal abscess.",
+      "signals": {
+        "neck_stiffness_swelling_dysphagia": 9,
+        "severe_sore_throat_drooling_or_stridor": 3,
+        "fever": 3,
+        "respiratory_distress": 4,
+        "severe_pain": 2,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "retropharyngeal abscess",
+        "deep neck infection",
+        "neck stiffness dysphagia",
+        "stridor neck infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u541e\u56a5\u56f0\u96e3\u3001\u6d41\u53e3\u6c34\u3001\u9838\u90e8\u6d3b\u52d5\u53d7\u9650\u6216\u816b\u8139\u3001\u5598\u9cf4\u3001\u767c\u71d2\u3001\u5152\u7ae5\u65cf\u7fa4\u3001\u8fd1\u671f\u54bd\u5589\u611f\u67d3\u6216\u5916\u50b7\uff0c\u4ee5\u53ca\u6c23\u9053\u6216\u7e31\u8188\u4f75\u767c\u8b66\u8a0a\u3002 / Clarify dysphagia, drooling, limited neck movement or swelling, stridor, fever, pediatric context, recent throat infection or trauma, and airway or mediastinal complication clues."
+      ],
+      "source_ids": [
+        "merck_retropharyngeal_abscess"
+      ]
+    },
+    {
       "slug": "pneumonia",
       "review_status": "seed_needs_clinician_review",
       "name_zh": "\u80ba\u708e",
@@ -783,6 +901,36 @@
       ],
       "source_ids": [
         "merck_professional"
+      ]
+    },
+    {
+      "slug": "hyperosmolar_hyperglycemic_state",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9ad8\u6ef2\u900f\u58d3\u9ad8\u8840\u7cd6\u72c0\u614b",
+      "name_en": "Hyperosmolar hyperglycemic state",
+      "system": "Metabolic/Endocrine",
+      "urgency": "emergent",
+      "summary_zh": "\u56b4\u91cd\u9ad8\u8840\u7cd6\u3001\u6975\u5ea6\u53e3\u6e34\u591a\u5c3f\u3001\u812b\u6c34\u3001\u865b\u5f31\u6216\u610f\u8b58\u6539\u8b8a\u6642\uff0c\u9700\u8207 DKA \u5206\u958b\u8fa8\u8b58 HHS\u3002",
+      "summary_en": "Severe hyperglycemia with thirst/polyuria, dehydration, weakness, or altered consciousness should prioritize hyperosmolar hyperglycemic state.",
+      "signals": {
+        "severe_hyperglycemia_dehydration_confusion": 10,
+        "extreme_thirst_polyuria": 4,
+        "altered_mental_status": 4,
+        "hemodynamic_instability": 3,
+        "fatigue": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "hyperosmolar hyperglycemic state",
+        "hhs",
+        "hyperosmolar coma",
+        "nonketotic hyperosmolar syndrome"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u56b4\u91cd\u9ad8\u8840\u7cd6\u8cc7\u6599\u3001\u812b\u6c34\u7a0b\u5ea6\u3001\u53e3\u6e34\u591a\u5c3f\u3001\u610f\u8b58\u6539\u8b8a\u3001\u611f\u67d3\u6216\u751f\u7406\u58d3\u529b\u8a98\u56e0\u3001\u7cd6\u5c3f\u75c5\u985e\u578b\u3001\u916e\u9178\u4e2d\u6bd2\u7dda\u7d22\u8207\u5faa\u74b0\u4e0d\u7a69\u5b9a\u3002 / Clarify severe glucose data, dehydration severity, thirst/polyuria, altered consciousness, infection or physiologic stress triggers, diabetes type, ketoacidosis clues, and circulatory instability."
+      ],
+      "source_ids": [
+        "merck_acute_diabetes_complications"
       ]
     },
     {
@@ -1117,6 +1265,37 @@
       "source_ids": [
         "merck_acute_mesenteric_ischemia",
         "wses_acute_mesenteric_ischemia"
+      ]
+    },
+    {
+      "slug": "intussusception",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8178\u5957\u758a",
+      "name_en": "Intussusception",
+      "system": "Gastrointestinal/Pediatric/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u9593\u6b47\u6027\u7d5e\u75db\u8179\u75db\u3001\u5614\u5410\u3001\u55dc\u7761\u6216\u679c\u91ac\u6a23\u8840\u4fbf\u6642\uff0c\u9700\u512a\u5148\u7d0d\u5165\u8178\u5957\u758a\uff0c\u5c24\u5176\u5152\u7ae5\u4f46\u4e0d\u9650\u5b9a\u5152\u7ae5\u3002",
+      "summary_en": "Intermittent colicky abdominal pain with vomiting, lethargy, or currant-jelly stool should prioritize intussusception, especially in children but not only children.",
+      "signals": {
+        "intermittent_colicky_abdominal_pain_or_currant_jelly_stool": 10,
+        "abdominal_pain": 3,
+        "vomiting": 2,
+        "altered_mental_status": 2,
+        "gi_bleeding": 2,
+        "bloody_diarrhea": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "intussusception",
+        "currant jelly stool",
+        "colicky abdominal pain",
+        "telescoping bowel"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6709\u9593\u6b47\u54ed\u9b27\u6216\u7d5e\u75db\u3001\u62b1\u817f\u3001\u5614\u5410\u3001\u55dc\u7761\u3001\u8179\u90e8\u816b\u584a\u3001\u8840\u4fbf\u6216\u679c\u91ac\u6a23\u4fbf\u3001\u5e74\u9f61\u8108\u7d61\u8207\u8179\u819c\u708e\u6216\u812b\u6c34\u8b66\u8a0a\u3002 / Clarify intermittent crying or colicky pain, leg-drawing episodes, vomiting, lethargy, abdominal mass, bloody or currant-jelly stool, age context, and peritonitis or dehydration clues."
+      ],
+      "source_ids": [
+        "merck_pediatric_vomiting_intussusception"
       ]
     },
     {
@@ -2619,6 +2798,42 @@
       "publisher": "WHO",
       "title": "Pre-eclampsia",
       "url": "https://www.who.int/news-room/fact-sheets/detail/pre-eclampsia"
+    },
+    {
+      "source_id": "merck_epiglottitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Epiglottitis",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/epiglottitis"
+    },
+    {
+      "source_id": "msd_peritonsillar_abscess",
+      "publisher": "MSD Manuals Professional",
+      "title": "Peritonsillar Abscess and Cellulitis",
+      "url": "https://www.msdmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/peritonsillar-abscess-and-cellulitis"
+    },
+    {
+      "source_id": "merck_retropharyngeal_abscess",
+      "publisher": "Merck Manual Professional",
+      "title": "Retropharyngeal Abscess",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/retropharyngeal-abscess"
+    },
+    {
+      "source_id": "merck_acute_diabetes_complications",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Complications of Diabetes Mellitus",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/diabetes-mellitus-and-hypoglycemia/acute-complications-of-diabetes-mellitus"
+    },
+    {
+      "source_id": "merck_pediatric_vomiting_intussusception",
+      "publisher": "Merck Manual Professional",
+      "title": "Nausea and Vomiting in Infants and Children",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/symptoms-in-infants-and-children/nausea-and-vomiting-in-infants-and-children"
+    },
+    {
+      "source_id": "cdc_kawasaki",
+      "publisher": "CDC",
+      "title": "About Kawasaki Disease",
+      "url": "https://www.cdc.gov/kawasaki/about/index.html"
     }
   ]
 }

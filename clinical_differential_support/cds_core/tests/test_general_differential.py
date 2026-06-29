@@ -101,6 +101,12 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("compartment syndrome", "acute_compartment_syndrome"),
             ("orbital cellulitis", "orbital_cellulitis"),
             ("preeclampsia", "preeclampsia_eclampsia"),
+            ("epiglottitis", "epiglottitis"),
+            ("peritonsillar abscess", "peritonsillar_abscess"),
+            ("retropharyngeal abscess", "retropharyngeal_abscess"),
+            ("hyperosmolar hyperglycemic state", "hyperosmolar_hyperglycemic_state"),
+            ("intussusception", "intussusception"),
+            ("kawasaki disease", "kawasaki_disease"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -423,3 +429,114 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         publishers = [source["publisher"] for source in top["sources"]]
         self.assertIn("ACOG", publishers)
         self.assertIn("WHO", publishers)
+
+    def test_sore_throat_drooling_stridor_prioritizes_epiglottitis(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "severe_sore_throat_drooling_or_stridor",
+                    "fever",
+                    "respiratory_distress",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "epiglottitis")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("severe_sore_throat_drooling_or_stridor", top["matched_findings"])
+        self.assertIn("Merck Manual Professional", [source["publisher"] for source in top["sources"]])
+
+    def test_trismus_muffled_voice_prioritizes_peritonsillar_abscess(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "trismus_muffled_voice_uvula_deviation",
+                    "fever",
+                    "severe_pain",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "peritonsillar_abscess")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("trismus_muffled_voice_uvula_deviation", top["matched_findings"])
+        self.assertIn("MSD Manuals Professional", [source["publisher"] for source in top["sources"]])
+
+    def test_neck_stiffness_dysphagia_prioritizes_retropharyngeal_abscess(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "neck_stiffness_swelling_dysphagia",
+                    "fever",
+                    "respiratory_distress",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "retropharyngeal_abscess")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("neck_stiffness_swelling_dysphagia", top["matched_findings"])
+
+    def test_severe_hyperglycemia_dehydration_confusion_prioritizes_hhs(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "severe_hyperglycemia_dehydration_confusion",
+                    "extreme_thirst_polyuria",
+                    "altered_mental_status",
+                    "hemodynamic_instability",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "hyperosmolar_hyperglycemic_state")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("severe_hyperglycemia_dehydration_confusion", top["matched_findings"])
+
+    def test_colicky_abdominal_pain_currant_jelly_stool_prioritizes_intussusception(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "intermittent_colicky_abdominal_pain_or_currant_jelly_stool",
+                    "abdominal_pain",
+                    "vomiting",
+                    "altered_mental_status",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "intussusception")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn(
+            "intermittent_colicky_abdominal_pain_or_currant_jelly_stool",
+            top["matched_findings"],
+        )
+
+    def test_persistent_fever_mucocutaneous_changes_prioritizes_kawasaki(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "persistent_fever_mucocutaneous_changes",
+                    "fever",
+                    "rash",
+                    "eye_pain_redness",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "kawasaki_disease")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("persistent_fever_mucocutaneous_changes", top["matched_findings"])
+        self.assertIn("CDC", [source["publisher"] for source in top["sources"]])

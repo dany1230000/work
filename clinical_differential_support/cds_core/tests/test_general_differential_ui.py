@@ -57,6 +57,12 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Tense compartment or pain with passive stretch")
         self.assertContains(response, "Painful eye movement or proptosis")
         self.assertContains(response, "Preeclampsia warning features")
+        self.assertContains(response, "Severe sore throat with drooling or stridor")
+        self.assertContains(response, "Trismus, muffled voice, or uvular deviation")
+        self.assertContains(response, "Neck stiffness/swelling with dysphagia")
+        self.assertContains(response, "Severe hyperglycemia, dehydration, or confusion")
+        self.assertContains(response, "Intermittent colicky abdominal pain or currant jelly stool")
+        self.assertContains(response, "Persistent fever with mucocutaneous changes")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -252,6 +258,59 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Ask next")
         self.assertContains(response, "ACOG")
         self.assertContains(response, "WHO")
+
+    def test_posted_ent_airway_findings_show_deep_neck_and_airway_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "severe_sore_throat_drooling_or_stridor",
+                    "trismus_muffled_voice_uvula_deviation",
+                    "neck_stiffness_swelling_dysphagia",
+                    "fever",
+                    "respiratory_distress",
+                    "severe_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Epiglottitis")
+        self.assertContains(response, "Peritonsillar abscess")
+        self.assertContains(response, "Retropharyngeal abscess")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "MSD Manuals Professional")
+
+    def test_posted_pediatric_metabolic_findings_show_hhs_intussusception_and_kawasaki(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "severe_hyperglycemia_dehydration_confusion",
+                    "extreme_thirst_polyuria",
+                    "altered_mental_status",
+                    "intermittent_colicky_abdominal_pain_or_currant_jelly_stool",
+                    "vomiting",
+                    "persistent_fever_mucocutaneous_changes",
+                    "fever",
+                    "rash",
+                    "eye_pain_redness",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Hyperosmolar hyperglycemic state")
+        self.assertContains(response, "Intussusception")
+        self.assertContains(response, "Kawasaki disease")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "CDC")
 
     def test_posted_toxicology_findings_show_carbon_monoxide_and_sources(self):
         response = self.client.post(

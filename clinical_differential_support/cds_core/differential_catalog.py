@@ -280,6 +280,36 @@ SOURCES = {
         "title": "Pre-eclampsia",
         "url": "https://www.who.int/news-room/fact-sheets/detail/pre-eclampsia",
     },
+    "merck_epiglottitis": {
+        "publisher": "Merck Manual Professional",
+        "title": "Epiglottitis",
+        "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/epiglottitis",
+    },
+    "msd_peritonsillar_abscess": {
+        "publisher": "MSD Manuals Professional",
+        "title": "Peritonsillar Abscess and Cellulitis",
+        "url": "https://www.msdmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/peritonsillar-abscess-and-cellulitis",
+    },
+    "merck_retropharyngeal_abscess": {
+        "publisher": "Merck Manual Professional",
+        "title": "Retropharyngeal Abscess",
+        "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/retropharyngeal-abscess",
+    },
+    "merck_acute_diabetes_complications": {
+        "publisher": "Merck Manual Professional",
+        "title": "Acute Complications of Diabetes Mellitus",
+        "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/diabetes-mellitus-and-hypoglycemia/acute-complications-of-diabetes-mellitus",
+    },
+    "merck_pediatric_vomiting_intussusception": {
+        "publisher": "Merck Manual Professional",
+        "title": "Nausea and Vomiting in Infants and Children",
+        "url": "https://www.merckmanuals.com/professional/pediatrics/symptoms-in-infants-and-children/nausea-and-vomiting-in-infants-and-children",
+    },
+    "cdc_kawasaki": {
+        "publisher": "CDC",
+        "title": "About Kawasaki Disease",
+        "url": "https://www.cdc.gov/kawasaki/about/index.html",
+    },
 }
 
 FINDING_GROUPS = [
@@ -287,6 +317,26 @@ FINDING_GROUPS = [
         "group_zh": "立即安全狀態",
         "group_en": "Immediate safety",
         "findings": [
+            (
+                "severe_sore_throat_drooling_or_stridor",
+                "Severe sore throat with drooling or stridor",
+                "嚴重喉嚨痛合併流口水或喘鳴",
+            ),
+            (
+                "trismus_muffled_voice_uvula_deviation",
+                "Trismus, muffled voice, or uvular deviation",
+                "張口困難、含糊熱馬鈴薯音或懸雍垂偏移",
+            ),
+            (
+                "neck_stiffness_swelling_dysphagia",
+                "Neck stiffness/swelling with dysphagia",
+                "頸部僵硬或腫脹合併吞嚥困難",
+            ),
+            (
+                "severe_hyperglycemia_dehydration_confusion",
+                "Severe hyperglycemia, dehydration, or confusion",
+                "嚴重高血糖、脫水或意識混亂",
+            ),
             (
                 "acute_hot_swollen_joint",
                 "Acute hot swollen joint",
@@ -358,6 +408,11 @@ FINDING_GROUPS = [
         "group_zh": "腹部與泌尿",
         "group_en": "Abdominal and urinary",
         "findings": [
+            (
+                "intermittent_colicky_abdominal_pain_or_currant_jelly_stool",
+                "Intermittent colicky abdominal pain or currant jelly stool",
+                "間歇絞痛腹痛或果醬樣血便",
+            ),
             ("abdominal_pain", "Abdominal pain", "腹痛"),
             (
                 "pain_out_of_proportion_to_exam",
@@ -452,6 +507,11 @@ FINDING_GROUPS = [
         "group_zh": "感染、代謝與皮膚",
         "group_en": "Infectious, metabolic, skin",
         "findings": [
+            (
+                "persistent_fever_mucocutaneous_changes",
+                "Persistent fever with mucocutaneous changes",
+                "持續發燒合併黏膜皮膚變化",
+            ),
             ("fever", "Fever", "發燒"),
             ("hypothermia", "Hypothermia", "低體溫"),
             ("rash", "Rash", "皮疹"),
@@ -608,6 +668,33 @@ CONDITIONS = [
             "若不穩定，依急症流程處理，不等待完整鑑別列表。 / If unstable, follow emergency care pathways without waiting for a full list.",
         ],
         "source_ids": ["cdc_sepsis", "cdc_sepsis_signs"],
+    },
+    {
+        "slug": "kawasaki_disease",
+        "name_zh": "川崎氏症",
+        "name_en": "Kawasaki disease",
+        "system": "Pediatric/Infectious/Cardiovascular",
+        "urgency": "urgent",
+        "summary_zh": "持續發燒合併皮疹、眼紅、嘴唇/口腔變化、手足紅腫或頸部淋巴結腫時，需納入川崎氏症與心血管併發風險。",
+        "summary_en": "Persistent fever with rash, red eyes, mouth or lip changes, hand/foot swelling or redness, or cervical lymphadenopathy should include Kawasaki disease and cardiovascular complication risk.",
+        "signals": {
+            "persistent_fever_mucocutaneous_changes": 10,
+            "fever": 4,
+            "rash": 3,
+            "eye_pain_redness": 2,
+            "facial_lip_tongue_swelling": 2,
+            "neck_stiffness_swelling_dysphagia": 1,
+        },
+        "synonyms": [
+            "kawasaki disease",
+            "kawasaki",
+            "mucocutaneous lymph node syndrome",
+            "persistent fever red eyes rash",
+        ],
+        "ask_next": [
+            "確認發燒天數、皮疹、非化膿性結膜充血、嘴唇或口腔變化、手足紅腫或脫皮、頸部淋巴結、年齡脈絡，以及心臟或休克警訊。 / Clarify fever duration, rash, nonpurulent conjunctival redness, lip or oral changes, hand or foot swelling/redness/peeling, cervical lymph nodes, age context, and cardiac or shock red flags.",
+        ],
+        "source_ids": ["cdc_kawasaki"],
     },
     {
         "slug": "febrile_neutropenia",
@@ -955,6 +1042,85 @@ CONDITIONS = [
         "source_ids": ["merck_professional"],
     },
     {
+        "slug": "epiglottitis",
+        "name_zh": "會厭炎",
+        "name_en": "Epiglottitis",
+        "system": "ENT/Respiratory/Infectious",
+        "urgency": "emergent",
+        "summary_zh": "嚴重喉嚨痛、吞嚥困難、流口水、發燒、喘鳴或呼吸窘迫時，需優先辨識上呼吸道威脅。",
+        "summary_en": "Severe sore throat with dysphagia, drooling, fever, stridor, or respiratory distress should prioritize epiglottitis.",
+        "signals": {
+            "severe_sore_throat_drooling_or_stridor": 10,
+            "fever": 3,
+            "respiratory_distress": 5,
+            "severe_pain": 2,
+            "altered_mental_status": 1,
+        },
+        "synonyms": [
+            "epiglottitis",
+            "supraglottitis",
+            "drooling stridor",
+            "airway sore throat",
+        ],
+        "ask_next": [
+            "確認是否有吞嚥困難、流口水、喘鳴、坐姿前傾、發燒、聲音改變、呼吸窘迫、兒童或免疫低下，以及是否需要立即氣道風險評估。 / Clarify dysphagia, drooling, stridor, tripod or leaning posture, fever, voice change, respiratory distress, pediatric or immunocompromised context, and immediate airway-risk assessment need.",
+        ],
+        "source_ids": ["merck_epiglottitis"],
+    },
+    {
+        "slug": "peritonsillar_abscess",
+        "name_zh": "扁桃腺周圍膿瘍",
+        "name_en": "Peritonsillar abscess",
+        "system": "ENT/Infectious",
+        "urgency": "urgent",
+        "summary_zh": "嚴重單側喉嚨痛合併張口困難、含糊聲、懸雍垂偏移或扁桃腺周圍腫脹時，需納入扁桃腺周圍膿瘍。",
+        "summary_en": "Severe unilateral sore throat with trismus, muffled voice, uvular deviation, or peritonsillar swelling should prioritize peritonsillar abscess.",
+        "signals": {
+            "trismus_muffled_voice_uvula_deviation": 9,
+            "severe_sore_throat_drooling_or_stridor": 2,
+            "fever": 2,
+            "severe_pain": 3,
+            "neck_stiffness_swelling_dysphagia": 1,
+        },
+        "synonyms": [
+            "peritonsillar abscess",
+            "quinsy",
+            "hot potato voice",
+            "uvular deviation",
+        ],
+        "ask_next": [
+            "確認是否單側喉嚨痛、吞嚥痛、張口困難、含糊聲、懸雍垂偏移、扁桃腺周圍膨隆、發燒，以及深頸部感染或氣道警訊。 / Clarify unilateral sore throat, odynophagia, trismus, muffled voice, uvular deviation, peritonsillar bulge, fever, and deep neck infection or airway red flags.",
+        ],
+        "source_ids": ["msd_peritonsillar_abscess"],
+    },
+    {
+        "slug": "retropharyngeal_abscess",
+        "name_zh": "咽後膿瘍",
+        "name_en": "Retropharyngeal abscess",
+        "system": "ENT/Infectious/Respiratory",
+        "urgency": "emergent",
+        "summary_zh": "喉嚨痛、發燒、頸部僵硬或腫脹、吞嚥困難、喘鳴或呼吸窘迫時，需優先辨識深頸部感染。",
+        "summary_en": "Sore throat with fever, neck stiffness or swelling, dysphagia, stridor, or respiratory distress should prioritize retropharyngeal abscess.",
+        "signals": {
+            "neck_stiffness_swelling_dysphagia": 9,
+            "severe_sore_throat_drooling_or_stridor": 3,
+            "fever": 3,
+            "respiratory_distress": 4,
+            "severe_pain": 2,
+            "altered_mental_status": 1,
+        },
+        "synonyms": [
+            "retropharyngeal abscess",
+            "deep neck infection",
+            "neck stiffness dysphagia",
+            "stridor neck infection",
+        ],
+        "ask_next": [
+            "確認吞嚥困難、流口水、頸部活動受限或腫脹、喘鳴、發燒、兒童族群、近期咽喉感染或外傷，以及氣道或縱膈併發警訊。 / Clarify dysphagia, drooling, limited neck movement or swelling, stridor, fever, pediatric context, recent throat infection or trauma, and airway or mediastinal complication clues.",
+        ],
+        "source_ids": ["merck_retropharyngeal_abscess"],
+    },
+    {
         "slug": "pneumonia",
         "name_zh": "肺炎",
         "name_en": "Pneumonia",
@@ -1064,6 +1230,33 @@ CONDITIONS = [
             "立即確認指尖血糖、糖尿病藥物、進食狀況與意識安全。 / Check point-of-care glucose, diabetes medications, intake, and mental status safety.",
         ],
         "source_ids": ["merck_professional"],
+    },
+    {
+        "slug": "hyperosmolar_hyperglycemic_state",
+        "name_zh": "高滲透壓高血糖狀態",
+        "name_en": "Hyperosmolar hyperglycemic state",
+        "system": "Metabolic/Endocrine",
+        "urgency": "emergent",
+        "summary_zh": "嚴重高血糖、極度口渴多尿、脫水、虛弱或意識改變時，需與 DKA 分開辨識 HHS。",
+        "summary_en": "Severe hyperglycemia with thirst/polyuria, dehydration, weakness, or altered consciousness should prioritize hyperosmolar hyperglycemic state.",
+        "signals": {
+            "severe_hyperglycemia_dehydration_confusion": 10,
+            "extreme_thirst_polyuria": 4,
+            "altered_mental_status": 4,
+            "hemodynamic_instability": 3,
+            "fatigue": 1,
+            "fever": 1,
+        },
+        "synonyms": [
+            "hyperosmolar hyperglycemic state",
+            "hhs",
+            "hyperosmolar coma",
+            "nonketotic hyperosmolar syndrome",
+        ],
+        "ask_next": [
+            "確認嚴重高血糖資料、脫水程度、口渴多尿、意識改變、感染或生理壓力誘因、糖尿病類型、酮酸中毒線索與循環不穩定。 / Clarify severe glucose data, dehydration severity, thirst/polyuria, altered consciousness, infection or physiologic stress triggers, diabetes type, ketoacidosis clues, and circulatory instability.",
+        ],
+        "source_ids": ["merck_acute_diabetes_complications"],
     },
     {
         "slug": "temporal_arteritis",
@@ -1252,6 +1445,34 @@ CONDITIONS = [
             "確認心房顫動、動脈粥樣硬化、近期心肌梗塞、低血流狀態、嘔吐、腹瀉、血便、腹膜炎徵象與血流不穩。 / Check atrial fibrillation, atherosclerotic disease, recent MI, low-flow states, vomiting, diarrhea, blood in stool, peritonitis signs, and instability.",
         ],
         "source_ids": ["merck_acute_mesenteric_ischemia", "wses_acute_mesenteric_ischemia"],
+    },
+    {
+        "slug": "intussusception",
+        "name_zh": "腸套疊",
+        "name_en": "Intussusception",
+        "system": "Gastrointestinal/Pediatric/Emergency",
+        "urgency": "emergent",
+        "summary_zh": "間歇性絞痛腹痛、嘔吐、嗜睡或果醬樣血便時，需優先納入腸套疊，尤其兒童但不限定兒童。",
+        "summary_en": "Intermittent colicky abdominal pain with vomiting, lethargy, or currant-jelly stool should prioritize intussusception, especially in children but not only children.",
+        "signals": {
+            "intermittent_colicky_abdominal_pain_or_currant_jelly_stool": 10,
+            "abdominal_pain": 3,
+            "vomiting": 2,
+            "altered_mental_status": 2,
+            "gi_bleeding": 2,
+            "bloody_diarrhea": 2,
+            "fever": 1,
+        },
+        "synonyms": [
+            "intussusception",
+            "currant jelly stool",
+            "colicky abdominal pain",
+            "telescoping bowel",
+        ],
+        "ask_next": [
+            "確認是否有間歇哭鬧或絞痛、抱腿、嘔吐、嗜睡、腹部腫塊、血便或果醬樣便、年齡脈絡與腹膜炎或脫水警訊。 / Clarify intermittent crying or colicky pain, leg-drawing episodes, vomiting, lethargy, abdominal mass, bloody or currant-jelly stool, age context, and peritonitis or dehydration clues.",
+        ],
+        "source_ids": ["merck_pediatric_vomiting_intussusception"],
     },
     {
         "slug": "nephrolithiasis",
