@@ -11,6 +11,7 @@ from cds_core.differential_catalog_import import (
 )
 from cds_core.differential_catalog_data import (
     build_runtime_catalog_from_review_payload,
+    get_general_differential_runtime_catalog,
     load_default_reviewed_catalog_payload,
 )
 from cds_core.differential_catalog_review_seed import (
@@ -74,6 +75,16 @@ class GeneralDifferentialImportValidationTests(SimpleTestCase):
         self.assertEqual(len(runtime_catalog["sources"]), len(SOURCES))
         self.assertNotIn("review_status", runtime_catalog["conditions"][0])
         self.assertIn(CONDITIONS[0]["source_ids"][0], runtime_catalog["sources"])
+
+    def test_default_runtime_catalog_comes_from_packaged_reviewed_data(self):
+        get_general_differential_runtime_catalog.cache_clear()
+
+        runtime_catalog = get_general_differential_runtime_catalog()
+
+        self.assertEqual(runtime_catalog["catalog_version"], "general-differential-starter-2026-06-29")
+        self.assertEqual(len(runtime_catalog["conditions"]), len(CONDITIONS))
+        self.assertEqual(len(runtime_catalog["sources"]), len(SOURCES))
+        self.assertNotIn("review_status", runtime_catalog["conditions"][0])
 
 
 class GeneralDifferentialImportValidationCommandTests(SimpleTestCase):

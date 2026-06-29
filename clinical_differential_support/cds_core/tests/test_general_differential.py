@@ -1,9 +1,60 @@
+from unittest.mock import patch
+
 from django.test import SimpleTestCase
 
-from cds_core.general_differential import evaluate_general_differential
+from cds_core.general_differential import (
+    evaluate_general_differential,
+    get_general_differential_catalog_summary,
+)
 
 
 class GeneralDifferentialEngineTests(SimpleTestCase):
+    def test_engine_uses_reviewed_runtime_catalog_loader(self):
+        reviewed_runtime_catalog = {
+            "catalog_version": "reviewed-runtime-test",
+            "sources": {
+                "reviewed_source": {
+                    "publisher": "Reviewed Source",
+                    "title": "Reviewed Runtime Test",
+                    "url": "https://example.test/reviewed-runtime",
+                }
+            },
+            "conditions": [
+                {
+                    "slug": "reviewed_runtime_only_condition",
+                    "name_zh": "審核資料測試疾病",
+                    "name_en": "Reviewed runtime only condition",
+                    "system": "Test",
+                    "urgency": "soon",
+                    "summary_zh": "僅存在於 reviewed runtime catalog。",
+                    "summary_en": "Exists only in the reviewed runtime catalog.",
+                    "signals": {"reviewed_runtime_finding": 5},
+                    "synonyms": ["reviewed runtime condition"],
+                    "ask_next": ["確認 reviewed runtime loader。 / Confirm reviewed runtime loader."],
+                    "source_ids": ["reviewed_source"],
+                }
+            ],
+        }
+
+        with patch(
+            "cds_core.general_differential.get_general_differential_runtime_catalog",
+            return_value=reviewed_runtime_catalog,
+        ):
+            summary = get_general_differential_catalog_summary()
+            result = evaluate_general_differential(
+                {
+                    "query": "reviewed runtime condition",
+                    "findings": ["reviewed_runtime_finding"],
+                }
+            )
+
+        self.assertEqual(summary["catalog_version"], "reviewed-runtime-test")
+        self.assertEqual(summary["condition_count"], 1)
+        self.assertEqual(summary["source_count"], 1)
+        self.assertEqual(result["coverage"]["catalog_version"], "reviewed-runtime-test")
+        self.assertEqual(result["results"][0]["slug"], "reviewed_runtime_only_condition")
+        self.assertEqual(result["results"][0]["sources"][0]["publisher"], "Reviewed Source")
+
     def test_acute_coronary_syndrome_ranks_first_for_classic_chest_pain_pattern(self):
         result = evaluate_general_differential(
             {

@@ -4,20 +4,16 @@ from __future__ import annotations
 
 from typing import Any
 
-from .differential_catalog import (
-    CATALOG_VERSION,
-    CONDITIONS,
-    DEFAULT_ASK_NEXT,
-    SOURCES,
-    URGENCY_ORDER,
-)
+from .differential_catalog import DEFAULT_ASK_NEXT, URGENCY_ORDER
+from .differential_catalog_data import get_general_differential_runtime_catalog
 
 
 def get_general_differential_catalog_summary() -> dict[str, Any]:
+    runtime_catalog = get_general_differential_runtime_catalog()
     return {
-        "catalog_version": CATALOG_VERSION,
-        "condition_count": len(CONDITIONS),
-        "source_count": len(SOURCES),
+        "catalog_version": runtime_catalog["catalog_version"],
+        "condition_count": len(runtime_catalog["conditions"]),
+        "source_count": len(runtime_catalog["sources"]),
     }
 
 
@@ -28,10 +24,13 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         if str(finding).strip()
     }
     query = str(raw_findings.get("query", "")).strip().lower()
+    runtime_catalog = get_general_differential_runtime_catalog()
+    conditions = runtime_catalog["conditions"]
+    sources = runtime_catalog["sources"]
     results = []
 
-    for condition in CONDITIONS:
-        scored = _score_condition(condition, selected_findings, query)
+    for condition in conditions:
+        scored = _score_condition(condition, selected_findings, query, sources)
         if scored["score"] <= 0:
             continue
         results.append(scored)
@@ -48,9 +47,9 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "results": results[:12],
         "ask_next": _build_global_ask_next(results, selected_findings),
         "coverage": {
-            "catalog_version": CATALOG_VERSION,
-            "condition_count": len(CONDITIONS),
-            "source_count": len(SOURCES),
+            "catalog_version": runtime_catalog["catalog_version"],
+            "condition_count": len(conditions),
+            "source_count": len(sources),
             "limitation_zh": "這是 starter catalog，不是完整疾病資料庫；未命中不代表排除疾病。",
             "limitation_en": "This is a starter catalog, not a complete disease database; no match does not rule out disease.",
         },
@@ -58,7 +57,10 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
 
 
 def _score_condition(
-    condition: dict[str, Any], selected_findings: set[str], query: str
+    condition: dict[str, Any],
+    selected_findings: set[str],
+    query: str,
+    sources: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
     signals = condition["signals"]
     matched_findings = [
@@ -81,7 +83,7 @@ def _score_condition(
         "matched_findings": matched_findings,
         "matched_text_search": matched_text_search,
         "ask_next": condition["ask_next"],
-        "sources": [SOURCES[source_id] for source_id in condition["source_ids"]],
+        "sources": [sources[source_id] for source_id in condition["source_ids"]],
     }
 
 
