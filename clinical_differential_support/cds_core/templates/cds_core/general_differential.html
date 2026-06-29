@@ -97,6 +97,55 @@
     font-size: 0.9rem;
   }
 
+  .finding-filter {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .finding-filter label {
+    margin-bottom: 0.35rem;
+  }
+
+  .finding-filter-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .finding-filter-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.6rem;
+  }
+
+  .selected-only-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+    font-weight: 700;
+  }
+
+  .finding-filter button {
+    padding: 0.45rem 0.7rem;
+  }
+
+  .finding-filter-status {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 0.9rem;
+  }
+
+  .no-finding-matches {
+    margin-top: 0.6rem;
+  }
+
   .finding-stack {
     display: grid;
     gap: 0.5rem;
@@ -133,6 +182,11 @@
     border-radius: 4px;
     padding: 0.35rem;
     line-height: 1.35;
+  }
+
+  .finding-option[hidden],
+  .finding-group[hidden] {
+    display: none !important;
   }
 
   .finding-option:hover {
@@ -213,6 +267,15 @@
     .sticky-action {
       position: static;
     }
+
+    .finding-filter-row {
+      grid-template-columns: 1fr;
+    }
+
+    .finding-filter-status {
+      margin-left: 0;
+      width: 100%;
+    }
   }
 </style>
 
@@ -284,13 +347,41 @@
 
         <section class="finding-picker">
           <h3>依系統勾選 / Select by system</h3>
+          <div class="finding-filter" data-finding-filter-form="true">
+            <label for="finding-filter-input">快速篩選 findings / Filter findings</label>
+            <div class="finding-filter-row">
+              <input
+                id="finding-filter-input"
+                type="search"
+                autocomplete="off"
+                placeholder="Search findings"
+                data-finding-filter-input="true"
+              >
+              <button type="button" class="secondary-button" data-clear-finding-filter="true">清除 / Clear</button>
+            </div>
+            <div class="finding-filter-actions">
+              <label class="selected-only-control">
+                <input type="checkbox" data-selected-only-toggle="true">
+                <span>只看已選 / Selected only</span>
+              </label>
+              <span class="finding-filter-status" data-finding-match-count="true">All findings visible</span>
+            </div>
+            <div class="empty no-finding-matches" data-no-finding-matches="true" hidden>
+              找不到符合的 findings / No matching findings.
+            </div>
+          </div>
           <div class="finding-stack">
             {% for group in finding_groups %}
-              <details class="finding-group" {% if group.selected_count %}open{% endif %}>
+              <details class="finding-group" data-finding-group="true" {% if group.selected_count %}open{% endif %}>
                 <summary><span>{{ group.group_zh }} / {{ group.group_en }}</span><span class="tag">{{ group.selected_count }}/{{ group.count }}</span></summary>
                 <div class="finding-options">
                   {% for finding in group.findings %}
-                    <label class="finding-option">
+                    <label
+                      class="finding-option"
+                      data-finding-option="true"
+                      data-finding-selected="{{ finding.selected|yesno:'true,false' }}"
+                      data-finding-search-index="{{ finding.title_en|lower }} {{ finding.title_zh|lower }} {{ finding.slug }} {{ finding.search_terms }} {{ group.group_en|lower }} {{ group.group_zh|lower }}"
+                    >
                       <input type="checkbox" name="findings" value="{{ finding.slug }}"{% if finding.selected %} checked{% endif %}>
                       <span>{{ finding.title_en }} / {{ finding.title_zh }}</span>
                     </label>

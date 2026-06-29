@@ -225,6 +225,39 @@ LOCAL_LAUNCH_SAFETY_COPY = (
 )
 
 
+FINDING_SEARCH_SYNONYMS = {
+    "chest_pain": "acs mi heart attack myocardial infarction angina coronary",
+    "dyspnea": "shortness of breath sob respiratory distress hypoxia",
+    "radiating_arm_jaw_pain": "acs mi heart attack myocardial infarction angina coronary",
+    "diaphoresis": "sweating sweat clammy acs hypoglycemia",
+    "neurologic_deficit": "stroke tia cva weakness numbness facial droop",
+    "unilateral_weakness": "stroke tia cva hemiparesis facial droop",
+    "speech_vision_changes": "stroke tia cva aphasia dysarthria vision loss",
+    "thunderclap_headache": "sah subarachnoid hemorrhage aneurysm",
+    "neck_stiffness": "meningitis encephalitis sah",
+    "abdominal_pain": "abdomen belly appendicitis cholecystitis pancreatitis",
+    "rlq_pain": "appendicitis ectopic ovarian torsion",
+    "ruq_pain": "cholecystitis gallbladder hepatitis biliary",
+    "pelvic_pain": "pid ectopic ovarian torsion pregnancy",
+    "cervical_motion_tenderness": "pid pelvic inflammatory disease toa",
+    "vaginal_discharge": "pid sti cervicitis",
+    "fever": "sepsis infection meningitis pneumonia pyelonephritis",
+    "cough_sputum": "pneumonia bronchitis respiratory infection",
+    "pleuritic_pain": "pe pulmonary embolism pneumothorax pneumonia",
+    "hemoptysis": "pe pulmonary embolism tuberculosis cancer",
+    "unilateral_leg_swelling": "dvt pe pulmonary embolism clot",
+    "severe_hyperglycemia_dehydration_confusion": "dka hhs diabetes hyperosmolar",
+    "acute_hot_swollen_joint": "septic arthritis gout pseudogout",
+    "tense_compartment_or_pain_with_passive_stretch": "compartment syndrome limb ischemia",
+    "preeclampsia_warning_features": "eclampsia pregnancy hypertension seizure",
+    "suicidal_ideation": "suicide self harm safety psychiatric emergency",
+    "hallucinations_delusions": "psychosis schizophrenia mania delirium",
+    "purulent_skin_lesion": "abscess cellulitis mrsa skin infection",
+    "vesicular_dermatomal_rash": "shingles zoster herpes",
+    "mucosal_lesions": "sjs ten stevens johnson toxic epidermal necrolysis",
+}
+
+
 STATUS_REPORT_CACHE_SECONDS = 300
 LAUNCH_GUIDE_REPORT_CACHE_KEY = "cds_core:launch_guide_report:v1"
 DEPLOYMENT_STATUS_REPORT_CACHE_KEY = "cds_core:deployment_status_report:v1"
@@ -363,6 +396,7 @@ def _build_finding_groups(selected_findings):
                 "slug": slug,
                 "title_en": title_en,
                 "title_zh": title_zh,
+                "search_terms": FINDING_SEARCH_SYNONYMS.get(slug, ""),
                 "selected": slug in selected,
             }
             for slug, title_en, title_zh in group["findings"]

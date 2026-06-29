@@ -466,6 +466,87 @@
       }, 220);
     }
 
+    function normalizeFilterText(value) {
+      return (value || "").toString().trim().toLowerCase();
+    }
+
+    function initializeFindingFilters(root) {
+      root = root || document;
+      var filter = root.querySelector("[data-finding-filter-form]");
+      if (!filter || filter.dataset.findingFilterReady === "true") {
+        return;
+      }
+      var input = filter.querySelector("[data-finding-filter-input]");
+      var selectedOnlyToggle = filter.querySelector("[data-selected-only-toggle]");
+      var clearButton = filter.querySelector("[data-clear-finding-filter]");
+      var matchCount = filter.querySelector("[data-finding-match-count]");
+      var noMatches = filter.querySelector("[data-no-finding-matches]");
+      var groups = Array.prototype.slice.call(root.querySelectorAll("[data-finding-group]"));
+      var options = Array.prototype.slice.call(root.querySelectorAll("[data-finding-option]"));
+      if (!input || !selectedOnlyToggle || !clearButton || !groups.length || !options.length) {
+        return;
+      }
+      filter.dataset.findingFilterReady = "true";
+
+      function optionIsSelected(option) {
+        var checkbox = option.querySelector('input[type="checkbox"]');
+        return option.dataset.findingSelected === "true" || Boolean(checkbox && checkbox.checked);
+      }
+
+      function applyFindingFilter() {
+        var query = normalizeFilterText(input.value);
+        var selectedOnly = selectedOnlyToggle.checked;
+        var visibleCount = 0;
+
+        groups.forEach(function (group) {
+          var groupVisibleCount = 0;
+          var groupOptions = Array.prototype.slice.call(group.querySelectorAll("[data-finding-option]"));
+          groupOptions.forEach(function (option) {
+            var searchIndex = normalizeFilterText(option.dataset.findingSearchIndex);
+            var selected = optionIsSelected(option);
+            var matchesQuery = !query || searchIndex.indexOf(query) !== -1;
+            var visible = matchesQuery && (!selectedOnly || selected);
+            option.hidden = !visible;
+            if (visible) {
+              visibleCount += 1;
+              groupVisibleCount += 1;
+            }
+          });
+          group.hidden = groupVisibleCount === 0;
+          if ((query || selectedOnly) && groupVisibleCount > 0) {
+            group.open = true;
+          }
+        });
+
+        if (matchCount) {
+          matchCount.textContent = visibleCount + " findings shown";
+        }
+        if (noMatches) {
+          noMatches.hidden = visibleCount !== 0;
+        }
+      }
+
+      input.addEventListener("input", applyFindingFilter);
+      selectedOnlyToggle.addEventListener("change", applyFindingFilter);
+      clearButton.addEventListener("click", function () {
+        input.value = "";
+        selectedOnlyToggle.checked = false;
+        applyFindingFilter();
+        input.focus();
+      });
+      options.forEach(function (option) {
+        var checkbox = option.querySelector('input[type="checkbox"]');
+        if (!checkbox) {
+          return;
+        }
+        checkbox.addEventListener("change", function () {
+          option.dataset.findingSelected = checkbox.checked ? "true" : "false";
+          applyFindingFilter();
+        });
+      });
+      applyFindingFilter();
+    }
+
     function replaceMainFromHtml(html, targetUrl, pushHistory) {
       var doc = new DOMParser().parseFromString(html, "text/html");
       var nextMain = doc.querySelector("[data-fast-nav-root]");
@@ -481,6 +562,7 @@
       }
       main.focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: "instant" });
+      initializeFindingFilters(main);
     }
 
     function loadIntoMain(targetUrl, pushHistory) {
@@ -581,6 +663,7 @@
     });
 
     rememberPage(window.location.href, document.documentElement.outerHTML);
+    initializeFindingFilters(main);
     scheduleFastNavPrefetch();
   })();
   </script>
