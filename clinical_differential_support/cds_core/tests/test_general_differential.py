@@ -174,6 +174,16 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("orthostatic syncope", "vasovagal_orthostatic_syncope"),
             ("lumbar radiculopathy", "low_back_pain_radiculopathy"),
             ("allergic conjunctivitis", "allergic_conjunctivitis"),
+            ("first seizure", "first_seizure"),
+            ("bell palsy", "bell_palsy"),
+            ("atrial fibrillation", "atrial_fibrillation_or_arrhythmia"),
+            ("infective endocarditis", "infective_endocarditis"),
+            ("croup", "croup"),
+            ("corneal ulcer contact lens", "corneal_abrasion_keratitis"),
+            ("dental abscess", "dental_abscess"),
+            ("diverticulitis", "diverticulitis"),
+            ("hyponatremia", "hyponatremia"),
+            ("genital herpes", "genital_herpes"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -246,6 +256,94 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         top = result["results"][0]
         self.assertEqual(top["slug"], "vasovagal_orthostatic_syncope")
         self.assertIn("orthostatic_lightheadedness", top["matched_findings"])
+
+    def test_seizure_activity_prioritizes_first_seizure_safety_review(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "seizure_activity_or_postictal_state",
+                    "altered_mental_status",
+                    "recent_trauma",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "first_seizure")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("seizure_activity_or_postictal_state", top["matched_findings"])
+
+    def test_palpitations_with_syncope_prioritizes_arrhythmia_review(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": ["palpitations", "syncope", "dyspnea"],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "atrial_fibrillation_or_arrhythmia")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("palpitations", top["matched_findings"])
+
+    def test_barking_cough_stridor_prioritizes_croup(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "barking_cough_or_stridor",
+                    "respiratory_distress",
+                    "fever",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "croup")
+        self.assertIn("barking_cough_or_stridor", top["matched_findings"])
+
+    def test_eye_pain_contact_lens_prioritizes_corneal_keratitis_review(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "eye_pain_redness",
+                    "eye_trauma_or_contact_lens",
+                    "visual_disturbance",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "corneal_abrasion_keratitis")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("eye_trauma_or_contact_lens", top["matched_findings"])
+
+    def test_unilateral_facial_weakness_surfaces_bell_palsy_after_stroke_check(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": ["unilateral_facial_weakness"],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "bell_palsy")
+        self.assertIn("unilateral_facial_weakness", top["matched_findings"])
+
+    def test_dental_pain_swelling_prioritizes_dental_abscess_review(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": ["dental_pain_or_facial_swelling", "fever", "severe_pain"],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "dental_abscess")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("dental_pain_or_facial_swelling", top["matched_findings"])
 
     def test_recent_cancer_treatment_fever_prioritizes_febrile_neutropenia(self):
         result = evaluate_general_differential(

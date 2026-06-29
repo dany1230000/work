@@ -2,12 +2,12 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-29",
-    "condition_count": 100,
-    "source_count": 75,
+    "condition_count": 125,
+    "source_count": 105,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-29",
-      "condition_count": 100,
-      "source_count": 75,
+      "condition_count": 125,
+      "source_count": 105,
       "blocking_issue_count": 0,
       "warning_count": 51,
       "ready_for_public_reference": true,
@@ -2879,6 +2879,735 @@
         "merck_allergic_rhinitis",
         "cdc_allergens_pollen"
       ]
+    },
+    {
+      "slug": "first_seizure",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9996\u6b21\u6216\u7591\u4f3c\u7672\u7647\u767c\u4f5c",
+      "name_en": "First seizure or seizure-like event",
+      "system": "Neurologic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u62bd\u6410\u3001\u767c\u4f5c\u5f8c\u6df7\u4e82\u3001\u5275\u50b7\u3001\u767c\u71d2\u6216\u4ee3\u8b1d\u98a8\u96aa\u6642\uff0c\u8981\u5148\u78ba\u8a8d\u662f\u5426\u70ba\u9996\u6b21\u7672\u7647\u767c\u4f5c\u6216\u6025\u6027\u8a98\u767c\u6027\u767c\u4f5c\u3002",
+      "summary_en": "Seizure activity, postictal confusion, trauma, fever, or metabolic risk should trigger first-seizure and acute symptomatic seizure review.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 10,
+        "altered_mental_status": 3,
+        "recent_trauma": 2,
+        "fever": 2,
+        "hypoglycemia_risk": 2,
+        "hyponatremia_confusion_or_seizure_risk": 2
+      },
+      "synonyms": [
+        "first seizure",
+        "new onset seizure",
+        "seizure-like event",
+        "postictal state"
+      ],
+      "ask_next": [
+        "\u5148\u78ba\u8a8d\u767c\u4f5c\u6642\u9593\u3001\u6301\u7e8c\u591a\u4e45\u3001\u662f\u5426\u4ecd\u53cd\u8986\u767c\u4f5c\u3001\u5916\u50b7\u3001\u767c\u71d2\u3001\u4f4e\u8840\u7cd6/\u4f4e\u9209\u3001\u7528\u85e5\u6216\u6bd2\u7269\u66b4\u9732\uff0c\u4e26\u8a55\u4f30\u662f\u5426\u9700\u8981\u6025\u8a3a\u3001\u5f71\u50cf\u3001\u5be6\u9a57\u5ba4\u8207 EEG\u3002"
+      ],
+      "source_ids": [
+        "merck_seizure_disorders",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bell_palsy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8c9d\u723e\u6c0f\u9ebb\u75fa\u6216\u5468\u908a\u6027\u984f\u9762\u795e\u7d93\u9ebb\u75fa",
+      "name_en": "Bell palsy or peripheral facial nerve palsy",
+      "system": "Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "\u55ae\u5074\u81c9\u90e8\u4e0a\u4e0b\u534a\u90e8\u7121\u529b\u53ef\u8003\u616e\u5468\u908a\u6027\u984f\u9762\u795e\u7d93\u9ebb\u75fa\uff0c\u4f46\u5fc5\u9808\u5148\u6392\u9664\u4e2d\u98a8\u3001\u5e36\u72c0\u76b0\u75b9\u3001\u840a\u59c6\u75c5\u6216\u5176\u4ed6\u53ef\u6cbb\u7642\u539f\u56e0\u3002",
+      "summary_en": "Unilateral upper and lower facial weakness can fit peripheral facial nerve palsy while stroke and treatable causes remain active exclusions.",
+      "signals": {
+        "unilateral_facial_weakness": 8,
+        "neurologic_deficit": 1,
+        "speech_vision_changes": 1,
+        "vesicular_dermatomal_rash": 1
+      },
+      "synonyms": [
+        "bell palsy",
+        "bell's palsy",
+        "facial nerve palsy",
+        "facial droop"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u662f\u5426\u984d\u982d\u4e5f\u7121\u529b\u3001\u8d77\u75c5\u6642\u9593\u3001\u8033\u75db\u6216\u6c34\u6ce1\u3001\u5473\u89ba/\u6d41\u6dda\u8b8a\u5316\u3001\u80a2\u9ad4\u7121\u529b\u6216\u8a9e\u8a00\u8996\u89ba\u7570\u5e38\uff0c\u5fc5\u8981\u6642\u5148\u8d70\u4e2d\u98a8\u6392\u9664\u6d41\u7a0b\u3002"
+      ],
+      "source_ids": [
+        "merck_facial_nerve_palsy",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "atrial_fibrillation_or_arrhythmia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5fc3\u623f\u986b\u52d5\u6216\u5176\u4ed6\u5fc3\u5f8b\u4e0d\u6574",
+      "name_en": "Atrial fibrillation or other arrhythmia",
+      "system": "Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u5fc3\u60b8\u3001\u5fc3\u8df3\u4e0d\u898f\u5247\u3001\u5598\u3001\u660f\u53a5\u6216\u904b\u52d5\u6642\u660f\u53a5\u6642\uff0c\u9700\u8981\u7d0d\u5165\u5fc3\u623f\u986b\u52d5\u3001\u5fc3\u623f\u64b2\u52d5\u8207\u5176\u4ed6\u5fc3\u5f8b\u4e0d\u6574\u3002",
+      "summary_en": "Palpitations, irregular rhythm sensation, dyspnea, syncope, or exertional syncope should include atrial fibrillation, flutter, and other arrhythmias.",
+      "signals": {
+        "palpitations": 8,
+        "exertional_syncope": 5,
+        "syncope": 4,
+        "tachycardia": 3,
+        "dyspnea": 2,
+        "chest_pain": 1
+      },
+      "synonyms": [
+        "atrial fibrillation",
+        "afib",
+        "arrhythmia",
+        "irregular heartbeat",
+        "palpitations"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8108\u640f\u662f\u5426\u898f\u5247\u3001\u75c7\u72c0\u958b\u59cb\u6642\u9593\u3001\u80f8\u75db/\u5598/\u660f\u53a5\u3001\u7532\u72c0\u817a\u6216\u85e5\u7269\u523a\u6fc0\u56e0\u5b50\u3001\u65e2\u5f80\u5fc3\u81df\u75c5\uff0c\u4e26\u8a55\u4f30 ECG \u8207\u8840\u6813\u98a8\u96aa\u8cc7\u6599\u3002"
+      ],
+      "source_ids": [
+        "merck_atrial_fibrillation",
+        "merck_atrial_flutter"
+      ]
+    },
+    {
+      "slug": "infective_endocarditis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u611f\u67d3\u6027\u5fc3\u5167\u819c\u708e",
+      "name_en": "Infective endocarditis",
+      "system": "Cardiovascular/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u767c\u71d2\u5408\u4f75\u65b0\u96dc\u97f3\u3001\u74e3\u819c/\u5fc3\u81df\u88dd\u7f6e\u3001\u8840\u7ba1\u5167\u7ba1\u8def\u3001\u6ce8\u5c04\u85e5\u7269\u6216\u6813\u585e/\u7600\u9ede\u7dda\u7d22\u6642\uff0c\u8981\u7d0d\u5165\u611f\u67d3\u6027\u5fc3\u5167\u819c\u708e\u3002",
+      "summary_en": "Fever with new murmur, valve or device history, intravascular access, injection drug use, or embolic/petechial signs should include infective endocarditis.",
+      "signals": {
+        "fever": 4,
+        "new_murmur_or_valve_device": 8,
+        "injection_drug_or_intravascular_device": 5,
+        "embolic_or_petechial_findings": 4,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "infective endocarditis",
+        "endocarditis",
+        "valve infection",
+        "bacterial endocarditis"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u767c\u71d2\u6642\u9593\u3001\u5fc3\u96dc\u97f3/\u74e3\u819c/\u88dd\u7f6e\u3001\u8840\u7ba1\u5167\u7ba1\u8def\u6216\u6ce8\u5c04\u85e5\u7269\u3001\u6813\u585e\u73fe\u8c61\uff0c\u4e26\u78ba\u8a8d\u662f\u5426\u9700\u8981\u8840\u6db2\u57f9\u990a\u8207\u5fc3\u81df\u8d85\u97f3\u6ce2\u8a55\u4f30\u3002"
+      ],
+      "source_ids": [
+        "merck_infective_endocarditis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_bronchitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u652f\u6c23\u7ba1\u708e",
+      "name_en": "Acute bronchitis",
+      "system": "Pulmonary/Infectious",
+      "urgency": "routine",
+      "summary_zh": "\u4e0a\u547c\u5438\u9053\u611f\u67d3\u5f8c\u54b3\u55fd\u3001\u75f0\u3001\u8f15\u5fae\u767c\u71d2\u6216\u5598\u9cf4\uff0c\u4e14\u6c92\u6709\u80ba\u708e/\u6c23\u5598/COPD \u60e1\u5316\u7d05\u65d7\u6642\uff0c\u53ef\u7d0d\u5165\u6025\u6027\u652f\u6c23\u7ba1\u708e\u3002",
+      "summary_en": "Cough with or without sputum after an upper respiratory illness can fit acute bronchitis when pneumonia or chronic lung disease exacerbation red flags are absent.",
+      "signals": {
+        "cough_sputum": 6,
+        "fever": 1,
+        "wheeze": 1,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "acute bronchitis",
+        "bronchitis",
+        "chest cold",
+        "viral bronchitis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u54b3\u55fd\u591a\u4e45\u3001\u662f\u5426\u9ad8\u71d2\u3001\u4f4e\u8840\u6c27\u3001\u547c\u5438\u7a98\u8feb\u3001\u80f8\u75db\u3001\u54b3\u8840\u3001\u6162\u6027\u80ba\u75c5\u6216\u514d\u75ab\u4f4e\u4e0b\uff0c\u5fc5\u8981\u6642\u6392\u9664\u80ba\u708e\u3002"
+      ],
+      "source_ids": [
+        "merck_acute_bronchitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bronchiolitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7d30\u652f\u6c23\u7ba1\u708e",
+      "name_en": "Bronchiolitis",
+      "system": "Pediatric/Pulmonary/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u5169\u6b72\u4ee5\u4e0b\u5b30\u5e7c\u5152\u51fa\u73fe\u54b3\u55fd\u3001\u5598\u9cf4\u3001\u767c\u71d2\u3001\u547c\u5438\u6025\u4fc3\u6216\u51f9\u9677\u6642\uff0c\u8981\u7d0d\u5165\u7d30\u652f\u6c23\u7ba1\u708e\u8207\u4f4e\u6c27\u98a8\u96aa\u3002",
+      "summary_en": "Infants under 2 years with cough, wheeze, fever, tachypnea, retractions, or distress should include bronchiolitis and hypoxemia risk.",
+      "signals": {
+        "infant_under_2_wheeze": 8,
+        "wheeze": 3,
+        "cough_sputum": 2,
+        "respiratory_distress": 3,
+        "fever": 2
+      },
+      "synonyms": [
+        "bronchiolitis",
+        "rsv bronchiolitis",
+        "infant wheeze",
+        "baby wheezing"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u5e74\u9f61\u3001\u9935\u98df\u8207\u5c3f\u91cf\u3001\u547c\u5438\u901f\u7387\u3001\u51f9\u9677\u3001\u4f4e\u6c27\u3001\u65e9\u7522/\u5fc3\u80ba\u75c5\u98a8\u96aa\u3001\u662f\u5426\u9700\u8981\u6c27\u6c23\u6216\u88dc\u6db2\u8a55\u4f30\u3002"
+      ],
+      "source_ids": [
+        "merck_bronchiolitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "croup",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u54ee\u543c",
+      "name_en": "Croup",
+      "system": "Pediatric/ENT/Pulmonary",
+      "urgency": "urgent",
+      "summary_zh": "\u72ac\u5420\u6a23\u54b3\u55fd\u3001\u8072\u97f3\u6c99\u555e\u6216\u5438\u6c23\u6027\u5598\u9cf4\uff0c\u7279\u5225\u662f\u5e7c\u5152\uff0c\u9700\u7d0d\u5165\u54ee\u543c\uff0c\u540c\u6642\u78ba\u8a8d\u547c\u5438\u7a98\u8feb\u7a0b\u5ea6\u3002",
+      "summary_en": "Barking cough, hoarseness, or inspiratory stridor in a child should include croup while assessing respiratory distress severity.",
+      "signals": {
+        "barking_cough_or_stridor": 10,
+        "respiratory_distress": 3,
+        "fever": 2,
+        "cough_sputum": 1
+      },
+      "synonyms": [
+        "croup",
+        "barking cough",
+        "laryngotracheobronchitis",
+        "stridor child"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5e74\u9f61\u3001\u662f\u5426\u4f11\u606f\u6642\u5598\u9cf4\u3001\u51f9\u9677\u3001\u6d41\u53e3\u6c34\u3001\u541e\u56a5\u56f0\u96e3\u3001\u6bd2\u6027\u5916\u89c0\u6216\u4f4e\u6c27\uff1b\u82e5\u4e0d\u50cf\u5178\u578b\u54ee\u543c\u8981\u6392\u9664\u6703\u53ad\u708e\u6216\u7570\u7269\u3002"
+      ],
+      "source_ids": [
+        "merck_croup",
+        "merck_epiglottitis"
+      ]
+    },
+    {
+      "slug": "acute_conjunctivitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u7d50\u819c\u708e",
+      "name_en": "Acute conjunctivitis",
+      "system": "Ophthalmologic/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u773c\u7d05\u5408\u4f75\u5206\u6ccc\u7269\u3001\u6d41\u6dda\u6216\u523a\u6fc0\u611f\u53ef\u7d0d\u5165\u6025\u6027\u7d50\u819c\u708e\uff1b\u75bc\u75db\u3001\u754f\u5149\u3001\u8996\u529b\u4e0b\u964d\u8207\u96b1\u5f62\u773c\u93e1\u9700\u5148\u6392\u9664\u89d2\u819c\u75be\u75c5\u3002",
+      "summary_en": "Red eye with discharge, tearing, or irritation can fit conjunctivitis; pain, photophobia, vision loss, or contact lens use require corneal review.",
+      "signals": {
+        "eye_discharge": 8,
+        "eye_pain_redness": 2,
+        "itchy_red_watery_eyes": 1
+      },
+      "synonyms": [
+        "acute conjunctivitis",
+        "pink eye",
+        "bacterial conjunctivitis",
+        "viral conjunctivitis"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u55ae\u5074/\u96d9\u5074\u3001\u5206\u6ccc\u7269\u578b\u614b\u3001\u63a5\u89f8\u53f2\u3001\u8996\u529b\u3001\u75bc\u75db\u3001\u754f\u5149\u3001\u5916\u50b7\u8207\u96b1\u5f62\u773c\u93e1\u4f7f\u7528\u3002"
+      ],
+      "source_ids": [
+        "cdc_conjunctivitis_clinical",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "corneal_abrasion_keratitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u89d2\u819c\u64e6\u50b7\u3001\u89d2\u819c\u708e\u6216\u89d2\u819c\u6f70\u760d\u98a8\u96aa",
+      "name_en": "Corneal abrasion, keratitis, or corneal ulcer risk",
+      "system": "Ophthalmologic/Emergency",
+      "urgency": "urgent",
+      "summary_zh": "\u773c\u75db\u7d05\u3001\u5916\u50b7\u3001\u7570\u7269\u3001\u96b1\u5f62\u773c\u93e1\u3001\u754f\u5149\u6216\u8996\u529b\u4e0b\u964d\u6642\uff0c\u9700\u512a\u5148\u7d0d\u5165\u89d2\u819c\u64e6\u50b7/\u89d2\u819c\u708e/\u89d2\u819c\u6f70\u760d\u3002",
+      "summary_en": "Painful red eye with trauma, foreign body, contact lens use, photophobia, or vision change should prioritize corneal abrasion, keratitis, or ulcer risk.",
+      "signals": {
+        "eye_trauma_or_contact_lens": 9,
+        "eye_pain_redness": 4,
+        "visual_disturbance": 3,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "corneal ulcer contact lens",
+        "corneal abrasion",
+        "keratitis",
+        "contact lens red eye"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u96b1\u5f62\u773c\u93e1\u3001\u5916\u50b7\u6216\u7570\u7269\u3001\u75bc\u75db/\u754f\u5149\u3001\u8996\u529b\u4e0b\u964d\u3001\u89d2\u819c\u67d3\u8272\u7d50\u679c\u8207\u662f\u5426\u9700\u8981\u773c\u79d1\u6025\u8a55\u4f30\u3002"
+      ],
+      "source_ids": [
+        "merck_contact_lenses",
+        "merck_corneal_ulcer"
+      ]
+    },
+    {
+      "slug": "dental_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7259\u6e90\u6027\u611f\u67d3\u6216\u7259\u81bf\u760d",
+      "name_en": "Dental abscess or odontogenic infection",
+      "system": "Dental/Infectious/ENT",
+      "urgency": "urgent",
+      "summary_zh": "\u7259\u75db\u3001\u5480\u56bc\u75db\u3001\u7259\u9f66\u6216\u81c9\u90e8\u816b\u8139\u3001\u767c\u71d2\u6642\uff0c\u8981\u7d0d\u5165\u7259\u6e90\u6027\u611f\u67d3\uff1b\u541e\u56a5\u56f0\u96e3\u3001\u9838\u90e8\u816b\u8139\u6216\u547c\u5438\u98a8\u96aa\u9700\u5347\u7d1a\u3002",
+      "summary_en": "Dental pain, percussion or chewing pain, gingival/facial swelling, and fever should include dental abscess or odontogenic infection.",
+      "signals": {
+        "dental_pain_or_facial_swelling": 9,
+        "fever": 3,
+        "severe_pain": 2,
+        "facial_lip_tongue_swelling": 1
+      },
+      "synonyms": [
+        "dental abscess",
+        "tooth abscess",
+        "odontogenic infection",
+        "toothache infection"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u7259\u75db\u4f4d\u7f6e\u3001\u5480\u56bc\u6216\u6572\u64ca\u75db\u3001\u81c9\u9830/\u7259\u9f66/\u9838\u90e8\u816b\u8139\u3001\u767c\u71d2\u3001\u5f35\u53e3\u56f0\u96e3\u3001\u541e\u56a5\u6216\u547c\u5438\u98a8\u96aa\u3002"
+      ],
+      "source_ids": [
+        "merck_toothache_infection",
+        "msd_peritonsillar_abscess"
+      ]
+    },
+    {
+      "slug": "diverticulitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u61a9\u5ba4\u708e",
+      "name_en": "Diverticulitis",
+      "system": "Gastrointestinal/Hepatic",
+      "urgency": "urgent",
+      "summary_zh": "\u5de6\u4e0b\u8179\u75db\u3001\u767c\u71d2\u3001\u58d3\u75db\u6216\u8179\u819c\u523a\u6fc0\u5fb5\u8c61\u6642\uff0c\u53ef\u7d0d\u5165\u61a9\u5ba4\u708e\u8207\u4f75\u767c\u81bf\u760d/\u7a7f\u5b54\u98a8\u96aa\u3002",
+      "summary_en": "Left lower quadrant abdominal pain with fever, tenderness, or peritoneal signs should include diverticulitis and complication risk.",
+      "signals": {
+        "llq_pain": 8,
+        "abdominal_pain": 3,
+        "fever": 2,
+        "rebound_guarding": 2
+      },
+      "synonyms": [
+        "diverticulitis",
+        "colonic diverticulitis",
+        "llq pain diverticulitis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u4f4d\u7f6e\u8207\u6642\u9593\u3001\u767c\u71d2\u3001\u8179\u819c\u523a\u6fc0\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u65e2\u5f80\u61a9\u5ba4\u75c5\u3001\u4fbf\u8840\u6216\u6ccc\u5c3f/\u5a66\u79d1\u66ff\u4ee3\u8a3a\u65b7\u7dda\u7d22\u3002"
+      ],
+      "source_ids": [
+        "merck_colonic_diverticulitis",
+        "nice_acute_abdomen"
+      ]
+    },
+    {
+      "slug": "constipation_fecal_impaction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4fbf\u7955\u6216\u7cde\u4fbf\u5d4c\u585e",
+      "name_en": "Constipation or fecal impaction",
+      "system": "Gastrointestinal/Hepatic",
+      "urgency": "soon",
+      "summary_zh": "\u6392\u4fbf\u6e1b\u5c11\u3001\u6392\u4fbf\u56f0\u96e3\u3001\u8179\u8139\u3001\u76f4\u8178\u75db\u6216\u7591\u4f3c\u963b\u585e\u6642\uff0c\u53ef\u7d0d\u5165\u4fbf\u7955\u6216\u7cde\u4fbf\u5d4c\u585e\uff0c\u4e26\u7559\u610f\u8178\u963b\u585e\u7d05\u65d7\u3002",
+      "summary_en": "Reduced stool frequency, difficult evacuation, distension, rectal pain, or suspected blockage should include constipation or fecal impaction.",
+      "signals": {
+        "constipation_obstipation": 8,
+        "abdominal_pain": 2,
+        "vomiting": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "constipation",
+        "fecal impaction",
+        "obstipation",
+        "severe constipation"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u6700\u5f8c\u6392\u4fbf/\u6392\u6c23\u3001\u8179\u8139\u5614\u5410\u3001\u85e5\u7269\u5982 opioids/\u6297\u81bd\u9e7c\u3001\u795e\u7d93\u75c7\u72c0\u3001\u76f4\u8178\u75db\u8207\u8178\u963b\u585e\u7d05\u65d7\u3002"
+      ],
+      "source_ids": [
+        "merck_constipation",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "anal_fissure_hemorrhoids",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u809b\u88c2\u6216\u75d4\u7621",
+      "name_en": "Anal fissure or hemorrhoids",
+      "system": "Gastrointestinal/Anorectal",
+      "urgency": "soon",
+      "summary_zh": "\u6392\u4fbf\u6642\u5287\u75db\u3001\u809b\u9580\u75bc\u75db\u6216\u9bae\u8840\u4fbf\uff0c\u53ef\u7d0d\u5165\u809b\u88c2\u6216\u75d4\u7621\uff1b\u5927\u91cf\u51fa\u8840\u3001\u611f\u67d3\u6216\u764c\u75c7\u8b66\u8a0a\u9700\u53e6\u8a55\u4f30\u3002",
+      "summary_en": "Pain with defecation, anorectal pain, or bright red bleeding can fit anal fissure or hemorrhoids while major bleeding or infection red flags are checked.",
+      "signals": {
+        "rectal_pain_or_bleeding": 8,
+        "constipation_obstipation": 2,
+        "gi_bleeding": 1
+      },
+      "synonyms": [
+        "anal fissure",
+        "hemorrhoids",
+        "haemorrhoids",
+        "rectal pain bleeding"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u8207\u6392\u4fbf\u76f8\u95dc\u3001\u51fa\u8840\u91cf\u3001\u786c\u4fbf\u6216\u7528\u529b\u3001\u809b\u5468\u816b\u584a\u3001\u767c\u71d2\u81bf\u760d\u3001\u9ad4\u91cd\u4e0b\u964d\u6216\u5927\u8178\u764c\u98a8\u96aa\u3002"
+      ],
+      "source_ids": [
+        "merck_anal_fissure",
+        "merck_hemorrhoids"
+      ]
+    },
+    {
+      "slug": "acute_viral_hepatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u75c5\u6bd2\u6027\u809d\u708e",
+      "name_en": "Acute viral hepatitis",
+      "system": "Gastrointestinal/Hepatic/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u9ec3\u75b8\u3001\u75b2\u5026\u3001\u5641\u5fc3\u5614\u5410\u3001\u767c\u71d2\u6216\u53f3\u4e0a\u8179\u75db\u6642\uff0c\u53ef\u7d0d\u5165\u6025\u6027\u75c5\u6bd2\u6027\u809d\u708e\uff1b\u610f\u8b58\u6539\u8b8a\u6216\u51dd\u8840\u554f\u984c\u9700\u6025\u75c7\u8a55\u4f30\u3002",
+      "summary_en": "Jaundice with fatigue, nausea/vomiting, fever, or right upper quadrant pain should include acute viral hepatitis while liver failure signs are checked.",
+      "signals": {
+        "jaundice": 5,
+        "ruq_pain": 2,
+        "vomiting": 2,
+        "fever": 1,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "acute viral hepatitis",
+        "hepatitis",
+        "viral hepatitis",
+        "jaundice hepatitis"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u9ec3\u75b8\u6642\u9593\u3001\u5c3f\u8272/\u7cde\u8272\u3001\u65c5\u884c\u6216\u98df\u7269\u66b4\u9732\u3001\u6027/\u8840\u6db2\u66b4\u9732\u3001\u7528\u85e5\u6bd2\u7269\u3001\u53f3\u4e0a\u8179\u75db\u8207\u809d\u8870\u7aed\u8b66\u8a0a\u3002"
+      ],
+      "source_ids": [
+        "merck_acute_viral_hepatitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hyponatremia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4f4e\u8840\u9209",
+      "name_en": "Hyponatremia",
+      "system": "Endocrine/Metabolic/Renal",
+      "urgency": "urgent",
+      "summary_zh": "\u610f\u8b58\u6539\u8b8a\u3001\u62bd\u6410\u98a8\u96aa\u3001\u5614\u5410\u3001\u5229\u5c3f\u5291\u6216\u6c34\u5206\u5931\u8861\u6642\uff0c\u8981\u7d0d\u5165\u4f4e\u8840\u9209\u8207\u56b4\u91cd\u795e\u7d93\u75c7\u72c0\u98a8\u96aa\u3002",
+      "summary_en": "Altered mental status, seizure risk, vomiting, diuretic exposure, or water balance problems should include hyponatremia.",
+      "signals": {
+        "hyponatremia_confusion_or_seizure_risk": 8,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 4,
+        "vomiting": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "hyponatremia",
+        "low sodium",
+        "sodium imbalance",
+        "siadh"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9209\u503c\u3001\u75c7\u72c0\u56b4\u91cd\u5ea6\u8207\u6642\u9593\u3001\u5229\u5c3f\u5291/SSRI/\u6297\u7672\u7647\u85e5\u3001\u5614\u5410\u8179\u7009\u3001\u5fc3\u809d\u814e\u75c5\u3001\u6c34\u651d\u53d6\u8207\u62bd\u6410/\u660f\u8ff7\u98a8\u96aa\u3002"
+      ],
+      "source_ids": [
+        "merck_hyponatremia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hyperkalemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9ad8\u8840\u9240",
+      "name_en": "Hyperkalemia",
+      "system": "Endocrine/Metabolic/Renal/Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u814e\u529f\u80fd\u7570\u5e38\u3001\u76f8\u95dc\u7528\u85e5\u3001\u7121\u529b\u3001\u5fc3\u60b8\u3001\u660f\u53a5\u6216 ECG \u98a8\u96aa\u6642\uff0c\u8981\u7d0d\u5165\u9ad8\u8840\u9240\u3002",
+      "summary_en": "Kidney disease, potassium-raising medications, weakness, palpitations, syncope, or ECG risk should include hyperkalemia.",
+      "signals": {
+        "hyperkalemia_risk_or_weakness": 8,
+        "palpitations": 2,
+        "syncope": 2,
+        "fatigue": 1,
+        "inability_to_void": 1
+      },
+      "synonyms": [
+        "hyperkalemia",
+        "high potassium",
+        "potassium toxicity",
+        "hyperkalaemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9240\u503c\u3001\u814e\u529f\u80fd\u3001ACEi/ARB/\u87ba\u5167\u916f/\u88dc\u9240\u3001\u808c\u7121\u529b\u3001\u5fc3\u60b8\u3001\u660f\u53a5\u8207 ECG \u8b8a\u5316\u3002"
+      ],
+      "source_ids": [
+        "merck_hyperkalemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "viral_exanthem",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u75c5\u6bd2\u75b9",
+      "name_en": "Viral exanthem",
+      "system": "Infectious/Skin/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "\u767c\u71d2\u5f8c\u6216\u4f34\u96a8\u4e0a\u547c\u5438\u9053\u75c7\u72c0\u7684\u7030\u6f2b\u6027\u76ae\u75b9\u53ef\u7d0d\u5165\u75c5\u6bd2\u75b9\uff1b\u9700\u6392\u9664\u7d2b\u6591\u3001\u9ecf\u819c\u75c5\u7076\u3001\u6bd2\u6027\u5916\u89c0\u8207\u61f7\u5b55\u66b4\u9732\u98a8\u96aa\u3002",
+      "summary_en": "Diffuse rash with fever or viral prodrome can fit viral exanthem while purpura, mucosal lesions, toxicity, and pregnancy exposure risks are checked.",
+      "signals": {
+        "diffuse_viral_rash": 6,
+        "rash": 4,
+        "fever": 2
+      },
+      "synonyms": [
+        "viral exanthem",
+        "viral rash",
+        "roseola",
+        "rubella-like rash"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u767c\u71d2\u8207\u76ae\u75b9\u5148\u5f8c\u3001\u75ab\u82d7\u53f2\u3001\u63a5\u89f8\u53f2\u3001\u9ecf\u819c/\u7d2b\u6591/\u6c34\u6ce1\u3001\u61f7\u5b55\u66b4\u9732\u8207\u662f\u5426\u9700\u901a\u5831\u6216\u9694\u96e2\u3002"
+      ],
+      "source_ids": [
+        "merck_roseola",
+        "merck_rubella"
+      ]
+    },
+    {
+      "slug": "scabies",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u75a5\u7621",
+      "name_en": "Scabies",
+      "system": "Skin/Infectious",
+      "urgency": "routine",
+      "summary_zh": "\u591c\u9593\u5287\u7662\u3001\u6307\u7e2b/\u624b\u8155/\u8170\u90e8\u7b49\u76ae\u75b9\u3001\u96a7\u9053\u6a23\u75c5\u7076\u6216\u5bb6\u6236\u63a5\u89f8\u8005\u540c\u6642\u6414\u7662\u6642\uff0c\u61c9\u7d0d\u5165\u75a5\u7621\u3002",
+      "summary_en": "Nocturnal pruritus, papular rash in typical sites, burrows, or household contacts with itching should include scabies.",
+      "signals": {
+        "nocturnal_pruritus_burrows_contacts": 9,
+        "rash": 2,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "scabies",
+        "itch mites",
+        "burrows itching",
+        "household itching"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u591c\u9593\u6414\u7662\u3001\u75c5\u7076\u4f4d\u7f6e\u3001\u96a7\u9053\u6a23\u76ae\u75b9\u3001\u540c\u4f4f\u8005\u75c7\u72c0\u3001\u6a5f\u69cb\u66b4\u9732\u3001\u514d\u75ab\u4f4e\u4e0b\u6216\u75c2\u76ae\u578b\u75a5\u7621\u98a8\u96aa\u3002"
+      ],
+      "source_ids": [
+        "cdc_scabies_symptoms",
+        "cdc_scabies_clinical_care"
+      ]
+    },
+    {
+      "slug": "atopic_dermatitis_eczema",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7570\u4f4d\u6027\u76ae\u819a\u708e\u6216\u6fd5\u75b9",
+      "name_en": "Atopic dermatitis or eczema",
+      "system": "Skin/Allergy",
+      "urgency": "routine",
+      "summary_zh": "\u6162\u6027\u53cd\u8986\u6414\u7662\u3001\u5c48\u5074\u6fd5\u75b9\u6a23\u76ae\u75b9\u3001\u4e7e\u71e5\u6216\u904e\u654f\u9ad4\u8cea\u8108\u7d61\u6642\uff0c\u53ef\u7d0d\u5165\u7570\u4f4d\u6027\u76ae\u819a\u708e\u3002",
+      "summary_en": "Chronic relapsing pruritus with flexural or eczematous rash, xerosis, or atopic history should include atopic dermatitis.",
+      "signals": {
+        "chronic_itchy_flexural_rash": 8,
+        "rash": 2,
+        "itchy_sneezing_watery_eyes": 1
+      },
+      "synonyms": [
+        "atopic dermatitis",
+        "eczema",
+        "flexural eczema",
+        "chronic itchy rash"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u6162\u6027/\u53cd\u8986\u6027\u3001\u5206\u5e03\u3001\u6414\u7662\u7a0b\u5ea6\u3001\u904e\u654f\u9f3b\u708e/\u6c23\u5598\u3001\u611f\u67d3\u6ef2\u6db2\u3001\u63a5\u89f8\u6027\u76ae\u819a\u708e\u8207\u514d\u75ab\u4f4e\u4e0b\u98a8\u96aa\u3002"
+      ],
+      "source_ids": [
+        "merck_atopic_dermatitis",
+        "merck_allergic_rhinitis"
+      ]
+    },
+    {
+      "slug": "psoriasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e7e\u766c",
+      "name_en": "Psoriasis",
+      "system": "Skin/Rheumatologic",
+      "urgency": "routine",
+      "summary_zh": "\u908a\u754c\u6e05\u695a\u7684\u7d05\u8272\u9c57\u5c51\u6591\u584a\u3001\u982d\u76ae/\u4f38\u5074\u5206\u5e03\u3001\u6307\u7532\u8b8a\u5316\u6216\u95dc\u7bc0\u75c7\u72c0\u6642\uff0c\u53ef\u7d0d\u5165\u4e7e\u766c\u8207\u4e7e\u766c\u6027\u95dc\u7bc0\u708e\u98a8\u96aa\u3002",
+      "summary_en": "Well-demarcated scaly plaques, scalp/extensor involvement, nail changes, or joint symptoms should include psoriasis and psoriatic arthritis risk.",
+      "signals": {
+        "well_demarcated_scaly_plaques": 9,
+        "rash": 2,
+        "acute_joint_pain_swelling": 1
+      },
+      "synonyms": [
+        "psoriasis",
+        "scaly plaques",
+        "plaque psoriasis",
+        "psoriatic rash"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6591\u584a\u5206\u5e03\u3001\u982d\u76ae/\u6307\u7532\u3001\u95dc\u7bc0\u75bc\u75db\u816b\u8139\u3001\u611f\u67d3\u6216\u85e5\u7269\u8a98\u767c\u3001\u5168\u8eab\u578b\u6216\u81bf\u76b0\u578b\u7d05\u65d7\u3002"
+      ],
+      "source_ids": [
+        "merck_psoriasis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "genital_herpes",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u751f\u6b96\u5668\u76b0\u75b9",
+      "name_en": "Genital herpes",
+      "system": "Infectious/Sexual health/Skin",
+      "urgency": "soon",
+      "summary_zh": "\u75bc\u75db\u3001\u7fa4\u805a\u6c34\u6ce1\u6216\u6f70\u760d\u3001\u6392\u5c3f\u75db\u3001\u767c\u71d2\u6216\u6027\u63a5\u89f8\u53f2\u6642\uff0c\u53ef\u7d0d\u5165\u751f\u6b96\u5668\u76b0\u75b9\u3002",
+      "summary_en": "Painful grouped vesicles or ulcers, dysuria, fever, or sexual exposure history should include genital herpes.",
+      "signals": {
+        "painful_grouped_genital_ulcers": 10,
+        "dysuria": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "genital herpes",
+        "hsv genital",
+        "painful genital ulcers",
+        "herpes simplex genital"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u75c5\u7076\u578b\u614b\u3001\u7b2c\u4e00\u6b21\u6216\u5fa9\u767c\u3001\u6392\u5c3f\u75db\u3001\u61f7\u5b55\u72c0\u614b\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u6027\u4f34\u4fb6\u66b4\u9732\u8207\u5176\u4ed6\u6027\u75c5\u6aa2\u6e2c\u9700\u6c42\u3002"
+      ],
+      "source_ids": [
+        "merck_genital_herpes",
+        "cdc_urethritis_cervicitis"
+      ]
+    },
+    {
+      "slug": "urethritis_sti",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5c3f\u9053\u708e\u6216\u6027\u50b3\u67d3\u611f\u67d3\u76f8\u95dc\u5c3f\u9053\u75c7\u72c0",
+      "name_en": "Urethritis or STI-related urethral syndrome",
+      "system": "Infectious/Sexual health/Renal/Urologic",
+      "urgency": "soon",
+      "summary_zh": "\u5c3f\u9053\u5206\u6ccc\u7269\u3001\u6392\u5c3f\u75db\u6216\u6027\u63a5\u89f8\u98a8\u96aa\u6642\uff0c\u8981\u7d0d\u5165\u5c3f\u9053\u708e\u3001\u6dcb\u75c5\u3001\u62ab\u8863\u83cc\u8207\u5176\u4ed6 STI\u3002",
+      "summary_en": "Urethral discharge, dysuria, or sexual exposure risk should include urethritis, gonorrhea, chlamydia, and other STI causes.",
+      "signals": {
+        "urethral_discharge": 9,
+        "dysuria": 3,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "urethritis",
+        "sti urethritis",
+        "urethral discharge",
+        "nongonococcal urethritis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5206\u6ccc\u7269\u3001\u6392\u5c3f\u75db\u3001\u6027\u4f34\u4fb6\u8207\u66b4\u9732\u6642\u9593\u3001\u776a\u4e38/\u9aa8\u76c6\u75bc\u75db\u3001\u61f7\u5b55\u53ef\u80fd\u8207\u9700\u8981 NAAT/\u6027\u75c5\u7be9\u6aa2\u3002"
+      ],
+      "source_ids": [
+        "cdc_urethritis_cervicitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "epididymitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u526f\u776a\u708e",
+      "name_en": "Epididymitis",
+      "system": "Renal/Urologic/Infectious/Sexual health",
+      "urgency": "urgent",
+      "summary_zh": "\u55ae\u5074\u9670\u56ca\u75bc\u75db\u6216\u816b\u8139\u5408\u4f75\u5c3f\u9053/\u6ccc\u5c3f\u75c7\u72c0\u6642\uff0c\u53ef\u7d0d\u5165\u526f\u776a\u708e\uff0c\u4f46\u6025\u6027\u776a\u4e38\u626d\u8f49\u5fc5\u9808\u5148\u6392\u9664\u3002",
+      "summary_en": "Unilateral scrotal pain or swelling with urinary or STI symptoms should include epididymitis while testicular torsion is excluded.",
+      "signals": {
+        "unilateral_scrotal_pain_swelling": 10,
+        "urethral_discharge": 2,
+        "dysuria": 1,
+        "fever": 2
+      },
+      "synonyms": [
+        "epididymitis",
+        "epididymo-orchitis",
+        "scrotal pain swelling",
+        "testicular infection"
+      ],
+      "ask_next": [
+        "\u91d0\u6e05\u75bc\u75db\u8d77\u59cb\u901f\u5ea6\u3001\u776a\u4e38\u4f4d\u7f6e\u3001\u5641\u5fc3\u5614\u5410\u3001\u767c\u71d2\u3001\u5c3f\u9053\u5206\u6ccc\u7269\u3001\u6027\u63a5\u89f8\u98a8\u96aa\uff0c\u6025\u6027\u5287\u75db\u9700\u5148\u6392\u9664\u626d\u8f49\u3002"
+      ],
+      "source_ids": [
+        "merck_epididymitis",
+        "cdc_urethritis_cervicitis"
+      ]
+    },
+    {
+      "slug": "threatened_miscarriage_early_pregnancy_loss",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5148\u5146\u6d41\u7522\u6216\u65e9\u671f\u598a\u5a20\u6d41\u5931",
+      "name_en": "Threatened miscarriage or early pregnancy loss",
+      "system": "Gynecologic/Obstetric",
+      "urgency": "urgent",
+      "summary_zh": "\u61f7\u5b55\u65e9\u671f\u9670\u9053\u51fa\u8840\u3001\u9aa8\u76c6\u75db\u6216\u8179\u75db\u6642\uff0c\u8981\u7d0d\u5165\u5148\u5146\u6d41\u7522/\u65e9\u671f\u598a\u5a20\u6d41\u5931\uff0c\u540c\u6642\u6392\u9664\u5b50\u5bae\u5916\u5b55\u8207\u4e0d\u7a69\u5b9a\u3002",
+      "summary_en": "First-trimester bleeding with pelvic or abdominal pain should include threatened miscarriage or early pregnancy loss while ectopic pregnancy and instability are excluded.",
+      "signals": {
+        "early_pregnancy_bleeding": 9,
+        "pregnancy_possible": 4,
+        "vaginal_bleeding": 3,
+        "pelvic_pain": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "threatened miscarriage",
+        "early pregnancy loss",
+        "first trimester bleeding",
+        "threatened abortion"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u598a\u5a20\u9031\u6578\u3001\u51fa\u8840\u91cf\u3001\u8179\u75db\u3001\u6688\u53a5/\u4e0d\u7a69\u5b9a\u3001Rh \u72c0\u614b\u3001\u8d85\u97f3\u6ce2\u8207 beta-hCG \u8cc7\u8a0a\uff0c\u4e26\u4e3b\u52d5\u6392\u9664\u5b50\u5bae\u5916\u5b55\u3002"
+      ],
+      "source_ids": [
+        "merck_vaginal_bleeding_early_pregnancy",
+        "merck_vaginal_bleeding"
+      ]
+    },
+    {
+      "slug": "placental_abruption",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80ce\u76e4\u65e9\u671f\u525d\u96e2",
+      "name_en": "Placental abruption",
+      "system": "Gynecologic/Obstetric/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u598a\u5a20 20 \u9031\u5f8c\u51fa\u8840\u3001\u8179\u75db\u3001\u5b50\u5bae\u58d3\u75db\u3001\u5275\u50b7\u6216\u4f11\u514b\u6642\uff0c\u8981\u512a\u5148\u7d0d\u5165\u80ce\u76e4\u65e9\u671f\u525d\u96e2\u3002",
+      "summary_en": "Bleeding after 20 weeks, abdominal or uterine pain, tenderness, trauma, or shock should prioritize placental abruption.",
+      "signals": {
+        "late_pregnancy_bleeding_or_uterine_pain": 10,
+        "pregnancy_possible": 4,
+        "vaginal_bleeding": 3,
+        "abdominal_pain": 2,
+        "hemodynamic_instability": 4,
+        "recent_trauma": 2
+      },
+      "synonyms": [
+        "placental abruption",
+        "abruptio placentae",
+        "late pregnancy bleeding",
+        "uterine pain bleeding"
+      ],
+      "ask_next": [
+        "\u7acb\u523b\u78ba\u8a8d\u598a\u5a20\u9031\u6578\u3001\u51fa\u8840\u91cf\u3001\u8179\u75db/\u5b50\u5bae\u58d3\u75db\u3001\u80ce\u52d5\u3001\u8840\u58d3\u8207\u4f11\u514b\u3001\u5275\u50b7\u53f2\uff0c\u4e26\u8a55\u4f30\u7522\u79d1\u6025\u75c7\u8655\u7f6e\u8def\u5f91\u3002"
+      ],
+      "source_ids": [
+        "merck_placental_abruption",
+        "acog_preeclampsia_high_bp"
+      ]
     }
   ],
   "sources": [
@@ -3331,6 +4060,186 @@
       "publisher": "Merck Manual Professional",
       "title": "Orthostatic Hypotension",
       "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/symptoms-of-cardiovascular-disorders/orthostatic-hypotension"
+    },
+    {
+      "source_id": "merck_seizure_disorders",
+      "publisher": "Merck Manual Professional",
+      "title": "Seizure Disorders",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/seizure-disorders/seizure-disorders"
+    },
+    {
+      "source_id": "merck_facial_nerve_palsy",
+      "publisher": "Merck Manual Professional",
+      "title": "Facial Nerve Palsy",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/neuro-ophthalmologic-and-cranial-nerve-disorders/facial-nerve-palsy"
+    },
+    {
+      "source_id": "merck_atrial_fibrillation",
+      "publisher": "Merck Manual Professional",
+      "title": "Atrial Fibrillation",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/specific-cardiac-arrhythmias/atrial-fibrillation"
+    },
+    {
+      "source_id": "merck_atrial_flutter",
+      "publisher": "Merck Manual Professional",
+      "title": "Atrial Flutter",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/specific-cardiac-arrhythmias/atrial-flutter"
+    },
+    {
+      "source_id": "merck_infective_endocarditis",
+      "publisher": "Merck Manual Professional",
+      "title": "Infective Endocarditis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/endocarditis/infective-endocarditis"
+    },
+    {
+      "source_id": "merck_acute_bronchitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Bronchitis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/acute-bronchitis/acute-bronchitis"
+    },
+    {
+      "source_id": "merck_bronchiolitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Bronchiolitis",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-disorders-in-young-children/bronchiolitis"
+    },
+    {
+      "source_id": "merck_croup",
+      "publisher": "Merck Manual Professional",
+      "title": "Croup",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-disorders-in-young-children/croup"
+    },
+    {
+      "source_id": "cdc_conjunctivitis_clinical",
+      "publisher": "CDC",
+      "title": "Conjunctivitis Clinical Overview",
+      "url": "https://www.cdc.gov/conjunctivitis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "merck_contact_lenses",
+      "publisher": "Merck Manual Professional",
+      "title": "Contact Lenses",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/refractive-error/contact-lenses"
+    },
+    {
+      "source_id": "merck_corneal_ulcer",
+      "publisher": "Merck Manual Professional",
+      "title": "Corneal Ulcer",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/corneal-disorders/corneal-ulcer"
+    },
+    {
+      "source_id": "merck_toothache_infection",
+      "publisher": "Merck Manual Professional",
+      "title": "Toothache and Infection",
+      "url": "https://www.merckmanuals.com/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/toothache-and-infection"
+    },
+    {
+      "source_id": "merck_colonic_diverticulitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Colonic Diverticulitis",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/diverticular-disease/colonic-diverticulitis"
+    },
+    {
+      "source_id": "merck_constipation",
+      "publisher": "Merck Manual Professional",
+      "title": "Constipation",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/symptoms-of-gastrointestinal-disorders/constipation"
+    },
+    {
+      "source_id": "merck_anal_fissure",
+      "publisher": "Merck Manual Professional",
+      "title": "Anal Fissure",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/anorectal-disorders/anal-fissure"
+    },
+    {
+      "source_id": "merck_hemorrhoids",
+      "publisher": "Merck Manual Professional",
+      "title": "Hemorrhoids",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/anorectal-disorders/hemorrhoids"
+    },
+    {
+      "source_id": "merck_acute_viral_hepatitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Overview of Acute Viral Hepatitis",
+      "url": "https://www.merckmanuals.com/professional/hepatic-and-biliary-disorders/hepatitis/overview-of-acute-viral-hepatitis"
+    },
+    {
+      "source_id": "merck_hyponatremia",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyponatremia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hyponatremia"
+    },
+    {
+      "source_id": "merck_hyperkalemia",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperkalemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hyperkalemia"
+    },
+    {
+      "source_id": "cdc_scabies_symptoms",
+      "publisher": "CDC",
+      "title": "Symptoms of Scabies",
+      "url": "https://www.cdc.gov/scabies/signs-symptoms/index.html"
+    },
+    {
+      "source_id": "cdc_scabies_clinical_care",
+      "publisher": "CDC",
+      "title": "Clinical Care of Scabies",
+      "url": "https://www.cdc.gov/scabies/hcp/clinical-care/index.html"
+    },
+    {
+      "source_id": "merck_atopic_dermatitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Atopic Dermatitis (Eczema)",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/dermatitis/atopic-dermatitis-eczema"
+    },
+    {
+      "source_id": "merck_psoriasis",
+      "publisher": "Merck Manual Professional",
+      "title": "Psoriasis",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/psoriasis-and-other-papulosquamous-disorders/psoriasis"
+    },
+    {
+      "source_id": "merck_genital_herpes",
+      "publisher": "Merck Manual Professional",
+      "title": "Genital Herpes",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/herpesviruses/genital-herpes"
+    },
+    {
+      "source_id": "cdc_urethritis_cervicitis",
+      "publisher": "CDC",
+      "title": "Urethritis and Cervicitis - STI Treatment Guidelines",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/urethritis-and-cervicitis.htm"
+    },
+    {
+      "source_id": "merck_epididymitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Epididymitis",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/penile-and-scrotal-disorders/epididymitis"
+    },
+    {
+      "source_id": "merck_vaginal_bleeding_early_pregnancy",
+      "publisher": "Merck Manual Professional",
+      "title": "Vaginal Bleeding During Early Pregnancy",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/symptoms-during-pregnancy/vaginal-bleeding-during-early-pregnancy"
+    },
+    {
+      "source_id": "merck_placental_abruption",
+      "publisher": "Merck Manual Professional",
+      "title": "Placental Abruption (Abruptio Placentae)",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/antenatal-complications/placental-abruption-abruptio-placentae"
+    },
+    {
+      "source_id": "merck_roseola",
+      "publisher": "Merck Manual Professional",
+      "title": "Roseola Infantum",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/common-viral-infections-in-infants-and-children/roseola-infantum"
+    },
+    {
+      "source_id": "merck_rubella",
+      "publisher": "Merck Manual Professional",
+      "title": "Rubella",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/common-viral-infections-in-infants-and-children/rubella"
     }
   ]
 }
