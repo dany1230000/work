@@ -44,6 +44,9 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Suicidal ideation")
         self.assertContains(response, "Hallucinations or delusions")
         self.assertContains(response, "Decreased need for sleep")
+        self.assertContains(response, "Purulent skin lesion")
+        self.assertContains(response, "Vesicular dermatomal rash")
+        self.assertContains(response, "Mucosal lesions")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -120,3 +123,26 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "下一步要問 / Ask next")
         self.assertContains(response, "NIMH")
         self.assertContains(response, "NICE")
+
+    def test_posted_skin_findings_show_sjs_ten_and_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "rash",
+                    "mucosal_lesions",
+                    "skin_sloughing_or_blistering",
+                    "new_medication_exposure",
+                    "fever",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "史蒂文斯-強森症候群")
+        self.assertContains(response, "Stevens-Johnson syndrome")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "DermNet")

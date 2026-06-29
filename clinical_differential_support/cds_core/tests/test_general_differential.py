@@ -89,6 +89,9 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("first episode psychosis", "acute_psychosis"),
             ("mania", "mania_or_hypomania"),
             ("eating disorder", "eating_disorder_medical_risk"),
+            ("skin abscess", "skin_abscess"),
+            ("shingles", "herpes_zoster"),
+            ("stevens-johnson syndrome", "stevens_johnson_syndrome_ten"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -215,3 +218,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "mania_or_hypomania")
         self.assertEqual(top["urgency"], "urgent")
         self.assertIn("decreased_need_for_sleep", top["matched_findings"])
+
+    def test_mucosal_sloughing_rash_prioritizes_sjs_ten(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "rash",
+                    "mucosal_lesions",
+                    "skin_sloughing_or_blistering",
+                    "new_medication_exposure",
+                    "fever",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "stevens_johnson_syndrome_ten")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("mucosal_lesions", top["matched_findings"])
+
+    def test_dermatomal_vesicles_and_pain_prioritizes_herpes_zoster(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "vesicular_dermatomal_rash",
+                    "severe_pain",
+                    "eye_pain_redness",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "herpes_zoster")
+        self.assertEqual(top["urgency"], "urgent")
+        self.assertIn("vesicular_dermatomal_rash", top["matched_findings"])
