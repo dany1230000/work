@@ -203,6 +203,36 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_use_stepwise_compact_result_layout(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "ruq_pain",
+                    "fever",
+                    "vomiting",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-workflow-stepper="true"')
+        self.assertContains(response, 'data-workflow-step="case"')
+        self.assertContains(response, 'data-workflow-step="next"')
+        self.assertContains(response, 'data-workflow-step="differential"')
+        self.assertContains(response, 'data-primary-next-step="true"')
+        self.assertContains(response, 'data-result-summary="true"')
+        self.assertContains(response, 'data-result-detail="true"')
+        self.assertContains(response, 'data-source-detail="true"')
+        self.assertLess(
+            content.index('data-primary-next-step="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_gynecologic_findings_show_pid_toa_and_sources(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

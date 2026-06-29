@@ -30,6 +30,54 @@
     margin-top: 1rem;
   }
 
+  .workflow-stepper {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.6rem;
+  }
+
+  .workflow-stepper-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: start;
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.65rem;
+  }
+
+  .workflow-stepper-item.is-active {
+    border-color: var(--primary);
+    background: #e8f5ee;
+  }
+
+  .workflow-stepper-number {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .workflow-stepper-item strong,
+  .workflow-stepper-item span {
+    display: block;
+  }
+
+  .workflow-stepper-item span {
+    color: var(--muted);
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
   .workflow-command-bar {
     position: sticky;
     top: 0.5rem;
@@ -288,8 +336,40 @@
     margin: 0.85rem 0;
   }
 
-  .action-checklist h3 {
+  .primary-next-step {
+    border: 1px solid #b8d8d1;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #eef8f6;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .primary-next-step h3 {
     margin: 0 0 0.6rem;
+  }
+
+  .primary-step-list {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  .primary-step-list li {
+    padding-left: 0.15rem;
+  }
+
+  .primary-step-list strong,
+  .primary-step-list span {
+    display: block;
+  }
+
+  .action-checklist h3,
+  .action-checklist summary {
+    margin: 0 0 0.6rem;
+    cursor: pointer;
+    font-weight: 700;
   }
 
   .action-checklist-grid {
@@ -328,6 +408,16 @@
     margin: 0;
   }
 
+  .result-summary {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.6rem;
+  }
+
+  .result-summary p {
+    margin: 0;
+  }
+
   .next-step-panel {
     border: 1px solid #b8d8d1;
     border-radius: 6px;
@@ -339,6 +429,19 @@
   .next-step-panel h3,
   .next-step-panel h4 {
     margin-top: 0;
+  }
+
+  .result-detail,
+  .source-detail {
+    border-top: 1px solid #e4e9ef;
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+  }
+
+  .result-detail summary,
+  .source-detail summary {
+    cursor: pointer;
+    font-weight: 700;
   }
 
   .source-list {
@@ -360,6 +463,7 @@
 
   @media (max-width: 860px) {
     .step-strip,
+    .workflow-stepper,
     .workflow-command-bar,
     .workbench-grid {
       grid-template-columns: 1fr;
@@ -422,6 +526,30 @@
     <a href="#reference-results">3. 結果 / Results</a>
     <a href="#catalog-governance">4. 治理 / Governance</a>
   </nav>
+
+  <section class="workflow-stepper" data-workflow-stepper="true" aria-label="Stepwise differential flow">
+    <div class="workflow-stepper-item{% if not result %} is-active{% endif %}" data-workflow-step="case">
+      <span class="workflow-stepper-number">1</span>
+      <div>
+        <strong>病例輸入 / Case input</strong>
+        <span>主訴、自由文字與已知 findings。</span>
+      </div>
+    </div>
+    <div class="workflow-stepper-item{% if result and not result.results %} is-active{% endif %}" data-workflow-step="next">
+      <span class="workflow-stepper-number">2</span>
+      <div>
+        <strong>補下一筆資料 / Ask next</strong>
+        <span>先處理安全，再補會改變排序的資訊。</span>
+      </div>
+    </div>
+    <div class="workflow-stepper-item{% if result.results %} is-active{% endif %}" data-workflow-step="differential">
+      <span class="workflow-stepper-number">3</span>
+      <div>
+        <strong>候選鑑別 / Differential</strong>
+        <span>看前幾名、來源與下一步行動。</span>
+      </div>
+    </div>
+  </section>
 
   <div class="workbench-grid">
     <section class="input-panel" id="case-input">
@@ -544,8 +672,20 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.results %}
-          <section class="action-checklist" data-action-checklist="true">
-            <h3>下一步行動 / Action checklist</h3>
+          <section class="primary-next-step" data-primary-next-step="true">
+            <h3>下一步 / Primary next step</h3>
+            <ol class="primary-step-list">
+              {% for item in result.action_checklist|slice:":3" %}
+                <li>
+                  <strong>{{ item.category_zh }} / {{ item.category_en }}</strong>
+                  <span>{{ item.instruction_zh }}</span>
+                  <span class="secondary">{{ item.instruction_en }}</span>
+                </li>
+              {% endfor %}
+            </ol>
+          </section>
+          <details class="action-checklist" data-action-checklist="true">
+            <summary>完整下一步行動 / Action checklist</summary>
             <div class="action-checklist-grid">
               {% for item in result.action_checklist %}
                 <article class="action-checklist-item">
@@ -555,7 +695,7 @@
                 </article>
               {% endfor %}
             </div>
-          </section>
+          </details>
           <div class="result-list">
             {% for entry in result.results %}
               <article class="result-card" data-result-card="true">
@@ -566,16 +706,18 @@
                   </div>
                   <span class="tag">{{ entry.urgency }}</span>
                 </div>
-                <p>{{ entry.summary_zh }}</p>
-                <p class="secondary">{{ entry.summary_en }}</p>
-                <p>
-                  <span class="tag">{{ entry.system }}</span>
-                  <span class="tag">score {{ entry.score }}</span>
-                  {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
-                </p>
-                {% if entry.matched_findings %}
-                  <p><strong>符合 findings / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
-                {% endif %}
+                <div class="result-summary" data-result-summary="true">
+                  <p>{{ entry.summary_zh }}</p>
+                  <p class="secondary">{{ entry.summary_en }}</p>
+                  <p>
+                    <span class="tag">{{ entry.system }}</span>
+                    <span class="tag">score {{ entry.score }}</span>
+                    {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
+                  </p>
+                  {% if entry.matched_findings %}
+                    <p><strong>符合 findings / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
+                  {% endif %}
+                </div>
                 <section class="next-step-panel">
                   <h4>行動 / Actions</h4>
                   <ul>
@@ -584,21 +726,21 @@
                     {% endfor %}
                   </ul>
                 </section>
-                <section class="next-step-panel">
-                  <h4>下一步 / Ask next</h4>
+                <details class="result-detail" data-result-detail="true"{% if forloop.first %} open{% endif %}>
+                  <summary>下一步 / Ask next</summary>
                   <p class="secondary">下一步要問 / Ask next</p>
                   <ul>
                     {% for prompt in entry.ask_next %}
                       <li>{{ prompt }}</li>
                     {% endfor %}
                   </ul>
-                </section>
-                <div class="source-list">
-                  <strong>來源 / Sources:</strong>
+                </details>
+                <details class="source-list source-detail" data-source-detail="true">
+                  <summary>來源 / Sources</summary>
                   {% for source in entry.sources %}
                     <a href="{{ source.url }}">{{ source.publisher }} - {{ source.title }}</a>
                   {% endfor %}
-                </div>
+                </details>
               </article>
             {% endfor %}
           </div>
