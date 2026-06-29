@@ -86,6 +86,14 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(cardiovascular["gap_count"], 0)
         self.assertEqual(cardiovascular["status"], "target_met")
 
+    def test_gastrointestinal_hepatic_bucket_reaches_starter_depth(self):
+        report = build_general_differential_catalog_quality_report()
+        gastrointestinal_hepatic = report["system_buckets"]["Gastrointestinal/Hepatic"]
+
+        self.assertGreaterEqual(gastrointestinal_hepatic["condition_count"], 10)
+        self.assertEqual(gastrointestinal_hepatic["gap_count"], 0)
+        self.assertEqual(gastrointestinal_hepatic["status"], "target_met")
+
     def test_report_flags_duplicate_slugs_and_unknown_sources(self):
         baseline = deepcopy(CONDITIONS[0])
         duplicate = deepcopy(CONDITIONS[1])

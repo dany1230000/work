@@ -95,6 +95,7 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("pericarditis", "acute_pericarditis_myocarditis"),
             ("myocarditis", "acute_pericarditis_myocarditis"),
             ("acute limb ischemia", "acute_limb_ischemia"),
+            ("mesenteric ischemia", "acute_mesenteric_ischemia"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -293,3 +294,23 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["slug"], "acute_limb_ischemia")
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("acute_limb_pain_pallor_pulselessness", top["matched_findings"])
+
+    def test_pain_out_of_proportion_prioritizes_acute_mesenteric_ischemia(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "pain_out_of_proportion_to_exam",
+                    "abdominal_pain",
+                    "severe_pain",
+                    "vomiting",
+                    "bloody_diarrhea",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_mesenteric_ischemia")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("pain_out_of_proportion_to_exam", top["matched_findings"])
+        self.assertIn("World Society of Emergency Surgery", [source["publisher"] for source in top["sources"]])

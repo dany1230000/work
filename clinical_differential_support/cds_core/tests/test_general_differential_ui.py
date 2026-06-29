@@ -49,6 +49,8 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Mucosal lesions")
         self.assertContains(response, "Positional or pleuritic chest pain")
         self.assertContains(response, "Acute limb pain, pallor, or pulselessness")
+        self.assertContains(response, "Pain out of proportion to exam")
+        self.assertContains(response, "Bloody diarrhea")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -171,3 +173,26 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Ask next")
         self.assertContains(response, "Merck Manual Professional")
         self.assertContains(response, "Society for Vascular Surgery")
+
+    def test_posted_gastrointestinal_findings_show_mesenteric_ischemia_and_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "pain_out_of_proportion_to_exam",
+                    "abdominal_pain",
+                    "severe_pain",
+                    "vomiting",
+                    "bloody_diarrhea",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Acute mesenteric ischemia")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+        self.assertContains(response, "World Society of Emergency Surgery")
