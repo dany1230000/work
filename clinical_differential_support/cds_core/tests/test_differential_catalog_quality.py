@@ -66,6 +66,16 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(report["summary"]["blocking_issue_count"], 0)
         self.assertTrue(report["summary"]["ready_for_public_reference"])
 
+    def test_next_generalist_batch_expands_catalog_to_150_conditions_and_130_sources(self):
+        report = build_general_differential_catalog_quality_report()
+
+        self.assertGreaterEqual(report["summary"]["condition_count"], 150)
+        self.assertGreaterEqual(report["summary"]["source_count"], 130)
+        self.assertGreaterEqual(len(CONDITIONS), 150)
+        self.assertGreaterEqual(len(SOURCES), 130)
+        self.assertEqual(report["summary"]["blocking_issue_count"], 0)
+        self.assertTrue(report["summary"]["ready_for_public_reference"])
+
     def test_pulmonary_bucket_counts_respiratory_catalog_entries(self):
         report = build_general_differential_catalog_quality_report()
         pulmonary = report["system_buckets"]["Pulmonary"]

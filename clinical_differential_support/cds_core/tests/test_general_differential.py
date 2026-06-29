@@ -190,6 +190,82 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_next_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("acute cholecystitis", "acute_cholecystitis"),
+            ("acute cholangitis", "acute_cholangitis"),
+            ("c difficile colitis", "clostridioides_difficile_colitis"),
+            ("inflammatory bowel disease flare", "inflammatory_bowel_disease_flare"),
+            ("ischemic colitis", "ischemic_colitis"),
+            ("retinal detachment", "retinal_detachment"),
+            ("optic neuritis", "optic_neuritis"),
+            ("uveitis", "uveitis"),
+            ("mastoiditis", "mastoiditis"),
+            ("lyme disease", "lyme_disease"),
+            ("mpox", "mpox"),
+            ("measles", "measles"),
+            ("rsv infection", "rsv_infection"),
+            ("alcohol withdrawal", "alcohol_withdrawal"),
+            ("opioid overdose", "opioid_overdose"),
+            ("stimulant toxicity", "stimulant_toxicity"),
+            ("salicylate toxicity", "salicylate_toxicity"),
+            ("sickle cell acute chest syndrome", "sickle_cell_acute_chest_syndrome"),
+            ("sickle cell pain crisis", "sickle_cell_vaso_occlusive_crisis"),
+            ("immune thrombocytopenia", "immune_thrombocytopenia"),
+            ("multiple myeloma", "multiple_myeloma"),
+            ("rheumatoid arthritis", "rheumatoid_arthritis"),
+            ("polymyalgia rheumatica", "polymyalgia_rheumatica"),
+            ("osteomyelitis", "osteomyelitis"),
+            ("guillain barre syndrome", "guillain_barre_syndrome"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
+        result = evaluate_general_differential(
+            {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_cholecystitis")
+        self.assertIn("ruq_pain", top["matched_findings"])
+
+    def test_substance_respiratory_depression_prioritizes_opioid_overdose(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "substance_use_concern",
+                    "respiratory_distress",
+                    "altered_mental_status",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "opioid_overdose")
+        self.assertEqual(top["urgency"], "emergent")
+
+    def test_results_include_action_checklist_for_next_steps(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": ["chest_pain", "dyspnea", "diaphoresis"],
+            }
+        )
+
+        self.assertGreaterEqual(len(result["action_checklist"]), 4)
+        self.assertIn("category_zh", result["action_checklist"][0])
+        self.assertIn("instruction_en", result["action_checklist"][0])
+        self.assertIn("action_items", result["results"][0])
+        self.assertGreaterEqual(len(result["results"][0]["action_items"]), 3)
+        combined = " ".join(
+            item["instruction_en"] for item in result["action_checklist"]
+        )
+        self.assertIn("Re-run", combined)
+
     def test_ear_pain_fever_prioritizes_acute_otitis_media(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ear_pain", "fever"]}

@@ -174,6 +174,35 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, f"{len(SOURCES)} sources")
         self.assertContains(response, "不是 diagnosis order")
 
+    def test_posted_findings_show_action_checklist_before_condition_cards(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-action-checklist="true"')
+        self.assertContains(response, "下一步行動 / Action checklist")
+        self.assertContains(response, "安全再確認 / Safety check")
+        self.assertContains(response, "補資料 / Data to add")
+        self.assertContains(response, "看來源 / Source review")
+        self.assertContains(response, "Re-run")
+        self.assertLess(
+            content.index('data-action-checklist="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_gynecologic_findings_show_pid_toa_and_sources(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),
