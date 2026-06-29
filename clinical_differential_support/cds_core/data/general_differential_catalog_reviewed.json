@@ -2,14 +2,14 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-28",
-    "condition_count": 76,
-    "source_count": 46,
+    "condition_count": 80,
+    "source_count": 53,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-28",
-      "condition_count": 76,
-      "source_count": 46,
+      "condition_count": 80,
+      "source_count": 53,
       "blocking_issue_count": 0,
-      "warning_count": 43,
+      "warning_count": 45,
       "ready_for_public_reference": true,
       "expansion_target_condition_count": 200
     }
@@ -398,6 +398,64 @@
       "source_ids": [
         "merck_acute_limb_ischemia",
         "svs_acute_limb_ischemia"
+      ]
+    },
+    {
+      "slug": "septic_arthritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5316\u81bf\u6027\u95dc\u7bc0\u708e",
+      "name_en": "Septic arthritis",
+      "system": "Musculoskeletal/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u6025\u6027\u55ae\u4e00\u7d05\u71b1\u816b\u75db\u95dc\u7bc0\u3001\u6d3b\u52d5\u53d7\u9650\u3001\u767c\u71d2\u6216\u514d\u75ab\u4f4e\u4e0b\u6642\uff0c\u9700\u512a\u5148\u7d0d\u5165\u95dc\u7bc0\u611f\u67d3\u3002",
+      "summary_en": "An acute hot swollen painful joint with restricted movement, fever, or immunocompromise should prioritize septic arthritis.",
+      "signals": {
+        "acute_hot_swollen_joint": 8,
+        "fever": 3,
+        "severe_pain": 2,
+        "immunocompromised": 2,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "septic arthritis",
+        "acute infectious arthritis",
+        "infectious arthritis",
+        "joint infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u70ba\u55ae\u4e00\u6025\u6027\u7d05\u71b1\u816b\u75db\u95dc\u7bc0\u3001\u4e3b\u52d5\u8207\u88ab\u52d5\u6d3b\u52d5\u662f\u5426\u53d7\u9650\u3001\u662f\u5426\u767c\u71d2\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u4eba\u5de5\u95dc\u7bc0\u3001\u8fd1\u671f\u95dc\u7bc0\u8655\u7f6e\u6216\u5168\u8eab\u6557\u8840\u75c7\u8868\u73fe\u3002 / Clarify monoarticular hot swollen joint, active and passive range limitation, fever, immunocompromise, prosthetic joint, recent joint procedure, or systemic sepsis features."
+      ],
+      "source_ids": [
+        "merck_septic_arthritis"
+      ]
+    },
+    {
+      "slug": "acute_compartment_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6025\u6027\u7b4b\u819c\u8154\u75c7\u5019\u7fa4",
+      "name_en": "Acute compartment syndrome",
+      "system": "Musculoskeletal/Vascular/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u5275\u50b7\u5f8c\u5287\u75db\u3001\u88ab\u52d5\u4f38\u5c55\u75db\u3001\u7b4b\u819c\u8154\u7dca\u7e43\u6216\u795e\u7d93\u8840\u7ba1\u75c7\u72c0\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u80a2\u9ad4\u5a01\u8105\u6a21\u5f0f\u3002",
+      "summary_en": "Severe post-trauma limb pain, pain with passive stretch, tense compartment, or neurovascular symptoms should prioritize acute compartment syndrome.",
+      "signals": {
+        "tense_compartment_or_pain_with_passive_stretch": 9,
+        "recent_trauma": 3,
+        "severe_pain": 3,
+        "neurologic_deficit": 2,
+        "acute_limb_pain_pallor_pulselessness": 1
+      },
+      "synonyms": [
+        "acute compartment syndrome",
+        "compartment syndrome",
+        "pain with passive stretch",
+        "tense compartment"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u8207\u50b7\u52e2\u4e0d\u6210\u6bd4\u4f8b\u3001\u88ab\u52d5\u4f38\u5c55\u662f\u5426\u52a0\u5287\u3001\u7b4b\u819c\u8154\u662f\u5426\u7dca\u7e43\uff0c\u4ee5\u53ca\u611f\u89ba\u3001\u904b\u52d5\u3001\u8108\u640f\u3001\u76ae\u819a\u6eab\u5ea6\u8207\u53d7\u50b7\u6642\u9593\u3002 / Clarify pain out of proportion, pain with passive stretch, compartment tenseness, sensory or motor change, pulses, skin temperature, and time from injury."
+      ],
+      "source_ids": [
+        "merck_compartment_syndrome"
       ]
     },
     {
@@ -1748,6 +1806,36 @@
       ]
     },
     {
+      "slug": "orbital_cellulitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u773c\u7736\u8702\u7aa9\u7d44\u7e54\u708e",
+      "name_en": "Orbital cellulitis",
+      "system": "Ophthalmologic/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "\u773c\u77bc\u7d05\u816b\u5408\u4f75\u773c\u7403\u8f49\u52d5\u75db\u3001\u773c\u7403\u7a81\u51fa\u3001\u8996\u529b\u6539\u8b8a\u3001\u767c\u71d2\u6216\u773c\u7403\u6d3b\u52d5\u53d7\u9650\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u773c\u7736\u611f\u67d3\u3002",
+      "summary_en": "Eyelid swelling or redness with painful eye movement, proptosis, vision change, fever, or impaired eye movement should prioritize orbital cellulitis.",
+      "signals": {
+        "painful_eye_movement_or_proptosis": 9,
+        "eye_pain_redness": 3,
+        "fever": 2,
+        "visual_disturbance": 3,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "orbital cellulitis",
+        "postseptal cellulitis",
+        "eye socket infection",
+        "proptosis eye infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u662f\u5426\u6709\u773c\u7403\u8f49\u52d5\u75db\u3001\u773c\u7403\u7a81\u51fa\u3001\u8907\u8996\u3001\u8996\u529b\u4e0b\u964d\u3001\u773c\u7403\u6d3b\u52d5\u53d7\u9650\u3001\u767c\u71d2\u3001\u9f3b\u7ac7\u75c7\u72c0\u3001\u5152\u7ae5\u65cf\u7fa4\u6216\u9871\u5167\u4f75\u767c\u8b66\u8a0a\u3002 / Clarify pain with eye movement, proptosis, diplopia, decreased visual acuity, impaired ocular motility, fever, sinus symptoms, pediatric context, or intracranial complication clues."
+      ],
+      "source_ids": [
+        "msd_preseptal_orbital_cellulitis",
+        "rch_orbital_cellulitis"
+      ]
+    },
+    {
       "slug": "necrotizing_soft_tissue_infection",
       "review_status": "seed_needs_clinician_review",
       "name_zh": "\u58de\u6b7b\u6027\u8edf\u7d44\u7e54\u611f\u67d3",
@@ -2026,6 +2114,40 @@
       ],
       "source_ids": [
         "merck_professional"
+      ]
+    },
+    {
+      "slug": "preeclampsia_eclampsia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5b50\u7672\u524d\u75c7\u6216\u5b50\u7672\u75c7",
+      "name_en": "Preeclampsia or eclampsia",
+      "system": "Obstetric/Gynecologic/Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "\u61f7\u5b55\u6216\u7522\u5f8c\u53ef\u80fd\u6027\u5408\u4f75\u6301\u7e8c\u982d\u75db\u3001\u8996\u89ba\u6539\u8b8a\u3001\u53f3\u4e0a\u8179\u75db\u3001\u610f\u8b58\u6539\u8b8a\u6216\u62bd\u6410\u8b66\u8a0a\u6642\uff0c\u9700\u512a\u5148\u8fa8\u8b58\u5b50\u7672\u524d\u75c7\u6216\u5b50\u7672\u75c7\u3002",
+      "summary_en": "Possible pregnancy or postpartum context with persistent headache, vision change, right upper abdominal pain, altered mental status, or seizure concern should prioritize preeclampsia or eclampsia.",
+      "signals": {
+        "pregnancy_possible": 5,
+        "preeclampsia_warning_features": 9,
+        "visual_disturbance": 4,
+        "ruq_pain": 4,
+        "severe_pain": 1,
+        "altered_mental_status": 2,
+        "neurologic_deficit": 1,
+        "syncope": 1
+      },
+      "synonyms": [
+        "preeclampsia",
+        "pre-eclampsia",
+        "eclampsia",
+        "hypertensive disorder of pregnancy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5b55\u671f\u6216\u7522\u5f8c\u72c0\u614b\u3001\u8840\u58d3\u8cc7\u6599\u662f\u5426\u53ef\u53d6\u5f97\u3001\u6301\u7e8c\u982d\u75db\u3001\u8996\u89ba\u6539\u8b8a\u3001\u53f3\u4e0a\u8179\u6216\u4e0a\u8179\u75db\u3001\u81c9\u624b\u816b\u8139\u3001\u610f\u8b58\u6539\u8b8a\u3001\u62bd\u6410\u3001\u80ce\u5152/\u7522\u79d1\u8b66\u8a0a\u8207\u9700\u8981\u5373\u6642\u7522\u79d1\u8a55\u4f30\u7684\u60c5\u5883\u3002 / Clarify pregnancy or postpartum status, whether blood pressure data are available, persistent headache, visual symptoms, RUQ or epigastric pain, face or hand swelling, altered mental status, seizure concern, fetal or obstetric red flags, and need for immediate obstetric evaluation."
+      ],
+      "source_ids": [
+        "acog_preeclampsia_high_bp",
+        "merck_preeclampsia_eclampsia",
+        "who_preeclampsia"
       ]
     },
     {
@@ -2455,6 +2577,48 @@
       "publisher": "DermNet",
       "title": "Stevens Johnson Syndrome / Toxic Epidermal Necrolysis",
       "url": "https://dermnetnz.org/topics/stevens-johnson-syndrome-toxic-epidermal-necrolysis"
+    },
+    {
+      "source_id": "merck_septic_arthritis",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Infectious Arthritis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/infections-of-joints-and-bones/acute-infectious-arthritis"
+    },
+    {
+      "source_id": "merck_compartment_syndrome",
+      "publisher": "Merck Manual Professional",
+      "title": "Compartment Syndrome",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/fractures/compartment-syndrome"
+    },
+    {
+      "source_id": "msd_preseptal_orbital_cellulitis",
+      "publisher": "MSD Manuals Professional",
+      "title": "Preseptal and Orbital Cellulitis",
+      "url": "https://www.msdmanuals.com/professional/eye-disorders/orbital-diseases/preseptal-and-orbital-cellulitis"
+    },
+    {
+      "source_id": "rch_orbital_cellulitis",
+      "publisher": "Royal Children's Hospital Melbourne",
+      "title": "Clinical Practice Guidelines: Periorbital and orbital cellulitis",
+      "url": "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/"
+    },
+    {
+      "source_id": "acog_preeclampsia_high_bp",
+      "publisher": "ACOG",
+      "title": "Preeclampsia and High Blood Pressure During Pregnancy",
+      "url": "https://www.acog.org/womens-health/faqs/preeclampsia-and-high-blood-pressure-during-pregnancy"
+    },
+    {
+      "source_id": "merck_preeclampsia_eclampsia",
+      "publisher": "Merck Manual Professional",
+      "title": "Preeclampsia and Eclampsia",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/antenatal-complications/preeclampsia-and-eclampsia"
+    },
+    {
+      "source_id": "who_preeclampsia",
+      "publisher": "WHO",
+      "title": "Pre-eclampsia",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/pre-eclampsia"
     }
   ]
 }

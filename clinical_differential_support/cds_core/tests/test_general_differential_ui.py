@@ -53,6 +53,10 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Bloody diarrhea")
         self.assertContains(response, "Carbon monoxide or combustion exposure")
         self.assertContains(response, "Multiple people with similar symptoms")
+        self.assertContains(response, "Acute hot swollen joint")
+        self.assertContains(response, "Tense compartment or pain with passive stretch")
+        self.assertContains(response, "Painful eye movement or proptosis")
+        self.assertContains(response, "Preeclampsia warning features")
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
@@ -198,6 +202,56 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Ask next")
         self.assertContains(response, "Merck Manual Professional")
         self.assertContains(response, "World Society of Emergency Surgery")
+
+    def test_posted_musculoskeletal_emergency_findings_show_joint_and_compartment_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "acute_hot_swollen_joint",
+                    "tense_compartment_or_pain_with_passive_stretch",
+                    "recent_trauma",
+                    "severe_pain",
+                    "fever",
+                    "neurologic_deficit",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Septic arthritis")
+        self.assertContains(response, "Acute compartment syndrome")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "Merck Manual Professional")
+
+    def test_posted_eye_and_obstetric_findings_show_orbital_and_preeclampsia_sources(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "painful_eye_movement_or_proptosis",
+                    "eye_pain_redness",
+                    "fever",
+                    "visual_disturbance",
+                    "pregnancy_possible",
+                    "preeclampsia_warning_features",
+                    "ruq_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "Orbital cellulitis")
+        self.assertContains(response, "Preeclampsia or eclampsia")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Ask next")
+        self.assertContains(response, "ACOG")
+        self.assertContains(response, "WHO")
 
     def test_posted_toxicology_findings_show_carbon_monoxide_and_sources(self):
         response = self.client.post(

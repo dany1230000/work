@@ -245,6 +245,41 @@ SOURCES = {
         "title": "Stevens Johnson Syndrome / Toxic Epidermal Necrolysis",
         "url": "https://dermnetnz.org/topics/stevens-johnson-syndrome-toxic-epidermal-necrolysis",
     },
+    "merck_septic_arthritis": {
+        "publisher": "Merck Manual Professional",
+        "title": "Acute Infectious Arthritis",
+        "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/infections-of-joints-and-bones/acute-infectious-arthritis",
+    },
+    "merck_compartment_syndrome": {
+        "publisher": "Merck Manual Professional",
+        "title": "Compartment Syndrome",
+        "url": "https://www.merckmanuals.com/professional/injuries-poisoning/fractures/compartment-syndrome",
+    },
+    "msd_preseptal_orbital_cellulitis": {
+        "publisher": "MSD Manuals Professional",
+        "title": "Preseptal and Orbital Cellulitis",
+        "url": "https://www.msdmanuals.com/professional/eye-disorders/orbital-diseases/preseptal-and-orbital-cellulitis",
+    },
+    "rch_orbital_cellulitis": {
+        "publisher": "Royal Children's Hospital Melbourne",
+        "title": "Clinical Practice Guidelines: Periorbital and orbital cellulitis",
+        "url": "https://www.rch.org.au/clinicalguide/guideline_index/Periorbital_and_orbital_cellulitis/",
+    },
+    "acog_preeclampsia_high_bp": {
+        "publisher": "ACOG",
+        "title": "Preeclampsia and High Blood Pressure During Pregnancy",
+        "url": "https://www.acog.org/womens-health/faqs/preeclampsia-and-high-blood-pressure-during-pregnancy",
+    },
+    "merck_preeclampsia_eclampsia": {
+        "publisher": "Merck Manual Professional",
+        "title": "Preeclampsia and Eclampsia",
+        "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/antenatal-complications/preeclampsia-and-eclampsia",
+    },
+    "who_preeclampsia": {
+        "publisher": "WHO",
+        "title": "Pre-eclampsia",
+        "url": "https://www.who.int/news-room/fact-sheets/detail/pre-eclampsia",
+    },
 }
 
 FINDING_GROUPS = [
@@ -252,6 +287,16 @@ FINDING_GROUPS = [
         "group_zh": "立即安全狀態",
         "group_en": "Immediate safety",
         "findings": [
+            (
+                "acute_hot_swollen_joint",
+                "Acute hot swollen joint",
+                "急性紅熱腫痛關節",
+            ),
+            (
+                "tense_compartment_or_pain_with_passive_stretch",
+                "Tense compartment or pain with passive stretch",
+                "筋膜腔緊繃或被動伸展疼痛",
+            ),
             ("hemodynamic_instability", "Hemodynamic instability", "血流動力不穩"),
             ("altered_mental_status", "Altered mental status", "意識或精神狀態改變"),
             ("respiratory_distress", "Respiratory distress", "呼吸窘迫"),
@@ -294,6 +339,11 @@ FINDING_GROUPS = [
         "group_zh": "神經與頭痛",
         "group_en": "Neurologic and headache",
         "findings": [
+            (
+                "painful_eye_movement_or_proptosis",
+                "Painful eye movement or proptosis",
+                "眼球轉動痛或眼球突出",
+            ),
             ("neurologic_deficit", "Neurologic deficit", "神經學缺損"),
             ("unilateral_weakness", "Unilateral weakness", "單側無力"),
             ("speech_vision_changes", "Speech or vision changes", "言語或視覺改變"),
@@ -332,6 +382,11 @@ FINDING_GROUPS = [
         "group_zh": "婦科",
         "group_en": "Gynecologic",
         "findings": [
+            (
+                "preeclampsia_warning_features",
+                "Preeclampsia warning features",
+                "子癲前症警訊",
+            ),
             ("vaginal_bleeding", "Vaginal bleeding", "陰道出血"),
             ("vaginal_discharge", "Vaginal discharge", "陰道分泌物"),
             (
@@ -741,6 +796,58 @@ CONDITIONS = [
             "確認心房顫動、血管病史、抗凝血狀態、外傷/介入史、感覺或運動缺損與血流不穩。 / Ask about atrial fibrillation, vascular history, anticoagulation, trauma or procedure history, sensory or motor deficits, and instability.",
         ],
         "source_ids": ["merck_acute_limb_ischemia", "svs_acute_limb_ischemia"],
+    },
+    {
+        "slug": "septic_arthritis",
+        "name_zh": "化膿性關節炎",
+        "name_en": "Septic arthritis",
+        "system": "Musculoskeletal/Infectious",
+        "urgency": "emergent",
+        "summary_zh": "急性單一紅熱腫痛關節、活動受限、發燒或免疫低下時，需優先納入關節感染。",
+        "summary_en": "An acute hot swollen painful joint with restricted movement, fever, or immunocompromise should prioritize septic arthritis.",
+        "signals": {
+            "acute_hot_swollen_joint": 8,
+            "fever": 3,
+            "severe_pain": 2,
+            "immunocompromised": 2,
+            "hemodynamic_instability": 2,
+        },
+        "synonyms": [
+            "septic arthritis",
+            "acute infectious arthritis",
+            "infectious arthritis",
+            "joint infection",
+        ],
+        "ask_next": [
+            "確認是否為單一急性紅熱腫痛關節、主動與被動活動是否受限、是否發燒、免疫低下、人工關節、近期關節處置或全身敗血症表現。 / Clarify monoarticular hot swollen joint, active and passive range limitation, fever, immunocompromise, prosthetic joint, recent joint procedure, or systemic sepsis features.",
+        ],
+        "source_ids": ["merck_septic_arthritis"],
+    },
+    {
+        "slug": "acute_compartment_syndrome",
+        "name_zh": "急性筋膜腔症候群",
+        "name_en": "Acute compartment syndrome",
+        "system": "Musculoskeletal/Vascular/Emergency",
+        "urgency": "emergent",
+        "summary_zh": "創傷後劇痛、被動伸展痛、筋膜腔緊繃或神經血管症狀時，需優先辨識肢體威脅模式。",
+        "summary_en": "Severe post-trauma limb pain, pain with passive stretch, tense compartment, or neurovascular symptoms should prioritize acute compartment syndrome.",
+        "signals": {
+            "tense_compartment_or_pain_with_passive_stretch": 9,
+            "recent_trauma": 3,
+            "severe_pain": 3,
+            "neurologic_deficit": 2,
+            "acute_limb_pain_pallor_pulselessness": 1,
+        },
+        "synonyms": [
+            "acute compartment syndrome",
+            "compartment syndrome",
+            "pain with passive stretch",
+            "tense compartment",
+        ],
+        "ask_next": [
+            "確認疼痛是否與傷勢不成比例、被動伸展是否加劇、筋膜腔是否緊繃，以及感覺、運動、脈搏、皮膚溫度與受傷時間。 / Clarify pain out of proportion, pain with passive stretch, compartment tenseness, sensory or motor change, pulses, skin temperature, and time from injury.",
+        ],
+        "source_ids": ["merck_compartment_syndrome"],
     },
     {
         "slug": "meningitis",
@@ -1566,6 +1673,35 @@ CONDITIONS = [
         "source_ids": ["merck_professional"],
     },
     {
+        "slug": "orbital_cellulitis",
+        "name_zh": "眼眶蜂窩組織炎",
+        "name_en": "Orbital cellulitis",
+        "system": "Ophthalmologic/Infectious",
+        "urgency": "emergent",
+        "summary_zh": "眼瞼紅腫合併眼球轉動痛、眼球突出、視力改變、發燒或眼球活動受限時，需優先辨識眼眶感染。",
+        "summary_en": "Eyelid swelling or redness with painful eye movement, proptosis, vision change, fever, or impaired eye movement should prioritize orbital cellulitis.",
+        "signals": {
+            "painful_eye_movement_or_proptosis": 9,
+            "eye_pain_redness": 3,
+            "fever": 2,
+            "visual_disturbance": 3,
+            "altered_mental_status": 1,
+        },
+        "synonyms": [
+            "orbital cellulitis",
+            "postseptal cellulitis",
+            "eye socket infection",
+            "proptosis eye infection",
+        ],
+        "ask_next": [
+            "確認是否有眼球轉動痛、眼球突出、複視、視力下降、眼球活動受限、發燒、鼻竇症狀、兒童族群或顱內併發警訊。 / Clarify pain with eye movement, proptosis, diplopia, decreased visual acuity, impaired ocular motility, fever, sinus symptoms, pediatric context, or intracranial complication clues.",
+        ],
+        "source_ids": [
+            "msd_preseptal_orbital_cellulitis",
+            "rch_orbital_cellulitis",
+        ],
+    },
+    {
         "slug": "necrotizing_soft_tissue_infection",
         "name_zh": "壞死性軟組織感染",
         "name_en": "Necrotizing soft tissue infection",
@@ -1741,6 +1877,39 @@ CONDITIONS = [
         "synonyms": ["gerd", "reflux", "heartburn"],
         "ask_next": ["先確認 ACS 紅旗；再問吞嚥困難、體重減輕、出血、夜間症狀與藥物。 / First check ACS red flags; then ask dysphagia, weight loss, bleeding, nocturnal symptoms, and medications."],
         "source_ids": ["merck_professional"],
+    },
+    {
+        "slug": "preeclampsia_eclampsia",
+        "name_zh": "子癲前症或子癲症",
+        "name_en": "Preeclampsia or eclampsia",
+        "system": "Obstetric/Gynecologic/Neurologic",
+        "urgency": "emergent",
+        "summary_zh": "懷孕或產後可能性合併持續頭痛、視覺改變、右上腹痛、意識改變或抽搐警訊時，需優先辨識子癲前症或子癲症。",
+        "summary_en": "Possible pregnancy or postpartum context with persistent headache, vision change, right upper abdominal pain, altered mental status, or seizure concern should prioritize preeclampsia or eclampsia.",
+        "signals": {
+            "pregnancy_possible": 5,
+            "preeclampsia_warning_features": 9,
+            "visual_disturbance": 4,
+            "ruq_pain": 4,
+            "severe_pain": 1,
+            "altered_mental_status": 2,
+            "neurologic_deficit": 1,
+            "syncope": 1,
+        },
+        "synonyms": [
+            "preeclampsia",
+            "pre-eclampsia",
+            "eclampsia",
+            "hypertensive disorder of pregnancy",
+        ],
+        "ask_next": [
+            "確認孕期或產後狀態、血壓資料是否可取得、持續頭痛、視覺改變、右上腹或上腹痛、臉手腫脹、意識改變、抽搐、胎兒/產科警訊與需要即時產科評估的情境。 / Clarify pregnancy or postpartum status, whether blood pressure data are available, persistent headache, visual symptoms, RUQ or epigastric pain, face or hand swelling, altered mental status, seizure concern, fetal or obstetric red flags, and need for immediate obstetric evaluation.",
+        ],
+        "source_ids": [
+            "acog_preeclampsia_high_bp",
+            "merck_preeclampsia_eclampsia",
+            "who_preeclampsia",
+        ],
     },
     {
         "slug": "pelvic_inflammatory_disease",

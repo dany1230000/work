@@ -97,6 +97,10 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("acute limb ischemia", "acute_limb_ischemia"),
             ("mesenteric ischemia", "acute_mesenteric_ischemia"),
             ("carbon monoxide poisoning", "carbon_monoxide_poisoning"),
+            ("septic arthritis", "septic_arthritis"),
+            ("compartment syndrome", "acute_compartment_syndrome"),
+            ("orbital cellulitis", "orbital_cellulitis"),
+            ("preeclampsia", "preeclampsia_eclampsia"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
@@ -296,6 +300,68 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("acute_limb_pain_pallor_pulselessness", top["matched_findings"])
 
+    def test_acute_hot_swollen_joint_prioritizes_septic_arthritis(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "acute_hot_swollen_joint",
+                    "fever",
+                    "severe_pain",
+                    "immunocompromised",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "septic_arthritis")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("acute_hot_swollen_joint", top["matched_findings"])
+        self.assertIn("Merck Manual Professional", [source["publisher"] for source in top["sources"]])
+
+    def test_passive_stretch_pain_after_trauma_prioritizes_compartment_syndrome(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "tense_compartment_or_pain_with_passive_stretch",
+                    "recent_trauma",
+                    "severe_pain",
+                    "neurologic_deficit",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "acute_compartment_syndrome")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn(
+            "tense_compartment_or_pain_with_passive_stretch",
+            top["matched_findings"],
+        )
+        self.assertIn("Merck Manual Professional", [source["publisher"] for source in top["sources"]])
+
+    def test_painful_eye_movement_proptosis_prioritizes_orbital_cellulitis(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "painful_eye_movement_or_proptosis",
+                    "eye_pain_redness",
+                    "fever",
+                    "visual_disturbance",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "orbital_cellulitis")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("painful_eye_movement_or_proptosis", top["matched_findings"])
+        publishers = [source["publisher"] for source in top["sources"]]
+        self.assertIn("MSD Manuals Professional", publishers)
+        self.assertIn("Royal Children's Hospital Melbourne", publishers)
+
     def test_pain_out_of_proportion_prioritizes_acute_mesenteric_ischemia(self):
         result = evaluate_general_differential(
             {
@@ -335,3 +401,25 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(top["urgency"], "emergent")
         self.assertIn("carbon_monoxide_or_combustion_exposure", top["matched_findings"])
         self.assertIn("CDC", [source["publisher"] for source in top["sources"]])
+
+    def test_pregnancy_headache_vision_ruq_prioritizes_preeclampsia_eclampsia(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "pregnancy_possible",
+                    "preeclampsia_warning_features",
+                    "visual_disturbance",
+                    "ruq_pain",
+                    "severe_pain",
+                ],
+            }
+        )
+
+        top = result["results"][0]
+        self.assertEqual(top["slug"], "preeclampsia_eclampsia")
+        self.assertEqual(top["urgency"], "emergent")
+        self.assertIn("preeclampsia_warning_features", top["matched_findings"])
+        publishers = [source["publisher"] for source in top["sources"]]
+        self.assertIn("ACOG", publishers)
+        self.assertIn("WHO", publishers)
