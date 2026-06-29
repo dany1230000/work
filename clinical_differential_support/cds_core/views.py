@@ -405,6 +405,7 @@ def _build_finding_groups(selected_findings):
             {
                 "group_en": group["group_en"],
                 "group_zh": group["group_zh"],
+                "default_open": group["group_en"] == "Immediate safety",
                 "count": len(findings),
                 "selected_count": sum(1 for finding in findings if finding["selected"]),
                 "findings": findings,

@@ -30,6 +30,34 @@
     margin-top: 1rem;
   }
 
+  .workflow-command-bar {
+    position: sticky;
+    top: 0.5rem;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.96);
+    padding: 0.5rem;
+  }
+
+  .workflow-command-bar a {
+    border: 1px solid #d5dde7;
+    border-radius: 4px;
+    background: #f8fafc;
+    color: #17202a;
+    padding: 0.5rem 0.6rem;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .workflow-command-bar a:hover {
+    background: #eef4f8;
+  }
+
   .step-pill {
     min-height: 7rem;
     border: 1px solid #d5dde7;
@@ -256,8 +284,13 @@
 
   @media (max-width: 860px) {
     .step-strip,
+    .workflow-command-bar,
     .workbench-grid {
       grid-template-columns: 1fr;
+    }
+
+    .workflow-command-bar {
+      position: static;
     }
 
     .step-pill {
@@ -306,8 +339,15 @@
     </div>
   </section>
 
+  <nav class="workflow-command-bar" data-step-command-bar="true" aria-label="Differential workflow">
+    <a href="#case-input">1. 病例輸入 / Case</a>
+    <a href="#finding-selection">2. Findings</a>
+    <a href="#reference-results">3. 結果 / Results</a>
+    <a href="#catalog-governance">4. 治理 / Governance</a>
+  </nav>
+
   <div class="workbench-grid">
-    <section class="input-panel">
+    <section class="input-panel" id="case-input">
       <h2>輸入 / Input</h2>
       <form method="post">
         {% csrf_token %}
@@ -345,7 +385,7 @@
           <button type="submit">產生鑑別排序 / Generate differential ranking</button>
         </div>
 
-        <section class="finding-picker">
+        <section class="finding-picker" id="finding-selection">
           <h3>依系統勾選 / Select by system</h3>
           <div class="finding-filter" data-finding-filter-form="true">
             <label for="finding-filter-input">快速篩選 findings / Filter findings</label>
@@ -372,7 +412,12 @@
           </div>
           <div class="finding-stack">
             {% for group in finding_groups %}
-              <details class="finding-group" data-finding-group="true" {% if group.selected_count %}open{% endif %}>
+              <details
+                class="finding-group"
+                data-finding-group="true"
+                data-finding-group-default-open="{{ group.default_open|yesno:'true,false' }}"
+                {% if group.selected_count or group.default_open %}open{% endif %}
+              >
                 <summary><span>{{ group.group_zh }} / {{ group.group_en }}</span><span class="tag">{{ group.selected_count }}/{{ group.count }}</span></summary>
                 <div class="finding-options">
                   {% for finding in group.findings %}
@@ -395,7 +440,7 @@
       </form>
     </section>
 
-    <section class="output-panel">
+    <section class="output-panel" id="reference-results">
       <h2>參考輸出 / Reference Output</h2>
       {% if result %}
         <p class="secondary">
@@ -472,7 +517,7 @@
     </section>
   </div>
 
-  <details class="compact-governance">
+  <details class="compact-governance" id="catalog-governance">
     <summary>
       Catalog governance · {{ catalog_quality.summary.condition_count }} conditions ·
       {{ catalog_quality.summary.source_count }} sources ·
