@@ -328,6 +328,68 @@
     gap: 0.75rem;
   }
 
+  .guided-follow-up {
+    border: 1px solid #b8d8d1;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #eef8f6;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .guided-follow-up h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  .guided-step-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.75rem;
+  }
+
+  .guided-step {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+  }
+
+  .guided-step header {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.55rem;
+    align-items: start;
+    background: transparent;
+    color: var(--ink);
+    border: 0;
+    padding: 0;
+  }
+
+  .guided-step header p {
+    margin: 0.2rem 0 0;
+  }
+
+  .guided-step-index {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.8rem;
+    height: 1.8rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .guided-step ul {
+    margin: 0.6rem 0 0;
+    padding-left: 1.15rem;
+  }
+
+  .guided-step li {
+    margin-bottom: 0.35rem;
+  }
+
   .action-checklist {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -465,6 +527,7 @@
     .step-strip,
     .workflow-stepper,
     .workflow-command-bar,
+    .guided-step-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
     }
@@ -672,6 +735,32 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.results %}
+          <section class="guided-follow-up" data-guided-follow-up="true">
+            <h3>逐步導診 / Guided follow-up</h3>
+            <p class="secondary">先照順序補資料，再回頭看候選疾病與來源。 / Follow these steps before using the candidate list.</p>
+            <div class="guided-step-grid">
+              {% for step in result.guided_follow_up %}
+                <article class="guided-step" data-guided-step="{{ step.step_id }}">
+                  <header>
+                    <span class="guided-step-index">{{ forloop.counter }}</span>
+                    <div>
+                      <strong>{{ step.title_zh }} / {{ step.title_en }}</strong>
+                      <p>{{ step.instruction_zh }}</p>
+                      <p class="secondary">{{ step.instruction_en }}</p>
+                    </div>
+                  </header>
+                  <ul>
+                    {% for prompt in step.prompts %}
+                      <li>{{ prompt }}</li>
+                    {% endfor %}
+                  </ul>
+                  {% if step.related_condition_names %}
+                    <p class="secondary">候選 / Candidates: {{ step.related_condition_names|join:", " }}</p>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </div>
+          </section>
           <section class="primary-next-step" data-primary-next-step="true">
             <h3>下一步 / Primary next step</h3>
             <ol class="primary-step-list">

@@ -233,6 +233,35 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_show_guided_follow_up_before_result_cards(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "abdominal_pain",
+                    "fever",
+                    "vomiting",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-guided-follow-up="true"')
+        self.assertContains(response, 'data-guided-step="safety"')
+        self.assertContains(response, 'data-guided-step="context"')
+        self.assertContains(response, 'data-guided-step="top_differential"')
+        self.assertContains(response, 'data-guided-step="rerun"')
+        self.assertContains(response, "Guided follow-up")
+        self.assertContains(response, "Abdominal or urinary context")
+        self.assertLess(
+            content.index('data-guided-follow-up="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_gynecologic_findings_show_pid_toa_and_sources(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

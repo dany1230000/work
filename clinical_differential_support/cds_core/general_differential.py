@@ -119,10 +119,16 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         )
     )
 
+    ranked_results = results[:12]
+
     return {
-        "results": results[:12],
+        "results": ranked_results,
         "ask_next": _build_global_ask_next(results, selected_findings),
         "action_checklist": _build_action_checklist(results, selected_findings),
+        "guided_follow_up": _build_guided_follow_up(
+            ranked_results,
+            selected_findings,
+        ),
         "coverage": {
             "catalog_version": runtime_catalog["catalog_version"],
             "runtime_source": runtime_catalog.get(
@@ -212,6 +218,73 @@ def _build_global_ask_next(
     if not selected_findings:
         return prompts[:4]
     return prompts[:7]
+
+
+def _build_guided_follow_up(
+    results: list[dict[str, Any]],
+    selected_findings: set[str],
+) -> list[dict[str, Any]]:
+    context_prompts = _build_focused_context_prompts(selected_findings)
+    if not context_prompts:
+        context_prompts = [DEFAULT_ASK_NEXT[3]]
+
+    top_results = results[:3]
+    top_prompts: list[str] = []
+    for result in top_results:
+        for prompt in result["ask_next"][:1]:
+            if prompt not in top_prompts:
+                top_prompts.append(prompt)
+    if not top_prompts:
+        top_prompts = [DEFAULT_ASK_NEXT[1]]
+
+    return [
+        {
+            "step_id": "safety",
+            "title_zh": "先確認安全",
+            "title_en": "Safety first",
+            "instruction_zh": "先回到 ABC、生命徵象、血氧、意識狀態與紅旗，再使用排序結果。",
+            "instruction_en": "Re-check ABCs, vitals, oxygenation, mental status, and red flags before using the ranking.",
+            "prompts": [DEFAULT_ASK_NEXT[0]],
+            "related_condition_slugs": [],
+            "related_condition_names": [],
+        },
+        {
+            "step_id": "context",
+            "title_zh": "補最高價值脈絡",
+            "title_en": "Fill the highest-yield context",
+            "instruction_zh": "先補最能改變排序的陽性與陰性資訊，再看候選疾病。",
+            "instruction_en": "Add the focused positive and negative context most likely to change the ranking before relying on the candidate list.",
+            "prompts": context_prompts,
+            "related_condition_slugs": [],
+            "related_condition_names": [],
+        },
+        {
+            "step_id": "top_differential",
+            "title_zh": "核對前三個候選",
+            "title_en": "Check the leading differentials",
+            "instruction_zh": "核對前三個候選的符合點、缺資料處與來源連結，作為臨床推理參考。",
+            "instruction_en": "Compare the leading candidates against matched findings, missing context, and source links before applying clinical reasoning.",
+            "prompts": top_prompts,
+            "related_condition_slugs": [
+                result["slug"] for result in top_results
+            ],
+            "related_condition_names": [
+                result["name_en"] for result in top_results
+            ],
+        },
+        {
+            "step_id": "rerun",
+            "title_zh": "補資料後重跑",
+            "title_en": "Re-run after updates",
+            "instruction_zh": "把已確認的 findings 加回左側，移除不確定項目，再重新排序。",
+            "instruction_en": "Add confirmed findings, remove uncertain items, and re-run the ranking.",
+            "prompts": [
+                "Re-run the ranking after adding confirmed data and removing uncertain findings."
+            ],
+            "related_condition_slugs": [],
+            "related_condition_names": [],
+        },
+    ]
 
 
 def _build_focused_context_prompts(selected_findings: set[str]) -> list[str]:

@@ -271,6 +271,33 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             result["ask_next"].index(result["results"][0]["ask_next"][0]),
         )
 
+    def test_guided_follow_up_breaks_next_steps_into_ordered_actions(self):
+        result = evaluate_general_differential(
+            {"query": "", "findings": ["abdominal_pain", "fever", "vomiting"]}
+        )
+
+        guided = result["guided_follow_up"]
+
+        self.assertEqual(
+            [step["step_id"] for step in guided],
+            ["safety", "context", "top_differential", "rerun"],
+        )
+        self.assertEqual(guided[0]["title_en"], "Safety first")
+        self.assertEqual(guided[1]["title_en"], "Fill the highest-yield context")
+        self.assertTrue(
+            any("Abdominal or urinary context" in prompt for prompt in guided[1]["prompts"]),
+            guided[1]["prompts"],
+        )
+        self.assertIn(result["results"][0]["slug"], guided[2]["related_condition_slugs"])
+        self.assertGreaterEqual(len(guided[2]["prompts"]), 1)
+        combined = " ".join(
+            [step["instruction_en"] for step in guided]
+            + [prompt for step in guided for prompt in step["prompts"]]
+        ).lower()
+        self.assertNotIn("diagnosis order", combined)
+        self.assertNotIn("treatment order", combined)
+        self.assertNotIn("medication order", combined)
+
     def test_final_generalist_batch_adds_25_more_searchable_conditions(self):
         expectations = [
             ("multiple sclerosis", "multiple_sclerosis"),
