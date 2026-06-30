@@ -126,6 +126,17 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertLessEqual(report["summary"]["warning_count"], 51)
         self.assertFalse(sixth_batch_slugs.intersection(single_source_slugs))
 
+    def test_catalog_has_no_single_source_conditions(self):
+        report = build_general_differential_catalog_quality_report()
+        single_source_slugs = [
+            warning["subject"]
+            for warning in report["warnings"]
+            if warning["code"] == "single_source_condition"
+        ]
+
+        self.assertEqual(single_source_slugs, [])
+        self.assertEqual(report["summary"]["warning_count"], 0)
+
     def test_pulmonary_bucket_counts_respiratory_catalog_entries(self):
         report = build_general_differential_catalog_quality_report()
         pulmonary = report["system_buckets"]["Pulmonary"]

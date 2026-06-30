@@ -3,13 +3,13 @@
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-30",
     "condition_count": 250,
-    "source_count": 243,
+    "source_count": 292,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-30",
       "condition_count": 250,
-      "source_count": 243,
+      "source_count": 292,
       "blocking_issue_count": 0,
-      "warning_count": 51,
+      "warning_count": 0,
       "ready_for_public_reference": true,
       "expansion_target_condition_count": 250
     }
@@ -122,7 +122,8 @@
         "\u4e0d\u8981\u5ef6\u8aa4\u6025\u6027\u4e2d\u98a8\u6d41\u7a0b\uff1b\u9700\u8981\u6025\u8a3a/\u4e2d\u98a8\u5718\u968a\u8a55\u4f30\u3002 / Do not delay acute stroke pathway evaluation."
       ],
       "source_ids": [
-        "asa_stroke"
+        "asa_stroke",
+        "merck_professional"
       ]
     },
     {
@@ -185,7 +186,8 @@
         "\u78ba\u8a8d\u767c\u71d2\u5929\u6578\u3001\u76ae\u75b9\u3001\u975e\u5316\u81bf\u6027\u7d50\u819c\u5145\u8840\u3001\u5634\u5507\u6216\u53e3\u8154\u8b8a\u5316\u3001\u624b\u8db3\u7d05\u816b\u6216\u812b\u76ae\u3001\u9838\u90e8\u6dcb\u5df4\u7d50\u3001\u5e74\u9f61\u8108\u7d61\uff0c\u4ee5\u53ca\u5fc3\u81df\u6216\u4f11\u514b\u8b66\u8a0a\u3002 / Clarify fever duration, rash, nonpurulent conjunctival redness, lip or oral changes, hand or foot swelling/redness/peeling, cervical lymph nodes, age context, and cardiac or shock red flags."
       ],
       "source_ids": [
-        "cdc_kawasaki"
+        "cdc_kawasaki",
+        "merck_professional"
       ]
     },
     {
@@ -456,7 +458,8 @@
         "\u78ba\u8a8d\u662f\u5426\u70ba\u55ae\u4e00\u6025\u6027\u7d05\u71b1\u816b\u75db\u95dc\u7bc0\u3001\u4e3b\u52d5\u8207\u88ab\u52d5\u6d3b\u52d5\u662f\u5426\u53d7\u9650\u3001\u662f\u5426\u767c\u71d2\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u4eba\u5de5\u95dc\u7bc0\u3001\u8fd1\u671f\u95dc\u7bc0\u8655\u7f6e\u6216\u5168\u8eab\u6557\u8840\u75c7\u8868\u73fe\u3002 / Clarify monoarticular hot swollen joint, active and passive range limitation, fever, immunocompromise, prosthetic joint, recent joint procedure, or systemic sepsis features."
       ],
       "source_ids": [
-        "merck_septic_arthritis"
+        "merck_septic_arthritis",
+        "ncbi_septic_arthritis"
       ]
     },
     {
@@ -485,7 +488,8 @@
         "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u8207\u50b7\u52e2\u4e0d\u6210\u6bd4\u4f8b\u3001\u88ab\u52d5\u4f38\u5c55\u662f\u5426\u52a0\u5287\u3001\u7b4b\u819c\u8154\u662f\u5426\u7dca\u7e43\uff0c\u4ee5\u53ca\u611f\u89ba\u3001\u904b\u52d5\u3001\u8108\u640f\u3001\u76ae\u819a\u6eab\u5ea6\u8207\u53d7\u50b7\u6642\u9593\u3002 / Clarify pain out of proportion, pain with passive stretch, compartment tenseness, sensory or motor change, pulses, skin temperature, and time from injury."
       ],
       "source_ids": [
-        "merck_compartment_syndrome"
+        "merck_compartment_syndrome",
+        "ncbi_compartment_syndrome"
       ]
     },
     {
@@ -541,7 +545,8 @@
         "\u78ba\u8a8d\u9054\u5cf0\u6642\u9593\u3001\u660f\u53a5\u3001\u9838\u90e8\u50f5\u786c\u3001\u6297\u51dd\u8840\u85e5\u8207\u795e\u7d93\u7f3a\u640d\u3002 / Confirm time to peak, syncope, neck stiffness, anticoagulants, and neurologic deficits."
       ],
       "source_ids": [
-        "merck_headache_red_flags"
+        "merck_headache_red_flags",
+        "ncbi_subarachnoid_hemorrhage"
       ]
     },
     {
@@ -568,7 +573,8 @@
         "\u78ba\u8a8d\u75bc\u75db\u79fb\u8f49\u3001\u98df\u617e\u3001\u53cd\u5f48\u75db\u3001\u9632\u79a6\u3001\u61f7\u5b55\u53ef\u80fd\u8207\u662f\u5426\u9700\u5f71\u50cf/\u5916\u79d1\u8a55\u4f30\u3002 / Ask about migration, appetite, rebound/guarding, pregnancy possibility, imaging, and surgical evaluation."
       ],
       "source_ids": [
-        "nice_acute_abdomen"
+        "nice_acute_abdomen",
+        "niddk_appendicitis"
       ]
     },
     {
@@ -624,7 +630,8 @@
         "\u78ba\u8a8d\u66b4\u9732\u7269\u3001\u6c23\u9053\u816b\u8139\u3001\u5598\u9cf4\u3001\u8840\u58d3\u8207\u662f\u5426\u9700\u7acb\u5373\u6025\u6551\u3002 / Identify exposure, airway swelling, wheeze, blood pressure, and emergency treatment need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_anaphylaxis"
       ]
     },
     {
@@ -653,7 +660,8 @@
         "\u78ba\u8a8d\u662f\u5426\u6709\u541e\u56a5\u56f0\u96e3\u3001\u6d41\u53e3\u6c34\u3001\u5598\u9cf4\u3001\u5750\u59ff\u524d\u50be\u3001\u767c\u71d2\u3001\u8072\u97f3\u6539\u8b8a\u3001\u547c\u5438\u7a98\u8feb\u3001\u5152\u7ae5\u6216\u514d\u75ab\u4f4e\u4e0b\uff0c\u4ee5\u53ca\u662f\u5426\u9700\u8981\u7acb\u5373\u6c23\u9053\u98a8\u96aa\u8a55\u4f30\u3002 / Clarify dysphagia, drooling, stridor, tripod or leaning posture, fever, voice change, respiratory distress, pediatric or immunocompromised context, and immediate airway-risk assessment need."
       ],
       "source_ids": [
-        "merck_epiglottitis"
+        "merck_epiglottitis",
+        "ncbi_epiglottitis"
       ]
     },
     {
@@ -682,7 +690,8 @@
         "\u78ba\u8a8d\u662f\u5426\u55ae\u5074\u5589\u56a8\u75db\u3001\u541e\u56a5\u75db\u3001\u5f35\u53e3\u56f0\u96e3\u3001\u542b\u7cca\u8072\u3001\u61f8\u96cd\u5782\u504f\u79fb\u3001\u6241\u6843\u817a\u5468\u570d\u81a8\u9686\u3001\u767c\u71d2\uff0c\u4ee5\u53ca\u6df1\u9838\u90e8\u611f\u67d3\u6216\u6c23\u9053\u8b66\u8a0a\u3002 / Clarify unilateral sore throat, odynophagia, trismus, muffled voice, uvular deviation, peritonsillar bulge, fever, and deep neck infection or airway red flags."
       ],
       "source_ids": [
-        "msd_peritonsillar_abscess"
+        "msd_peritonsillar_abscess",
+        "ncbi_peritonsillar_abscess"
       ]
     },
     {
@@ -712,7 +721,8 @@
         "\u78ba\u8a8d\u541e\u56a5\u56f0\u96e3\u3001\u6d41\u53e3\u6c34\u3001\u9838\u90e8\u6d3b\u52d5\u53d7\u9650\u6216\u816b\u8139\u3001\u5598\u9cf4\u3001\u767c\u71d2\u3001\u5152\u7ae5\u65cf\u7fa4\u3001\u8fd1\u671f\u54bd\u5589\u611f\u67d3\u6216\u5916\u50b7\uff0c\u4ee5\u53ca\u6c23\u9053\u6216\u7e31\u8188\u4f75\u767c\u8b66\u8a0a\u3002 / Clarify dysphagia, drooling, limited neck movement or swelling, stridor, fever, pediatric context, recent throat infection or trauma, and airway or mediastinal complication clues."
       ],
       "source_ids": [
-        "merck_retropharyngeal_abscess"
+        "merck_retropharyngeal_abscess",
+        "ncbi_retropharyngeal_abscess"
       ]
     },
     {
@@ -738,7 +748,8 @@
         "\u78ba\u8a8d\u8840\u6c27\u3001\u547c\u5438\u983b\u7387\u3001\u80f8\u75db\u3001\u75f0\u6027\u8cea\u3001\u5171\u75c5\u8207\u662f\u5426\u9700\u8981\u5f71\u50cf\u3002 / Check oxygenation, respiratory rate, chest pain, sputum, comorbidities, and imaging need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_pneumonia"
       ]
     },
     {
@@ -765,7 +776,8 @@
         "\u78ba\u8a8d\u9ad4\u91cd\u8b8a\u5316\u3001\u7aef\u5750\u547c\u5438\u3001\u4e0b\u80a2\u6c34\u816b\u3001\u5fc3\u81df\u75c5\u53f2\u3001\u8840\u6c27\u8207\u80f8\u75db\u3002 / Ask about weight change, orthopnea, edema, cardiac history, oxygenation, and chest pain."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_heart_failure"
       ]
     },
     {
@@ -792,7 +804,8 @@
         "\u78ba\u8a8d\u65e2\u5f80\u6c23\u5598/COPD\u3001\u5438\u5165\u85e5\u53cd\u61c9\u3001\u8840\u6c27\u3001\u8aaa\u8a71\u80fd\u529b\u8207\u6c89\u9ed8\u80f8\u3002 / Check asthma/COPD history, inhaler response, oxygenation, speech ability, and silent chest."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_asthma"
       ]
     },
     {
@@ -818,7 +831,8 @@
         "\u78ba\u8a8d\u8996\u529b\u3001\u77b3\u5b54\u3001\u773c\u58d3\u98a8\u96aa\u3001\u5641\u5fc3\u5614\u5410\u8207\u662f\u5426\u9700\u773c\u79d1\u6025\u8a3a\u3002 / Check vision, pupil, IOP risk, nausea/vomiting, and urgent ophthalmology need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nei_glaucoma"
       ]
     },
     {
@@ -845,7 +859,8 @@
         "\u78ba\u8a8d\u51fa\u8840\u578b\u614b\u3001\u91cf\u3001\u6297\u51dd\u8840\u85e5\u3001\u8840\u58d3\u5fc3\u8df3\u3001\u8ca7\u8840\u75c7\u72c0\u8207\u809d\u75c5\u53f2\u3002 / Clarify bleeding type/volume, anticoagulants, vitals, anemia symptoms, and liver disease."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_gi_bleeding"
       ]
     },
     {
@@ -873,7 +888,8 @@
         "\u78ba\u8a8d\u8840\u7cd6\u3001\u916e\u9ad4\u3001\u812b\u6c34\u3001\u611f\u67d3\u8a98\u56e0\u3001\u80f0\u5cf6\u7d20\u4e2d\u65b7\u8207\u610f\u8b58\u72c0\u614b\u3002 / Check glucose, ketones, dehydration, infection triggers, insulin omission, and mental status."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_dka"
       ]
     },
     {
@@ -900,7 +916,8 @@
         "\u7acb\u5373\u78ba\u8a8d\u6307\u5c16\u8840\u7cd6\u3001\u7cd6\u5c3f\u75c5\u85e5\u7269\u3001\u9032\u98df\u72c0\u6cc1\u8207\u610f\u8b58\u5b89\u5168\u3002 / Check point-of-care glucose, diabetes medications, intake, and mental status safety."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_hypoglycemia"
       ]
     },
     {
@@ -930,7 +947,8 @@
         "\u78ba\u8a8d\u56b4\u91cd\u9ad8\u8840\u7cd6\u8cc7\u6599\u3001\u812b\u6c34\u7a0b\u5ea6\u3001\u53e3\u6e34\u591a\u5c3f\u3001\u610f\u8b58\u6539\u8b8a\u3001\u611f\u67d3\u6216\u751f\u7406\u58d3\u529b\u8a98\u56e0\u3001\u7cd6\u5c3f\u75c5\u985e\u578b\u3001\u916e\u9178\u4e2d\u6bd2\u7dda\u7d22\u8207\u5faa\u74b0\u4e0d\u7a69\u5b9a\u3002 / Clarify severe glucose data, dehydration severity, thirst/polyuria, altered consciousness, infection or physiologic stress triggers, diabetes type, ketoacidosis clues, and circulatory instability."
       ],
       "source_ids": [
-        "merck_acute_diabetes_complications"
+        "merck_acute_diabetes_complications",
+        "medlineplus_hhs"
       ]
     },
     {
@@ -957,7 +975,8 @@
         "\u78ba\u8a8d\u5e74\u9f61\u3001\u9873\u90e8\u58d3\u75db\u3001\u4e0b\u984e\u8ddb\u884c\u3001\u8996\u89ba\u75c7\u72c0\u8207\u8fd1\u7aef\u808c\u75db\u3002 / Confirm age, temporal tenderness, jaw claudication, visual symptoms, and proximal myalgia."
       ],
       "source_ids": [
-        "merck_headache_red_flags"
+        "merck_headache_red_flags",
+        "niams_giant_cell_arteritis"
       ]
     },
     {
@@ -985,7 +1004,8 @@
         "\u78ba\u8a8d\u767c\u71d2\u3001\u8170\u5074\u6572\u75db\u3001\u6392\u5c3f\u75c7\u72c0\u3001\u61f7\u5b55\u3001\u6557\u8840\u75c7\u5fb5\u8c61\u8207\u5614\u5410\u3002 / Ask about fever, CVA tenderness, urinary symptoms, pregnancy, sepsis signs, and vomiting."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_bladder_infection_uti"
       ]
     },
     {
@@ -1042,7 +1062,8 @@
         "\u78ba\u8a8d\u8840\u6c27\u3001\u547c\u5438\u7a98\u8feb\u3001\u514d\u75ab\u72c0\u614b\u3001\u66b4\u9732\u53f2\u8207\u9700\u8981\u6aa2\u6e2c\u6216\u9694\u96e2\u3002 / Check oxygenation, distress, immune status, exposure, and testing/isolation needs."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_viral_respiratory_illnesses"
       ]
     },
     {
@@ -1096,7 +1117,8 @@
         "\u78ba\u8a8d VTE \u98a8\u96aa\u3001\u8fd1\u671f\u624b\u8853\u3001\u81e5\u5e8a\u3001\u764c\u75c7\u3001\u61f7\u5b55\u8207\u80ba\u6813\u585e\u75c7\u72c0\u3002 / Check VTE risks, recent surgery, immobility, cancer, pregnancy, and PE symptoms."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_blood_clots"
       ]
     },
     {
@@ -1122,7 +1144,8 @@
         "\u78ba\u8a8d\u662f\u5426\u5f35\u529b\u6c23\u80f8\u8868\u73fe\u3001\u5916\u50b7\u3001\u8840\u6c27\u3001\u547c\u5438\u97f3\u4e0d\u5c0d\u7a31\u8207\u8840\u6d41\u4e0d\u7a69\u3002 / Check tension features, trauma, oxygenation, asymmetric breath sounds, and instability."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_pneumothorax"
       ]
     },
     {
@@ -1148,7 +1171,8 @@
         "\u78ba\u8a8d\u8840\u58d3\u6578\u503c\u3001\u7d42\u7aef\u5668\u5b98\u640d\u50b7\u75c7\u72c0\u3001\u7528\u85e5\u4e2d\u65b7\u8207\u598a\u5a20\u76f8\u95dc\u98a8\u96aa\u3002 / Confirm BP, end-organ symptoms, medication interruption, and pregnancy-related risk."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_hypertensive_emergency"
       ]
     },
     {
@@ -1230,7 +1254,8 @@
         "\u78ba\u8a8d\u9632\u79a6\u3001\u53cd\u5f48\u75db\u3001\u767c\u71d2\u3001\u8840\u6d41\u52d5\u529b\u8207\u662f\u5426\u9700\u6025\u8a3a\u5916\u79d1\u8a55\u4f30\u3002 / Confirm guarding, rebound, fever, hemodynamics, and surgical emergency need."
       ],
       "source_ids": [
-        "nice_acute_abdomen"
+        "nice_acute_abdomen",
+        "merck_professional"
       ]
     },
     {
@@ -1295,7 +1320,8 @@
         "\u78ba\u8a8d\u662f\u5426\u6709\u9593\u6b47\u54ed\u9b27\u6216\u7d5e\u75db\u3001\u62b1\u817f\u3001\u5614\u5410\u3001\u55dc\u7761\u3001\u8179\u90e8\u816b\u584a\u3001\u8840\u4fbf\u6216\u679c\u91ac\u6a23\u4fbf\u3001\u5e74\u9f61\u8108\u7d61\u8207\u8179\u819c\u708e\u6216\u812b\u6c34\u8b66\u8a0a\u3002 / Clarify intermittent crying or colicky pain, leg-drawing episodes, vomiting, lethargy, abdominal mass, bloody or currant-jelly stool, age context, and peritonitis or dehydration clues."
       ],
       "source_ids": [
-        "merck_pediatric_vomiting_intussusception"
+        "merck_pediatric_vomiting_intussusception",
+        "medlineplus_intussusception"
       ]
     },
     {
@@ -1322,7 +1348,8 @@
         "\u78ba\u8a8d\u767c\u71d2\u3001\u55ae\u814e\u3001\u61f7\u5b55\u3001\u5c3f\u91cf\u3001\u8840\u5c3f\u8207\u611f\u67d3\u5fb5\u8c61\u3002 / Check fever, solitary kidney, pregnancy, urine output, hematuria, and infection signs."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_kidney_stones"
       ]
     },
     {
@@ -1347,7 +1374,8 @@
         "\u78ba\u8a8d\u767c\u71d2\u3001\u8170\u75db\u3001\u61f7\u5b55\u3001\u7537\u6027\u3001\u514d\u75ab\u4f4e\u4e0b\u8207\u53cd\u8986\u611f\u67d3\u3002 / Check fever, flank pain, pregnancy, male sex, immunocompromise, and recurrence."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_bladder_infection_uti"
       ]
     },
     {
@@ -1403,7 +1431,8 @@
         "\u78ba\u8a8d\u812b\u6c34\u3001\u8840\u4fbf\u3001\u514d\u75ab\u4f4e\u4e0b\u3001\u65c5\u904a\u3001\u98df\u7269\u66b4\u9732\u8207\u8179\u819c\u523a\u6fc0\u3002 / Check dehydration, bloody stool, immunocompromise, travel, food exposure, and peritoneal signs."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_gastroenteritis"
       ]
     },
     {
@@ -1452,7 +1481,8 @@
         "\u78ba\u8a8d\u6c92\u6709\u7d05\u65d7\u3001\u85e5\u7269\u904e\u5ea6\u4f7f\u7528\u3001\u8996\u89ba\u75c7\u72c0\u6216\u611f\u67d3\u7dda\u7d22\u3002 / Confirm no red flags, medication overuse, visual symptoms, or infection clues."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_tension_headache"
       ]
     },
     {
@@ -1507,7 +1537,8 @@
         "\u78ba\u8a8d\u5931\u53bb\u610f\u8b58\u3001\u6297\u51dd\u8840\u85e5\u3001\u53cd\u8986\u5614\u5410\u3001\u795e\u7d93\u7f3a\u640d\u8207\u982d\u75db\u60e1\u5316\u3002 / Check loss of consciousness, anticoagulants, repeated vomiting, deficits, and worsening headache."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_concussion"
       ]
     },
     {
@@ -1533,7 +1564,8 @@
         "\u78ba\u8a8d\u7532\u4ea2\u75c5\u53f2\u3001\u8a98\u767c\u611f\u67d3\u3001\u9ad4\u6eab\u3001\u5fc3\u5f8b\u3001\u8178\u80c3\u75c7\u72c0\u8207\u610f\u8b58\u3002 / Check hyperthyroidism history, infection trigger, temperature, rhythm, GI symptoms, and mentation."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_thyroid_storm"
       ]
     },
     {
@@ -1558,7 +1590,8 @@
         "\u78ba\u8a8d\u75c7\u72c0\u6642\u9593\u8ef8\u3001\u85e5\u7269\u3001\u7532\u72c0\u817a\u75c5\u53f2\u8207\u662f\u5426\u6709\u4f4e\u9ad4\u6eab\u6216\u610f\u8b58\u6539\u8b8a\u3002 / Check timeline, medications, thyroid history, hypothermia, and mental status."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_hypothyroidism"
       ]
     },
     {
@@ -1584,7 +1617,8 @@
         "\u78ba\u8a8d\u985e\u56fa\u9187\u4f7f\u7528\u3001\u4e2d\u65b7\u3001\u611f\u67d3\u58d3\u529b\u3001\u4f4e\u8840\u58d3\u3001\u4f4e\u8840\u7cd6\u8207\u96fb\u89e3\u8cea\u3002 / Check steroid use/cessation, infection stress, hypotension, hypoglycemia, and electrolytes."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_adrenal_insufficiency"
       ]
     },
     {
@@ -1611,7 +1645,8 @@
         "\u78ba\u8a8d\u51fa\u8840\u3001\u6708\u7d93\u3001\u9ed1\u4fbf\u3001\u71df\u990a\u3001\u6162\u6027\u75c5\u3001\u5fc3\u80ba\u75c7\u72c0\u8207 CBC\u3002 / Ask about bleeding, menses, melena, nutrition, chronic disease, cardiopulmonary symptoms, and CBC."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_anemia"
       ]
     },
     {
@@ -1637,7 +1672,8 @@
         "\u78ba\u8a8d\u9ad4\u91cd\u6e1b\u8f15\u5e45\u5ea6\u3001\u591c\u6c57\u3001\u767c\u71d2\u3001\u51fa\u8840\u3001\u5c40\u90e8\u75c7\u72c0\u8207\u7be9\u6aa2\u53f2\u3002 / Check amount of weight loss, night sweats, fever, bleeding, focal symptoms, and screening history."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nci_cancer_symptoms"
       ]
     },
     {
@@ -1762,7 +1798,8 @@
         "\u78ba\u8a8d\u81ea\u6bba\u610f\u5ff5\u3001\u81ea\u50b7\u8a08\u756b\u3001\u7cbe\u795e\u75c5\u75c7\u72c0\u3001\u7269\u8cea\u4f7f\u7528\u8207\u652f\u6301\u7cfb\u7d71\u3002 / Check suicidal ideation, self-harm plan, psychosis, substances, and supports."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nimh_depression"
       ]
     },
     {
@@ -1817,7 +1854,8 @@
         "\u78ba\u8a8d\u57fa\u6e96\u8a8d\u77e5\u3001\u6025\u6027\u6642\u9593\u8ef8\u3001\u611f\u67d3\u3001\u85e5\u7269\u3001\u75bc\u75db\u3001\u5c3f\u6eef\u7559\u3001\u4f4e\u6c27\u8207\u8840\u7cd6\u3002 / Check baseline cognition, acute timeline, infection, medications, pain, retention, hypoxia, and glucose."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_delirium"
       ]
     },
     {
@@ -1845,7 +1883,8 @@
         "\u78ba\u8a8d\u85e5\u7269\u6e05\u55ae\u3001\u5291\u91cf\u3001\u6642\u9593\u3001\u610f\u5716\u3001\u5171\u540c\u651d\u5165\u3001\u5fc3\u96fb\u5716\u8207\u6bd2\u7269\u4e2d\u5fc3\u3002 / Check medication list, dose, timing, intent, co-ingestions, ECG, and poison control."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_poisoning"
       ]
     },
     {
@@ -1905,7 +1944,8 @@
         "\u78ba\u8a8d SSRI/SNRI/MAOI\u3001\u6b62\u75db\u85e5\u3001\u5a1b\u6a02\u7528\u85e5\u3001\u808c\u9663\u6523\u3001\u53cd\u5c04\u4ea2\u9032\u8207\u9ad4\u6eab\u3002 / Check serotonergic drugs, analgesics, recreational drugs, clonus, hyperreflexia, and temperature."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_serotonin_syndrome"
       ]
     },
     {
@@ -1931,7 +1971,8 @@
         "\u78ba\u8a8d\u74b0\u5883\u66b4\u9732\u3001\u6838\u5fc3\u9ad4\u6eab\u3001\u610f\u8b58\u3001\u812b\u6c34\u3001\u6a6b\u7d0b\u808c\u6eb6\u89e3\u8207\u7acb\u5373\u964d\u6eab\u3002 / Check exposure, core temperature, mental status, dehydration, rhabdomyolysis, and cooling need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_heat_stress"
       ]
     },
     {
@@ -1956,7 +1997,8 @@
         "\u78ba\u8a8d\u6838\u5fc3\u9ad4\u6eab\u3001\u66b4\u9732\u6642\u9593\u3001\u5fc3\u5f8b\u3001\u8840\u7cd6\u3001\u5916\u50b7\u8207\u5fa9\u6eab\u5b89\u5168\u3002 / Check core temperature, exposure duration, rhythm, glucose, trauma, and rewarming safety."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_hypothermia"
       ]
     },
     {
@@ -1981,7 +2023,8 @@
         "\u78ba\u8a8d\u7bc4\u570d\u64f4\u5927\u3001\u75bc\u75db\u7a0b\u5ea6\u3001\u81bf\u760d\u3001\u7cd6\u5c3f\u75c5\u3001\u514d\u75ab\u4f4e\u4e0b\u8207\u58de\u6b7b\u611f\u67d3\u7d05\u65d7\u3002 / Check spread, pain severity, abscess, diabetes, immunocompromise, and necrotizing red flags."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_cellulitis"
       ]
     },
     {
@@ -2039,7 +2082,8 @@
         "\u78ba\u8a8d\u75bc\u75db\u662f\u5426\u8d85\u51fa\u5916\u89c0\u3001\u5feb\u901f\u64f4\u5927\u3001\u6c34\u6ce1\u3001\u76ae\u819a\u58de\u6b7b\u3001\u4f11\u514b\u8207\u5916\u79d1\u6025\u75c7\u9700\u6c42\u3002 / Check pain out of proportion, rapid spread, bullae, necrosis, shock, and surgical emergency need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_necrotizing_fasciitis"
       ]
     },
     {
@@ -2159,7 +2203,8 @@
         "\u78ba\u8a8d\u4e59\u91af\u80fa\u915a\u3001\u75c5\u6bd2\u6027\u809d\u708e\u3001\u9152\u7cbe\u3001\u51dd\u8840\u3001\u4f4e\u8840\u7cd6\u8207\u8166\u75c5\u8b8a\u3002 / Check acetaminophen, viral hepatitis, alcohol, coagulation, hypoglycemia, and encephalopathy."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_acute_liver_failure"
       ]
     },
     {
@@ -2186,7 +2231,8 @@
         "\u78ba\u8a8d\u5c3f\u91cf\u3001\u814e\u6bd2\u6027\u85e5\u7269\u3001\u812b\u6c34\u3001\u611f\u67d3\u3001\u963b\u585e\u3001\u96fb\u89e3\u8cea\u8207\u808c\u9178\u9150\u3002 / Check urine output, nephrotoxins, dehydration, infection, obstruction, electrolytes, and creatinine."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_acute_kidney_injury"
       ]
     },
     {
@@ -2214,7 +2260,8 @@
         "\u78ba\u8a8d\u66b4\u9732\u3001\u75ab\u82d7\u3001\u9ad8\u98a8\u96aa\u5171\u75c5\u3001\u8840\u6c27\u3001\u547c\u5438\u7a98\u8feb\u8207\u6aa2\u6e2c\u6642\u6a5f\u3002 / Check exposure, vaccination, high-risk comorbidities, oxygenation, distress, and testing timing."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_covid"
       ]
     },
     {
@@ -2240,7 +2287,8 @@
         "\u78ba\u8a8d\u54b3\u55fd\u6642\u9593\u3001\u591c\u6c57\u3001\u63a5\u89f8\u53f2\u3001\u65c5\u5c45\u3001\u514d\u75ab\u72c0\u614b\u8207\u611f\u67d3\u7ba1\u5236\u9700\u6c42\u3002 / Check cough duration, night sweats, contacts, travel/residence, immune status, and infection control."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_tuberculosis"
       ]
     },
     {
@@ -2267,7 +2315,8 @@
         "\u78ba\u8a8d\u9ed1\u4fbf\u3001\u5410\u8840\u3001NSAID\u3001\u6297\u51dd\u8840\u85e5\u3001\u9ad4\u91cd\u6e1b\u8f15\u8207\u7a7f\u5b54\u7d05\u65d7\u3002 / Check melena, hematemesis, NSAIDs, anticoagulants, weight loss, and perforation red flags."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_peptic_ulcer"
       ]
     },
     {
@@ -2292,7 +2341,8 @@
         "\u5148\u78ba\u8a8d ACS \u7d05\u65d7\uff1b\u518d\u554f\u541e\u56a5\u56f0\u96e3\u3001\u9ad4\u91cd\u6e1b\u8f15\u3001\u51fa\u8840\u3001\u591c\u9593\u75c7\u72c0\u8207\u85e5\u7269\u3002 / First check ACS red flags; then ask dysphagia, weight loss, bleeding, nocturnal symptoms, and medications."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_gerd"
       ]
     },
     {
@@ -2476,7 +2526,8 @@
         "\u78ba\u8a8d\u9670\u56ca\u75bc\u75db\u3001\u4f4d\u7f6e\u3001\u53cd\u5c04\u3001\u767c\u4f5c\u6642\u9593\u3001\u5614\u5410\u8207\u7acb\u5373\u6ccc\u5c3f\u79d1\u9700\u6c42\u3002 / Check scrotal pain, position, reflex, onset time, vomiting, and urgent urology need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_testicular_torsion"
       ]
     },
     {
@@ -8678,6 +8729,300 @@
       "publisher": "NCBI Bookshelf",
       "title": "Postpartum Hemorrhage",
       "url": "https://www.ncbi.nlm.nih.gov/books/NBK499988/"
+    },
+    {
+      "source_id": "ncbi_septic_arthritis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Septic Arthritis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK538176/"
+    },
+    {
+      "source_id": "ncbi_compartment_syndrome",
+      "publisher": "NCBI Bookshelf",
+      "title": "Acute Compartment Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK448124/"
+    },
+    {
+      "source_id": "ncbi_subarachnoid_hemorrhage",
+      "publisher": "NCBI Bookshelf",
+      "title": "Subarachnoid Hemorrhage",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK441958/"
+    },
+    {
+      "source_id": "niddk_appendicitis",
+      "publisher": "NIDDK",
+      "title": "Appendicitis",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis"
+    },
+    {
+      "source_id": "ncbi_anaphylaxis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Anaphylaxis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK482124/"
+    },
+    {
+      "source_id": "ncbi_epiglottitis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Epiglottitis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK430960/"
+    },
+    {
+      "source_id": "ncbi_peritonsillar_abscess",
+      "publisher": "NCBI Bookshelf",
+      "title": "Peritonsillar Abscess",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK519520/"
+    },
+    {
+      "source_id": "ncbi_retropharyngeal_abscess",
+      "publisher": "NCBI Bookshelf",
+      "title": "Retropharyngeal Abscess",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK441873/"
+    },
+    {
+      "source_id": "cdc_pneumonia",
+      "publisher": "CDC",
+      "title": "Pneumonia",
+      "url": "https://www.cdc.gov/pneumonia/index.html"
+    },
+    {
+      "source_id": "nhlbi_heart_failure",
+      "publisher": "NHLBI",
+      "title": "Heart Failure",
+      "url": "https://www.nhlbi.nih.gov/health/heart-failure"
+    },
+    {
+      "source_id": "nhlbi_asthma",
+      "publisher": "NHLBI",
+      "title": "Asthma",
+      "url": "https://www.nhlbi.nih.gov/health/asthma"
+    },
+    {
+      "source_id": "nhlbi_copd",
+      "publisher": "NHLBI",
+      "title": "COPD",
+      "url": "https://www.nhlbi.nih.gov/health/copd"
+    },
+    {
+      "source_id": "nei_glaucoma",
+      "publisher": "National Eye Institute",
+      "title": "Glaucoma",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma"
+    },
+    {
+      "source_id": "ncbi_gi_bleeding",
+      "publisher": "NCBI Bookshelf",
+      "title": "Gastrointestinal Bleeding",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK537291/"
+    },
+    {
+      "source_id": "medlineplus_dka",
+      "publisher": "MedlinePlus",
+      "title": "Diabetic Ketoacidosis",
+      "url": "https://medlineplus.gov/ency/article/000320.htm"
+    },
+    {
+      "source_id": "medlineplus_hypoglycemia",
+      "publisher": "MedlinePlus",
+      "title": "Hypoglycemia",
+      "url": "https://medlineplus.gov/ency/article/000386.htm"
+    },
+    {
+      "source_id": "medlineplus_hhs",
+      "publisher": "MedlinePlus",
+      "title": "Hyperosmolar Hyperglycemic State",
+      "url": "https://medlineplus.gov/ency/article/000304.htm"
+    },
+    {
+      "source_id": "niams_giant_cell_arteritis",
+      "publisher": "NIAMS",
+      "title": "Polymyalgia Rheumatica and Giant Cell Arteritis",
+      "url": "https://www.niams.nih.gov/health-topics/polymyalgia-rheumatica-giant-cell-arteritis"
+    },
+    {
+      "source_id": "niddk_bladder_infection_uti",
+      "publisher": "NIDDK",
+      "title": "Bladder Infection (UTI) in Adults",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-infection-uti-in-adults"
+    },
+    {
+      "source_id": "cdc_viral_respiratory_illnesses",
+      "publisher": "CDC",
+      "title": "Respiratory Viruses",
+      "url": "https://www.cdc.gov/respiratory-viruses/index.html"
+    },
+    {
+      "source_id": "cdc_blood_clots",
+      "publisher": "CDC",
+      "title": "Blood Clots",
+      "url": "https://www.cdc.gov/blood-clots/about/index.html"
+    },
+    {
+      "source_id": "medlineplus_pneumothorax",
+      "publisher": "MedlinePlus",
+      "title": "Pneumothorax",
+      "url": "https://medlineplus.gov/ency/article/000087.htm"
+    },
+    {
+      "source_id": "ncbi_hypertensive_emergency",
+      "publisher": "NCBI Bookshelf",
+      "title": "Hypertensive Emergency",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK470371/"
+    },
+    {
+      "source_id": "medlineplus_intussusception",
+      "publisher": "MedlinePlus",
+      "title": "Intussusception",
+      "url": "https://medlineplus.gov/ency/article/000958.htm"
+    },
+    {
+      "source_id": "niddk_kidney_stones",
+      "publisher": "NIDDK",
+      "title": "Kidney Stones",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-stones"
+    },
+    {
+      "source_id": "medlineplus_gastroenteritis",
+      "publisher": "MedlinePlus",
+      "title": "Gastroenteritis",
+      "url": "https://medlineplus.gov/ency/article/000252.htm"
+    },
+    {
+      "source_id": "medlineplus_tension_headache",
+      "publisher": "MedlinePlus",
+      "title": "Tension Headache",
+      "url": "https://medlineplus.gov/ency/article/000797.htm"
+    },
+    {
+      "source_id": "cdc_concussion",
+      "publisher": "CDC",
+      "title": "Traumatic Brain Injury",
+      "url": "https://www.cdc.gov/traumatic-brain-injury/about/index.html"
+    },
+    {
+      "source_id": "ncbi_thyroid_storm",
+      "publisher": "NCBI Bookshelf",
+      "title": "Thyroid Storm",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK448095/"
+    },
+    {
+      "source_id": "niddk_hypothyroidism",
+      "publisher": "NIDDK",
+      "title": "Hypothyroidism",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/hypothyroidism"
+    },
+    {
+      "source_id": "niddk_adrenal_insufficiency",
+      "publisher": "NIDDK",
+      "title": "Adrenal Insufficiency and Addison's Disease",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/adrenal-insufficiency-addisons-disease"
+    },
+    {
+      "source_id": "nhlbi_anemia",
+      "publisher": "NHLBI",
+      "title": "Anemia",
+      "url": "https://www.nhlbi.nih.gov/health/anemia"
+    },
+    {
+      "source_id": "nci_cancer_symptoms",
+      "publisher": "National Cancer Institute",
+      "title": "Symptoms of Cancer",
+      "url": "https://www.cancer.gov/about-cancer/diagnosis-staging/symptoms"
+    },
+    {
+      "source_id": "nimh_depression",
+      "publisher": "NIMH",
+      "title": "Depression",
+      "url": "https://www.nimh.nih.gov/health/topics/depression"
+    },
+    {
+      "source_id": "medlineplus_delirium",
+      "publisher": "MedlinePlus",
+      "title": "Delirium",
+      "url": "https://medlineplus.gov/ency/article/000740.htm"
+    },
+    {
+      "source_id": "medlineplus_poisoning",
+      "publisher": "MedlinePlus",
+      "title": "Poisoning",
+      "url": "https://medlineplus.gov/poisoning.html"
+    },
+    {
+      "source_id": "ncbi_serotonin_syndrome",
+      "publisher": "NCBI Bookshelf",
+      "title": "Serotonin Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK482377/"
+    },
+    {
+      "source_id": "cdc_heat_stress",
+      "publisher": "CDC/NIOSH",
+      "title": "Heat-related Illnesses",
+      "url": "https://www.cdc.gov/niosh/heat-stress/about/illnesses.html"
+    },
+    {
+      "source_id": "cdc_hypothermia",
+      "publisher": "CDC",
+      "title": "Prevent Hypothermia and Frostbite",
+      "url": "https://www.cdc.gov/winter-weather/prevention/index.html"
+    },
+    {
+      "source_id": "cdc_cellulitis",
+      "publisher": "CDC",
+      "title": "About Cellulitis",
+      "url": "https://www.cdc.gov/group-a-strep/about/cellulitis.html"
+    },
+    {
+      "source_id": "cdc_necrotizing_fasciitis",
+      "publisher": "CDC",
+      "title": "About Necrotizing Fasciitis",
+      "url": "https://www.cdc.gov/group-a-strep/about/necrotizing-fasciitis.html"
+    },
+    {
+      "source_id": "ncbi_acute_liver_failure",
+      "publisher": "NCBI Bookshelf",
+      "title": "Acute Liver Failure",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK482374/"
+    },
+    {
+      "source_id": "ncbi_acute_kidney_injury",
+      "publisher": "NCBI Bookshelf",
+      "title": "Acute Kidney Injury",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK441896/"
+    },
+    {
+      "source_id": "cdc_covid",
+      "publisher": "CDC",
+      "title": "COVID-19",
+      "url": "https://www.cdc.gov/covid/index.html"
+    },
+    {
+      "source_id": "cdc_flu",
+      "publisher": "CDC",
+      "title": "Influenza",
+      "url": "https://www.cdc.gov/flu/index.htm"
+    },
+    {
+      "source_id": "cdc_tuberculosis",
+      "publisher": "CDC",
+      "title": "Tuberculosis",
+      "url": "https://www.cdc.gov/tb/index.html"
+    },
+    {
+      "source_id": "niddk_peptic_ulcer",
+      "publisher": "NIDDK",
+      "title": "Peptic Ulcers",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers"
+    },
+    {
+      "source_id": "niddk_gerd",
+      "publisher": "NIDDK",
+      "title": "Acid Reflux (GER and GERD) in Adults",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults"
+    },
+    {
+      "source_id": "ncbi_testicular_torsion",
+      "publisher": "NCBI Bookshelf",
+      "title": "Testicular Torsion",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK448199/"
     }
   ]
 }

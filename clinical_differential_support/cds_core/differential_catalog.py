@@ -1235,6 +1235,251 @@ SOURCES = {
         "title": "Postpartum Hemorrhage",
         "url": "https://www.ncbi.nlm.nih.gov/books/NBK499988/",
     },
+    "ncbi_septic_arthritis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Septic Arthritis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK538176/",
+    },
+    "ncbi_compartment_syndrome": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Acute Compartment Syndrome",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK448124/",
+    },
+    "ncbi_subarachnoid_hemorrhage": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Subarachnoid Hemorrhage",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK441958/",
+    },
+    "niddk_appendicitis": {
+        "publisher": "NIDDK",
+        "title": "Appendicitis",
+        "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/appendicitis",
+    },
+    "ncbi_anaphylaxis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Anaphylaxis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482124/",
+    },
+    "ncbi_epiglottitis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Epiglottitis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK430960/",
+    },
+    "ncbi_peritonsillar_abscess": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Peritonsillar Abscess",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519520/",
+    },
+    "ncbi_retropharyngeal_abscess": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Retropharyngeal Abscess",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK441873/",
+    },
+    "cdc_pneumonia": {
+        "publisher": "CDC",
+        "title": "Pneumonia",
+        "url": "https://www.cdc.gov/pneumonia/index.html",
+    },
+    "nhlbi_heart_failure": {
+        "publisher": "NHLBI",
+        "title": "Heart Failure",
+        "url": "https://www.nhlbi.nih.gov/health/heart-failure",
+    },
+    "nhlbi_asthma": {
+        "publisher": "NHLBI",
+        "title": "Asthma",
+        "url": "https://www.nhlbi.nih.gov/health/asthma",
+    },
+    "nhlbi_copd": {
+        "publisher": "NHLBI",
+        "title": "COPD",
+        "url": "https://www.nhlbi.nih.gov/health/copd",
+    },
+    "nei_glaucoma": {
+        "publisher": "National Eye Institute",
+        "title": "Glaucoma",
+        "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma",
+    },
+    "ncbi_gi_bleeding": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Gastrointestinal Bleeding",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK537291/",
+    },
+    "medlineplus_dka": {
+        "publisher": "MedlinePlus",
+        "title": "Diabetic Ketoacidosis",
+        "url": "https://medlineplus.gov/ency/article/000320.htm",
+    },
+    "medlineplus_hypoglycemia": {
+        "publisher": "MedlinePlus",
+        "title": "Hypoglycemia",
+        "url": "https://medlineplus.gov/ency/article/000386.htm",
+    },
+    "medlineplus_hhs": {
+        "publisher": "MedlinePlus",
+        "title": "Hyperosmolar Hyperglycemic State",
+        "url": "https://medlineplus.gov/ency/article/000304.htm",
+    },
+    "niams_giant_cell_arteritis": {
+        "publisher": "NIAMS",
+        "title": "Polymyalgia Rheumatica and Giant Cell Arteritis",
+        "url": "https://www.niams.nih.gov/health-topics/polymyalgia-rheumatica-giant-cell-arteritis",
+    },
+    "niddk_bladder_infection_uti": {
+        "publisher": "NIDDK",
+        "title": "Bladder Infection (UTI) in Adults",
+        "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-infection-uti-in-adults",
+    },
+    "cdc_viral_respiratory_illnesses": {
+        "publisher": "CDC",
+        "title": "Respiratory Viruses",
+        "url": "https://www.cdc.gov/respiratory-viruses/index.html",
+    },
+    "cdc_blood_clots": {
+        "publisher": "CDC",
+        "title": "Blood Clots",
+        "url": "https://www.cdc.gov/blood-clots/about/index.html",
+    },
+    "medlineplus_pneumothorax": {
+        "publisher": "MedlinePlus",
+        "title": "Pneumothorax",
+        "url": "https://medlineplus.gov/ency/article/000087.htm",
+    },
+    "ncbi_hypertensive_emergency": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Hypertensive Emergency",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK470371/",
+    },
+    "medlineplus_intussusception": {
+        "publisher": "MedlinePlus",
+        "title": "Intussusception",
+        "url": "https://medlineplus.gov/ency/article/000958.htm",
+    },
+    "niddk_kidney_stones": {
+        "publisher": "NIDDK",
+        "title": "Kidney Stones",
+        "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/kidney-stones",
+    },
+    "medlineplus_gastroenteritis": {
+        "publisher": "MedlinePlus",
+        "title": "Gastroenteritis",
+        "url": "https://medlineplus.gov/ency/article/000252.htm",
+    },
+    "medlineplus_tension_headache": {
+        "publisher": "MedlinePlus",
+        "title": "Tension Headache",
+        "url": "https://medlineplus.gov/ency/article/000797.htm",
+    },
+    "cdc_concussion": {
+        "publisher": "CDC",
+        "title": "Traumatic Brain Injury",
+        "url": "https://www.cdc.gov/traumatic-brain-injury/about/index.html",
+    },
+    "ncbi_thyroid_storm": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Thyroid Storm",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK448095/",
+    },
+    "niddk_hypothyroidism": {
+        "publisher": "NIDDK",
+        "title": "Hypothyroidism",
+        "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/hypothyroidism",
+    },
+    "niddk_adrenal_insufficiency": {
+        "publisher": "NIDDK",
+        "title": "Adrenal Insufficiency and Addison's Disease",
+        "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/adrenal-insufficiency-addisons-disease",
+    },
+    "nhlbi_anemia": {
+        "publisher": "NHLBI",
+        "title": "Anemia",
+        "url": "https://www.nhlbi.nih.gov/health/anemia",
+    },
+    "nci_cancer_symptoms": {
+        "publisher": "National Cancer Institute",
+        "title": "Symptoms of Cancer",
+        "url": "https://www.cancer.gov/about-cancer/diagnosis-staging/symptoms",
+    },
+    "nimh_depression": {
+        "publisher": "NIMH",
+        "title": "Depression",
+        "url": "https://www.nimh.nih.gov/health/topics/depression",
+    },
+    "medlineplus_delirium": {
+        "publisher": "MedlinePlus",
+        "title": "Delirium",
+        "url": "https://medlineplus.gov/ency/article/000740.htm",
+    },
+    "medlineplus_poisoning": {
+        "publisher": "MedlinePlus",
+        "title": "Poisoning",
+        "url": "https://medlineplus.gov/poisoning.html",
+    },
+    "ncbi_serotonin_syndrome": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Serotonin Syndrome",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482377/",
+    },
+    "cdc_heat_stress": {
+        "publisher": "CDC/NIOSH",
+        "title": "Heat-related Illnesses",
+        "url": "https://www.cdc.gov/niosh/heat-stress/about/illnesses.html",
+    },
+    "cdc_hypothermia": {
+        "publisher": "CDC",
+        "title": "Prevent Hypothermia and Frostbite",
+        "url": "https://www.cdc.gov/winter-weather/prevention/index.html",
+    },
+    "cdc_cellulitis": {
+        "publisher": "CDC",
+        "title": "About Cellulitis",
+        "url": "https://www.cdc.gov/group-a-strep/about/cellulitis.html",
+    },
+    "cdc_necrotizing_fasciitis": {
+        "publisher": "CDC",
+        "title": "About Necrotizing Fasciitis",
+        "url": "https://www.cdc.gov/group-a-strep/about/necrotizing-fasciitis.html",
+    },
+    "ncbi_acute_liver_failure": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Acute Liver Failure",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482374/",
+    },
+    "ncbi_acute_kidney_injury": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Acute Kidney Injury",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK441896/",
+    },
+    "cdc_covid": {
+        "publisher": "CDC",
+        "title": "COVID-19",
+        "url": "https://www.cdc.gov/covid/index.html",
+    },
+    "cdc_flu": {
+        "publisher": "CDC",
+        "title": "Influenza",
+        "url": "https://www.cdc.gov/flu/index.htm",
+    },
+    "cdc_tuberculosis": {
+        "publisher": "CDC",
+        "title": "Tuberculosis",
+        "url": "https://www.cdc.gov/tb/index.html",
+    },
+    "niddk_peptic_ulcer": {
+        "publisher": "NIDDK",
+        "title": "Peptic Ulcers",
+        "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers",
+    },
+    "niddk_gerd": {
+        "publisher": "NIDDK",
+        "title": "Acid Reflux (GER and GERD) in Adults",
+        "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/acid-reflux-ger-gerd-adults",
+    },
+    "ncbi_testicular_torsion": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Testicular Torsion",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK448199/",
+    },
 }
 
 FINDING_GROUPS = [
@@ -5952,3 +6197,62 @@ for condition in SIXTH_GENERALIST_CONDITION_BATCH:
         condition["source_ids"].append(secondary_source_id)
 
 CONDITIONS.extend(SIXTH_GENERALIST_CONDITION_BATCH)
+
+CATALOG_SECONDARY_SOURCE_IDS = {
+    "stroke_tia": "merck_professional",
+    "kawasaki_disease": "merck_professional",
+    "septic_arthritis": "ncbi_septic_arthritis",
+    "acute_compartment_syndrome": "ncbi_compartment_syndrome",
+    "subarachnoid_hemorrhage": "ncbi_subarachnoid_hemorrhage",
+    "appendicitis": "niddk_appendicitis",
+    "anaphylaxis": "ncbi_anaphylaxis",
+    "epiglottitis": "ncbi_epiglottitis",
+    "peritonsillar_abscess": "ncbi_peritonsillar_abscess",
+    "retropharyngeal_abscess": "ncbi_retropharyngeal_abscess",
+    "pneumonia": "cdc_pneumonia",
+    "heart_failure_exacerbation": "nhlbi_heart_failure",
+    "asthma_copd_exacerbation": "nhlbi_asthma",
+    "acute_angle_closure_glaucoma": "nei_glaucoma",
+    "gi_bleed": "ncbi_gi_bleeding",
+    "diabetic_ketoacidosis": "medlineplus_dka",
+    "hypoglycemia": "medlineplus_hypoglycemia",
+    "hyperosmolar_hyperglycemic_state": "medlineplus_hhs",
+    "temporal_arteritis": "niams_giant_cell_arteritis",
+    "pyelonephritis": "niddk_bladder_infection_uti",
+    "viral_respiratory_infection": "cdc_viral_respiratory_illnesses",
+    "deep_vein_thrombosis": "cdc_blood_clots",
+    "pneumothorax": "medlineplus_pneumothorax",
+    "hypertensive_emergency": "ncbi_hypertensive_emergency",
+    "peritonitis": "merck_professional",
+    "intussusception": "medlineplus_intussusception",
+    "nephrolithiasis": "niddk_kidney_stones",
+    "uncomplicated_uti": "niddk_bladder_infection_uti",
+    "gastroenteritis": "medlineplus_gastroenteritis",
+    "tension_type_headache": "medlineplus_tension_headache",
+    "concussion": "cdc_concussion",
+    "thyroid_storm": "ncbi_thyroid_storm",
+    "hypothyroidism": "niddk_hypothyroidism",
+    "adrenal_crisis": "niddk_adrenal_insufficiency",
+    "anemia": "nhlbi_anemia",
+    "malignancy_red_flag": "nci_cancer_symptoms",
+    "depression": "nimh_depression",
+    "delirium": "medlineplus_delirium",
+    "medication_toxicity": "medlineplus_poisoning",
+    "serotonin_syndrome": "ncbi_serotonin_syndrome",
+    "heat_stroke": "cdc_heat_stress",
+    "hypothermia": "cdc_hypothermia",
+    "cellulitis": "cdc_cellulitis",
+    "necrotizing_soft_tissue_infection": "cdc_necrotizing_fasciitis",
+    "acute_liver_failure": "ncbi_acute_liver_failure",
+    "acute_kidney_injury": "ncbi_acute_kidney_injury",
+    "covid_influenza": "cdc_covid",
+    "tuberculosis": "cdc_tuberculosis",
+    "peptic_ulcer_disease": "niddk_peptic_ulcer",
+    "gerd": "niddk_gerd",
+    "testicular_torsion": "ncbi_testicular_torsion",
+}
+
+for condition in CONDITIONS:
+    secondary_source_id = CATALOG_SECONDARY_SOURCE_IDS.get(condition["slug"])
+    if secondary_source_id and secondary_source_id not in condition["source_ids"]:
+        condition["source_ids"].append(secondary_source_id)
