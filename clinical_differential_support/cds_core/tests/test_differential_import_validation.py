@@ -4,7 +4,7 @@ from io import StringIO
 from django.core.management import call_command
 from django.test import SimpleTestCase
 
-from cds_core.differential_catalog import CONDITIONS, SOURCES
+from cds_core.differential_catalog import CATALOG_VERSION, CONDITIONS, SOURCES
 from cds_core.differential_catalog_import import (
     build_general_differential_batch_template,
     validate_general_differential_review_payload,
@@ -81,7 +81,7 @@ class GeneralDifferentialImportValidationTests(SimpleTestCase):
 
         runtime_catalog = get_general_differential_runtime_catalog()
 
-        self.assertEqual(runtime_catalog["catalog_version"], "general-differential-starter-2026-06-29")
+        self.assertEqual(runtime_catalog["catalog_version"], CATALOG_VERSION)
         self.assertEqual(len(runtime_catalog["conditions"]), len(CONDITIONS))
         self.assertEqual(len(runtime_catalog["sources"]), len(SOURCES))
         self.assertNotIn("review_status", runtime_catalog["conditions"][0])

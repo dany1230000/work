@@ -2,6 +2,7 @@ from unittest.mock import patch
 
 from django.test import SimpleTestCase
 
+from cds_core.differential_catalog import CATALOG_VERSION
 from cds_core.general_differential import (
     evaluate_general_differential,
     get_general_differential_catalog_summary,
@@ -80,7 +81,7 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertIn("ECG", " ".join(top["ask_next"]))
         self.assertEqual(
             result["coverage"]["catalog_version"],
-            "general-differential-starter-2026-06-29",
+            CATALOG_VERSION,
         )
 
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
@@ -325,6 +326,64 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("allergic contact dermatitis", "allergic_contact_dermatitis"),
             ("adverse drug reaction", "adverse_drug_reaction"),
             ("chronic venous insufficiency", "chronic_venous_insufficiency"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_sixth_generalist_batch_adds_50_more_searchable_conditions(self):
+        expectations = [
+            ("cushing syndrome", "cushing_syndrome"),
+            ("pituitary apoplexy", "pituitary_apoplexy"),
+            ("pheochromocytoma", "pheochromocytoma"),
+            ("diabetes insipidus", "diabetes_insipidus"),
+            ("primary hyperparathyroidism", "primary_hyperparathyroidism"),
+            ("hypoparathyroidism", "hypoparathyroidism"),
+            ("renal artery stenosis", "renal_artery_stenosis"),
+            ("polycystic kidney disease", "polycystic_kidney_disease"),
+            ("interstitial nephritis", "interstitial_nephritis"),
+            ("bladder cancer", "bladder_cancer"),
+            ("renal cell carcinoma", "renal_cell_carcinoma"),
+            ("achalasia", "achalasia"),
+            ("gastroparesis", "gastroparesis"),
+            ("small intestinal bacterial overgrowth", "small_intestinal_bacterial_overgrowth"),
+            ("bronchiectasis", "bronchiectasis"),
+            ("aspiration pneumonia", "aspiration_pneumonia"),
+            ("lung abscess", "lung_abscess"),
+            ("mitral regurgitation", "mitral_regurgitation"),
+            ("mitral stenosis", "mitral_stenosis"),
+            ("hypertrophic cardiomyopathy", "hypertrophic_cardiomyopathy"),
+            ("supraventricular tachycardia", "supraventricular_tachycardia"),
+            ("ventricular tachycardia", "ventricular_tachycardia"),
+            ("normal pressure hydrocephalus", "normal_pressure_hydrocephalus"),
+            ("amyotrophic lateral sclerosis", "amyotrophic_lateral_sclerosis"),
+            ("huntington disease", "huntington_disease"),
+            ("restless legs syndrome", "restless_legs_syndrome"),
+            ("essential tremor", "essential_tremor"),
+            ("somatic symptom disorder", "somatic_symptom_disorder"),
+            ("adjustment disorder", "adjustment_disorder"),
+            ("autism spectrum disorder", "autism_spectrum_disorder"),
+            ("adhd", "attention_deficit_hyperactivity_disorder"),
+            ("insomnia disorder", "insomnia_disorder"),
+            ("dermatomyositis", "dermatomyositis"),
+            ("polymyositis", "polymyositis"),
+            ("mixed connective tissue disease", "mixed_connective_tissue_disease"),
+            ("behcet disease", "behcet_disease"),
+            ("dengue", "dengue"),
+            ("malaria", "malaria"),
+            ("typhoid fever", "typhoid_fever"),
+            ("syphilis", "syphilis"),
+            ("gonorrhea", "gonorrhea"),
+            ("chlamydia", "chlamydia"),
+            ("varicella", "varicella"),
+            ("rosacea", "rosacea"),
+            ("tinea corporis", "tinea_corporis"),
+            ("impetigo", "impetigo"),
+            ("hidradenitis suppurativa", "hidradenitis_suppurativa"),
+            ("melanoma", "melanoma"),
+            ("placenta previa", "placenta_previa"),
+            ("postpartum hemorrhage", "postpartum_hemorrhage"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):

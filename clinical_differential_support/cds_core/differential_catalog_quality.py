@@ -10,7 +10,7 @@ from .differential_catalog import CATALOG_VERSION, CONDITIONS, SOURCES, URGENCY_
 
 MIN_PUBLIC_CONDITIONS = 50
 MIN_PUBLIC_SOURCES = 5
-EXPANSION_TARGET_CONDITIONS = 200
+EXPANSION_TARGET_CONDITIONS = 250
 
 REQUIRED_CONDITION_FIELDS = (
     "slug",
@@ -213,6 +213,8 @@ def _build_next_actions(
     system_buckets: dict[str, dict[str, Any]],
     warnings: list[dict[str, Any]],
 ) -> list[dict[str, Any]]:
+    expansion_target = summary["expansion_target_condition_count"]
+    expansion_done = summary["condition_count"] >= expansion_target
     actions = [
         {
             "priority": 1,
@@ -225,12 +227,12 @@ def _build_next_actions(
         },
         {
             "priority": 2,
-            "action_id": "expand_condition_catalog_to_200",
-            "status": "pending_import_gate",
-            "title_zh": "擴充到 200 個高優先鑑別條目",
-            "title_en": "Expand to 200 high-priority differential entries",
-            "reason_zh": "任何病人主訴都能初步整理，需要更多跨專科常見病、急症與不能漏掉的疾病。",
-            "reason_en": "Broad first-pass differential support needs more common, emergency, and must-not-miss diseases across specialties.",
+            "action_id": f"expand_condition_catalog_to_{expansion_target}",
+            "status": "done" if expansion_done else "pending_import_gate",
+            "title_zh": f"??? {expansion_target} ????????",
+            "title_en": f"Expand to {expansion_target} high-priority differential entries",
+            "reason_zh": f"?? {summary['condition_count']} / {expansion_target} ???????????????????????????????????",
+            "reason_en": f"Current coverage is {summary['condition_count']} / {expansion_target}; broad first-pass differential support needs more common, emergency, and must-not-miss diseases across specialties.",
         },
     ]
 

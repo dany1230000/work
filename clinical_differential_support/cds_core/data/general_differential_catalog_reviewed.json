@@ -1,17 +1,17 @@
-﻿{
+{
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-06-29",
-    "condition_count": 200,
+    "catalog_version": "general-differential-starter-2026-06-30",
+    "condition_count": 250,
     "source_count": 195,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-06-29",
-      "condition_count": 200,
+      "catalog_version": "general-differential-starter-2026-06-30",
+      "condition_count": 250,
       "source_count": 195,
       "blocking_issue_count": 0,
-      "warning_count": 51,
+      "warning_count": 101,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 200
+      "expansion_target_condition_count": 250
     }
   },
   "safety_scope": {
@@ -5840,6 +5840,1332 @@
       ],
       "source_ids": [
         "merck_chronic_venous_insufficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cushing_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5eab\u6b23\u6c0f\u75c7\u5019\u7fa4",
+      "name_en": "Cushing syndrome",
+      "system": "Endocrine/Metabolic",
+      "urgency": "soon",
+      "summary_zh": "\u5eab\u6b23\u6c0f\u75c7\u5019\u7fa4 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Consider when fatigue, bruising, hyperglycemia, infection risk, or characteristic weight and skin changes suggest glucocorticoid excess.",
+      "signals": {
+        "fatigue": 2,
+        "easy_bruising_bleeding": 2,
+        "severe_hyperglycemia_dehydration_confusion": 1
+      },
+      "synonyms": [
+        "cushing syndrome",
+        "hypercortisolism",
+        "cushing disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check steroid exposure, weight and skin changes, blood pressure, glucose, infection risk, and endocrine review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pituitary_apoplexy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8166\u4e0b\u5782\u9ad4\u5352\u4e2d",
+      "name_en": "Pituitary apoplexy",
+      "system": "Endocrine/Neurologic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u8166\u4e0b\u5782\u9ad4\u5352\u4e2d \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Sudden severe headache with visual symptoms, altered mental status, or hemodynamic instability should include pituitary apoplexy.",
+      "signals": {
+        "thunderclap_headache": 5,
+        "visual_disturbance": 4,
+        "altered_mental_status": 3,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "pituitary apoplexy",
+        "pituitary hemorrhage",
+        "sudden headache visual loss"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check visual fields, ocular movement, adrenal crisis features, anticoagulant exposure, and urgent imaging or endocrine-neurosurgical review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pheochromocytoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u55dc\u927b\u7d30\u80de\u7624",
+      "name_en": "Pheochromocytoma",
+      "system": "Endocrine/Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "\u55dc\u927b\u7d30\u80de\u7624 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Episodic palpitations, sweating, tachycardia, syncope, or severe paroxysmal symptoms should include pheochromocytoma.",
+      "signals": {
+        "palpitations": 4,
+        "diaphoresis": 4,
+        "tachycardia": 3,
+        "syncope": 1
+      },
+      "synonyms": [
+        "pheochromocytoma",
+        "paraganglioma",
+        "catecholamine tumor"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check episodic hypertension, headache, sweating, palpitations, adrenal mass history, and endocrine testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "diabetes_insipidus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5c3f\u5d29\u75c7",
+      "name_en": "Diabetes insipidus",
+      "system": "Endocrine/Renal",
+      "urgency": "soon",
+      "summary_zh": "\u5c3f\u5d29\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Extreme thirst, polyuria, dehydration, hypernatremia concern, or pituitary risk should include diabetes insipidus.",
+      "signals": {
+        "extreme_thirst_polyuria": 8,
+        "poor_oral_intake_dehydration": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "diabetes insipidus",
+        "central diabetes insipidus",
+        "nephrogenic diabetes insipidus"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check urine volume, thirst, serum sodium context, medication exposure, pituitary history, and dehydration severity."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "primary_hyperparathyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u539f\u767c\u6027\u526f\u7532\u72c0\u817a\u529f\u80fd\u4ea2\u9032",
+      "name_en": "Primary hyperparathyroidism",
+      "system": "Endocrine/Metabolic/Renal",
+      "urgency": "soon",
+      "summary_zh": "\u539f\u767c\u6027\u526f\u7532\u72c0\u817a\u529f\u80fd\u4ea2\u9032 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Fatigue, constipation, kidney stone context, bone pain, or hypercalcemia concern should include primary hyperparathyroidism.",
+      "signals": {
+        "fatigue": 2,
+        "constipation_obstipation": 2,
+        "flank_pain": 2,
+        "bone_back_pain": 2
+      },
+      "synonyms": [
+        "primary hyperparathyroidism",
+        "hyperparathyroidism",
+        "parathyroid adenoma"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check calcium trend, kidney stones, fractures, constipation, neurocognitive symptoms, and endocrine review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypoparathyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u526f\u7532\u72c0\u817a\u529f\u80fd\u4f4e\u4e0b",
+      "name_en": "Hypoparathyroidism",
+      "system": "Endocrine/Metabolic",
+      "urgency": "soon",
+      "summary_zh": "\u526f\u7532\u72c0\u817a\u529f\u80fd\u4f4e\u4e0b \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Seizure risk, paresthesia history, cramps, palpitations, or postsurgical calcium concern should include hypoparathyroidism.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "palpitations": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "hypoparathyroidism",
+        "low parathyroid hormone",
+        "hypocalcemia hypoparathyroidism"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check calcium symptoms, thyroid or neck surgery history, seizure or arrhythmia risk, and electrolyte review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "renal_artery_stenosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u814e\u52d5\u8108\u72f9\u7a84",
+      "name_en": "Renal artery stenosis",
+      "system": "Renal/Vascular/Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "\u814e\u52d5\u8108\u72f9\u7a84 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Resistant hypertension context, kidney dysfunction, pulmonary edema, or vascular disease should include renal artery stenosis.",
+      "signals": {
+        "decreased_urine_output": 2,
+        "orthopnea_edema": 2,
+        "acute_limb_pain_pallor_pulselessness": 1
+      },
+      "synonyms": [
+        "renal artery stenosis",
+        "renovascular hypertension",
+        "renal vascular disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check kidney function trend, resistant hypertension context, vascular disease, flash pulmonary edema, and renal vascular review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "polycystic_kidney_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u591a\u56ca\u814e\u75c5",
+      "name_en": "Polycystic kidney disease",
+      "system": "Renal/Genetic",
+      "urgency": "routine",
+      "summary_zh": "\u591a\u56ca\u814e\u75c5 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Flank pain, hematuria context, kidney dysfunction, hypertension, or family history should include polycystic kidney disease.",
+      "signals": {
+        "flank_pain": 4,
+        "decreased_urine_output": 2
+      },
+      "synonyms": [
+        "polycystic kidney disease",
+        "autosomal dominant polycystic kidney disease",
+        "adpkd"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check family history, kidney size or cyst history, flank pain, urinary symptoms, blood pressure, and renal imaging context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "interstitial_nephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9593\u8cea\u6027\u814e\u708e",
+      "name_en": "Interstitial nephritis",
+      "system": "Renal/Medication safety/Allergy",
+      "urgency": "soon",
+      "summary_zh": "\u9593\u8cea\u6027\u814e\u708e \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "New medication exposure with rash, fever, kidney dysfunction, or urinary findings should include interstitial nephritis.",
+      "signals": {
+        "new_medication_exposure": 4,
+        "rash": 2,
+        "fever": 2,
+        "decreased_urine_output": 3
+      },
+      "synonyms": [
+        "interstitial nephritis",
+        "acute interstitial nephritis",
+        "drug induced nephritis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check recent antibiotics, NSAIDs or PPIs, rash, fever, eosinophilia context, urine findings, and renal review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bladder_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8180\u80f1\u764c",
+      "name_en": "Bladder cancer",
+      "system": "Urologic/Oncology",
+      "urgency": "soon",
+      "summary_zh": "\u8180\u80f1\u764c \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Hematuria context, irritative urinary symptoms, weight loss, or smoking/occupational risk should include bladder cancer.",
+      "signals": {
+        "dysuria": 2,
+        "inability_to_void": 1,
+        "weight_loss": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "bladder cancer",
+        "urothelial carcinoma",
+        "transitional cell carcinoma"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check visible or microscopic hematuria, smoking and occupational risk, urinary symptoms, weight loss, and urology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "renal_cell_carcinoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u814e\u7d30\u80de\u764c",
+      "name_en": "Renal cell carcinoma",
+      "system": "Renal/Oncology",
+      "urgency": "soon",
+      "summary_zh": "\u814e\u7d30\u80de\u764c \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Flank pain, weight loss, fatigue, hematuria context, or renal mass history should include renal cell carcinoma.",
+      "signals": {
+        "flank_pain": 4,
+        "weight_loss": 3,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "renal cell carcinoma",
+        "kidney cancer",
+        "renal cancer"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check hematuria context, flank mass or pain, constitutional symptoms, renal imaging history, and urology or oncology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "achalasia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8cc1\u9580\u5931\u5f1b\u7de9\u75c7",
+      "name_en": "Achalasia",
+      "system": "Gastrointestinal",
+      "urgency": "routine",
+      "summary_zh": "\u8cc1\u9580\u5931\u5f1b\u7de9\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Progressive dysphagia, regurgitation, vomiting, weight loss, or aspiration context should include achalasia.",
+      "signals": {
+        "vomiting": 3,
+        "weight_loss": 3,
+        "cough_sputum": 1
+      },
+      "synonyms": [
+        "achalasia",
+        "esophageal achalasia",
+        "progressive dysphagia regurgitation"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check solid and liquid dysphagia, regurgitation, aspiration symptoms, weight loss, and gastroenterology testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gastroparesis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80c3\u8f15\u7671",
+      "name_en": "Gastroparesis",
+      "system": "Gastrointestinal/Endocrine",
+      "urgency": "routine",
+      "summary_zh": "\u80c3\u8f15\u7671 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Chronic nausea or vomiting, early satiety context, diabetes, weight loss, or dehydration should include gastroparesis.",
+      "signals": {
+        "vomiting": 4,
+        "severe_hyperglycemia_dehydration_confusion": 2,
+        "weight_loss": 2,
+        "poor_oral_intake_dehydration": 2
+      },
+      "synonyms": [
+        "gastroparesis",
+        "delayed gastric emptying",
+        "diabetic gastroparesis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check diabetes history, medication contributors, vomiting pattern, dehydration, weight change, and gastric emptying evaluation context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "small_intestinal_bacterial_overgrowth",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5c0f\u8178\u7d30\u83cc\u904e\u5ea6\u589e\u751f",
+      "name_en": "Small intestinal bacterial overgrowth",
+      "system": "Gastrointestinal/Nutrition",
+      "urgency": "routine",
+      "summary_zh": "\u5c0f\u8178\u7d30\u83cc\u904e\u5ea6\u589e\u751f \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Bloating, abdominal discomfort, diarrhea context, malabsorption, weight loss, or risk anatomy should include SIBO.",
+      "signals": {
+        "abdominal_pain": 2,
+        "bloody_diarrhea": 1,
+        "weight_loss": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "small intestinal bacterial overgrowth",
+        "sibo",
+        "bacterial overgrowth"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check bloating, stool pattern, prior bowel surgery, motility disorders, malabsorption features, and GI review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bronchiectasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u652f\u6c23\u7ba1\u64f4\u5f35\u75c7",
+      "name_en": "Bronchiectasis",
+      "system": "Pulmonary/Infectious",
+      "urgency": "soon",
+      "summary_zh": "\u652f\u6c23\u7ba1\u64f4\u5f35\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Chronic productive cough, recurrent infections, hemoptysis, dyspnea, or abnormal sputum should include bronchiectasis.",
+      "signals": {
+        "cough_sputum": 5,
+        "hemoptysis": 3,
+        "dyspnea": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "bronchiectasis",
+        "chronic productive cough",
+        "recurrent chest infections"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check sputum volume, recurrent infections, hemoptysis, oxygenation, prior imaging, and pulmonary review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "aspiration_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5438\u5165\u6027\u80ba\u708e",
+      "name_en": "Aspiration pneumonia",
+      "system": "Pulmonary/Infectious/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "\u5438\u5165\u6027\u80ba\u708e \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Cough, fever, respiratory distress, altered mental status, or swallowing/aspiration risk should include aspiration pneumonia.",
+      "signals": {
+        "cough_sputum": 4,
+        "fever": 2,
+        "respiratory_distress": 3,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "aspiration pneumonia",
+        "aspiration pneumonitis",
+        "swallowing aspiration pneumonia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check aspiration event, swallowing risk, oxygenation, sepsis features, imaging context, and airway protection need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lung_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80ba\u81bf\u760d",
+      "name_en": "Lung abscess",
+      "system": "Pulmonary/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u80ba\u81bf\u760d \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Fever, productive cough, weight loss, hemoptysis, aspiration risk, or cavitary lung lesion context should include lung abscess.",
+      "signals": {
+        "fever": 3,
+        "cough_sputum": 4,
+        "hemoptysis": 2,
+        "weight_loss": 2
+      },
+      "synonyms": [
+        "lung abscess",
+        "pulmonary abscess",
+        "cavitary pneumonia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check aspiration risk, sputum odor or volume, hemoptysis, fever duration, imaging context, and infectious disease or pulmonary review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mitral_regurgitation",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e8c\u5c16\u74e3\u9006\u6d41",
+      "name_en": "Mitral regurgitation",
+      "system": "Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "\u4e8c\u5c16\u74e3\u9006\u6d41 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Dyspnea, palpitations, edema, new murmur, or heart failure context should include mitral regurgitation.",
+      "signals": {
+        "dyspnea": 3,
+        "palpitations": 2,
+        "orthopnea_edema": 2,
+        "new_murmur_or_valve_device": 5
+      },
+      "synonyms": [
+        "mitral regurgitation",
+        "mitral insufficiency",
+        "mr valve disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check murmur history, exertional dyspnea, atrial fibrillation symptoms, volume overload, and echocardiography context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mitral_stenosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e8c\u5c16\u74e3\u72f9\u7a84",
+      "name_en": "Mitral stenosis",
+      "system": "Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "\u4e8c\u5c16\u74e3\u72f9\u7a84 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Dyspnea, hemoptysis, palpitations, new murmur, or pulmonary edema context should include mitral stenosis.",
+      "signals": {
+        "dyspnea": 3,
+        "hemoptysis": 2,
+        "palpitations": 2,
+        "new_murmur_or_valve_device": 5,
+        "orthopnea_edema": 2
+      },
+      "synonyms": [
+        "mitral stenosis",
+        "rheumatic mitral stenosis",
+        "ms valve disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rheumatic history, atrial fibrillation symptoms, pulmonary edema, hemoptysis, and echocardiography context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypertrophic_cardiomyopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u80a5\u539a\u578b\u5fc3\u808c\u75c5",
+      "name_en": "Hypertrophic cardiomyopathy",
+      "system": "Cardiovascular/Genetic",
+      "urgency": "urgent",
+      "summary_zh": "\u80a5\u539a\u578b\u5fc3\u808c\u75c5 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Exertional syncope, palpitations, chest pain, family history, or sudden death risk context should include hypertrophic cardiomyopathy.",
+      "signals": {
+        "exertional_syncope": 5,
+        "syncope": 3,
+        "palpitations": 2,
+        "chest_pain": 2
+      },
+      "synonyms": [
+        "hypertrophic cardiomyopathy",
+        "hcm",
+        "hypertrophic obstructive cardiomyopathy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exertional symptoms, family history of sudden death, murmur, ECG context, and cardiology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "supraventricular_tachycardia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e0a\u5fc3\u5ba4\u5fc3\u640f\u904e\u901f",
+      "name_en": "Supraventricular tachycardia",
+      "system": "Cardiovascular",
+      "urgency": "urgent",
+      "summary_zh": "\u4e0a\u5fc3\u5ba4\u5fc3\u640f\u904e\u901f \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Abrupt palpitations, tachycardia, dyspnea, chest discomfort, or syncope should include supraventricular tachycardia.",
+      "signals": {
+        "palpitations": 5,
+        "tachycardia": 5,
+        "dyspnea": 1,
+        "syncope": 2
+      },
+      "synonyms": [
+        "supraventricular tachycardia",
+        "svt",
+        "paroxysmal svt"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rhythm onset and offset, ECG if available, hemodynamic stability, triggers, and urgent review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ventricular_tachycardia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5fc3\u5ba4\u5fc3\u640f\u904e\u901f",
+      "name_en": "Ventricular tachycardia",
+      "system": "Cardiovascular/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u5fc3\u5ba4\u5fc3\u640f\u904e\u901f \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Tachycardia with syncope, chest pain, hemodynamic instability, or structural heart disease should include ventricular tachycardia.",
+      "signals": {
+        "tachycardia": 5,
+        "syncope": 4,
+        "hemodynamic_instability": 5,
+        "chest_pain": 2,
+        "palpitations": 3
+      },
+      "synonyms": [
+        "ventricular tachycardia",
+        "vtach",
+        "wide complex tachycardia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check hemodynamic stability, ECG rhythm width, cardiac history, electrolyte context, and immediate escalation need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "normal_pressure_hydrocephalus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5e38\u58d3\u6027\u6c34\u8166",
+      "name_en": "Normal pressure hydrocephalus",
+      "system": "Neurologic/Geriatric",
+      "urgency": "routine",
+      "summary_zh": "\u5e38\u58d3\u6027\u6c34\u8166 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Gait change, cognitive change, urinary symptoms context, or progressive functional decline should include normal pressure hydrocephalus.",
+      "signals": {
+        "altered_mental_status": 2,
+        "neurologic_deficit": 2,
+        "inability_to_void": 1
+      },
+      "synonyms": [
+        "normal pressure hydrocephalus",
+        "nph",
+        "gait cognitive urinary triad"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check gait history, cognition, urinary symptoms, imaging context, and neurology or neurosurgery review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "amyotrophic_lateral_sclerosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u808c\u840e\u7e2e\u6027\u5074\u7d22\u786c\u5316\u75c7",
+      "name_en": "Amyotrophic lateral sclerosis",
+      "system": "Neurologic/Neuromuscular",
+      "urgency": "soon",
+      "summary_zh": "\u808c\u840e\u7e2e\u6027\u5074\u7d22\u786c\u5316\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Progressive weakness, bulbar symptoms, dyspnea, weight loss, or mixed upper/lower motor neuron context should include ALS.",
+      "signals": {
+        "progressive_bilateral_leg_weakness": 5,
+        "dyspnea": 1,
+        "weight_loss": 2,
+        "neurologic_deficit": 3
+      },
+      "synonyms": [
+        "amyotrophic lateral sclerosis",
+        "als",
+        "motor neuron disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check progression, bulbar symptoms, respiratory symptoms, fasciculations or weakness pattern, and neuromuscular review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "huntington_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4ea8\u4e01\u9813\u821e\u8e48\u75c7",
+      "name_en": "Huntington disease",
+      "system": "Neurologic/Genetic/Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u4ea8\u4e01\u9813\u821e\u8e48\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Movement changes, cognitive or behavioral change, family history, or psychiatric symptoms should include Huntington disease.",
+      "signals": {
+        "altered_mental_status": 2,
+        "risky_impulsive_behavior": 2,
+        "neurologic_deficit": 2
+      },
+      "synonyms": [
+        "huntington disease",
+        "huntington chorea",
+        "huntington's disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check family history, movement pattern, cognition, psychiatric symptoms, safety risk, and neurology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "restless_legs_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e0d\u5be7\u817f\u75c7\u5019\u7fa4",
+      "name_en": "Restless legs syndrome",
+      "system": "Neurologic/Sleep",
+      "urgency": "routine",
+      "summary_zh": "\u4e0d\u5be7\u817f\u75c7\u5019\u7fa4 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Uncomfortable leg sensations worse at rest or night with sleep disruption should include restless legs syndrome.",
+      "signals": {
+        "fatigue": 2,
+        "orthostatic_lightheadedness": 1
+      },
+      "synonyms": [
+        "restless legs syndrome",
+        "rls",
+        "willis ekbom disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check timing, relief with movement, sleep impact, iron deficiency context, medication triggers, and neurologic or sleep review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "essential_tremor",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u539f\u767c\u6027\u9707\u986b",
+      "name_en": "Essential tremor",
+      "system": "Neurologic/Movement",
+      "urgency": "routine",
+      "summary_zh": "\u539f\u767c\u6027\u9707\u986b \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Action tremor, family history, functional impairment, or medication/caffeine trigger context should include essential tremor.",
+      "signals": {
+        "palpitations": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "essential tremor",
+        "familial tremor",
+        "action tremor"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rest vs action tremor, symmetry, alcohol or medication effects, thyroid symptoms, and neurology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "somatic_symptom_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8eab\u9ad4\u75c7\u72c0\u969c\u7919",
+      "name_en": "Somatic symptom disorder",
+      "system": "Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u8eab\u9ad4\u75c7\u72c0\u969c\u7919 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Persistent distressing physical symptoms with high health anxiety after appropriate medical assessment can include somatic symptom disorder.",
+      "signals": {
+        "fatigue": 1,
+        "severe_pain": 1,
+        "palpitations": 1
+      },
+      "synonyms": [
+        "somatic symptom disorder",
+        "somatization",
+        "health anxiety physical symptoms"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check duration, functional impairment, medical red flags, safety risk, substance use, and mental health support context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "adjustment_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9069\u61c9\u969c\u7919",
+      "name_en": "Adjustment disorder",
+      "system": "Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u9069\u61c9\u969c\u7919 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Emotional or behavioral symptoms after an identifiable stressor should include adjustment disorder after safety risks are assessed.",
+      "signals": {
+        "fatigue": 1,
+        "severe_agitation": 1,
+        "suicidal_ideation": 1
+      },
+      "synonyms": [
+        "adjustment disorder",
+        "stress response disorder",
+        "situational depression anxiety"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check stressor timing, functioning, self-harm risk, substance use, trauma exposure, and follow-up support need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "autism_spectrum_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u81ea\u9589\u75c7\u985e\u7fa4\u969c\u7919",
+      "name_en": "Autism spectrum disorder",
+      "system": "Neurodevelopmental/Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u81ea\u9589\u75c7\u985e\u7fa4\u969c\u7919 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Longstanding social communication differences, restricted interests, sensory issues, or developmental history should include autism spectrum disorder.",
+      "signals": {
+        "severe_agitation": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "autism spectrum disorder",
+        "autism",
+        "asd"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check developmental history, communication pattern, sensory triggers, functional support needs, and neurodevelopmental assessment context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "attention_deficit_hyperactivity_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6ce8\u610f\u529b\u4e0d\u8db3\u904e\u52d5\u75c7",
+      "name_en": "Attention-deficit/hyperactivity disorder",
+      "system": "Neurodevelopmental/Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u6ce8\u610f\u529b\u4e0d\u8db3\u904e\u52d5\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Persistent inattention, impulsivity, hyperactivity, or functional impairment across settings should include ADHD.",
+      "signals": {
+        "risky_impulsive_behavior": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "adhd",
+        "attention deficit hyperactivity disorder",
+        "attention-deficit/hyperactivity disorder"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check symptom onset, school or work impairment, sleep, substance use, anxiety or mood overlap, and structured assessment context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "insomnia_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5931\u7720\u969c\u7919",
+      "name_en": "Insomnia disorder",
+      "system": "Sleep/Mental health",
+      "urgency": "routine",
+      "summary_zh": "\u5931\u7720\u969c\u7919 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Difficulty initiating or maintaining sleep with daytime impairment should include insomnia disorder after medical and substance contributors are checked.",
+      "signals": {
+        "fatigue": 4,
+        "palpitations": 1,
+        "substance_use_concern": 1
+      },
+      "synonyms": [
+        "insomnia disorder",
+        "chronic insomnia",
+        "sleep initiation maintenance insomnia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check duration, sleep schedule, medication or substance use, mood/anxiety overlap, sleep apnea features, and safety concerns."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "dermatomyositis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u76ae\u808c\u708e",
+      "name_en": "Dermatomyositis",
+      "system": "Rheumatologic/Skin/Neuromuscular",
+      "urgency": "soon",
+      "summary_zh": "\u76ae\u808c\u708e \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Proximal weakness with characteristic rash, fatigue, dyspnea, or malignancy concern should include dermatomyositis.",
+      "signals": {
+        "rash": 4,
+        "progressive_bilateral_leg_weakness": 4,
+        "fatigue": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "dermatomyositis",
+        "heliotrope rash",
+        "gottron papules"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check proximal weakness, rash distribution, swallowing or respiratory symptoms, cancer screening context, and rheumatology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "polymyositis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u591a\u767c\u6027\u808c\u708e",
+      "name_en": "Polymyositis",
+      "system": "Rheumatologic/Neuromuscular",
+      "urgency": "soon",
+      "summary_zh": "\u591a\u767c\u6027\u808c\u708e \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Subacute proximal muscle weakness, fatigue, dysphagia context, or inflammatory myopathy concern should include polymyositis.",
+      "signals": {
+        "progressive_bilateral_leg_weakness": 5,
+        "fatigue": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "polymyositis",
+        "inflammatory myopathy",
+        "proximal muscle weakness"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check weakness pattern, myalgia, swallowing or respiratory symptoms, medication triggers, and rheumatology or neuromuscular review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mixed_connective_tissue_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6df7\u5408\u6027\u7d50\u7de0\u7d44\u7e54\u75c5",
+      "name_en": "Mixed connective tissue disease",
+      "system": "Rheumatologic/Pulmonary/Skin",
+      "urgency": "soon",
+      "summary_zh": "\u6df7\u5408\u6027\u7d50\u7de0\u7d44\u7e54\u75c5 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Overlap features such as Raynaud-like symptoms, swollen joints, rash, dyspnea, or systemic symptoms should include mixed connective tissue disease.",
+      "signals": {
+        "rash": 2,
+        "acute_joint_pain_swelling": 2,
+        "dyspnea": 2,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "mixed connective tissue disease",
+        "mctd",
+        "overlap connective tissue disease"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check Raynaud pattern, hand swelling, arthritis, rash, pulmonary symptoms, renal findings, and rheumatology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "behcet_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8c9d\u8cfd\u7279\u6c0f\u75c7",
+      "name_en": "Behcet disease",
+      "system": "Rheumatologic/Skin/Ophthalmologic",
+      "urgency": "soon",
+      "summary_zh": "\u8c9d\u8cfd\u7279\u6c0f\u75c7 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Recurrent oral or genital ulcers, eye inflammation, rash, joint symptoms, or vascular/neurologic features should include Behcet disease.",
+      "signals": {
+        "mucosal_lesions": 5,
+        "eye_pain_redness": 3,
+        "rash": 2,
+        "acute_joint_pain_swelling": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "behcet disease",
+        "behcet syndrome",
+        "oral genital ulcers uveitis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check oral/genital ulcer pattern, eye pain or vision change, skin lesions, neurologic or vascular symptoms, and rheumatology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "dengue",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u767b\u9769\u71b1",
+      "name_en": "Dengue",
+      "system": "Infectious/Travel",
+      "urgency": "urgent",
+      "summary_zh": "\u767b\u9769\u71b1 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Fever with severe pain, rash, bleeding tendency, travel or mosquito exposure should include dengue and warning signs.",
+      "signals": {
+        "fever": 4,
+        "severe_pain": 2,
+        "rash": 2,
+        "easy_bruising_bleeding": 3
+      },
+      "synonyms": [
+        "dengue",
+        "dengue fever",
+        "breakbone fever"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel and mosquito exposure, warning signs, bleeding, hydration, pregnancy or comorbidity risk, and public health context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "malaria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7627\u75be",
+      "name_en": "Malaria",
+      "system": "Infectious/Travel/Emergency",
+      "urgency": "urgent",
+      "summary_zh": "\u7627\u75be \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Fever after travel or exposure in endemic regions, altered mental status, anemia context, or severe systemic illness should include malaria.",
+      "signals": {
+        "fever": 4,
+        "altered_mental_status": 3,
+        "fatigue": 2,
+        "jaundice": 1
+      },
+      "synonyms": [
+        "malaria",
+        "falciparum malaria",
+        "travel fever malaria"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel geography, fever periodicity, pregnancy, neurologic symptoms, anemia/jaundice context, and urgent testing need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "typhoid_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u50b7\u5bd2",
+      "name_en": "Typhoid fever",
+      "system": "Infectious/Travel/Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "\u50b7\u5bd2 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Sustained fever with abdominal symptoms, rash, travel, or food/water exposure should include typhoid fever.",
+      "signals": {
+        "fever": 4,
+        "abdominal_pain": 2,
+        "rash": 1,
+        "bloody_diarrhea": 1
+      },
+      "synonyms": [
+        "typhoid fever",
+        "enteric fever",
+        "salmonella typhi"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel, food and water exposure, fever duration, abdominal findings, complications, and public health testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "syphilis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6885\u6bd2",
+      "name_en": "Syphilis",
+      "system": "Infectious/Sexual health/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u6885\u6bd2 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Genital ulcer, rash, mucosal lesions, neurologic symptoms, or sexual exposure risk should include syphilis.",
+      "signals": {
+        "rash": 3,
+        "mucosal_lesions": 3,
+        "neurologic_deficit": 1,
+        "painful_grouped_genital_ulcers": 1
+      },
+      "synonyms": [
+        "syphilis",
+        "treponema pallidum",
+        "secondary syphilis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check lesion pattern, rash including palms/soles, neurologic or ocular symptoms, pregnancy status, and sexual health testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gonorrhea",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6dcb\u75c5",
+      "name_en": "Gonorrhea",
+      "system": "Infectious/Sexual health",
+      "urgency": "soon",
+      "summary_zh": "\u6dcb\u75c5 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Urethral discharge, dysuria, pelvic pain, cervicitis, pharyngitis, or sexual exposure risk should include gonorrhea.",
+      "signals": {
+        "urethral_discharge": 5,
+        "dysuria": 3,
+        "pelvic_pain": 2,
+        "vaginal_discharge": 2
+      },
+      "synonyms": [
+        "gonorrhea",
+        "gonococcal infection",
+        "neisseria gonorrhoeae"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exposure sites, discharge, pelvic or testicular pain, pregnancy, partner risk, and STI testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chlamydia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u62ab\u8863\u83cc\u611f\u67d3",
+      "name_en": "Chlamydia",
+      "system": "Infectious/Sexual health",
+      "urgency": "soon",
+      "summary_zh": "\u62ab\u8863\u83cc\u611f\u67d3 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Dysuria, urethral or vaginal discharge, pelvic pain, epididymitis context, or sexual exposure risk should include chlamydia.",
+      "signals": {
+        "dysuria": 3,
+        "urethral_discharge": 4,
+        "vaginal_discharge": 3,
+        "pelvic_pain": 2
+      },
+      "synonyms": [
+        "chlamydia",
+        "chlamydial infection",
+        "chlamydia trachomatis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exposure sites, partner risk, pelvic or testicular pain, pregnancy, and NAAT testing context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "varicella",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6c34\u75d8",
+      "name_en": "Varicella",
+      "system": "Infectious/Skin/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "\u6c34\u75d8 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Diffuse vesicular rash with fever, exposure history, pregnancy, or immunocompromised risk should include varicella.",
+      "signals": {
+        "rash": 4,
+        "fever": 2,
+        "vesicular_dermatomal_rash": 3,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "varicella",
+        "chickenpox",
+        "primary varicella zoster"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rash stage distribution, exposure, vaccination, pregnancy or immune status, complications, and infection-control need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rosacea",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9152\u7cdf",
+      "name_en": "Rosacea",
+      "system": "Skin/Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "\u9152\u7cdf \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Chronic facial flushing, papules, eye irritation, or trigger-related facial rash should include rosacea.",
+      "signals": {
+        "rash": 3,
+        "eye_pain_redness": 1,
+        "itchy_red_watery_eyes": 1
+      },
+      "synonyms": [
+        "rosacea",
+        "acne rosacea",
+        "facial flushing papules"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check facial distribution, flushing triggers, ocular symptoms, medication triggers, and dermatology or eye review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tinea_corporis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9ad4\u766c",
+      "name_en": "Tinea corporis",
+      "system": "Skin/Infectious",
+      "urgency": "routine",
+      "summary_zh": "\u9ad4\u766c \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Annular scaly itchy rash, exposure to infected contacts or animals, or immunocompromised risk should include tinea corporis.",
+      "signals": {
+        "rash": 4,
+        "chronic_itchy_flexural_rash": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "tinea corporis",
+        "ringworm",
+        "dermatophyte infection"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check annular border, scale, exposure, immune status, distribution, and fungal testing or dermatology context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "impetigo",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u81bf\u75c2\u75b9",
+      "name_en": "Impetigo",
+      "system": "Skin/Infectious/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "\u81bf\u75c2\u75b9 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Honey-colored crusts, purulent superficial lesions, rash, fever, or close-contact spread should include impetigo.",
+      "signals": {
+        "purulent_skin_lesion": 4,
+        "rash": 3,
+        "fever": 1
+      },
+      "synonyms": [
+        "impetigo",
+        "bullous impetigo",
+        "honey crusted lesions"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check lesion distribution, bullae, fever or cellulitis signs, outbreak/contact risk, and infection-control context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hidradenitis_suppurativa",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5316\u81bf\u6027\u6c57\u817a\u708e",
+      "name_en": "Hidradenitis suppurativa",
+      "system": "Skin/Inflammatory",
+      "urgency": "routine",
+      "summary_zh": "\u5316\u81bf\u6027\u6c57\u817a\u708e \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Recurrent painful nodules or abscesses in intertriginous areas should include hidradenitis suppurativa.",
+      "signals": {
+        "purulent_skin_lesion": 4,
+        "severe_pain": 2,
+        "rash": 1
+      },
+      "synonyms": [
+        "hidradenitis suppurativa",
+        "acne inversa",
+        "recurrent axillary groin abscesses"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check recurrent pattern, scarring or sinus tracts, location, smoking or obesity risk, infection signs, and dermatology review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "melanoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9ed1\u8272\u7d20\u7624",
+      "name_en": "Melanoma",
+      "system": "Skin/Oncology",
+      "urgency": "soon",
+      "summary_zh": "\u9ed1\u8272\u7d20\u7624 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Changing pigmented lesion, bleeding lesion, weight loss, lymph node context, or high-risk skin history should include melanoma.",
+      "signals": {
+        "rash": 2,
+        "weight_loss": 2,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "melanoma",
+        "malignant melanoma",
+        "changing mole"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check ABCDE lesion change, bleeding or ulceration, lymph nodes, sun exposure risk, and urgent dermatology review context."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "placenta_previa",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u524d\u7f6e\u80ce\u76e4",
+      "name_en": "Placenta previa",
+      "system": "Obstetric/Gynecologic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u524d\u7f6e\u80ce\u76e4 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Late pregnancy bleeding, hemodynamic instability, or known low-lying placenta should include placenta previa while obstetric emergencies are assessed.",
+      "signals": {
+        "late_pregnancy_bleeding_or_uterine_pain": 6,
+        "vaginal_bleeding": 4,
+        "pregnancy_possible": 4,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "placenta previa",
+        "low lying placenta",
+        "third trimester bleeding"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check gestational age, bleeding amount, pain, hemodynamic status, fetal concerns, and urgent obstetric review need."
+      ],
+      "source_ids": [
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "postpartum_hemorrhage",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7522\u5f8c\u51fa\u8840",
+      "name_en": "Postpartum hemorrhage",
+      "system": "Obstetric/Gynecologic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "\u7522\u5f8c\u51fa\u8840 \u662f\u7b2c\u516d\u6279\u5ee3\u6cdb\u9451\u5225\u8cc7\u6599\u5eab\u689d\u76ee\uff1b\u9700\u642d\u914d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u8207\u4f86\u6e90\u9023\u7d50\u5224\u8b80\u3002",
+      "summary_en": "Heavy bleeding after delivery, hemodynamic instability, syncope, or postpartum uterine atony concern should prioritize postpartum hemorrhage.",
+      "signals": {
+        "vaginal_bleeding": 6,
+        "hemodynamic_instability": 5,
+        "syncope": 3,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "postpartum hemorrhage",
+        "postpartum bleeding",
+        "uterine atony bleeding"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check delivery timing, quantified bleeding, uterine tone, retained tissue or laceration concern, vitals, and immediate obstetric escalation need."
+      ],
+      "source_ids": [
         "merck_professional"
       ]
     }
