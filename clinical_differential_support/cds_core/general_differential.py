@@ -7,6 +7,81 @@ from typing import Any
 from .differential_catalog import DEFAULT_ASK_NEXT, URGENCY_ORDER
 from .differential_catalog_data import get_general_differential_runtime_catalog
 
+FOCUSED_ASK_NEXT_CONTEXTS = [
+    (
+        {
+            "chest_pain",
+            "dyspnea",
+            "pleuritic_pain",
+            "orthopnea_edema",
+            "palpitations",
+            "syncope",
+            "tachycardia",
+        },
+        "心肺脈絡：確認血氧、血壓、心電圖風險、運動耐受、胸痛特徵與是否有休克或低氧。 / Cardiopulmonary context: confirm oxygenation, BP, ECG risk, exertional tolerance, chest-pain features, and shock or hypoxemia.",
+    ),
+    (
+        {
+            "abdominal_pain",
+            "ruq_pain",
+            "rlq_pain",
+            "llq_pain",
+            "vomiting",
+            "gi_bleeding",
+            "bloody_diarrhea",
+            "constipation_obstipation",
+            "dysuria",
+            "flank_pain",
+            "decreased_urine_output",
+        },
+        "腹部/泌尿脈絡：確認疼痛位置、腹膜刺激、排便排尿、嘔吐/血便、懷孕可能、脫水與是否需影像或尿檢。 / Abdominal or urinary context: confirm pain location, peritoneal signs, bowel/urinary symptoms, vomiting or bleeding, pregnancy possibility, dehydration, and imaging or urinalysis need.",
+    ),
+    (
+        {
+            "neurologic_deficit",
+            "unilateral_weakness",
+            "speech_vision_changes",
+            "thunderclap_headache",
+            "neck_stiffness",
+            "seizure_activity_or_postictal_state",
+            "vertigo",
+        },
+        "神經脈絡：確認最後正常時間、局灶神經缺損、雷擊樣頭痛、癲癇後狀態、頸僵硬與是否需急症神經評估。 / Neurologic context: confirm last-known-well, focal deficits, thunderclap headache, postictal state, neck stiffness, and urgent neurologic review need.",
+    ),
+    (
+        {
+            "fever",
+            "rash",
+            "immunocompromised",
+            "rapidly_spreading_skin_infection",
+            "mucosal_lesions",
+            "purulent_skin_lesion",
+        },
+        "感染/皮膚脈絡：確認發燒時程、暴露接觸、免疫狀態、皮疹型態、感染管制與敗血症警訊。 / Infectious or skin context: confirm fever timeline, exposure/contact, immune status, rash morphology, infection-control needs, and sepsis red flags.",
+    ),
+    (
+        {
+            "pelvic_pain",
+            "vaginal_bleeding",
+            "early_pregnancy_bleeding",
+            "vaginal_discharge",
+            "cervical_motion_tenderness",
+            "pregnancy_possible",
+        },
+        "婦產脈絡：確認妊娠狀態、出血量、骨盆痛位置、分泌物、發燒、性健康風險與是否需急症婦科評估。 / Gynecologic context: confirm pregnancy status, bleeding amount, pelvic pain location, discharge, fever, sexual health risk, and urgent gynecology review need.",
+    ),
+    (
+        {
+            "suicidal_ideation",
+            "self_harm_behavior",
+            "hallucinations_delusions",
+            "severe_agitation",
+            "substance_use_concern",
+        },
+        "精神/毒物脈絡：先確認自傷/他傷、譫妄、物質或藥物暴露、生命徵象與是否需立即安全處置。 / Mental health or toxicology context: first check self/other-harm risk, delirium, substance or medication exposure, vitals, and immediate safety action need.",
+    ),
+]
+
 
 def get_general_differential_catalog_summary() -> dict[str, Any]:
     runtime_catalog = get_general_differential_runtime_catalog()
@@ -127,6 +202,9 @@ def _build_global_ask_next(
     results: list[dict[str, Any]], selected_findings: set[str]
 ) -> list[str]:
     prompts = list(DEFAULT_ASK_NEXT)
+    for prompt in _build_focused_context_prompts(selected_findings):
+        if prompt not in prompts:
+            prompts.append(prompt)
     for result in results[:3]:
         for prompt in result["ask_next"]:
             if prompt not in prompts:
@@ -134,6 +212,14 @@ def _build_global_ask_next(
     if not selected_findings:
         return prompts[:4]
     return prompts[:7]
+
+
+def _build_focused_context_prompts(selected_findings: set[str]) -> list[str]:
+    prompts: list[str] = []
+    for findings, prompt in FOCUSED_ASK_NEXT_CONTEXTS:
+        if selected_findings.intersection(findings):
+            prompts.append(prompt)
+    return prompts[:2]
 
 
 def _build_action_checklist(

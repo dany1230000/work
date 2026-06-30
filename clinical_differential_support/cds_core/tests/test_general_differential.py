@@ -223,6 +223,54 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_specialty_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("cardiac tamponade", "cardiac_tamponade"),
+            ("acute respiratory distress syndrome", "acute_respiratory_distress_syndrome"),
+            ("pulmonary hypertension", "pulmonary_hypertension"),
+            ("sarcoidosis", "sarcoidosis"),
+            ("obstructive sleep apnea", "obstructive_sleep_apnea"),
+            ("pulmonary fibrosis", "pulmonary_fibrosis"),
+            ("glomerulonephritis", "glomerulonephritis"),
+            ("nephrotic syndrome", "nephrotic_syndrome"),
+            ("acute prostatitis", "acute_prostatitis"),
+            ("benign prostatic hyperplasia", "benign_prostatic_hyperplasia"),
+            ("endometriosis", "endometriosis"),
+            ("polycystic ovary syndrome", "polycystic_ovary_syndrome"),
+            ("primary dysmenorrhea", "primary_dysmenorrhea"),
+            ("bacterial vaginosis", "bacterial_vaginosis"),
+            ("vulvovaginal candidiasis", "vulvovaginal_candidiasis"),
+            ("systemic lupus erythematosus", "systemic_lupus_erythematosus"),
+            ("antiphospholipid syndrome", "antiphospholipid_syndrome"),
+            ("ankylosing spondylitis", "ankylosing_spondylitis"),
+            ("reactive arthritis", "reactive_arthritis"),
+            ("fibromyalgia", "fibromyalgia"),
+            ("osteoarthritis", "osteoarthritis"),
+            ("cluster headache", "cluster_headache"),
+            ("meniere disease", "meniere_disease"),
+            ("cirrhosis", "cirrhosis"),
+            ("functional constipation", "functional_constipation"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_abdominal_findings_add_focused_ask_next_before_condition_prompts(self):
+        result = evaluate_general_differential(
+            {"query": "", "findings": ["abdominal_pain", "fever", "vomiting"]}
+        )
+
+        focused_prompts = result["ask_next"][4:6]
+        self.assertTrue(
+            any("Abdominal or urinary context" in prompt for prompt in focused_prompts),
+            focused_prompts,
+        )
+        self.assertLess(
+            result["ask_next"].index(next(prompt for prompt in result["ask_next"] if "Abdominal or urinary context" in prompt)),
+            result["ask_next"].index(result["results"][0]["ask_next"][0]),
+        )
+
     def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}
