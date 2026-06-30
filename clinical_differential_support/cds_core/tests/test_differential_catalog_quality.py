@@ -103,15 +103,8 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertGreaterEqual(report["summary"]["source_count"], 195)
         self.assertGreaterEqual(len(CONDITIONS), 250)
         self.assertGreaterEqual(len(SOURCES), 195)
-        self.assertEqual(report["summary"]["expansion_target_condition_count"], 250)
         self.assertEqual(report["summary"]["blocking_issue_count"], 0)
         self.assertTrue(report["summary"]["ready_for_public_reference"])
-        expansion_action = next(
-            action
-            for action in report["next_actions"]
-            if action["action_id"] == "expand_condition_catalog_to_250"
-        )
-        self.assertEqual(expansion_action["status"], "done")
 
     def test_sixth_generalist_batch_has_second_source_depth(self):
         report = build_general_differential_catalog_quality_report()
@@ -136,6 +129,31 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
 
         self.assertEqual(single_source_slugs, [])
         self.assertEqual(report["summary"]["warning_count"], 0)
+
+    def test_seventh_generalist_batch_expands_catalog_to_300_without_warnings(self):
+        report = build_general_differential_catalog_quality_report()
+        seventh_batch_slugs = {condition["slug"] for condition in CONDITIONS[-50:]}
+        single_source_slugs = {
+            warning["subject"]
+            for warning in report["warnings"]
+            if warning["code"] == "single_source_condition"
+        }
+
+        self.assertGreaterEqual(report["summary"]["condition_count"], 300)
+        self.assertGreaterEqual(report["summary"]["source_count"], 342)
+        self.assertGreaterEqual(len(CONDITIONS), 300)
+        self.assertGreaterEqual(len(SOURCES), 342)
+        self.assertEqual(report["summary"]["blocking_issue_count"], 0)
+        self.assertEqual(report["summary"]["warning_count"], 0)
+        self.assertFalse(seventh_batch_slugs.intersection(single_source_slugs))
+        self.assertTrue(report["summary"]["ready_for_public_reference"])
+        self.assertEqual(report["summary"]["expansion_target_condition_count"], 300)
+        expansion_action = next(
+            action
+            for action in report["next_actions"]
+            if action["action_id"] == "expand_condition_catalog_to_300"
+        )
+        self.assertEqual(expansion_action["status"], "done")
 
     def test_pulmonary_bucket_counts_respiratory_catalog_entries(self):
         report = build_general_differential_catalog_quality_report()
