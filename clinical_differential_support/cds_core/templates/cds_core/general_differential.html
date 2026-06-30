@@ -173,6 +173,38 @@
     font-size: 0.9rem;
   }
 
+  .finding-library-drawer,
+  .secondary-result-drawer {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    margin-top: 0.75rem;
+  }
+
+  .finding-library-drawer > summary,
+  .secondary-result-drawer > summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.75rem;
+  }
+
+  .finding-library-body,
+  .secondary-result-body {
+    border-top: 1px solid #e4e9ef;
+    padding: 0.75rem;
+  }
+
+  .finding-library-summary {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.75rem;
+  }
+
+  .finding-library-summary p {
+    margin: 0.35rem 0 0;
+  }
+
   .finding-filter {
     border: 1px solid #d5dde7;
     border-radius: 6px;
@@ -655,6 +687,13 @@
 
         <section class="finding-picker" id="finding-selection">
           <h3>依系統勾選 / Select by system</h3>
+          <section class="finding-library-summary" data-finding-library-summary="true">
+            <strong>Quick mode</strong>
+            <p class="secondary">先輸入主訴或勾選已知重點；需要更多細節時再展開完整 finding library。 / Start with the complaint and key findings, then open the full library only when needed.</p>
+          </section>
+          <details class="finding-library-drawer" data-finding-library-drawer="true"{% if selected_findings %} open{% endif %}>
+            <summary>Open full finding library</summary>
+            <div class="finding-library-body">
           <div class="finding-filter" data-finding-filter-form="true">
             <div class="complaint-preset-panel" data-complaint-preset-bar="true">
               <div class="complaint-preset-title">
@@ -719,6 +758,8 @@
             {% endfor %}
           </div>
           {% for error in form.findings.errors %}<div class="message error">{{ error }}</div>{% endfor %}
+            </div>
+          </details>
         </section>
       </form>
     </section>
@@ -785,54 +826,21 @@
               {% endfor %}
             </div>
           </details>
-          <div class="result-list">
-            {% for entry in result.results %}
-              <article class="result-card" data-result-card="true">
-                <div class="result-head">
-                  <div>
-                    <h3>{{ entry.name_zh }}</h3>
-                    <p class="secondary">{{ entry.name_en }}</p>
-                  </div>
-                  <span class="tag">{{ entry.urgency }}</span>
-                </div>
-                <div class="result-summary" data-result-summary="true">
-                  <p>{{ entry.summary_zh }}</p>
-                  <p class="secondary">{{ entry.summary_en }}</p>
-                  <p>
-                    <span class="tag">{{ entry.system }}</span>
-                    <span class="tag">score {{ entry.score }}</span>
-                    {% if entry.matched_text_search %}<span class="tag">text match</span>{% endif %}
-                  </p>
-                  {% if entry.matched_findings %}
-                    <p><strong>符合 findings / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
-                  {% endif %}
-                </div>
-                <section class="next-step-panel">
-                  <h4>行動 / Actions</h4>
-                  <ul>
-                    {% for item in entry.action_items %}
-                      <li><strong>{{ item.label_zh }} / {{ item.label_en }}:</strong> {{ item.instruction }}</li>
-                    {% endfor %}
-                  </ul>
-                </section>
-                <details class="result-detail" data-result-detail="true"{% if forloop.first %} open{% endif %}>
-                  <summary>下一步 / Ask next</summary>
-                  <p class="secondary">下一步要問 / Ask next</p>
-                  <ul>
-                    {% for prompt in entry.ask_next %}
-                      <li>{{ prompt }}</li>
-                    {% endfor %}
-                  </ul>
-                </details>
-                <details class="source-list source-detail" data-source-detail="true">
-                  <summary>來源 / Sources</summary>
-                  {% for source in entry.sources %}
-                    <a href="{{ source.url }}">{{ source.publisher }} - {{ source.title }}</a>
-                  {% endfor %}
-                </details>
-              </article>
+          <div class="result-list" data-primary-result-list="true">
+            {% for entry in result.results|slice:":3" %}
+              {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=forloop.first %}
             {% endfor %}
           </div>
+          {% if result.results|length > 3 %}
+            <details class="secondary-result-drawer" data-secondary-result-drawer="true">
+              <summary>More candidates</summary>
+              <div class="secondary-result-body result-list">
+                {% for entry in result.results|slice:"3:" %}
+                  {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=False %}
+                {% endfor %}
+              </div>
+            </details>
+          {% endif %}
         {% else %}
           <div class="empty">
             目前 findings 不足以排序。先確認生命徵象、紅旗與主訴，再補充下列問題。

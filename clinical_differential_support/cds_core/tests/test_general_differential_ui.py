@@ -122,6 +122,20 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Chest pain / 胸痛")
         self.assertContains(response, "Neurologic deficit / 神經學缺損")
 
+    def test_general_differential_page_collapses_full_finding_library_by_default(self):
+        response = self.client.get(reverse("cds_core:general_differential"))
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-finding-library-drawer="true"')
+        self.assertContains(response, 'data-finding-library-summary="true"')
+        self.assertContains(response, "Open full finding library")
+        self.assertLess(
+            content.index('data-finding-library-summary="true"'),
+            content.index('data-finding-filter-form="true"'),
+        )
+
     def test_posted_findings_put_results_before_catalog_governance(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),
@@ -147,6 +161,32 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, 'name="findings" value="chest_pain" checked')
         self.assertContains(response, 'data-selected-only-toggle="true"')
         self.assertContains(response, 'data-finding-selected="true"')
+
+    def test_posted_findings_show_top_results_before_secondary_candidates(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-primary-result-list="true"')
+        self.assertContains(response, 'data-secondary-result-drawer="true"')
+        self.assertContains(response, "More candidates")
+        self.assertLess(
+            content.index('data-primary-result-list="true"'),
+            content.index('data-secondary-result-drawer="true"'),
+        )
 
     def test_posted_findings_show_ranked_conditions_ask_next_and_sources(self):
         response = self.client.post(
