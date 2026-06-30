@@ -234,6 +234,40 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_show_case_action_queue_before_long_results(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-case-action-queue="true"')
+        self.assertContains(response, 'data-action-queue-current="true"')
+        self.assertContains(response, 'data-action-queue-link="top-candidates"')
+        self.assertContains(response, 'data-action-queue-link="coverage"')
+        self.assertContains(response, "Do now")
+        self.assertContains(response, "Top candidates")
+        self.assertContains(response, 'id="top-candidates"')
+        self.assertLess(
+            content.index('data-case-action-queue="true"'),
+            content.index('data-guided-follow-up="true"'),
+        )
+        self.assertLess(
+            content.index('data-case-action-queue="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_use_stepwise_compact_result_layout(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

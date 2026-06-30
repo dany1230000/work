@@ -360,6 +360,83 @@
     gap: 0.75rem;
   }
 
+  .case-action-queue {
+    border: 1px solid #b8d8d1;
+    border-top: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .case-action-queue-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+
+  .case-action-queue h3,
+  .case-action-queue p {
+    margin: 0;
+  }
+
+  .case-action-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.6rem;
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0;
+  }
+
+  .case-action-item {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.55rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.7rem;
+  }
+
+  .case-action-item[data-action-queue-current="true"] {
+    border-color: var(--primary);
+    background: #eef8f6;
+  }
+
+  .case-action-index {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .case-action-item p {
+    margin-top: 0.25rem;
+  }
+
+  .case-action-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+
+  .case-action-links a {
+    border: 1px solid #b8c0cc;
+    border-radius: 4px;
+    background: #ffffff;
+    color: var(--action);
+    padding: 0.45rem 0.65rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
   .guided-follow-up {
     border: 1px solid #b8d8d1;
     border-left: 4px solid var(--primary);
@@ -559,6 +636,7 @@
     .step-strip,
     .workflow-stepper,
     .workflow-command-bar,
+    .case-action-list,
     .guided-step-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
@@ -719,6 +797,34 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.results %}
+          <section class="case-action-queue" data-case-action-queue="true" aria-labelledby="case-action-queue-title">
+            <div class="case-action-queue-header">
+              <div>
+                <h3 id="case-action-queue-title">現在先做 / Do now</h3>
+                <p class="secondary">先完成這三步，再看候選疾病長列表。 / Complete these steps before reviewing the long candidate list.</p>
+              </div>
+            </div>
+            <ol class="case-action-list">
+              {% for step in result.guided_follow_up|slice:":3" %}
+                <li
+                  class="case-action-item"
+                  data-action-queue-step="{{ forloop.counter }}"
+                  {% if forloop.first %}data-action-queue-current="true"{% endif %}
+                >
+                  <span class="case-action-index">{{ forloop.counter }}</span>
+                  <div>
+                    <strong>{{ step.title_zh }} / {{ step.title_en }}</strong>
+                    <p>{{ step.instruction_zh }}</p>
+                    <p class="secondary">{{ step.instruction_en }}</p>
+                  </div>
+                </li>
+              {% endfor %}
+            </ol>
+            <nav class="case-action-links" aria-label="Case action shortcuts">
+              <a href="#top-candidates" data-action-queue-link="top-candidates">Top candidates</a>
+              <a href="#catalog-governance" data-action-queue-link="coverage">Coverage</a>
+            </nav>
+          </section>
           <section class="guided-follow-up" data-guided-follow-up="true">
             <h3>逐步導診 / Guided follow-up</h3>
             <p class="secondary">先照順序補資料，再回頭看候選疾病與來源。 / Follow these steps before using the candidate list.</p>
@@ -769,7 +875,7 @@
               {% endfor %}
             </div>
           </details>
-          <div class="result-list" data-primary-result-list="true">
+          <div class="result-list" id="top-candidates" data-primary-result-list="true">
             {% for entry in result.results|slice:":3" %}
               {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=forloop.first %}
             {% endfor %}
