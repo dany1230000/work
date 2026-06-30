@@ -3,13 +3,13 @@
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-30",
     "condition_count": 250,
-    "source_count": 195,
+    "source_count": 243,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-30",
       "condition_count": 250,
-      "source_count": 195,
+      "source_count": 243,
       "blocking_issue_count": 0,
-      "warning_count": 101,
+      "warning_count": 51,
       "ready_for_public_reference": true,
       "expansion_target_condition_count": 250
     }
@@ -5866,7 +5866,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check steroid exposure, weight and skin changes, blood pressure, glucose, infection risk, and endocrine review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_cushing_syndrome"
       ]
     },
     {
@@ -5893,7 +5894,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check visual fields, ocular movement, adrenal crisis features, anticoagulant exposure, and urgent imaging or endocrine-neurosurgical review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_pituitary_apoplexy"
       ]
     },
     {
@@ -5920,7 +5922,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check episodic hypertension, headache, sweating, palpitations, adrenal mass history, and endocrine testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nci_pheochromocytoma"
       ]
     },
     {
@@ -5946,7 +5949,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check urine volume, thirst, serum sodium context, medication exposure, pituitary history, and dehydration severity."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_diabetes_insipidus"
       ]
     },
     {
@@ -5973,7 +5977,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check calcium trend, kidney stones, fractures, constipation, neurocognitive symptoms, and endocrine review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_primary_hyperparathyroidism"
       ]
     },
     {
@@ -5999,7 +6004,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check calcium symptoms, thyroid or neck surgery history, seizure or arrhythmia risk, and electrolyte review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_hypoparathyroidism"
       ]
     },
     {
@@ -6025,7 +6031,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check kidney function trend, resistant hypertension context, vascular disease, flash pulmonary edema, and renal vascular review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_renal_artery_stenosis"
       ]
     },
     {
@@ -6050,7 +6057,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check family history, kidney size or cyst history, flank pain, urinary symptoms, blood pressure, and renal imaging context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_polycystic_kidney_disease"
       ]
     },
     {
@@ -6077,7 +6085,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check recent antibiotics, NSAIDs or PPIs, rash, fever, eosinophilia context, urine findings, and renal review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_interstitial_nephritis"
       ]
     },
     {
@@ -6104,7 +6113,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check visible or microscopic hematuria, smoking and occupational risk, urinary symptoms, weight loss, and urology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nci_bladder_cancer"
       ]
     },
     {
@@ -6130,7 +6140,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check hematuria context, flank mass or pain, constitutional symptoms, renal imaging history, and urology or oncology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nci_kidney_cancer"
       ]
     },
     {
@@ -6156,7 +6167,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check solid and liquid dysphagia, regurgitation, aspiration symptoms, weight loss, and gastroenterology testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_achalasia"
       ]
     },
     {
@@ -6183,7 +6195,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check diabetes history, medication contributors, vomiting pattern, dehydration, weight change, and gastric emptying evaluation context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niddk_gastroparesis"
       ]
     },
     {
@@ -6210,7 +6223,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check bloating, stool pattern, prior bowel surgery, motility disorders, malabsorption features, and GI review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_sibo"
       ]
     },
     {
@@ -6237,7 +6251,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check sputum volume, recurrent infections, hemoptysis, oxygenation, prior imaging, and pulmonary review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_bronchiectasis"
       ]
     },
     {
@@ -6264,7 +6279,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check aspiration event, swallowing risk, oxygenation, sepsis features, imaging context, and airway protection need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_aspiration_pneumonia"
       ]
     },
     {
@@ -6291,7 +6307,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check aspiration risk, sputum odor or volume, hemoptysis, fever duration, imaging context, and infectious disease or pulmonary review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_lung_abscess"
       ]
     },
     {
@@ -6318,7 +6335,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check murmur history, exertional dyspnea, atrial fibrillation symptoms, volume overload, and echocardiography context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_heart_valve_diseases"
       ]
     },
     {
@@ -6346,7 +6364,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rheumatic history, atrial fibrillation symptoms, pulmonary edema, hemoptysis, and echocardiography context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_heart_valve_diseases"
       ]
     },
     {
@@ -6373,7 +6392,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exertional symptoms, family history of sudden death, murmur, ECG context, and cardiology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_hypertrophic_cardiomyopathy"
       ]
     },
     {
@@ -6400,7 +6420,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rhythm onset and offset, ECG if available, hemodynamic stability, triggers, and urgent review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_arrhythmias_types"
       ]
     },
     {
@@ -6428,7 +6449,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check hemodynamic stability, ECG rhythm width, cardiac history, electrolyte context, and immediate escalation need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_arrhythmias_types"
       ]
     },
     {
@@ -6454,7 +6476,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check gait history, cognition, urinary symptoms, imaging context, and neurology or neurosurgery review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_normal_pressure_hydrocephalus"
       ]
     },
     {
@@ -6481,7 +6504,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check progression, bulbar symptoms, respiratory symptoms, fasciculations or weakness pattern, and neuromuscular review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_als"
       ]
     },
     {
@@ -6507,7 +6531,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check family history, movement pattern, cognition, psychiatric symptoms, safety risk, and neurology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_huntington_disease"
       ]
     },
     {
@@ -6532,7 +6557,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check timing, relief with movement, sleep impact, iron deficiency context, medication triggers, and neurologic or sleep review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_restless_legs"
       ]
     },
     {
@@ -6557,7 +6583,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rest vs action tremor, symmetry, alcohol or medication effects, thyroid symptoms, and neurology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_tremor"
       ]
     },
     {
@@ -6583,7 +6610,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check duration, functional impairment, medical red flags, safety risk, substance use, and mental health support context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_somatic_symptom_disorder"
       ]
     },
     {
@@ -6609,7 +6637,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check stressor timing, functioning, self-harm risk, substance use, trauma exposure, and follow-up support need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_adjustment_disorder"
       ]
     },
     {
@@ -6634,7 +6663,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check developmental history, communication pattern, sensory triggers, functional support needs, and neurodevelopmental assessment context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nimh_autism_spectrum_disorder"
       ]
     },
     {
@@ -6659,7 +6689,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check symptom onset, school or work impairment, sleep, substance use, anxiety or mood overlap, and structured assessment context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nimh_adhd"
       ]
     },
     {
@@ -6685,7 +6716,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check duration, sleep schedule, medication or substance use, mood/anxiety overlap, sleep apnea features, and safety concerns."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nhlbi_insomnia"
       ]
     },
     {
@@ -6712,7 +6744,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check proximal weakness, rash distribution, swallowing or respiratory symptoms, cancer screening context, and rheumatology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_dermatomyositis"
       ]
     },
     {
@@ -6738,7 +6771,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check weakness pattern, myalgia, swallowing or respiratory symptoms, medication triggers, and rheumatology or neuromuscular review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_polymyositis"
       ]
     },
     {
@@ -6765,7 +6799,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check Raynaud pattern, hand swelling, arthritis, rash, pulmonary symptoms, renal findings, and rheumatology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_mixed_connective_tissue_disease"
       ]
     },
     {
@@ -6793,7 +6828,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check oral/genital ulcer pattern, eye pain or vision change, skin lesions, neurologic or vascular symptoms, and rheumatology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niams_behcets_disease"
       ]
     },
     {
@@ -6820,7 +6856,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel and mosquito exposure, warning signs, bleeding, hydration, pregnancy or comorbidity risk, and public health context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_dengue"
       ]
     },
     {
@@ -6847,7 +6884,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel geography, fever periodicity, pregnancy, neurologic symptoms, anemia/jaundice context, and urgent testing need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_malaria"
       ]
     },
     {
@@ -6874,7 +6912,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check travel, food and water exposure, fever duration, abdominal findings, complications, and public health testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_typhoid_fever"
       ]
     },
     {
@@ -6901,7 +6940,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check lesion pattern, rash including palms/soles, neurologic or ocular symptoms, pregnancy status, and sexual health testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_syphilis"
       ]
     },
     {
@@ -6928,7 +6968,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exposure sites, discharge, pelvic or testicular pain, pregnancy, partner risk, and STI testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_gonorrhea"
       ]
     },
     {
@@ -6955,7 +6996,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check exposure sites, partner risk, pelvic or testicular pain, pregnancy, and NAAT testing context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_chlamydia"
       ]
     },
     {
@@ -6982,7 +7024,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check rash stage distribution, exposure, vaccination, pregnancy or immune status, complications, and infection-control need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_chickenpox"
       ]
     },
     {
@@ -7008,7 +7051,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check facial distribution, flushing triggers, ocular symptoms, medication triggers, and dermatology or eye review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "niams_rosacea"
       ]
     },
     {
@@ -7034,7 +7078,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check annular border, scale, exposure, immune status, distribution, and fungal testing or dermatology context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_ringworm"
       ]
     },
     {
@@ -7060,7 +7105,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check lesion distribution, bullae, fever or cellulitis signs, outbreak/contact risk, and infection-control context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "cdc_impetigo"
       ]
     },
     {
@@ -7086,7 +7132,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check recurrent pattern, scarring or sinus tracts, location, smoking or obesity risk, infection signs, and dermatology review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_hidradenitis_suppurativa"
       ]
     },
     {
@@ -7112,7 +7159,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check ABCDE lesion change, bleeding or ulceration, lymph nodes, sun exposure risk, and urgent dermatology review context."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "nci_melanoma"
       ]
     },
     {
@@ -7139,7 +7187,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check gestational age, bleeding amount, pain, hemodynamic status, fetal concerns, and urgent obstetric review need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "medlineplus_placenta_previa"
       ]
     },
     {
@@ -7166,7 +7215,8 @@
         "\u78ba\u8a8d\u75c5\u7a0b\u3001\u5371\u96aa\u56e0\u5b50\u3001\u7d05\u65d7\u3001\u76f8\u95dc\u6aa2\u67e5\u8207\u662f\u5426\u9700\u8981\u6025\u75c7\u6216\u5c08\u79d1\u8a55\u4f30\u3002 / Check delivery timing, quantified bleeding, uterine tone, retained tissue or laceration concern, vitals, and immediate obstetric escalation need."
       ],
       "source_ids": [
-        "merck_professional"
+        "merck_professional",
+        "ncbi_postpartum_hemorrhage"
       ]
     }
   ],
@@ -8340,6 +8390,294 @@
       "publisher": "Merck Manual Professional",
       "title": "Chronic Venous Insufficiency and Post-Thrombotic Syndrome",
       "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-venous-disorders/chronic-venous-insufficiency-and-post-thrombotic-syndrome"
+    },
+    {
+      "source_id": "niddk_cushing_syndrome",
+      "publisher": "NIDDK",
+      "title": "Cushing's Syndrome",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/cushings-syndrome"
+    },
+    {
+      "source_id": "ncbi_pituitary_apoplexy",
+      "publisher": "NCBI Bookshelf",
+      "title": "Pituitary Apoplexy",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK559222/"
+    },
+    {
+      "source_id": "nci_pheochromocytoma",
+      "publisher": "National Cancer Institute",
+      "title": "Pheochromocytoma and Paraganglioma",
+      "url": "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-tumors/rare-endocrine-tumor/pheochromocytoma"
+    },
+    {
+      "source_id": "niddk_diabetes_insipidus",
+      "publisher": "NIDDK",
+      "title": "Diabetes Insipidus",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/diabetes-insipidus"
+    },
+    {
+      "source_id": "niddk_primary_hyperparathyroidism",
+      "publisher": "NIDDK",
+      "title": "Primary Hyperparathyroidism",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/primary-hyperparathyroidism"
+    },
+    {
+      "source_id": "medlineplus_hypoparathyroidism",
+      "publisher": "MedlinePlus",
+      "title": "Hypoparathyroidism",
+      "url": "https://medlineplus.gov/ency/article/000385.htm"
+    },
+    {
+      "source_id": "ncbi_renal_artery_stenosis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Renal Artery Stenosis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK430718/"
+    },
+    {
+      "source_id": "niddk_polycystic_kidney_disease",
+      "publisher": "NIDDK",
+      "title": "Polycystic Kidney Disease",
+      "url": "https://www.niddk.nih.gov/health-information/kidney-disease/polycystic-kidney-disease"
+    },
+    {
+      "source_id": "ncbi_interstitial_nephritis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Allergic and Drug-Induced Interstitial Nephritis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK482323/"
+    },
+    {
+      "source_id": "nci_bladder_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Bladder Cancer",
+      "url": "https://www.cancer.gov/types/bladder"
+    },
+    {
+      "source_id": "nci_kidney_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Kidney Cancer",
+      "url": "https://www.cancer.gov/types/kidney"
+    },
+    {
+      "source_id": "ncbi_achalasia",
+      "publisher": "NCBI Bookshelf",
+      "title": "Achalasia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK519515/"
+    },
+    {
+      "source_id": "niddk_gastroparesis",
+      "publisher": "NIDDK",
+      "title": "Gastroparesis",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastroparesis"
+    },
+    {
+      "source_id": "ncbi_sibo",
+      "publisher": "NCBI Bookshelf",
+      "title": "Small Intestinal Bacterial Overgrowth",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK546634/"
+    },
+    {
+      "source_id": "nhlbi_bronchiectasis",
+      "publisher": "NHLBI",
+      "title": "Bronchiectasis",
+      "url": "https://www.nhlbi.nih.gov/health/bronchiectasis"
+    },
+    {
+      "source_id": "medlineplus_aspiration_pneumonia",
+      "publisher": "MedlinePlus",
+      "title": "Aspiration Pneumonia",
+      "url": "https://medlineplus.gov/ency/article/000121.htm"
+    },
+    {
+      "source_id": "ncbi_lung_abscess",
+      "publisher": "NCBI Bookshelf",
+      "title": "Lung Abscess",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK555920/"
+    },
+    {
+      "source_id": "nhlbi_heart_valve_diseases",
+      "publisher": "NHLBI",
+      "title": "Types of Heart Valve Diseases",
+      "url": "https://www.nhlbi.nih.gov/health/heart-valve-diseases/types"
+    },
+    {
+      "source_id": "ncbi_hypertrophic_cardiomyopathy",
+      "publisher": "NCBI Bookshelf",
+      "title": "Hypertrophic Cardiomyopathy",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK430788/"
+    },
+    {
+      "source_id": "nhlbi_arrhythmias_types",
+      "publisher": "NHLBI",
+      "title": "Types of Arrhythmias",
+      "url": "https://www.nhlbi.nih.gov/health/arrhythmias/types"
+    },
+    {
+      "source_id": "ncbi_normal_pressure_hydrocephalus",
+      "publisher": "NCBI Bookshelf",
+      "title": "Normal Pressure Hydrocephalus",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK542247/"
+    },
+    {
+      "source_id": "medlineplus_als",
+      "publisher": "MedlinePlus",
+      "title": "Amyotrophic Lateral Sclerosis",
+      "url": "https://medlineplus.gov/amyotrophiclateralsclerosis.html"
+    },
+    {
+      "source_id": "medlineplus_huntington_disease",
+      "publisher": "MedlinePlus",
+      "title": "Huntington's Disease",
+      "url": "https://medlineplus.gov/huntingtonsdisease.html"
+    },
+    {
+      "source_id": "medlineplus_restless_legs",
+      "publisher": "MedlinePlus",
+      "title": "Restless Legs",
+      "url": "https://medlineplus.gov/restlesslegs.html"
+    },
+    {
+      "source_id": "medlineplus_tremor",
+      "publisher": "MedlinePlus",
+      "title": "Tremor",
+      "url": "https://medlineplus.gov/tremor.html"
+    },
+    {
+      "source_id": "ncbi_somatic_symptom_disorder",
+      "publisher": "NCBI Bookshelf",
+      "title": "Somatic Symptom Disorder",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK532253/"
+    },
+    {
+      "source_id": "ncbi_adjustment_disorder",
+      "publisher": "NCBI Bookshelf",
+      "title": "Adjustment Disorder",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK482255/"
+    },
+    {
+      "source_id": "nimh_autism_spectrum_disorder",
+      "publisher": "NIMH",
+      "title": "Autism Spectrum Disorder",
+      "url": "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd"
+    },
+    {
+      "source_id": "nimh_adhd",
+      "publisher": "NIMH",
+      "title": "Attention-Deficit/Hyperactivity Disorder",
+      "url": "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd"
+    },
+    {
+      "source_id": "nhlbi_insomnia",
+      "publisher": "NHLBI",
+      "title": "Insomnia",
+      "url": "https://www.nhlbi.nih.gov/health/insomnia"
+    },
+    {
+      "source_id": "ncbi_dermatomyositis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Dermatomyositis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK558917/"
+    },
+    {
+      "source_id": "ncbi_polymyositis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Polymyositis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK563129/"
+    },
+    {
+      "source_id": "medlineplus_mixed_connective_tissue_disease",
+      "publisher": "MedlinePlus",
+      "title": "Mixed Connective Tissue Disease",
+      "url": "https://medlineplus.gov/ency/article/000929.htm"
+    },
+    {
+      "source_id": "niams_behcets_disease",
+      "publisher": "NIAMS",
+      "title": "Arthritis and Rheumatic Diseases",
+      "url": "https://www.niams.nih.gov/health-topics/arthritis-and-rheumatic-diseases"
+    },
+    {
+      "source_id": "cdc_dengue",
+      "publisher": "CDC",
+      "title": "Dengue",
+      "url": "https://www.cdc.gov/dengue/index.html"
+    },
+    {
+      "source_id": "cdc_malaria",
+      "publisher": "CDC",
+      "title": "Malaria",
+      "url": "https://www.cdc.gov/malaria/index.html"
+    },
+    {
+      "source_id": "cdc_typhoid_fever",
+      "publisher": "CDC",
+      "title": "About Typhoid Fever",
+      "url": "https://www.cdc.gov/typhoid-fever/about/index.html"
+    },
+    {
+      "source_id": "cdc_syphilis",
+      "publisher": "CDC",
+      "title": "About Syphilis",
+      "url": "https://www.cdc.gov/syphilis/about/index.html"
+    },
+    {
+      "source_id": "cdc_gonorrhea",
+      "publisher": "CDC",
+      "title": "About Gonorrhea",
+      "url": "https://www.cdc.gov/gonorrhea/about/index.html"
+    },
+    {
+      "source_id": "cdc_chlamydia",
+      "publisher": "CDC",
+      "title": "About Chlamydia",
+      "url": "https://www.cdc.gov/chlamydia/about/index.html"
+    },
+    {
+      "source_id": "cdc_chickenpox",
+      "publisher": "CDC",
+      "title": "Chickenpox",
+      "url": "https://www.cdc.gov/chickenpox/index.html"
+    },
+    {
+      "source_id": "niams_rosacea",
+      "publisher": "NIAMS",
+      "title": "Rosacea",
+      "url": "https://www.niams.nih.gov/health-topics/rosacea"
+    },
+    {
+      "source_id": "cdc_ringworm",
+      "publisher": "CDC",
+      "title": "Ringworm",
+      "url": "https://www.cdc.gov/ringworm/index.html"
+    },
+    {
+      "source_id": "cdc_impetigo",
+      "publisher": "CDC",
+      "title": "About Impetigo",
+      "url": "https://www.cdc.gov/group-a-strep/about/impetigo.html"
+    },
+    {
+      "source_id": "medlineplus_hidradenitis_suppurativa",
+      "publisher": "MedlinePlus",
+      "title": "Hidradenitis Suppurativa",
+      "url": "https://medlineplus.gov/hidradenitissuppurativa.html"
+    },
+    {
+      "source_id": "nci_melanoma",
+      "publisher": "National Cancer Institute",
+      "title": "Melanoma Treatment",
+      "url": "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq"
+    },
+    {
+      "source_id": "medlineplus_placenta_previa",
+      "publisher": "MedlinePlus",
+      "title": "Placenta Previa",
+      "url": "https://medlineplus.gov/ency/article/000900.htm"
+    },
+    {
+      "source_id": "ncbi_postpartum_hemorrhage",
+      "publisher": "NCBI Bookshelf",
+      "title": "Postpartum Hemorrhage",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK499988/"
     }
   ]
 }

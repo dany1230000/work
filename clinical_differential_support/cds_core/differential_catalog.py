@@ -995,6 +995,246 @@ SOURCES = {
         "title": "Chronic Venous Insufficiency and Post-Thrombotic Syndrome",
         "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-venous-disorders/chronic-venous-insufficiency-and-post-thrombotic-syndrome",
     },
+    "niddk_cushing_syndrome": {
+        "publisher": "NIDDK",
+        "title": "Cushing's Syndrome",
+        "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/cushings-syndrome",
+    },
+    "ncbi_pituitary_apoplexy": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Pituitary Apoplexy",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK559222/",
+    },
+    "nci_pheochromocytoma": {
+        "publisher": "National Cancer Institute",
+        "title": "Pheochromocytoma and Paraganglioma",
+        "url": "https://www.cancer.gov/pediatric-adult-rare-tumor/rare-tumors/rare-endocrine-tumor/pheochromocytoma",
+    },
+    "niddk_diabetes_insipidus": {
+        "publisher": "NIDDK",
+        "title": "Diabetes Insipidus",
+        "url": "https://www.niddk.nih.gov/health-information/kidney-disease/diabetes-insipidus",
+    },
+    "niddk_primary_hyperparathyroidism": {
+        "publisher": "NIDDK",
+        "title": "Primary Hyperparathyroidism",
+        "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/primary-hyperparathyroidism",
+    },
+    "medlineplus_hypoparathyroidism": {
+        "publisher": "MedlinePlus",
+        "title": "Hypoparathyroidism",
+        "url": "https://medlineplus.gov/ency/article/000385.htm",
+    },
+    "ncbi_renal_artery_stenosis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Renal Artery Stenosis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK430718/",
+    },
+    "niddk_polycystic_kidney_disease": {
+        "publisher": "NIDDK",
+        "title": "Polycystic Kidney Disease",
+        "url": "https://www.niddk.nih.gov/health-information/kidney-disease/polycystic-kidney-disease",
+    },
+    "ncbi_interstitial_nephritis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Allergic and Drug-Induced Interstitial Nephritis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482323/",
+    },
+    "nci_bladder_cancer": {
+        "publisher": "National Cancer Institute",
+        "title": "Bladder Cancer",
+        "url": "https://www.cancer.gov/types/bladder",
+    },
+    "nci_kidney_cancer": {
+        "publisher": "National Cancer Institute",
+        "title": "Kidney Cancer",
+        "url": "https://www.cancer.gov/types/kidney",
+    },
+    "ncbi_achalasia": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Achalasia",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK519515/",
+    },
+    "niddk_gastroparesis": {
+        "publisher": "NIDDK",
+        "title": "Gastroparesis",
+        "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastroparesis",
+    },
+    "ncbi_sibo": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Small Intestinal Bacterial Overgrowth",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK546634/",
+    },
+    "nhlbi_bronchiectasis": {
+        "publisher": "NHLBI",
+        "title": "Bronchiectasis",
+        "url": "https://www.nhlbi.nih.gov/health/bronchiectasis",
+    },
+    "medlineplus_aspiration_pneumonia": {
+        "publisher": "MedlinePlus",
+        "title": "Aspiration Pneumonia",
+        "url": "https://medlineplus.gov/ency/article/000121.htm",
+    },
+    "ncbi_lung_abscess": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Lung Abscess",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK555920/",
+    },
+    "nhlbi_heart_valve_diseases": {
+        "publisher": "NHLBI",
+        "title": "Types of Heart Valve Diseases",
+        "url": "https://www.nhlbi.nih.gov/health/heart-valve-diseases/types",
+    },
+    "ncbi_hypertrophic_cardiomyopathy": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Hypertrophic Cardiomyopathy",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK430788/",
+    },
+    "nhlbi_arrhythmias_types": {
+        "publisher": "NHLBI",
+        "title": "Types of Arrhythmias",
+        "url": "https://www.nhlbi.nih.gov/health/arrhythmias/types",
+    },
+    "ncbi_normal_pressure_hydrocephalus": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Normal Pressure Hydrocephalus",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK542247/",
+    },
+    "medlineplus_als": {
+        "publisher": "MedlinePlus",
+        "title": "Amyotrophic Lateral Sclerosis",
+        "url": "https://medlineplus.gov/amyotrophiclateralsclerosis.html",
+    },
+    "medlineplus_huntington_disease": {
+        "publisher": "MedlinePlus",
+        "title": "Huntington's Disease",
+        "url": "https://medlineplus.gov/huntingtonsdisease.html",
+    },
+    "medlineplus_restless_legs": {
+        "publisher": "MedlinePlus",
+        "title": "Restless Legs",
+        "url": "https://medlineplus.gov/restlesslegs.html",
+    },
+    "medlineplus_tremor": {
+        "publisher": "MedlinePlus",
+        "title": "Tremor",
+        "url": "https://medlineplus.gov/tremor.html",
+    },
+    "ncbi_somatic_symptom_disorder": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Somatic Symptom Disorder",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK532253/",
+    },
+    "ncbi_adjustment_disorder": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Adjustment Disorder",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK482255/",
+    },
+    "nimh_autism_spectrum_disorder": {
+        "publisher": "NIMH",
+        "title": "Autism Spectrum Disorder",
+        "url": "https://www.nimh.nih.gov/health/topics/autism-spectrum-disorders-asd",
+    },
+    "nimh_adhd": {
+        "publisher": "NIMH",
+        "title": "Attention-Deficit/Hyperactivity Disorder",
+        "url": "https://www.nimh.nih.gov/health/topics/attention-deficit-hyperactivity-disorder-adhd",
+    },
+    "nhlbi_insomnia": {
+        "publisher": "NHLBI",
+        "title": "Insomnia",
+        "url": "https://www.nhlbi.nih.gov/health/insomnia",
+    },
+    "ncbi_dermatomyositis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Dermatomyositis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK558917/",
+    },
+    "ncbi_polymyositis": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Polymyositis",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK563129/",
+    },
+    "medlineplus_mixed_connective_tissue_disease": {
+        "publisher": "MedlinePlus",
+        "title": "Mixed Connective Tissue Disease",
+        "url": "https://medlineplus.gov/ency/article/000929.htm",
+    },
+    "niams_behcets_disease": {
+        "publisher": "NIAMS",
+        "title": "Arthritis and Rheumatic Diseases",
+        "url": "https://www.niams.nih.gov/health-topics/arthritis-and-rheumatic-diseases",
+    },
+    "cdc_dengue": {
+        "publisher": "CDC",
+        "title": "Dengue",
+        "url": "https://www.cdc.gov/dengue/index.html",
+    },
+    "cdc_malaria": {
+        "publisher": "CDC",
+        "title": "Malaria",
+        "url": "https://www.cdc.gov/malaria/index.html",
+    },
+    "cdc_typhoid_fever": {
+        "publisher": "CDC",
+        "title": "About Typhoid Fever",
+        "url": "https://www.cdc.gov/typhoid-fever/about/index.html",
+    },
+    "cdc_syphilis": {
+        "publisher": "CDC",
+        "title": "About Syphilis",
+        "url": "https://www.cdc.gov/syphilis/about/index.html",
+    },
+    "cdc_gonorrhea": {
+        "publisher": "CDC",
+        "title": "About Gonorrhea",
+        "url": "https://www.cdc.gov/gonorrhea/about/index.html",
+    },
+    "cdc_chlamydia": {
+        "publisher": "CDC",
+        "title": "About Chlamydia",
+        "url": "https://www.cdc.gov/chlamydia/about/index.html",
+    },
+    "cdc_chickenpox": {
+        "publisher": "CDC",
+        "title": "Chickenpox",
+        "url": "https://www.cdc.gov/chickenpox/index.html",
+    },
+    "niams_rosacea": {
+        "publisher": "NIAMS",
+        "title": "Rosacea",
+        "url": "https://www.niams.nih.gov/health-topics/rosacea",
+    },
+    "cdc_ringworm": {
+        "publisher": "CDC",
+        "title": "Ringworm",
+        "url": "https://www.cdc.gov/ringworm/index.html",
+    },
+    "cdc_impetigo": {
+        "publisher": "CDC",
+        "title": "About Impetigo",
+        "url": "https://www.cdc.gov/group-a-strep/about/impetigo.html",
+    },
+    "medlineplus_hidradenitis_suppurativa": {
+        "publisher": "MedlinePlus",
+        "title": "Hidradenitis Suppurativa",
+        "url": "https://medlineplus.gov/hidradenitissuppurativa.html",
+    },
+    "nci_melanoma": {
+        "publisher": "National Cancer Institute",
+        "title": "Melanoma Treatment",
+        "url": "https://www.cancer.gov/types/skin/patient/melanoma-treatment-pdq",
+    },
+    "medlineplus_placenta_previa": {
+        "publisher": "MedlinePlus",
+        "title": "Placenta Previa",
+        "url": "https://medlineplus.gov/ency/article/000900.htm",
+    },
+    "ncbi_postpartum_hemorrhage": {
+        "publisher": "NCBI Bookshelf",
+        "title": "Postpartum Hemorrhage",
+        "url": "https://www.ncbi.nlm.nih.gov/books/NBK499988/",
+    },
 }
 
 FINDING_GROUPS = [
@@ -5652,5 +5892,63 @@ SIXTH_GENERALIST_CONDITION_BATCH = [
         "Check delivery timing, quantified bleeding, uterine tone, retained tissue or laceration concern, vitals, and immediate obstetric escalation need.",
     ),
 ]
+
+SIXTH_GENERALIST_SECONDARY_SOURCE_IDS = {
+    "cushing_syndrome": "niddk_cushing_syndrome",
+    "pituitary_apoplexy": "ncbi_pituitary_apoplexy",
+    "pheochromocytoma": "nci_pheochromocytoma",
+    "diabetes_insipidus": "niddk_diabetes_insipidus",
+    "primary_hyperparathyroidism": "niddk_primary_hyperparathyroidism",
+    "hypoparathyroidism": "medlineplus_hypoparathyroidism",
+    "renal_artery_stenosis": "ncbi_renal_artery_stenosis",
+    "polycystic_kidney_disease": "niddk_polycystic_kidney_disease",
+    "interstitial_nephritis": "ncbi_interstitial_nephritis",
+    "bladder_cancer": "nci_bladder_cancer",
+    "renal_cell_carcinoma": "nci_kidney_cancer",
+    "achalasia": "ncbi_achalasia",
+    "gastroparesis": "niddk_gastroparesis",
+    "small_intestinal_bacterial_overgrowth": "ncbi_sibo",
+    "bronchiectasis": "nhlbi_bronchiectasis",
+    "aspiration_pneumonia": "medlineplus_aspiration_pneumonia",
+    "lung_abscess": "ncbi_lung_abscess",
+    "mitral_regurgitation": "nhlbi_heart_valve_diseases",
+    "mitral_stenosis": "nhlbi_heart_valve_diseases",
+    "hypertrophic_cardiomyopathy": "ncbi_hypertrophic_cardiomyopathy",
+    "supraventricular_tachycardia": "nhlbi_arrhythmias_types",
+    "ventricular_tachycardia": "nhlbi_arrhythmias_types",
+    "normal_pressure_hydrocephalus": "ncbi_normal_pressure_hydrocephalus",
+    "amyotrophic_lateral_sclerosis": "medlineplus_als",
+    "huntington_disease": "medlineplus_huntington_disease",
+    "restless_legs_syndrome": "medlineplus_restless_legs",
+    "essential_tremor": "medlineplus_tremor",
+    "somatic_symptom_disorder": "ncbi_somatic_symptom_disorder",
+    "adjustment_disorder": "ncbi_adjustment_disorder",
+    "autism_spectrum_disorder": "nimh_autism_spectrum_disorder",
+    "attention_deficit_hyperactivity_disorder": "nimh_adhd",
+    "insomnia_disorder": "nhlbi_insomnia",
+    "dermatomyositis": "ncbi_dermatomyositis",
+    "polymyositis": "ncbi_polymyositis",
+    "mixed_connective_tissue_disease": "medlineplus_mixed_connective_tissue_disease",
+    "behcet_disease": "niams_behcets_disease",
+    "dengue": "cdc_dengue",
+    "malaria": "cdc_malaria",
+    "typhoid_fever": "cdc_typhoid_fever",
+    "syphilis": "cdc_syphilis",
+    "gonorrhea": "cdc_gonorrhea",
+    "chlamydia": "cdc_chlamydia",
+    "varicella": "cdc_chickenpox",
+    "rosacea": "niams_rosacea",
+    "tinea_corporis": "cdc_ringworm",
+    "impetigo": "cdc_impetigo",
+    "hidradenitis_suppurativa": "medlineplus_hidradenitis_suppurativa",
+    "melanoma": "nci_melanoma",
+    "placenta_previa": "medlineplus_placenta_previa",
+    "postpartum_hemorrhage": "ncbi_postpartum_hemorrhage",
+}
+
+for condition in SIXTH_GENERALIST_CONDITION_BATCH:
+    secondary_source_id = SIXTH_GENERALIST_SECONDARY_SOURCE_IDS[condition["slug"]]
+    if secondary_source_id not in condition["source_ids"]:
+        condition["source_ids"].append(secondary_source_id)
 
 CONDITIONS.extend(SIXTH_GENERALIST_CONDITION_BATCH)
