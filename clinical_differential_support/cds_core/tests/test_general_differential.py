@@ -271,6 +271,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             result["ask_next"].index(result["results"][0]["ask_next"][0]),
         )
 
+    def test_final_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("multiple sclerosis", "multiple_sclerosis"),
+            ("parkinson disease", "parkinson_disease"),
+            ("dementia", "dementia_major_neurocognitive_disorder"),
+            ("peripheral neuropathy", "peripheral_neuropathy"),
+            ("carpal tunnel syndrome", "carpal_tunnel_syndrome"),
+            ("myasthenia gravis", "myasthenia_gravis"),
+            ("cerebral venous sinus thrombosis", "cerebral_venous_sinus_thrombosis"),
+            ("intracerebral hemorrhage", "intracerebral_hemorrhage"),
+            ("vertebral compression fracture", "vertebral_compression_fracture"),
+            ("diabetic foot infection", "diabetic_foot_infection"),
+            ("chronic kidney disease", "chronic_kidney_disease"),
+            ("diabetes mellitus", "diabetes_mellitus"),
+            ("hyperthyroidism", "hyperthyroidism"),
+            ("vitamin b12 deficiency", "vitamin_b12_deficiency"),
+            ("iron deficiency anemia", "iron_deficiency_anemia"),
+            ("celiac disease", "celiac_disease"),
+            ("irritable bowel syndrome", "irritable_bowel_syndrome"),
+            ("inguinal hernia", "inguinal_hernia"),
+            ("urinary incontinence", "urinary_incontinence"),
+            ("uterine fibroids", "uterine_fibroids"),
+            ("menopause transition", "menopause_transition"),
+            ("urticaria", "urticaria"),
+            ("allergic contact dermatitis", "allergic_contact_dermatitis"),
+            ("adverse drug reaction", "adverse_drug_reaction"),
+            ("chronic venous insufficiency", "chronic_venous_insufficiency"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}

@@ -2,12 +2,12 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-29",
-    "condition_count": 175,
-    "source_count": 170,
+    "condition_count": 200,
+    "source_count": 195,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-29",
-      "condition_count": 175,
-      "source_count": 170,
+      "condition_count": 200,
+      "source_count": 195,
       "blocking_issue_count": 0,
       "warning_count": 51,
       "ready_for_public_reference": true,
@@ -5102,6 +5102,746 @@
         "merck_constipation",
         "merck_bowel_obstruction"
       ]
+    },
+    {
+      "slug": "multiple_sclerosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u591a\u767c\u6027\u786c\u5316\u75c7",
+      "name_en": "Multiple sclerosis",
+      "system": "Neurologic",
+      "urgency": "soon",
+      "summary_zh": "\u8996\u89ba\u75c7\u72c0\u3001\u611f\u89ba/\u904b\u52d5\u795e\u7d93\u7f3a\u640d\u3001\u75b2\u5026\u6216\u6642\u9593\u4e0a\u5206\u6563\u7684\u795e\u7d93\u4e8b\u4ef6\u6642\uff0c\u9700\u7d0d\u5165\u591a\u767c\u6027\u786c\u5316\u75c7\u3002",
+      "summary_en": "Visual symptoms, sensory or motor deficits, fatigue, or neurologic episodes separated in time should include multiple sclerosis.",
+      "signals": {
+        "neurologic_deficit": 4,
+        "visual_disturbance": 3,
+        "painful_eye_movement_or_proptosis": 2,
+        "fatigue": 2,
+        "unilateral_weakness": 1
+      },
+      "synonyms": [
+        "multiple sclerosis",
+        "ms",
+        "demyelinating disease",
+        "relapsing neurologic deficits"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75c7\u72c0\u662f\u5426\u6709\u6642\u9593/\u7a7a\u9593\u5206\u6563\u3001\u8996\u795e\u7d93\u708e\u3001\u611f\u89ba\u6216\u904b\u52d5\u7f3a\u640d\u3001\u8180\u80f1\u75c7\u72c0\u3001\u611f\u67d3\u6216\u810a\u9ad3\u58d3\u8feb\u7d05\u65d7\u8207\u795e\u7d93\u8a55\u4f30\u9700\u6c42\u3002 / Check dissemination in time/space, optic neuritis, sensory or motor deficits, bladder symptoms, infection or cord compression red flags, and neurology review need."
+      ],
+      "source_ids": [
+        "merck_multiple_sclerosis",
+        "merck_optic_neuritis"
+      ]
+    },
+    {
+      "slug": "parkinson_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5e15\u91d1\u68ee\u6c0f\u75c5",
+      "name_en": "Parkinson disease",
+      "system": "Neurologic/Movement",
+      "urgency": "routine",
+      "summary_zh": "\u52d5\u4f5c\u8b8a\u6162\u3001\u9707\u986b\u3001\u50f5\u786c\u3001\u6b65\u614b\u6539\u8b8a\u3001\u8dcc\u5012\u6216\u81ea\u4e3b\u795e\u7d93/\u7761\u7720\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u5e15\u91d1\u68ee\u6c0f\u75c5\u3002",
+      "summary_en": "Bradykinesia, tremor, rigidity, gait change, falls, or autonomic/sleep context should include Parkinson disease.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "orthostatic_lightheadedness": 1,
+        "fatigue": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "parkinson disease",
+        "parkinson's disease",
+        "parkinsonism",
+        "bradykinesia tremor rigidity"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u52d5\u4f5c\u8b8a\u6162\u3001\u975c\u6b62\u6027\u9707\u986b\u3001\u50f5\u786c\u3001\u6b65\u614b/\u8dcc\u5012\u3001\u55c5\u89ba/\u4fbf\u79d8/\u7761\u7720\u884c\u70ba\u3001\u85e5\u7269\u8a98\u767c\u8207\u795e\u7d93\u8a55\u4f30\u9700\u6c42\u3002 / Check bradykinesia, resting tremor, rigidity, gait/falls, smell/constipation/sleep behavior, medication-induced causes, and neurology review need."
+      ],
+      "source_ids": [
+        "merck_parkinson_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "dementia_major_neurocognitive_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5931\u667a\u75c7/\u91cd\u5927\u8a8d\u77e5\u969c\u7919",
+      "name_en": "Dementia or major neurocognitive disorder",
+      "system": "Neurologic/Geriatric",
+      "urgency": "routine",
+      "summary_zh": "\u6f38\u9032\u6027\u8a18\u61b6\u3001\u8a9e\u8a00\u3001\u57f7\u884c\u529f\u80fd\u6216\u65e5\u5e38\u529f\u80fd\u4e0b\u964d\u6642\uff0c\u9700\u7d0d\u5165\u5931\u667a\u75c7\u4e26\u5340\u5206\u8b6b\u5984\u3002",
+      "summary_en": "Progressive memory, language, executive, or functional decline should include dementia while delirium is distinguished.",
+      "signals": {
+        "altered_mental_status": 2,
+        "fatigue": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "dementia",
+        "major neurocognitive disorder",
+        "alzheimer disease",
+        "progressive cognitive decline"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6642\u7a0b\u662f\u5426\u6025\u6027\u6216\u6162\u6027\u3001\u65e5\u5e38\u529f\u80fd\u3001\u85e5\u7269/\u6182\u9b31/\u7761\u7720\u3001\u8b6b\u5984\u611f\u67d3\u4ee3\u8b1d\u539f\u56e0\u3001\u7167\u8b77\u5b89\u5168\u8207\u8a8d\u77e5\u8a55\u4f30\u9700\u6c42\u3002 / Clarify acute vs chronic timeline, daily function, medications/depression/sleep, delirium infection/metabolic causes, safety, and cognitive assessment need."
+      ],
+      "source_ids": [
+        "merck_dementia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "peripheral_neuropathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5468\u908a\u795e\u7d93\u75c5\u8b8a",
+      "name_en": "Peripheral neuropathy",
+      "system": "Neurologic",
+      "urgency": "routine",
+      "summary_zh": "\u9060\u7aef\u9ebb\u6728\u3001\u523a\u75db\u3001\u71d2\u707c\u75db\u3001\u7121\u529b\u6216\u7cd6\u5c3f\u75c5/\u71df\u990a/\u6bd2\u7269\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u5468\u908a\u795e\u7d93\u75c5\u8b8a\u3002",
+      "summary_en": "Distal numbness, tingling, burning pain, weakness, or diabetes/nutritional/toxic context should include peripheral neuropathy.",
+      "signals": {
+        "neurologic_deficit": 3,
+        "fatigue": 1,
+        "hypoglycemia_risk": 1,
+        "substance_use_concern": 1
+      },
+      "synonyms": [
+        "peripheral neuropathy",
+        "polyneuropathy",
+        "neuropathy",
+        "distal symmetric neuropathy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5206\u5e03\u3001\u611f\u89ba/\u904b\u52d5/\u81ea\u5f8b\u795e\u7d93\u75c7\u72c0\u3001\u7cd6\u5c3f\u75c5\u3001\u9152\u7cbe/\u85e5\u7269\u3001B12\u3001\u814e\u75c5\u3001\u7d05\u65d7\u7121\u529b\u6216\u810a\u9ad3\u58d3\u8feb\u7dda\u7d22\u3002 / Check distribution, sensory/motor/autonomic symptoms, diabetes, alcohol/drugs, B12, kidney disease, and red-flag weakness or cord clues."
+      ],
+      "source_ids": [
+        "merck_polyneuropathy",
+        "merck_vitamin_b12_deficiency"
+      ]
+    },
+    {
+      "slug": "carpal_tunnel_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8155\u96a7\u9053\u75c7\u5019\u7fa4",
+      "name_en": "Carpal tunnel syndrome",
+      "system": "Neurologic/Musculoskeletal",
+      "urgency": "routine",
+      "summary_zh": "\u624b\u90e8\u9ebb\u6728\u523a\u75db\u3001\u591c\u9593\u60e1\u5316\u3001\u62c7\u6307\u5074\u5206\u5e03\u6216\u624b\u529f\u80fd\u4e0b\u964d\u6642\uff0c\u9700\u7d0d\u5165\u8155\u96a7\u9053\u75c7\u5019\u7fa4\u3002",
+      "summary_en": "Hand paresthesias, nocturnal symptoms, median nerve distribution, or hand functional decline should include carpal tunnel syndrome.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "acute_joint_pain_swelling": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "carpal tunnel syndrome",
+        "cts",
+        "median neuropathy",
+        "hand numbness tingling"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ebb\u6728\u5206\u5e03\u3001\u591c\u9593\u75c7\u72c0\u3001\u62c7\u6307\u5c0d\u638c\u529b\u3001\u5de5\u4f5c/\u61f7\u5b55/\u7cd6\u5c3f\u75c5/\u7532\u72c0\u817a\u8108\u7d61\u8207\u662f\u5426\u9700\u795e\u7d93\u50b3\u5c0e\u6216\u624b\u5916\u79d1\u8a55\u4f30\u3002 / Check numbness distribution, nocturnal symptoms, thumb opposition, work/pregnancy/diabetes/thyroid context, and nerve conduction or hand review need."
+      ],
+      "source_ids": [
+        "merck_carpal_tunnel",
+        "merck_polyneuropathy"
+      ]
+    },
+    {
+      "slug": "myasthenia_gravis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u91cd\u75c7\u808c\u7121\u529b",
+      "name_en": "Myasthenia gravis",
+      "system": "Neurologic/Neuromuscular",
+      "urgency": "urgent",
+      "summary_zh": "\u6ce2\u52d5\u6027\u773c\u77bc\u4e0b\u5782\u3001\u8907\u8996\u3001\u541e\u56a5\u6216\u547c\u5438\u808c\u7121\u529b\u6642\uff0c\u9700\u7d0d\u5165\u91cd\u75c7\u808c\u7121\u529b\u3002",
+      "summary_en": "Fluctuating ptosis, diplopia, bulbar weakness, or respiratory muscle weakness should include myasthenia gravis.",
+      "signals": {
+        "visual_disturbance": 3,
+        "fatigue": 3,
+        "dyspnea": 2,
+        "respiratory_distress": 4,
+        "neurologic_deficit": 2
+      },
+      "synonyms": [
+        "myasthenia gravis",
+        "mg",
+        "fluctuating weakness",
+        "ptosis diplopia weakness"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u773c\u77bc\u4e0b\u5782/\u8907\u8996\u3001\u5480\u56bc\u541e\u56a5\u8aaa\u8a71\u3001\u75b2\u52de\u5f8c\u60e1\u5316\u3001\u547c\u5438\u7a98\u8feb\u3001\u611f\u67d3\u6216\u65b0\u85e5\u8a98\u767c\u8207\u662f\u5426\u9700\u6025\u75c7\u795e\u7d93\u8a55\u4f30\u3002 / Check ptosis/diplopia, chewing/swallowing/speech, fatigability, respiratory distress, infection or new-drug trigger, and urgent neurology review need."
+      ],
+      "source_ids": [
+        "merck_myasthenia_gravis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cerebral_venous_sinus_thrombosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8166\u975c\u8108\u7ac7\u8840\u6813",
+      "name_en": "Cerebral venous sinus thrombosis",
+      "system": "Neurologic/Vascular",
+      "urgency": "emergent",
+      "summary_zh": "\u982d\u75db\u3001\u7672\u7647\u3001\u795e\u7d93\u7f3a\u640d\u3001\u598a\u5a20/\u7522\u5f8c\u6216\u9ad8\u51dd\u8840\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u8166\u975c\u8108\u7ac7\u8840\u6813\u3002",
+      "summary_en": "Headache, seizure, neurologic deficits, pregnancy/postpartum, or hypercoagulable context should include cerebral venous sinus thrombosis.",
+      "signals": {
+        "thunderclap_headache": 3,
+        "new_headache_after_50": 1,
+        "seizure_activity_or_postictal_state": 4,
+        "neurologic_deficit": 4,
+        "pregnancy_possible": 2,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "cerebral venous sinus thrombosis",
+        "cvst",
+        "cerebral venous thrombosis",
+        "venous sinus thrombosis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u982d\u75db\u6642\u7a0b\u3001\u7672\u7647\u3001\u5c40\u7076\u7f3a\u640d\u3001\u8996\u4e73\u7a81\u6c34\u816b/\u8996\u89ba\u75c7\u72c0\u3001\u598a\u5a20\u7522\u5f8c\u3001\u611f\u67d3/\u764c\u75c7/\u8840\u6813\u53f2\u8207\u6025\u75c7\u795e\u7d93\u5f71\u50cf\u9700\u6c42\u3002 / Check headache timeline, seizure, focal deficits, papilledema/visual symptoms, pregnancy/postpartum, infection/cancer/thrombosis history, and urgent neuroimaging need."
+      ],
+      "source_ids": [
+        "ncbi_cvst",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "intracerebral_hemorrhage",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8166\u5167\u51fa\u8840",
+      "name_en": "Intracerebral hemorrhage",
+      "system": "Neurologic/Vascular",
+      "urgency": "emergent",
+      "summary_zh": "\u6025\u6027\u795e\u7d93\u7f3a\u640d\u3001\u610f\u8b58\u6539\u8b8a\u3001\u56b4\u91cd\u982d\u75db\u3001\u5614\u5410\u6216\u9ad8\u8840\u58d3\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u8166\u5167\u51fa\u8840\u3002",
+      "summary_en": "Acute neurologic deficit, altered mental status, severe headache, vomiting, or hypertension context should include intracerebral hemorrhage.",
+      "signals": {
+        "neurologic_deficit": 6,
+        "altered_mental_status": 4,
+        "thunderclap_headache": 3,
+        "vomiting": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "intracerebral hemorrhage",
+        "ich",
+        "brain hemorrhage",
+        "hemorrhagic stroke"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u767c\u75c5\u6642\u9593\u3001\u8840\u58d3\u3001\u6297\u51dd\u8840\u85e5\u3001\u5916\u50b7\u3001\u610f\u8b58\u8207\u795e\u7d93\u7f3a\u640d\u9032\u5c55\u3001\u5614\u5410/\u7672\u7647\u8207\u6025\u75c7\u5f71\u50cf\u9700\u6c42\u3002 / Check onset time, BP, anticoagulants, trauma, mental status and deficit progression, vomiting/seizure, and urgent imaging need."
+      ],
+      "source_ids": [
+        "merck_intracerebral_hemorrhage",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vertebral_compression_fracture",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u690e\u9ad4\u58d3\u8feb\u6027\u9aa8\u6298",
+      "name_en": "Vertebral compression fracture",
+      "system": "Musculoskeletal/Spine",
+      "urgency": "soon",
+      "summary_zh": "\u6025\u6027\u80cc\u75db\u3001\u9aa8\u8cea\u758f\u9b06/\u764c\u75c7/\u5916\u50b7\u8108\u7d61\u6216\u8eab\u9ad8\u8b8a\u77ee\u6642\uff0c\u9700\u7d0d\u5165\u690e\u9ad4\u58d3\u8feb\u6027\u9aa8\u6298\u3002",
+      "summary_en": "Acute back pain with osteoporosis, cancer, trauma context, or height loss should include vertebral compression fracture.",
+      "signals": {
+        "bone_back_pain": 5,
+        "recent_trauma": 3,
+        "known_cancer": 2,
+        "new_headache_after_50": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "vertebral compression fracture",
+        "spinal compression fracture",
+        "osteoporotic compression fracture",
+        "vertebral fracture"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5916\u50b7\u6216\u8f15\u5fae\u52d5\u4f5c\u8a98\u767c\u3001\u9aa8\u9b06/\u764c\u75c7/\u985e\u56fa\u9187\u3001\u75bc\u75db\u4f4d\u7f6e\u3001\u795e\u7d93\u7f3a\u640d\u3001\u767c\u71d2\u6216\u611f\u67d3\u98a8\u96aa\u8207\u5f71\u50cf\u9700\u6c42\u3002 / Check trauma or minor trigger, osteoporosis/cancer/steroids, pain location, neurologic deficit, fever or infection risk, and imaging need."
+      ],
+      "source_ids": [
+        "merck_spinal_compression_fractures",
+        "merck_osteomyelitis"
+      ]
+    },
+    {
+      "slug": "diabetic_foot_infection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7cd6\u5c3f\u75c5\u8db3\u611f\u67d3",
+      "name_en": "Diabetic foot infection",
+      "system": "Endocrine/Skin/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "\u7cd6\u5c3f\u75c5\u6216\u795e\u7d93\u75c5\u8b8a\u8108\u7d61\u4e0b\u8db3\u90e8\u6f70\u760d\u3001\u81bf\u6db2\u3001\u7d05\u816b\u71b1\u75db\u3001\u767c\u71d2\u6216\u9aa8\u75db\u6642\uff0c\u9700\u7d0d\u5165\u7cd6\u5c3f\u75c5\u8db3\u611f\u67d3\u3002",
+      "summary_en": "Foot ulcer, purulence, cellulitis, fever, or bone pain in diabetes/neuropathy context should include diabetic foot infection.",
+      "signals": {
+        "purulent_skin_lesion": 5,
+        "rapidly_spreading_skin_infection": 4,
+        "fever": 2,
+        "bone_back_pain": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "diabetic foot infection",
+        "diabetic foot ulcer infection",
+        "diabetic foot",
+        "infected diabetic ulcer"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u7cd6\u5c3f\u75c5/\u795e\u7d93\u75c5\u8b8a\u3001\u6f70\u760d\u6df1\u5ea6\u3001\u81bf\u6db2\u6216\u60e1\u81ed\u3001\u7d05\u816b\u7bc4\u570d\u3001\u767c\u71d2\u3001\u9aa8\u9ad3\u708e\u7dda\u7d22\u3001\u8840\u6d41\u72c0\u614b\u8207\u6025\u75c7/\u50b7\u53e3\u8a55\u4f30\u9700\u6c42\u3002 / Check diabetes/neuropathy, ulcer depth, purulence or odor, erythema extent, fever, osteomyelitis clues, perfusion, and urgent wound review need."
+      ],
+      "source_ids": [
+        "merck_long_term_diabetes_complications",
+        "merck_osteomyelitis"
+      ]
+    },
+    {
+      "slug": "chronic_kidney_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6162\u6027\u814e\u81df\u75c5",
+      "name_en": "Chronic kidney disease",
+      "system": "Renal/Metabolic",
+      "urgency": "routine",
+      "summary_zh": "\u75b2\u5026\u3001\u6c34\u816b\u3001\u5c3f\u91cf\u8b8a\u5316\u3001\u9ad8\u9240\u98a8\u96aa\u6216\u7cd6\u5c3f\u75c5/\u9ad8\u8840\u58d3\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u6162\u6027\u814e\u81df\u75c5\u3002",
+      "summary_en": "Fatigue, edema, urine-output change, hyperkalemia risk, or diabetes/hypertension context should include chronic kidney disease.",
+      "signals": {
+        "fatigue": 2,
+        "orthopnea_edema": 3,
+        "decreased_urine_output": 3,
+        "hyperkalemia_risk_or_weakness": 2,
+        "hypertensive_emergency": 1
+      },
+      "synonyms": [
+        "chronic kidney disease",
+        "ckd",
+        "chronic renal disease",
+        "chronic renal failure"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u65e2\u5f80 eGFR/\u808c\u9178\u9150\u3001\u5c3f\u86cb\u767d\u3001\u5c3f\u91cf\u3001\u6c34\u816b\u3001\u9ad8\u8840\u58d3/\u7cd6\u5c3f\u75c5\u3001\u85e5\u7269\u3001\u9240\u96e2\u5b50\u98a8\u96aa\u8207\u814e\u81df\u79d1\u8ffd\u8e64\u9700\u6c42\u3002 / Check prior eGFR/creatinine, proteinuria, urine output, edema, hypertension/diabetes, medications, potassium risk, and nephrology follow-up need."
+      ],
+      "source_ids": [
+        "merck_chronic_kidney_disease",
+        "merck_acute_kidney_injury"
+      ]
+    },
+    {
+      "slug": "diabetes_mellitus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7cd6\u5c3f\u75c5",
+      "name_en": "Diabetes mellitus",
+      "system": "Endocrine/Metabolic",
+      "urgency": "routine",
+      "summary_zh": "\u591a\u5c3f\u3001\u53e3\u6e34\u3001\u9ad4\u91cd\u8b8a\u5316\u3001\u75b2\u5026\u3001\u611f\u67d3\u6216\u9ad8/\u4f4e\u8840\u7cd6\u98a8\u96aa\u6642\uff0c\u9700\u7d0d\u5165\u7cd6\u5c3f\u75c5\u3002",
+      "summary_en": "Polyuria, polydipsia, weight change, fatigue, infections, or hyper/hypoglycemia risk should include diabetes mellitus.",
+      "signals": {
+        "extreme_thirst_polyuria": 6,
+        "fatigue": 2,
+        "weight_loss": 3,
+        "hypoglycemia_risk": 1,
+        "purulent_skin_lesion": 1
+      },
+      "synonyms": [
+        "diabetes mellitus",
+        "diabetes",
+        "type 2 diabetes",
+        "hyperglycemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u53e3\u6e34\u591a\u5c3f\u3001\u9ad4\u91cd\u8b8a\u5316\u3001\u611f\u67d3\u3001\u8996\u529b\u3001\u795e\u7d93\u75c5\u8b8a\u3001\u4f4e\u8840\u7cd6\u6216 DKA/HHS \u8b66\u8a0a\u8207\u8840\u7cd6/A1c \u8a55\u4f30\u9700\u6c42\u3002 / Check thirst/polyuria, weight change, infection, vision, neuropathy, hypoglycemia or DKA/HHS red flags, and glucose/A1c review need."
+      ],
+      "source_ids": [
+        "merck_diabetes_mellitus",
+        "merck_acute_diabetes_complications"
+      ]
+    },
+    {
+      "slug": "hyperthyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7532\u72c0\u817a\u4ea2\u9032",
+      "name_en": "Hyperthyroidism",
+      "system": "Endocrine",
+      "urgency": "soon",
+      "summary_zh": "\u5fc3\u60b8\u3001\u5fc3\u640f\u904e\u901f\u3001\u9ad4\u91cd\u4e0b\u964d\u3001\u7126\u8e81\u3001\u51fa\u6c57\u6216\u7532\u72c0\u817a\u98a8\u66b4\u524d\u9a45\u6642\uff0c\u9700\u7d0d\u5165\u7532\u72c0\u817a\u4ea2\u9032\u3002",
+      "summary_en": "Palpitations, tachycardia, weight loss, anxiety, sweating, or thyroid storm precursor context should include hyperthyroidism.",
+      "signals": {
+        "palpitations": 4,
+        "tachycardia": 4,
+        "weight_loss": 4,
+        "diaphoresis": 2,
+        "severe_agitation": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "hyperthyroidism",
+        "thyrotoxicosis",
+        "graves disease",
+        "overactive thyroid"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u9ad4\u91cd\u4e0b\u964d\u3001\u71b1\u4e0d\u8010\u3001\u9707\u986b\u3001\u5fc3\u60b8/\u5fc3\u623f\u986b\u52d5\u3001\u773c\u75c7\u72c0\u3001\u7532\u72c0\u817a\u85e5\u7269\u6216\u7898\u66b4\u9732\u8207\u98a8\u66b4\u8b66\u8a0a\u3002 / Check weight loss, heat intolerance, tremor, palpitations/AF, eye symptoms, thyroid meds or iodine exposure, and storm red flags."
+      ],
+      "source_ids": [
+        "merck_hyperthyroidism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vitamin_b12_deficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7dad\u751f\u7d20 B12 \u7f3a\u4e4f",
+      "name_en": "Vitamin B12 deficiency",
+      "system": "Hematology/Neurologic/Nutrition",
+      "urgency": "routine",
+      "summary_zh": "\u75b2\u5026\u3001\u8ca7\u8840\u8108\u7d61\u3001\u795e\u7d93\u9ebb\u6728\u6216\u6b65\u614b/\u8a8d\u77e5\u8b8a\u5316\u6642\uff0c\u9700\u7d0d\u5165 B12 \u7f3a\u4e4f\u3002",
+      "summary_en": "Fatigue, anemia context, neuropathy, gait, or cognitive changes should include vitamin B12 deficiency.",
+      "signals": {
+        "fatigue": 4,
+        "neurologic_deficit": 3,
+        "altered_mental_status": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "vitamin b12 deficiency",
+        "b12 deficiency",
+        "cobalamin deficiency",
+        "pernicious anemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u98f2\u98df/\u80c3\u8178\u624b\u8853\u3001\u7d20\u98df\u3001PPI/metformin\u3001\u9ebb\u6728\u6b65\u614b\u3001\u820c\u708e\u3001\u8ca7\u8840\u8cc7\u6599\u8207 B12/\u8449\u9178\u8a55\u4f30\u9700\u6c42\u3002 / Check diet/GI surgery, vegan diet, PPI/metformin, numbness/gait, glossitis, anemia data, and B12/folate evaluation need."
+      ],
+      "source_ids": [
+        "merck_vitamin_b12_deficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "iron_deficiency_anemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u7f3a\u9435\u6027\u8ca7\u8840",
+      "name_en": "Iron deficiency anemia",
+      "system": "Hematology/Gastrointestinal/Gynecologic",
+      "urgency": "routine",
+      "summary_zh": "\u75b2\u5026\u3001\u547c\u5438\u56f0\u96e3\u3001\u6688\u53a5\u3001\u8178\u80c3\u51fa\u8840\u3001\u7d93\u8840\u904e\u591a\u6216\u6162\u6027\u5931\u8840\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u7f3a\u9435\u6027\u8ca7\u8840\u3002",
+      "summary_en": "Fatigue, dyspnea, syncope, GI bleeding, heavy menses, or chronic blood loss context should include iron deficiency anemia.",
+      "signals": {
+        "fatigue": 4,
+        "dyspnea": 2,
+        "syncope": 1,
+        "gi_bleeding": 3,
+        "vaginal_bleeding": 3,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "iron deficiency anemia",
+        "iron deficiency anaemia",
+        "ida",
+        "low ferritin anemia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u51fa\u8840\u4f86\u6e90\u3001\u7d93\u8840\u91cf\u3001\u8178\u80c3\u75c7\u72c0\u3001\u98f2\u98df/\u5438\u6536\u3001\u61f7\u5b55\u3001\u7d05\u65d7\u9ad4\u91cd\u4e0b\u964d\u8207 CBC/ferritin \u6216\u5167\u8996\u93e1\u8a55\u4f30\u9700\u6c42\u3002 / Check bleeding source, menstrual volume, GI symptoms, diet/absorption, pregnancy, weight-loss red flags, and CBC/ferritin or endoscopy review need."
+      ],
+      "source_ids": [
+        "merck_iron_deficiency_anemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "celiac_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u4e73\u7cdc\u7009",
+      "name_en": "Celiac disease",
+      "system": "Gastrointestinal/Nutrition",
+      "urgency": "routine",
+      "summary_zh": "\u6162\u6027\u8179\u90e8\u75c7\u72c0\u3001\u9ad4\u91cd\u4e0b\u964d\u3001\u75b2\u5026\u3001\u7f3a\u9435\u6216\u5438\u6536\u4e0d\u826f\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u4e73\u7cdc\u7009\u3002",
+      "summary_en": "Chronic abdominal symptoms, weight loss, fatigue, iron deficiency, or malabsorption context should include celiac disease.",
+      "signals": {
+        "abdominal_pain": 2,
+        "weight_loss": 3,
+        "fatigue": 3,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "celiac disease",
+        "coeliac disease",
+        "gluten enteropathy",
+        "gluten-sensitive enteropathy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u8179\u7009/\u8179\u8139\u3001\u9ad4\u91cd\u3001\u7f3a\u9435\u6216\u9aa8\u8cea\u98a8\u96aa\u3001\u5bb6\u65cf/\u81ea\u9ad4\u514d\u75ab\u75c5\u53f2\u3001\u98f2\u98df\u8207\u8840\u6e05\u5b78/\u8178\u80c3\u8a55\u4f30\u9700\u6c42\u3002 / Check diarrhea/bloating, weight, iron or bone risk, family/autoimmune history, diet, and serology or GI review need."
+      ],
+      "source_ids": [
+        "merck_celiac_disease",
+        "merck_iron_deficiency_anemia"
+      ]
+    },
+    {
+      "slug": "irritable_bowel_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8178\u8e81\u75c7",
+      "name_en": "Irritable bowel syndrome",
+      "system": "Gastrointestinal",
+      "urgency": "routine",
+      "summary_zh": "\u53cd\u8986\u8179\u75db\u8207\u6392\u4fbf\u578b\u614b\u6539\u8b8a\u4e14\u7121\u51fa\u8840\u3001\u9ad4\u91cd\u4e0b\u964d\u3001\u767c\u71d2\u7b49\u8b66\u8a0a\u6642\uff0c\u53ef\u7d0d\u5165\u8178\u8e81\u75c7\u3002",
+      "summary_en": "Recurrent abdominal pain with altered bowel habits and no alarm bleeding, weight loss, or fever can fit IBS.",
+      "signals": {
+        "abdominal_pain": 3,
+        "constipation_obstipation": 2,
+        "fatigue": 1,
+        "bloody_diarrhea": 1
+      },
+      "synonyms": [
+        "irritable bowel syndrome",
+        "ibs",
+        "functional bowel disorder",
+        "recurrent abdominal pain bowel habit change"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u75bc\u75db\u8207\u6392\u4fbf\u95dc\u4fc2\u3001\u4fbf\u79d8/\u8179\u7009\u578b\u614b\u3001\u8b66\u8a0a\u8840\u4fbf/\u9ad4\u91cd\u6e1b\u8f15/\u8ca7\u8840/\u591c\u9593\u75c7\u72c0\u3001\u611f\u67d3\u5f8c\u6642\u7a0b\u8207\u8178\u80c3\u8a55\u4f30\u9700\u6c42\u3002 / Check relation to defecation, constipation/diarrhea pattern, alarm bleeding/weight loss/anemia/night symptoms, postinfectious timeline, and GI review need."
+      ],
+      "source_ids": [
+        "merck_irritable_bowel_syndrome",
+        "merck_constipation"
+      ]
+    },
+    {
+      "slug": "inguinal_hernia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u9f20\u8e4a\u759d\u6c23",
+      "name_en": "Inguinal hernia",
+      "system": "Gastrointestinal/Surgical/Urologic",
+      "urgency": "soon",
+      "summary_zh": "\u9f20\u8e4a\u6216\u9670\u56ca\u816b\u584a/\u75db\u3001\u8179\u75db\u3001\u5614\u5410\u6216\u7121\u6cd5\u5fa9\u4f4d\u6642\uff0c\u9700\u7d0d\u5165\u9f20\u8e4a\u759d\u6c23\u8207\u5d4c\u9813\u98a8\u96aa\u3002",
+      "summary_en": "Groin/scrotal bulge or pain, abdominal pain, vomiting, or irreducibility should include inguinal hernia and incarceration risk.",
+      "signals": {
+        "abdominal_pain": 2,
+        "unilateral_scrotal_pain_swelling": 5,
+        "vomiting": 2,
+        "severe_pain": 2,
+        "constipation_obstipation": 1
+      },
+      "synonyms": [
+        "inguinal hernia",
+        "groin hernia",
+        "incarcerated hernia",
+        "strangulated hernia"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u816b\u584a\u662f\u5426\u53ef\u5fa9\u4f4d\u3001\u75bc\u75db\u7a0b\u5ea6\u3001\u5614\u5410/\u8179\u8139/\u7121\u6392\u6c23\u3001\u76ae\u819a\u8b8a\u8272\u3001\u776a\u4e38\u626d\u8f49\u6392\u9664\u8207\u5916\u79d1\u6025\u75c7\u9700\u6c42\u3002 / Check reducibility, pain severity, vomiting/distension/obstipation, skin color, testicular torsion exclusion, and surgical emergency need."
+      ],
+      "source_ids": [
+        "merck_inguinal_hernia",
+        "merck_bowel_obstruction"
+      ]
+    },
+    {
+      "slug": "urinary_incontinence",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5c3f\u5931\u7981",
+      "name_en": "Urinary incontinence",
+      "system": "Renal/Urologic/Geriatric",
+      "urgency": "routine",
+      "summary_zh": "\u6f0f\u5c3f\u3001\u6025\u5c3f\u3001\u58d3\u529b\u6027\u6f0f\u5c3f\u6216\u795e\u7d93/\u85e5\u7269/\u611f\u67d3\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u5c3f\u5931\u7981\u3002",
+      "summary_en": "Urine leakage, urgency, stress leakage, or neurologic/medication/infection context should include urinary incontinence.",
+      "signals": {
+        "bladder_bowel_dysfunction": 4,
+        "dysuria": 1,
+        "neurologic_deficit": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "urinary incontinence",
+        "urge incontinence",
+        "stress incontinence",
+        "urine leakage"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u6025\u8feb/\u58d3\u529b/\u6ea2\u6d41\u578b\u614b\u3001\u6392\u5c3f\u75db\u3001\u5c3f\u6eef\u7559\u3001\u795e\u7d93\u7f3a\u640d\u3001\u85e5\u7269\u3001\u7522\u5f8c\u6216\u9aa8\u76c6\u75c5\u53f2\u8207\u6ccc\u5c3f\u8a55\u4f30\u9700\u6c42\u3002 / Check urge/stress/overflow pattern, dysuria, retention, neurologic deficits, medications, postpartum or pelvic history, and urology review need."
+      ],
+      "source_ids": [
+        "merck_urinary_incontinence",
+        "merck_uti"
+      ]
+    },
+    {
+      "slug": "uterine_fibroids",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u5b50\u5bae\u808c\u7624",
+      "name_en": "Uterine fibroids",
+      "system": "Gynecologic",
+      "urgency": "routine",
+      "summary_zh": "\u7d93\u8840\u904e\u591a\u3001\u9aa8\u76c6\u58d3\u8feb\u75db\u3001\u983b\u5c3f\u6216\u8ca7\u8840\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u5b50\u5bae\u808c\u7624\u3002",
+      "summary_en": "Heavy menses, pelvic pressure/pain, urinary frequency context, or anemia should include uterine fibroids.",
+      "signals": {
+        "vaginal_bleeding": 5,
+        "pelvic_pain": 3,
+        "fatigue": 1,
+        "dysuria": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "uterine fibroids",
+        "leiomyoma",
+        "fibroids",
+        "heavy menstrual bleeding fibroids"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u51fa\u8840\u91cf\u3001\u8ca7\u8840\u75c7\u72c0\u3001\u9aa8\u76c6\u58d3\u8feb\u3001\u598a\u5a20\u53ef\u80fd\u3001\u505c\u7d93\u5f8c\u51fa\u8840\u8b66\u8a0a\u8207\u5a66\u79d1/\u5f71\u50cf\u8a55\u4f30\u9700\u6c42\u3002 / Check bleeding volume, anemia symptoms, pelvic pressure, pregnancy possibility, postmenopausal bleeding red flags, and gynecology/imaging need."
+      ],
+      "source_ids": [
+        "merck_uterine_fibroids",
+        "merck_iron_deficiency_anemia"
+      ]
+    },
+    {
+      "slug": "menopause_transition",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u66f4\u5e74\u671f\u8f49\u63db",
+      "name_en": "Menopause transition",
+      "system": "Gynecologic/Endocrine",
+      "urgency": "routine",
+      "summary_zh": "\u6708\u7d93\u8b8a\u5316\u3001\u71b1\u6f6e\u7d05\u3001\u7761\u7720\u6216\u60c5\u7dd2\u75c7\u72c0\u3001\u5fc3\u60b8\u6216\u6ccc\u5c3f\u751f\u6b96\u75c7\u72c0\u6642\uff0c\u53ef\u7d0d\u5165\u66f4\u5e74\u671f\u8f49\u63db\u3002",
+      "summary_en": "Cycle change, hot flashes, sleep or mood symptoms, palpitations, or genitourinary symptoms can fit menopause transition.",
+      "signals": {
+        "palpitations": 1,
+        "fatigue": 2,
+        "vaginal_bleeding": 1,
+        "dysuria": 1
+      },
+      "synonyms": [
+        "menopause transition",
+        "perimenopause",
+        "menopause",
+        "hot flashes"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u5e74\u9f61\u3001\u6708\u7d93\u8b8a\u5316\u3001\u71b1\u6f6e\u7d05/\u76dc\u6c57\u3001\u7761\u7720\u8207\u60c5\u7dd2\u3001\u6ccc\u5c3f\u751f\u6b96\u75c7\u72c0\u3001\u598a\u5a20\u53ef\u80fd\u8207\u7570\u5e38\u51fa\u8840\u8b66\u8a0a\u3002 / Check age, cycle change, hot flashes/night sweats, sleep and mood, genitourinary symptoms, pregnancy possibility, and abnormal bleeding red flags."
+      ],
+      "source_ids": [
+        "merck_menopause",
+        "merck_uterine_fibroids"
+      ]
+    },
+    {
+      "slug": "urticaria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u8541\u9ebb\u75b9",
+      "name_en": "Urticaria",
+      "system": "Skin/Allergy",
+      "urgency": "soon",
+      "summary_zh": "\u7a81\u767c\u6414\u7662\u98a8\u5718\u3001\u76ae\u75b9\u3001\u5507\u820c\u81c9\u816b\u6216\u904e\u654f\u66b4\u9732\u6642\uff0c\u9700\u7d0d\u5165\u8541\u9ebb\u75b9\u4e26\u6392\u9664\u904e\u654f\u6027\u4f11\u514b\u3002",
+      "summary_en": "Acute itchy wheals, rash, facial/lip/tongue swelling, or allergic exposure should include urticaria while anaphylaxis is excluded.",
+      "signals": {
+        "rash": 5,
+        "facial_lip_tongue_swelling": 4,
+        "itchy_red_watery_eyes": 1,
+        "new_medication_exposure": 1
+      },
+      "synonyms": [
+        "urticaria",
+        "hives",
+        "wheals",
+        "acute urticaria"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u547c\u5438\u9053/\u8840\u58d3/\u8178\u80c3\u904e\u654f\u6027\u4f11\u514b\u8b66\u8a0a\u3001\u5507\u820c\u5589\u816b\u3001\u98df\u7269/\u85e5\u7269/\u611f\u67d3\u66b4\u9732\u3001\u6301\u7e8c\u6642\u9593\u8207\u5fa9\u767c\u578b\u614b\u3002 / Check airway/BP/GI anaphylaxis red flags, lip/tongue/throat swelling, food/drug/infection exposure, duration, and recurrence pattern."
+      ],
+      "source_ids": [
+        "merck_urticaria",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "allergic_contact_dermatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u904e\u654f\u6027\u63a5\u89f8\u6027\u76ae\u819a\u708e",
+      "name_en": "Allergic contact dermatitis",
+      "system": "Skin/Allergy",
+      "urgency": "routine",
+      "summary_zh": "\u5c40\u90e8\u6216\u5f62\u72c0\u7b26\u5408\u63a5\u89f8\u66b4\u9732\u7684\u6414\u7662\u7d05\u75b9\u3001\u6c34\u6ce1\u6216\u6fd5\u75b9\u6a23\u75c5\u7076\u6642\uff0c\u9700\u7d0d\u5165\u63a5\u89f8\u6027\u76ae\u819a\u708e\u3002",
+      "summary_en": "Localized or exposure-pattern itchy erythematous, vesicular, or eczematous rash should include allergic contact dermatitis.",
+      "signals": {
+        "rash": 4,
+        "chronic_itchy_flexural_rash": 2,
+        "skin_sloughing_or_blistering": 1,
+        "new_medication_exposure": 1
+      },
+      "synonyms": [
+        "allergic contact dermatitis",
+        "contact dermatitis",
+        "poison ivy dermatitis",
+        "nickel allergy rash"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u63a5\u89f8\u7269\u3001\u5206\u5e03\u5f62\u72c0\u3001\u6414\u7662/\u6c34\u6ce1\u3001\u8077\u696d\u6216\u4fdd\u990a\u54c1/\u91d1\u5c6c/\u690d\u7269\u66b4\u9732\u3001\u611f\u67d3\u6216 SJS/TEN \u8b66\u8a0a\u3002 / Check contact trigger, distribution pattern, itch/blisters, occupational or cosmetic/metal/plant exposure, and infection or SJS/TEN red flags."
+      ],
+      "source_ids": [
+        "merck_contact_dermatitis",
+        "merck_atopic_dermatitis"
+      ]
+    },
+    {
+      "slug": "adverse_drug_reaction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u85e5\u7269\u4e0d\u826f\u53cd\u61c9",
+      "name_en": "Adverse drug reaction",
+      "system": "Medication safety/Toxicology",
+      "urgency": "soon",
+      "summary_zh": "\u65b0\u85e5\u6216\u5291\u91cf\u6539\u8b8a\u5f8c\u51fa\u73fe\u76ae\u75b9\u3001\u8178\u80c3\u3001\u610f\u8b58\u3001\u51fa\u8840\u6216\u904e\u654f\u75c7\u72c0\u6642\uff0c\u9700\u7d0d\u5165\u85e5\u7269\u4e0d\u826f\u53cd\u61c9\u3002",
+      "summary_en": "New medication or dose change followed by rash, GI, mental status, bleeding, or allergic symptoms should include adverse drug reaction.",
+      "signals": {
+        "new_medication_exposure": 6,
+        "rash": 2,
+        "vomiting": 1,
+        "altered_mental_status": 2,
+        "easy_bruising_bleeding": 1,
+        "facial_lip_tongue_swelling": 2
+      },
+      "synonyms": [
+        "adverse drug reaction",
+        "drug reaction",
+        "medication adverse effect",
+        "drug allergy"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u65b0\u85e5/\u5291\u91cf/\u8349\u85e5\u3001\u6642\u9593\u95dc\u4fc2\u3001\u904e\u654f\u6216\u56b4\u91cd\u76ae\u819a\u53cd\u61c9\u8b66\u8a0a\u3001\u809d\u814e\u529f\u80fd\u3001\u76f8\u4e92\u4f5c\u7528\u8207\u85e5\u7269\u5b89\u5168\u5be9\u67e5\u9700\u6c42\u3002 / Check new drug/dose/herbal exposure, timing, allergy or severe skin reaction red flags, liver/renal function, interactions, and medication safety review need."
+      ],
+      "source_ids": [
+        "merck_adverse_drug_reactions",
+        "merck_poisoning_general"
+      ]
+    },
+    {
+      "slug": "chronic_venous_insufficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "\u6162\u6027\u975c\u8108\u529f\u80fd\u4e0d\u5168",
+      "name_en": "Chronic venous insufficiency",
+      "system": "Vascular/Skin",
+      "urgency": "routine",
+      "summary_zh": "\u6162\u6027\u4e0b\u80a2\u6c34\u816b\u3001\u975c\u8108\u66f2\u5f35\u3001\u76ae\u819a\u8272\u7d20\u6c89\u8457\u6216\u6f70\u760d\u8108\u7d61\u6642\uff0c\u9700\u7d0d\u5165\u6162\u6027\u975c\u8108\u529f\u80fd\u4e0d\u5168\u3002",
+      "summary_en": "Chronic leg edema, varicosities, skin pigmentation, or venous ulcer context should include chronic venous insufficiency.",
+      "signals": {
+        "unilateral_leg_swelling": 3,
+        "orthopnea_edema": 3,
+        "rash": 1,
+        "purulent_skin_lesion": 1
+      },
+      "synonyms": [
+        "chronic venous insufficiency",
+        "venous insufficiency",
+        "post thrombotic syndrome",
+        "venous stasis"
+      ],
+      "ask_next": [
+        "\u78ba\u8a8d\u96d9\u5074\u6216\u55ae\u5074\u6c34\u816b\u3001\u975c\u8108\u66f2\u5f35\u3001\u76ae\u819a\u8b8a\u8272/\u6f70\u760d\u3001DVT \u8b66\u8a0a\u3001\u5fc3\u814e\u809d\u539f\u56e0\u8207\u8840\u7ba1\u8a55\u4f30\u9700\u6c42\u3002 / Check bilateral vs unilateral edema, varicosities, skin pigmentation/ulcer, DVT red flags, cardiac/renal/hepatic causes, and vascular review need."
+      ],
+      "source_ids": [
+        "merck_chronic_venous_insufficiency",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -6124,6 +6864,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Intestinal Obstruction",
       "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/intestinal-obstruction"
+    },
+    {
+      "source_id": "merck_multiple_sclerosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Multiple Sclerosis",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/demyelinating-disorders/multiple-sclerosis-ms"
+    },
+    {
+      "source_id": "merck_parkinson_disease",
+      "publisher": "Merck Manual Professional",
+      "title": "Parkinson Disease",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/movement-and-cerebellar-disorders/parkinson-disease"
+    },
+    {
+      "source_id": "merck_dementia",
+      "publisher": "Merck Manual Professional",
+      "title": "Dementia",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/delirium-and-dementia/dementia"
+    },
+    {
+      "source_id": "merck_polyneuropathy",
+      "publisher": "Merck Manual Professional",
+      "title": "Polyneuropathy",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/peripheral-nervous-system-and-motor-unit-disorders/polyneuropathy"
+    },
+    {
+      "source_id": "merck_carpal_tunnel",
+      "publisher": "Merck Manual Professional",
+      "title": "Carpal Tunnel Syndrome",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/hand-disorders/carpal-tunnel-syndrome"
+    },
+    {
+      "source_id": "merck_myasthenia_gravis",
+      "publisher": "Merck Manual Professional",
+      "title": "Myasthenia Gravis",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/peripheral-nervous-system-and-motor-unit-disorders/myasthenia-gravis"
+    },
+    {
+      "source_id": "ncbi_cvst",
+      "publisher": "NCBI Bookshelf",
+      "title": "Cerebral Venous Sinus Thrombosis",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459315/"
+    },
+    {
+      "source_id": "merck_intracerebral_hemorrhage",
+      "publisher": "Merck Manual Professional",
+      "title": "Intracerebral Hemorrhage",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/stroke/intracerebral-hemorrhage"
+    },
+    {
+      "source_id": "merck_spinal_compression_fractures",
+      "publisher": "Merck Manual Professional",
+      "title": "Spinal Compression Fractures",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/fractures/spinal-compression-fractures"
+    },
+    {
+      "source_id": "merck_long_term_diabetes_complications",
+      "publisher": "Merck Manual Professional",
+      "title": "Long-Term Complications of Diabetes Mellitus",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/diabetes-mellitus-and-hypoglycemia/long-term-complications-of-diabetes-mellitus"
+    },
+    {
+      "source_id": "merck_chronic_kidney_disease",
+      "publisher": "Merck Manual Professional",
+      "title": "Chronic Kidney Disease",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/chronic-kidney-disease/chronic-kidney-disease"
+    },
+    {
+      "source_id": "merck_diabetes_mellitus",
+      "publisher": "Merck Manual Professional",
+      "title": "Diabetes Mellitus",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/diabetes-mellitus-and-hypoglycemia/diabetes-mellitus-dm"
+    },
+    {
+      "source_id": "merck_hyperthyroidism",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperthyroidism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/thyroid-disorders/hyperthyroidism"
+    },
+    {
+      "source_id": "merck_vitamin_b12_deficiency",
+      "publisher": "Merck Manual Professional",
+      "title": "Vitamin B12 Deficiency",
+      "url": "https://www.merckmanuals.com/professional/nutritional-disorders/vitamin-deficiency-dependency-and-toxicity/vitamin-b12-deficiency"
+    },
+    {
+      "source_id": "merck_iron_deficiency_anemia",
+      "publisher": "Merck Manual Professional",
+      "title": "Iron Deficiency Anemia",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/anemias-caused-by-deficient-erythropoiesis/iron-deficiency-anemia"
+    },
+    {
+      "source_id": "merck_celiac_disease",
+      "publisher": "Merck Manual Professional",
+      "title": "Celiac Disease",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/malabsorption-syndromes/celiac-disease"
+    },
+    {
+      "source_id": "merck_irritable_bowel_syndrome",
+      "publisher": "Merck Manual Professional",
+      "title": "Irritable Bowel Syndrome",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/irritable-bowel-syndrome-ibs/irritable-bowel-syndrome-ibs"
+    },
+    {
+      "source_id": "merck_inguinal_hernia",
+      "publisher": "Merck Manual Professional",
+      "title": "Inguinal Hernia",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/inguinal-hernia"
+    },
+    {
+      "source_id": "merck_urinary_incontinence",
+      "publisher": "Merck Manual Professional",
+      "title": "Urinary Incontinence in Adults",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/voiding-disorders/urinary-incontinence-in-adults"
+    },
+    {
+      "source_id": "merck_uterine_fibroids",
+      "publisher": "Merck Manual Professional",
+      "title": "Uterine Fibroids",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/uterine-fibroids/uterine-fibroids"
+    },
+    {
+      "source_id": "merck_menopause",
+      "publisher": "Merck Manual Professional",
+      "title": "Menopause",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/menopause/menopause"
+    },
+    {
+      "source_id": "merck_urticaria",
+      "publisher": "Merck Manual Professional",
+      "title": "Urticaria",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/approach-to-the-dermatologic-patient/urticaria"
+    },
+    {
+      "source_id": "merck_contact_dermatitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Contact Dermatitis",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/dermatitis/contact-dermatitis"
+    },
+    {
+      "source_id": "merck_adverse_drug_reactions",
+      "publisher": "Merck Manual Professional",
+      "title": "Adverse Drug Reactions",
+      "url": "https://www.merckmanuals.com/professional/clinical-pharmacology/concepts-in-pharmacotherapy/adverse-drug-reactions"
+    },
+    {
+      "source_id": "merck_chronic_venous_insufficiency",
+      "publisher": "Merck Manual Professional",
+      "title": "Chronic Venous Insufficiency and Post-Thrombotic Syndrome",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-venous-disorders/chronic-venous-insufficiency-and-post-thrombotic-syndrome"
     }
   ]
 }
