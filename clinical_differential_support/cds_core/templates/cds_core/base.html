@@ -607,6 +607,92 @@
       applyFindingFilter();
     }
 
+    function selectedFindingValues(container) {
+      return (container.dataset.selectedFindings || "")
+        .split(",")
+        .map(function (value) { return value.trim(); })
+        .filter(Boolean);
+    }
+
+    function buildFindingLibraryUrl(container) {
+      if (!container.dataset.findingLibraryUrl) {
+        return null;
+      }
+      var url = sameOriginUrl(container.dataset.findingLibraryUrl);
+      if (!url) {
+        return null;
+      }
+      selectedFindingValues(container).forEach(function (finding) {
+        url.searchParams.append("selected", finding);
+      });
+      return url.href;
+    }
+
+    function disableHiddenSelectedFindings(root) {
+      Array.prototype.slice.call(root.querySelectorAll("[data-selected-finding-hidden]")).forEach(function (input) {
+        input.disabled = true;
+      });
+    }
+
+    function loadFindingLibrary(drawer, container) {
+      if (
+        !drawer ||
+        !container ||
+        container.dataset.findingLibraryLoaded === "true" ||
+        container.dataset.findingLibraryLoading === "true"
+      ) {
+        return;
+      }
+      var url = buildFindingLibraryUrl(container);
+      if (!url) {
+        return;
+      }
+      container.dataset.findingLibraryLoading = "true";
+      fetch(url, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest"
+        },
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Finding library failed");
+          }
+          return response.text();
+        })
+        .then(function (html) {
+          container.innerHTML = html;
+          container.dataset.findingLibraryLoaded = "true";
+          disableHiddenSelectedFindings(drawer.closest("form") || drawer);
+          initializeFindingFilters(drawer);
+        })
+        .catch(function () {
+          container.innerHTML = '<div class="message error">Finding library could not load. Please refresh this page.</div>';
+        })
+        .finally(function () {
+          delete container.dataset.findingLibraryLoading;
+        });
+    }
+
+    function initializeFindingLibraryLoader(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-finding-library-drawer]")).forEach(function (drawer) {
+        var container = drawer.querySelector("[data-finding-library-container]");
+        if (!container || drawer.dataset.findingLibraryLoaderReady === "true") {
+          return;
+        }
+        drawer.dataset.findingLibraryLoaderReady = "true";
+        drawer.addEventListener("toggle", function () {
+          if (drawer.open) {
+            loadFindingLibrary(drawer, container);
+          }
+        });
+        if (drawer.open) {
+          loadFindingLibrary(drawer, container);
+        }
+      });
+    }
+
     function replaceMainFromHtml(html, targetUrl, pushHistory) {
       var doc = new DOMParser().parseFromString(html, "text/html");
       var nextMain = doc.querySelector("[data-fast-nav-root]");
@@ -622,6 +708,7 @@
       }
       main.focus({ preventScroll: true });
       window.scrollTo({ top: 0, behavior: "instant" });
+      initializeFindingLibraryLoader(main);
       initializeFindingFilters(main);
     }
 
@@ -723,6 +810,7 @@
     });
 
     rememberPage(window.location.href, document.documentElement.outerHTML);
+    initializeFindingLibraryLoader(main);
     initializeFindingFilters(main);
     scheduleFastNavPrefetch();
   })();

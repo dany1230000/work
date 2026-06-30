@@ -1,0 +1,64 @@
+<div class="finding-filter" data-finding-filter-form="true">
+  <div class="complaint-preset-panel" data-complaint-preset-bar="true">
+    <div class="complaint-preset-title">
+      <span>先選主訴 / Start by complaint</span>
+      <span class="active-preset-label" data-active-preset-label="true">全部 findings / All</span>
+    </div>
+    <div class="complaint-preset-grid">
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="安全 / Safety" data-finding-preset-query="immediate safety" data-finding-preset-mode="any">安全 / Safety</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="胸痛/心悸 / Chest" data-finding-preset-query="cardiopulmonary" data-finding-preset-mode="any">胸痛/心悸 / Chest</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="神經/頭痛 / Neuro" data-finding-preset-query="neurologic headache" data-finding-preset-mode="any">神經/頭痛 / Neuro</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="腹部/泌尿 / Abdomen" data-finding-preset-query="abdominal urinary gynecologic pelvic" data-finding-preset-mode="any">腹部/泌尿 / Abdomen</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="發燒/皮疹 / Fever rash" data-finding-preset-query="infectious metabolic skin fever rash" data-finding-preset-mode="any">發燒/皮疹 / Fever rash</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="眼耳鼻牙 / Eye ENT dental" data-finding-preset-query="eye ear throat dental stridor" data-finding-preset-mode="any">眼耳鼻牙 / Eye ENT dental</button>
+      <button type="button" class="complaint-preset-button" data-finding-preset="true" data-finding-preset-label="孕產/性健康 / Pregnancy sexual" data-finding-preset-query="gynecologic pregnancy vaginal urethral scrotal genital" data-finding-preset-mode="any">孕產/性健康 / Pregnancy sexual</button>
+    </div>
+  </div>
+  <label for="finding-filter-input">快速篩選 findings / Filter findings</label>
+  <div class="finding-filter-row">
+    <input
+      id="finding-filter-input"
+      type="search"
+      autocomplete="off"
+      placeholder="Search findings"
+      data-finding-filter-input="true"
+    >
+    <button type="button" class="secondary-button" data-clear-finding-filter="true">清除 / Clear</button>
+  </div>
+  <div class="finding-filter-actions">
+    <label class="selected-only-control">
+      <input type="checkbox" data-selected-only-toggle="true">
+      <span>只看已選 / Selected only</span>
+    </label>
+    <span class="finding-filter-status" data-finding-match-count="true">All findings visible</span>
+  </div>
+  <div class="empty no-finding-matches" data-no-finding-matches="true" hidden>
+    找不到符合的 findings / No matching findings.
+  </div>
+</div>
+<div class="finding-stack">
+  {% for group in finding_groups %}
+    <details
+      class="finding-group"
+      data-finding-group="true"
+      data-finding-group-default-open="{{ group.default_open|yesno:'true,false' }}"
+      {% if group.selected_count or group.default_open %}open{% endif %}
+    >
+      <summary><span>{{ group.group_zh }} / {{ group.group_en }}</span><span class="tag">{{ group.selected_count }}/{{ group.count }}</span></summary>
+      <div class="finding-options">
+        {% for finding in group.findings %}
+          <label
+            class="finding-option"
+            data-finding-option="true"
+            data-finding-selected="{{ finding.selected|yesno:'true,false' }}"
+            data-finding-search-index="{{ finding.title_en|lower }} {{ finding.title_zh|lower }} {{ finding.slug }} {{ finding.search_terms }} {{ group.group_en|lower }} {{ group.group_zh|lower }}"
+          >
+            <input type="checkbox" name="findings" value="{{ finding.slug }}"{% if finding.selected %} checked{% endif %}>
+            <span>{{ finding.title_en }} / {{ finding.title_zh }}</span>
+          </label>
+        {% endfor %}
+      </div>
+    </details>
+  {% endfor %}
+</div>
+{% for error in form.findings.errors %}<div class="message error">{{ error }}</div>{% endfor %}

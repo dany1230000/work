@@ -370,21 +370,66 @@ def general_differential_workspace(request):
     form = GeneralDifferentialForm(request.POST or None)
     selected_findings = request.POST.getlist("findings") if request.method == "POST" else []
     if request.method == "POST" and form.is_valid():
+        selected_findings = _dedupe_findings(
+            form.cleaned_data.get("findings", selected_findings)
+        )
+        form.cleaned_data["findings"] = selected_findings
         result = evaluate_general_differential(form.cleaned_data)
-        selected_findings = form.cleaned_data.get("findings", selected_findings)
     return render(
         request,
         "cds_core/general_differential.html",
         {
             "form": form,
-            "finding_groups": _build_finding_groups(selected_findings),
+            "finding_library_url": reverse("cds_core:general_differential_findings"),
             "selected_findings": selected_findings,
+            "selected_finding_labels": _build_selected_finding_labels(selected_findings),
             "catalog_summary": get_general_differential_catalog_summary(),
             "catalog_quality": build_general_differential_catalog_quality_report(),
             "result": result,
             "safety_copy": CLINICIAN_SAFETY_COPY,
         },
     )
+
+
+def general_differential_findings(request):
+    selected_findings = _selected_findings_from_query(request)
+    form = GeneralDifferentialForm()
+    return render(
+        request,
+        "cds_core/partials/general_differential_finding_library.html",
+        {
+            "form": form,
+            "finding_groups": _build_finding_groups(selected_findings),
+            "selected_findings": selected_findings,
+        },
+    )
+
+
+def _dedupe_findings(findings):
+    return list(dict.fromkeys(findings))
+
+
+def _selected_findings_from_query(request):
+    selected_findings = []
+    for value in request.GET.getlist("selected"):
+        selected_findings.extend(part for part in value.split(",") if part)
+    return _dedupe_findings(selected_findings)
+
+
+def _build_selected_finding_labels(selected_findings):
+    selected = set(selected_findings)
+    labels = []
+    for group in FINDING_GROUPS:
+        for slug, title_en, title_zh in group["findings"]:
+            if slug in selected:
+                labels.append(
+                    {
+                        "slug": slug,
+                        "title_en": title_en,
+                        "title_zh": title_zh,
+                    }
+                )
+    return labels
 
 
 def _build_finding_groups(selected_findings):
