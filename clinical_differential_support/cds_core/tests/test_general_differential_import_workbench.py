@@ -50,6 +50,12 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
             "py -B manage.py export_general_differential_batch_template --pretty",
             [step["command"] for step in report["import_pipeline"]],
         )
+        self.assertIn(
+            "py -B manage.py import_general_differential_reviewed_catalog --path reviewed-catalog.json",
+            [step["command"] for step in report["import_pipeline"]],
+        )
+        self.assertTrue(report["apply_policy"]["dry_run_first"])
+        self.assertFalse(report["apply_policy"]["automatic_apply_allowed"])
         self.assertFalse(report["safety_scope"]["contains_patient_data"])
         self.assertTrue(report["safety_scope"]["review_required_before_publication"])
 
@@ -74,6 +80,10 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
         self.assertContains(response, 'data-import-pipeline="true"')
         self.assertContains(response, "export_general_differential_batch_template")
         self.assertContains(response, "validate_general_differential_review_seed")
+        self.assertContains(response, "import_general_differential_reviewed_catalog")
+        self.assertContains(response, 'data-import-apply-policy="true"')
+        self.assertContains(response, "Dry-run first")
+        self.assertContains(response, "Automatic apply allowed: no")
         self.assertContains(response, "No patient data")
         self.assertContains(
             response, reverse("cds_core:export_general_differential_import_json")
@@ -93,6 +103,8 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
         self.assertEqual(payload["summary"]["source_count"], 379)
         self.assertTrue(payload["safety_scope"]["staff_only"])
         self.assertFalse(payload["safety_scope"]["contains_patient_data"])
+        self.assertTrue(payload["apply_policy"]["dry_run_first"])
+        self.assertFalse(payload["apply_policy"]["automatic_apply_allowed"])
         self.assertIn("general-differential-import.json", response["Content-Disposition"])
         self.assertNotIn("patient_name", body)
         self.assertNotIn("medical_record_number", body)

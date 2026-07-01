@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import json
+from pathlib import Path
 from typing import Any
 
 from .differential_catalog_review_seed import REVIEW_SEED_FORMAT_VERSION
@@ -23,6 +25,10 @@ REQUIRED_CONDITION_FIELDS = (
     "source_ids",
 )
 REQUIRED_SOURCE_FIELDS = ("source_id", "publisher", "title", "url")
+POST_APPLY_CHECKS = (
+    "validate_general_differential_reviewed_catalog_data",
+    "validate_general_differential_catalog",
+)
 
 
 def validate_general_differential_review_payload(payload: dict[str, Any]) -> dict[str, Any]:
@@ -61,6 +67,51 @@ def validate_general_differential_review_payload(payload: dict[str, Any]) -> dic
             "blocking_issue_count": len(issues),
         },
         "blocking_issues": issues,
+    }
+
+
+def preview_general_differential_review_import(payload: dict[str, Any]) -> dict[str, Any]:
+    validation = validate_general_differential_review_payload(payload)
+    safety_scope = payload.get("safety_scope", {})
+    return {
+        "status": "ready" if validation["valid"] else "blocked",
+        "ready_to_apply": validation["valid"],
+        "summary": validation["summary"],
+        "blocking_issues": validation["blocking_issues"],
+        "safety_scope": {
+            "clinician_only": safety_scope.get("clinician_only") is True,
+            "review_required_before_publication": (
+                safety_scope.get("review_required_before_publication") is True
+            ),
+            "contains_patient_data": safety_scope.get("contains_patient_data") is True,
+            "no_diagnosis_order": safety_scope.get("no_diagnosis_order") is True,
+            "no_treatment_order": safety_scope.get("no_treatment_order") is True,
+            "no_medication_order": safety_scope.get("no_medication_order") is True,
+        },
+        "required_post_apply_checks": list(POST_APPLY_CHECKS),
+    }
+
+
+def write_reviewed_catalog_payload(
+    payload: dict[str, Any],
+    output_path: str | Path,
+) -> dict[str, Any]:
+    validation = validate_general_differential_review_payload(payload)
+    if not validation["valid"]:
+        raise ValueError("Reviewed catalog payload has blocking issues.")
+
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    summary = validation["summary"]
+    return {
+        "path": str(path),
+        "condition_count": summary["condition_count"],
+        "source_count": summary["source_count"],
+        "blocking_issue_count": summary["blocking_issue_count"],
     }
 
 

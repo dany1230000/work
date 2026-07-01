@@ -1,13 +1,18 @@
 from copy import deepcopy
 from io import StringIO
+import json
+from tempfile import TemporaryDirectory
+from pathlib import Path
 
-from django.core.management import call_command
+from django.core.management import call_command, CommandError
 from django.test import SimpleTestCase
 
 from cds_core.differential_catalog import CATALOG_VERSION, CONDITIONS, SOURCES
 from cds_core.differential_catalog_import import (
     build_general_differential_batch_template,
+    preview_general_differential_review_import,
     validate_general_differential_review_payload,
+    write_reviewed_catalog_payload,
 )
 from cds_core.differential_catalog_data import (
     build_runtime_catalog_from_review_payload,
@@ -86,6 +91,36 @@ class GeneralDifferentialImportValidationTests(SimpleTestCase):
         self.assertEqual(len(runtime_catalog["sources"]), len(SOURCES))
         self.assertNotIn("review_status", runtime_catalog["conditions"][0])
 
+    def test_review_import_preview_marks_valid_payload_ready(self):
+        payload = build_general_differential_review_seed()
+
+        preview = preview_general_differential_review_import(payload)
+
+        self.assertTrue(preview["ready_to_apply"])
+        self.assertEqual(preview["status"], "ready")
+        self.assertEqual(preview["summary"]["condition_count"], len(CONDITIONS))
+        self.assertEqual(preview["summary"]["source_count"], len(SOURCES))
+        self.assertFalse(preview["safety_scope"]["contains_patient_data"])
+        self.assertIn(
+            "validate_general_differential_catalog",
+            preview["required_post_apply_checks"],
+        )
+
+    def test_write_reviewed_catalog_payload_outputs_valid_json(self):
+        payload = build_general_differential_review_seed()
+
+        with TemporaryDirectory() as temp_dir:
+            output_path = Path(temp_dir) / "reviewed-catalog.json"
+            written = write_reviewed_catalog_payload(payload, output_path)
+
+            saved = json.loads(output_path.read_text(encoding="utf-8"))
+            report = validate_general_differential_review_payload(saved)
+
+        self.assertEqual(written["path"], str(output_path))
+        self.assertEqual(written["condition_count"], len(CONDITIONS))
+        self.assertEqual(written["source_count"], len(SOURCES))
+        self.assertTrue(report["valid"])
+
 
 class GeneralDifferentialImportValidationCommandTests(SimpleTestCase):
     def test_validate_command_accepts_default_review_seed(self):
@@ -107,3 +142,110 @@ class GeneralDifferentialImportValidationCommandTests(SimpleTestCase):
         self.assertIn("READY", output)
         self.assertIn(f"{len(CONDITIONS)} conditions", output)
         self.assertIn("blocking issues: 0", output)
+
+    def test_import_command_previews_review_payload_without_writing_output(self):
+        payload = build_general_differential_review_seed()
+
+        with TemporaryDirectory() as temp_dir:
+            input_path = Path(temp_dir) / "review-seed.json"
+            output_path = Path(temp_dir) / "reviewed-catalog.json"
+            input_path.write_text(
+                json.dumps(payload, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            stdout = StringIO()
+
+            call_command(
+                "import_general_differential_reviewed_catalog",
+                "--path",
+                str(input_path),
+                "--output",
+                str(output_path),
+                stdout=stdout,
+            )
+
+            self.assertFalse(output_path.exists())
+
+        output = stdout.getvalue()
+        self.assertIn("READY reviewed catalog import preview", output)
+        self.assertIn(f"{len(CONDITIONS)} conditions", output)
+        self.assertIn("apply required to write output", output)
+
+    def test_import_command_applies_review_payload_to_output_path(self):
+        payload = build_general_differential_review_seed()
+
+        with TemporaryDirectory() as temp_dir:
+            input_path = Path(temp_dir) / "review-seed.json"
+            output_path = Path(temp_dir) / "reviewed-catalog.json"
+            input_path.write_text(
+                json.dumps(payload, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            stdout = StringIO()
+
+            call_command(
+                "import_general_differential_reviewed_catalog",
+                "--path",
+                str(input_path),
+                "--output",
+                str(output_path),
+                "--apply",
+                stdout=stdout,
+            )
+
+            saved = json.loads(output_path.read_text(encoding="utf-8"))
+            report = validate_general_differential_review_payload(saved)
+
+        self.assertTrue(report["valid"])
+        self.assertIn("APPLIED reviewed catalog import", stdout.getvalue())
+        self.assertIn(f"{len(CONDITIONS)} conditions", stdout.getvalue())
+
+    def test_import_command_rejects_invalid_payload(self):
+        payload = build_general_differential_review_seed()
+        payload["safety_scope"]["contains_patient_data"] = True
+
+        with TemporaryDirectory() as temp_dir:
+            input_path = Path(temp_dir) / "invalid.json"
+            output_path = Path(temp_dir) / "reviewed-catalog.json"
+            input_path.write_text(
+                json.dumps(payload, ensure_ascii=False),
+                encoding="utf-8",
+            )
+
+            with self.assertRaises(CommandError):
+                call_command(
+                    "import_general_differential_reviewed_catalog",
+                    "--path",
+                    str(input_path),
+                    "--output",
+                    str(output_path),
+                    "--apply",
+                    stdout=StringIO(),
+                )
+
+            self.assertFalse(output_path.exists())
+
+    def test_import_command_requires_overwrite_for_existing_output(self):
+        payload = build_general_differential_review_seed()
+
+        with TemporaryDirectory() as temp_dir:
+            input_path = Path(temp_dir) / "review-seed.json"
+            output_path = Path(temp_dir) / "reviewed-catalog.json"
+            input_path.write_text(
+                json.dumps(payload, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            output_path.write_text("existing", encoding="utf-8")
+
+            with self.assertRaises(CommandError):
+                call_command(
+                    "import_general_differential_reviewed_catalog",
+                    "--path",
+                    str(input_path),
+                    "--output",
+                    str(output_path),
+                    "--apply",
+                    stdout=StringIO(),
+                )
+
+            self.assertEqual(output_path.read_text(encoding="utf-8"), "existing")

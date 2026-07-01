@@ -77,6 +77,19 @@
   </table>
 </section>
 
+<section class="panel" data-import-apply-policy="true">
+  <h2>套用政策 / Apply policy</h2>
+  <p><strong>Dry-run first</strong></p>
+  <p>{{ report.apply_policy.summary_zh }}</p>
+  <p class="secondary">{{ report.apply_policy.summary_en }}</p>
+  <ul class="review-list">
+    <li>自動套用 / Automatic apply allowed: {{ report.apply_policy.automatic_apply_allowed|yesno:"yes,no" }}</li>
+    <li>Explicit --apply required: {{ report.apply_policy.requires_explicit_apply_flag|yesno:"yes,no" }}</li>
+    <li>Output path required: {{ report.apply_policy.requires_output_path|yesno:"yes,no" }}</li>
+    <li>Post-apply validation required: {{ report.apply_policy.requires_post_apply_validation|yesno:"yes,no" }}</li>
+  </ul>
+</section>
+
 <section class="panel" data-import-pipeline="true">
   <h2>匯入前驗證流程</h2>
   <p class="secondary">Import pipeline</p>

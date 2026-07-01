@@ -51,6 +51,18 @@ def build_general_differential_import_workbench() -> dict[str, Any]:
             "lowest_coverage_buckets": lowest_coverage_buckets,
         },
         "import_pipeline": _build_import_pipeline(),
+        "apply_policy": {
+            "dry_run_first": True,
+            "automatic_apply_allowed": False,
+            "requires_explicit_apply_flag": True,
+            "requires_output_path": True,
+            "requires_post_apply_validation": True,
+            "summary_zh": "先 dry-run 預覽；只有明確 --apply 與 --output 才能寫入 reviewed catalog data。",
+            "summary_en": (
+                "Dry-run first. No automatic apply; writing reviewed catalog "
+                "data requires explicit --apply and --output, followed by validation."
+            ),
+        },
         "safety_scope": {
             **quality["safety_scope"],
             "staff_only": True,
@@ -117,6 +129,25 @@ def _build_import_pipeline() -> list[dict[str, str]]:
             "label_en": "Validate reviewed catalog data",
             "command": "py -B manage.py validate_general_differential_reviewed_catalog_data",
             "expected_result": "READY reviewed general differential catalog data",
+        },
+        {
+            "step_id": "preview_reviewed_catalog_import",
+            "label_zh": "預覽 reviewed catalog 匯入",
+            "label_en": "Preview reviewed catalog import",
+            "command": "py -B manage.py import_general_differential_reviewed_catalog --path reviewed-catalog.json",
+            "expected_result": "READY reviewed catalog import preview; no file is written",
+        },
+        {
+            "step_id": "apply_reviewed_catalog_import",
+            "label_zh": "明確套用 reviewed catalog 匯入",
+            "label_en": "Apply reviewed catalog import explicitly",
+            "command": (
+                "py -B manage.py import_general_differential_reviewed_catalog "
+                "--path reviewed-catalog.json "
+                "--output cds_core/data/general_differential_catalog_reviewed.json "
+                "--apply --overwrite"
+            ),
+            "expected_result": "APPLIED reviewed catalog import, followed by validator checks",
         },
         {
             "step_id": "validate_runtime_catalog",
