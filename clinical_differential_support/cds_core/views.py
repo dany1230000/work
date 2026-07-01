@@ -49,6 +49,9 @@ from .differential_catalog import FINDING_GROUPS
 from .differential_catalog_quality import (
     build_general_differential_catalog_quality_report,
 )
+from .differential_catalog_workbench import (
+    build_general_differential_import_workbench,
+)
 from .handoff import build_handoff_report_markdown
 from .local_launch import build_local_launch_status
 from .models import AuditEvent, CaseScenario, ClinicalItem, ReviewRecord, Source
@@ -222,6 +225,14 @@ DEPLOYMENT_STATUS_SAFETY_COPY = (
 LOCAL_LAUNCH_SAFETY_COPY = (
     "啟動導覽只回報本機下一步；不建立帳號、不略過登入、不儲存密碼或病人資料，也不核准臨床部署。 "
     "Local launch guidance only; it does not create accounts, bypass login, store patient data, or approve clinical deployment."
+)
+
+
+GENERAL_DIFFERENTIAL_IMPORT_SAFETY_COPY = (
+    "通用鑑別匯入工作台僅供 staff 審核者規劃 catalog 擴充；"
+    "不得輸入病人識別資料，也不得把未審核批次當成診斷、治療、用藥或醫囑。 "
+    "General differential import governance is staff-only; no patient data, "
+    "diagnosis, treatment, medication, or clinical orders."
 )
 
 
@@ -707,6 +718,18 @@ def coverage_depth(request):
 
 
 @staff_required
+def general_differential_import(request):
+    return render(
+        request,
+        "cds_core/general_differential_import.html",
+        {
+            "report": build_general_differential_import_workbench(),
+            "safety_copy": GENERAL_DIFFERENTIAL_IMPORT_SAFETY_COPY,
+        },
+    )
+
+
+@staff_required
 def source_freshness(request):
     return render(
         request,
@@ -747,6 +770,18 @@ def export_coverage_depth_json(request):
         json_dumps_params={"indent": 2},
     )
     response["Content-Disposition"] = 'attachment; filename="coverage-depth.json"'
+    return response
+
+
+@staff_required
+def export_general_differential_import_json(request):
+    response = JsonResponse(
+        build_general_differential_import_workbench(),
+        json_dumps_params={"indent": 2},
+    )
+    response["Content-Disposition"] = (
+        'attachment; filename="general-differential-import.json"'
+    )
     return response
 
 

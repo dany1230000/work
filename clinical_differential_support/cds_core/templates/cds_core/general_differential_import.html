@@ -1,0 +1,106 @@
+{% extends "cds_core/base.html" %}
+
+{% block content %}
+<div class="safety">{{ safety_copy }}</div>
+
+<section class="panel">
+  <a href="{% url 'cds_core:review_dashboard' %}">回到治理總覽 / Back to governance</a>
+  <h2>通用鑑別匯入工作台</h2>
+  <p class="secondary">General Differential Import Workbench</p>
+  <p>
+    這裡不是診斷頁，而是 reviewer 用來決定下一批 catalog 該補哪裡、怎麼審核、怎麼驗證的工作台。
+  </p>
+  <p class="secondary">
+    This workbench turns catalog expansion into reviewed, source-backed import steps.
+  </p>
+  <p>
+    <a href="{% url 'cds_core:export_general_differential_import_json' %}">匯出 JSON / Export JSON</a>
+    |
+    <a href="{% url 'cds_core:coverage_depth' %}">覆蓋深度審查 / Coverage Depth Review</a>
+    |
+    <a href="{% url 'cds_core:source_freshness' %}">來源新鮮度審查 / Source Freshness Audit</a>
+  </p>
+</section>
+
+<section class="grid metrics">
+  <article>
+    <span class="metric">{{ report.summary.condition_count }}</span>
+    <h3>條目</h3>
+    <p class="secondary">{{ report.summary.condition_total_label }}</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.source_count }}</span>
+    <h3>來源</h3>
+    <p class="secondary">{{ report.summary.source_total_label }}</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.blocking_issue_count }}</span>
+    <h3>阻擋問題</h3>
+    <p class="secondary">Blocking issues</p>
+  </article>
+  <article>
+    <span class="metric">{{ report.summary.warning_count }}</span>
+    <h3>警示</h3>
+    <p class="secondary">Warnings</p>
+  </article>
+</section>
+
+<section class="panel" data-next-batch-table="true">
+  <h2>下一批補資料方向</h2>
+  <p class="secondary">Next batch direction</p>
+  <p>{{ report.next_batch.strategy_zh }}</p>
+  <p class="secondary">{{ report.next_batch.strategy_en }}</p>
+  <table>
+    <thead>
+      <tr>
+        <th>系統 / System</th>
+        <th>目前 / Current</th>
+        <th>目標 / Target</th>
+        <th>狀態 / Status</th>
+        <th>建議批量 / Batch</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bucket in report.next_batch.lowest_coverage_buckets %}
+        <tr>
+          <td>
+            <strong>{{ bucket.system }}</strong><br>
+            <span class="secondary">{{ bucket.review_focus_en }}</span>
+          </td>
+          <td>{{ bucket.condition_count }}</td>
+          <td>{{ bucket.target_count }}</td>
+          <td>{{ bucket.status }}</td>
+          <td>{{ bucket.recommended_batch_size }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
+<section class="panel" data-import-pipeline="true">
+  <h2>匯入前驗證流程</h2>
+  <p class="secondary">Import pipeline</p>
+  <div class="step-list">
+    {% for step in report.import_pipeline %}
+      <article class="step ready">
+        <h3>{{ forloop.counter }}. {{ step.label_zh }}</h3>
+        <p class="secondary">{{ step.label_en }} | {{ step.expected_result }}</p>
+        <pre class="command">{{ step.command }}</pre>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="panel">
+  <h2>安全邊界</h2>
+  <p class="secondary">Safety gates</p>
+  <ul class="review-list">
+    <li>No patient data: {% if report.safety_scope.contains_patient_data %}blocked{% else %}enforced{% endif %}</li>
+    <li>Staff only: {{ report.safety_scope.staff_only|yesno:"yes,no" }}</li>
+    <li>Review required before publication: {{ report.safety_scope.review_required_before_publication|yesno:"yes,no" }}</li>
+    <li>No diagnosis order: {{ report.safety_scope.no_diagnosis_order|yesno:"yes,no" }}</li>
+    <li>No treatment order: {{ report.safety_scope.no_treatment_order|yesno:"yes,no" }}</li>
+    <li>No medication order: {{ report.safety_scope.no_medication_order|yesno:"yes,no" }}</li>
+  </ul>
+</section>
+{% endblock %}

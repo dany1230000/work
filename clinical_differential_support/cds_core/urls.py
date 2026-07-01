@@ -29,6 +29,11 @@ urlpatterns = [
     path("review/readiness/", views.release_readiness, name="release_readiness"),
     path("review/next-actions/", views.next_actions, name="next_actions"),
     path("review/coverage-depth/", views.coverage_depth, name="coverage_depth"),
+    path(
+        "review/general-differential-import/",
+        views.general_differential_import,
+        name="general_differential_import",
+    ),
     path("review/source-freshness/", views.source_freshness, name="source_freshness"),
     path(
         "review/final-verification/",
@@ -44,6 +49,11 @@ urlpatterns = [
         "review/exports/coverage-depth.json",
         views.export_coverage_depth_json,
         name="export_coverage_depth_json",
+    ),
+    path(
+        "review/exports/general-differential-import.json",
+        views.export_general_differential_import_json,
+        name="export_general_differential_import_json",
     ),
     path(
         "review/exports/source-freshness.json",
