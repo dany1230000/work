@@ -592,6 +592,39 @@
     margin-top: 0.7rem;
   }
 
+  .minimum-data-checklist {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+    margin-top: 0.7rem;
+  }
+
+  .minimum-data-checklist h4 {
+    margin: 0 0 0.55rem;
+  }
+
+  .minimum-data-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.55rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .minimum-data-grid li {
+    border: 1px solid #e0e6ee;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.65rem;
+  }
+
+  .minimum-data-grid strong,
+  .minimum-data-grid span {
+    display: block;
+  }
+
   .action-checklist {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -942,6 +975,20 @@
               <p>{{ result.patient_workflow.handoff_summary_zh }}</p>
               <p class="secondary">{{ result.patient_workflow.handoff_summary_en }}</p>
             </div>
+            {% if result.patient_workflow.needs_minimum_data %}
+              <section class="minimum-data-checklist" data-workflow-minimum-data="true">
+                <h4>最低必要資料 / Minimum data to collect</h4>
+                <ol class="minimum-data-grid">
+                  {% for item in result.patient_workflow.minimum_data_items %}
+                    <li data-minimum-data-item="{{ item.item_id }}">
+                      <strong>{{ item.label_zh }} / {{ item.label_en }}</strong>
+                      <span>{{ item.instruction_zh }}</span>
+                      <span class="secondary">{{ item.instruction_en }}</span>
+                    </li>
+                  {% endfor %}
+                </ol>
+              </section>
+            {% endif %}
           </section>
         {% endif %}
         {% if result.results %}

@@ -370,6 +370,33 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_sparse_post_shows_minimum_data_checklist_before_empty_state(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-patient-workflow="true"')
+        self.assertContains(response, 'data-workflow-minimum-data="true"')
+        self.assertContains(response, 'data-minimum-data-item="chief_complaint_onset"')
+        self.assertContains(response, 'data-minimum-data-item="vitals_stability"')
+        self.assertContains(response, 'data-minimum-data-item="red_flags"')
+        self.assertContains(response, 'data-minimum-data-item="pertinent_context"')
+        self.assertContains(response, 'data-minimum-data-item="rerun_with_findings"')
+        self.assertContains(response, "Minimum data to collect")
+        self.assertContains(response, "Not enough structured data")
+        self.assertLess(
+            content.index('data-workflow-minimum-data="true"'),
+            content.index("Not enough findings to rank yet"),
+        )
+
     def test_posted_findings_use_stepwise_compact_result_layout(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

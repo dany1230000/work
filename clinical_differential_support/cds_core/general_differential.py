@@ -415,6 +415,7 @@ def _build_patient_workflow(
     )
     status = "ready_for_stepwise_review" if top_results else "needs_structured_findings"
     risk_gate = _build_workflow_risk_gate(top_results)
+    needs_minimum_data = not top_results or len(selected_findings) < 2
     candidate_summary_zh = "、".join(top_names_zh) if top_names_zh else "尚未有可排序候選"
     candidate_summary_en = ", ".join(top_names_en) if top_names_en else "none ranked yet"
 
@@ -443,6 +444,10 @@ def _build_patient_workflow(
     return {
         "status": status,
         "risk_gate": risk_gate,
+        "needs_minimum_data": needs_minimum_data,
+        "minimum_data_items": (
+            _build_minimum_data_items() if needs_minimum_data else []
+        ),
         "selected_finding_count": len(selected_findings),
         "top_candidate_count": len(top_results),
         "top_source_count": top_source_count,
@@ -499,6 +504,46 @@ def _build_patient_workflow(
             },
         ],
     }
+
+
+def _build_minimum_data_items() -> list[dict[str, str]]:
+    return [
+        {
+            "item_id": "chief_complaint_onset",
+            "label_zh": "主訴與開始時間",
+            "label_en": "Chief complaint and onset",
+            "instruction_zh": "先寫清楚主要問題、開始時間、進展速度、最嚴重位置或症狀。",
+            "instruction_en": "Clarify the main problem, onset, tempo, worst location, and most concerning symptom.",
+        },
+        {
+            "item_id": "vitals_stability",
+            "label_zh": "生命徵象與穩定度",
+            "label_en": "Vitals and stability",
+            "instruction_zh": "確認血壓、心跳、呼吸、血氧、體溫、意識狀態與是否不穩定。",
+            "instruction_en": "Check blood pressure, pulse, respirations, oxygenation, temperature, mental status, and instability.",
+        },
+        {
+            "item_id": "red_flags",
+            "label_zh": "紅旗",
+            "label_en": "Red flags",
+            "instruction_zh": "依主訴補問會改變急迫性的紅旗，例如休克、低氧、神經缺損、劇痛、出血或懷孕風險。",
+            "instruction_en": "Ask complaint-specific red flags that change urgency, such as shock, hypoxemia, focal deficit, severe pain, bleeding, or pregnancy risk.",
+        },
+        {
+            "item_id": "pertinent_context",
+            "label_zh": "關鍵陽性與陰性資料",
+            "label_en": "Pertinent positives and negatives",
+            "instruction_zh": "把確定有與確定沒有的 findings 都加入，避免只用單一症狀排序。",
+            "instruction_en": "Add confirmed positive and negative findings so the ranking is not based on one symptom alone.",
+        },
+        {
+            "item_id": "rerun_with_findings",
+            "label_zh": "更新 findings 後重跑",
+            "label_en": "Update findings and re-run",
+            "instruction_zh": "資料補齊後更新 structured findings，再重新產生參考排序與下一步。",
+            "instruction_en": "After collecting minimum data, update structured findings and re-run the reference ranking and next steps.",
+        },
+    ]
 
 
 def _workflow_source_step(

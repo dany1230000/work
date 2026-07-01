@@ -497,6 +497,24 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertNotIn("treatment order", combined)
         self.assertNotIn("medication order", combined)
 
+    def test_sparse_input_workflow_tells_user_minimum_data_to_collect(self):
+        result = evaluate_general_differential({"query": "", "findings": []})
+
+        workflow = result["patient_workflow"]
+
+        self.assertEqual(workflow["status"], "needs_structured_findings")
+        self.assertEqual(workflow["risk_gate"], "insufficient_input")
+        self.assertTrue(workflow["needs_minimum_data"])
+        self.assertEqual(workflow["top_candidate_count"], 0)
+        self.assertGreaterEqual(len(workflow["minimum_data_items"]), 5)
+        minimum_labels = [item["label_en"] for item in workflow["minimum_data_items"]]
+        self.assertIn("Chief complaint and onset", minimum_labels)
+        self.assertIn("Vitals and stability", minimum_labels)
+        self.assertIn("Red flags", minimum_labels)
+        self.assertIn("Pertinent positives and negatives", minimum_labels)
+        self.assertIn("Update findings and re-run", minimum_labels)
+        self.assertIn("Not enough structured data", workflow["handoff_summary_en"])
+
     def test_ear_pain_fever_prioritizes_acute_otitis_media(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ear_pain", "fever"]}

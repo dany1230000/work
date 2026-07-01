@@ -9,6 +9,7 @@
 - Add evaluator tests for `patient_workflow`.
 - Build workflow metadata from the existing ranked results and guided follow-up.
 - Render a compact workflow panel before results cards.
+- Add a minimum-data checklist for sparse/no-match submissions.
 - Include a bilingual handoff summary for the current case.
 - Preserve source-backed conservative reference wording.
 
@@ -19,4 +20,5 @@
 - Full Django test suite.
 - General catalog validator.
 - Local POST smoke for workflow markers.
+- Local sparse POST smoke for minimum-data markers.
 - Public POST smoke after push/deploy.

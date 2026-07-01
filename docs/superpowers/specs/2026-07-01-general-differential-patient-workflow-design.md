@@ -9,6 +9,7 @@
 - Keep the existing ranked reference evaluator intact.
 - Add a `patient_workflow` wrapper around the result payload.
 - Render a scan-first panel before the long candidate cards.
+- When input is sparse or unmatched, render a minimum-data checklist before the empty state.
 - Keep clinician-only, source-backed, conservative wording.
 - Avoid diagnosis, treatment, medication, or order language.
 
@@ -23,5 +24,6 @@
 
 - Evaluator returns stable `patient_workflow` data for ranked cases.
 - UI renders `data-patient-workflow="true"` before long result cards.
+- Sparse/no-match POST renders `data-workflow-minimum-data="true"` before the empty-state copy.
 - Handoff summary names leading reference candidates without patient identifiers.
 - Existing guided follow-up, compact cards, source drawers, and catalog governance remain unchanged.
