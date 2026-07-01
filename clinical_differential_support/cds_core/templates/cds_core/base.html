@@ -693,6 +693,103 @@
       });
     }
 
+    function setDifferentialSubmitState(form, pending, message) {
+      var workbench = form.closest("[data-differential-workbench]");
+      var status = form.querySelector("[data-differential-submit-status]");
+      var button = form.querySelector('button[type="submit"]') || form.querySelector("[data-differential-submit-button]");
+      if (workbench) {
+        if (pending) {
+          workbench.dataset.differentialSubmitPending = "true";
+        } else {
+          delete workbench.dataset.differentialSubmitPending;
+        }
+      }
+      if (button) {
+        button.disabled = pending;
+      }
+      if (status) {
+        status.dataset.differentialSubmitStatus = pending ? "loading" : "idle";
+        status.textContent = message || "";
+        status.hidden = !message;
+      }
+    }
+
+    function replaceDifferentialWorkspaceSections(html, root) {
+      var doc = new DOMParser().parseFromString(html, "text/html");
+      var selectors = [
+        "[data-workflow-stepper]",
+        "[data-differential-selected-summary]",
+        "[data-differential-results-panel]"
+      ];
+      var replacedCount = 0;
+      selectors.forEach(function (selector) {
+        var current = root.querySelector(selector);
+        var next = doc.querySelector(selector);
+        if (!current || !next) {
+          return;
+        }
+        current.replaceWith(next);
+        replacedCount += 1;
+      });
+      if (replacedCount < 2) {
+        throw new Error("Differential partial response missing replaceable sections");
+      }
+      initializeFindingLibraryLoader(root);
+      initializeFindingFilters(root);
+      initializeGeneralDifferentialFetchSubmit(root);
+      return replacedCount;
+    }
+
+    function initializeGeneralDifferentialFetchSubmit(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-differential-form]")).forEach(function (form) {
+        if (form.dataset.differentialFetchReady === "true") {
+          return;
+        }
+        form.dataset.differentialFetchReady = "true";
+        form.addEventListener("submit", function (event) {
+          if (!window.fetch || !window.FormData || !window.DOMParser) {
+            return;
+          }
+          event.preventDefault();
+          setDifferentialSubmitState(form, true, "更新中 / Updating");
+          fetch(form.action || window.location.href, {
+            method: "POST",
+            body: new FormData(form),
+            headers: {
+              "X-Requested-With": "XMLHttpRequest",
+              "X-Differential-Submit": "1"
+            },
+            credentials: "same-origin"
+          })
+            .then(function (response) {
+              if (!response.ok) {
+                throw new Error("Differential submit failed");
+              }
+              return response.text();
+            })
+            .then(function (html) {
+              replaceDifferentialWorkspaceSections(html, main);
+              var resultsPanel = main.querySelector("[data-differential-results-panel]");
+              if (resultsPanel) {
+                resultsPanel.focus({ preventScroll: true });
+                resultsPanel.scrollIntoView({ block: "start", behavior: "smooth" });
+              }
+            })
+            .catch(function () {
+              setDifferentialSubmitState(form, false, "");
+              form.submit();
+            })
+            .finally(function () {
+              var currentForm = main.querySelector("[data-differential-form]");
+              if (currentForm) {
+                setDifferentialSubmitState(currentForm, false, "");
+              }
+            });
+        });
+      });
+    }
+
     function replaceMainFromHtml(html, targetUrl, pushHistory) {
       var doc = new DOMParser().parseFromString(html, "text/html");
       var nextMain = doc.querySelector("[data-fast-nav-root]");
@@ -710,6 +807,7 @@
       window.scrollTo({ top: 0, behavior: "instant" });
       initializeFindingLibraryLoader(main);
       initializeFindingFilters(main);
+      initializeGeneralDifferentialFetchSubmit(main);
     }
 
     function loadIntoMain(targetUrl, pushHistory) {
@@ -812,6 +910,7 @@
     rememberPage(window.location.href, document.documentElement.outerHTML);
     initializeFindingLibraryLoader(main);
     initializeFindingFilters(main);
+    initializeGeneralDifferentialFetchSubmit(main);
     scheduleFastNavPrefetch();
   })();
   </script>

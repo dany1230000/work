@@ -355,6 +355,23 @@
     margin: 1rem 0;
   }
 
+  .differential-inline-status {
+    border-left: 4px solid var(--action);
+    background: #eef4f8;
+    border-radius: 4px;
+    color: #23313f;
+    margin: 0.6rem 0 0;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .differential-inline-status[hidden] {
+    display: none;
+  }
+
+  .differential-workbench[data-differential-submit-pending="true"] .output-panel {
+    opacity: 0.72;
+  }
+
   .result-list {
     display: grid;
     gap: 0.75rem;
@@ -805,7 +822,7 @@
   }
 </style>
 
-<div class="differential-workbench" data-compact-differential-layout="true">
+<div class="differential-workbench" data-compact-differential-layout="true" data-differential-workbench="true">
   <div class="safety">{{ safety_copy }}</div>
 
   <section class="compact-hero">
@@ -867,7 +884,7 @@
   <div class="workbench-grid">
     <section class="input-panel" id="case-input">
       <h2>輸入 / Input</h2>
-      <form method="post">
+      <form method="post" data-differential-form="true">
         {% csrf_token %}
         <div class="field">
           <label for="{{ form.query.id_for_label }}">{{ form.query.label }}</label>
@@ -882,7 +899,7 @@
           {% for error in form.clinician_notes.errors %}<div class="message error">{{ error }}</div>{% endfor %}
         </div>
 
-        <section class="selected-summary">
+        <section class="selected-summary" data-differential-selected-summary="true">
           <h3>已選 findings / Selected findings</h3>
           {% if selected_findings %}
             <div class="selected-chip-list">
@@ -898,7 +915,8 @@
           {% endif %}
         </section>
 
-        <div class="sticky-action">
+        <div class="sticky-action" data-differential-submit-button="true">
+          <div class="differential-inline-status" data-differential-submit-status="idle" aria-live="polite" hidden></div>
           <button type="submit">產生鑑別排序 / Generate differential ranking</button>
         </div>
 
@@ -925,7 +943,7 @@
       </form>
     </section>
 
-    <section class="output-panel" id="reference-results">
+    <section class="output-panel" id="reference-results" data-differential-results-panel="true" tabindex="-1">
       <h2>參考輸出 / Reference Output</h2>
       {% if result %}
         <p class="secondary">

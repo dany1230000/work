@@ -24,6 +24,12 @@ class GeneralDifferentialUiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-compact-differential-layout="true"')
+        self.assertContains(response, 'data-differential-workbench="true"')
+        self.assertContains(response, 'data-differential-form="true"')
+        self.assertContains(response, 'data-differential-submit-button="true"')
+        self.assertContains(response, 'data-differential-submit-status="idle"')
+        self.assertContains(response, 'data-differential-selected-summary="true"')
+        self.assertContains(response, 'data-differential-results-panel="true"')
         self.assertContains(response, 'data-step="safety"')
         self.assertContains(response, 'data-step="findings"')
         self.assertContains(response, 'data-step="results"')
@@ -52,6 +58,9 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "initializeFindingFilters")
         self.assertContains(response, "initializeFindingLibraryLoader")
         self.assertContains(response, "initializeFindingPresets")
+        self.assertContains(response, "initializeGeneralDifferentialFetchSubmit")
+        self.assertContains(response, "replaceDifferentialWorkspaceSections")
+        self.assertContains(response, "X-Differential-Submit")
         self.assertContains(response, "findingMatchesQuery")
         self.assertContains(response, "termMatchesSearchIndex")
         self.assertContains(response, "findingQueryMode")
@@ -70,6 +79,22 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertNotContains(response, "Recent cancer treatment")
         self.assertNotContains(response, "Easy bruising or bleeding")
         self.assertNotContains(response, "Chest pain / 胸痛")
+
+    def test_posted_general_differential_page_keeps_replaceable_fetch_sections(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {"query": "pertussis", "clinician_notes": ""},
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            HTTP_X_DIFFERENTIAL_SUBMIT="1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-differential-workbench="true"')
+        self.assertContains(response, 'data-differential-selected-summary="true"')
+        self.assertContains(response, 'data-differential-results-panel="true"')
+        self.assertContains(response, 'data-workflow-stepper="true"')
+        self.assertContains(response, "Pertussis")
+        self.assertContains(response, "CDC - Symptoms of Whooping Cough")
 
     def test_general_differential_page_collapses_full_finding_library_by_default(self):
         response = self.client.get(reverse("cds_core:general_differential"))
