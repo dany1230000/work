@@ -159,6 +159,11 @@ class DeploymentStatusTests(TestCase):
         self.assertIn("--remote-url <your-repo-url>", report["next_action"]["command"])
         self.assertNotIn("git remote add origin", report["next_action"]["command"])
         self.assertEqual(checks["local_final_gate"]["status"], "passed")
+        self.assertEqual(checks["local_final_gate"]["value"], "deployable_non_final")
+        self.assertEqual(
+            report["local_completion"]["deployment_readiness"]["status"],
+            "deployable_non_final",
+        )
         self.assertEqual(checks["render_blueprint"]["status"], "passed")
         self.assertEqual(checks["git_remote"]["status"], "action_required")
         self.assertTrue(report["safety_scope"]["does_not_store_credentials"])

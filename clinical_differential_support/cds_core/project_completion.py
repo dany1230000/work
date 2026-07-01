@@ -3,6 +3,7 @@
 from datetime import date
 from pathlib import Path
 from typing import Any
+from urllib.parse import urljoin
 
 from django.utils import timezone
 
@@ -16,6 +17,15 @@ from .local_launch import (
     PROJECT_COMPLETION_COMMAND,
 )
 from .local_setup import build_local_setup_assistant_report
+from .next_actions import build_next_action_plan
+
+
+FINAL_NEXT_ACTION_STATUS = "ready_for_regression_gate"
+DEPLOYABLE_NON_FINAL_NEXT_ACTION_STATUS = "general_catalog_import_ready"
+DEPLOYABLE_NEXT_ACTION_STATUSES = {
+    FINAL_NEXT_ACTION_STATUS,
+    DEPLOYABLE_NON_FINAL_NEXT_ACTION_STATUS,
+}
 
 
 def build_project_completion_report(
@@ -32,6 +42,7 @@ def build_project_completion_report(
     )
     completion_checks = _build_completion_checks(setup_report)
     is_complete = all(check["status"] == "passed" for check in completion_checks)
+    deployment_readiness = _build_deployment_readiness(setup_report)
     completion_url = f"{normalized_base_url}/completion/"
 
     return {
@@ -43,6 +54,7 @@ def build_project_completion_report(
         "completion_url": completion_url,
         "launch_control_url": setup_report["launch_control_url"],
         "completion_checks": completion_checks,
+        "deployment_readiness": deployment_readiness,
         "manual_blockers": [] if is_complete else setup_report["manual_blockers"],
         "next_action": _build_next_action(
             setup_report=setup_report,
@@ -183,7 +195,7 @@ def _build_completion_checks(setup_report: dict[str, Any]) -> list[dict[str, str
             "check_id": "next_action_gate",
             "status": (
                 "passed"
-                if next_actions["completion_status"] == "ready_for_regression_gate"
+                if next_actions["completion_status"] == FINAL_NEXT_ACTION_STATUS
                 else "action_required"
             ),
             "title_zh": "下一步 gate",
@@ -211,6 +223,10 @@ def _build_next_action(
             "url": completion_url,
         }
 
+    catalog_import_action = _build_general_catalog_completion_action(setup_report)
+    if catalog_import_action is not None:
+        return catalog_import_action
+
     step = setup_report["next_step"]
     entry_command = str(step.get("entry_command", ""))
     raw_command = str(step.get("raw_command", ""))
@@ -229,4 +245,83 @@ def _build_next_action(
         "command": command,
         "raw_command": raw_command,
         "url": str(step.get("url", "")),
+    }
+
+
+def _build_deployment_readiness(setup_report: dict[str, Any]) -> dict[str, Any]:
+    env_checks = {
+        check["check_id"]: check for check in setup_report["environment_checks"]
+    }
+    completion_status = setup_report["next_actions"]["completion_status"]
+    required_check_ids = (
+        "staff_reviewer",
+        "final_evidence",
+        "governed_content",
+        "next_action_gate",
+    )
+    missing_checks = [
+        check_id
+        for check_id in required_check_ids
+        if env_checks.get(check_id, {}).get("status") != "passed"
+    ]
+    is_deployable = (
+        not missing_checks and completion_status in DEPLOYABLE_NEXT_ACTION_STATUSES
+    )
+    if completion_status == FINAL_NEXT_ACTION_STATUS and is_deployable:
+        status = "final_ready"
+    elif completion_status == DEPLOYABLE_NON_FINAL_NEXT_ACTION_STATUS and is_deployable:
+        status = "deployable_non_final"
+    else:
+        status = "not_ready"
+
+    return {
+        "status": status,
+        "is_deployable": is_deployable,
+        "blocks_final_completion": status != "final_ready",
+        "completion_status": completion_status,
+        "missing_check_ids": missing_checks,
+        "detail_en": (
+            "Local deployment inputs are ready, but final completion remains blocked "
+            "until the general differential catalog import step is resolved."
+            if status == "deployable_non_final"
+            else "Local deployment inputs match the final gate prerequisites."
+            if status == "final_ready"
+            else "Local deployment inputs are not ready yet."
+        ),
+    }
+
+
+def _build_general_catalog_completion_action(
+    setup_report: dict[str, Any],
+) -> dict[str, str] | None:
+    if setup_report["operator_summary"]["status"] != "ready_for_local_operation":
+        return None
+    if (
+        setup_report["next_actions"]["completion_status"]
+        != DEPLOYABLE_NON_FINAL_NEXT_ACTION_STATUS
+    ):
+        return None
+
+    try:
+        current_date = date.fromisoformat(str(setup_report["generated_on"]))
+    except ValueError:
+        current_date = None
+    plan = build_next_action_plan(today=current_date)
+    action = plan["next_actions"][0]
+    if action["action_id"] != "expand_general_differential_catalog_via_import_workbench":
+        return None
+
+    return {
+        "action_id": str(action["action_id"]),
+        "status": str(action["status"]),
+        "title_zh": str(action["title_zh"]),
+        "title_en": str(action["title_en"]),
+        "detail_zh": str(action["reason_zh"]),
+        "detail_en": str(action["reason_en"]),
+        "command": "",
+        "raw_command": "",
+        "url": urljoin(
+            str(setup_report["launch_control_url"]),
+            str(action.get("url", "")),
+        ),
     }

@@ -113,7 +113,7 @@ class DyspneaPathwayTests(TestCase):
         self.assertEqual(plan["coverage"]["next_target"]["slug"], "coverage-depth-review")
         self.assertEqual(
             plan["completion_status"],
-            "ready_for_regression_gate",
+            "general_catalog_import_ready",
         )
         self.assertEqual(
             plan["downstream_readiness"]["coverage_depth"]["complaints_with_gaps"],
@@ -125,5 +125,6 @@ class DyspneaPathwayTests(TestCase):
         )
         self.assertEqual(
             plan["next_actions"][0]["action_id"],
-            "run_full_regression_and_smoke_checks",
+            "expand_general_differential_catalog_via_import_workbench",
         )
+        self.assertEqual(plan["general_catalog"]["condition_count"], 300)

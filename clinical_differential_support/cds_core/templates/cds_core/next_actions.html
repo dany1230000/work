@@ -109,6 +109,46 @@
 </section>
 {% endif %}
 
+<section class="panel" data-general-catalog-next-action="true">
+  <h2>通用鑑別擴充</h2>
+  <p class="secondary">General catalog expansion</p>
+  <p>
+    <a href="{{ plan.general_catalog.import_workbench_path }}">通用鑑別匯入工作台 / General Differential Import Workbench</a>
+  </p>
+  <div class="grid metrics">
+    <article>
+      <span class="metric">{{ plan.general_catalog.condition_count }}</span>
+      <h3>條目</h3>
+      <p class="secondary">{{ plan.general_catalog.condition_total_label }}</p>
+    </article>
+    <article>
+      <span class="metric">{{ plan.general_catalog.source_count }}</span>
+      <h3>來源</h3>
+      <p class="secondary">{{ plan.general_catalog.source_total_label }}</p>
+    </article>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>系統 / System</th>
+        <th>目前 / Current</th>
+        <th>目標 / Target</th>
+        <th>狀態 / Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for bucket in plan.general_catalog.lowest_coverage_buckets %}
+        <tr>
+          <td>{{ bucket.system }}</td>
+          <td>{{ bucket.condition_count }}</td>
+          <td>{{ bucket.target_count }}</td>
+          <td>{{ bucket.status }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+
 <section class="panel">
   <h2>下一步</h2>
   <p class="secondary">Prioritized next actions</p>

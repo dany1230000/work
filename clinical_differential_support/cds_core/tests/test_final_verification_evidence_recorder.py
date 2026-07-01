@@ -2,6 +2,7 @@ import json
 import tempfile
 from datetime import date
 from pathlib import Path
+from unittest.mock import patch
 
 from django.test import TestCase
 
@@ -13,6 +14,34 @@ class FinalVerificationEvidenceRecorderTests(TestCase):
         "abdominal_pain_mvp.json",
         "dyspnea_mvp.json",
     ]
+
+    def ready_gate(self):
+        return {
+            "gate_status": "ready_for_final_verification",
+            "generated_on": "2026-06-24",
+            "required_commands": [
+                {
+                    "command_id": "full_regression",
+                    "command": "test full regression",
+                    "expected_result": "tests pass",
+                },
+                {
+                    "command_id": "django_system_check",
+                    "command": "test django check",
+                    "expected_result": "system check passes",
+                },
+                {
+                    "command_id": "live_smoke",
+                    "command": "test live smoke",
+                    "expected_result": "smoke passes",
+                },
+                {
+                    "command_id": "next_action_shell",
+                    "command": "test next action shell",
+                    "expected_result": "next action passes",
+                },
+            ],
+        }
 
     def test_recorder_writes_summary_only_verified_evidence(self):
         from scripts.record_final_verification_evidence import (
@@ -33,11 +62,15 @@ class FinalVerificationEvidenceRecorderTests(TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             output_path = Path(tmp_dir) / "final-verification-evidence.json"
 
-            result = record_final_verification_evidence(
-                output_path=output_path,
-                runner=fake_runner,
-                today=date(2026, 6, 24),
-            )
+            with patch(
+                "cds_core.final_verification.build_final_verification_gate",
+                return_value=self.ready_gate(),
+            ):
+                result = record_final_verification_evidence(
+                    output_path=output_path,
+                    runner=fake_runner,
+                    today=date(2026, 6, 24),
+                )
 
             payload = json.loads(output_path.read_text(encoding="utf-8"))
 
@@ -74,11 +107,15 @@ class FinalVerificationEvidenceRecorderTests(TestCase):
         with tempfile.TemporaryDirectory() as tmp_dir:
             output_path = Path(tmp_dir) / "failed-evidence.json"
 
-            result = record_final_verification_evidence(
-                output_path=output_path,
-                runner=fake_runner,
-                today=date(2026, 6, 24),
-            )
+            with patch(
+                "cds_core.final_verification.build_final_verification_gate",
+                return_value=self.ready_gate(),
+            ):
+                result = record_final_verification_evidence(
+                    output_path=output_path,
+                    runner=fake_runner,
+                    today=date(2026, 6, 24),
+                )
             payload = json.loads(output_path.read_text(encoding="utf-8"))
 
         self.assertFalse(result.ok)

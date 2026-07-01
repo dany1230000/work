@@ -156,6 +156,7 @@ def build_deployment_status_report(
         "local_completion": {
             "status": completion["status"],
             "exit_code": completion["exit_code"],
+            "deployment_readiness": completion["deployment_readiness"],
             "url": completion["completion_url"],
         },
         "safety_scope": {
@@ -254,16 +255,28 @@ def _build_deployment_checks(
     remote_exists = git_remote.exit_code == 0 and bool(git_remote_url)
     publish_ready = publish_status["status"] == "publish_package_ready"
     public_deployment_ok = _is_public_deployment_live(public_deployment)
+    local_deployment_ready = completion.get("deployment_readiness", {}).get(
+        "is_deployable",
+        False,
+    )
+    local_deployment_value = (
+        completion.get("deployment_readiness", {}).get("status")
+        if local_deployment_ready
+        else completion["status"]
+    )
 
     return [
         {
             "check_id": "local_final_gate",
-            "status": "passed" if completion["status"] == "final_complete" else "action_required",
+            "status": "passed" if local_deployment_ready else "action_required",
             "title_zh": "本機最終版",
             "title_en": "Local final gate",
-            "value": completion["status"],
+            "value": local_deployment_value,
             "detail_zh": "必須先通過本機 Final_Check。",
-            "detail_en": "Local Final_Check must pass before deployment.",
+            "detail_en": (
+                "Deployment can proceed when local checks are deployable, even if "
+                "final completion remains blocked by the general catalog import gate."
+            ),
         },
         _file_check(
             check_id="render_blueprint",

@@ -7,10 +7,15 @@ from django.db.models import Count
 from django.utils import timezone
 
 from .coverage_depth import build_coverage_depth_report
+from .differential_catalog_workbench import (
+    build_general_differential_import_workbench,
+)
 from .governance import build_case_validation_rows
 from .models import ChiefComplaint, ClinicalItem
 from .source_freshness import build_source_freshness_report
 
+
+GENERAL_DIFFERENTIAL_IMPORT_PATH = "/review/general-differential-import/"
 
 EXPANSION_TARGETS = [
     {"slug": "chest-pain", "title_zh": "胸痛", "title_en": "Chest pain"},
@@ -46,6 +51,7 @@ def build_next_action_plan(today: date | None = None) -> dict[str, Any]:
         enabled=expansion_complete,
         today=current_date,
     )
+    general_catalog = _build_general_catalog_summary()
     completion_status = _build_completion_status(
         headache_only=headache_only,
         expansion_complete=expansion_complete,
@@ -76,11 +82,13 @@ def build_next_action_plan(today: date | None = None) -> dict[str, Any]:
         },
         "governance": governance,
         "downstream_readiness": downstream_readiness,
+        "general_catalog": general_catalog,
         "next_actions": build_next_actions(
             headache_only=headache_only,
             next_target=next_target,
             governance=governance,
             downstream_readiness=downstream_readiness,
+            general_catalog=general_catalog,
         ),
         "safety_scope": {
             "staff_only": True,
@@ -101,6 +109,7 @@ def build_next_actions(
     next_target: dict[str, str],
     governance: dict[str, int],
     downstream_readiness: dict[str, Any],
+    general_catalog: dict[str, Any],
 ) -> list[dict[str, Any]]:
     if next_target["slug"] != "coverage-depth-review":
         return _build_expansion_actions(headache_only, next_target)
@@ -150,7 +159,60 @@ def build_next_actions(
             _regression_action(2, "pending_source_review"),
         ]
 
-    return [_regression_action(1, "ready_to_run")]
+    return [
+        _general_catalog_import_action(1, general_catalog),
+        _regression_action(2, "pending_general_catalog_import"),
+    ]
+
+
+def _build_general_catalog_summary() -> dict[str, Any]:
+    workbench = build_general_differential_import_workbench()
+    summary = workbench["summary"]
+    lowest_buckets = [
+        {
+            "system": row["system"],
+            "condition_count": row["condition_count"],
+            "target_count": row["target_count"],
+            "gap_count": row["gap_count"],
+            "status": row["status"],
+        }
+        for row in workbench["next_batch"]["lowest_coverage_buckets"][:6]
+    ]
+    return {
+        "condition_count": summary["condition_count"],
+        "source_count": summary["source_count"],
+        "condition_total_label": summary["condition_total_label"],
+        "source_total_label": summary["source_total_label"],
+        "catalog_target_met": summary["catalog_target_met"],
+        "import_workbench_path": GENERAL_DIFFERENTIAL_IMPORT_PATH,
+        "lowest_coverage_buckets": lowest_buckets,
+        "first_action": "expand_general_differential_catalog_via_import_workbench",
+        "batch_template_format_version": summary["batch_template_format_version"],
+        "review_seed_format_version": summary["review_seed_format_version"],
+    }
+
+
+def _general_catalog_import_action(
+    priority: int, general_catalog: dict[str, Any]
+) -> dict[str, Any]:
+    return _action(
+        priority,
+        "expand_general_differential_catalog_via_import_workbench",
+        "ready_to_start",
+        "使用通用鑑別匯入工作台",
+        "General Differential Import Workbench",
+        (
+            "通用鑑別 catalog 已可用，但距離任何疾病覆蓋仍需要持續、已審核、"
+            "可追溯來源的擴充批次。"
+        ),
+        (
+            f"Current general catalog has {general_catalog['condition_count']} "
+            f"conditions and {general_catalog['source_count']} sources; "
+            "continue expansion through reviewed import batches before final gates."
+        ),
+        "Use the import workbench to choose the next reviewed catalog batch and validation commands.",
+        url=general_catalog["import_workbench_path"],
+    )
 
 
 def _build_expansion_actions(
@@ -273,6 +335,8 @@ def _build_completion_status(
         return "expansion_in_progress"
     if _has_governance_blockers(governance):
         return "governance_blocked"
+    if downstream_readiness["status"] == "ready_for_regression_gate":
+        return "general_catalog_import_ready"
     return downstream_readiness["status"]
 
 
@@ -307,6 +371,7 @@ def _action(
     reason_zh: str,
     reason_en: str,
     deliverable_en: str,
+    url: str = "",
 ) -> dict[str, Any]:
     return {
         "priority": priority,
@@ -317,6 +382,7 @@ def _action(
         "reason_zh": reason_zh,
         "reason_en": reason_en,
         "deliverable_en": deliverable_en,
+        "url": url,
     }
 
 

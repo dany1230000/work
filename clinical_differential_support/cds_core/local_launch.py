@@ -55,6 +55,11 @@ STATUS_LABELS_EN = {
     "locked": "Waiting",
 }
 
+LOCAL_OPERATION_NEXT_ACTION_STATUSES = {
+    "ready_for_regression_gate",
+    "general_catalog_import_ready",
+}
+
 
 def build_local_launch_status(
     base_url: str = DEFAULT_BASE_URL,
@@ -100,6 +105,9 @@ def build_local_launch_status(
             "completion_status": next_action_plan["completion_status"],
             "first_action": next_action_plan["next_actions"][0]["action_id"],
             "first_action_status": next_action_plan["next_actions"][0]["status"],
+            "allows_local_operation": _next_action_allows_local_operation(
+                next_action_plan["completion_status"],
+            ),
             "url": urls["next_actions"],
         },
         "final_verification": {
@@ -267,8 +275,8 @@ def _build_environment_checks(report: dict[str, Any]) -> list[dict[str, str]]:
     chief_count = report["environment"]["chief_complaint_count"]
     item_count = report["environment"]["clinical_item_count"]
     evidence_verified = _evidence_verified(report)
-    next_action_ready = (
-        report["next_actions"]["completion_status"] == "ready_for_regression_gate"
+    next_action_ready = _next_action_allows_local_operation(
+        report["next_actions"]["completion_status"],
     )
 
     return [
@@ -418,6 +426,10 @@ def _evidence_verified(report: dict[str, Any]) -> bool:
         report["final_verification"]["latest_evidence_status"] == "verified"
         and report["final_verification"]["failed_command_count"] == 0
     )
+
+
+def _next_action_allows_local_operation(completion_status: str) -> bool:
+    return completion_status in LOCAL_OPERATION_NEXT_ACTION_STATUSES
 
 
 def _build_steps(report: dict[str, Any]) -> list[dict[str, str | int]]:
