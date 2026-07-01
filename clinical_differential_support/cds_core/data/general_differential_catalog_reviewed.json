@@ -2,16 +2,16 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-06-30",
-    "condition_count": 300,
-    "source_count": 379,
+    "condition_count": 325,
+    "source_count": 404,
     "quality": {
       "catalog_version": "general-differential-starter-2026-06-30",
-      "condition_count": 300,
-      "source_count": 379,
+      "condition_count": 325,
+      "source_count": 404,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 300
+      "expansion_target_condition_count": 325
     }
   },
   "safety_scope": {
@@ -8653,6 +8653,698 @@
         "nci_skin_cancer",
         "nci_cancer_symptoms"
       ]
+    },
+    {
+      "slug": "aortic_stenosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "主動脈瓣狹窄",
+      "name_en": "Aortic stenosis",
+      "system": "Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "主動脈瓣狹窄 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Exertional dyspnea, chest pain, syncope, murmur, or heart-failure features should include aortic stenosis.",
+      "signals": {
+        "dyspnea": 3,
+        "chest_pain": 2,
+        "syncope": 3,
+        "orthopnea_edema": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "aortic stenosis",
+        "as valve disease",
+        "calcific aortic valve stenosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exertional symptoms, syncope, murmur history, heart-failure signs, and echocardiography context."
+      ],
+      "source_ids": [
+        "merck_aortic_stenosis",
+        "nhlbi_heart_valve_diseases"
+      ]
+    },
+    {
+      "slug": "dilated_cardiomyopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "擴張型心肌病變",
+      "name_en": "Dilated cardiomyopathy",
+      "system": "Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "擴張型心肌病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive dyspnea, edema, fatigue, palpitations, or reduced exercise tolerance should include dilated cardiomyopathy.",
+      "signals": {
+        "dyspnea": 3,
+        "orthopnea_edema": 3,
+        "palpitations": 1,
+        "fatigue": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "dilated cardiomyopathy",
+        "cardiomyopathy",
+        "dcm"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check family history, viral/toxic exposure, pregnancy/postpartum context, arrhythmia symptoms, and cardiac imaging context."
+      ],
+      "source_ids": [
+        "nhlbi_cardiomyopathy",
+        "merck_heart_failure"
+      ]
+    },
+    {
+      "slug": "pertussis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "百日咳",
+      "name_en": "Pertussis",
+      "system": "Respiratory/Infectious/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "百日咳 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Paroxysmal prolonged cough, post-tussive vomiting, whoop, infant apnea, or exposure history should include pertussis.",
+      "signals": {
+        "cough_sputum": 3,
+        "vomiting": 2,
+        "respiratory_distress": 2,
+        "fatigue": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "pertussis",
+        "whooping cough",
+        "paroxysmal cough"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check cough duration, vaccination status, infant age, apnea/cyanosis, exposure clusters, and public health testing context."
+      ],
+      "source_ids": [
+        "cdc_pertussis_symptoms",
+        "cdc_viral_respiratory_illnesses"
+      ]
+    },
+    {
+      "slug": "norovirus_gastroenteritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "諾羅病毒腸胃炎",
+      "name_en": "Norovirus gastroenteritis",
+      "system": "Gastrointestinal/Infectious",
+      "urgency": "soon",
+      "summary_zh": "諾羅病毒腸胃炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute vomiting, watery diarrhea, abdominal cramps, outbreak exposure, or dehydration risk should include norovirus.",
+      "signals": {
+        "vomiting": 4,
+        "abdominal_pain": 2,
+        "poor_oral_intake_dehydration": 3,
+        "fever": 1
+      },
+      "synonyms": [
+        "norovirus",
+        "norovirus gastroenteritis",
+        "viral gastroenteritis outbreak"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check outbreak exposure, hydration, high-risk age or immunocompromise, bloody stool absence, and infection-control context."
+      ],
+      "source_ids": [
+        "cdc_norovirus_about",
+        "medlineplus_gastroenteritis"
+      ]
+    },
+    {
+      "slug": "gastritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胃炎",
+      "name_en": "Gastritis",
+      "system": "Gastrointestinal",
+      "urgency": "routine",
+      "summary_zh": "胃炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Epigastric pain, nausea, early satiety, NSAID use, alcohol exposure, or dyspepsia should include gastritis.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 2,
+        "gi_bleeding": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "gastritis",
+        "gastropathy",
+        "dyspepsia gastritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check NSAID/alcohol exposure, GI bleeding, weight loss, anemia, H. pylori risk, and endoscopy or GI review context."
+      ],
+      "source_ids": [
+        "niddk_gastritis_gastropathy",
+        "niddk_peptic_ulcer"
+      ]
+    },
+    {
+      "slug": "helicobacter_pylori_infection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "幽門螺旋桿菌感染",
+      "name_en": "Helicobacter pylori infection",
+      "system": "Gastrointestinal/Infectious",
+      "urgency": "soon",
+      "summary_zh": "幽門螺旋桿菌感染 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Peptic-ulcer symptoms, dyspepsia, recurrent epigastric pain, or ulcer history should include H. pylori infection.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 1,
+        "gi_bleeding": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "h pylori infection",
+        "helicobacter pylori",
+        "h. pylori"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ulcer history, NSAID use, alarm features, prior testing or treatment, household context, and GI evaluation need."
+      ],
+      "source_ids": [
+        "niddk_peptic_ulcer_h_pylori",
+        "niddk_peptic_ulcer"
+      ]
+    },
+    {
+      "slug": "gestational_diabetes",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "妊娠糖尿病",
+      "name_en": "Gestational diabetes",
+      "system": "Obstetric/Endocrine/Metabolic",
+      "urgency": "soon",
+      "summary_zh": "妊娠糖尿病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pregnancy with hyperglycemia risk, glycosuria, large-for-gestational-age concern, or diabetes risk factors should include gestational diabetes.",
+      "signals": {
+        "pregnancy_possible": 2,
+        "extreme_thirst_polyuria": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "gestational diabetes",
+        "gdm",
+        "pregnancy diabetes"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, screening result context, diabetes risk factors, fetal growth concerns, and obstetric/endocrine follow-up need."
+      ],
+      "source_ids": [
+        "niddk_gestational_diabetes",
+        "merck_acute_diabetes_complications"
+      ]
+    },
+    {
+      "slug": "hyperemesis_gravidarum",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "妊娠劇吐",
+      "name_en": "Hyperemesis gravidarum",
+      "system": "Obstetric/Gynecologic/Metabolic",
+      "urgency": "urgent",
+      "summary_zh": "妊娠劇吐 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pregnancy with persistent severe vomiting, weight loss, dehydration, ketones, or electrolyte concern should include hyperemesis gravidarum.",
+      "signals": {
+        "pregnancy_possible": 3,
+        "vomiting": 5,
+        "poor_oral_intake_dehydration": 4,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "hyperemesis gravidarum",
+        "severe pregnancy vomiting",
+        "pregnancy nausea vomiting dehydration"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, weight loss, ketones/electrolytes, multiple gestation or molar pregnancy context, and obstetric escalation need."
+      ],
+      "source_ids": [
+        "merck_hyperemesis_gravidarum",
+        "niddk_gestational_diabetes"
+      ]
+    },
+    {
+      "slug": "trichomoniasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "滴蟲感染",
+      "name_en": "Trichomoniasis",
+      "system": "Infectious/Sexual health/Gynecologic",
+      "urgency": "soon",
+      "summary_zh": "滴蟲感染 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Vaginal or urethral discharge, genital irritation, STI exposure, dysuria, or pelvic symptoms should include trichomoniasis.",
+      "signals": {
+        "vaginal_discharge": 3,
+        "dysuria": 2,
+        "urethral_discharge": 2,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "trichomoniasis",
+        "trichomonas",
+        "trich"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check discharge, dysuria, pregnancy status, sexual exposure, partner symptoms, co-STI risk, and testing context."
+      ],
+      "source_ids": [
+        "cdc_trichomoniasis",
+        "cdc_urethritis_cervicitis"
+      ]
+    },
+    {
+      "slug": "overactive_bladder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "膀胱過動症",
+      "name_en": "Overactive bladder",
+      "system": "Renal/Urologic",
+      "urgency": "routine",
+      "summary_zh": "膀胱過動症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Urinary urgency, frequency, nocturia, or urge incontinence without infection red flags should include overactive bladder.",
+      "signals": {
+        "dysuria": 1,
+        "inability_to_void": 1,
+        "urinary_incontinence": 3,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "overactive bladder",
+        "oab",
+        "urinary urgency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check urgency pattern, nocturia, incontinence, hematuria, infection symptoms, neurologic signs, and medication contributors."
+      ],
+      "source_ids": [
+        "niddk_bladder_control_problems",
+        "merck_urinary_incontinence"
+      ]
+    },
+    {
+      "slug": "pancreatic_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胰臟癌",
+      "name_en": "Pancreatic cancer",
+      "system": "Gastrointestinal/Oncology",
+      "urgency": "soon",
+      "summary_zh": "胰臟癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Unexplained weight loss, jaundice, upper abdominal or back pain, anorexia, or new diabetes context should include pancreatic cancer.",
+      "signals": {
+        "weight_loss": 4,
+        "jaundice": 3,
+        "abdominal_pain": 2,
+        "bone_back_pain": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "pancreatic cancer",
+        "pancreatic malignancy",
+        "pancreas cancer"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check jaundice, back radiation, weight loss, new diabetes, pancreatitis mimic, imaging context, and oncology/GI referral need."
+      ],
+      "source_ids": [
+        "nci_pancreatic_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "liver_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肝癌",
+      "name_en": "Liver cancer",
+      "system": "Hepatic/Oncology",
+      "urgency": "soon",
+      "summary_zh": "肝癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cirrhosis or hepatitis risk with weight loss, RUQ pain, jaundice, abdominal swelling, or abnormal imaging should include liver cancer.",
+      "signals": {
+        "jaundice": 3,
+        "ruq_pain": 3,
+        "weight_loss": 3,
+        "fatigue": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "liver cancer",
+        "hepatocellular carcinoma",
+        "hcc"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hepatitis/cirrhosis history, alcohol/metabolic risk, imaging or AFP context, ascites, and hepatology/oncology referral need."
+      ],
+      "source_ids": [
+        "nci_liver_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "stomach_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胃癌",
+      "name_en": "Stomach cancer",
+      "system": "Gastrointestinal/Oncology",
+      "urgency": "soon",
+      "summary_zh": "胃癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent dyspepsia, early satiety, weight loss, anemia, GI bleeding, or vomiting should include stomach cancer.",
+      "signals": {
+        "abdominal_pain": 2,
+        "weight_loss": 3,
+        "gi_bleeding": 3,
+        "vomiting": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "stomach cancer",
+        "gastric cancer",
+        "gastric carcinoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check alarm features, anemia or bleeding, early satiety, H. pylori risk, family history, and endoscopy/GI referral context."
+      ],
+      "source_ids": [
+        "nci_stomach_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "esophageal_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "食道癌",
+      "name_en": "Esophageal cancer",
+      "system": "Gastrointestinal/Oncology",
+      "urgency": "soon",
+      "summary_zh": "食道癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive dysphagia, weight loss, odynophagia, reflux history, or GI bleeding context should include esophageal cancer.",
+      "signals": {
+        "weight_loss": 3,
+        "gi_bleeding": 2,
+        "abdominal_pain": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "esophageal cancer",
+        "oesophageal cancer",
+        "esophagus cancer"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check progressive swallowing difficulty, reflux/Barrett history, smoking or alcohol risk, anemia, and endoscopy referral context."
+      ],
+      "source_ids": [
+        "nci_esophageal_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "endometrial_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "子宮內膜癌",
+      "name_en": "Endometrial cancer",
+      "system": "Gynecologic/Oncology",
+      "urgency": "soon",
+      "summary_zh": "子宮內膜癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Postmenopausal bleeding, abnormal uterine bleeding, pelvic pain, obesity risk, or endometrial thickening should include endometrial cancer.",
+      "signals": {
+        "vaginal_bleeding": 4,
+        "pelvic_pain": 2,
+        "weight_loss": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "endometrial cancer",
+        "uterine cancer",
+        "endometrial carcinoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check menopausal status, bleeding pattern, anemia, obesity or estrogen exposure, ultrasound context, and gynecology referral need."
+      ],
+      "source_ids": [
+        "nci_uterine_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "thyroid_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "甲狀腺癌",
+      "name_en": "Thyroid cancer",
+      "system": "Endocrine/Oncology",
+      "urgency": "soon",
+      "summary_zh": "甲狀腺癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Thyroid nodule, neck mass, hoarseness, dysphagia, lymph nodes, or radiation/family risk should include thyroid cancer.",
+      "signals": {
+        "weight_loss": 1,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "thyroid cancer",
+        "thyroid carcinoma",
+        "thyroid malignancy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check nodule growth, compressive symptoms, voice change, lymph nodes, radiation/family history, and ultrasound/FNA context."
+      ],
+      "source_ids": [
+        "nci_thyroid_cancer",
+        "nci_thyroid_cancer_screening"
+      ]
+    },
+    {
+      "slug": "squamous_cell_carcinoma_skin",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "皮膚鱗狀細胞癌",
+      "name_en": "Cutaneous squamous cell carcinoma",
+      "system": "Skin/Oncology",
+      "urgency": "soon",
+      "summary_zh": "皮膚鱗狀細胞癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Growing, scaly, ulcerated, bleeding, or sun-exposed skin lesion should include cutaneous squamous cell carcinoma.",
+      "signals": {
+        "rash": 2,
+        "known_cancer": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "squamous cell carcinoma",
+        "cutaneous squamous cell carcinoma",
+        "scc skin"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion growth, ulceration, bleeding, sun exposure, immunosuppression, prior skin cancer, and dermatology biopsy context."
+      ],
+      "source_ids": [
+        "nci_skin_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "alopecia_areata",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "圓禿",
+      "name_en": "Alopecia areata",
+      "system": "Skin/Autoimmune",
+      "urgency": "routine",
+      "summary_zh": "圓禿 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Patchy nonscarring hair loss, nail pitting, autoimmune history, or sudden hair shedding should include alopecia areata.",
+      "signals": {
+        "rash": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "alopecia areata",
+        "patchy hair loss",
+        "autoimmune hair loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check patch pattern, scarring signs, thyroid/autoimmune history, stressors, tinea signs, and dermatology context."
+      ],
+      "source_ids": [
+        "niams_alopecia_areata",
+        "niams_skin_diseases"
+      ]
+    },
+    {
+      "slug": "vitiligo",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "白斑症",
+      "name_en": "Vitiligo",
+      "system": "Skin/Autoimmune",
+      "urgency": "routine",
+      "summary_zh": "白斑症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Depigmented sharply demarcated patches, symmetric distribution, autoimmune history, or rapid pigment loss should include vitiligo.",
+      "signals": {
+        "rash": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "vitiligo",
+        "depigmented patches",
+        "skin pigment loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution, progression, autoimmune history, inflammatory rash overlap, psychosocial impact, and dermatology context."
+      ],
+      "source_ids": [
+        "niams_vitiligo",
+        "niams_skin_diseases"
+      ]
+    },
+    {
+      "slug": "dry_eye_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乾眼症",
+      "name_en": "Dry eye disease",
+      "system": "Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "乾眼症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dryness, burning, foreign-body sensation, fluctuating vision, contact lens intolerance, or autoimmune context should include dry eye disease.",
+      "signals": {
+        "eye_pain_redness": 2,
+        "visual_disturbance": 1,
+        "itchy_red_watery_eyes": 1
+      },
+      "synonyms": [
+        "dry eye",
+        "dry eye disease",
+        "keratoconjunctivitis sicca"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vision change, pain severity, contact lens use, medication contributors, autoimmune symptoms, and eye-care review need."
+      ],
+      "source_ids": [
+        "nei_dry_eye",
+        "merck_contact_lenses"
+      ]
+    },
+    {
+      "slug": "cataract",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "白內障",
+      "name_en": "Cataract",
+      "system": "Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "白內障 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual blurry, hazy, less colorful vision or glare in an older adult should include cataract.",
+      "signals": {
+        "visual_disturbance": 3,
+        "eye_pain_redness": 1
+      },
+      "synonyms": [
+        "cataract",
+        "cataracts",
+        "cloudy lens"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gradual vision decline, glare, monocular symptoms, trauma/steroid history, diabetes, and ophthalmology context."
+      ],
+      "source_ids": [
+        "nei_cataracts",
+        "nei_glaucoma"
+      ]
+    },
+    {
+      "slug": "age_related_macular_degeneration",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "年齡相關黃斑部病變",
+      "name_en": "Age-related macular degeneration",
+      "system": "Ophthalmologic/Geriatric",
+      "urgency": "soon",
+      "summary_zh": "年齡相關黃斑部病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Central vision distortion or loss, difficulty reading, older age, or macular findings should include age-related macular degeneration.",
+      "signals": {
+        "visual_disturbance": 4,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "macular degeneration",
+        "age-related macular degeneration",
+        "amd"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check central versus peripheral vision, distortion, sudden change, smoking history, and urgent eye-care context."
+      ],
+      "source_ids": [
+        "nei_age_related_macular_degeneration",
+        "nei_retinal_detachment"
+      ]
+    },
+    {
+      "slug": "diabetic_retinopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "糖尿病視網膜病變",
+      "name_en": "Diabetic retinopathy",
+      "system": "Ophthalmologic/Endocrine",
+      "urgency": "soon",
+      "summary_zh": "糖尿病視網膜病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Diabetes with blurred vision, floaters, vision loss, or overdue eye screening should include diabetic retinopathy.",
+      "signals": {
+        "visual_disturbance": 3,
+        "extreme_thirst_polyuria": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "diabetic retinopathy",
+        "diabetic eye disease",
+        "diabetes retinal disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check diabetes duration, glucose context, sudden vision change, floaters, prior screening, and dilated eye exam need."
+      ],
+      "source_ids": [
+        "nei_diabetic_retinopathy",
+        "merck_long_term_diabetes_complications"
+      ]
+    },
+    {
+      "slug": "hand_foot_mouth_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "手足口病",
+      "name_en": "Hand, foot, and mouth disease",
+      "system": "Infectious/Skin/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "手足口病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, sore throat, mouth sores, and hand/foot rash in a child or exposure setting should include hand, foot, and mouth disease.",
+      "signals": {
+        "fever": 2,
+        "sore_throat": 2,
+        "mucosal_lesions": 2,
+        "rash": 3
+      },
+      "synonyms": [
+        "hand foot mouth disease",
+        "hfmd",
+        "coxsackievirus rash"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hydration, oral intake, age, daycare exposure, neurologic red flags, and infection-control context."
+      ],
+      "source_ids": [
+        "cdc_hand_foot_mouth",
+        "cdc_viral_respiratory_illnesses"
+      ]
+    },
+    {
+      "slug": "thyroid_nodule",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "甲狀腺結節",
+      "name_en": "Thyroid nodule",
+      "system": "Endocrine",
+      "urgency": "soon",
+      "summary_zh": "甲狀腺結節 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Palpable thyroid nodule, neck fullness, compressive symptoms, hoarseness, or incidental imaging finding should include thyroid nodule.",
+      "signals": {
+        "neck_stiffness_swelling_dysphagia": 2,
+        "fatigue": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "pertinent thyroid nodule",
+        "thyroid nodule",
+        "thyroid mass"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check growth rate, compressive symptoms, thyroid function, radiation/family history, ultrasound features, and FNA criteria context."
+      ],
+      "source_ids": [
+        "nci_thyroid_cancer_screening",
+        "nci_thyroid_cancer"
+      ]
     }
   ],
   "sources": [
@@ -10929,6 +11621,156 @@
       "publisher": "National Cancer Institute",
       "title": "Skin Cancer",
       "url": "https://www.cancer.gov/types/skin"
+    },
+    {
+      "source_id": "merck_aortic_stenosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Aortic Stenosis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/valvular-disorders/aortic-stenosis"
+    },
+    {
+      "source_id": "nhlbi_cardiomyopathy",
+      "publisher": "NHLBI",
+      "title": "Cardiomyopathy",
+      "url": "https://www.nhlbi.nih.gov/health/cardiomyopathy"
+    },
+    {
+      "source_id": "cdc_pertussis_symptoms",
+      "publisher": "CDC",
+      "title": "Symptoms of Whooping Cough",
+      "url": "https://www.cdc.gov/pertussis/signs-symptoms/index.html"
+    },
+    {
+      "source_id": "cdc_norovirus_about",
+      "publisher": "CDC",
+      "title": "About Norovirus",
+      "url": "https://www.cdc.gov/norovirus/about/index.html"
+    },
+    {
+      "source_id": "niddk_gastritis_gastropathy",
+      "publisher": "NIDDK",
+      "title": "Gastritis and Gastropathy",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy"
+    },
+    {
+      "source_id": "niddk_peptic_ulcer_h_pylori",
+      "publisher": "NIDDK",
+      "title": "Peptic Ulcers",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers"
+    },
+    {
+      "source_id": "niddk_gestational_diabetes",
+      "publisher": "NIDDK",
+      "title": "Gestational Diabetes",
+      "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/gestational"
+    },
+    {
+      "source_id": "merck_hyperemesis_gravidarum",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperemesis Gravidarum",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/antenatal-complications/hyperemesis-gravidarum"
+    },
+    {
+      "source_id": "cdc_trichomoniasis",
+      "publisher": "CDC",
+      "title": "Trichomoniasis - STI Treatment Guidelines",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/trichomoniasis.htm"
+    },
+    {
+      "source_id": "niddk_bladder_control_problems",
+      "publisher": "NIDDK",
+      "title": "Bladder Control Problems",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/bladder-control-problems"
+    },
+    {
+      "source_id": "nci_pancreatic_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Pancreatic Cancer",
+      "url": "https://www.cancer.gov/types/pancreatic"
+    },
+    {
+      "source_id": "nci_liver_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Liver Cancer",
+      "url": "https://www.cancer.gov/types/liver"
+    },
+    {
+      "source_id": "nci_stomach_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Stomach Cancer",
+      "url": "https://www.cancer.gov/types/stomach"
+    },
+    {
+      "source_id": "nci_esophageal_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Esophageal Cancer",
+      "url": "https://www.cancer.gov/types/esophageal"
+    },
+    {
+      "source_id": "nci_uterine_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Uterine Cancer",
+      "url": "https://www.cancer.gov/types/uterine"
+    },
+    {
+      "source_id": "nci_thyroid_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Thyroid Cancer",
+      "url": "https://www.cancer.gov/types/thyroid"
+    },
+    {
+      "source_id": "niams_alopecia_areata",
+      "publisher": "NIAMS",
+      "title": "Alopecia Areata",
+      "url": "https://www.niams.nih.gov/health-topics/alopecia-areata"
+    },
+    {
+      "source_id": "niams_vitiligo",
+      "publisher": "NIAMS",
+      "title": "Vitiligo",
+      "url": "https://www.niams.nih.gov/health-topics/vitiligo"
+    },
+    {
+      "source_id": "niams_skin_diseases",
+      "publisher": "NIAMS",
+      "title": "Skin Diseases",
+      "url": "https://www.niams.nih.gov/health-topics/skin-diseases"
+    },
+    {
+      "source_id": "nei_dry_eye",
+      "publisher": "National Eye Institute",
+      "title": "Dry Eye",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/dry-eye"
+    },
+    {
+      "source_id": "nei_cataracts",
+      "publisher": "National Eye Institute",
+      "title": "Cataracts",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/cataracts"
+    },
+    {
+      "source_id": "nei_age_related_macular_degeneration",
+      "publisher": "National Eye Institute",
+      "title": "Age-Related Macular Degeneration",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/age-related-macular-degeneration"
+    },
+    {
+      "source_id": "nei_diabetic_retinopathy",
+      "publisher": "National Eye Institute",
+      "title": "Diabetic Retinopathy",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/diabetic-retinopathy"
+    },
+    {
+      "source_id": "cdc_hand_foot_mouth",
+      "publisher": "CDC",
+      "title": "About Hand, Foot, and Mouth Disease",
+      "url": "https://www.cdc.gov/hand-foot-mouth/about/index.html"
+    },
+    {
+      "source_id": "nci_thyroid_cancer_screening",
+      "publisher": "National Cancer Institute",
+      "title": "Thyroid Cancer Screening",
+      "url": "https://www.cancer.gov/types/thyroid/patient/thyroid-screening-pdq"
     }
   ]
 }

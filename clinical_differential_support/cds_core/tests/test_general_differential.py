@@ -390,6 +390,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_eighth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("aortic stenosis", "aortic_stenosis"),
+            ("dilated cardiomyopathy", "dilated_cardiomyopathy"),
+            ("pertussis", "pertussis"),
+            ("norovirus", "norovirus_gastroenteritis"),
+            ("gastritis", "gastritis"),
+            ("h pylori infection", "helicobacter_pylori_infection"),
+            ("gestational diabetes", "gestational_diabetes"),
+            ("hyperemesis gravidarum", "hyperemesis_gravidarum"),
+            ("trichomoniasis", "trichomoniasis"),
+            ("overactive bladder", "overactive_bladder"),
+            ("pancreatic cancer", "pancreatic_cancer"),
+            ("liver cancer", "liver_cancer"),
+            ("stomach cancer", "stomach_cancer"),
+            ("esophageal cancer", "esophageal_cancer"),
+            ("endometrial cancer", "endometrial_cancer"),
+            ("thyroid cancer", "thyroid_cancer"),
+            ("squamous cell carcinoma", "squamous_cell_carcinoma_skin"),
+            ("alopecia areata", "alopecia_areata"),
+            ("vitiligo", "vitiligo"),
+            ("dry eye", "dry_eye_disease"),
+            ("cataract", "cataract"),
+            ("macular degeneration", "age_related_macular_degeneration"),
+            ("diabetic retinopathy", "diabetic_retinopathy"),
+            ("hand foot mouth disease", "hand_foot_mouth_disease"),
+            ("pertinent thyroid nodule", "thyroid_nodule"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}
