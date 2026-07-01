@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-06-30",
-    "condition_count": 325,
-    "source_count": 404,
+    "catalog_version": "general-differential-starter-2026-07-02",
+    "condition_count": 350,
+    "source_count": 429,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-06-30",
-      "condition_count": 325,
-      "source_count": 404,
+      "catalog_version": "general-differential-starter-2026-07-02",
+      "condition_count": 350,
+      "source_count": 429,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 325
+      "expansion_target_condition_count": 350
     }
   },
   "safety_scope": {
@@ -1731,7 +1731,7 @@
         "hypomania",
         "manic episode",
         "bipolar mania",
-        "bipolar disorder"
+        "mania in bipolar disorder"
       ],
       "ask_next": [
         "確認睡眠需求、精力/活動量、語速或思緒奔逸、誇大、衝動風險行為、精神病性症狀、物質/藥物誘發與立即安全風險。 / Clarify sleep need, energy or activity, pressured speech or racing thoughts, grandiosity, risky impulsive behavior, psychotic symptoms, substance or medication triggers, and immediate safety risk."
@@ -9345,6 +9345,702 @@
         "nci_thyroid_cancer_screening",
         "nci_thyroid_cancer"
       ]
+    },
+    {
+      "slug": "osteoporosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "骨質疏鬆症",
+      "name_en": "Osteoporosis",
+      "system": "Musculoskeletal/Metabolic/Geriatric",
+      "urgency": "routine",
+      "summary_zh": "骨質疏鬆症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fragility fracture, height loss, kyphosis, chronic steroid exposure, or low-trauma back pain should include osteoporosis.",
+      "signals": {
+        "bone_back_pain": 3,
+        "recent_trauma": 2,
+        "fatigue": 1,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "osteoporosis",
+        "fragility fracture risk",
+        "low bone density"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prior fragility fracture, steroid exposure, menopause or aging risk, calcium/vitamin D context, and bone-density testing history."
+      ],
+      "source_ids": [
+        "niams_osteoporosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "blepharitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "眼瞼炎",
+      "name_en": "Blepharitis",
+      "system": "Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "眼瞼炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Red, itchy, crusted eyelids, eyelash debris, burning, or chronic ocular irritation should include blepharitis.",
+      "signals": {
+        "eye_pain_redness": 2,
+        "itchy_red_watery_eyes": 2,
+        "eye_discharge": 2,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "blepharitis",
+        "eyelid inflammation",
+        "crusted eyelids"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lid crusting, discharge, vision change, contact lens use, ocular pain severity, and eye-care review need."
+      ],
+      "source_ids": [
+        "nei_blepharitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chronic_sinusitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "慢性鼻竇炎",
+      "name_en": "Chronic sinusitis",
+      "system": "ENT/Respiratory",
+      "urgency": "routine",
+      "summary_zh": "慢性鼻竇炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nasal obstruction, facial pressure, reduced smell, chronic drainage, or recurrent sinus symptoms should include chronic sinusitis.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "facial_sinus_pain_pressure": 3,
+        "cough_sputum": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "chronic sinusitis",
+        "chronic rhinosinusitis",
+        "recurrent sinus infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration, smell loss, nasal polyps, allergy/asthma context, fever or orbital red flags, and ENT evaluation need."
+      ],
+      "source_ids": [
+        "medlineplus_sinusitis",
+        "cdc_sinus_infection_about"
+      ]
+    },
+    {
+      "slug": "epistaxis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼻出血",
+      "name_en": "Epistaxis",
+      "system": "ENT/Hematology",
+      "urgency": "soon",
+      "summary_zh": "鼻出血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nosebleed, recurrent unilateral bleeding, anticoagulant exposure, trauma, or easy bleeding should include epistaxis causes.",
+      "signals": {
+        "easy_bruising_bleeding": 3,
+        "recent_trauma": 2,
+        "hemodynamic_instability": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "epistaxis",
+        "nosebleed",
+        "recurrent nose bleeding"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bleeding amount, laterality, anticoagulants, trauma, hypertension context, anemia symptoms, and need for urgent control."
+      ],
+      "source_ids": [
+        "medlineplus_nosebleed",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "nasal_polyps",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼻息肉",
+      "name_en": "Nasal polyps",
+      "system": "ENT/Allergy",
+      "urgency": "routine",
+      "summary_zh": "鼻息肉 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic nasal obstruction, smell loss, recurrent sinusitis, asthma, or aspirin-exacerbated symptoms should include nasal polyps.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "facial_sinus_pain_pressure": 2,
+        "wheeze": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "nasal polyps",
+        "sinonasal polyps",
+        "polyps in nose"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check smell loss, asthma/NSAID sensitivity, chronic sinus symptoms, unilateral obstruction, and ENT or imaging context."
+      ],
+      "source_ids": [
+        "medlineplus_nasal_polyps",
+        "medlineplus_sinusitis"
+      ]
+    },
+    {
+      "slug": "otitis_media_with_effusion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "中耳積液",
+      "name_en": "Otitis media with effusion",
+      "system": "ENT/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "中耳積液 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hearing difficulty, ear fullness, post-infectious middle-ear fluid, or speech delay concern should include otitis media with effusion.",
+      "signals": {
+        "ear_pain": 1,
+        "hearing_loss_tinnitus": 4,
+        "nasal_congestion_rhinorrhea": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "otitis media with effusion",
+        "middle ear fluid",
+        "glue ear"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration of effusion, hearing impact, recurrent acute otitis media, speech/language concern, and audiology or ENT follow-up."
+      ],
+      "source_ids": [
+        "nidcd_ear_infections_children",
+        "merck_otitis_media_acute"
+      ]
+    },
+    {
+      "slug": "eustachian_tube_dysfunction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "耳咽管功能障礙",
+      "name_en": "Eustachian tube dysfunction",
+      "system": "ENT",
+      "urgency": "routine",
+      "summary_zh": "耳咽管功能障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Ear pressure, popping, barotrauma symptoms, hearing muffling, or symptoms after altitude change should include Eustachian tube dysfunction.",
+      "signals": {
+        "ear_pain": 2,
+        "hearing_loss_tinnitus": 3,
+        "nasal_congestion_rhinorrhea": 2,
+        "vertigo": 1
+      },
+      "synonyms": [
+        "eustachian tube dysfunction",
+        "ear pressure",
+        "ear barotrauma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check altitude or diving trigger, nasal allergy or infection, hearing loss, vertigo, drainage, and tympanic membrane findings."
+      ],
+      "source_ids": [
+        "medlineplus_ear_barotrauma",
+        "nidcd_ear_infections_children"
+      ]
+    },
+    {
+      "slug": "onychomycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "甲癬",
+      "name_en": "Onychomycosis",
+      "system": "Skin/Infectious",
+      "urgency": "routine",
+      "summary_zh": "甲癬 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Thickened, discolored, brittle, or separated nails, especially with tinea pedis, should include onychomycosis.",
+      "signals": {
+        "rash": 1,
+        "chronic_itchy_flexural_rash": 1,
+        "well_demarcated_scaly_plaques": 1
+      },
+      "synonyms": [
+        "onychomycosis",
+        "fungal nail infection",
+        "tinea unguium"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check nail pattern, tinea pedis, diabetes or immunocompromise, psoriasis mimic, and confirmation before systemic treatment decisions."
+      ],
+      "source_ids": [
+        "cdc_ringworm_clinical_overview",
+        "cdc_ringworm"
+      ]
+    },
+    {
+      "slug": "pediculosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "蝨感染",
+      "name_en": "Pediculosis",
+      "system": "Skin/Infectious/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "蝨感染 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Scalp itch, visible lice or nits, close-contact exposure, or school/daycare cluster should include pediculosis.",
+      "signals": {
+        "rash": 1,
+        "nocturnal_pruritus_burrows_contacts": 2,
+        "chronic_itchy_flexural_rash": 1
+      },
+      "synonyms": [
+        "pediculosis",
+        "head lice",
+        "lice infestation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check scalp exam, nits versus dandruff, household or school exposure, secondary infection, and recurrence after treatment."
+      ],
+      "source_ids": [
+        "cdc_head_lice_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "warts",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "疣",
+      "name_en": "Warts",
+      "system": "Skin/Infectious",
+      "urgency": "routine",
+      "summary_zh": "疣 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Verrucous papules, plantar lesions, periungual lesions, or anogenital wart concern should include HPV-related warts.",
+      "signals": {
+        "rash": 2,
+        "mucosal_lesions": 1,
+        "well_demarcated_scaly_plaques": 1
+      },
+      "synonyms": [
+        "warts",
+        "common warts",
+        "verruca"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion location, pain, immunosuppression, genital involvement, rapid change, and whether biopsy or STI evaluation is needed."
+      ],
+      "source_ids": [
+        "cdc_hpv_pink_book",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tinea_pedis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "足癬",
+      "name_en": "Tinea pedis",
+      "system": "Skin/Infectious",
+      "urgency": "routine",
+      "summary_zh": "足癬 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Itchy scaling between toes, plantar peeling, vesicles, or recurrent foot fungal symptoms should include tinea pedis.",
+      "signals": {
+        "rash": 2,
+        "chronic_itchy_flexural_rash": 2,
+        "well_demarcated_scaly_plaques": 1
+      },
+      "synonyms": [
+        "tinea pedis",
+        "athlete foot",
+        "athlete's foot"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check interdigital scale, moccasin distribution, nail involvement, diabetes or immunocompromise, and cellulitis mimic."
+      ],
+      "source_ids": [
+        "cdc_ringworm_symptoms",
+        "cdc_ringworm"
+      ]
+    },
+    {
+      "slug": "folate_deficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "葉酸缺乏",
+      "name_en": "Folate deficiency",
+      "system": "Hematology/Nutrition",
+      "urgency": "soon",
+      "summary_zh": "葉酸缺乏 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Macrocytic anemia, fatigue, malnutrition, pregnancy risk, malabsorption, or alcohol exposure should include folate deficiency.",
+      "signals": {
+        "fatigue": 3,
+        "easy_bruising_bleeding": 1,
+        "weight_loss": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "folate deficiency",
+        "folate-deficiency anemia",
+        "folic acid deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC indices, B12 overlap, diet, alcohol use, malabsorption, pregnancy context, and medication contributors."
+      ],
+      "source_ids": [
+        "medlineplus_folate_deficiency_anemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bipolar_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "雙相情緒障礙",
+      "name_en": "Bipolar disorder",
+      "system": "Mental health",
+      "urgency": "soon",
+      "summary_zh": "雙相情緒障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Episodes of elevated or irritable mood, decreased sleep, impulsivity, depression, or psychosis should include bipolar disorder.",
+      "signals": {
+        "decreased_need_for_sleep": 4,
+        "risky_impulsive_behavior": 3,
+        "severe_agitation": 2,
+        "hallucinations_delusions": 1,
+        "suicidal_ideation": 2
+      },
+      "synonyms": [
+        "bipolar disorder",
+        "manic depression",
+        "bipolar mood disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mania/hypomania duration, sleep change, psychosis, suicide risk, substance or medication triggers, and safety disposition."
+      ],
+      "source_ids": [
+        "nimh_bipolar_disorder",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "testicular_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "睪丸癌",
+      "name_en": "Testicular cancer",
+      "system": "Oncology/Urologic",
+      "urgency": "soon",
+      "summary_zh": "睪丸癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless testicular mass, unilateral swelling, heaviness, or persistent scrotal symptoms should include testicular cancer.",
+      "signals": {
+        "unilateral_scrotal_pain_swelling": 3,
+        "weight_loss": 1,
+        "known_cancer": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "testicular cancer",
+        "testicular tumor",
+        "testis cancer"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mass versus acute torsion pain, duration, trauma/infection mimic, gynecomastia, and urgent ultrasound/urology context."
+      ],
+      "source_ids": [
+        "nci_testicular_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "oral_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "口腔癌",
+      "name_en": "Oral cancer",
+      "system": "Oncology/ENT",
+      "urgency": "soon",
+      "summary_zh": "口腔癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent mouth ulcer, oral lump, bleeding lesion, dysphagia, weight loss, tobacco/alcohol, or HPV risk should include oral cancer.",
+      "signals": {
+        "mucosal_lesions": 3,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "weight_loss": 2,
+        "gi_bleeding": 1
+      },
+      "synonyms": [
+        "oral cancer",
+        "mouth cancer",
+        "lip and oral cavity cancer"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion duration, tobacco/alcohol or betel use, HPV risk, neck nodes, dysphagia, and dental/ENT biopsy context."
+      ],
+      "source_ids": [
+        "nci_lip_oral_cavity_cancer",
+        "nci_cancer_symptoms"
+      ]
+    },
+    {
+      "slug": "erectile_dysfunction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "勃起功能障礙",
+      "name_en": "Erectile dysfunction",
+      "system": "Urologic/Vascular/Endocrine",
+      "urgency": "routine",
+      "summary_zh": "勃起功能障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Difficulty getting or maintaining erections, vascular risk, diabetes, medication exposure, or psychosocial stress should include erectile dysfunction.",
+      "signals": {
+        "extreme_thirst_polyuria": 1,
+        "fatigue": 1,
+        "substance_use_concern": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "erectile dysfunction",
+        "ed",
+        "difficulty maintaining erection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check onset, libido, morning erections, diabetes or vascular risk, medications, depression or stress, and urology or primary-care context."
+      ],
+      "source_ids": [
+        "niddk_erectile_dysfunction",
+        "niddk_bph"
+      ]
+    },
+    {
+      "slug": "open_angle_glaucoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "開放角型青光眼",
+      "name_en": "Open-angle glaucoma",
+      "system": "Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "開放角型青光眼 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual peripheral vision loss, elevated eye pressure, optic nerve concern, or glaucoma risk factors should include open-angle glaucoma.",
+      "signals": {
+        "visual_disturbance": 3,
+        "eye_pain_redness": 1,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "open angle glaucoma",
+        "open-angle glaucoma",
+        "chronic glaucoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gradual vision change, eye pressure history, family risk, steroid exposure, and ophthalmology screening context."
+      ],
+      "source_ids": [
+        "nei_open_angle_glaucoma",
+        "nei_glaucoma"
+      ]
+    },
+    {
+      "slug": "age_related_hearing_loss",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "老年性聽力損失",
+      "name_en": "Age-related hearing loss",
+      "system": "ENT/Geriatric",
+      "urgency": "routine",
+      "summary_zh": "老年性聽力損失 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual bilateral hearing difficulty, trouble hearing speech in noise, older age, or social withdrawal should include presbycusis.",
+      "signals": {
+        "hearing_loss_tinnitus": 4,
+        "fatigue": 1,
+        "vertigo": 1
+      },
+      "synonyms": [
+        "age related hearing loss",
+        "presbycusis",
+        "age-related hearing loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check graduality, unilateral symptoms, tinnitus, vertigo, noise exposure, medication contributors, and audiology need."
+      ],
+      "source_ids": [
+        "nidcd_age_related_hearing_loss",
+        "nidcd_tinnitus"
+      ]
+    },
+    {
+      "slug": "tinnitus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "耳鳴",
+      "name_en": "Tinnitus",
+      "system": "ENT/Neurologic",
+      "urgency": "routine",
+      "summary_zh": "耳鳴 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Ringing, buzzing, roaring, pulsatile sound, or hearing-related distress should include tinnitus etiologies.",
+      "signals": {
+        "hearing_loss_tinnitus": 4,
+        "vertigo": 2,
+        "neurologic_deficit": 1,
+        "ear_pain": 1
+      },
+      "synonyms": [
+        "tinnitus",
+        "ringing in ears",
+        "buzzing in ears"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check unilateral or pulsatile symptoms, hearing loss, vertigo, neurologic signs, medication/noise exposure, and audiology or ENT need."
+      ],
+      "source_ids": [
+        "nidcd_tinnitus",
+        "nidcd_age_related_hearing_loss"
+      ]
+    },
+    {
+      "slug": "chronic_fatigue_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌痛性腦脊髓炎/慢性疲勞症候群",
+      "name_en": "ME/CFS",
+      "system": "General medicine/Neurologic",
+      "urgency": "routine",
+      "summary_zh": "肌痛性腦脊髓炎/慢性疲勞症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe fatigue not improved by rest, post-exertional malaise, cognitive symptoms, sleep disturbance, or orthostatic symptoms should include ME/CFS after exclusion of mimics.",
+      "signals": {
+        "fatigue": 4,
+        "orthostatic_lightheadedness": 2,
+        "poor_oral_intake_dehydration": 1,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "chronic fatigue syndrome",
+        "me/cfs",
+        "myalgic encephalomyelitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check post-exertional malaise, sleep, orthostatic intolerance, mood and endocrine mimics, anemia, infection history, and functional impact."
+      ],
+      "source_ids": [
+        "cdc_me_cfs_basics",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sjogren_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乾燥症",
+      "name_en": "Sjogren's disease",
+      "system": "Rheumatology/Autoimmune",
+      "urgency": "routine",
+      "summary_zh": "乾燥症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dry eyes, dry mouth, parotid swelling, fatigue, arthralgia, neuropathy, or autoimmune overlap should include Sjogren's disease.",
+      "signals": {
+        "fatigue": 2,
+        "itchy_red_watery_eyes": 2,
+        "eye_pain_redness": 1,
+        "acute_joint_pain_swelling": 1
+      },
+      "synonyms": [
+        "sjogren disease",
+        "sjogren's disease",
+        "sjogren syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sicca symptoms, dental caries, gland swelling, arthritis, neuropathy, pulmonary/renal symptoms, and rheumatology workup context."
+      ],
+      "source_ids": [
+        "niams_sjogrens_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "scleroderma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "硬皮症",
+      "name_en": "Scleroderma",
+      "system": "Rheumatology/Autoimmune",
+      "urgency": "soon",
+      "summary_zh": "硬皮症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Skin thickening, Raynaud-type symptoms, dysphagia, dyspnea, renal crisis concern, or autoimmune features should include scleroderma.",
+      "signals": {
+        "rash": 2,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "dyspnea": 2,
+        "hypertensive_emergency": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "scleroderma",
+        "systemic sclerosis",
+        "skin thickening autoimmune"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution of skin thickening, Raynaud symptoms, dysphagia, dyspnea, blood pressure, renal warning signs, and rheumatology context."
+      ],
+      "source_ids": [
+        "niams_scleroderma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "psoriatic_arthritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乾癬性關節炎",
+      "name_en": "Psoriatic arthritis",
+      "system": "Rheumatology/Skin",
+      "urgency": "routine",
+      "summary_zh": "乾癬性關節炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Joint pain or swelling with psoriasis, nail pitting, dactylitis, enthesitis, or inflammatory back pain should include psoriatic arthritis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "well_demarcated_scaly_plaques": 3,
+        "rash": 1,
+        "bone_back_pain": 1
+      },
+      "synonyms": [
+        "psoriatic arthritis",
+        "psoriasis arthritis",
+        "dactylitis enthesitis arthritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check psoriasis history, nail changes, dactylitis, enthesitis, axial symptoms, uveitis, and rheumatology referral context."
+      ],
+      "source_ids": [
+        "niams_psoriatic_arthritis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "atopic_dermatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "異位性皮膚炎",
+      "name_en": "Atopic dermatitis",
+      "system": "Skin/Allergy",
+      "urgency": "routine",
+      "summary_zh": "異位性皮膚炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic relapsing itchy dermatitis in flexural areas, eczema history, asthma/allergy context, or skin infection should include atopic dermatitis.",
+      "signals": {
+        "chronic_itchy_flexural_rash": 4,
+        "rash": 2,
+        "itchy_sneezing_watery_eyes": 1,
+        "purulent_skin_lesion": 1
+      },
+      "synonyms": [
+        "atopic dermatitis",
+        "eczema",
+        "flexural eczema"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution, itch severity, infection signs, triggers, asthma/allergy history, medication exposure, and dermatology need."
+      ],
+      "source_ids": [
+        "niams_atopic_dermatitis",
+        "niams_skin_diseases"
+      ]
+    },
+    {
+      "slug": "interstitial_cystitis_bladder_pain_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "間質性膀胱炎/膀胱疼痛症候群",
+      "name_en": "Interstitial cystitis / bladder pain syndrome",
+      "system": "Renal/Urologic/Pelvic pain",
+      "urgency": "routine",
+      "summary_zh": "間質性膀胱炎/膀胱疼痛症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic bladder or pelvic pain with urinary frequency, urgency, and negative infection context should include IC/BPS.",
+      "signals": {
+        "pelvic_pain": 3,
+        "dysuria": 2,
+        "urinary_incontinence": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "interstitial cystitis",
+        "bladder pain syndrome",
+        "ic bps"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration, relation to bladder filling or voiding, hematuria, infection testing, pelvic pain overlap, and urology referral context."
+      ],
+      "source_ids": [
+        "niddk_interstitial_cystitis_bps",
+        "niddk_bladder_control_problems"
+      ]
     }
   ],
   "sources": [
@@ -11771,6 +12467,156 @@
       "publisher": "National Cancer Institute",
       "title": "Thyroid Cancer Screening",
       "url": "https://www.cancer.gov/types/thyroid/patient/thyroid-screening-pdq"
+    },
+    {
+      "source_id": "niams_osteoporosis",
+      "publisher": "NIAMS",
+      "title": "Osteoporosis",
+      "url": "https://www.niams.nih.gov/health-topics/osteoporosis"
+    },
+    {
+      "source_id": "nei_blepharitis",
+      "publisher": "National Eye Institute",
+      "title": "Blepharitis",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/blepharitis"
+    },
+    {
+      "source_id": "medlineplus_sinusitis",
+      "publisher": "MedlinePlus",
+      "title": "Sinusitis",
+      "url": "https://medlineplus.gov/ency/article/000647.htm"
+    },
+    {
+      "source_id": "medlineplus_nosebleed",
+      "publisher": "MedlinePlus",
+      "title": "Nosebleed",
+      "url": "https://medlineplus.gov/ency/article/003106.htm"
+    },
+    {
+      "source_id": "medlineplus_nasal_polyps",
+      "publisher": "MedlinePlus",
+      "title": "Nasal Polyps",
+      "url": "https://medlineplus.gov/ency/article/001641.htm"
+    },
+    {
+      "source_id": "nidcd_ear_infections_children",
+      "publisher": "NIDCD",
+      "title": "Ear Infections in Children",
+      "url": "https://www.nidcd.nih.gov/health/ear-infections-children"
+    },
+    {
+      "source_id": "medlineplus_ear_barotrauma",
+      "publisher": "MedlinePlus",
+      "title": "Ear Barotrauma",
+      "url": "https://medlineplus.gov/ency/article/001064.htm"
+    },
+    {
+      "source_id": "cdc_ringworm_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Ringworm",
+      "url": "https://www.cdc.gov/ringworm/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_head_lice_about",
+      "publisher": "CDC",
+      "title": "About Head Lice",
+      "url": "https://www.cdc.gov/lice/about/head-lice.html"
+    },
+    {
+      "source_id": "cdc_hpv_pink_book",
+      "publisher": "CDC",
+      "title": "Human Papillomavirus",
+      "url": "https://www.cdc.gov/pinkbook/hcp/table-of-contents/chapter-11-human-papillomavirus.html"
+    },
+    {
+      "source_id": "cdc_ringworm_symptoms",
+      "publisher": "CDC",
+      "title": "Symptoms of Ringworm",
+      "url": "https://www.cdc.gov/ringworm/signs-symptoms/index.html"
+    },
+    {
+      "source_id": "medlineplus_folate_deficiency_anemia",
+      "publisher": "MedlinePlus",
+      "title": "Folate-deficiency Anemia",
+      "url": "https://medlineplus.gov/ency/article/000551.htm"
+    },
+    {
+      "source_id": "nimh_bipolar_disorder",
+      "publisher": "NIMH",
+      "title": "Bipolar Disorder",
+      "url": "https://www.nimh.nih.gov/health/topics/bipolar-disorder"
+    },
+    {
+      "source_id": "nci_testicular_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Testicular Cancer",
+      "url": "https://www.cancer.gov/types/testicular"
+    },
+    {
+      "source_id": "nci_lip_oral_cavity_cancer",
+      "publisher": "National Cancer Institute",
+      "title": "Lip and Oral Cavity Cancer Treatment",
+      "url": "https://www.cancer.gov/types/head-and-neck/patient/adult/lip-mouth-treatment-pdq"
+    },
+    {
+      "source_id": "niddk_erectile_dysfunction",
+      "publisher": "NIDDK",
+      "title": "Erectile Dysfunction",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/erectile-dysfunction"
+    },
+    {
+      "source_id": "nei_open_angle_glaucoma",
+      "publisher": "National Eye Institute",
+      "title": "Types of Glaucoma",
+      "url": "https://www.nei.nih.gov/eye-health-information/eye-conditions-and-diseases/glaucoma/types-glaucoma"
+    },
+    {
+      "source_id": "nidcd_age_related_hearing_loss",
+      "publisher": "NIDCD",
+      "title": "Age-Related Hearing Loss",
+      "url": "https://www.nidcd.nih.gov/health/age-related-hearing-loss"
+    },
+    {
+      "source_id": "nidcd_tinnitus",
+      "publisher": "NIDCD",
+      "title": "Tinnitus",
+      "url": "https://www.nidcd.nih.gov/health/tinnitus"
+    },
+    {
+      "source_id": "cdc_me_cfs_basics",
+      "publisher": "CDC",
+      "title": "ME/CFS Basics",
+      "url": "https://www.cdc.gov/me-cfs/about/index.html"
+    },
+    {
+      "source_id": "niams_sjogrens_disease",
+      "publisher": "NIAMS",
+      "title": "Sjogren's Disease",
+      "url": "https://www.niams.nih.gov/health-topics/sjogrens-disease"
+    },
+    {
+      "source_id": "niams_scleroderma",
+      "publisher": "NIAMS",
+      "title": "Scleroderma",
+      "url": "https://www.niams.nih.gov/health-topics/scleroderma"
+    },
+    {
+      "source_id": "niams_psoriatic_arthritis",
+      "publisher": "NIAMS",
+      "title": "Psoriatic Arthritis",
+      "url": "https://www.niams.nih.gov/health-topics/psoriatic-arthritis"
+    },
+    {
+      "source_id": "niams_atopic_dermatitis",
+      "publisher": "NIAMS",
+      "title": "Atopic Dermatitis",
+      "url": "https://www.niams.nih.gov/health-topics/atopic-dermatitis"
+    },
+    {
+      "source_id": "niddk_interstitial_cystitis_bps",
+      "publisher": "NIDDK",
+      "title": "Interstitial Cystitis (Bladder Pain Syndrome)",
+      "url": "https://www.niddk.nih.gov/health-information/urologic-diseases/interstitial-cystitis-bladder-pain-syndrome"
     }
   ]
 }

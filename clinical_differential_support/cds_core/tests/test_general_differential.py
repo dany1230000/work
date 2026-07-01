@@ -423,6 +423,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_ninth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("osteoporosis", "osteoporosis"),
+            ("blepharitis", "blepharitis"),
+            ("chronic sinusitis", "chronic_sinusitis"),
+            ("nosebleed", "epistaxis"),
+            ("nasal polyps", "nasal_polyps"),
+            ("otitis media with effusion", "otitis_media_with_effusion"),
+            ("eustachian tube dysfunction", "eustachian_tube_dysfunction"),
+            ("onychomycosis", "onychomycosis"),
+            ("head lice", "pediculosis"),
+            ("common warts", "warts"),
+            ("athlete foot", "tinea_pedis"),
+            ("folate deficiency", "folate_deficiency"),
+            ("bipolar disorder", "bipolar_disorder"),
+            ("testicular cancer", "testicular_cancer"),
+            ("oral cancer", "oral_cancer"),
+            ("erectile dysfunction", "erectile_dysfunction"),
+            ("open angle glaucoma", "open_angle_glaucoma"),
+            ("age related hearing loss", "age_related_hearing_loss"),
+            ("tinnitus", "tinnitus"),
+            ("chronic fatigue syndrome", "chronic_fatigue_syndrome"),
+            ("sjogren disease", "sjogren_disease"),
+            ("scleroderma", "scleroderma"),
+            ("psoriatic arthritis", "psoriatic_arthritis"),
+            ("atopic dermatitis", "atopic_dermatitis"),
+            ("interstitial cystitis", "interstitial_cystitis_bladder_pain_syndrome"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}

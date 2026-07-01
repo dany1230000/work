@@ -328,6 +328,48 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_show_next_step_summary_strip_before_long_sections(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-next-step-summary-strip="true"')
+        self.assertContains(response, 'data-next-step-summary-item="do-now"')
+        self.assertContains(response, 'data-next-step-summary-item="top-candidate"')
+        self.assertContains(response, 'data-next-step-summary-item="ask-next"')
+        self.assertContains(response, 'data-next-step-summary-item="sources"')
+        self.assertContains(response, "Do now")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertLess(
+            content.index('data-next-step-summary-strip="true"'),
+            content.index('data-results-brief="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-summary-strip="true"'),
+            content.index('data-case-action-queue="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-summary-strip="true"'),
+            content.index('data-guided-follow-up="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-summary-strip="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_result_cards_show_primary_action_before_full_action_drawer(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),
@@ -474,8 +516,13 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, 'data-guided-step="context"')
         self.assertContains(response, 'data-guided-step="top_differential"')
         self.assertContains(response, 'data-guided-step="rerun"')
+        self.assertContains(response, 'data-guided-follow-up-body="true"')
         self.assertContains(response, "Guided follow-up")
         self.assertContains(response, "Abdominal or urinary context")
+        self.assertLess(
+            content.index('data-guided-follow-up="true"'),
+            content.index('data-guided-follow-up-body="true"'),
+        )
         self.assertLess(
             content.index('data-guided-follow-up="true"'),
             content.index('data-result-card="true"'),

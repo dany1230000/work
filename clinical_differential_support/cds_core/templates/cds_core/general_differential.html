@@ -437,6 +437,36 @@
     margin-top: 0.25rem;
   }
 
+  .next-step-summary-strip {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin: 0.85rem 0;
+  }
+
+  .next-step-summary-card {
+    border: 1px solid #b8c0cc;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.7rem;
+    min-height: 6rem;
+  }
+
+  .next-step-summary-card strong,
+  .next-step-summary-card span {
+    display: block;
+  }
+
+  .next-step-summary-card .summary-value {
+    margin-top: 0.25rem;
+    font-weight: 700;
+  }
+
+  .next-step-summary-card p {
+    margin: 0.25rem 0 0;
+  }
+
   .results-brief {
     border: 1px solid #b8d8d1;
     border-radius: 6px;
@@ -504,8 +534,17 @@
     margin: 0.85rem 0;
   }
 
-  .guided-follow-up h3 {
+  .guided-follow-up h3,
+  .guided-follow-up summary {
     margin: 0 0 0.35rem;
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .guided-follow-up-body {
+    border-top: 1px solid #c7d2de;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
   }
 
   .guided-step-grid {
@@ -792,6 +831,7 @@
     .workflow-stepper,
     .workflow-command-bar,
     .case-action-list,
+    .next-step-summary-strip,
     .results-brief-grid,
     .guided-step-grid,
     .patient-workflow-grid,
@@ -1010,6 +1050,35 @@
           </section>
         {% endif %}
         {% if result.results %}
+          <section class="next-step-summary-strip" data-next-step-summary-strip="true" aria-label="Next step summary">
+            <article class="next-step-summary-card" data-next-step-summary-item="do-now">
+              <strong>Do now</strong>
+              {% for step in result.guided_follow_up|slice:":1" %}
+                <span class="summary-value">{{ step.title_en }}</span>
+                <p class="secondary">{{ step.instruction_en }}</p>
+              {% endfor %}
+            </article>
+            <article class="next-step-summary-card" data-next-step-summary-item="top-candidate">
+              <strong>Top candidate</strong>
+              <span class="summary-value">{{ result.results_brief.top_candidate_name_en }}</span>
+              <p>
+                <span class="tag">{{ result.results_brief.top_urgency }}</span>
+                <span class="tag">score {{ result.results_brief.top_score }}</span>
+              </p>
+            </article>
+            <article class="next-step-summary-card" data-next-step-summary-item="ask-next">
+              <strong>Ask next</strong>
+              <span class="summary-value">{{ result.ask_next|length }} prompts</span>
+              {% for prompt in result.ask_next|slice:":1" %}
+                <p class="secondary">{{ prompt }}</p>
+              {% endfor %}
+            </article>
+            <article class="next-step-summary-card" data-next-step-summary-item="sources">
+              <strong>Sources checked</strong>
+              <span class="summary-value">{{ result.patient_workflow.top_source_count }} linked sources</span>
+              <p class="secondary">Open the first three candidates before expanding the full list.</p>
+            </article>
+          </section>
           <section class="results-brief" data-results-brief="true" aria-labelledby="results-brief-title">
             <h3 id="results-brief-title">結果摘要 / Results brief</h3>
             <div class="results-brief-grid">
@@ -1062,7 +1131,9 @@
               <a href="#catalog-governance" data-action-queue-link="coverage">Coverage</a>
             </nav>
           </section>
-          <section class="guided-follow-up" data-guided-follow-up="true">
+          <details class="guided-follow-up" data-guided-follow-up="true">
+            <summary>Guided follow-up</summary>
+            <div class="guided-follow-up-body" data-guided-follow-up-body="true">
             <h3>逐步導診 / Guided follow-up</h3>
             <p class="secondary">先照順序補資料，再回頭看候選疾病與來源。 / Follow these steps before using the candidate list.</p>
             <div class="guided-step-grid">
@@ -1087,7 +1158,8 @@
                 </article>
               {% endfor %}
             </div>
-          </section>
+            </div>
+          </details>
           <section class="primary-next-step" data-primary-next-step="true">
             <h3>下一步 / Primary next step</h3>
             <ol class="primary-step-list">

@@ -145,8 +145,8 @@ class NextActionDownstreamReadinessTests(TestCase):
             "expand_general_differential_catalog_via_import_workbench",
         )
         self.assertEqual(plan["next_actions"][0]["status"], "ready_to_start")
-        self.assertEqual(plan["general_catalog"]["condition_count"], 325)
-        self.assertEqual(plan["general_catalog"]["source_count"], 404)
+        self.assertEqual(plan["general_catalog"]["condition_count"], 350)
+        self.assertEqual(plan["general_catalog"]["source_count"], 429)
         self.assertEqual(
             plan["general_catalog"]["import_workbench_path"],
             "/review/general-differential-import/",
@@ -167,8 +167,8 @@ class NextActionDownstreamReadinessTests(TestCase):
         self.assertContains(response, "Source freshness")
         self.assertContains(response, "general_catalog_import_ready")
         self.assertContains(response, "General Differential Import Workbench")
-        self.assertContains(response, "325 conditions")
-        self.assertContains(response, "404 sources")
+        self.assertContains(response, "350 conditions")
+        self.assertContains(response, "429 sources")
         self.assertContains(response, reverse("cds_core:general_differential_import"))
 
     def test_staff_next_action_json_includes_summary_only_downstream_readiness(self):
@@ -184,8 +184,8 @@ class NextActionDownstreamReadinessTests(TestCase):
             payload["downstream_readiness"]["source_freshness"]["first_action"],
             "run_full_regression_and_smoke_checks",
         )
-        self.assertEqual(payload["general_catalog"]["condition_count"], 325)
-        self.assertEqual(payload["general_catalog"]["source_count"], 404)
+        self.assertEqual(payload["general_catalog"]["condition_count"], 350)
+        self.assertEqual(payload["general_catalog"]["source_count"], 429)
         self.assertEqual(
             payload["general_catalog"]["first_action"],
             "expand_general_differential_catalog_via_import_workbench",
