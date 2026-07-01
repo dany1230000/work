@@ -433,6 +433,29 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         )
         self.assertIn("Re-run", combined)
 
+    def test_results_include_compact_brief_for_scan_first_layout(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        brief = result["results_brief"]
+
+        self.assertEqual(brief["top_candidate_name_en"], "Acute coronary syndrome")
+        self.assertEqual(brief["top_urgency"], "emergent")
+        self.assertEqual(brief["primary_result_count"], 3)
+        self.assertEqual(brief["secondary_result_count"], len(result["results"]) - 3)
+        self.assertEqual(brief["next_step_title_en"], "Safety first")
+        self.assertIn("Re-check ABCs", brief["next_step_instruction_en"])
+        self.assertTrue(brief["has_more_candidates"])
+
     def test_ear_pain_fever_prioritizes_acute_otitis_media(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ear_pain", "fever"]}

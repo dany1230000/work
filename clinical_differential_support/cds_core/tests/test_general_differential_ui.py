@@ -268,6 +268,41 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_show_scan_first_results_brief(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-results-brief="true"')
+        self.assertContains(response, 'data-results-brief-card="top-candidate"')
+        self.assertContains(response, 'data-results-brief-card="next-step"')
+        self.assertContains(response, 'data-results-brief-card="hidden-count"')
+        self.assertContains(response, "Highest ranked")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertContains(response, "Safety first")
+        self.assertContains(response, "More hidden")
+        self.assertLess(
+            content.index('data-results-brief="true"'),
+            content.index('data-case-action-queue="true"'),
+        )
+        self.assertLess(
+            content.index('data-results-brief="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_use_stepwise_compact_result_layout(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

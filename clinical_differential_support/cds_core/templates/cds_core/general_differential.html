@@ -420,6 +420,47 @@
     margin-top: 0.25rem;
   }
 
+  .results-brief {
+    border: 1px solid #b8d8d1;
+    border-radius: 6px;
+    background: #f4fbf9;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .results-brief h3 {
+    margin: 0 0 0.65rem;
+  }
+
+  .results-brief-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .results-brief-card {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+    min-height: 8rem;
+  }
+
+  .results-brief-card strong,
+  .results-brief-card span {
+    display: block;
+  }
+
+  .results-brief-card .brief-value {
+    margin-top: 0.35rem;
+    font-size: 1.05rem;
+    font-weight: 700;
+  }
+
+  .results-brief-card p {
+    margin: 0.35rem 0 0;
+  }
+
   .case-action-links {
     display: flex;
     flex-wrap: wrap;
@@ -637,6 +678,7 @@
     .workflow-stepper,
     .workflow-command-bar,
     .case-action-list,
+    .results-brief-grid,
     .guided-step-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
@@ -797,6 +839,30 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.results %}
+          <section class="results-brief" data-results-brief="true" aria-labelledby="results-brief-title">
+            <h3 id="results-brief-title">結果摘要 / Results brief</h3>
+            <div class="results-brief-grid">
+              <article class="results-brief-card" data-results-brief-card="top-candidate">
+                <strong>最高排序 / Highest ranked</strong>
+                <span class="brief-value">{{ result.results_brief.top_candidate_name_zh }}</span>
+                <p class="secondary">{{ result.results_brief.top_candidate_name_en }}</p>
+                <p>
+                  <span class="tag">{{ result.results_brief.top_urgency }}</span>
+                  <span class="tag">score {{ result.results_brief.top_score }}</span>
+                </p>
+              </article>
+              <article class="results-brief-card" data-results-brief-card="next-step">
+                <strong>下一步 / Next safest action</strong>
+                <span class="brief-value">{{ result.results_brief.next_step_title_zh }} / {{ result.results_brief.next_step_title_en }}</span>
+                <p class="secondary">{{ result.results_brief.next_step_instruction_en }}</p>
+              </article>
+              <article class="results-brief-card" data-results-brief-card="hidden-count">
+                <strong>候選清單 / Candidate list</strong>
+                <span class="brief-value">{{ result.results_brief.primary_result_count }} top / {{ result.results_brief.secondary_result_count }} More hidden</span>
+                <p class="secondary">先看前三個，再展開更多候選。 / Review the top three first, then expand more candidates.</p>
+              </article>
+            </div>
+          </section>
           <section class="case-action-queue" data-case-action-queue="true" aria-labelledby="case-action-queue-title">
             <div class="case-action-queue-header">
               <div>

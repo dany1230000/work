@@ -120,15 +120,17 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
     )
 
     ranked_results = results[:12]
+    guided_follow_up = _build_guided_follow_up(
+        ranked_results,
+        selected_findings,
+    )
 
     return {
         "results": ranked_results,
         "ask_next": _build_global_ask_next(results, selected_findings),
         "action_checklist": _build_action_checklist(results, selected_findings),
-        "guided_follow_up": _build_guided_follow_up(
-            ranked_results,
-            selected_findings,
-        ),
+        "guided_follow_up": guided_follow_up,
+        "results_brief": _build_results_brief(ranked_results, guided_follow_up),
         "coverage": {
             "catalog_version": runtime_catalog["catalog_version"],
             "runtime_source": runtime_catalog.get(
@@ -355,6 +357,30 @@ def _build_action_checklist(
             "instruction_en": "Re-run the ranking after adding confirmed data and removing uncertain findings.",
         },
     ]
+
+
+def _build_results_brief(
+    results: list[dict[str, Any]],
+    guided_follow_up: list[dict[str, Any]],
+) -> dict[str, Any]:
+    top = results[0] if results else None
+    next_step = guided_follow_up[0] if guided_follow_up else {}
+    primary_result_count = min(len(results), 3)
+    secondary_result_count = max(len(results) - primary_result_count, 0)
+
+    return {
+        "top_candidate_name_zh": str(top["name_zh"]) if top else "",
+        "top_candidate_name_en": str(top["name_en"]) if top else "",
+        "top_urgency": str(top["urgency"]) if top else "",
+        "top_score": int(top["score"]) if top else 0,
+        "primary_result_count": primary_result_count,
+        "secondary_result_count": secondary_result_count,
+        "has_more_candidates": secondary_result_count > 0,
+        "next_step_title_zh": str(next_step.get("title_zh", "")),
+        "next_step_title_en": str(next_step.get("title_en", "")),
+        "next_step_instruction_zh": str(next_step.get("instruction_zh", "")),
+        "next_step_instruction_en": str(next_step.get("instruction_en", "")),
+    }
 
 
 def _build_result_action_items(
