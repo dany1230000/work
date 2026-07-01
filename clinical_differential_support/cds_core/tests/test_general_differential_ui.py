@@ -335,6 +335,41 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-detail="true"'),
         )
 
+    def test_posted_findings_show_step_by_step_patient_workflow_before_long_results(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-patient-workflow="true"')
+        self.assertContains(response, 'data-patient-workflow-step="rule_out_immediate_danger"')
+        self.assertContains(response, 'data-patient-workflow-step="complete_missing_context"')
+        self.assertContains(response, 'data-patient-workflow-step="compare_leading_candidates"')
+        self.assertContains(response, 'data-patient-workflow-step="handoff_or_rerun"')
+        self.assertContains(response, 'data-patient-workflow-handoff="true"')
+        self.assertContains(response, "Step-by-step patient workflow")
+        self.assertContains(response, "Rule out immediate danger")
+        self.assertContains(response, "Complete missing context")
+        self.assertContains(response, "Compare leading candidates")
+        self.assertContains(response, "Handoff or re-run")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertLess(
+            content.index('data-patient-workflow="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_use_stepwise_compact_result_layout(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

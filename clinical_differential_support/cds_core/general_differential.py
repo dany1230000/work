@@ -131,6 +131,11 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
+        "patient_workflow": _build_patient_workflow(
+            ranked_results,
+            selected_findings,
+            guided_follow_up,
+        ),
         "coverage": {
             "catalog_version": runtime_catalog["catalog_version"],
             "runtime_source": runtime_catalog.get(
@@ -381,6 +386,140 @@ def _build_results_brief(
         "next_step_instruction_zh": str(next_step.get("instruction_zh", "")),
         "next_step_instruction_en": str(next_step.get("instruction_en", "")),
     }
+
+
+def _build_patient_workflow(
+    results: list[dict[str, Any]],
+    selected_findings: set[str],
+    guided_follow_up: list[dict[str, Any]],
+) -> dict[str, Any]:
+    top_results = results[:3]
+    top_names_zh = [str(result["name_zh"]) for result in top_results]
+    top_names_en = [str(result["name_en"]) for result in top_results]
+    top_source_count = len(
+        {
+            str(source["url"])
+            for result in top_results
+            for source in result.get("sources", [])
+            if source.get("url")
+        }
+    )
+    context_step = _workflow_source_step(guided_follow_up, "context")
+    top_differential_step = _workflow_source_step(
+        guided_follow_up,
+        "top_differential",
+    )
+    context_prompts = list(context_step.get("prompts") or [DEFAULT_ASK_NEXT[1]])
+    compare_prompts = list(
+        top_differential_step.get("prompts") or context_prompts[:1]
+    )
+    status = "ready_for_stepwise_review" if top_results else "needs_structured_findings"
+    risk_gate = _build_workflow_risk_gate(top_results)
+    candidate_summary_zh = "、".join(top_names_zh) if top_names_zh else "尚未有可排序候選"
+    candidate_summary_en = ", ".join(top_names_en) if top_names_en else "none ranked yet"
+
+    if top_results:
+        handoff_summary_zh = (
+            f"已選 {len(selected_findings)} 個結構化 findings；"
+            f"先比較：{candidate_summary_zh}。"
+            "交接時保留未解紅旗、已查來源與需要補問的資料。"
+        )
+        handoff_summary_en = (
+            f"Structured findings: {len(selected_findings)}. "
+            f"Leading reference candidates to review: {candidate_summary_en}. "
+            "Immediate workflow: rule out danger, complete missing context, "
+            "compare the leading candidates, then hand off or re-run with updated findings."
+        )
+    else:
+        handoff_summary_zh = (
+            "目前資料不足以排序；先確認生命徵象、紅旗與主訴相關 findings，"
+            "再重新產生參考排序。"
+        )
+        handoff_summary_en = (
+            "Not enough structured data to rank yet. Confirm vitals, red flags, "
+            "and complaint-specific findings, then re-run the reference ranking."
+        )
+
+    return {
+        "status": status,
+        "risk_gate": risk_gate,
+        "selected_finding_count": len(selected_findings),
+        "top_candidate_count": len(top_results),
+        "top_source_count": top_source_count,
+        "candidate_summary_zh": candidate_summary_zh,
+        "candidate_summary_en": candidate_summary_en,
+        "handoff_summary_zh": handoff_summary_zh,
+        "handoff_summary_en": handoff_summary_en,
+        "steps": [
+            {
+                "step_id": "rule_out_immediate_danger",
+                "title_zh": "先排除立即危險",
+                "title_en": "Rule out immediate danger",
+                "instruction_zh": "先確認 ABC、生命徵象、血氧、意識狀態與紅旗，再看參考排序。",
+                "instruction_en": "Re-check ABCs, vitals, oxygenation, mental status, and red flags before using the reference ranking.",
+                "prompts": [DEFAULT_ASK_NEXT[0]],
+                "candidate_names_zh": [],
+                "candidate_names_en": [],
+                "anchor": "#reference-results",
+            },
+            {
+                "step_id": "complete_missing_context",
+                "title_zh": "補齊缺少脈絡",
+                "title_en": "Complete missing context",
+                "instruction_zh": "用最可能改變排序的追問，補上陽性與陰性資料。",
+                "instruction_en": "Use the focused prompts to add positive and negative context that can change the ranking.",
+                "prompts": context_prompts,
+                "candidate_names_zh": [],
+                "candidate_names_en": [],
+                "anchor": "#finding-selection",
+            },
+            {
+                "step_id": "compare_leading_candidates",
+                "title_zh": "比較前三個候選",
+                "title_en": "Compare leading candidates",
+                "instruction_zh": "把前三個候選和已符合 findings、缺少資料、來源連結逐項對照。",
+                "instruction_en": "Compare the leading candidates against matched findings, missing context, and linked sources.",
+                "prompts": compare_prompts,
+                "candidate_names_zh": top_names_zh,
+                "candidate_names_en": top_names_en,
+                "anchor": "#top-candidates",
+            },
+            {
+                "step_id": "handoff_or_rerun",
+                "title_zh": "交接或重跑",
+                "title_en": "Handoff or re-run",
+                "instruction_zh": "記錄候選、未解問題、已查來源；新資料回來後更新 findings 並重跑。",
+                "instruction_en": "Document leading candidates, unresolved safety questions, and checked sources; re-run after new data arrives.",
+                "prompts": [
+                    "Re-run the ranking after adding confirmed data and removing uncertain findings."
+                ],
+                "candidate_names_zh": top_names_zh,
+                "candidate_names_en": top_names_en,
+                "anchor": "#case-input",
+            },
+        ],
+    }
+
+
+def _workflow_source_step(
+    guided_follow_up: list[dict[str, Any]],
+    step_id: str,
+) -> dict[str, Any]:
+    for step in guided_follow_up:
+        if step.get("step_id") == step_id:
+            return step
+    return {}
+
+
+def _build_workflow_risk_gate(results: list[dict[str, Any]]) -> str:
+    if not results:
+        return "insufficient_input"
+    top_urgencies = {str(result.get("urgency", "")) for result in results[:3]}
+    if "emergent" in top_urgencies:
+        return "emergent_leader_present"
+    if "urgent" in top_urgencies:
+        return "urgent_leader_present"
+    return "no_emergent_leader_in_top_three"
 
 
 def _build_result_action_items(

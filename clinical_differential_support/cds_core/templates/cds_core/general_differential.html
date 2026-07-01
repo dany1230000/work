@@ -540,6 +540,58 @@
     margin-bottom: 0.35rem;
   }
 
+  .patient-workflow {
+    border: 1px solid #a8cec8;
+    border-top: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #f7fbfa;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .patient-workflow h3,
+  .patient-workflow p {
+    margin-top: 0;
+  }
+
+  .patient-workflow-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .patient-workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
+
+  .patient-workflow-step {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.7rem;
+  }
+
+  .patient-workflow-step strong,
+  .patient-workflow-step span {
+    display: block;
+  }
+
+  .patient-workflow-step ul {
+    margin: 0.55rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  .patient-workflow-handoff {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+    margin-top: 0.7rem;
+  }
+
   .action-checklist {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -692,6 +744,7 @@
     .case-action-list,
     .results-brief-grid,
     .guided-step-grid,
+    .patient-workflow-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
     }
@@ -850,6 +903,47 @@
           {{ result.coverage.limitation_en }}
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
+        {% if result.patient_workflow %}
+          <section
+            class="patient-workflow"
+            data-patient-workflow="true"
+            data-patient-workflow-status="{{ result.patient_workflow.status }}"
+            data-patient-workflow-risk-gate="{{ result.patient_workflow.risk_gate }}"
+            aria-labelledby="patient-workflow-title"
+          >
+            <h3 id="patient-workflow-title">逐步病人流程 / Step-by-step patient workflow</h3>
+            <div class="patient-workflow-meta">
+              <span class="tag">{{ result.patient_workflow.status }}</span>
+              <span class="tag">{{ result.patient_workflow.risk_gate }}</span>
+              <span class="tag">{{ result.patient_workflow.selected_finding_count }} findings</span>
+              <span class="tag">{{ result.patient_workflow.top_source_count }} sources checked</span>
+            </div>
+            <div class="patient-workflow-grid">
+              {% for step in result.patient_workflow.steps %}
+                <article class="patient-workflow-step" data-patient-workflow-step="{{ step.step_id }}">
+                  <strong>{{ forloop.counter }}. {{ step.title_zh }} / {{ step.title_en }}</strong>
+                  <span>{{ step.instruction_zh }}</span>
+                  <span class="secondary">{{ step.instruction_en }}</span>
+                  {% if step.candidate_names_en %}
+                    <p class="secondary">Candidates: {{ step.candidate_names_en|join:", " }}</p>
+                  {% endif %}
+                  {% if step.prompts %}
+                    <ul>
+                      {% for prompt in step.prompts|slice:":2" %}
+                        <li>{{ prompt }}</li>
+                      {% endfor %}
+                    </ul>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </div>
+            <div class="patient-workflow-handoff" data-patient-workflow-handoff="true">
+              <strong>交接摘要 / Handoff summary</strong>
+              <p>{{ result.patient_workflow.handoff_summary_zh }}</p>
+              <p class="secondary">{{ result.patient_workflow.handoff_summary_en }}</p>
+            </div>
+          </section>
+        {% endif %}
         {% if result.results %}
           <section class="results-brief" data-results-brief="true" aria-labelledby="results-brief-title">
             <h3 id="results-brief-title">結果摘要 / Results brief</h3>

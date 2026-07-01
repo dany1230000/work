@@ -456,6 +456,47 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertIn("Re-check ABCs", brief["next_step_instruction_en"])
         self.assertTrue(brief["has_more_candidates"])
 
+    def test_results_include_patient_workflow_for_step_by_step_case_review(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        workflow = result["patient_workflow"]
+
+        self.assertEqual(workflow["status"], "ready_for_stepwise_review")
+        self.assertEqual(workflow["risk_gate"], "emergent_leader_present")
+        self.assertEqual(workflow["selected_finding_count"], 4)
+        self.assertEqual(
+            [step["step_id"] for step in workflow["steps"]],
+            [
+                "rule_out_immediate_danger",
+                "complete_missing_context",
+                "compare_leading_candidates",
+                "handoff_or_rerun",
+            ],
+        )
+        self.assertEqual(workflow["steps"][0]["title_en"], "Rule out immediate danger")
+        self.assertIn(
+            "Acute coronary syndrome",
+            workflow["steps"][2]["candidate_names_en"],
+        )
+        self.assertIn("Acute coronary syndrome", workflow["handoff_summary_en"])
+        combined = " ".join(
+            [workflow["handoff_summary_en"]]
+            + [step["instruction_en"] for step in workflow["steps"]]
+        ).lower()
+        self.assertNotIn("diagnosis order", combined)
+        self.assertNotIn("treatment order", combined)
+        self.assertNotIn("medication order", combined)
+
     def test_ear_pain_fever_prioritizes_acute_otitis_media(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ear_pain", "fever"]}
