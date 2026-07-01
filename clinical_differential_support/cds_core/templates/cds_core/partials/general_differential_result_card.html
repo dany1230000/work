@@ -18,13 +18,24 @@
       <p><strong>符合 findings / Matched findings:</strong> {{ entry.matched_findings|join:", " }}</p>
     {% endif %}
   </div>
-  <section class="next-step-panel">
+  <section class="next-step-panel result-action-compact" data-result-action-compact="true">
     <h4>行動 / Actions</h4>
-    <ul>
+    {% with primary_action=entry.action_items.0 %}
+      {% if primary_action %}
+        <p data-result-primary-action="true">
+          <strong>先做 / Primary action:</strong>
+          {{ primary_action.label_zh }} / {{ primary_action.label_en }}: {{ primary_action.instruction }}
+        </p>
+      {% endif %}
+    {% endwith %}
+    <details class="result-actions-detail" data-result-actions-detail="true">
+      <summary>More actions</summary>
+      <ul>
       {% for item in entry.action_items %}
         <li><strong>{{ item.label_zh }} / {{ item.label_en }}:</strong> {{ item.instruction }}</li>
       {% endfor %}
-    </ul>
+      </ul>
+    </details>
   </section>
   <details class="result-detail" data-result-detail="true"{% if open_detail %} open{% endif %}>
     <summary>下一步 / Ask next</summary>
