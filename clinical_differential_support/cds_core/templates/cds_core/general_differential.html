@@ -173,7 +173,55 @@
     font-size: 0.9rem;
   }
 
+  .catalog-quick-entry {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.75rem;
+    margin: 0 0 0.85rem;
+  }
+
+  .catalog-quick-entry h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1rem;
+  }
+
+  .catalog-entry-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.55rem;
+    margin-top: 0.65rem;
+  }
+
+  .catalog-entry-option {
+    display: grid;
+    gap: 0.35rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.65rem;
+  }
+
+  .catalog-entry-option strong {
+    display: block;
+  }
+
+  .query-shortcut-button {
+    justify-self: start;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    background: #e8f5ee;
+    color: var(--primary-dark);
+    padding: 0.4rem 0.65rem;
+    font-weight: 700;
+  }
+
+  .query-shortcut-button:hover {
+    background: #d7eee4;
+  }
+
   .finding-library-drawer,
+  .primary-result-drawer,
   .secondary-result-drawer {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -182,6 +230,7 @@
   }
 
   .finding-library-drawer > summary,
+  .primary-result-drawer > summary,
   .secondary-result-drawer > summary {
     cursor: pointer;
     font-weight: 700;
@@ -189,6 +238,7 @@
   }
 
   .finding-library-body,
+  .primary-result-body,
   .secondary-result-body {
     border-top: 1px solid #e4e9ef;
     padding: 0.75rem;
@@ -375,6 +425,40 @@
   .result-list {
     display: grid;
     gap: 0.75rem;
+  }
+
+  .candidate-scan-table {
+    border: 1px solid #b8c0cc;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .candidate-scan-table h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  .candidate-scan-grid {
+    display: grid;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+
+  .candidate-scan-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) auto auto;
+    gap: 0.55rem;
+    align-items: center;
+    border: 1px solid #e0e6ed;
+    border-radius: 4px;
+    background: #f8fafc;
+    padding: 0.55rem 0.65rem;
+  }
+
+  .candidate-scan-row strong,
+  .candidate-scan-row span {
+    min-width: 0;
   }
 
   .case-action-queue {
@@ -871,6 +955,7 @@
     .step-strip,
     .workflow-stepper,
     .workflow-command-bar,
+    .catalog-entry-grid,
     .case-action-list,
     .next-step-summary-strip,
     .result-group-grid,
@@ -894,6 +979,10 @@
     }
 
     .finding-filter-row {
+      grid-template-columns: 1fr;
+    }
+
+    .candidate-scan-row {
       grid-template-columns: 1fr;
     }
 
@@ -973,6 +1062,28 @@
           {{ form.query }}
           {% for error in form.query.errors %}<div class="message error">{{ error }}</div>{% endfor %}
         </div>
+
+        <section class="catalog-quick-entry" data-catalog-quick-entry="true" aria-labelledby="catalog-quick-entry-title">
+          <h3 id="catalog-quick-entry-title">系統快速入口 / System quick entry</h3>
+          <p class="secondary">不確定從哪裡開始時，先選一個高階系統，系統會填入查詢詞再重新排序。</p>
+          <div class="catalog-entry-grid">
+            {% for entry in catalog_quick_entries %}
+              <article class="catalog-entry-option" data-catalog-system-entry="{{ entry.entry_id }}">
+                <strong>{{ entry.title }}</strong>
+                <span class="tag">{{ entry.count }} entries</span>
+                <p class="secondary">{{ entry.description }}</p>
+                <button
+                  class="query-shortcut-button"
+                  type="button"
+                  data-catalog-quick-query="true"
+                  data-query-value="{{ entry.query }}"
+                >
+                  填入查詢 / Use this entry
+                </button>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
 
         <div class="field">
           <label for="{{ form.clinician_notes.id_for_label }}">{{ form.clinician_notes.label }}</label>
@@ -1245,11 +1356,27 @@
               {% endfor %}
             </div>
           </section>
-          <div class="result-list" id="top-candidates" data-primary-result-list="true">
-            {% for entry in result.results|slice:":3" %}
-              {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=forloop.first %}
-            {% endfor %}
-          </div>
+          <section class="candidate-scan-table" data-candidate-scan-table="true" aria-labelledby="candidate-scan-title">
+            <h3 id="candidate-scan-title">候選快速掃描 / Candidate scan</h3>
+            <p class="secondary">先比較前五個候選的分數、急迫性與來源數，再打開詳細卡片。</p>
+            <div class="candidate-scan-grid">
+              {% for entry in result.results|slice:":5" %}
+                <article class="candidate-scan-row" data-candidate-scan-row="{{ entry.slug }}">
+                  <strong>{{ entry.name_zh }} / {{ entry.name_en }}</strong>
+                  <span class="tag">{{ entry.urgency }}</span>
+                  <span class="tag">score {{ entry.score }}</span>
+                </article>
+              {% endfor %}
+            </div>
+          </section>
+          <details class="primary-result-drawer" id="top-candidates" data-primary-result-list="true" data-primary-result-drawer="true">
+            <summary>Open detailed candidate cards</summary>
+            <div class="primary-result-body result-list">
+              {% for entry in result.results|slice:":3" %}
+                {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=False %}
+              {% endfor %}
+            </div>
+          </details>
           {% if result.results|length > 3 %}
             <details class="secondary-result-drawer" data-secondary-result-drawer="true">
               <summary>More candidates</summary>

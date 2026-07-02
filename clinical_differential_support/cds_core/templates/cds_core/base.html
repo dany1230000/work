@@ -744,6 +744,27 @@
       });
     }
 
+    function initializeCatalogQuickQueries(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-catalog-quick-query]")).forEach(function (button) {
+        if (button.dataset.catalogQuickQueryReady === "true") {
+          return;
+        }
+        button.dataset.catalogQuickQueryReady = "true";
+        button.addEventListener("click", function () {
+          var form = button.closest("form") || root;
+          var input = form.querySelector('[name="query"]');
+          if (!input) {
+            return;
+          }
+          input.value = button.dataset.queryValue || "";
+          input.dispatchEvent(new Event("input", { bubbles: true }));
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+          input.focus();
+        });
+      });
+    }
+
     function setDifferentialSubmitState(form, pending, message) {
       var workbench = form.closest("[data-differential-workbench]");
       var status = form.querySelector("[data-differential-submit-status]");
@@ -787,6 +808,7 @@
       }
       initializeFindingLibraryLoader(root);
       initializeFindingFilters(root);
+      initializeCatalogQuickQueries(root);
       initializeGeneralDifferentialFetchSubmit(root);
       return replacedCount;
     }
@@ -858,6 +880,7 @@
       window.scrollTo({ top: 0, behavior: "instant" });
       initializeFindingLibraryLoader(main);
       initializeFindingFilters(main);
+      initializeCatalogQuickQueries(main);
       initializeGeneralDifferentialFetchSubmit(main);
     }
 
@@ -989,6 +1012,7 @@
     rememberPage(window.location.href, document.documentElement.outerHTML);
     initializeFindingLibraryLoader(main);
     initializeFindingFilters(main);
+    initializeCatalogQuickQueries(main);
     initializeGeneralDifferentialFetchSubmit(main);
     scheduleFastNavPrefetch();
   })();

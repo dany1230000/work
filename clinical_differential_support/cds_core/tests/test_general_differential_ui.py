@@ -113,6 +113,19 @@ class GeneralDifferentialUiTests(TestCase):
         )
         self.assertNotIn('data-finding-filter-form="true"', content)
 
+    def test_general_differential_page_shows_catalog_quick_entry_shortcuts(self):
+        response = self.client.get(reverse("cds_core:general_differential"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-catalog-quick-entry="true"')
+        self.assertContains(response, 'data-catalog-system-entry="genetic-congenital"')
+        self.assertContains(response, 'data-catalog-system-entry="blood-immune"')
+        self.assertContains(response, 'data-catalog-system-entry="endocrine-metabolic"')
+        self.assertContains(response, 'data-catalog-system-entry="neurodevelopmental"')
+        self.assertContains(response, 'data-catalog-quick-query="true"')
+        self.assertContains(response, "Genetic / congenital")
+        self.assertContains(response, "Blood / immune")
+
     def test_general_differential_findings_endpoint_renders_full_library(self):
         response = self.client.get("/differential/findings/")
 
@@ -396,6 +409,37 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Acute coronary syndrome")
         self.assertLess(
             content.index('data-result-groups="true"'),
+            content.index('data-result-card="true"'),
+        )
+
+    def test_posted_findings_show_candidate_scan_table_before_collapsed_cards(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-candidate-scan-table="true"')
+        self.assertContains(response, 'data-candidate-scan-row="acute_coronary_syndrome"')
+        self.assertContains(response, 'data-primary-result-drawer="true"')
+        self.assertContains(response, "Open detailed candidate cards")
+        self.assertLess(
+            content.index('data-candidate-scan-table="true"'),
+            content.index('data-primary-result-drawer="true"'),
+        )
+        self.assertLess(
+            content.index('data-primary-result-drawer="true"'),
             content.index('data-result-card="true"'),
         )
 

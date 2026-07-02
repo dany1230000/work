@@ -522,6 +522,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twelfth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("wilson disease", "wilson_disease"),
+            ("hemochromatosis", "hereditary_hemochromatosis"),
+            ("fragile x syndrome", "fragile_x_syndrome"),
+            ("marfan syndrome", "marfan_syndrome"),
+            ("turner syndrome", "turner_syndrome"),
+            ("klinefelter syndrome", "klinefelter_syndrome"),
+            ("congenital adrenal hyperplasia", "congenital_adrenal_hyperplasia"),
+            ("g6pd deficiency", "g6pd_deficiency"),
+            ("hereditary spherocytosis", "hereditary_spherocytosis"),
+            ("phenylketonuria", "phenylketonuria"),
+            ("maple syrup urine disease", "maple_syrup_urine_disease"),
+            ("galactosemia", "galactosemia"),
+            ("achondroplasia", "achondroplasia"),
+            ("neurofibromatosis", "neurofibromatosis"),
+            ("tuberous sclerosis complex", "tuberous_sclerosis_complex"),
+            ("ehlers danlos syndrome", "ehlers_danlos_syndrome"),
+            ("noonan syndrome", "noonan_syndrome"),
+            ("prader willi syndrome", "prader_willi_syndrome"),
+            ("angelman syndrome", "angelman_syndrome"),
+            ("rett syndrome", "rett_syndrome"),
+            ("22q11.2 deletion syndrome", "twenty_two_q11_2_deletion_syndrome"),
+            ("congenital hypothyroidism", "congenital_hypothyroidism"),
+            ("tay sachs disease", "tay_sachs_disease"),
+            ("gaucher disease", "gaucher_disease"),
+            ("pompe disease", "pompe_disease"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

@@ -45,7 +45,7 @@ from .general_differential import (
     evaluate_general_differential,
     get_general_differential_catalog_summary,
 )
-from .differential_catalog import FINDING_GROUPS
+from .differential_catalog import CONDITIONS, FINDING_GROUPS
 from .differential_catalog_quality import (
     build_general_differential_catalog_quality_report,
 )
@@ -394,6 +394,7 @@ def general_differential_workspace(request):
             "finding_library_url": reverse("cds_core:general_differential_findings"),
             "selected_findings": selected_findings,
             "selected_finding_labels": _build_selected_finding_labels(selected_findings),
+            "catalog_quick_entries": _build_catalog_quick_entries(),
             "catalog_summary": get_general_differential_catalog_summary(),
             "catalog_quality": build_general_differential_catalog_quality_report(),
             "result": result,
@@ -441,6 +442,50 @@ def _build_selected_finding_labels(selected_findings):
                     }
                 )
     return labels
+
+
+def _build_catalog_quick_entries():
+    entries = [
+        {
+            "entry_id": "genetic-congenital",
+            "title": "基因 / 先天 | Genetic / congenital",
+            "query": "genetic congenital developmental",
+            "description": "先從遺傳、先天、兒科與結締組織線索切入。",
+            "system_tokens": ("Genetic", "Pediatric", "Connective tissue", "Skeletal"),
+        },
+        {
+            "entry_id": "blood-immune",
+            "title": "血液 / 免疫 | Blood / immune",
+            "query": "anemia bleeding immune",
+            "description": "適合貧血、出血、免疫缺陷、血液腫瘤或感染風險線索。",
+            "system_tokens": ("Hematology", "Immunology", "Immune", "Oncology"),
+        },
+        {
+            "entry_id": "endocrine-metabolic",
+            "title": "內分泌 / 代謝 | Endocrine / metabolic",
+            "query": "endocrine metabolic newborn screen",
+            "description": "適合低血糖、電解質、甲狀腺、腎上腺或新生兒篩檢線索。",
+            "system_tokens": ("Endocrine", "Metabolic"),
+        },
+        {
+            "entry_id": "neurodevelopmental",
+            "title": "神經發展 | Neurodevelopmental",
+            "query": "seizure developmental regression neurodevelopmental",
+            "description": "適合癲癇、發展遲緩、退化、行為或神經肌肉線索。",
+            "system_tokens": ("Neurodevelopmental", "Neurologic", "Neuromuscular"),
+        },
+    ]
+    for entry in entries:
+        entry["count"] = _count_catalog_systems(entry["system_tokens"])
+    return entries
+
+
+def _count_catalog_systems(tokens):
+    return sum(
+        1
+        for condition in CONDITIONS
+        if any(token in str(condition.get("system", "")) for token in tokens)
+    )
 
 
 def _build_finding_groups(selected_findings):

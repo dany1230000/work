@@ -2,16 +2,16 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-07-02",
-    "condition_count": 400,
-    "source_count": 478,
+    "condition_count": 425,
+    "source_count": 503,
     "quality": {
       "catalog_version": "general-differential-starter-2026-07-02",
-      "condition_count": 400,
-      "source_count": 478,
+      "condition_count": 425,
+      "source_count": 503,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 400
+      "expansion_target_condition_count": 425
     }
   },
   "safety_scope": {
@@ -11461,6 +11461,717 @@
         "cdc_muscular_dystrophy",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "wilson_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "威爾森病",
+      "name_en": "Wilson disease",
+      "system": "Hepatic/Neurologic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "威爾森病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Liver disease with neurologic, psychiatric, hemolysis, or family-history clues should include Wilson disease.",
+      "signals": {
+        "jaundice": 4,
+        "abdominal_pain": 2,
+        "neurologic_deficit": 3,
+        "altered_mental_status": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "wilson disease",
+        "hepatolenticular degeneration",
+        "copper accumulation disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, liver tests, neuropsychiatric change, hemolysis clues, family history, ceruloplasmin/copper testing context, and hepatology or genetics review need."
+      ],
+      "source_ids": [
+        "niddk_wilson_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hereditary_hemochromatosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "遺傳性血色素沉著症",
+      "name_en": "Hereditary hemochromatosis",
+      "system": "Hepatic/Hematology/Genetic",
+      "urgency": "routine",
+      "summary_zh": "遺傳性血色素沉著症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Unexplained fatigue, liver disease, joint pain, diabetes, cardiomyopathy, or family history should include hereditary hemochromatosis.",
+      "signals": {
+        "fatigue": 3,
+        "acute_joint_pain_swelling": 2,
+        "abdominal_pain": 2,
+        "palpitations": 1,
+        "extreme_thirst_polyuria": 1
+      },
+      "synonyms": [
+        "hereditary hemochromatosis",
+        "hemochromatosis",
+        "iron overload disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ferritin and transferrin saturation context, liver disease, joint symptoms, diabetes or cardiac features, family history, and hepatology/genetics review need."
+      ],
+      "source_ids": [
+        "niddk_hemochromatosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "fragile_x_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脆性 X 症候群",
+      "name_en": "Fragile X syndrome",
+      "system": "Genetic/Neurodevelopmental/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "脆性 X 症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Developmental delay, learning disability, autism features, behavioral concerns, or family history should include fragile X syndrome.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "risky_impulsive_behavior": 1,
+        "severe_agitation": 1,
+        "seizure_activity_or_postictal_state": 1
+      },
+      "synonyms": [
+        "fragile x syndrome",
+        "fragile x",
+        "fmr1 related disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check developmental history, learning and behavior profile, autism or seizure context, family history, and genetic testing or developmental referral context."
+      ],
+      "source_ids": [
+        "cdc_fragile_x_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "marfan_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "馬凡氏症候群",
+      "name_en": "Marfan syndrome",
+      "system": "Genetic/Cardiovascular/Ophthalmologic",
+      "urgency": "soon",
+      "summary_zh": "馬凡氏症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tall habitus or connective-tissue context with chest pain, aortic disease, lens/vision issues, or family history should include Marfan syndrome.",
+      "signals": {
+        "chest_pain": 3,
+        "tearing_back_pain": 4,
+        "exertional_syncope": 2,
+        "visual_disturbance": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "marfan syndrome",
+        "marfans syndrome",
+        "fibrillin connective tissue disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check aortic symptoms, family history, lens dislocation or vision symptoms, skeletal features, prior echocardiography, and genetics/cardiology review context."
+      ],
+      "source_ids": [
+        "nhlbi_marfan_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "turner_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "透納氏症候群",
+      "name_en": "Turner syndrome",
+      "system": "Genetic/Endocrine/Cardiovascular",
+      "urgency": "routine",
+      "summary_zh": "透納氏症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Short stature, pubertal delay, infertility, congenital heart disease, hearing issues, or known monosomy X should include Turner syndrome.",
+      "signals": {
+        "fatigue": 1,
+        "dyspnea": 1,
+        "orthopnea_edema": 1,
+        "hearing_loss_tinnitus": 2,
+        "palpitations": 1
+      },
+      "synonyms": [
+        "turner syndrome",
+        "monosomy x",
+        "45 x syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check growth and puberty history, cardiac and renal history, hearing concerns, thyroid or metabolic screening, fertility goals, and endocrine/genetics context."
+      ],
+      "source_ids": [
+        "nichd_turner_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "klinefelter_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "克氏症候群",
+      "name_en": "Klinefelter syndrome",
+      "system": "Genetic/Endocrine/Reproductive",
+      "urgency": "routine",
+      "summary_zh": "克氏症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infertility, hypogonadism, tall stature, gynecomastia, learning concerns, or known XXY karyotype should include Klinefelter syndrome.",
+      "signals": {
+        "fatigue": 1,
+        "risky_impulsive_behavior": 1,
+        "unilateral_leg_swelling": 1
+      },
+      "synonyms": [
+        "klinefelter syndrome",
+        "klinefelters syndrome",
+        "47 xxy syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check puberty and fertility history, testosterone context, learning or mood concerns, thrombotic risk clues, and endocrine or genetics referral context."
+      ],
+      "source_ids": [
+        "nichd_klinefelter_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "congenital_adrenal_hyperplasia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "先天性腎上腺增生症",
+      "name_en": "Congenital adrenal hyperplasia",
+      "system": "Endocrine/Metabolic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "先天性腎上腺增生症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adrenal crisis, salt-wasting, hypoglycemia, ambiguous genitalia, androgen excess, or known CAH should include congenital adrenal hyperplasia.",
+      "signals": {
+        "hypoglycemia_risk": 3,
+        "orthostatic_lightheadedness": 2,
+        "abdominal_pain": 2,
+        "vomiting": 3,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "congenital adrenal hyperplasia",
+        "cah",
+        "21 hydroxylase deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check salt-wasting or shock symptoms, glucose and electrolyte context, steroid replacement history, genital or pubertal history, and endocrine review need."
+      ],
+      "source_ids": [
+        "nichd_congenital_adrenal_hyperplasia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "g6pd_deficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "G6PD 缺乏症",
+      "name_en": "G6PD deficiency",
+      "system": "Hematology/Genetic",
+      "urgency": "soon",
+      "summary_zh": "G6PD 缺乏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Episodic jaundice, hemolysis, dark urine, anemia symptoms, trigger medication or fava exposure, or family history should include G6PD deficiency.",
+      "signals": {
+        "jaundice": 4,
+        "fatigue": 2,
+        "easy_bruising_bleeding": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "g6pd deficiency",
+        "glucose 6 phosphate dehydrogenase deficiency",
+        "favism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hemolysis timeline, jaundice or dark urine, medication and food triggers, infection context, ethnicity/family history, and CBC/hemolysis testing context."
+      ],
+      "source_ids": [
+        "medlineplus_g6pd_deficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hereditary_spherocytosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "遺傳性球狀紅血球症",
+      "name_en": "Hereditary spherocytosis",
+      "system": "Hematology/Genetic",
+      "urgency": "soon",
+      "summary_zh": "遺傳性球狀紅血球症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Jaundice, anemia, splenomegaly, gallstones, hemolysis, or family history should include hereditary spherocytosis.",
+      "signals": {
+        "jaundice": 4,
+        "fatigue": 3,
+        "easy_bruising_bleeding": 1,
+        "abdominal_pain": 2
+      },
+      "synonyms": [
+        "hereditary spherocytosis",
+        "spherocytosis",
+        "red cell membrane disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check anemia and jaundice history, splenomegaly, gallstones, family history, smear or hemolysis testing context, and hematology review need."
+      ],
+      "source_ids": [
+        "medlineplus_hereditary_spherocytosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "phenylketonuria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "苯酮尿症",
+      "name_en": "Phenylketonuria",
+      "system": "Metabolic/Genetic/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "苯酮尿症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn-screening history, developmental delay, seizures, intellectual disability, dietary treatment context, or family history should include phenylketonuria.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "seizure_activity_or_postictal_state": 2,
+        "altered_mental_status": 1,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "phenylketonuria",
+        "pku",
+        "phenylalanine hydroxylase deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check newborn-screening and diet history, developmental course, seizures or behavioral concerns, pregnancy context, and metabolic genetics follow-up need."
+      ],
+      "source_ids": [
+        "medlineplus_phenylketonuria",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "maple_syrup_urine_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "楓糖尿症",
+      "name_en": "Maple syrup urine disease",
+      "system": "Metabolic/Genetic/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "楓糖尿症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Poor feeding, vomiting, lethargy, seizures, metabolic decompensation, characteristic odor, or newborn-screening context should include maple syrup urine disease.",
+      "signals": {
+        "vomiting": 3,
+        "altered_mental_status": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "poor_oral_intake_dehydration": 2,
+        "respiratory_distress": 1
+      },
+      "synonyms": [
+        "maple syrup urine disease",
+        "msud",
+        "branched chain ketoaciduria"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, feeding, illness trigger, odor history, neurologic status, acid-base/metabolic testing context, and urgent metabolic genetics review need."
+      ],
+      "source_ids": [
+        "medlineplus_maple_syrup_urine_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "galactosemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "半乳糖血症",
+      "name_en": "Galactosemia",
+      "system": "Metabolic/Hepatic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "半乳糖血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant feeding intolerance, vomiting, jaundice, liver dysfunction, sepsis risk, or newborn-screening context should include galactosemia.",
+      "signals": {
+        "vomiting": 3,
+        "jaundice": 4,
+        "poor_oral_intake_dehydration": 2,
+        "altered_mental_status": 1,
+        "hypoglycemia_risk": 1
+      },
+      "synonyms": [
+        "galactosemia",
+        "classic galactosemia",
+        "galactose 1 phosphate uridyltransferase deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check newborn-screening status, milk exposure, jaundice or liver injury, infection concern, glucose and hydration context, and metabolic genetics review need."
+      ],
+      "source_ids": [
+        "medlineplus_galactosemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "achondroplasia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "軟骨發育不全",
+      "name_en": "Achondroplasia",
+      "system": "Genetic/Skeletal/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "軟骨發育不全 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Disproportionate short stature, foramen magnum or spinal stenosis concerns, sleep apnea, or known FGFR3 condition should include achondroplasia.",
+      "signals": {
+        "low_back_pain": 2,
+        "neurologic_deficit": 2,
+        "respiratory_distress": 1,
+        "hearing_loss_tinnitus": 1
+      },
+      "synonyms": [
+        "achondroplasia",
+        "fgfr3 achondroplasia",
+        "disproportionate short stature"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check neurologic symptoms, sleep or breathing concerns, hearing issues, spinal stenosis signs, growth history, and genetics or specialty surveillance context."
+      ],
+      "source_ids": [
+        "medlineplus_achondroplasia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "neurofibromatosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "神經纖維瘤病",
+      "name_en": "Neurofibromatosis",
+      "system": "Neurologic/Genetic/Dermatologic",
+      "urgency": "routine",
+      "summary_zh": "神經纖維瘤病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cafe-au-lait macules, neurofibromas, optic or neurologic symptoms, learning issues, hypertension, or family history should include neurofibromatosis.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "visual_disturbance": 2,
+        "seizure_activity_or_postictal_state": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "neurofibromatosis",
+        "nf1",
+        "nf2"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check skin findings, vision or hearing symptoms, neurologic deficits, pain or tumor growth, blood pressure, family history, and genetics/neurology review context."
+      ],
+      "source_ids": [
+        "ninds_neurofibromatosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tuberous_sclerosis_complex",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "結節性硬化症",
+      "name_en": "Tuberous sclerosis complex",
+      "system": "Neurologic/Genetic/Dermatologic",
+      "urgency": "routine",
+      "summary_zh": "結節性硬化症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Seizures, developmental concerns, characteristic skin lesions, renal lesions, pulmonary symptoms, or family history should include tuberous sclerosis complex.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "rash": 2,
+        "neurologic_deficit": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "tuberous sclerosis complex",
+        "tuberous sclerosis",
+        "tsc"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check seizure and developmental history, skin lesions, renal or pulmonary history, family history, surveillance status, and neurology/genetics context."
+      ],
+      "source_ids": [
+        "ninds_tuberous_sclerosis_complex",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ehlers_danlos_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "埃勒斯-當洛症候群",
+      "name_en": "Ehlers-Danlos syndrome",
+      "system": "Genetic/Connective tissue",
+      "urgency": "routine",
+      "summary_zh": "埃勒斯-當洛症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Joint hypermobility, recurrent dislocations, fragile skin, easy bruising, chronic pain, or vascular fragility context should include Ehlers-Danlos syndrome.",
+      "signals": {
+        "acute_joint_pain_swelling": 2,
+        "recent_trauma": 1,
+        "easy_bruising_bleeding": 2,
+        "tearing_back_pain": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "ehlers danlos syndrome",
+        "eds",
+        "joint hypermobility syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check dislocation history, skin fragility, bruising, vascular or organ rupture red flags, family history, and genetics/rheumatology review context."
+      ],
+      "source_ids": [
+        "medlineplus_ehlers_danlos_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "noonan_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "努南氏症候群",
+      "name_en": "Noonan syndrome",
+      "system": "Genetic/Cardiovascular/Developmental",
+      "urgency": "routine",
+      "summary_zh": "努南氏症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Congenital heart disease, short stature, developmental concerns, distinctive facies, bleeding tendency, or family history should include Noonan syndrome.",
+      "signals": {
+        "dyspnea": 1,
+        "fatigue": 1,
+        "easy_bruising_bleeding": 2,
+        "palpitations": 1
+      },
+      "synonyms": [
+        "noonan syndrome",
+        "noonan",
+        "rasopathy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check cardiac history, growth and development, bleeding history, lymphatic or skeletal findings, family history, and genetics/cardiology context."
+      ],
+      "source_ids": [
+        "medlineplus_noonan_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "prader_willi_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "普瑞德威利症候群",
+      "name_en": "Prader-Willi syndrome",
+      "system": "Genetic/Endocrine/Neurodevelopmental",
+      "urgency": "routine",
+      "summary_zh": "普瑞德威利症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant hypotonia, feeding history, hyperphagia, obesity, endocrine issues, developmental delay, or known 15q imprinting disorder should include Prader-Willi syndrome.",
+      "signals": {
+        "fatigue": 1,
+        "hypoglycemia_risk": 1,
+        "neurologic_deficit": 2,
+        "extreme_thirst_polyuria": 1
+      },
+      "synonyms": [
+        "prader willi syndrome",
+        "prader-willi syndrome",
+        "15q imprinting disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check feeding and growth trajectory, hyperphagia safety, sleep apnea, endocrine screening, developmental supports, and genetics/endocrine context."
+      ],
+      "source_ids": [
+        "medlineplus_prader_willi_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "angelman_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "安格曼症候群",
+      "name_en": "Angelman syndrome",
+      "system": "Genetic/Neurodevelopmental",
+      "urgency": "routine",
+      "summary_zh": "安格曼症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe developmental delay, speech impairment, seizures, ataxia, sleep disturbance, or characteristic behavioral profile should include Angelman syndrome.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "neurologic_deficit": 2,
+        "altered_mental_status": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "angelman syndrome",
+        "angelman",
+        "ube3a related disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check developmental and seizure history, movement or ataxia concerns, sleep, communication supports, family history, and neurology/genetics context."
+      ],
+      "source_ids": [
+        "medlineplus_angelman_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rett_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "瑞特症候群",
+      "name_en": "Rett syndrome",
+      "system": "Neurologic/Genetic/Neurodevelopmental",
+      "urgency": "routine",
+      "summary_zh": "瑞特症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Developmental regression, loss of purposeful hand use, gait abnormalities, seizures, breathing irregularities, or known MECP2 disorder should include Rett syndrome.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "neurologic_deficit": 3,
+        "altered_mental_status": 1,
+        "respiratory_distress": 1
+      },
+      "synonyms": [
+        "rett syndrome",
+        "rett disorder",
+        "mecp2 related disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check developmental regression timeline, hand stereotypies, seizures, breathing or feeding issues, scoliosis, and neurology/genetics review context."
+      ],
+      "source_ids": [
+        "ninds_rett_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "twenty_two_q11_2_deletion_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "22q11.2 缺失症候群",
+      "name_en": "22q11.2 deletion syndrome",
+      "system": "Genetic/Immunology/Cardiovascular",
+      "urgency": "routine",
+      "summary_zh": "22q11.2 缺失症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Conotruncal heart disease, hypocalcemia, immune deficiency, palatal anomalies, developmental concerns, or known deletion should include 22q11.2 deletion syndrome.",
+      "signals": {
+        "dyspnea": 1,
+        "seizure_activity_or_postictal_state": 1,
+        "immunocompromised": 2,
+        "hypoglycemia_risk": 1,
+        "palpitations": 1
+      },
+      "synonyms": [
+        "22q11.2 deletion syndrome",
+        "digeorge syndrome",
+        "velocardiofacial syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check cardiac, calcium/seizure, infection, palatal, developmental, psychiatric, and genetics/immunology follow-up context."
+      ],
+      "source_ids": [
+        "medlineplus_22q11_2_deletion_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "congenital_hypothyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "先天性甲狀腺功能低下",
+      "name_en": "Congenital hypothyroidism",
+      "system": "Endocrine/Metabolic/Genetic/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "先天性甲狀腺功能低下 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn-screening abnormality, prolonged jaundice, poor feeding, hypotonia, constipation, growth delay, or infant hypothyroid context should include congenital hypothyroidism.",
+      "signals": {
+        "fatigue": 2,
+        "hypothermia": 2,
+        "constipation_obstipation": 2,
+        "jaundice": 2,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "congenital hypothyroidism",
+        "neonatal hypothyroidism",
+        "infant hypothyroidism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check newborn-screening results, feeding and growth, jaundice, constipation, temperature, thyroid labs, and pediatric endocrine context."
+      ],
+      "source_ids": [
+        "medlineplus_congenital_hypothyroidism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tay_sachs_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "泰-薩氏症",
+      "name_en": "Tay-Sachs disease",
+      "system": "Neurologic/Metabolic/Genetic",
+      "urgency": "routine",
+      "summary_zh": "泰-薩氏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Developmental regression, seizures, hypotonia or weakness, exaggerated startle, vision loss, or family ancestry risk should include Tay-Sachs disease.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "neurologic_deficit": 3,
+        "visual_disturbance": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "tay sachs disease",
+        "tay-sachs disease",
+        "hexosaminidase a deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check developmental regression, seizures, vision or startle concerns, family history or carrier risk, and neurology/metabolic genetics context."
+      ],
+      "source_ids": [
+        "medlineplus_tay_sachs_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gaucher_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高雪氏症",
+      "name_en": "Gaucher disease",
+      "system": "Hematology/Metabolic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "高雪氏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Splenomegaly, anemia, thrombocytopenia, bone pain, fatigue, growth delay, or family history should include Gaucher disease.",
+      "signals": {
+        "fatigue": 3,
+        "easy_bruising_bleeding": 3,
+        "bone_back_pain": 3,
+        "abdominal_pain": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "gaucher disease",
+        "glucocerebrosidase deficiency",
+        "gba1 related gaucher"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check spleen or liver enlargement, cytopenias, bone pain or crises, growth, family ancestry risk, and metabolic genetics/hematology context."
+      ],
+      "source_ids": [
+        "medlineplus_gaucher_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pompe_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "龐貝氏症",
+      "name_en": "Pompe disease",
+      "system": "Neuromuscular/Metabolic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "龐貝氏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hypotonia, proximal weakness, respiratory insufficiency, cardiomyopathy, feeding difficulty, or late-onset limb-girdle weakness should include Pompe disease.",
+      "signals": {
+        "progressive_bilateral_leg_weakness": 4,
+        "respiratory_distress": 3,
+        "dyspnea": 2,
+        "fatigue": 2,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "pompe disease",
+        "glycogen storage disease type ii",
+        "acid alpha glucosidase deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check weakness pattern, respiratory symptoms, cardiac involvement, feeding or infant history, CK/enzyme testing context, and neuromuscular/metabolic genetics review need."
+      ],
+      "source_ids": [
+        "medlineplus_pompe_disease",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -14331,6 +15042,156 @@
       "publisher": "CDC",
       "title": "About Muscular Dystrophy",
       "url": "https://www.cdc.gov/muscular-dystrophy/about/index.html"
+    },
+    {
+      "source_id": "niddk_wilson_disease",
+      "publisher": "NIDDK",
+      "title": "Wilson Disease",
+      "url": "https://www.niddk.nih.gov/health-information/liver-disease/wilson-disease"
+    },
+    {
+      "source_id": "niddk_hemochromatosis",
+      "publisher": "NIDDK",
+      "title": "Hemochromatosis",
+      "url": "https://www.niddk.nih.gov/health-information/liver-disease/hemochromatosis"
+    },
+    {
+      "source_id": "cdc_fragile_x_syndrome",
+      "publisher": "CDC",
+      "title": "About Fragile X Syndrome",
+      "url": "https://www.cdc.gov/fragile-x-syndrome/about/index.html"
+    },
+    {
+      "source_id": "nhlbi_marfan_syndrome",
+      "publisher": "NHLBI",
+      "title": "Marfan Syndrome",
+      "url": "https://www.nhlbi.nih.gov/health/marfan-syndrome"
+    },
+    {
+      "source_id": "nichd_turner_syndrome",
+      "publisher": "NICHD",
+      "title": "Turner Syndrome",
+      "url": "https://www.nichd.nih.gov/health/topics/turner"
+    },
+    {
+      "source_id": "nichd_klinefelter_syndrome",
+      "publisher": "NICHD",
+      "title": "Klinefelter Syndrome",
+      "url": "https://www.nichd.nih.gov/health/topics/klinefelter"
+    },
+    {
+      "source_id": "nichd_congenital_adrenal_hyperplasia",
+      "publisher": "NICHD",
+      "title": "Congenital Adrenal Hyperplasia",
+      "url": "https://www.nichd.nih.gov/health/topics/cah"
+    },
+    {
+      "source_id": "medlineplus_g6pd_deficiency",
+      "publisher": "MedlinePlus",
+      "title": "Glucose-6-phosphate dehydrogenase deficiency",
+      "url": "https://medlineplus.gov/ency/article/000528.htm"
+    },
+    {
+      "source_id": "medlineplus_hereditary_spherocytosis",
+      "publisher": "MedlinePlus",
+      "title": "Hereditary spherocytosis",
+      "url": "https://medlineplus.gov/ency/article/000530.htm"
+    },
+    {
+      "source_id": "medlineplus_phenylketonuria",
+      "publisher": "MedlinePlus",
+      "title": "Phenylketonuria",
+      "url": "https://medlineplus.gov/phenylketonuria.html"
+    },
+    {
+      "source_id": "medlineplus_maple_syrup_urine_disease",
+      "publisher": "MedlinePlus",
+      "title": "Maple Syrup Urine Disease",
+      "url": "https://medlineplus.gov/genetics/condition/maple-syrup-urine-disease/"
+    },
+    {
+      "source_id": "medlineplus_galactosemia",
+      "publisher": "MedlinePlus",
+      "title": "Galactosemia",
+      "url": "https://medlineplus.gov/ency/article/000366.htm"
+    },
+    {
+      "source_id": "medlineplus_achondroplasia",
+      "publisher": "MedlinePlus",
+      "title": "Achondroplasia",
+      "url": "https://medlineplus.gov/ency/article/001577.htm"
+    },
+    {
+      "source_id": "ninds_neurofibromatosis",
+      "publisher": "NINDS",
+      "title": "Neurofibromatosis",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/neurofibromatosis"
+    },
+    {
+      "source_id": "ninds_tuberous_sclerosis_complex",
+      "publisher": "NINDS",
+      "title": "Tuberous Sclerosis Complex",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/tuberous-sclerosis-complex"
+    },
+    {
+      "source_id": "medlineplus_ehlers_danlos_syndrome",
+      "publisher": "MedlinePlus",
+      "title": "Ehlers-Danlos Syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/"
+    },
+    {
+      "source_id": "medlineplus_noonan_syndrome",
+      "publisher": "MedlinePlus",
+      "title": "Noonan Syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/noonan-syndrome/"
+    },
+    {
+      "source_id": "medlineplus_prader_willi_syndrome",
+      "publisher": "MedlinePlus",
+      "title": "Prader-Willi Syndrome",
+      "url": "https://medlineplus.gov/praderwillisyndrome.html"
+    },
+    {
+      "source_id": "medlineplus_angelman_syndrome",
+      "publisher": "MedlinePlus",
+      "title": "Angelman Syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/angelman-syndrome/"
+    },
+    {
+      "source_id": "ninds_rett_syndrome",
+      "publisher": "NINDS",
+      "title": "Rett Syndrome",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/rett-syndrome"
+    },
+    {
+      "source_id": "medlineplus_22q11_2_deletion_syndrome",
+      "publisher": "MedlinePlus",
+      "title": "22q11.2 Deletion Syndrome",
+      "url": "https://medlineplus.gov/genetics/condition/22q112-deletion-syndrome/"
+    },
+    {
+      "source_id": "medlineplus_congenital_hypothyroidism",
+      "publisher": "MedlinePlus",
+      "title": "Congenital Hypothyroidism",
+      "url": "https://medlineplus.gov/genetics/condition/congenital-hypothyroidism/"
+    },
+    {
+      "source_id": "medlineplus_tay_sachs_disease",
+      "publisher": "MedlinePlus",
+      "title": "Tay-Sachs Disease",
+      "url": "https://medlineplus.gov/genetics/condition/tay-sachs-disease/"
+    },
+    {
+      "source_id": "medlineplus_gaucher_disease",
+      "publisher": "MedlinePlus",
+      "title": "Gaucher Disease",
+      "url": "https://medlineplus.gov/genetics/condition/gaucher-disease/"
+    },
+    {
+      "source_id": "medlineplus_pompe_disease",
+      "publisher": "MedlinePlus",
+      "title": "Pompe Disease",
+      "url": "https://medlineplus.gov/genetics/condition/pompe-disease/"
     }
   ]
 }
