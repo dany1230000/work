@@ -370,6 +370,35 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_findings_show_result_groups_before_long_candidate_cards(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-result-groups="true"')
+        self.assertContains(response, 'data-result-group="emergent"')
+        self.assertContains(response, 'data-result-group-candidate="acute_coronary_syndrome"')
+        self.assertContains(response, "Candidate groups")
+        self.assertContains(response, "emergent")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertLess(
+            content.index('data-result-groups="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_result_cards_show_primary_action_before_full_action_drawer(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

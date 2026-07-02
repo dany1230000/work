@@ -127,6 +127,7 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
 
     return {
         "results": ranked_results,
+        "result_groups": _build_result_groups(ranked_results),
         "ask_next": _build_global_ask_next(results, selected_findings),
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
@@ -209,6 +210,34 @@ def _query_match_score(condition: dict[str, Any], query: str) -> int:
     ):
         return 7
     return 0
+
+
+def _build_result_groups(results: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    grouped: dict[str, list[dict[str, Any]]] = {}
+    for result in results:
+        grouped.setdefault(result["urgency"], []).append(result)
+
+    result_groups: list[dict[str, Any]] = []
+    for urgency in sorted(grouped, key=lambda key: URGENCY_ORDER.get(key, 99)):
+        candidates = grouped[urgency]
+        result_groups.append(
+            {
+                "urgency": urgency,
+                "label": urgency.title(),
+                "count": len(candidates),
+                "candidates": [
+                    {
+                        "slug": candidate["slug"],
+                        "name_zh": candidate["name_zh"],
+                        "name_en": candidate["name_en"],
+                        "score": candidate["score"],
+                        "system": candidate["system"],
+                    }
+                    for candidate in candidates[:3]
+                ],
+            }
+        )
+    return result_groups
 
 
 def _build_global_ask_next(

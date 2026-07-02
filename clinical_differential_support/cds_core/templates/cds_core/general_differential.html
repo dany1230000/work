@@ -467,6 +467,47 @@
     margin: 0.25rem 0 0;
   }
 
+  .result-groups {
+    border: 1px solid #b8c0cc;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .result-groups h3 {
+    margin: 0 0 0.35rem;
+  }
+
+  .result-group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 0.65rem;
+    margin-top: 0.7rem;
+  }
+
+  .result-group-card {
+    border: 1px solid #d9dee7;
+    border-left: 4px solid var(--action);
+    border-radius: 6px;
+    padding: 0.7rem;
+    min-height: 7rem;
+  }
+
+  .result-group-card strong,
+  .result-group-card span {
+    display: block;
+  }
+
+  .result-group-card ul {
+    margin: 0.5rem 0 0;
+    padding-left: 1.1rem;
+  }
+
+  .result-group-card li + li {
+    margin-top: 0.25rem;
+  }
+
   .results-brief {
     border: 1px solid #b8d8d1;
     border-radius: 6px;
@@ -832,6 +873,7 @@
     .workflow-command-bar,
     .case-action-list,
     .next-step-summary-strip,
+    .result-group-grid,
     .results-brief-grid,
     .guided-step-grid,
     .patient-workflow-grid,
@@ -1184,6 +1226,25 @@
               {% endfor %}
             </div>
           </details>
+          <section class="result-groups" data-result-groups="true" aria-labelledby="result-groups-title">
+            <h3 id="result-groups-title">Candidate groups</h3>
+            <p class="secondary">Review emergent and urgent groups first, then expand the full candidate cards.</p>
+            <div class="result-group-grid">
+              {% for group in result.result_groups %}
+                <article class="result-group-card" data-result-group="{{ group.urgency }}">
+                  <strong>{{ group.label }}</strong>
+                  <span class="tag">{{ group.count }} candidates</span>
+                  <ul>
+                    {% for candidate in group.candidates %}
+                      <li data-result-group-candidate="{{ candidate.slug }}">
+                        {{ candidate.name_en }} <span class="secondary">score {{ candidate.score }}</span>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </article>
+              {% endfor %}
+            </div>
+          </section>
           <div class="result-list" id="top-candidates" data-primary-result-list="true">
             {% for entry in result.results|slice:":3" %}
               {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=forloop.first %}

@@ -456,6 +456,62 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_tenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("meningococcal disease", "meningococcal_disease"),
+            ("tetanus", "tetanus"),
+            ("rabies", "rabies"),
+            ("zika virus disease", "zika_virus_disease"),
+            ("chikungunya", "chikungunya"),
+            ("west nile virus disease", "west_nile_virus_disease"),
+            ("aplastic anemia", "aplastic_anemia"),
+            ("disseminated intravascular coagulation", "disseminated_intravascular_coagulation"),
+            ("thrombotic thrombocytopenic purpura", "thrombotic_thrombocytopenic_purpura"),
+            ("hemolytic uremic syndrome", "hemolytic_uremic_syndrome"),
+            ("polycythemia vera", "polycythemia_vera"),
+            ("chronic myeloid leukemia", "chronic_myeloid_leukemia"),
+            ("primary biliary cholangitis", "primary_biliary_cholangitis"),
+            ("primary sclerosing cholangitis", "primary_sclerosing_cholangitis"),
+            ("barrett esophagus", "barrett_esophagus"),
+            ("anal cancer", "anal_cancer"),
+            ("anorexia nervosa", "anorexia_nervosa"),
+            ("bulimia nervosa", "bulimia_nervosa"),
+            ("borderline personality disorder", "borderline_personality_disorder"),
+            ("premenstrual syndrome", "premenstrual_syndrome"),
+            ("pelvic organ prolapse", "pelvic_organ_prolapse"),
+            ("infertility", "infertility"),
+            ("pemphigus", "pemphigus"),
+            ("plantar fasciitis", "plantar_fasciitis"),
+            ("scoliosis", "scoliosis"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_ranked_results_are_grouped_by_urgency(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        self.assertIn("result_groups", result)
+        self.assertGreaterEqual(len(result["result_groups"]), 2)
+        self.assertEqual(result["result_groups"][0]["urgency"], "emergent")
+        self.assertGreaterEqual(result["result_groups"][0]["count"], 1)
+        self.assertEqual(
+            result["result_groups"][0]["candidates"][0]["slug"],
+            "acute_coronary_syndrome",
+        )
+        self.assertLessEqual(len(result["result_groups"][0]["candidates"]), 3)
+
     def test_ruq_fever_pattern_prioritizes_acute_cholecystitis(self):
         result = evaluate_general_differential(
             {"query": "", "findings": ["ruq_pain", "fever", "vomiting"]}
