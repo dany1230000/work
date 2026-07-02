@@ -224,6 +224,31 @@
       width: 100%;
       opacity: 0;
     }
+    .fast-nav-status {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1001;
+      max-width: min(24rem, calc(100vw - 2rem));
+      border: 1px solid #b8c1cf;
+      background: rgba(255, 255, 255, .96);
+      color: #243244;
+      box-shadow: 0 10px 24px rgba(20, 31, 46, .18);
+      border-radius: 6px;
+      padding: .55rem .75rem;
+      font-size: .88rem;
+      font-weight: 700;
+      transform: translateY(.35rem);
+      transition: opacity .18s ease, transform .18s ease;
+    }
+    .fast-nav-status:not([hidden]) {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fast-nav-status[data-fast-nav-status="ready"] {
+      border-color: #98d7cd;
+      color: #0b5f59;
+    }
     .source { font-size: .9rem; color: #324155; }
     .secondary { color: var(--muted); font-size: .94rem; margin-top: -.25rem; }
     .auth-panel { max-width: 520px; }
@@ -304,6 +329,7 @@
 </head>
 <body>
   <div class="fast-nav-progress" data-fast-nav-progress aria-hidden="true"></div>
+  <div class="fast-nav-status" data-fast-nav-status="idle" aria-live="polite" role="status" hidden></div>
   <header>
     <div class="brand-row">
       <div>
@@ -349,6 +375,8 @@
   (function () {
     var main = document.querySelector("[data-fast-nav-root]");
     var progress = document.querySelector("[data-fast-nav-progress]");
+    var fastNavStatus = document.querySelector("[data-fast-nav-status]");
+    var fastNavStatusTimeout = null;
     var FAST_NAV_CACHE_TTL_MS = 120000;
     var fastNavCache = new Map();
     var PREFETCH_PATHS = {
@@ -447,7 +475,29 @@
       return true;
     }
 
+    function setFastNavStatus(state, message, hideAfterMs) {
+      if (!fastNavStatus) {
+        return;
+      }
+      if (fastNavStatusTimeout) {
+        window.clearTimeout(fastNavStatusTimeout);
+        fastNavStatusTimeout = null;
+      }
+      fastNavStatus.dataset.fastNavStatus = state || "idle";
+      fastNavStatus.textContent = message || "";
+      fastNavStatus.hidden = !message;
+      if (message && hideAfterMs) {
+        fastNavStatusTimeout = window.setTimeout(function () {
+          fastNavStatus.dataset.fastNavStatus = "idle";
+          fastNavStatus.textContent = "";
+          fastNavStatus.hidden = true;
+          fastNavStatusTimeout = null;
+        }, hideAfterMs);
+      }
+    }
+
     function startProgress() {
+      setFastNavStatus("loading", "Loading workspace");
       if (!progress) {
         return;
       }
@@ -456,6 +506,7 @@
     }
 
     function stopProgress() {
+      setFastNavStatus("ready", "Workspace ready", 900);
       if (!progress) {
         return;
       }
@@ -814,6 +865,7 @@
       var cachedPage = getCachedPage(targetUrl);
       if (cachedPage) {
         replaceMainFromHtml(cachedPage.html, targetUrl, pushHistory);
+        setFastNavStatus("ready", "Workspace ready", 650);
         return;
       }
       startProgress();
@@ -839,6 +891,47 @@
         .finally(stopProgress);
     }
 
+    function prefetchFastNavTarget(rawUrl, link) {
+      var url = sameOriginUrl(rawUrl);
+      if (
+        !url ||
+        !isCacheableUrl(url.href) ||
+        getCachedPage(url.href) ||
+        url.href === window.location.href ||
+        (link && link.dataset.fastNavPrefetching === "true")
+      ) {
+        return;
+      }
+      if (link) {
+        link.dataset.fastNavPrefetching = "true";
+      }
+      fetch(url.href, {
+        headers: {
+          "X-Requested-With": "XMLHttpRequest",
+          "X-Fast-Nav": "1"
+        },
+        credentials: "same-origin"
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error("Prefetch failed");
+          }
+          return response.text();
+        })
+        .then(function (html) {
+          rememberPage(url.href, html);
+          if (link) {
+            link.setAttribute("data-fast-nav-prefetched", "true");
+          }
+        })
+        .catch(function () {})
+        .finally(function () {
+          if (link) {
+            delete link.dataset.fastNavPrefetching;
+          }
+        });
+    }
+
     function prefetchPrimaryNavigation() {
       var nav = document.querySelector("nav[data-fast-nav-prefetch]");
       if (!nav) {
@@ -846,32 +939,7 @@
       }
       var links = Array.prototype.slice.call(nav.querySelectorAll("a[href]"));
       links.forEach(function (link) {
-        var url = sameOriginUrl(link.href);
-        if (
-          !url ||
-          !isCacheableUrl(url.href) ||
-          getCachedPage(url.href) ||
-          url.href === window.location.href
-        ) {
-          return;
-        }
-        fetch(url.href, {
-          headers: {
-            "X-Requested-With": "XMLHttpRequest",
-            "X-Fast-Nav": "1"
-          },
-          credentials: "same-origin"
-        })
-          .then(function (response) {
-            if (!response.ok) {
-              throw new Error("Prefetch failed");
-            }
-            return response.text();
-          })
-          .then(function (html) {
-            rememberPage(url.href, html);
-          })
-          .catch(function () {});
+        prefetchFastNavTarget(link.href, link);
       });
     }
 
@@ -882,6 +950,17 @@
       }
       window.setTimeout(prefetchPrimaryNavigation, 450);
     }
+
+    function prefetchLinkOnIntent(event) {
+      var link = event.target.closest("a[href]");
+      if (!link) {
+        return;
+      }
+      prefetchFastNavTarget(link.href, link);
+    }
+
+    document.addEventListener("pointerenter", prefetchLinkOnIntent, true);
+    document.addEventListener("focusin", prefetchLinkOnIntent);
 
     document.addEventListener("click", function (event) {
       var copyButton = event.target.closest("[data-copy-target]");

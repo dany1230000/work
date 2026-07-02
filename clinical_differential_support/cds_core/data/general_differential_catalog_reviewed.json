@@ -2,16 +2,16 @@
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
     "catalog_version": "general-differential-starter-2026-07-02",
-    "condition_count": 375,
-    "source_count": 453,
+    "condition_count": 400,
+    "source_count": 478,
     "quality": {
       "catalog_version": "general-differential-starter-2026-07-02",
-      "condition_count": 375,
-      "source_count": 453,
+      "condition_count": 400,
+      "source_count": 478,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 375
+      "expansion_target_condition_count": 400
     }
   },
   "safety_scope": {
@@ -1611,7 +1611,7 @@
       },
       "synonyms": [
         "adrenal crisis",
-        "adrenal insufficiency"
+        "addisonian crisis"
       ],
       "ask_next": [
         "確認類固醇使用、中斷、感染壓力、低血壓、低血糖與電解質。 / Check steroid use/cessation, infection stress, hypotension, hypoglycemia, and electrolytes."
@@ -5529,8 +5529,8 @@
       "synonyms": [
         "hyperthyroidism",
         "thyrotoxicosis",
-        "graves disease",
-        "overactive thyroid"
+        "overactive thyroid",
+        "thyroid hormone excess"
       ],
       "ask_next": [
         "確認體重下降、熱不耐、震顫、心悸/心房顫動、眼症狀、甲狀腺藥物或碘暴露與風暴警訊。 / Check weight loss, heat intolerance, tremor, palpitations/AF, eye symptoms, thyroid meds or iodine exposure, and storm red flags."
@@ -10756,6 +10756,711 @@
         "niams_scoliosis",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "cystic_fibrosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "囊腫性纖維化",
+      "name_en": "Cystic fibrosis",
+      "system": "Pulmonary/Genetic/Gastrointestinal",
+      "urgency": "soon",
+      "summary_zh": "囊腫性纖維化 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic cough, recurrent respiratory infections, wheeze, poor growth, pancreatic or malabsorption context should include cystic fibrosis.",
+      "signals": {
+        "cough_sputum": 4,
+        "wheeze": 2,
+        "dyspnea": 2,
+        "weight_loss": 2,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "cystic fibrosis",
+        "cf",
+        "mucoviscidosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check newborn screening or family history, chronic wet cough, recurrent infections, wheeze, growth and stool pattern, pancreatic symptoms, and pulmonology or genetics review context."
+      ],
+      "source_ids": [
+        "nhlbi_cystic_fibrosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "alpha_1_antitrypsin_deficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Alpha-1 抗胰蛋白酶缺乏症",
+      "name_en": "Alpha-1 antitrypsin deficiency",
+      "system": "Pulmonary/Hepatic/Genetic",
+      "urgency": "soon",
+      "summary_zh": "Alpha-1 抗胰蛋白酶缺乏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Early emphysema, chronic dyspnea, wheeze, cough, liver disease, or family history should include alpha-1 antitrypsin deficiency.",
+      "signals": {
+        "dyspnea": 3,
+        "wheeze": 2,
+        "cough_sputum": 2,
+        "jaundice": 2,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "alpha 1 antitrypsin deficiency",
+        "alpha-1 antitrypsin deficiency",
+        "aat deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age of COPD/emphysema onset, smoking exposure, basilar lung disease, liver-test pattern, family history, and AAT testing or genetics context."
+      ],
+      "source_ids": [
+        "nhlbi_alpha_1_antitrypsin_deficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cerebral_palsy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腦性麻痺",
+      "name_en": "Cerebral palsy",
+      "system": "Neurologic/Pediatric/Rehabilitation",
+      "urgency": "routine",
+      "summary_zh": "腦性麻痺 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Motor delay, abnormal tone, gait impairment, spasticity, seizures, or feeding/developmental concerns should include cerebral palsy.",
+      "signals": {
+        "neurologic_deficit": 3,
+        "progressive_bilateral_leg_weakness": 2,
+        "seizure_activity_or_postictal_state": 1,
+        "bladder_bowel_dysfunction": 1
+      },
+      "synonyms": [
+        "cerebral palsy",
+        "cp",
+        "spastic cerebral palsy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check birth and neonatal history, motor milestones, tone pattern, feeding or speech concerns, seizures, vision/hearing needs, and therapy or neurology review context."
+      ],
+      "source_ids": [
+        "cdc_cerebral_palsy",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "spina_bifida",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脊柱裂",
+      "name_en": "Spina bifida",
+      "system": "Neurologic/Spine/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "脊柱裂 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Back lesion history, lower-limb weakness, bladder or bowel dysfunction, hydrocephalus context, or tethered-cord concern should include spina bifida.",
+      "signals": {
+        "bladder_bowel_dysfunction": 4,
+        "neurologic_deficit": 3,
+        "progressive_bilateral_leg_weakness": 2,
+        "low_back_pain": 1
+      },
+      "synonyms": [
+        "spina bifida",
+        "myelomeningocele",
+        "neural tube defect"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion type, mobility baseline, bladder and bowel program, shunt or hydrocephalus history, back pain or neurologic change, and neurosurgery/urology context."
+      ],
+      "source_ids": [
+        "cdc_spina_bifida",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "down_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "唐氏症",
+      "name_en": "Down syndrome",
+      "system": "Genetic/Pediatric/Cardiometabolic",
+      "urgency": "routine",
+      "summary_zh": "唐氏症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Known trisomy 21, developmental profile, congenital heart disease, sleep apnea, thyroid, hearing, or recurrent infection context should include Down syndrome.",
+      "signals": {
+        "fatigue": 1,
+        "dyspnea": 1,
+        "hearing_loss_tinnitus": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "down syndrome",
+        "trisomy 21",
+        "downs syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check congenital heart history, sleep symptoms, thyroid screening, hearing/vision, developmental supports, atlantoaxial or neurologic symptoms, and preventive-care context."
+      ],
+      "source_ids": [
+        "cdc_down_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "fetal_alcohol_spectrum_disorders",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胎兒酒精譜系障礙",
+      "name_en": "Fetal alcohol spectrum disorders",
+      "system": "Neurodevelopmental/Pediatric/Toxicology",
+      "urgency": "routine",
+      "summary_zh": "胎兒酒精譜系障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Prenatal alcohol exposure context with developmental, learning, behavioral, growth, or characteristic facial concerns should include FASD.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "risky_impulsive_behavior": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "fetal alcohol spectrum disorders",
+        "fasd",
+        "fetal alcohol syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prenatal exposure history when available, growth, learning and executive function, behavior, sleep, family supports, and developmental referral context."
+      ],
+      "source_ids": [
+        "cdc_fetal_alcohol_spectrum_disorders",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tourette_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "妥瑞症",
+      "name_en": "Tourette syndrome",
+      "system": "Neurologic/Neurodevelopmental",
+      "urgency": "routine",
+      "summary_zh": "妥瑞症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Multiple motor tics with at least one vocal tic, childhood onset, ADHD/OCD overlap, or functional impairment should include Tourette syndrome.",
+      "signals": {
+        "neurologic_deficit": 1,
+        "severe_agitation": 1,
+        "risky_impulsive_behavior": 1
+      },
+      "synonyms": [
+        "tourette syndrome",
+        "tourette disorder",
+        "motor vocal tics"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tic type and duration, suppressibility, triggers, functional impact, ADHD/OCD symptoms, medication or seizure mimics, and neurology or behavioral-health context."
+      ],
+      "source_ids": [
+        "cdc_tourette_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "narcolepsy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "發作性嗜睡症",
+      "name_en": "Narcolepsy",
+      "system": "Neurologic/Sleep",
+      "urgency": "routine",
+      "summary_zh": "發作性嗜睡症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Excessive daytime sleepiness, sleep attacks, cataplexy, sleep paralysis, hallucinations at sleep transitions, or safety events should include narcolepsy.",
+      "signals": {
+        "fatigue": 4,
+        "syncope": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "narcolepsy",
+        "cataplexy",
+        "sleep attacks"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check daytime sleepiness severity, cataplexy, sleep paralysis, hallucinations, sleep schedule, driving or occupational safety, and sleep-medicine testing context."
+      ],
+      "source_ids": [
+        "ninds_narcolepsy",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "graves_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "葛瑞夫茲病",
+      "name_en": "Graves disease",
+      "system": "Endocrine/Autoimmune",
+      "urgency": "soon",
+      "summary_zh": "葛瑞夫茲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hyperthyroid symptoms with diffuse goiter, ophthalmopathy, dermopathy, palpitations, weight loss, or thyroid storm precursor concern should include Graves disease.",
+      "signals": {
+        "palpitations": 5,
+        "tachycardia": 4,
+        "weight_loss": 4,
+        "diaphoresis": 2,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "graves disease",
+        "graves' disease",
+        "autoimmune hyperthyroidism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check weight loss, tremor, heat intolerance, eye symptoms, goiter, atrial fibrillation, pregnancy context, and thyroid-storm red flags."
+      ],
+      "source_ids": [
+        "niddk_graves_disease",
+        "medlineplus_graves_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hashimoto_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "橋本氏甲狀腺炎",
+      "name_en": "Hashimoto disease",
+      "system": "Endocrine/Autoimmune",
+      "urgency": "routine",
+      "summary_zh": "橋本氏甲狀腺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, cold intolerance, constipation, goiter, hypothyroid labs, autoimmune clustering, or postpartum thyroid context should include Hashimoto disease.",
+      "signals": {
+        "fatigue": 5,
+        "hypothermia": 1,
+        "constipation_obstipation": 1,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "hashimoto disease",
+        "hashimoto thyroiditis",
+        "autoimmune hypothyroidism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check thyroid symptoms, goiter, TSH/free T4 context, thyroid antibodies, pregnancy/postpartum status, autoimmune history, and endocrine follow-up context."
+      ],
+      "source_ids": [
+        "niddk_hashimotos_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "adrenal_insufficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腎上腺功能不全",
+      "name_en": "Adrenal insufficiency",
+      "system": "Endocrine/Metabolic",
+      "urgency": "soon",
+      "summary_zh": "腎上腺功能不全 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, weight loss, orthostatic symptoms, abdominal pain, salt craving, hyperpigmentation, hypoglycemia, or steroid-withdrawal context should include adrenal insufficiency.",
+      "signals": {
+        "fatigue": 4,
+        "weight_loss": 3,
+        "orthostatic_lightheadedness": 3,
+        "abdominal_pain": 2,
+        "hypoglycemia_risk": 2
+      },
+      "synonyms": [
+        "adrenal insufficiency",
+        "addison disease",
+        "primary adrenal insufficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check orthostasis, weight loss, hyperpigmentation, steroid exposure or withdrawal, autoimmune context, sodium/potassium/glucose clues, and crisis red flags."
+      ],
+      "source_ids": [
+        "niddk_adrenal_insufficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acromegaly",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肢端肥大症",
+      "name_en": "Acromegaly",
+      "system": "Endocrine/Pituitary",
+      "urgency": "soon",
+      "summary_zh": "肢端肥大症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive acral or facial change, headaches, visual symptoms, sleep apnea, diabetes, hypertension, or pituitary-mass concern should include acromegaly.",
+      "signals": {
+        "visual_disturbance": 2,
+        "new_headache_after_50": 2,
+        "fatigue": 2,
+        "extreme_thirst_polyuria": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "acromegaly",
+        "growth hormone excess",
+        "pituitary gigantism adult"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ring/shoe or facial-feature change, headache, visual fields, sleep apnea, diabetes, colon polyp context, and IGF-1 or endocrine review need."
+      ],
+      "source_ids": [
+        "niddk_acromegaly",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "prolactinoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "泌乳素瘤",
+      "name_en": "Prolactinoma",
+      "system": "Endocrine/Pituitary/Reproductive",
+      "urgency": "soon",
+      "summary_zh": "泌乳素瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Galactorrhea, menstrual change, infertility, hypogonadism, headache, visual symptoms, or pituitary mass context should include prolactinoma.",
+      "signals": {
+        "visual_disturbance": 3,
+        "new_headache_after_50": 2,
+        "fatigue": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "prolactinoma",
+        "prolactin secreting pituitary adenoma",
+        "hyperprolactinemia tumor"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check galactorrhea, menstrual or sexual symptoms, pregnancy test context, medications, headache, visual fields, prolactin level, and pituitary imaging context."
+      ],
+      "source_ids": [
+        "niddk_prolactinoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vulvodynia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "外陰痛",
+      "name_en": "Vulvodynia",
+      "system": "Gynecologic/Pain",
+      "urgency": "routine",
+      "summary_zh": "外陰痛 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic vulvar pain, burning, dyspareunia, tampon intolerance, or pelvic-floor pain after infection and dermatoses are considered should include vulvodynia.",
+      "signals": {
+        "pelvic_pain": 4,
+        "severe_pain": 2,
+        "dysuria": 1,
+        "vaginal_discharge": 1
+      },
+      "synonyms": [
+        "vulvodynia",
+        "chronic vulvar pain",
+        "vulvar vestibulitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain duration and location, provoked versus spontaneous pain, infection or dermatosis clues, pelvic-floor symptoms, sexual pain, and gynecology/pain review context."
+      ],
+      "source_ids": [
+        "nichd_vulvodynia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "primary_ovarian_insufficiency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "原發性卵巢功能不全",
+      "name_en": "Primary ovarian insufficiency",
+      "system": "Gynecologic/Endocrine/Reproductive",
+      "urgency": "routine",
+      "summary_zh": "原發性卵巢功能不全 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Amenorrhea or irregular menses before age 40, infertility, vasomotor symptoms, low estrogen context, or autoimmune/genetic risk should include POI.",
+      "signals": {
+        "pregnancy_possible": 1,
+        "fatigue": 2,
+        "palpitations": 1,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "primary ovarian insufficiency",
+        "poi",
+        "premature ovarian failure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, cycle pattern, pregnancy status, vasomotor symptoms, fertility goals, autoimmune/genetic risk, and FSH/estradiol or reproductive-endocrine context."
+      ],
+      "source_ids": [
+        "nichd_primary_ovarian_insufficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rotator_cuff_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "旋轉肌袖損傷",
+      "name_en": "Rotator cuff injury",
+      "system": "Musculoskeletal/Shoulder",
+      "urgency": "routine",
+      "summary_zh": "旋轉肌袖損傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Shoulder pain with overhead weakness, painful arc, trauma, night pain, or functional limitation should include rotator cuff injury.",
+      "signals": {
+        "acute_joint_pain_swelling": 2,
+        "recent_trauma": 3,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "rotator cuff injury",
+        "rotator cuff tear",
+        "shoulder tendon injury"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check trauma versus overuse, active and passive range of motion, weakness, night pain, neurologic symptoms, and imaging or orthopedic/physical-therapy context."
+      ],
+      "source_ids": [
+        "medlineplus_rotator_cuff_injuries",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "spinal_stenosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脊椎管狹窄",
+      "name_en": "Spinal stenosis",
+      "system": "Musculoskeletal/Neurologic/Spine",
+      "urgency": "soon",
+      "summary_zh": "脊椎管狹窄 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Back or neck pain with neurogenic claudication, leg weakness, numbness, gait decline, or bladder/bowel warning symptoms should include spinal stenosis.",
+      "signals": {
+        "low_back_pain": 4,
+        "progressive_bilateral_leg_weakness": 2,
+        "neurologic_deficit": 2,
+        "bladder_bowel_dysfunction": 1
+      },
+      "synonyms": [
+        "spinal stenosis",
+        "lumbar spinal stenosis",
+        "neurogenic claudication"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check walking tolerance, relief with flexion, neurologic deficits, bladder or bowel symptoms, prior spine disease, and imaging or spine review context."
+      ],
+      "source_ids": [
+        "medlineplus_spinal_stenosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bursitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "滑囊炎",
+      "name_en": "Bursitis",
+      "system": "Musculoskeletal",
+      "urgency": "routine",
+      "summary_zh": "滑囊炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Localized periarticular pain, swelling, warmth, overuse, trauma, gout, or infection concern near a bursa should include bursitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 2,
+        "recent_trauma": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "bursitis",
+        "olecranon bursitis",
+        "prepatellar bursitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check location, overuse or pressure exposure, warmth/redness, fever, crystal disease risk, septic bursitis clues, and aspiration or orthopedic review context."
+      ],
+      "source_ids": [
+        "medlineplus_bursitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tendinitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌腱炎",
+      "name_en": "Tendinitis",
+      "system": "Musculoskeletal/Sports medicine",
+      "urgency": "routine",
+      "summary_zh": "肌腱炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tendon-region pain worsened by resisted motion, overuse, sports or occupational strain, or localized tenderness should include tendinitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 2,
+        "recent_trauma": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "tendinitis",
+        "tendonitis",
+        "overuse tendon injury"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tendon site, resisted-motion pain, overuse history, rupture signs, fluoroquinolone or steroid exposure, and physical therapy or imaging context."
+      ],
+      "source_ids": [
+        "medlineplus_tendinitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "paget_disease_of_bone",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "骨佩吉特病",
+      "name_en": "Paget disease of bone",
+      "system": "Musculoskeletal/Metabolic bone",
+      "urgency": "routine",
+      "summary_zh": "骨佩吉特病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Bone pain, deformity, hearing loss, elevated alkaline phosphatase, fracture, or focal bone enlargement should include Paget disease of bone.",
+      "signals": {
+        "bone_back_pain": 4,
+        "hearing_loss_tinnitus": 1,
+        "neurologic_deficit": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "paget disease of bone",
+        "pagets disease of bone",
+        "osteitis deformans"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check focal bone pain or deformity, skull/hearing symptoms, fracture risk, alkaline phosphatase context, and radiology or metabolic bone review need."
+      ],
+      "source_ids": [
+        "niams_paget_disease_bone",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "osteonecrosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "骨壞死",
+      "name_en": "Osteonecrosis",
+      "system": "Musculoskeletal/Vascular bone",
+      "urgency": "soon",
+      "summary_zh": "骨壞死 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Deep joint or bone pain with steroid exposure, alcohol use, trauma, sickle cell disease, or progressive hip/shoulder limitation should include osteonecrosis.",
+      "signals": {
+        "bone_back_pain": 3,
+        "acute_joint_pain_swelling": 2,
+        "severe_pain": 2,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "osteonecrosis",
+        "avascular necrosis",
+        "aseptic necrosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain site, steroid or alcohol exposure, trauma, sickle cell or autoimmune context, range of motion, and MRI or orthopedic review need."
+      ],
+      "source_ids": [
+        "niams_osteonecrosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "myelodysplastic_syndromes",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "骨髓增生異常症候群",
+      "name_en": "Myelodysplastic syndromes",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "骨髓增生異常症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Unexplained cytopenias, fatigue, infections, bruising, macrocytosis, older age, or marrow failure context should include myelodysplastic syndromes.",
+      "signals": {
+        "fatigue": 4,
+        "easy_bruising_bleeding": 3,
+        "fever": 1,
+        "weight_loss": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "myelodysplastic syndromes",
+        "mds",
+        "myelodysplasia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC trends, neutropenia or thrombocytopenia, transfusion need, prior chemotherapy or radiation, blasts concern, and hematology referral context."
+      ],
+      "source_ids": [
+        "nci_myelodysplastic_syndromes",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "essential_thrombocythemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "原發性血小板增多症",
+      "name_en": "Essential thrombocythemia",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "原發性血小板增多症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent thrombocytosis with headache, visual symptoms, erythromelalgia, thrombosis, bleeding, or splenomegaly context should include essential thrombocythemia.",
+      "signals": {
+        "easy_bruising_bleeding": 2,
+        "visual_disturbance": 2,
+        "chest_pain": 1,
+        "neurologic_deficit": 1,
+        "unilateral_leg_swelling": 1
+      },
+      "synonyms": [
+        "essential thrombocythemia",
+        "essential thrombocythaemia",
+        "et myeloproliferative neoplasm"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check platelet trend, thrombosis or bleeding history, microvascular symptoms, iron deficiency or inflammation mimics, JAK2/CALR/MPL context, and hematology review need."
+      ],
+      "source_ids": [
+        "medlineplus_essential_thrombocythemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "primary_myelofibrosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "原發性骨髓纖維化",
+      "name_en": "Primary myelofibrosis",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "原發性骨髓纖維化 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, anemia, splenomegaly symptoms, weight loss, night sweats, bone pain, or leukoerythroblastic smear context should include primary myelofibrosis.",
+      "signals": {
+        "fatigue": 4,
+        "weight_loss": 3,
+        "easy_bruising_bleeding": 2,
+        "bone_back_pain": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "primary myelofibrosis",
+        "myelofibrosis",
+        "agnogenic myeloid metaplasia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC trend, splenic fullness, constitutional symptoms, bone pain, thrombotic or bleeding events, and hematology/marrow evaluation context."
+      ],
+      "source_ids": [
+        "nci_primary_myelofibrosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "muscular_dystrophy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌肉失養症",
+      "name_en": "Muscular dystrophy",
+      "system": "Neurologic/Genetic/Neuromuscular",
+      "urgency": "soon",
+      "summary_zh": "肌肉失養症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive muscle weakness, delayed motor milestones, calf enlargement, falls, cardiopulmonary involvement, or family history should include muscular dystrophy.",
+      "signals": {
+        "progressive_bilateral_leg_weakness": 4,
+        "neurologic_deficit": 3,
+        "dyspnea": 2,
+        "respiratory_distress": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "muscular dystrophy",
+        "duchenne muscular dystrophy",
+        "becker muscular dystrophy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age of onset, weakness pattern, Gower sign or falls, family history, cardiac or respiratory symptoms, creatine kinase context, and neuromuscular referral need."
+      ],
+      "source_ids": [
+        "cdc_muscular_dystrophy",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -13476,6 +14181,156 @@
       "publisher": "NIAMS",
       "title": "Scoliosis",
       "url": "https://www.niams.nih.gov/health-topics/scoliosis"
+    },
+    {
+      "source_id": "nhlbi_cystic_fibrosis",
+      "publisher": "NHLBI",
+      "title": "Cystic Fibrosis",
+      "url": "https://www.nhlbi.nih.gov/health/cystic-fibrosis"
+    },
+    {
+      "source_id": "nhlbi_alpha_1_antitrypsin_deficiency",
+      "publisher": "NHLBI",
+      "title": "Alpha-1 Antitrypsin Deficiency",
+      "url": "https://www.nhlbi.nih.gov/health/alpha-1-antitrypsin-deficiency"
+    },
+    {
+      "source_id": "cdc_cerebral_palsy",
+      "publisher": "CDC",
+      "title": "About Cerebral Palsy",
+      "url": "https://www.cdc.gov/cerebral-palsy/about/index.html"
+    },
+    {
+      "source_id": "cdc_spina_bifida",
+      "publisher": "CDC",
+      "title": "About Spina Bifida",
+      "url": "https://www.cdc.gov/spina-bifida/about/index.html"
+    },
+    {
+      "source_id": "cdc_down_syndrome",
+      "publisher": "CDC",
+      "title": "About Down Syndrome",
+      "url": "https://www.cdc.gov/birth-defects/about/down-syndrome.html"
+    },
+    {
+      "source_id": "cdc_fetal_alcohol_spectrum_disorders",
+      "publisher": "CDC",
+      "title": "About Fetal Alcohol Spectrum Disorders",
+      "url": "https://www.cdc.gov/fasd/about/index.html"
+    },
+    {
+      "source_id": "cdc_tourette_syndrome",
+      "publisher": "CDC",
+      "title": "About Tourette Syndrome",
+      "url": "https://www.cdc.gov/tourette-syndrome/about/index.html"
+    },
+    {
+      "source_id": "ninds_narcolepsy",
+      "publisher": "NINDS",
+      "title": "Narcolepsy",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/narcolepsy"
+    },
+    {
+      "source_id": "niddk_graves_disease",
+      "publisher": "NIDDK",
+      "title": "Graves' Disease",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/graves-disease"
+    },
+    {
+      "source_id": "medlineplus_graves_disease",
+      "publisher": "MedlinePlus",
+      "title": "Graves Disease",
+      "url": "https://medlineplus.gov/ency/article/000358.htm"
+    },
+    {
+      "source_id": "niddk_hashimotos_disease",
+      "publisher": "NIDDK",
+      "title": "Hashimoto's Disease",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/hashimotos-disease"
+    },
+    {
+      "source_id": "niddk_acromegaly",
+      "publisher": "NIDDK",
+      "title": "Acromegaly",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/acromegaly"
+    },
+    {
+      "source_id": "niddk_prolactinoma",
+      "publisher": "NIDDK",
+      "title": "Prolactinoma",
+      "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/prolactinoma"
+    },
+    {
+      "source_id": "nichd_vulvodynia",
+      "publisher": "NICHD",
+      "title": "Vulvodynia",
+      "url": "https://www.nichd.nih.gov/health/topics/vulvodynia"
+    },
+    {
+      "source_id": "nichd_primary_ovarian_insufficiency",
+      "publisher": "NICHD",
+      "title": "Primary Ovarian Insufficiency",
+      "url": "https://www.nichd.nih.gov/health/topics/poi"
+    },
+    {
+      "source_id": "medlineplus_rotator_cuff_injuries",
+      "publisher": "MedlinePlus",
+      "title": "Rotator Cuff Injuries",
+      "url": "https://medlineplus.gov/rotatorcuffinjuries.html"
+    },
+    {
+      "source_id": "medlineplus_spinal_stenosis",
+      "publisher": "MedlinePlus",
+      "title": "Spinal Stenosis",
+      "url": "https://medlineplus.gov/spinalstenosis.html"
+    },
+    {
+      "source_id": "medlineplus_bursitis",
+      "publisher": "MedlinePlus",
+      "title": "Bursitis",
+      "url": "https://medlineplus.gov/bursitis.html"
+    },
+    {
+      "source_id": "medlineplus_tendinitis",
+      "publisher": "MedlinePlus",
+      "title": "Tendinitis",
+      "url": "https://medlineplus.gov/tendinitis.html"
+    },
+    {
+      "source_id": "niams_paget_disease_bone",
+      "publisher": "NIAMS",
+      "title": "Paget's Disease of Bone",
+      "url": "https://www.niams.nih.gov/health-topics/pagets-disease-bone"
+    },
+    {
+      "source_id": "niams_osteonecrosis",
+      "publisher": "NIAMS",
+      "title": "Osteonecrosis",
+      "url": "https://www.niams.nih.gov/health-topics/osteonecrosis"
+    },
+    {
+      "source_id": "nci_myelodysplastic_syndromes",
+      "publisher": "National Cancer Institute",
+      "title": "Myelodysplastic Syndromes Treatment",
+      "url": "https://www.cancer.gov/types/myeloproliferative/patient/myelodysplastic-treatment-pdq"
+    },
+    {
+      "source_id": "medlineplus_essential_thrombocythemia",
+      "publisher": "MedlinePlus",
+      "title": "Essential Thrombocythemia",
+      "url": "https://medlineplus.gov/ency/article/000543.htm"
+    },
+    {
+      "source_id": "nci_primary_myelofibrosis",
+      "publisher": "National Cancer Institute",
+      "title": "Primary Myelofibrosis",
+      "url": "https://www.cancer.gov/publications/dictionaries/cancer-terms/def/primary-myelofibrosis"
+    },
+    {
+      "source_id": "cdc_muscular_dystrophy",
+      "publisher": "CDC",
+      "title": "About Muscular Dystrophy",
+      "url": "https://www.cdc.gov/muscular-dystrophy/about/index.html"
     }
   ]
 }

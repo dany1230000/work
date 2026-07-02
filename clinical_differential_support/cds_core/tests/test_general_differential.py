@@ -489,6 +489,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_eleventh_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("cystic fibrosis", "cystic_fibrosis"),
+            ("alpha 1 antitrypsin deficiency", "alpha_1_antitrypsin_deficiency"),
+            ("cerebral palsy", "cerebral_palsy"),
+            ("spina bifida", "spina_bifida"),
+            ("down syndrome", "down_syndrome"),
+            ("fetal alcohol spectrum disorders", "fetal_alcohol_spectrum_disorders"),
+            ("tourette syndrome", "tourette_syndrome"),
+            ("narcolepsy", "narcolepsy"),
+            ("graves disease", "graves_disease"),
+            ("hashimoto disease", "hashimoto_disease"),
+            ("adrenal insufficiency", "adrenal_insufficiency"),
+            ("acromegaly", "acromegaly"),
+            ("prolactinoma", "prolactinoma"),
+            ("vulvodynia", "vulvodynia"),
+            ("primary ovarian insufficiency", "primary_ovarian_insufficiency"),
+            ("rotator cuff injury", "rotator_cuff_injury"),
+            ("spinal stenosis", "spinal_stenosis"),
+            ("bursitis", "bursitis"),
+            ("tendinitis", "tendinitis"),
+            ("paget disease of bone", "paget_disease_of_bone"),
+            ("osteonecrosis", "osteonecrosis"),
+            ("myelodysplastic syndromes", "myelodysplastic_syndromes"),
+            ("essential thrombocythemia", "essential_thrombocythemia"),
+            ("primary myelofibrosis", "primary_myelofibrosis"),
+            ("muscular dystrophy", "muscular_dystrophy"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

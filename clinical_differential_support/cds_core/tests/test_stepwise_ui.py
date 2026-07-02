@@ -62,6 +62,19 @@ class StepwiseUiTests(TestCase):
         self.assertContains(response, "開始評估 / Start")
         self.assert_no_mojibake(body)
 
+    def test_fast_navigation_prefetches_on_hover_and_focus(self):
+        response = self.client.get(reverse("cds_core:home"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-fast-nav-status="idle"')
+        self.assertContains(response, "prefetchFastNavTarget")
+        self.assertContains(response, "data-fast-nav-prefetched")
+        self.assertContains(response, "pointerenter")
+        self.assertContains(response, "focusin")
+        self.assertContains(response, "Loading workspace")
+        self.assertContains(response, "Workspace ready")
+        self.assertContains(response, '"X-Fast-Nav": "1"')
+
     def test_public_symptom_pages_show_a_three_step_workflow(self):
         route_expectations = [
             ("headache", "頭痛結構化問診", "Headache Intake", "達到最痛時間（分鐘） / Time to peak, minutes"),
