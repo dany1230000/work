@@ -60,8 +60,8 @@
 - [x] Run related tests.
 - [x] Run full `cds_core.tests` suite and validators.
 - [x] Run local CSRF smoke.
-- [ ] Commit, push, and public Render smoke.
+- [x] Commit, push, and public Render smoke.
 
 ### Next Phase Candidate
 
-After this phase is verified publicly, continue with the 550-condition slice and collapse secondary candidate cards into a filterable drawer by urgency and system.
+Continue with the 550-condition slice and collapse secondary candidate cards into a filterable drawer by urgency and system.
