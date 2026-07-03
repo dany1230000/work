@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03",
-    "condition_count": 450,
-    "source_count": 528,
+    "catalog_version": "general-differential-starter-2026-07-03-475",
+    "condition_count": 475,
+    "source_count": 553,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03",
-      "condition_count": 450,
-      "source_count": 528,
+      "catalog_version": "general-differential-starter-2026-07-03-475",
+      "condition_count": 475,
+      "source_count": 553,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 450
+      "expansion_target_condition_count": 475
     }
   },
   "safety_scope": {
@@ -12858,6 +12858,734 @@
         "medlineplus_eyelid_bump",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "histoplasmosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "組織胞漿菌病",
+      "name_en": "Histoplasmosis",
+      "system": "Infectious/Pulmonary/Fungal",
+      "urgency": "soon",
+      "summary_zh": "組織胞漿菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, cough, malaise, pulmonary nodules, endemic bird or bat exposure, or immunocompromise should include histoplasmosis.",
+      "signals": {
+        "fever": 2,
+        "cough_sputum": 3,
+        "dyspnea": 2,
+        "pleuritic_pain": 1,
+        "fatigue": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "histoplasmosis",
+        "histoplasma infection",
+        "pulmonary histoplasmosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check endemic travel or residence, bird or bat droppings exposure, pneumonia severity, immunosuppression, chronic lung disease, and fungal testing context."
+      ],
+      "source_ids": [
+        "cdc_histoplasmosis_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "coccidioidomycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "球孢子菌病",
+      "name_en": "Coccidioidomycosis",
+      "system": "Infectious/Pulmonary/Fungal",
+      "urgency": "soon",
+      "summary_zh": "球孢子菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Subacute fever, cough, pleuritic pain, fatigue, rash, arthralgia, or desert Southwest exposure should include coccidioidomycosis.",
+      "signals": {
+        "fever": 2,
+        "cough_sputum": 3,
+        "pleuritic_pain": 2,
+        "fatigue": 2,
+        "rash": 1,
+        "acute_joint_pain_swelling": 1
+      },
+      "synonyms": [
+        "coccidioidomycosis",
+        "valley fever",
+        "coccidioides infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or residence in endemic dry regions, pneumonia tempo, rash or arthralgia, pregnancy or immunosuppression, and fungal serology/imaging context."
+      ],
+      "source_ids": [
+        "cdc_valley_fever_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "toxoplasmosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "弓形蟲病",
+      "name_en": "Toxoplasmosis",
+      "system": "Infectious/Neurologic/Ophthalmologic",
+      "urgency": "soon",
+      "summary_zh": "弓形蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Ocular inflammation, focal neurologic signs, seizure, lymphadenopathy, pregnancy exposure, or immunocompromise should include toxoplasmosis.",
+      "signals": {
+        "visual_disturbance": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "neurologic_deficit": 2,
+        "fever": 1,
+        "immunocompromised": 3
+      },
+      "synonyms": [
+        "toxoplasmosis",
+        "toxoplasma gondii infection",
+        "ocular toxoplasmosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy status, HIV or transplant risk, cat litter or undercooked meat exposure, ocular symptoms, neurologic deficits, and serology/imaging context."
+      ],
+      "source_ids": [
+        "cdc_toxoplasmosis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "giardiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "梨形鞭毛蟲病",
+      "name_en": "Giardiasis",
+      "system": "Gastrointestinal/Infectious/Parasitic",
+      "urgency": "soon",
+      "summary_zh": "梨形鞭毛蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Prolonged diarrhea, abdominal cramps, bloating, nausea, weight loss, childcare exposure, or untreated water exposure should include giardiasis.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 1,
+        "poor_oral_intake_dehydration": 2,
+        "weight_loss": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "giardiasis",
+        "giardia infection",
+        "giardia lamblia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check stool duration and character, camping or untreated water exposure, childcare or outbreak links, dehydration, weight loss, and stool antigen/PCR context."
+      ],
+      "source_ids": [
+        "cdc_giardia_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pinworm_infection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "蟯蟲感染",
+      "name_en": "Pinworm infection",
+      "system": "Gastrointestinal/Infectious/Parasitic",
+      "urgency": "routine",
+      "summary_zh": "蟯蟲感染 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nocturnal perianal itching, household clustering, sleep disturbance, vulvovaginal irritation, or child exposure should include pinworm infection.",
+      "signals": {
+        "rectal_pain_or_bleeding": 2,
+        "abdominal_pain": 1,
+        "vaginal_discharge": 1
+      },
+      "synonyms": [
+        "pinworm infection",
+        "enterobiasis",
+        "threadworm infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check nocturnal perianal itching, household or school spread, sleep disruption, vulvovaginal symptoms, and tape-test or household treatment context."
+      ],
+      "source_ids": [
+        "cdc_pinworm_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "schistosomiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "血吸蟲病",
+      "name_en": "Schistosomiasis",
+      "system": "Infectious/Parasitic/Gastrointestinal/Urologic",
+      "urgency": "soon",
+      "summary_zh": "血吸蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Freshwater exposure with fever, rash, eosinophilia, abdominal pain, diarrhea, hematuria, or chronic liver/urinary disease should include schistosomiasis.",
+      "signals": {
+        "fever": 2,
+        "rash": 1,
+        "abdominal_pain": 2,
+        "bloody_diarrhea": 2,
+        "dysuria": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "schistosomiasis",
+        "bilharzia",
+        "schistosome infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check freshwater exposure by region, rash or Katayama fever timing, hematuria or diarrhea, eosinophilia, hepatosplenic clues, and ova/serology context."
+      ],
+      "source_ids": [
+        "cdc_schistosomiasis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "strongyloidiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "糞小桿線蟲病",
+      "name_en": "Strongyloidiasis",
+      "system": "Infectious/Parasitic/Gastrointestinal/Pulmonary",
+      "urgency": "soon",
+      "summary_zh": "糞小桿線蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abdominal symptoms, intermittent rash, eosinophilia, wheeze, travel exposure, steroid use, or immunosuppression should include strongyloidiasis.",
+      "signals": {
+        "abdominal_pain": 2,
+        "rash": 2,
+        "cough_sputum": 1,
+        "wheeze": 1,
+        "immunocompromised": 3,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "strongyloidiasis",
+        "strongyloides infection",
+        "strongyloides stercoralis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tropical/subtropical exposure, eosinophilia, steroid or transplant risk, pulmonary symptoms, larva currens rash, and stool/serology context."
+      ],
+      "source_ids": [
+        "cdc_strongyloides_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ascariasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "蛔蟲病",
+      "name_en": "Ascariasis",
+      "system": "Infectious/Parasitic/Gastrointestinal/Pulmonary",
+      "urgency": "routine",
+      "summary_zh": "蛔蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abdominal pain, bowel obstruction clues, cough during larval migration, malnutrition, or exposure to contaminated soil should include ascariasis.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 2,
+        "constipation_obstipation": 2,
+        "cough_sputum": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "ascariasis",
+        "ascaris infection",
+        "roundworm infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or sanitation exposure, obstructive symptoms, cough timing, growth or nutrition concerns, stool ova testing, and imaging/surgical red flags."
+      ],
+      "source_ids": [
+        "cdc_ascariasis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rocky_mountain_spotted_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "落磯山斑點熱",
+      "name_en": "Rocky Mountain spotted fever",
+      "system": "Infectious/Tickborne",
+      "urgency": "emergent",
+      "summary_zh": "落磯山斑點熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, severe headache, rash, vomiting, abdominal pain, tick exposure, or rapidly progressive systemic illness should include Rocky Mountain spotted fever.",
+      "signals": {
+        "fever": 3,
+        "rash": 3,
+        "vomiting": 1,
+        "abdominal_pain": 1,
+        "altered_mental_status": 2,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "rocky mountain spotted fever",
+        "rmsf",
+        "spotted fever rickettsiosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tick exposure, rash timing and palms/soles involvement, headache, GI symptoms, mental status, thrombocytopenia risk, and urgent empiric-care context."
+      ],
+      "source_ids": [
+        "cdc_rmsf_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chagas_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "恰加斯病",
+      "name_en": "Chagas disease",
+      "system": "Infectious/Cardiac/Gastrointestinal",
+      "urgency": "soon",
+      "summary_zh": "恰加斯病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Latin America exposure with febrile illness, Romaña sign, cardiomyopathy, arrhythmia, megaesophagus, or megacolon clues should include Chagas disease.",
+      "signals": {
+        "fever": 1,
+        "rash": 1,
+        "palpitations": 2,
+        "dyspnea": 2,
+        "abdominal_pain": 1,
+        "constipation_obstipation": 2
+      },
+      "synonyms": [
+        "chagas disease",
+        "american trypanosomiasis",
+        "trypanosoma cruzi"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check birthplace/travel and transfusion history, triatomine exposure, cardiac conduction symptoms, dysphagia or constipation, pregnancy status, and serology context."
+      ],
+      "source_ids": [
+        "cdc_chagas_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "laryngitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "喉炎",
+      "name_en": "Laryngitis",
+      "system": "ENT/Respiratory",
+      "urgency": "routine",
+      "summary_zh": "喉炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hoarseness, voice loss, sore throat, cough, recent upper respiratory infection, or voice overuse should include laryngitis.",
+      "signals": {
+        "sore_throat": 3,
+        "cough_sputum": 2,
+        "fever": 1,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "laryngitis",
+        "hoarseness",
+        "voice loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check voice change duration, URI symptoms, fever, dysphagia or airway red flags, reflux/irritant exposure, voice strain, and ENT review context."
+      ],
+      "source_ids": [
+        "nhs_laryngitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vocal_cord_paralysis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "聲帶麻痺",
+      "name_en": "Vocal cord paralysis",
+      "system": "ENT/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "聲帶麻痺 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Breathy voice, dysphonia, aspiration, choking, dyspnea, stridor, neck surgery, or neurologic disease should include vocal cord paralysis.",
+      "signals": {
+        "dyspnea": 2,
+        "respiratory_distress": 2,
+        "cough_sputum": 1,
+        "neck_stiffness_swelling_dysphagia": 3,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "vocal cord paralysis",
+        "vocal fold paralysis",
+        "recurrent laryngeal nerve palsy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check onset after surgery/intubation, aspiration or choking, stridor, neurologic symptoms, malignancy risk, laryngoscopy context, and airway safety."
+      ],
+      "source_ids": [
+        "nidcd_vocal_fold_paralysis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "oral_candidiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "口腔念珠菌感染",
+      "name_en": "Oral candidiasis",
+      "system": "Infectious/Oral/Dermatologic",
+      "urgency": "routine",
+      "summary_zh": "口腔念珠菌感染 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "White oral plaques, mouth soreness, dysphagia, inhaled steroid use, diabetes, antibiotics, or immunocompromise should include oral candidiasis.",
+      "signals": {
+        "mucosal_lesions": 3,
+        "sore_throat": 1,
+        "neck_stiffness_swelling_dysphagia": 1,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "oral candidiasis",
+        "oral thrush",
+        "candidal stomatitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check plaque removability, pain or dysphagia, denture and inhaled steroid use, diabetes or HIV risk, recent antibiotics, and esophageal involvement context."
+      ],
+      "source_ids": [
+        "medlineplus_yeast_infections",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pityriasis_rosea",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "玫瑰糠疹",
+      "name_en": "Pityriasis rosea",
+      "system": "Dermatologic",
+      "urgency": "routine",
+      "summary_zh": "玫瑰糠疹 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Herald patch followed by oval scaly trunk lesions in a Christmas-tree pattern should include pityriasis rosea.",
+      "signals": {
+        "rash": 3,
+        "diffuse_viral_rash": 2,
+        "chronic_itchy_flexural_rash": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "pityriasis rosea",
+        "herald patch rash",
+        "christmas tree rash"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check herald patch timing, trunk distribution, itch, pregnancy status, medication or syphilis mimics, systemic symptoms, and dermatology context."
+      ],
+      "source_ids": [
+        "medlineplus_pityriasis_rosea",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lichen_planus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "扁平苔癬",
+      "name_en": "Lichen planus",
+      "system": "Dermatologic/Oral",
+      "urgency": "routine",
+      "summary_zh": "扁平苔癬 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pruritic violaceous flat-topped papules, oral lacy lesions, nail changes, or hepatitis C association should include lichen planus.",
+      "signals": {
+        "rash": 3,
+        "mucosal_lesions": 2,
+        "chronic_itchy_flexural_rash": 2
+      },
+      "synonyms": [
+        "lichen planus",
+        "oral lichen planus",
+        "wickham striae"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check skin and oral distribution, itch, medication triggers, hepatitis C risk, genital or nail involvement, and biopsy/dermatology context."
+      ],
+      "source_ids": [
+        "medlineplus_lichen_planus",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pressure_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "壓力性損傷",
+      "name_en": "Pressure injury",
+      "system": "Skin/Soft tissue/Wound care",
+      "urgency": "soon",
+      "summary_zh": "壓力性損傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Localized skin breakdown over bony prominences with immobility, device pressure, pain, drainage, infection, or necrosis should include pressure injury.",
+      "signals": {
+        "purulent_skin_lesion": 2,
+        "rapidly_spreading_skin_infection": 2,
+        "fever": 1,
+        "severe_pain": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "pressure injury",
+        "pressure ulcer",
+        "bedsore"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check stage and depth, location over bony prominences or devices, immobility/nutrition risk, infection or osteomyelitis clues, and wound-care context."
+      ],
+      "source_ids": [
+        "medlineplus_pressure_sores",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "primary_hyperaldosteronism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "原發性高醛固酮症",
+      "name_en": "Primary hyperaldosteronism",
+      "system": "Endocrine/Cardiovascular/Renal",
+      "urgency": "soon",
+      "summary_zh": "原發性高醛固酮症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Resistant hypertension, hypokalemia, muscle weakness, polyuria, thirst, headache, or adrenal incidentaloma should include primary hyperaldosteronism.",
+      "signals": {
+        "hypertensive_emergency": 2,
+        "extreme_thirst_polyuria": 2,
+        "palpitations": 1,
+        "fatigue": 2,
+        "syncope": 1
+      },
+      "synonyms": [
+        "primary hyperaldosteronism",
+        "primary aldosteronism",
+        "conn syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check blood pressure severity and medication count, potassium and bicarbonate pattern, adrenal imaging, renin/aldosterone testing context, and endocrine referral need."
+      ],
+      "source_ids": [
+        "cleveland_primary_aldosteronism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "amyloidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "類澱粉沉積症",
+      "name_en": "Amyloidosis",
+      "system": "Hematology/Cardiac/Renal/Neurologic",
+      "urgency": "soon",
+      "summary_zh": "類澱粉沉積症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Multisystem edema, nephrotic proteinuria, restrictive cardiomyopathy, neuropathy, bruising, weight loss, or monoclonal gammopathy should include amyloidosis.",
+      "signals": {
+        "orthopnea_edema": 3,
+        "fatigue": 2,
+        "weight_loss": 2,
+        "neurologic_deficit": 1,
+        "easy_bruising_bleeding": 1,
+        "dyspnea": 2
+      },
+      "synonyms": [
+        "amyloidosis",
+        "al amyloidosis",
+        "transthyretin amyloidosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check cardiac, renal, neurologic, GI, and soft-tissue involvement, monoclonal protein testing, family history, biopsy context, and specialist referral need."
+      ],
+      "source_ids": [
+        "nhs_amyloidosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_rheumatic_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性風濕熱",
+      "name_en": "Acute rheumatic fever",
+      "system": "Infectious/Cardiac/Rheumatologic/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "急性風濕熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recent group A strep infection with migratory arthritis, carditis, chorea, rash, subcutaneous nodules, or fever should include acute rheumatic fever.",
+      "signals": {
+        "fever": 2,
+        "acute_joint_pain_swelling": 3,
+        "rash": 1,
+        "chest_pain": 1,
+        "palpitations": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "acute rheumatic fever",
+        "rheumatic fever",
+        "post streptococcal rheumatic fever"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check recent pharyngitis or scarlet fever, Jones criteria features, murmur or heart failure clues, chorea, inflammatory markers, and echo/public-health context."
+      ],
+      "source_ids": [
+        "cdc_acute_rheumatic_fever",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rheumatic_heart_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "風濕性心臟病",
+      "name_en": "Rheumatic heart disease",
+      "system": "Cardiovascular/Infectious",
+      "urgency": "soon",
+      "summary_zh": "風濕性心臟病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Valvular murmur, dyspnea, palpitations, atrial fibrillation, heart failure, or prior rheumatic fever should include rheumatic heart disease.",
+      "signals": {
+        "dyspnea": 3,
+        "palpitations": 2,
+        "orthopnea_edema": 2,
+        "chest_pain": 1,
+        "syncope": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "rheumatic heart disease",
+        "rhd",
+        "rheumatic valve disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prior rheumatic fever or strep history, murmur and valve pattern, atrial fibrillation, heart failure, anticoagulation context, and echocardiography review need."
+      ],
+      "source_ids": [
+        "who_rheumatic_heart_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "iga_vasculitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "IgA 血管炎",
+      "name_en": "IgA vasculitis",
+      "system": "Rheumatologic/Renal/Dermatologic/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "IgA 血管炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Palpable purpura, abdominal pain, arthralgia, renal findings, or recent upper respiratory infection should include IgA vasculitis.",
+      "signals": {
+        "rash": 3,
+        "abdominal_pain": 2,
+        "acute_joint_pain_swelling": 2,
+        "bloody_diarrhea": 1,
+        "dysuria": 1
+      },
+      "synonyms": [
+        "iga vasculitis",
+        "henoch schonlein purpura",
+        "hsp vasculitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check purpura distribution, abdominal pain or GI bleeding, joint symptoms, blood pressure, urinalysis/proteinuria, renal function, and pediatric/rheumatology context."
+      ],
+      "source_ids": [
+        "medlineplus_iga_vasculitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hydronephrosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腎盂積水",
+      "name_en": "Hydronephrosis",
+      "system": "Renal/Urologic",
+      "urgency": "soon",
+      "summary_zh": "腎盂積水 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Flank pain, urinary obstruction, recurrent UTI, hematuria, renal dysfunction, pregnancy, stones, or congenital obstruction should include hydronephrosis.",
+      "signals": {
+        "flank_pain": 3,
+        "dysuria": 1,
+        "inability_to_void": 2,
+        "fever": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "hydronephrosis",
+        "kidney swelling",
+        "urinary tract obstruction"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check obstruction symptoms, urine output, fever or pyelonephritis, stone history, pregnancy, renal function, imaging context, and urgent decompression red flags."
+      ],
+      "source_ids": [
+        "national_kidney_foundation_hydronephrosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pyloric_stenosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "幽門狹窄",
+      "name_en": "Pyloric stenosis",
+      "system": "Gastrointestinal/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "幽門狹窄 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant projectile non-bilious vomiting, hunger after feeds, weight loss, dehydration, or hypochloremic alkalosis should include pyloric stenosis.",
+      "signals": {
+        "vomiting": 4,
+        "poor_oral_intake_dehydration": 3,
+        "weight_loss": 2,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "pyloric stenosis",
+        "hypertrophic pyloric stenosis",
+        "infant projectile vomiting"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, vomiting character and bile, hydration, weight trajectory, electrolyte pattern, palpable olive or ultrasound context, and pediatric surgery review need."
+      ],
+      "source_ids": [
+        "medlineplus_pyloric_stenosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "necrotizing_enterocolitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "壞死性腸炎",
+      "name_en": "Necrotizing enterocolitis",
+      "system": "Gastrointestinal/Pediatric/Neonatal",
+      "urgency": "emergent",
+      "summary_zh": "壞死性腸炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Premature or ill neonate with feeding intolerance, abdominal distension, bloody stools, lethargy, apnea, or shock should include necrotizing enterocolitis.",
+      "signals": {
+        "vomiting": 2,
+        "bloody_diarrhea": 3,
+        "poor_oral_intake_dehydration": 3,
+        "abdominal_pain": 3,
+        "fever": 1,
+        "hypothermia": 2,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "necrotizing enterocolitis",
+        "nec",
+        "neonatal necrotizing enterocolitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, feeding intolerance, abdominal distension, bloody stool, apnea or temperature instability, radiograph context, and neonatal emergency care need."
+      ],
+      "source_ids": [
+        "nichd_nec",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hirschsprung_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "先天性巨結腸症",
+      "name_en": "Hirschsprung disease",
+      "system": "Gastrointestinal/Pediatric/Congenital",
+      "urgency": "soon",
+      "summary_zh": "先天性巨結腸症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Delayed meconium, neonatal obstruction, chronic constipation, abdominal distension, vomiting, poor growth, or enterocolitis should include Hirschsprung disease.",
+      "signals": {
+        "constipation_obstipation": 4,
+        "vomiting": 2,
+        "abdominal_pain": 2,
+        "poor_oral_intake_dehydration": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "hirschsprung disease",
+        "congenital aganglionic megacolon",
+        "aganglionosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check meconium timing, abdominal distension, bilious vomiting, growth, enterocolitis red flags, contrast enema/biopsy context, and pediatric surgery referral need."
+      ],
+      "source_ids": [
+        "niddk_hirschsprung_disease",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -16028,6 +16756,156 @@
       "publisher": "MedlinePlus",
       "title": "Eyelid bump",
       "url": "https://medlineplus.gov/ency/article/001009.htm"
+    },
+    {
+      "source_id": "cdc_histoplasmosis_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Histoplasmosis",
+      "url": "https://www.cdc.gov/histoplasmosis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_valley_fever_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Valley Fever",
+      "url": "https://www.cdc.gov/valley-fever/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_toxoplasmosis_about",
+      "publisher": "CDC",
+      "title": "About Toxoplasmosis",
+      "url": "https://www.cdc.gov/toxoplasmosis/about/index.html"
+    },
+    {
+      "source_id": "cdc_giardia_about",
+      "publisher": "CDC",
+      "title": "About Giardia Infection",
+      "url": "https://www.cdc.gov/giardia/about/"
+    },
+    {
+      "source_id": "cdc_pinworm_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Pinworm Infection",
+      "url": "https://www.cdc.gov/pinworm/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_schistosomiasis_about",
+      "publisher": "CDC",
+      "title": "About Schistosomiasis",
+      "url": "https://www.cdc.gov/schistosomiasis/about/index.html"
+    },
+    {
+      "source_id": "cdc_strongyloides_about",
+      "publisher": "CDC",
+      "title": "About Strongyloides",
+      "url": "https://www.cdc.gov/strongyloides/about/index.html"
+    },
+    {
+      "source_id": "cdc_ascariasis_about",
+      "publisher": "CDC",
+      "title": "About Ascariasis",
+      "url": "https://www.cdc.gov/sth/about/ascariasis.html"
+    },
+    {
+      "source_id": "cdc_rmsf_about",
+      "publisher": "CDC",
+      "title": "About Rocky Mountain Spotted Fever",
+      "url": "https://www.cdc.gov/rocky-mountain-spotted-fever/about/index.html"
+    },
+    {
+      "source_id": "cdc_chagas_disease",
+      "publisher": "CDC",
+      "title": "Chagas Disease",
+      "url": "https://www.cdc.gov/chagas/index.html"
+    },
+    {
+      "source_id": "nhs_laryngitis",
+      "publisher": "NHS",
+      "title": "Laryngitis",
+      "url": "https://www.nhs.uk/conditions/laryngitis/"
+    },
+    {
+      "source_id": "nidcd_vocal_fold_paralysis",
+      "publisher": "NIDCD",
+      "title": "Vocal Fold Paralysis",
+      "url": "https://www.nidcd.nih.gov/health/vocal-fold-paralysis"
+    },
+    {
+      "source_id": "medlineplus_yeast_infections",
+      "publisher": "MedlinePlus",
+      "title": "Yeast Infections",
+      "url": "https://medlineplus.gov/yeastinfections.html"
+    },
+    {
+      "source_id": "medlineplus_pityriasis_rosea",
+      "publisher": "MedlinePlus",
+      "title": "Pityriasis rosea",
+      "url": "https://medlineplus.gov/ency/article/000871.htm"
+    },
+    {
+      "source_id": "medlineplus_lichen_planus",
+      "publisher": "MedlinePlus",
+      "title": "Lichen planus",
+      "url": "https://medlineplus.gov/ency/article/000867.htm"
+    },
+    {
+      "source_id": "medlineplus_pressure_sores",
+      "publisher": "MedlinePlus",
+      "title": "Pressure Sores",
+      "url": "https://medlineplus.gov/pressuresores.html"
+    },
+    {
+      "source_id": "cleveland_primary_aldosteronism",
+      "publisher": "Cleveland Clinic",
+      "title": "Primary Aldosteronism (Conn's Syndrome)",
+      "url": "https://my.clevelandclinic.org/health/diseases/21061-conns-syndrome"
+    },
+    {
+      "source_id": "nhs_amyloidosis",
+      "publisher": "NHS",
+      "title": "Amyloidosis",
+      "url": "https://www.nhs.uk/conditions/amyloidosis/"
+    },
+    {
+      "source_id": "cdc_acute_rheumatic_fever",
+      "publisher": "CDC",
+      "title": "Clinical Guidance for Acute Rheumatic Fever",
+      "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/acute-rheumatic-fever.html"
+    },
+    {
+      "source_id": "who_rheumatic_heart_disease",
+      "publisher": "WHO",
+      "title": "Rheumatic heart disease",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/rheumatic-heart-disease"
+    },
+    {
+      "source_id": "medlineplus_iga_vasculitis",
+      "publisher": "MedlinePlus",
+      "title": "IgA vasculitis - Henoch-Schonlein purpura",
+      "url": "https://medlineplus.gov/ency/article/000425.htm"
+    },
+    {
+      "source_id": "national_kidney_foundation_hydronephrosis",
+      "publisher": "National Kidney Foundation",
+      "title": "Hydronephrosis",
+      "url": "https://www.kidney.org/kidney-topics/hydronephrosis"
+    },
+    {
+      "source_id": "medlineplus_pyloric_stenosis",
+      "publisher": "MedlinePlus",
+      "title": "Pyloric stenosis",
+      "url": "https://medlineplus.gov/ency/imagepages/8944.htm"
+    },
+    {
+      "source_id": "nichd_nec",
+      "publisher": "NICHD",
+      "title": "Necrotizing Enterocolitis",
+      "url": "https://www.nichd.nih.gov/health/topics/factsheets/nec"
+    },
+    {
+      "source_id": "niddk_hirschsprung_disease",
+      "publisher": "NIDDK",
+      "title": "Hirschsprung Disease",
+      "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/hirschsprung-disease"
     }
   ]
 }

@@ -588,6 +588,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_fourteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("histoplasmosis", "histoplasmosis"),
+            ("coccidioidomycosis", "coccidioidomycosis"),
+            ("toxoplasmosis", "toxoplasmosis"),
+            ("giardiasis", "giardiasis"),
+            ("pinworm infection", "pinworm_infection"),
+            ("schistosomiasis", "schistosomiasis"),
+            ("strongyloidiasis", "strongyloidiasis"),
+            ("ascariasis", "ascariasis"),
+            ("rocky mountain spotted fever", "rocky_mountain_spotted_fever"),
+            ("chagas disease", "chagas_disease"),
+            ("laryngitis", "laryngitis"),
+            ("vocal cord paralysis", "vocal_cord_paralysis"),
+            ("oral candidiasis", "oral_candidiasis"),
+            ("pityriasis rosea", "pityriasis_rosea"),
+            ("lichen planus", "lichen_planus"),
+            ("pressure injury", "pressure_injury"),
+            ("primary hyperaldosteronism", "primary_hyperaldosteronism"),
+            ("amyloidosis", "amyloidosis"),
+            ("acute rheumatic fever", "acute_rheumatic_fever"),
+            ("rheumatic heart disease", "rheumatic_heart_disease"),
+            ("iga vasculitis", "iga_vasculitis"),
+            ("hydronephrosis", "hydronephrosis"),
+            ("pyloric stenosis", "pyloric_stenosis"),
+            ("necrotizing enterocolitis", "necrotizing_enterocolitis"),
+            ("hirschsprung disease", "hirschsprung_disease"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

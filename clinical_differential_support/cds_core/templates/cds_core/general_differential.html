@@ -730,6 +730,64 @@
     margin: 0.85rem 0;
   }
 
+  .stepwise-next-rail {
+    border: 1px solid #a8cec8;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #eef8f6;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .stepwise-next-rail header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .stepwise-next-rail h3 {
+    margin: 0;
+  }
+
+  .stepwise-next-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.55rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .stepwise-next-list li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.45rem;
+    align-items: start;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.65rem;
+  }
+
+  .stepwise-next-index {
+    display: inline-grid;
+    place-items: center;
+    min-width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 999px;
+    background: var(--primary);
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .stepwise-next-list strong,
+  .stepwise-next-list span {
+    display: block;
+    min-width: 0;
+  }
+
   .patient-workflow h3,
   .patient-workflow p {
     margin-top: 0;
@@ -961,6 +1019,7 @@
     .result-group-grid,
     .results-brief-grid,
     .guided-step-grid,
+    .stepwise-next-list,
     .patient-workflow-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
@@ -1148,6 +1207,26 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.patient_workflow %}
+          <section class="stepwise-next-rail" data-stepwise-next-rail="true" aria-labelledby="stepwise-next-rail-title">
+            <header>
+              <div>
+                <h3 id="stepwise-next-rail-title">照順序做 / Follow in order</h3>
+                <p class="secondary">先看這四步，再展開下面的完整說明。</p>
+              </div>
+              <span class="tag">{{ result.patient_workflow.top_candidate_count }} top candidates</span>
+            </header>
+            <ol class="stepwise-next-list">
+              {% for step in result.patient_workflow.steps|slice:":4" %}
+                <li data-stepwise-next-rail-item="true">
+                  <span class="stepwise-next-index">{{ forloop.counter }}</span>
+                  <div>
+                    <strong>{{ step.title_zh }}</strong>
+                    <span class="secondary">{{ step.title_en }}</span>
+                  </div>
+                </li>
+              {% endfor %}
+            </ol>
+          </section>
           <section
             class="patient-workflow"
             data-patient-workflow="true"
