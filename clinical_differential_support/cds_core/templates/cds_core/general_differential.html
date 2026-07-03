@@ -418,7 +418,21 @@
     display: none;
   }
 
-  .differential-workbench[data-differential-submit-pending="true"] .output-panel {
+  .differential-result-status {
+    border-left: 4px solid var(--primary);
+    background: #eef8f6;
+    border-radius: 4px;
+    color: #1f3b3a;
+    margin: 0.55rem 0 0.75rem;
+    padding: 0.5rem 0.65rem;
+    font-weight: 700;
+  }
+
+  .differential-result-status[hidden] {
+    display: none;
+  }
+
+  .output-panel[data-differential-results-refresh-state="loading"] .differential-results-body {
     opacity: 0.72;
   }
 
@@ -1340,8 +1354,10 @@
       </form>
     </section>
 
-    <section class="output-panel" id="reference-results" data-differential-results-panel="true" tabindex="-1">
+    <section class="output-panel" id="reference-results" data-differential-results-panel="true" data-differential-results-refresh-state="idle" tabindex="-1">
       <h2>參考輸出 / Reference Output</h2>
+      <div class="differential-result-status" data-differential-results-status="idle" aria-live="polite" hidden></div>
+      <div class="differential-results-body" data-differential-results-body="true">
       {% if result %}
         <p class="secondary">
           Coverage: starter catalog {{ result.coverage.catalog_version }}
@@ -1705,6 +1721,7 @@
           </ol>
         </section>
       {% endif %}
+      </div>
     </section>
   </div>
 

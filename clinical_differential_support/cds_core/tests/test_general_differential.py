@@ -753,6 +753,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_nineteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("frostbite", "frostbite"),
+            ("electrical injury", "electrical_injury"),
+            ("acute radiation syndrome", "acute_radiation_syndrome"),
+            ("smoke inhalation injury", "smoke_inhalation_injury"),
+            ("major burn injury", "major_burn_injury"),
+            ("drowning", "drowning"),
+            ("caustic ingestion", "caustic_ingestion"),
+            ("lead poisoning", "lead_poisoning"),
+            ("acetaminophen poisoning", "acetaminophen_poisoning"),
+            ("organophosphate poisoning", "organophosphate_carbamate_poisoning"),
+            ("anticholinergic toxidrome", "anticholinergic_toxidrome"),
+            ("cyanide poisoning", "cyanide_poisoning"),
+            ("sedative hypnotic toxicity", "sedative_hypnotic_toxicity"),
+            ("digoxin toxicity", "digoxin_toxicity"),
+            ("lithium toxicity", "lithium_toxicity"),
+            ("neuroleptic malignant syndrome", "neuroleptic_malignant_syndrome"),
+            ("malignant hyperthermia", "malignant_hyperthermia"),
+            ("acute porphyria", "acute_porphyria"),
+            ("rhabdomyolysis", "rhabdomyolysis"),
+            ("heparin induced thrombocytopenia", "heparin_induced_thrombocytopenia"),
+            ("acute transfusion reaction", "acute_transfusion_reaction"),
+            ("fat embolism syndrome", "fat_embolism_syndrome"),
+            ("arterial gas embolism", "arterial_gas_embolism"),
+            ("snakebite envenoming", "snakebite_envenoming"),
+            ("acute arsenic poisoning", "acute_arsenic_poisoning"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03-575",
-    "condition_count": 575,
-    "source_count": 653,
+    "catalog_version": "general-differential-starter-2026-07-03-600",
+    "condition_count": 600,
+    "source_count": 678,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03-575",
-      "condition_count": 575,
-      "source_count": 653,
+      "catalog_version": "general-differential-starter-2026-07-03-600",
+      "condition_count": 600,
+      "source_count": 678,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 575
+      "expansion_target_condition_count": 600
     }
   },
   "safety_scope": {
@@ -16546,6 +16546,783 @@
         "cdc_yellow_book_high_altitude_illness",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "frostbite",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "凍傷",
+      "name_en": "Frostbite",
+      "system": "Environmental/Cold injury/Skin",
+      "urgency": "urgent",
+      "summary_zh": "凍傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Numb, pale, waxy, blistered, or painful tissue after freezing exposure should include frostbite, especially with hypothermia or vascular risk.",
+      "signals": {
+        "hypothermia": 4,
+        "severe_pain": 2,
+        "rash": 2,
+        "neurologic_deficit": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "frostbite",
+        "freezing cold injury",
+        "deep frostbite",
+        "cold-induced tissue freezing"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exposure duration, wet clothing or wind, tissue numbness or blistering, perfusion, concurrent hypothermia, and rewarming or specialist pathway context."
+      ],
+      "source_ids": [
+        "merck_frostbite",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "electrical_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "電擊傷",
+      "name_en": "Electrical injury",
+      "system": "Trauma/Environmental/Cardiac",
+      "urgency": "urgent",
+      "summary_zh": "電擊傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Electrical exposure with burns, loss of consciousness, arrhythmia symptoms, respiratory arrest, muscle injury, or internal trauma should include electrical injury.",
+      "signals": {
+        "recent_trauma": 4,
+        "syncope": 3,
+        "palpitations": 3,
+        "respiratory_distress": 3,
+        "severe_pain": 2,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "electrical injury",
+        "electric shock",
+        "electrocution",
+        "lightning injury"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check voltage/current type, contact duration, loss of consciousness, entry/exit wounds, rhythm symptoms, muscle pain, pregnancy, and trauma or burn evaluation need."
+      ],
+      "source_ids": [
+        "merck_electrical_injuries",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_radiation_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性放射線症候群",
+      "name_en": "Acute radiation syndrome",
+      "system": "Environmental/Radiation/Hematology",
+      "urgency": "emergent",
+      "summary_zh": "急性放射線症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nausea, vomiting, diarrhea, skin injury, fatigue, infection or bleeding risk after high-dose short-interval radiation exposure should include acute radiation syndrome.",
+      "signals": {
+        "vomiting": 3,
+        "bloody_diarrhea": 2,
+        "fatigue": 2,
+        "rash": 2,
+        "easy_bruising_bleeding": 3,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "acute radiation syndrome",
+        "radiation sickness",
+        "radiation toxicity",
+        "ars radiation exposure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exposure source, time since exposure, vomiting onset, skin injury, lymphocyte trend, contamination risk, and radiation-emergency consultation route."
+      ],
+      "source_ids": [
+        "cdc_acute_radiation_syndrome_clinicians",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "smoke_inhalation_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "煙霧吸入傷",
+      "name_en": "Smoke inhalation injury",
+      "system": "Environmental/Burn/Pulmonary",
+      "urgency": "emergent",
+      "summary_zh": "煙霧吸入傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Combustion exposure with dyspnea, cough, wheeze, soot, hoarseness, airway edema, carbon monoxide risk, or altered mental status should include smoke inhalation injury.",
+      "signals": {
+        "carbon_monoxide_or_combustion_exposure": 5,
+        "dyspnea": 3,
+        "respiratory_distress": 4,
+        "wheeze": 2,
+        "cough_sputum": 2,
+        "altered_mental_status": 3
+      },
+      "synonyms": [
+        "smoke inhalation injury",
+        "inhalation injury",
+        "airway burn",
+        "combustion smoke exposure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check enclosed-space fire, soot or facial burns, hoarseness/stridor, oxygenation and CO risk, cyanide risk, and airway monitoring or burn-center context."
+      ],
+      "source_ids": [
+        "merck_smoke_inhalation",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "major_burn_injury",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "重大燒燙傷",
+      "name_en": "Major burn injury",
+      "system": "Trauma/Burn/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "重大燒燙傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Deep, circumferential, electrical, chemical, inhalation-associated, or large-surface-area burns with pain, shock, infection risk, or functional-area involvement should include major burn injury.",
+      "signals": {
+        "recent_trauma": 4,
+        "severe_pain": 3,
+        "hemodynamic_instability": 4,
+        "respiratory_distress": 3,
+        "carbon_monoxide_or_combustion_exposure": 3,
+        "rapidly_spreading_skin_infection": 1
+      },
+      "synonyms": [
+        "major burn injury",
+        "severe burn",
+        "thermal burn",
+        "chemical burn",
+        "electrical burn"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check burn depth, total body surface area, face/hand/genital/joint involvement, circumferential injury, inhalation injury, fluids, and burn-center criteria."
+      ],
+      "source_ids": [
+        "merck_burns",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "drowning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "溺水或非致死性溺水",
+      "name_en": "Drowning",
+      "system": "Environmental/Pulmonary/Emergency",
+      "urgency": "urgent",
+      "summary_zh": "溺水或非致死性溺水 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Respiratory impairment after submersion or immersion with cough, hypoxia, altered mental status, hypothermia, or arrest history should include drowning.",
+      "signals": {
+        "respiratory_distress": 4,
+        "altered_mental_status": 3,
+        "hypothermia": 3,
+        "cough_sputum": 2,
+        "syncope": 2,
+        "dyspnea": 3
+      },
+      "synonyms": [
+        "drowning",
+        "nonfatal drowning",
+        "near drowning",
+        "submersion injury"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check submersion timing, resuscitation need, oxygenation, aspiration symptoms, hypothermia, trauma or intoxication context, and observation needs."
+      ],
+      "source_ids": [
+        "merck_drowning",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "caustic_ingestion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腐蝕性物質誤食",
+      "name_en": "Caustic ingestion",
+      "system": "Toxicology/Gastrointestinal/Airway",
+      "urgency": "urgent",
+      "summary_zh": "腐蝕性物質誤食 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Caustic acid or alkali exposure with drooling, dysphagia, throat/chest/abdominal pain, vomiting, bleeding, stridor, or airway symptoms should include caustic ingestion.",
+      "signals": {
+        "severe_sore_throat_drooling_or_stridor": 5,
+        "neck_stiffness_swelling_dysphagia": 3,
+        "vomiting": 3,
+        "abdominal_pain": 3,
+        "respiratory_distress": 3
+      },
+      "synonyms": [
+        "caustic ingestion",
+        "corrosive ingestion",
+        "alkali ingestion",
+        "acid ingestion",
+        "caustic chemical poisoning"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check substance name and concentration, amount and timing, drooling/dysphagia, airway symptoms, chest or abdominal pain, and endoscopy or poison-center pathway."
+      ],
+      "source_ids": [
+        "merck_caustic_ingestion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lead_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鉛中毒",
+      "name_en": "Lead poisoning",
+      "system": "Toxicology/Environmental/Hematology",
+      "urgency": "soon",
+      "summary_zh": "鉛中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Lead exposure with abdominal pain, constipation or vomiting, headache, neuropathy, cognitive or behavioral change, anemia context, seizure, or occupational/old-paint risk should include lead poisoning.",
+      "signals": {
+        "abdominal_pain": 3,
+        "vomiting": 2,
+        "constipation_obstipation": 2,
+        "headache": 2,
+        "neurologic_deficit": 2,
+        "altered_mental_status": 2,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "lead poisoning",
+        "lead toxicity",
+        "plumbism",
+        "lead exposure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check old paint, ceramics, battery or metal work, retained bullet, imported remedies, child or pregnancy risk, anemia/neurocognitive clues, and blood lead testing context."
+      ],
+      "source_ids": [
+        "merck_lead_poisoning",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acetaminophen_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乙醯胺酚中毒",
+      "name_en": "Acetaminophen poisoning",
+      "system": "Toxicology/Hepatic",
+      "urgency": "urgent",
+      "summary_zh": "乙醯胺酚中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acetaminophen exposure with early nausea/vomiting, right upper quadrant pain, delayed liver injury, jaundice, or intentional overdose concern should include acetaminophen poisoning.",
+      "signals": {
+        "vomiting": 3,
+        "abdominal_pain": 2,
+        "jaundice": 3,
+        "altered_mental_status": 2,
+        "substance_use_concern": 4
+      },
+      "synonyms": [
+        "acetaminophen poisoning",
+        "paracetamol poisoning",
+        "acetaminophen toxicity",
+        "tylenol overdose"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exact product and dose, ingestion time, repeated supratherapeutic use, liver disease or alcohol risk, acetaminophen level timing, and antidote pathway context."
+      ],
+      "source_ids": [
+        "merck_acetaminophen_poisoning",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "organophosphate_carbamate_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "有機磷或胺基甲酸酯中毒",
+      "name_en": "Organophosphate or carbamate poisoning",
+      "system": "Toxicology/Cholinergic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "有機磷或胺基甲酸酯中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pesticide or nerve-agent exposure with salivation, lacrimation, bronchorrhea, wheeze, vomiting/diarrhea, diaphoresis, weakness, seizures, or respiratory failure should include organophosphate or carbamate poisoning.",
+      "signals": {
+        "dyspnea": 3,
+        "wheeze": 3,
+        "vomiting": 3,
+        "bloody_diarrhea": 1,
+        "diaphoresis": 3,
+        "altered_mental_status": 3,
+        "substance_use_concern": 3
+      },
+      "synonyms": [
+        "organophosphate poisoning",
+        "carbamate poisoning",
+        "cholinergic toxidrome",
+        "pesticide poisoning"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check agricultural or chemical exposure, secretions, bronchospasm, pupil findings, weakness or seizures, contaminated clothing, and decontamination/antidote pathway."
+      ],
+      "source_ids": [
+        "merck_organophosphate_carbamate_poisoning",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "anticholinergic_toxidrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "抗膽鹼毒性症候群",
+      "name_en": "Anticholinergic toxidrome",
+      "system": "Toxicology/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "抗膽鹼毒性症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Delirium, agitation, tachycardia, hyperthermia, dry flushed skin, urinary retention, ileus, or exposure to anticholinergic medications/plants should include anticholinergic toxidrome.",
+      "signals": {
+        "tachycardia": 4,
+        "severe_agitation": 3,
+        "altered_mental_status": 4,
+        "inability_to_void": 3,
+        "fever": 2,
+        "substance_use_concern": 3
+      },
+      "synonyms": [
+        "anticholinergic toxidrome",
+        "anticholinergic toxicity",
+        "antimuscarinic poisoning",
+        "atropine toxicity"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check medication or plant exposure, pupil/skin/mucosa pattern, temperature, urinary retention, bowel sounds, QRS/QTc risk, and poison-center consultation need."
+      ],
+      "source_ids": [
+        "merck_common_toxic_syndromes",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cyanide_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "氰化物中毒",
+      "name_en": "Cyanide poisoning",
+      "system": "Toxicology/Combustion/Chemical",
+      "urgency": "emergent",
+      "summary_zh": "氰化物中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Smoke, industrial, laboratory, or cyanide exposure with rapid altered mental status, seizures, hypotension, respiratory failure, or lactic acidosis concern should include cyanide poisoning.",
+      "signals": {
+        "carbon_monoxide_or_combustion_exposure": 4,
+        "hemodynamic_instability": 4,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 3,
+        "respiratory_distress": 4,
+        "syncope": 2
+      },
+      "synonyms": [
+        "cyanide poisoning",
+        "hydrogen cyanide exposure",
+        "cyanide toxicity",
+        "cyanide inhalation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check enclosed-space fire or industrial exposure, rapid collapse, lactate/acidosis pattern, coexisting CO exposure, decontamination needs, and antidote pathway."
+      ],
+      "source_ids": [
+        "cdc_hydrogen_cyanide_niosh",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sedative_hypnotic_toxicity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鎮靜安眠藥中毒",
+      "name_en": "Sedative-hypnotic toxicity",
+      "system": "Toxicology/Neurologic/Respiratory",
+      "urgency": "urgent",
+      "summary_zh": "鎮靜安眠藥中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Benzodiazepine, barbiturate, Z-drug, or mixed CNS depressant exposure with sedation, coma, hypoventilation, falls, hypothermia, or hypotension should include sedative-hypnotic toxicity.",
+      "signals": {
+        "altered_mental_status": 4,
+        "respiratory_distress": 3,
+        "substance_use_concern": 4,
+        "hypothermia": 2,
+        "hemodynamic_instability": 2,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "sedative hypnotic toxicity",
+        "benzodiazepine overdose",
+        "sedative overdose",
+        "z-drug overdose"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check agent, dose, timing, co-ingested alcohol/opioids, respiratory drive, trauma risk, chronic use or withdrawal risk, and monitoring or reversal context."
+      ],
+      "source_ids": [
+        "merck_sedatives",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "digoxin_toxicity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "毛地黃毒性",
+      "name_en": "Digoxin toxicity",
+      "system": "Toxicology/Cardiac",
+      "urgency": "urgent",
+      "summary_zh": "毛地黃毒性 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Digoxin or cardiac glycoside exposure with nausea/vomiting, visual disturbance, confusion, bradyarrhythmia or tachyarrhythmia, syncope, or hyperkalemia should include digoxin toxicity.",
+      "signals": {
+        "vomiting": 3,
+        "visual_disturbance": 3,
+        "palpitations": 3,
+        "syncope": 3,
+        "hyperkalemia_risk_or_weakness": 3,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "digoxin toxicity",
+        "digoxin poisoning",
+        "cardiac glycoside toxicity",
+        "digitalis toxicity"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check digoxin dose and renal function, interacting drugs, visual/GI symptoms, rhythm and potassium status, serum level timing, and antibody-fragment pathway context."
+      ],
+      "source_ids": [
+        "nih_digoxin_toxicity",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lithium_toxicity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鋰鹽毒性",
+      "name_en": "Lithium toxicity",
+      "system": "Toxicology/Psychiatric/Renal",
+      "urgency": "urgent",
+      "summary_zh": "鋰鹽毒性 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Lithium exposure with vomiting, tremor, ataxia, confusion, seizure, dehydration, renal impairment, or interacting medication context should include lithium toxicity.",
+      "signals": {
+        "vomiting": 3,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 3,
+        "fatigue": 2,
+        "decreased_urine_output": 2,
+        "substance_use_concern": 2
+      },
+      "synonyms": [
+        "lithium toxicity",
+        "lithium poisoning",
+        "lithium overdose",
+        "chronic lithium toxicity"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check formulation, dose and timing, chronic use, hydration/sodium loss, renal function, interacting drugs, neurologic findings, lithium level timing, and dialysis criteria."
+      ],
+      "source_ids": [
+        "merck_bipolar_lithium_toxicity",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "neuroleptic_malignant_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "抗精神病藥惡性症候群",
+      "name_en": "Neuroleptic malignant syndrome",
+      "system": "Toxicology/Neurologic/Heat illness",
+      "urgency": "emergent",
+      "summary_zh": "抗精神病藥惡性症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recent dopamine-blocking medication exposure with hyperthermia, rigidity, altered mental status, autonomic instability, tachycardia, or diaphoresis should include neuroleptic malignant syndrome.",
+      "signals": {
+        "new_medication_exposure": 5,
+        "fever": 4,
+        "altered_mental_status": 4,
+        "severe_agitation": 2,
+        "tachycardia": 3,
+        "diaphoresis": 2
+      },
+      "synonyms": [
+        "neuroleptic malignant syndrome",
+        "nms",
+        "antipsychotic malignant syndrome",
+        "dopamine blocker hyperthermia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check antipsychotic or dopamine-blocker exposure, rigidity, temperature, autonomic instability, CK/renal risk, serotonin syndrome overlap, and urgent supportive-care pathway."
+      ],
+      "source_ids": [
+        "merck_neuroleptic_malignant_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "malignant_hyperthermia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "惡性高熱",
+      "name_en": "Malignant hyperthermia",
+      "system": "Anesthesia/Metabolic/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "惡性高熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recent volatile anesthetic or succinylcholine exposure with rapidly rising temperature, muscle rigidity, tachycardia, hypercapnia, acidosis, or rhabdomyolysis concern should include malignant hyperthermia.",
+      "signals": {
+        "new_medication_exposure": 5,
+        "fever": 4,
+        "tachycardia": 4,
+        "respiratory_distress": 3,
+        "hemodynamic_instability": 3,
+        "hyperkalemia_risk_or_weakness": 2
+      },
+      "synonyms": [
+        "malignant hyperthermia",
+        "anesthesia hyperthermia",
+        "succinylcholine reaction",
+        "volatile anesthetic reaction"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check anesthetic exposure, end-tidal CO2 or ventilation clues, rigidity, potassium/CK/acidosis, family history, and malignant-hyperthermia response pathway."
+      ],
+      "source_ids": [
+        "merck_malignant_hyperthermia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_porphyria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性紫質症",
+      "name_en": "Acute porphyria",
+      "system": "Hematology/Neurologic/Gastrointestinal",
+      "urgency": "soon",
+      "summary_zh": "急性紫質症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent severe abdominal pain with neurologic, psychiatric, autonomic, hyponatremia, medication, fasting, or hormonal trigger context should include acute porphyria.",
+      "signals": {
+        "abdominal_pain": 4,
+        "severe_pain": 3,
+        "neurologic_deficit": 2,
+        "severe_agitation": 2,
+        "tachycardia": 2,
+        "hyponatremia_confusion_or_seizure_risk": 3
+      },
+      "synonyms": [
+        "acute porphyria",
+        "acute intermittent porphyria",
+        "porphyria attack",
+        "acute hepatic porphyria"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check recurrent attack pattern, neuropsychiatric/autonomic features, hyponatremia, unsafe medication exposure, fasting or hormonal triggers, urine color, and porphobilinogen testing context."
+      ],
+      "source_ids": [
+        "merck_acute_porphyrias",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rhabdomyolysis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "橫紋肌溶解症",
+      "name_en": "Rhabdomyolysis",
+      "system": "Renal/Musculoskeletal/Toxicology",
+      "urgency": "urgent",
+      "summary_zh": "橫紋肌溶解症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe muscle pain or weakness, dark urine, trauma, exertion, seizure, immobilization, heat/cold injury, drug/toxin exposure, or acute kidney injury risk should include rhabdomyolysis.",
+      "signals": {
+        "severe_pain": 3,
+        "recent_trauma": 3,
+        "decreased_urine_output": 3,
+        "hyperkalemia_risk_or_weakness": 3,
+        "substance_use_concern": 2,
+        "seizure_activity_or_postictal_state": 2
+      },
+      "synonyms": [
+        "rhabdomyolysis",
+        "rhabdo",
+        "myoglobinuria",
+        "exertional rhabdomyolysis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exertion/trauma/immobility, seizures, heat or cold exposure, drugs/toxins, urine color, CK/creatinine/potassium, and renal protection or monitoring need."
+      ],
+      "source_ids": [
+        "merck_rhabdomyolysis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "heparin_induced_thrombocytopenia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肝素誘發血小板低下症",
+      "name_en": "Heparin-induced thrombocytopenia",
+      "system": "Hematology/Thrombosis/Medication",
+      "urgency": "urgent",
+      "summary_zh": "肝素誘發血小板低下症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recent heparin exposure with platelet fall, new thrombosis, skin necrosis, limb ischemia, pulmonary embolism symptoms, or bleeding/thrombosis concern should include heparin-induced thrombocytopenia.",
+      "signals": {
+        "unilateral_leg_swelling": 3,
+        "acute_limb_pain_pallor_pulselessness": 3,
+        "dyspnea": 2,
+        "chest_pain": 2,
+        "easy_bruising_bleeding": 2,
+        "new_medication_exposure": 3
+      },
+      "synonyms": [
+        "heparin induced thrombocytopenia",
+        "hit",
+        "heparin thrombocytopenia",
+        "heparin-associated thrombosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check timing of heparin exposure, platelet fall magnitude, thrombosis signs, skin necrosis, prior heparin exposure, 4Ts context, and hematology pathway."
+      ],
+      "source_ids": [
+        "merck_thrombocytopenia_other_causes",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_transfusion_reaction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性輸血反應",
+      "name_en": "Acute transfusion reaction",
+      "system": "Hematology/Transfusion/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "急性輸血反應 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, chills, rash, dyspnea, hypotension, chest/back/flank pain, hemoglobinuria, or acute deterioration during or soon after transfusion should include acute transfusion reaction.",
+      "signals": {
+        "fever": 3,
+        "rash": 2,
+        "dyspnea": 3,
+        "hemodynamic_instability": 4,
+        "chest_pain": 2,
+        "flank_pain": 2
+      },
+      "synonyms": [
+        "acute transfusion reaction",
+        "hemolytic transfusion reaction",
+        "transfusion reaction",
+        "transfusion associated lung injury"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check transfusion timing and product, clerical match, fever/chills/rash, dyspnea or overload, back/flank pain, hemolysis labs, and blood bank notification pathway."
+      ],
+      "source_ids": [
+        "merck_complications_of_transfusion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "fat_embolism_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脂肪栓塞症候群",
+      "name_en": "Fat embolism syndrome",
+      "system": "Trauma/Pulmonary/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "脂肪栓塞症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Respiratory distress, hypoxemia, neurologic changes, petechial rash, thrombocytopenia, or anemia after long-bone fracture or orthopedic procedure should include fat embolism syndrome.",
+      "signals": {
+        "recent_trauma": 4,
+        "respiratory_distress": 4,
+        "altered_mental_status": 3,
+        "rash": 2,
+        "dyspnea": 3,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "fat embolism syndrome",
+        "fat embolism",
+        "post fracture fat embolism",
+        "orthopedic fat embolism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check long-bone/pelvic fracture or orthopedic procedure, timing after injury, hypoxemia, neurologic status, petechiae, platelet/hemoglobin changes, and supportive-care needs."
+      ],
+      "source_ids": [
+        "merck_nonthrombotic_pulmonary_embolism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "arterial_gas_embolism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "動脈氣體栓塞",
+      "name_en": "Arterial gas embolism",
+      "system": "Environmental/Diving/Vascular",
+      "urgency": "emergent",
+      "summary_zh": "動脈氣體栓塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abrupt neurologic deficit, altered mental status, chest pain, dyspnea, syncope, seizure, or cardiopulmonary collapse during or minutes after ascent from compressed-air diving should include arterial gas embolism.",
+      "signals": {
+        "neurologic_deficit": 4,
+        "altered_mental_status": 4,
+        "dyspnea": 3,
+        "chest_pain": 2,
+        "syncope": 3,
+        "seizure_activity_or_postictal_state": 3
+      },
+      "synonyms": [
+        "arterial gas embolism",
+        "air embolism",
+        "diving gas embolism",
+        "cerebral arterial gas embolism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check dive/ascent profile, symptom onset within minutes of surfacing, pulmonary barotrauma, neurologic deficits, oxygen/recompression access, and diving medicine consultation route."
+      ],
+      "source_ids": [
+        "merck_arterial_gas_embolism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "snakebite_envenoming",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "蛇咬中毒",
+      "name_en": "Snakebite envenoming",
+      "system": "Toxicology/Envenomation/Emergency",
+      "urgency": "urgent",
+      "summary_zh": "蛇咬中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Snakebite with progressive local pain/swelling, bleeding, neurotoxicity, shock, respiratory weakness, tissue necrosis, or tropical/rural exposure should include snakebite envenoming.",
+      "signals": {
+        "severe_pain": 3,
+        "unilateral_leg_swelling": 2,
+        "easy_bruising_bleeding": 3,
+        "hemodynamic_instability": 3,
+        "neurologic_deficit": 2,
+        "dyspnea": 2
+      },
+      "synonyms": [
+        "snakebite envenoming",
+        "snake bite poisoning",
+        "snakebite",
+        "venomous snake bite"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check species or photo if safe, bite time, progression of swelling, bleeding or neurotoxicity, shock or respiratory weakness, tetanus status, and antivenom pathway."
+      ],
+      "source_ids": [
+        "who_snakebite_envenoming_fact_sheet",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_arsenic_poisoning",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性砷中毒",
+      "name_en": "Acute arsenic poisoning",
+      "system": "Toxicology/Chemical/Gastrointestinal",
+      "urgency": "urgent",
+      "summary_zh": "急性砷中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute arsenic exposure with severe vomiting, watery or bloody diarrhea, abdominal pain, hypotension, dysrhythmia, encephalopathy, neuropathy, or seizure should include acute arsenic poisoning.",
+      "signals": {
+        "vomiting": 4,
+        "bloody_diarrhea": 3,
+        "abdominal_pain": 3,
+        "hemodynamic_instability": 3,
+        "altered_mental_status": 2,
+        "seizure_activity_or_postictal_state": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "acute arsenic poisoning",
+        "arsenic toxicity",
+        "inorganic arsenic poisoning",
+        "arsenic exposure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check source and route, timing, GI fluid loss or shock, dysrhythmia, neurologic signs, co-exposures, confirmatory testing, and poison-center or chelation context."
+      ],
+      "source_ids": [
+        "cdc_arsenic_medical_management",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -20466,6 +21243,156 @@
       "publisher": "CDC Yellow Book",
       "title": "High-Altitude Travel and Altitude Illness",
       "url": "https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html"
+    },
+    {
+      "source_id": "merck_frostbite",
+      "publisher": "Merck Manual Professional",
+      "title": "Frostbite",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/cold-injury/frostbite"
+    },
+    {
+      "source_id": "merck_electrical_injuries",
+      "publisher": "Merck Manual Professional",
+      "title": "Electrical Injuries",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/electrical-and-lightning-injuries/electrical-injuries"
+    },
+    {
+      "source_id": "cdc_acute_radiation_syndrome_clinicians",
+      "publisher": "CDC",
+      "title": "Acute Radiation Syndrome: Information for Clinicians",
+      "url": "https://www.cdc.gov/radiation-emergencies/hcp/clinical-guidance/ars.html"
+    },
+    {
+      "source_id": "merck_smoke_inhalation",
+      "publisher": "Merck Manual Professional",
+      "title": "Smoke Inhalation",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/burns/smoke-inhalation"
+    },
+    {
+      "source_id": "merck_burns",
+      "publisher": "Merck Manual Professional",
+      "title": "Burns",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/burns/burns"
+    },
+    {
+      "source_id": "merck_drowning",
+      "publisher": "Merck Manual Professional",
+      "title": "Drowning",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/drowning/drowning"
+    },
+    {
+      "source_id": "merck_caustic_ingestion",
+      "publisher": "Merck Manual Professional",
+      "title": "Caustic Ingestion",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/poisoning/caustic-ingestion"
+    },
+    {
+      "source_id": "merck_lead_poisoning",
+      "publisher": "Merck Manual Professional",
+      "title": "Lead Poisoning",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/poisoning/lead-poisoning"
+    },
+    {
+      "source_id": "merck_acetaminophen_poisoning",
+      "publisher": "Merck Manual Professional",
+      "title": "Acetaminophen Poisoning",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/poisoning/acetaminophen-poisoning"
+    },
+    {
+      "source_id": "merck_organophosphate_carbamate_poisoning",
+      "publisher": "Merck Manual Professional",
+      "title": "Organophosphate Poisoning and Carbamate Poisoning",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/poisoning/organophosphate-poisoning-and-carbamate-poisoning"
+    },
+    {
+      "source_id": "merck_common_toxic_syndromes",
+      "publisher": "Merck Manual Professional",
+      "title": "Common Toxic Syndromes",
+      "url": "https://www.merckmanuals.com/professional/multimedia/table/common-toxic-syndromes"
+    },
+    {
+      "source_id": "cdc_hydrogen_cyanide_niosh",
+      "publisher": "CDC NIOSH",
+      "title": "Hydrogen Cyanide (AC): Systemic Agent",
+      "url": "https://www.cdc.gov/niosh/ershdb/emergencyresponsecard_29750038.html"
+    },
+    {
+      "source_id": "merck_sedatives",
+      "publisher": "Merck Manual Professional",
+      "title": "Sedatives",
+      "url": "https://www.merckmanuals.com/professional/special-subjects/illicit-drugs-and-intoxicants/sedatives"
+    },
+    {
+      "source_id": "nih_digoxin_toxicity",
+      "publisher": "NCBI Bookshelf",
+      "title": "Cardiac Glycoside and Digoxin Toxicity",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK459165/"
+    },
+    {
+      "source_id": "merck_bipolar_lithium_toxicity",
+      "publisher": "Merck Manual Professional",
+      "title": "Medications for Treatment of Bipolar Disorders",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/mood-disorders/medications-for-treatment-of-bipolar-disorders"
+    },
+    {
+      "source_id": "merck_neuroleptic_malignant_syndrome",
+      "publisher": "Merck Manual Professional",
+      "title": "Neuroleptic Malignant Syndrome",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/heat-illness/neuroleptic-malignant-syndrome"
+    },
+    {
+      "source_id": "merck_malignant_hyperthermia",
+      "publisher": "Merck Manual Professional",
+      "title": "Malignant Hyperthermia",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/heat-illness/malignant-hyperthermia"
+    },
+    {
+      "source_id": "merck_acute_porphyrias",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Porphyrias",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/the-porphyrias/acute-porphyrias"
+    },
+    {
+      "source_id": "merck_rhabdomyolysis",
+      "publisher": "Merck Manual Professional",
+      "title": "Rhabdomyolysis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/acute-kidney-injury/rhabdomyolysis"
+    },
+    {
+      "source_id": "merck_thrombocytopenia_other_causes",
+      "publisher": "Merck Manual Professional",
+      "title": "Thrombocytopenia: Other Causes",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/thrombocytopenia-and-platelet-dysfunction/thrombocytopenia-other-causes"
+    },
+    {
+      "source_id": "merck_complications_of_transfusion",
+      "publisher": "Merck Manual Professional",
+      "title": "Complications of Transfusion",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/transfusion-medicine/complications-of-transfusion"
+    },
+    {
+      "source_id": "merck_nonthrombotic_pulmonary_embolism",
+      "publisher": "Merck Manual Professional",
+      "title": "Nonthrombotic Pulmonary Embolism",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/pulmonary-embolism/nonthrombotic-pulmonary-embolism"
+    },
+    {
+      "source_id": "merck_arterial_gas_embolism",
+      "publisher": "Merck Manual Professional",
+      "title": "Arterial Gas Embolism",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/injury-during-diving-or-work-in-compressed-air/arterial-gas-embolism"
+    },
+    {
+      "source_id": "who_snakebite_envenoming_fact_sheet",
+      "publisher": "WHO",
+      "title": "Snakebite envenoming",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/snakebite-envenoming"
+    },
+    {
+      "source_id": "cdc_arsenic_medical_management",
+      "publisher": "CDC ATSDR",
+      "title": "Arsenic Medical Management Guidelines",
+      "url": "https://wwwn.cdc.gov/Tsp/MMG/MMGDetails.aspx?mmgid=1424&toxid=3"
     }
   ]
 }

@@ -917,6 +917,58 @@
       });
     }
 
+    function setDifferentialResultsRefreshing(root, pending, message) {
+      root = root || document;
+      var panel = root.querySelector("[data-differential-results-panel]");
+      if (!panel) {
+        return;
+      }
+      var status = panel.querySelector("[data-differential-results-status]");
+      panel.dataset.differentialResultsRefreshState = pending ? "loading" : "idle";
+      if (status) {
+        status.dataset.differentialResultsStatus = pending ? "loading" : "idle";
+        status.textContent = message || "";
+        status.hidden = !message;
+      }
+    }
+
+    function captureDifferentialReviewPosition(root) {
+      root = root || document;
+      var scan = root.querySelector("[data-candidate-scan-table]");
+      if (!scan) {
+        return { keepReviewPosition: false, candidateScanTopOffset: null };
+      }
+      var rect = scan.getBoundingClientRect();
+      var keepReviewPosition = rect.top < window.innerHeight && rect.bottom > 0;
+      return {
+        keepReviewPosition: keepReviewPosition,
+        candidateScanTopOffset: keepReviewPosition ? rect.top : null
+      };
+    }
+
+    function restoreDifferentialReviewPosition(root, reviewState) {
+      root = root || document;
+      var resultsPanel = root.querySelector("[data-differential-results-panel]");
+      var scan = root.querySelector("[data-candidate-scan-table]");
+      if (
+        reviewState &&
+        reviewState.keepReviewPosition &&
+        typeof reviewState.candidateScanTopOffset === "number" &&
+        scan
+      ) {
+        var nextRect = scan.getBoundingClientRect();
+        window.scrollTo({
+          top: window.scrollY + nextRect.top - reviewState.candidateScanTopOffset,
+          behavior: "auto"
+        });
+        return;
+      }
+      if (resultsPanel) {
+        resultsPanel.focus({ preventScroll: true });
+        resultsPanel.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+    }
+
     function setDifferentialSubmitState(form, pending, message) {
       var workbench = form.closest("[data-differential-workbench]");
       var status = form.querySelector("[data-differential-submit-status]");
@@ -938,7 +990,7 @@
       }
     }
 
-    function replaceDifferentialWorkspaceSections(html, root) {
+    function replaceDifferentialWorkspaceSections(html, root, reviewState) {
       var doc = new DOMParser().parseFromString(html, "text/html");
       var selectors = [
         "[data-workflow-stepper]",
@@ -965,6 +1017,7 @@
       initializeCandidateScanFilters(root);
       initializeSecondaryCandidateFilters(root);
       initializeGeneralDifferentialFetchSubmit(root);
+      restoreDifferentialReviewPosition(root, reviewState);
       return replacedCount;
     }
 
@@ -980,7 +1033,9 @@
             return;
           }
           event.preventDefault();
+          var reviewState = captureDifferentialReviewPosition(main);
           setDifferentialSubmitState(form, true, "更新中 / Updating");
+          setDifferentialResultsRefreshing(main, true, "更新結果中 / Updating results");
           fetch(form.action || window.location.href, {
             method: "POST",
             body: new FormData(form),
@@ -997,15 +1052,11 @@
               return response.text();
             })
             .then(function (html) {
-              replaceDifferentialWorkspaceSections(html, main);
-              var resultsPanel = main.querySelector("[data-differential-results-panel]");
-              if (resultsPanel) {
-                resultsPanel.focus({ preventScroll: true });
-                resultsPanel.scrollIntoView({ block: "start", behavior: "smooth" });
-              }
+              replaceDifferentialWorkspaceSections(html, main, reviewState);
             })
             .catch(function () {
               setDifferentialSubmitState(form, false, "");
+              setDifferentialResultsRefreshing(main, false, "");
               form.submit();
             })
             .finally(function () {
@@ -1013,6 +1064,7 @@
               if (currentForm) {
                 setDifferentialSubmitState(currentForm, false, "");
               }
+              setDifferentialResultsRefreshing(main, false, "");
             });
         });
       });

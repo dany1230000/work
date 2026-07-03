@@ -60,6 +60,9 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "initializeFindingPresets")
         self.assertContains(response, "initializeGeneralDifferentialFetchSubmit")
         self.assertContains(response, "replaceDifferentialWorkspaceSections")
+        self.assertContains(response, "setDifferentialResultsRefreshing")
+        self.assertContains(response, "captureDifferentialReviewPosition")
+        self.assertContains(response, "restoreDifferentialReviewPosition")
         self.assertContains(response, "X-Differential-Submit")
         self.assertContains(response, "findingMatchesQuery")
         self.assertContains(response, "termMatchesSearchIndex")
@@ -79,6 +82,31 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertNotContains(response, "Recent cancer treatment")
         self.assertNotContains(response, "Easy bruising or bleeding")
         self.assertNotContains(response, "Chest pain / 胸痛")
+
+    def test_repeated_ajax_submit_keeps_results_visible_with_inline_status(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "chest pain dyspnea",
+                "findings": ["chest_pain", "dyspnea"],
+                "clinician_notes": "",
+            },
+            HTTP_X_REQUESTED_WITH="XMLHttpRequest",
+            HTTP_X_DIFFERENTIAL_SUBMIT="1",
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-differential-results-panel="true"')
+        self.assertContains(response, 'data-differential-results-refresh-state="idle"')
+        self.assertContains(response, 'data-differential-results-status="idle"')
+        self.assertContains(response, 'data-differential-results-body="true"')
+        self.assertContains(response, 'data-candidate-scan-table="true"')
+        self.assertContains(response, "setDifferentialResultsRefreshing")
+        self.assertContains(response, "captureDifferentialReviewPosition")
+        self.assertContains(response, "restoreDifferentialReviewPosition")
+        self.assertContains(response, "keepReviewPosition")
+        self.assertContains(response, "Updating results")
+        self.assertContains(response, "setDifferentialResultsRefreshing(main, true")
 
     def test_posted_general_differential_page_keeps_replaceable_fetch_sections(self):
         response = self.client.post(
