@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from typing import Any
 
 from .differential_catalog import DEFAULT_ASK_NEXT, URGENCY_ORDER
@@ -132,6 +133,7 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
+        "source_provenance": _build_source_provenance(ranked_results),
         "patient_workflow": _build_patient_workflow(
             ranked_results,
             selected_findings,
@@ -210,6 +212,57 @@ def _query_match_score(condition: dict[str, Any], query: str) -> int:
     ):
         return 7
     return 0
+
+
+def _build_source_provenance(results: list[dict[str, Any]]) -> dict[str, Any]:
+    rows: list[dict[str, Any]] = []
+    seen_rows: set[tuple[str, str]] = set()
+    unique_urls: set[str] = set()
+    publisher_counts: dict[str, dict[str, Any]] = {}
+
+    for result in results:
+        for source in result.get("sources", []):
+            url = str(source.get("url", ""))
+            publisher = str(source.get("publisher", "Unknown source"))
+            row_key = (str(result["slug"]), url)
+            if row_key in seen_rows:
+                continue
+            seen_rows.add(row_key)
+            unique_urls.add(url)
+            publisher_slug = _source_filter_slug(publisher)
+            publisher_counts.setdefault(
+                publisher_slug,
+                {"publisher": publisher, "publisher_slug": publisher_slug, "count": 0},
+            )
+            publisher_counts[publisher_slug]["count"] += 1
+            rows.append(
+                {
+                    "candidate_slug": result["slug"],
+                    "candidate_name_en": result["name_en"],
+                    "urgency": result["urgency"],
+                    "publisher": publisher,
+                    "publisher_slug": publisher_slug,
+                    "title": source.get("title", "Untitled source"),
+                    "url": url,
+                }
+            )
+
+    publisher_filters = sorted(
+        publisher_counts.values(),
+        key=lambda item: (-int(item["count"]), str(item["publisher"])),
+    )
+
+    return {
+        "unique_source_count": len(unique_urls),
+        "row_count": len(rows),
+        "publisher_filters": publisher_filters,
+        "rows": rows,
+    }
+
+
+def _source_filter_slug(value: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "unknown-source"
 
 
 def _build_result_groups(results: list[dict[str, Any]]) -> list[dict[str, Any]]:

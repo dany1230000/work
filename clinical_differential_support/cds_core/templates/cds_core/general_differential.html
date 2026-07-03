@@ -998,6 +998,73 @@
     margin-top: 0.75rem;
   }
 
+  .source-provenance-panel {
+    border: 1px solid #c7d2de;
+    border-left: 4px solid #475569;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .source-provenance-panel header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .source-provenance-panel h3 {
+    margin: 0;
+  }
+
+  .source-provenance-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .source-provenance-toolbar button {
+    border: 1px solid #c7d2de;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text);
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .source-provenance-toolbar button.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  .source-provenance-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.55rem;
+  }
+
+  .source-provenance-row {
+    display: grid;
+    gap: 0.25rem;
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #fff;
+    padding: 0.65rem;
+  }
+
+  .source-provenance-row[hidden] {
+    display: none;
+  }
+
+  .source-provenance-row a {
+    overflow-wrap: anywhere;
+  }
+
   .compact-governance summary {
     cursor: pointer;
     font-weight: 700;
@@ -1021,6 +1088,7 @@
     .guided-step-grid,
     .stepwise-next-list,
     .patient-workflow-grid,
+    .source-provenance-grid,
     .workbench-grid {
       grid-template-columns: 1fr;
     }
@@ -1450,6 +1518,35 @@
               {% endfor %}
             </div>
           </section>
+          {% if result.source_provenance.rows %}
+            <section class="source-provenance-panel" data-source-provenance-panel="true" aria-labelledby="source-provenance-title">
+              <header>
+                <div>
+                  <h3 id="source-provenance-title">來源稽核 / Source provenance</h3>
+                  <p class="secondary">先用 publisher 篩選已連結來源，再打開候選卡片細看。</p>
+                </div>
+                <span class="tag" data-source-provenance-count="true">{{ result.source_provenance.unique_source_count }} unique sources</span>
+              </header>
+              <div class="source-provenance-toolbar" data-source-provenance-filters="true" aria-label="Source publisher filters">
+                <button type="button" class="is-active" data-source-provenance-filter="true" data-source-publisher-filter="all" aria-pressed="true">All</button>
+                {% for publisher in result.source_provenance.publisher_filters|slice:":6" %}
+                  <button type="button" data-source-provenance-filter="true" data-source-publisher-filter="{{ publisher.publisher_slug }}" aria-pressed="false">
+                    {{ publisher.publisher }} ({{ publisher.count }})
+                  </button>
+                {% endfor %}
+              </div>
+              <div class="source-provenance-grid">
+                {% for row in result.source_provenance.rows|slice:":12" %}
+                  <article class="source-provenance-row" data-source-provenance-row="true" data-source-publisher="{{ row.publisher_slug }}">
+                    <strong>{{ row.publisher }}</strong>
+                    <a href="{{ row.url }}">{{ row.title }}</a>
+                    <span class="secondary">{{ row.candidate_name_en }} · {{ row.urgency }}</span>
+                  </article>
+                {% endfor %}
+              </div>
+              <p class="secondary" data-source-provenance-empty="true" hidden>No sources match this publisher filter.</p>
+            </section>
+          {% endif %}
           <details class="primary-result-drawer" id="top-candidates" data-primary-result-list="true" data-primary-result-drawer="true">
             <summary>Open detailed candidate cards</summary>
             <div class="primary-result-body result-list">

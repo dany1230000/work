@@ -24,7 +24,7 @@
 - [x] Run related tests.
 - [x] Run full `cds_core.tests` suite and validators.
 - [x] Run local CSRF smoke.
-- [ ] Commit, push, and public Render smoke.
+- [x] Commit, push, and public Render smoke.
 
 ### Next Phase Candidate
 

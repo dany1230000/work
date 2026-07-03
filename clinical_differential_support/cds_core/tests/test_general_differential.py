@@ -654,6 +654,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_sixteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("cyclosporiasis", "cyclosporiasis"),
+            ("amebiasis", "amebiasis"),
+            ("taeniasis", "taeniasis"),
+            ("hookworm infection", "hookworm_infection"),
+            ("toxocariasis", "toxocariasis"),
+            ("lymphatic filariasis", "lymphatic_filariasis"),
+            ("onchocerciasis", "onchocerciasis"),
+            ("cysticercosis", "cysticercosis"),
+            ("echinococcosis", "echinococcosis"),
+            ("paragonimiasis", "paragonimiasis"),
+            ("clonorchiasis", "clonorchiasis"),
+            ("fascioliasis", "fascioliasis"),
+            ("trichinellosis", "trichinellosis"),
+            ("campylobacter infection", "campylobacter_infection"),
+            ("salmonella infection", "salmonella_infection"),
+            ("shigellosis", "shigellosis"),
+            ("listeriosis", "listeriosis"),
+            ("cholera", "cholera"),
+            ("yersiniosis", "yersiniosis"),
+            ("vibriosis", "vibriosis"),
+            ("rotavirus infection", "rotavirus_infection"),
+            ("adenovirus infection", "adenovirus_infection"),
+            ("fifth disease", "fifth_disease"),
+            ("scarlet fever", "scarlet_fever"),
+            ("roseola", "roseola"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {
@@ -719,6 +752,33 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             item["instruction_en"] for item in result["action_checklist"]
         )
         self.assertIn("Re-run", combined)
+
+    def test_results_include_filterable_source_provenance_summary(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        provenance = result["source_provenance"]
+
+        self.assertGreaterEqual(provenance["unique_source_count"], 2)
+        self.assertGreaterEqual(provenance["row_count"], 2)
+        self.assertGreaterEqual(len(provenance["publisher_filters"]), 1)
+        self.assertGreaterEqual(len(provenance["rows"]), 2)
+        first_row = provenance["rows"][0]
+        self.assertIn("candidate_slug", first_row)
+        self.assertIn("publisher_slug", first_row)
+        self.assertIn("url", first_row)
+        self.assertTrue(first_row["url"].startswith("http"))
+        publishers = {row["publisher"] for row in provenance["rows"]}
+        self.assertIn(provenance["publisher_filters"][0]["publisher"], publishers)
 
     def test_results_include_compact_brief_for_scan_first_layout(self):
         result = evaluate_general_differential(

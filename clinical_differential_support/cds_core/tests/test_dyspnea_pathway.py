@@ -127,4 +127,4 @@ class DyspneaPathwayTests(TestCase):
             plan["next_actions"][0]["action_id"],
             "expand_general_differential_catalog_via_import_workbench",
         )
-        self.assertEqual(plan["general_catalog"]["condition_count"], 500)
+        self.assertEqual(plan["general_catalog"]["condition_count"], 525)

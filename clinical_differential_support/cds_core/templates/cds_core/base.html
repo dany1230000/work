@@ -765,6 +765,48 @@
       });
     }
 
+    function initializeSourceProvenanceFilters(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-source-provenance-panel]")).forEach(function (panel) {
+        if (panel.dataset.sourceProvenanceReady === "true") {
+          return;
+        }
+        var buttons = Array.prototype.slice.call(panel.querySelectorAll("[data-source-provenance-filter]"));
+        var rows = Array.prototype.slice.call(panel.querySelectorAll("[data-source-provenance-row]"));
+        var empty = panel.querySelector("[data-source-provenance-empty]");
+        if (!buttons.length || !rows.length) {
+          return;
+        }
+        panel.dataset.sourceProvenanceReady = "true";
+
+        function applyFilter(publisherSlug) {
+          var visibleCount = 0;
+          rows.forEach(function (row) {
+            var visible = publisherSlug === "all" || row.dataset.sourcePublisher === publisherSlug;
+            row.hidden = !visible;
+            if (visible) {
+              visibleCount += 1;
+            }
+          });
+          buttons.forEach(function (button) {
+            var active = button.dataset.sourcePublisherFilter === publisherSlug;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          if (empty) {
+            empty.hidden = visibleCount !== 0;
+          }
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            applyFilter(button.dataset.sourcePublisherFilter || "all");
+          });
+        });
+        applyFilter("all");
+      });
+    }
+
     function setDifferentialSubmitState(form, pending, message) {
       var workbench = form.closest("[data-differential-workbench]");
       var status = form.querySelector("[data-differential-submit-status]");
@@ -809,6 +851,7 @@
       initializeFindingLibraryLoader(root);
       initializeFindingFilters(root);
       initializeCatalogQuickQueries(root);
+      initializeSourceProvenanceFilters(root);
       initializeGeneralDifferentialFetchSubmit(root);
       return replacedCount;
     }
@@ -881,6 +924,7 @@
       initializeFindingLibraryLoader(main);
       initializeFindingFilters(main);
       initializeCatalogQuickQueries(main);
+      initializeSourceProvenanceFilters(main);
       initializeGeneralDifferentialFetchSubmit(main);
     }
 
@@ -1013,6 +1057,7 @@
     initializeFindingLibraryLoader(main);
     initializeFindingFilters(main);
     initializeCatalogQuickQueries(main);
+    initializeSourceProvenanceFilters(main);
     initializeGeneralDifferentialFetchSubmit(main);
     scheduleFastNavPrefetch();
   })();

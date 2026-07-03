@@ -471,6 +471,40 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-primary-result-drawer="true"'),
         )
 
+    def test_posted_results_show_filterable_source_provenance_before_candidate_cards(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-source-provenance-panel="true"')
+        self.assertContains(response, 'data-source-provenance-filter="true"')
+        self.assertContains(response, 'data-source-provenance-row="true"')
+        self.assertContains(response, 'data-source-provenance-count="true"')
+        self.assertContains(response, 'data-source-publisher=')
+        self.assertContains(response, "Source provenance")
+        self.assertContains(response, "initializeSourceProvenanceFilters")
+        self.assertLess(
+            content.index('data-candidate-scan-table="true"'),
+            content.index('data-source-provenance-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-source-provenance-panel="true"'),
+            content.index('data-primary-result-drawer="true"'),
+        )
+
     def test_posted_findings_show_compact_step_rail_before_long_workflow(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),
