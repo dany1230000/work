@@ -443,6 +443,34 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_candidate_scan_table_shows_source_shortcuts_and_mobile_density_markers(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-candidate-scan-table="true"')
+        self.assertContains(response, 'data-candidate-scan-density="compact"')
+        self.assertContains(response, 'data-candidate-source-shortcut="true"')
+        self.assertContains(response, 'data-candidate-source-count="true"')
+        self.assertContains(response, "Review sources")
+        self.assertLess(
+            content.index('data-candidate-source-shortcut="true"'),
+            content.index('data-primary-result-drawer="true"'),
+        )
+
     def test_posted_result_cards_show_primary_action_before_full_action_drawer(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

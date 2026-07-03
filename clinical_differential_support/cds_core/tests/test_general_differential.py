@@ -555,6 +555,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_thirteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("adenomyosis", "adenomyosis"),
+            ("alcohol associated liver disease", "alcohol_associated_liver_disease"),
+            ("sickle cell disease", "sickle_cell_disease"),
+            ("otosclerosis", "otosclerosis"),
+            ("mumps", "mumps"),
+            ("rubella", "rubella"),
+            ("molluscum contagiosum", "molluscum_contagiosum"),
+            ("lymphedema", "lymphedema"),
+            ("varicose veins", "varicose_veins"),
+            ("anemia of chronic disease", "anemia_of_chronic_disease"),
+            ("vestibular schwannoma", "vestibular_schwannoma"),
+            ("complex regional pain syndrome", "complex_regional_pain_syndrome"),
+            ("temporomandibular disorder", "temporomandibular_disorder"),
+            ("plantar wart", "plantar_wart"),
+            ("ingrown toenail", "ingrown_toenail"),
+            ("pleural effusion", "pleural_effusion"),
+            ("varicocele", "varicocele"),
+            ("hydrocele", "hydrocele"),
+            ("non hodgkin lymphoma", "non_hodgkin_lymphoma"),
+            ("hodgkin lymphoma", "hodgkin_lymphoma"),
+            ("noise induced hearing loss", "noise_induced_hearing_loss"),
+            ("mastitis", "mastitis"),
+            ("balanitis", "balanitis"),
+            ("chalazion", "chalazion"),
+            ("hordeolum", "hordeolum"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

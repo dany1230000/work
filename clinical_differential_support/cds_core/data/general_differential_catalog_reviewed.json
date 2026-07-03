@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-02",
-    "condition_count": 425,
-    "source_count": 503,
+    "catalog_version": "general-differential-starter-2026-07-03",
+    "condition_count": 450,
+    "source_count": 528,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-02",
-      "condition_count": 425,
-      "source_count": 503,
+      "catalog_version": "general-differential-starter-2026-07-03",
+      "condition_count": 450,
+      "source_count": 528,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 425
+      "expansion_target_condition_count": 450
     }
   },
   "safety_scope": {
@@ -12172,6 +12172,692 @@
         "medlineplus_pompe_disease",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "adenomyosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "子宮腺肌症",
+      "name_en": "Adenomyosis",
+      "system": "Gynecologic",
+      "urgency": "routine",
+      "summary_zh": "子宮腺肌症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Heavy menstrual bleeding, dysmenorrhea, chronic pelvic pain, or enlarged tender uterus context should include adenomyosis.",
+      "signals": {
+        "pelvic_pain": 3,
+        "vaginal_bleeding": 3,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "adenomyosis",
+        "uterine adenomyosis",
+        "adenomyosis uteri"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bleeding pattern, dysmenorrhea severity, chronic pelvic pain, anemia symptoms, fertility goals, imaging context, and gynecology review need."
+      ],
+      "source_ids": [
+        "merck_uterine_adenomyosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "alcohol_associated_liver_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "酒精相關肝病",
+      "name_en": "Alcohol-associated liver disease",
+      "system": "Hepatic/Substance use",
+      "urgency": "soon",
+      "summary_zh": "酒精相關肝病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Alcohol exposure with steatosis, hepatitis, cirrhosis, jaundice, ascites, or encephalopathy clues should include alcohol-associated liver disease.",
+      "signals": {
+        "jaundice": 4,
+        "abdominal_pain": 2,
+        "fatigue": 2,
+        "easy_bruising_bleeding": 1,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "alcohol associated liver disease",
+        "alcohol-related liver disease",
+        "alcoholic liver disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check alcohol pattern, withdrawal risk, jaundice, ascites or GI bleeding, encephalopathy, viral/metabolic co-factors, and hepatology/addiction-care context."
+      ],
+      "source_ids": [
+        "aasld_alcohol_associated_liver_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sickle_cell_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鐮刀型細胞疾病",
+      "name_en": "Sickle cell disease",
+      "system": "Hematology/Genetic",
+      "urgency": "soon",
+      "summary_zh": "鐮刀型細胞疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe episodic pain, anemia, infection risk, acute chest symptoms, stroke clues, or known hemoglobinopathy should include sickle cell disease.",
+      "signals": {
+        "severe_pain": 4,
+        "fever": 2,
+        "dyspnea": 2,
+        "fatigue": 2,
+        "neurologic_deficit": 2
+      },
+      "synonyms": [
+        "sickle cell disease",
+        "sickle cell anemia",
+        "sickle hemoglobinopathy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain-crisis pattern, fever or sepsis concern, chest symptoms, neurologic deficits, baseline hemoglobin, transfusion history, and hematology context."
+      ],
+      "source_ids": [
+        "cdc_sickle_cell_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "otosclerosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "耳硬化症",
+      "name_en": "Otosclerosis",
+      "system": "ENT/Audiology",
+      "urgency": "routine",
+      "summary_zh": "耳硬化症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive conductive hearing loss, tinnitus, family history, or pregnancy-associated worsening should include otosclerosis.",
+      "signals": {
+        "hearing_loss_tinnitus": 4,
+        "vertigo": 1
+      },
+      "synonyms": [
+        "otosclerosis",
+        "otospongiosis",
+        "stapes fixation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hearing-loss laterality and tempo, tinnitus, vertigo, family history, pregnancy history, audiology results, and ENT referral context."
+      ],
+      "source_ids": [
+        "nidcd_otosclerosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mumps",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "流行性腮腺炎",
+      "name_en": "Mumps",
+      "system": "Infectious/ENT",
+      "urgency": "soon",
+      "summary_zh": "流行性腮腺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Parotid swelling with fever, malaise, headache, orchitis, meningitis, or exposure context should include mumps.",
+      "signals": {
+        "fever": 2,
+        "neck_stiffness_swelling_dysphagia": 3,
+        "sore_throat": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "mumps",
+        "epidemic parotitis",
+        "mumps parotitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vaccination status, exposure/outbreak context, parotid swelling, orchitis or oophoritis, meningitis symptoms, and isolation/public-health context."
+      ],
+      "source_ids": [
+        "cdc_mumps_signs_symptoms",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rubella",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "德國麻疹",
+      "name_en": "Rubella",
+      "system": "Infectious/Dermatologic",
+      "urgency": "soon",
+      "summary_zh": "德國麻疹 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Mild fever, rash, lymphadenopathy, arthralgia, pregnancy exposure, or outbreak context should include rubella.",
+      "signals": {
+        "diffuse_viral_rash": 3,
+        "rash": 2,
+        "fever": 1,
+        "acute_joint_pain_swelling": 1
+      },
+      "synonyms": [
+        "rubella",
+        "german measles",
+        "three day measles"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy status or exposure, vaccination history, rash timing, lymph nodes, arthralgia, outbreak context, and public-health notification need."
+      ],
+      "source_ids": [
+        "cdc_rubella_signs_symptoms",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "molluscum_contagiosum",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "傳染性軟疣",
+      "name_en": "Molluscum contagiosum",
+      "system": "Dermatologic/Infectious",
+      "urgency": "routine",
+      "summary_zh": "傳染性軟疣 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Small pearly umbilicated papules, skin-to-skin exposure, genital distribution, or immunocompromise should include molluscum contagiosum.",
+      "signals": {
+        "rash": 2,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "molluscum contagiosum",
+        "molluscum",
+        "umbilicated papules"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion morphology, distribution, itching or inflammation, sexual or household exposure, immunocompromise, and dermatology/sexual-health context."
+      ],
+      "source_ids": [
+        "cdc_molluscum_contagiosum_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lymphedema",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "淋巴水腫",
+      "name_en": "Lymphedema",
+      "system": "Vascular/Oncology/Rehab",
+      "urgency": "routine",
+      "summary_zh": "淋巴水腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic limb heaviness, swelling, tight skin, prior lymph node surgery, radiation, cancer treatment, or recurrent cellulitis should include lymphedema.",
+      "signals": {
+        "unilateral_leg_swelling": 4,
+        "orthopnea_edema": 1,
+        "known_cancer": 2,
+        "recent_cancer_treatment": 2
+      },
+      "synonyms": [
+        "lymphedema",
+        "lymphatic swelling",
+        "lymph oedema"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check swelling chronicity, limb heaviness, skin changes, infection history, cancer surgery or radiation, venous/cardiac mimics, and therapy referral context."
+      ],
+      "source_ids": [
+        "medlineplus_lymphedema",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "varicose_veins",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "靜脈曲張",
+      "name_en": "Varicose veins",
+      "system": "Vascular",
+      "urgency": "routine",
+      "summary_zh": "靜脈曲張 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Bulging leg veins, heaviness, aching, itching, edema, skin color change, or venous ulcer context should include varicose veins.",
+      "signals": {
+        "unilateral_leg_swelling": 2,
+        "orthopnea_edema": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "varicose veins",
+        "varicosities",
+        "leg vein varicosities"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain and swelling pattern, visible veins, skin change or ulcers, pregnancy or standing risk, DVT red flags, and compression/vascular referral context."
+      ],
+      "source_ids": [
+        "nhlbi_varicose_veins",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "anemia_of_chronic_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "慢性病貧血",
+      "name_en": "Anemia of chronic disease",
+      "system": "Hematology/Inflammatory",
+      "urgency": "routine",
+      "summary_zh": "慢性病貧血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Normocytic or microcytic anemia with chronic inflammation, CKD, autoimmune disease, infection, or cancer should include anemia of chronic disease.",
+      "signals": {
+        "fatigue": 3,
+        "dyspnea": 1,
+        "palpitations": 1,
+        "weight_loss": 1,
+        "known_cancer": 1
+      },
+      "synonyms": [
+        "anemia of chronic disease",
+        "anemia of inflammation",
+        "inflammatory anemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chronic inflammatory condition, kidney disease, cancer or infection context, iron studies, ferritin/transferrin pattern, and hematology/nephrology context."
+      ],
+      "source_ids": [
+        "niddk_anemia_inflammation_chronic_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vestibular_schwannoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "前庭神經鞘瘤",
+      "name_en": "Vestibular schwannoma",
+      "system": "Neurologic/ENT",
+      "urgency": "soon",
+      "summary_zh": "前庭神經鞘瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Unilateral hearing loss, tinnitus, imbalance, facial numbness, or neurofibromatosis context should include vestibular schwannoma.",
+      "signals": {
+        "hearing_loss_tinnitus": 4,
+        "vertigo": 2,
+        "neurologic_deficit": 1,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "vestibular schwannoma",
+        "acoustic neuroma",
+        "eighth nerve schwannoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check asymmetric hearing symptoms, tinnitus, balance, facial sensation or weakness, NF2 history, audiology/MRI context, and ENT/neurosurgery review need."
+      ],
+      "source_ids": [
+        "nidcd_vestibular_schwannoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "complex_regional_pain_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "複雜性局部疼痛症候群",
+      "name_en": "Complex regional pain syndrome",
+      "system": "Neurologic/Pain",
+      "urgency": "routine",
+      "summary_zh": "複雜性局部疼痛症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pain out of proportion after injury with allodynia, swelling, temperature/color change, sweating, or motor/trophic change should include CRPS.",
+      "signals": {
+        "severe_pain": 4,
+        "recent_trauma": 2,
+        "acute_joint_pain_swelling": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "complex regional pain syndrome",
+        "crps",
+        "reflex sympathetic dystrophy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check inciting injury, pain distribution, allodynia, edema, temperature or color asymmetry, function loss, and pain/rehabilitation referral context."
+      ],
+      "source_ids": [
+        "ninds_complex_regional_pain_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "temporomandibular_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "顳顎關節障礙",
+      "name_en": "Temporomandibular disorder",
+      "system": "Musculoskeletal/Dental",
+      "urgency": "routine",
+      "summary_zh": "顳顎關節障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Jaw pain, chewing difficulty, clicking, locking, facial pain, or bruxism context should include temporomandibular disorder.",
+      "signals": {
+        "dental_pain_or_facial_swelling": 3,
+        "jaw_claudication": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "temporomandibular disorder",
+        "tmd",
+        "tmj disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chewing pain, clicking or locking, jaw range of motion, dental infection mimics, headache/ear symptoms, bruxism, and dental/orofacial pain context."
+      ],
+      "source_ids": [
+        "nidcr_temporomandibular_disorders",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "plantar_wart",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "足底疣",
+      "name_en": "Plantar wart",
+      "system": "Dermatologic/Foot",
+      "urgency": "routine",
+      "summary_zh": "足底疣 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful hyperkeratotic plantar lesion, walking pain, thrombosed capillary dots, HPV exposure, or immunocompromise should include plantar wart.",
+      "signals": {
+        "rash": 1,
+        "severe_pain": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "plantar wart",
+        "verruca plantaris",
+        "foot wart"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion location and pain with walking, skin-line interruption, diabetes or vascular risk, immunocompromise, and podiatry/dermatology context."
+      ],
+      "source_ids": [
+        "medlineplus_warts",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ingrown_toenail",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "嵌甲",
+      "name_en": "Ingrown toenail",
+      "system": "Skin/Soft tissue/Foot",
+      "urgency": "routine",
+      "summary_zh": "嵌甲 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Toe nail edge pain with redness, swelling, drainage, tight-shoe or trimming trigger should include ingrown toenail.",
+      "signals": {
+        "purulent_skin_lesion": 2,
+        "severe_pain": 1,
+        "rapidly_spreading_skin_infection": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "ingrown toenail",
+        "onychocryptosis",
+        "ingrowing nail"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check toe involved, drainage or cellulitis, diabetes or vascular disease, footwear and nail-trimming history, and podiatry review context."
+      ],
+      "source_ids": [
+        "medlineplus_ingrown_toenail",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pleural_effusion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肋膜積液",
+      "name_en": "Pleural effusion",
+      "system": "Pulmonary",
+      "urgency": "soon",
+      "summary_zh": "肋膜積液 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dyspnea, pleuritic chest pain, cough, fever, malignancy, heart failure, or pneumonia context should include pleural effusion.",
+      "signals": {
+        "dyspnea": 3,
+        "pleuritic_pain": 2,
+        "cough_sputum": 1,
+        "fever": 1,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "pleural effusion",
+        "fluid around lung",
+        "pleural fluid"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check respiratory distress, fever or infection, heart failure or cancer history, chest imaging context, oxygenation, and thoracentesis/pulmonary review need."
+      ],
+      "source_ids": [
+        "medlineplus_pleural_effusion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "varicocele",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "精索靜脈曲張",
+      "name_en": "Varicocele",
+      "system": "Urologic/Reproductive",
+      "urgency": "routine",
+      "summary_zh": "精索靜脈曲張 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Scrotal heaviness, dull ache, bag-of-worms venous mass, infertility context, or testicular size asymmetry should include varicocele.",
+      "signals": {
+        "unilateral_scrotal_pain_swelling": 3,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "varicocele",
+        "scrotal varices",
+        "pampiniform plexus varices"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain tempo and relief with recumbency, palpable mass, fertility goals, testicular size, acute torsion red flags, and urology context."
+      ],
+      "source_ids": [
+        "medlineplus_varicocele",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hydrocele",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "陰囊水腫",
+      "name_en": "Hydrocele",
+      "system": "Urologic/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "陰囊水腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless scrotal swelling, fluid-filled transilluminating mass, infant presentation, or size fluctuation should include hydrocele.",
+      "signals": {
+        "unilateral_scrotal_pain_swelling": 3
+      },
+      "synonyms": [
+        "hydrocele",
+        "scrotal hydrocele",
+        "fluid around testicle"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain severity, onset, reducibility, fever or torsion red flags, infant versus adult context, transillumination/imaging, and urology referral context."
+      ],
+      "source_ids": [
+        "medlineplus_hydrocele",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "non_hodgkin_lymphoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "非何杰金淋巴瘤",
+      "name_en": "Non-Hodgkin lymphoma",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "非何杰金淋巴瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent lymphadenopathy, B symptoms, extranodal mass, immunocompromise, or abnormal blood counts should include non-Hodgkin lymphoma.",
+      "signals": {
+        "weight_loss": 3,
+        "fever": 2,
+        "fatigue": 2,
+        "known_cancer": 1,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "non hodgkin lymphoma",
+        "non-hodgkin lymphoma",
+        "nhl lymphoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check node location and duration, fever/night sweats/weight loss, extranodal symptoms, immunosuppression, labs/imaging, and hematology/oncology context."
+      ],
+      "source_ids": [
+        "nci_non_hodgkin_lymphoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hodgkin_lymphoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "何杰金淋巴瘤",
+      "name_en": "Hodgkin lymphoma",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "何杰金淋巴瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless lymphadenopathy with fever, night sweats, weight loss, pruritus, or mediastinal symptoms should include Hodgkin lymphoma.",
+      "signals": {
+        "weight_loss": 3,
+        "fever": 2,
+        "fatigue": 2,
+        "known_cancer": 1,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "hodgkin lymphoma",
+        "hodgkin disease",
+        "classical hodgkin lymphoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lymph node distribution, B symptoms, pruritus, chest symptoms, alcohol-related node pain, imaging/lab context, and hematology/oncology referral need."
+      ],
+      "source_ids": [
+        "nci_hodgkin_lymphoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "noise_induced_hearing_loss",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "噪音性聽力損失",
+      "name_en": "Noise-induced hearing loss",
+      "system": "ENT/Audiology/Occupational",
+      "urgency": "routine",
+      "summary_zh": "噪音性聽力損失 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual or sudden hearing loss after occupational, recreational, firearm, or blast noise exposure should include noise-induced hearing loss.",
+      "signals": {
+        "hearing_loss_tinnitus": 4
+      },
+      "synonyms": [
+        "noise induced hearing loss",
+        "occupational hearing loss",
+        "acoustic trauma hearing loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check noise exposure type and duration, acute blast or firearm exposure, tinnitus, hearing protection, audiology results, and occupational-health context."
+      ],
+      "source_ids": [
+        "nidcd_noise_induced_hearing_loss",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mastitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乳腺炎",
+      "name_en": "Mastitis",
+      "system": "Gynecologic/Breast/Infectious",
+      "urgency": "soon",
+      "summary_zh": "乳腺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Breast pain, swelling, warmth, redness, fever, flu-like symptoms, lactation, or nipple trauma should include mastitis.",
+      "signals": {
+        "fever": 2,
+        "severe_pain": 2,
+        "poor_oral_intake_dehydration": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "mastitis",
+        "breast infection",
+        "lactational mastitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lactation status, focal redness or swelling, fever/systemic symptoms, abscess concern, nipple trauma, milk drainage, and obstetric/breast-care context."
+      ],
+      "source_ids": [
+        "medlineplus_breast_infection",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "balanitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "龜頭炎",
+      "name_en": "Balanitis",
+      "system": "Urologic/Dermatologic/Infectious",
+      "urgency": "routine",
+      "summary_zh": "龜頭炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Glans or foreskin redness, swelling, pain, rash, discharge, odor, dysuria, diabetes, or hygiene context should include balanitis.",
+      "signals": {
+        "dysuria": 2,
+        "urethral_discharge": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "balanitis",
+        "balanoposthitis",
+        "glans penis inflammation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check discharge, ulcers or STI risk, phimosis/paraphimosis, diabetes or immunosuppression, hygiene irritants, and urology/sexual-health context."
+      ],
+      "source_ids": [
+        "medlineplus_balanitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chalazion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "霰粒腫",
+      "name_en": "Chalazion",
+      "system": "Ophthalmologic",
+      "urgency": "routine",
+      "summary_zh": "霰粒腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Firm eyelid nodule after gland blockage or stye, usually less tender over time, should include chalazion.",
+      "signals": {
+        "eye_pain_redness": 2,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "chalazion",
+        "meibomian cyst",
+        "eyelid cyst"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain versus painless nodule, duration, recurrent lesions, visual obstruction, surrounding cellulitis signs, and ophthalmology context."
+      ],
+      "source_ids": [
+        "medlineplus_chalazion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hordeolum",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "麥粒腫",
+      "name_en": "Hordeolum",
+      "system": "Ophthalmologic/Infectious",
+      "urgency": "routine",
+      "summary_zh": "麥粒腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful red eyelid bump at the lash line with tearing, crusting, foreign-body sensation, or discharge should include hordeolum.",
+      "signals": {
+        "eye_pain_redness": 3,
+        "eye_discharge": 1,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "hordeolum",
+        "stye",
+        "sty"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check eyelid margin tenderness, drainage, cellulitis or vision red flags, contact lens use, recurrent lesions, and ophthalmology review context."
+      ],
+      "source_ids": [
+        "medlineplus_eyelid_bump",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -15192,6 +15878,156 @@
       "publisher": "MedlinePlus",
       "title": "Pompe Disease",
       "url": "https://medlineplus.gov/genetics/condition/pompe-disease/"
+    },
+    {
+      "source_id": "merck_uterine_adenomyosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Uterine Adenomyosis",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/miscellaneous-gynecologic-disorders/uterine-adenomyosis"
+    },
+    {
+      "source_id": "aasld_alcohol_associated_liver_disease",
+      "publisher": "AASLD",
+      "title": "Alcohol-Associated Liver Disease",
+      "url": "https://www.aasld.org/practice-guidelines/alcohol-associated-liver-disease"
+    },
+    {
+      "source_id": "cdc_sickle_cell_disease",
+      "publisher": "CDC",
+      "title": "About Sickle Cell Disease",
+      "url": "https://www.cdc.gov/sickle-cell/about/index.html"
+    },
+    {
+      "source_id": "nidcd_otosclerosis",
+      "publisher": "NIDCD",
+      "title": "Otosclerosis",
+      "url": "https://www.nidcd.nih.gov/sites/default/files/Documents/health/hearing/NIDCD-Otosclerosis.pdf"
+    },
+    {
+      "source_id": "cdc_mumps_signs_symptoms",
+      "publisher": "CDC",
+      "title": "Signs and Symptoms of Mumps",
+      "url": "https://www.cdc.gov/mumps/signs-symptoms/index.html"
+    },
+    {
+      "source_id": "cdc_rubella_signs_symptoms",
+      "publisher": "CDC",
+      "title": "Signs and Symptoms of Rubella",
+      "url": "https://www.cdc.gov/rubella/signs-symptoms/index.html"
+    },
+    {
+      "source_id": "cdc_molluscum_contagiosum_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Molluscum Contagiosum",
+      "url": "https://www.cdc.gov/molluscum-contagiosum/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "medlineplus_lymphedema",
+      "publisher": "MedlinePlus",
+      "title": "Lymphedema",
+      "url": "https://medlineplus.gov/lymphedema.html"
+    },
+    {
+      "source_id": "nhlbi_varicose_veins",
+      "publisher": "NHLBI",
+      "title": "Varicose Veins",
+      "url": "https://www.nhlbi.nih.gov/health/varicose-veins"
+    },
+    {
+      "source_id": "niddk_anemia_inflammation_chronic_disease",
+      "publisher": "NIDDK",
+      "title": "Anemia of Inflammation or Chronic Disease",
+      "url": "https://www.niddk.nih.gov/health-information/blood-diseases/anemia-inflammation-chronic-disease"
+    },
+    {
+      "source_id": "nidcd_vestibular_schwannoma",
+      "publisher": "NIDCD",
+      "title": "Vestibular Schwannoma (Acoustic Neuroma) and Neurofibromatosis",
+      "url": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
+    },
+    {
+      "source_id": "ninds_complex_regional_pain_syndrome",
+      "publisher": "NINDS",
+      "title": "Complex Regional Pain Syndrome",
+      "url": "https://www.ninds.nih.gov/health-information/disorders/complex-regional-pain-syndrome"
+    },
+    {
+      "source_id": "nidcr_temporomandibular_disorders",
+      "publisher": "NIDCR",
+      "title": "Temporomandibular Disorders",
+      "url": "https://www.nidcr.nih.gov/grants-funding/funded-research/research-investments-advances/temporomandibular-disorders"
+    },
+    {
+      "source_id": "medlineplus_warts",
+      "publisher": "MedlinePlus",
+      "title": "Warts",
+      "url": "https://medlineplus.gov/warts.html"
+    },
+    {
+      "source_id": "medlineplus_ingrown_toenail",
+      "publisher": "MedlinePlus",
+      "title": "Ingrown toenail",
+      "url": "https://medlineplus.gov/ency/imagepages/9471.htm"
+    },
+    {
+      "source_id": "medlineplus_pleural_effusion",
+      "publisher": "MedlinePlus",
+      "title": "Pleural effusion",
+      "url": "https://medlineplus.gov/ency/article/000086.htm"
+    },
+    {
+      "source_id": "medlineplus_varicocele",
+      "publisher": "MedlinePlus",
+      "title": "Varicocele",
+      "url": "https://medlineplus.gov/ency/imagepages/19472.htm"
+    },
+    {
+      "source_id": "medlineplus_hydrocele",
+      "publisher": "MedlinePlus",
+      "title": "Hydrocele",
+      "url": "https://medlineplus.gov/ency/imagepages/19667.htm"
+    },
+    {
+      "source_id": "nci_non_hodgkin_lymphoma",
+      "publisher": "National Cancer Institute",
+      "title": "Adult Non-Hodgkin Lymphoma Treatment",
+      "url": "https://www.cancer.gov/types/lymphoma/patient/adult-nhl-treatment-pdq"
+    },
+    {
+      "source_id": "nci_hodgkin_lymphoma",
+      "publisher": "National Cancer Institute",
+      "title": "Adult Hodgkin Lymphoma Treatment",
+      "url": "https://www.cancer.gov/types/lymphoma/patient/adult-hodgkin-treatment-pdq"
+    },
+    {
+      "source_id": "nidcd_noise_induced_hearing_loss",
+      "publisher": "NIDCD",
+      "title": "Noise-Induced Hearing Loss",
+      "url": "https://www.nidcd.nih.gov/health/noise-induced-hearing-loss"
+    },
+    {
+      "source_id": "medlineplus_breast_infection",
+      "publisher": "MedlinePlus",
+      "title": "Breast infection",
+      "url": "https://medlineplus.gov/ency/article/001490.htm"
+    },
+    {
+      "source_id": "medlineplus_balanitis",
+      "publisher": "MedlinePlus",
+      "title": "Balanitis",
+      "url": "https://medlineplus.gov/ency/article/000862.htm"
+    },
+    {
+      "source_id": "medlineplus_chalazion",
+      "publisher": "MedlinePlus",
+      "title": "Chalazion",
+      "url": "https://medlineplus.gov/ency/article/001006.htm"
+    },
+    {
+      "source_id": "medlineplus_eyelid_bump",
+      "publisher": "MedlinePlus",
+      "title": "Eyelid bump",
+      "url": "https://medlineplus.gov/ency/article/001009.htm"
     }
   ]
 }

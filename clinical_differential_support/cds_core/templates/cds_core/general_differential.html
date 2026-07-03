@@ -447,7 +447,7 @@
 
   .candidate-scan-row {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) auto auto;
+    grid-template-columns: minmax(0, 1.4fr) auto auto auto auto;
     gap: 0.55rem;
     align-items: center;
     border: 1px solid #e0e6ed;
@@ -1356,7 +1356,7 @@
               {% endfor %}
             </div>
           </section>
-          <section class="candidate-scan-table" data-candidate-scan-table="true" aria-labelledby="candidate-scan-title">
+          <section class="candidate-scan-table" data-candidate-scan-table="true" data-candidate-scan-density="compact" aria-labelledby="candidate-scan-title">
             <h3 id="candidate-scan-title">候選快速掃描 / Candidate scan</h3>
             <p class="secondary">先比較前五個候選的分數、急迫性與來源數，再打開詳細卡片。</p>
             <div class="candidate-scan-grid">
@@ -1365,6 +1365,8 @@
                   <strong>{{ entry.name_zh }} / {{ entry.name_en }}</strong>
                   <span class="tag">{{ entry.urgency }}</span>
                   <span class="tag">score {{ entry.score }}</span>
+                  <span class="tag" data-candidate-source-count="true">{{ entry.sources|length }} sources</span>
+                  <a class="tag" href="#top-candidates" data-candidate-source-shortcut="true">Review sources</a>
                 </article>
               {% endfor %}
             </div>
