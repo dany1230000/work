@@ -102,7 +102,7 @@ Update current reviewed catalog expectations from 450/528 to 475/553 after regen
 
 - [x] **Step 3: Run full suite and validators**
 
-- [ ] **Step 4: Commit, push, and public smoke**
+- [x] **Step 4: Commit, push, and public smoke**
 
 Commit the exact staged phase files, push `origin master`, then smoke the public `/differential/` page with counts 475/553 and a new query such as `histoplasmosis`.
 

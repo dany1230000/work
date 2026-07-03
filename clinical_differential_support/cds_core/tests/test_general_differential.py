@@ -621,6 +621,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_fifteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("blastomycosis", "blastomycosis"),
+            ("cryptococcosis", "cryptococcosis"),
+            ("aspergillosis", "aspergillosis"),
+            ("invasive candidiasis", "invasive_candidiasis"),
+            ("pneumocystis pneumonia", "pneumocystis_pneumonia"),
+            ("nontuberculous mycobacterial lung disease", "nontuberculous_mycobacterial_lung_disease"),
+            ("hypokalemia", "hypokalemia"),
+            ("botulism", "botulism"),
+            ("plague", "plague"),
+            ("anthrax", "anthrax"),
+            ("brucellosis", "brucellosis"),
+            ("leptospirosis", "leptospirosis"),
+            ("hantavirus pulmonary syndrome", "hantavirus_pulmonary_syndrome"),
+            ("ehrlichiosis", "ehrlichiosis"),
+            ("anaplasmosis", "anaplasmosis"),
+            ("babesiosis", "babesiosis"),
+            ("tularemia", "tularemia"),
+            ("q fever", "q_fever"),
+            ("psittacosis", "psittacosis"),
+            ("legionnaires disease", "legionnaires_disease"),
+            ("nocardiosis", "nocardiosis"),
+            ("mucormycosis", "mucormycosis"),
+            ("leprosy", "leprosy"),
+            ("cytomegalovirus infection", "cytomegalovirus_infection"),
+            ("cryptosporidiosis", "cryptosporidiosis"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {
