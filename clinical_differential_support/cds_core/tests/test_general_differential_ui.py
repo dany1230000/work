@@ -411,6 +411,44 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_start_with_concise_next_action_summary(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-concise-result-summary="true"')
+        self.assertContains(response, 'data-primary-next-action="true"')
+        self.assertContains(response, 'data-danger-check-list="true"')
+        self.assertContains(response, 'data-concise-top-candidate="true"')
+        self.assertContains(response, "下一步 / Next action")
+        self.assertContains(response, "Danger checks")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertLess(
+            content.index('data-concise-result-summary="true"'),
+            content.index('data-next-step-summary-strip="true"'),
+        )
+        self.assertLess(
+            content.index('data-concise-result-summary="true"'),
+            content.index('data-source-provenance-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-concise-result-summary="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_show_result_groups_before_long_candidate_cards(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

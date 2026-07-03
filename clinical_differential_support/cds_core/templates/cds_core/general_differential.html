@@ -441,6 +441,67 @@
     gap: 0.75rem;
   }
 
+  .concise-result-summary {
+    border: 1px solid #8fc5bd;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #f7fbfa;
+    padding: 0.9rem;
+    margin: 0.85rem 0;
+  }
+
+  .concise-result-summary header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .concise-result-summary h3,
+  .concise-result-summary h4,
+  .concise-result-summary p {
+    margin: 0;
+  }
+
+  .concise-summary-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr 1.15fr;
+    gap: 0.85rem;
+  }
+
+  .concise-summary-block {
+    border-top: 1px solid #c7d2de;
+    padding-top: 0.65rem;
+  }
+
+  .concise-summary-block h4 {
+    margin-bottom: 0.45rem;
+  }
+
+  .concise-danger-list,
+  .concise-candidate-list {
+    display: grid;
+    gap: 0.45rem;
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .concise-candidate-list li {
+    border-bottom: 1px solid #dce5eb;
+    padding-bottom: 0.4rem;
+  }
+
+  .concise-candidate-list li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .concise-candidate-list strong,
+  .concise-candidate-list span {
+    display: block;
+  }
+
   .candidate-scan-table {
     border: 1px solid #b8c0cc;
     border-radius: 6px;
@@ -1173,6 +1234,7 @@
     .workflow-command-bar,
     .catalog-entry-grid,
     .case-action-list,
+    .concise-summary-grid,
     .next-step-summary-strip,
     .result-group-grid,
     .results-brief-grid,
@@ -1443,6 +1505,45 @@
           </section>
         {% endif %}
         {% if result.results %}
+          {% with summary=result.concise_result_summary %}
+            <section class="concise-result-summary" data-concise-result-summary="true" aria-labelledby="concise-result-summary-title">
+              <header>
+                <div>
+                  <h3 id="concise-result-summary-title">下一步 / Next action</h3>
+                  <p class="secondary">先看危險檢查和前三個候選，再展開長列表與來源。</p>
+                </div>
+                <span class="tag">{{ summary.top_candidates|length }} top candidates</span>
+              </header>
+              <div class="concise-summary-grid">
+                <section class="concise-summary-block" data-primary-next-action="true">
+                  <h4>{{ summary.primary_next_action.title_zh }} / {{ summary.primary_next_action.title_en }}</h4>
+                  <p>{{ summary.primary_next_action.instruction_zh }}</p>
+                  <p class="secondary">{{ summary.primary_next_action.instruction_en }}</p>
+                </section>
+                <section class="concise-summary-block">
+                  <h4>危險檢查 / Danger checks</h4>
+                  <ol class="concise-danger-list" data-danger-check-list="true">
+                    {% for check in summary.danger_checks %}
+                      <li>{{ check }}</li>
+                    {% endfor %}
+                  </ol>
+                </section>
+                <section class="concise-summary-block">
+                  <h4>前三候選 / Top 3 candidates</h4>
+                  <ol class="concise-candidate-list">
+                    {% for candidate in summary.top_candidates %}
+                      <li data-concise-top-candidate="true" data-concise-top-candidate-slug="{{ candidate.slug }}">
+                        <strong>{{ candidate.name_zh }} / {{ candidate.name_en }}</strong>
+                        <span class="secondary">
+                          {{ candidate.urgency }} · score {{ candidate.score }} · {{ candidate.source_count }} sources · {{ candidate.system }}
+                        </span>
+                      </li>
+                    {% endfor %}
+                  </ol>
+                </section>
+              </div>
+            </section>
+          {% endwith %}
           <section class="next-step-summary-strip" data-next-step-summary-strip="true" aria-label="Next step summary">
             <article class="next-step-summary-card" data-next-step-summary-item="do-now">
               <strong>Do now</strong>

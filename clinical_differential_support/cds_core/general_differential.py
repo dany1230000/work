@@ -133,6 +133,11 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
+        "concise_result_summary": _build_concise_result_summary(
+            ranked_results,
+            guided_follow_up,
+            selected_findings,
+        ),
         "source_provenance": _build_source_provenance(ranked_results),
         "candidate_scan_filters": _build_candidate_scan_filters(ranked_results),
         "secondary_candidate_filters": _build_secondary_candidate_filters(ranked_results),
@@ -557,6 +562,59 @@ def _build_results_brief(
         "next_step_title_en": str(next_step.get("title_en", "")),
         "next_step_instruction_zh": str(next_step.get("instruction_zh", "")),
         "next_step_instruction_en": str(next_step.get("instruction_en", "")),
+    }
+
+
+def _build_concise_result_summary(
+    results: list[dict[str, Any]],
+    guided_follow_up: list[dict[str, Any]],
+    selected_findings: set[str],
+) -> dict[str, Any]:
+    primary_step = guided_follow_up[0] if guided_follow_up else {}
+    primary_next_action = {
+        "title_zh": str(primary_step.get("title_zh", "先排除立即危險")),
+        "title_en": str(primary_step.get("title_en", "Safety first")),
+        "instruction_zh": str(
+            primary_step.get(
+                "instruction_zh",
+                "先確認 ABC、生命徵象、血氧、意識與紅旗，再使用排名。",
+            )
+        ),
+        "instruction_en": str(
+            primary_step.get(
+                "instruction_en",
+                "Re-check ABCs, vitals, oxygenation, mental status, and red flags before using the ranking.",
+            )
+        ),
+    }
+
+    danger_checks: list[str] = []
+    for prompt in [DEFAULT_ASK_NEXT[0], *_build_focused_context_prompts(selected_findings)]:
+        if prompt not in danger_checks:
+            danger_checks.append(prompt)
+    for step in guided_follow_up[:3]:
+        for prompt in step.get("prompts", [])[:1]:
+            if prompt not in danger_checks:
+                danger_checks.append(str(prompt))
+    if not danger_checks:
+        danger_checks.append(DEFAULT_ASK_NEXT[0])
+
+    return {
+        "primary_next_action": primary_next_action,
+        "danger_checks": danger_checks[:3],
+        "top_candidates": [
+            {
+                "slug": result["slug"],
+                "name_zh": result["name_zh"],
+                "name_en": result["name_en"],
+                "urgency": result["urgency"],
+                "score": result["score"],
+                "system": result["system"],
+                "source_count": len(result.get("sources", [])),
+            }
+            for result in results[:3]
+        ],
+        "has_structured_findings": bool(selected_findings),
     }
 
 

@@ -84,6 +84,27 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             CATALOG_VERSION,
         )
 
+    def test_results_include_concise_next_action_summary(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        summary = result["concise_result_summary"]
+
+        self.assertEqual(summary["primary_next_action"]["title_en"], "Safety first")
+        self.assertEqual(summary["top_candidates"][0]["slug"], "acute_coronary_syndrome")
+        self.assertEqual(len(summary["top_candidates"]), 3)
+        self.assertGreaterEqual(len(summary["danger_checks"]), 1)
+        self.assertTrue(summary["has_structured_findings"])
+
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
         result = evaluate_general_differential(
             {
@@ -780,6 +801,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("arterial gas embolism", "arterial_gas_embolism"),
             ("snakebite envenoming", "snakebite_envenoming"),
             ("acute arsenic poisoning", "acute_arsenic_poisoning"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_twentieth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("hyphema", "hyphema"),
+            ("central retinal artery occlusion", "central_retinal_artery_occlusion"),
+            ("retinal vein occlusion", "retinal_vein_occlusion"),
+            ("subconjunctival hemorrhage", "subconjunctival_hemorrhage"),
+            ("ludwig angina", "ludwig_angina"),
+            ("bacterial tracheitis", "bacterial_tracheitis"),
+            ("cholesteatoma", "cholesteatoma"),
+            ("idiopathic intracranial hypertension", "idiopathic_intracranial_hypertension"),
+            ("insulinoma", "insulinoma"),
+            ("erythema multiforme", "erythema_multiforme"),
+            ("erythema nodosum", "erythema_nodosum"),
+            ("dacryocystitis", "dacryocystitis"),
+            ("scleritis", "scleritis"),
+            ("cerumen impaction", "cerumen_impaction"),
+            ("adhesive capsulitis", "adhesive_capsulitis"),
+            ("lateral epicondylitis", "lateral_epicondylitis"),
+            ("de quervain tenosynovitis", "de_quervain_tenosynovitis"),
+            ("melasma", "melasma"),
+            ("drug eruption", "drug_eruption"),
+            ("hypogonadism", "hypogonadism"),
+            ("paroxysmal nocturnal hemoglobinuria", "paroxysmal_nocturnal_hemoglobinuria"),
+            ("autoimmune hemolytic anemia", "autoimmune_hemolytic_anemia"),
+            ("superficial thrombophlebitis", "superficial_thrombophlebitis"),
+            ("raynaud phenomenon", "raynaud_phenomenon"),
+            ("granulomatosis with polyangiitis", "granulomatosis_with_polyangiitis"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):

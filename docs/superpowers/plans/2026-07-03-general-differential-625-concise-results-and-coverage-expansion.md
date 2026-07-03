@@ -20,11 +20,11 @@
 - Modify: `clinical_differential_support/cds_core/tests/test_next_actions.py`
 - Modify: `clinical_differential_support/cds_core/tests/test_dyspnea_pathway.py`
 
-- [ ] Add a quality test for 625 conditions, 703 sources, zero blockers, zero warnings, and completed `expand_condition_catalog_to_625`.
-- [ ] Add a searchability test for 25 new non-duplicate condition slugs.
-- [ ] Add a UI test that the result panel starts with a concise next-action summary before long source/provenance sections.
-- [ ] Update exact reviewed catalog count assertions from 600/678 to 625/703.
-- [ ] Run focused tests and confirm RED before implementation.
+- [x] Add a quality test for 625 conditions, 703 sources, zero blockers, zero warnings, and completed `expand_condition_catalog_to_625`.
+- [x] Add a searchability test for 25 new non-duplicate condition slugs.
+- [x] Add a UI test that the result panel starts with a concise next-action summary before long source/provenance sections.
+- [x] Update exact reviewed catalog count assertions from 600/678 to 625/703.
+- [x] Run focused tests and confirm RED before implementation.
 
 ### Task 2: Catalog And Reviewed Data
 
@@ -33,11 +33,11 @@
 - Modify: `clinical_differential_support/cds_core/differential_catalog_quality.py`
 - Modify: `clinical_differential_support/cds_core/data/general_differential_catalog_reviewed.json`
 
-- [ ] Select 25 non-duplicate conditions after checking current query behavior, not only slug uniqueness.
-- [ ] Use official or institutionally authoritative source rows, preferring CDC/WHO/NIH/Merck Professional where available.
-- [ ] Add the twentieth 25-condition batch and extend `CONDITIONS`.
-- [ ] Set `EXPANSION_TARGET_CONDITIONS = 625`.
-- [ ] Regenerate `cds_core/data/general_differential_catalog_reviewed.json`.
+- [x] Select 25 non-duplicate conditions after checking current query behavior, not only slug uniqueness.
+- [x] Use official or institutionally authoritative source rows, preferring CDC/WHO/NIH/Merck Professional where available.
+- [x] Add the twentieth 25-condition batch and extend `CONDITIONS`.
+- [x] Set `EXPANSION_TARGET_CONDITIONS = 625`.
+- [x] Regenerate `cds_core/data/general_differential_catalog_reviewed.json`.
 
 ### Task 3: Concise Stepwise Results
 
@@ -46,9 +46,9 @@
 - Modify: `clinical_differential_support/cds_core/templates/cds_core/general_differential.html`
 - Modify: `clinical_differential_support/cds_core/templates/cds_core/base.html`
 
-- [ ] Add a compact result summary model that surfaces primary next action, top danger checks, and top 3 candidates.
-- [ ] Move long result groups, source provenance, and secondary candidates behind clear drawers or filters.
-- [ ] Keep Chinese-first labels with English helper text and avoid adding explanatory marketing copy.
+- [x] Add a compact result summary model that surfaces primary next action, top danger checks, and top 3 candidates.
+- [x] Move long result groups, source provenance, and secondary candidates behind clear drawers or filters.
+- [x] Keep Chinese-first labels with English helper text and avoid adding explanatory marketing copy.
 
 ### Task 4: Verification And Publish
 
@@ -56,10 +56,10 @@
 - Stage only this phase's code, data, test, and doc files.
 - Do not stage `clinical_differential_support/cds_core/templates/cds_core/home.html`.
 
-- [ ] Run focused tests.
-- [ ] Run related tests.
-- [ ] Run full `cds_core.tests` suite and validators.
-- [ ] Run local CSRF smoke.
+- [x] Run focused tests.
+- [x] Run related tests.
+- [x] Run full `cds_core.tests` suite and validators.
+- [x] Run local CSRF smoke.
 - [ ] Commit, push, and public Render smoke.
 
 ### Stop Condition

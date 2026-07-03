@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03-600",
-    "condition_count": 600,
-    "source_count": 678,
+    "catalog_version": "general-differential-starter-2026-07-03-625",
+    "condition_count": 625,
+    "source_count": 703,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03-600",
-      "condition_count": 600,
-      "source_count": 678,
+      "catalog_version": "general-differential-starter-2026-07-03-625",
+      "condition_count": 625,
+      "source_count": 703,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 600
+      "expansion_target_condition_count": 625
     }
   },
   "safety_scope": {
@@ -17323,6 +17323,755 @@
         "cdc_arsenic_medical_management",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "hyphema",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "前房積血",
+      "name_en": "Hyphema",
+      "system": "Ophthalmology/Trauma",
+      "urgency": "urgent",
+      "summary_zh": "前房積血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Blunt eye trauma with visible blood in the anterior chamber, eye pain, photophobia, blurred vision, or elevated-pressure risk should include hyphema.",
+      "signals": {
+        "recent_trauma": 4,
+        "eye_pain_redness": 4,
+        "visual_disturbance": 4,
+        "severe_pain": 2,
+        "headache": 1
+      },
+      "synonyms": [
+        "hyphema",
+        "traumatic hyphema",
+        "anterior chamber hemorrhage",
+        "blood in anterior chamber"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mechanism of eye trauma, visual acuity, anterior chamber blood level, rebleeding risk, anticoagulants or sickle risk, eye shield need, and urgent ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_globe_injury_hyphema",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "central_retinal_artery_occlusion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "中央視網膜動脈阻塞",
+      "name_en": "Central retinal artery occlusion",
+      "system": "Ophthalmology/Vascular/Stroke",
+      "urgency": "emergent",
+      "summary_zh": "中央視網膜動脈阻塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden painless monocular vision loss or field loss should include central or branch retinal artery occlusion and stroke-risk evaluation.",
+      "signals": {
+        "visual_disturbance": 5,
+        "speech_vision_changes": 3,
+        "neurologic_deficit": 2,
+        "palpitations": 1,
+        "new_headache_after_50": 1
+      },
+      "synonyms": [
+        "central retinal artery occlusion",
+        "retinal artery occlusion",
+        "crao",
+        "branch retinal artery occlusion"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check onset time, monocular versus binocular loss, fundus findings, embolic or giant-cell arteritis clues, stroke risk, and emergency ophthalmology/stroke pathway."
+      ],
+      "source_ids": [
+        "merck_central_retinal_artery_occlusion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "retinal_vein_occlusion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "視網膜靜脈阻塞",
+      "name_en": "Retinal vein occlusion",
+      "system": "Ophthalmology/Vascular",
+      "urgency": "urgent",
+      "summary_zh": "視網膜靜脈阻塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden painless monocular blurred vision or vision loss with vascular risk should include central or branch retinal vein occlusion.",
+      "signals": {
+        "visual_disturbance": 5,
+        "speech_vision_changes": 2,
+        "headache": 1,
+        "palpitations": 1,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "retinal vein occlusion",
+        "central retinal vein occlusion",
+        "branch retinal vein occlusion",
+        "crvo",
+        "brvo"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check monocular visual change timing, fundus hemorrhage context, hypertension/diabetes/glaucoma risk, anticoagulant or thrombosis context, and ophthalmology review need."
+      ],
+      "source_ids": [
+        "merck_retinal_vein_occlusion",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "subconjunctival_hemorrhage",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "結膜下出血",
+      "name_en": "Subconjunctival hemorrhage",
+      "system": "Ophthalmology/Conjunctiva",
+      "urgency": "routine",
+      "summary_zh": "結膜下出血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Well-demarcated bright red patch under the conjunctiva after minor trauma, coughing, vomiting, straining, or anticoagulant context should include subconjunctival hemorrhage while checking injury red flags.",
+      "signals": {
+        "eye_pain_redness": 4,
+        "recent_trauma": 2,
+        "easy_bruising_bleeding": 2,
+        "vomiting": 1,
+        "cough_sputum": 1
+      },
+      "synonyms": [
+        "subconjunctival hemorrhage",
+        "subconjunctival haemorrhage",
+        "bloodshot eye patch",
+        "red patch on eye"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain, vision change, trauma severity, contact lens or penetrating injury concern, anticoagulants/bleeding disorder, recurrent episodes, and reassurance versus urgent eye review."
+      ],
+      "source_ids": [
+        "merck_subconjunctival_hemorrhages",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ludwig_angina",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "路德維希氏咽峽炎",
+      "name_en": "Ludwig angina",
+      "system": "ENT/Oral/Airway",
+      "urgency": "emergent",
+      "summary_zh": "路德維希氏咽峽炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Floor-of-mouth or submandibular swelling with dental infection, dysphagia, trismus, drooling, voice change, or airway symptoms should include Ludwig angina.",
+      "signals": {
+        "neck_stiffness_swelling_dysphagia": 5,
+        "severe_sore_throat_drooling_or_stridor": 4,
+        "trismus_muffled_voice_uvula_deviation": 3,
+        "respiratory_distress": 4,
+        "fever": 2,
+        "dental_pain_or_facial_swelling": 3
+      },
+      "synonyms": [
+        "ludwig angina",
+        "submandibular space infection",
+        "floor of mouth infection",
+        "submandibular cellulitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check airway, tongue/floor-of-mouth elevation, dental source, drooling, dysphagia, trismus, sepsis features, and urgent airway/ENT pathway."
+      ],
+      "source_ids": [
+        "merck_submandibular_space_infection",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bacterial_tracheitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "細菌性氣管炎",
+      "name_en": "Bacterial tracheitis",
+      "system": "ENT/Pediatric/Airway",
+      "urgency": "emergent",
+      "summary_zh": "細菌性氣管炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Toxic-appearing child or patient with fever, stridor, thick secretions, cough, and respiratory distress after croup-like illness should include bacterial tracheitis.",
+      "signals": {
+        "barking_cough_or_stridor": 5,
+        "respiratory_distress": 5,
+        "fever": 3,
+        "cough_sputum": 2,
+        "severe_sore_throat_drooling_or_stridor": 2
+      },
+      "synonyms": [
+        "bacterial tracheitis",
+        "bacterial croup",
+        "membranous croup",
+        "acute bacterial tracheitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check airway stability, stridor severity, toxic appearance, secretion burden, oxygenation, age, and controlled airway or pediatric ENT/anesthesia review need."
+      ],
+      "source_ids": [
+        "merck_bacterial_tracheitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cholesteatoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "膽脂瘤",
+      "name_en": "Cholesteatoma",
+      "system": "ENT/Otology",
+      "urgency": "soon",
+      "summary_zh": "膽脂瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic foul ear discharge, hearing loss, retraction pocket, recurrent otitis, vertigo, or facial weakness should include cholesteatoma.",
+      "signals": {
+        "ear_discharge_or_tragal_tenderness": 4,
+        "hearing_loss_tinnitus": 4,
+        "ear_pain": 2,
+        "vertigo": 2,
+        "unilateral_facial_weakness": 1
+      },
+      "synonyms": [
+        "cholesteatoma",
+        "middle ear cholesteatoma",
+        "attic cholesteatoma",
+        "acquired cholesteatoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chronic otorrhea, hearing loss, tympanic membrane retraction/perforation, vertigo, facial weakness, mastoid symptoms, and ENT/audiology/imaging context."
+      ],
+      "source_ids": [
+        "merck_cholesteatoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "idiopathic_intracranial_hypertension",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "特發性顱內高壓",
+      "name_en": "Idiopathic intracranial hypertension",
+      "system": "Neurology/Ophthalmology",
+      "urgency": "urgent",
+      "summary_zh": "特發性顱內高壓 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Headache with transient visual obscurations, diplopia, pulsatile tinnitus, papilledema concern, vomiting, or high-risk medication context should include idiopathic intracranial hypertension.",
+      "signals": {
+        "headache": 4,
+        "visual_disturbance": 4,
+        "vomiting": 2,
+        "hearing_loss_tinnitus": 2,
+        "painful_eye_movement_or_proptosis": 1
+      },
+      "synonyms": [
+        "idiopathic intracranial hypertension",
+        "pseudotumor cerebri",
+        "iih",
+        "benign intracranial hypertension"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check papilledema, transient visual obscurations, diplopia, pulsatile tinnitus, medication triggers, venous sinus thrombosis risk, and neuro-ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_idiopathic_intracranial_hypertension",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "insulinoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胰島素瘤",
+      "name_en": "Insulinoma",
+      "system": "Endocrine/Pancreatic",
+      "urgency": "soon",
+      "summary_zh": "胰島素瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent fasting or exertional hypoglycemia with confusion, diaphoresis, palpitations, syncope, or seizure should include insulinoma after common causes are reviewed.",
+      "signals": {
+        "hypoglycemia_risk": 5,
+        "altered_mental_status": 4,
+        "diaphoresis": 3,
+        "palpitations": 2,
+        "syncope": 2,
+        "seizure_activity_or_postictal_state": 2
+      },
+      "synonyms": [
+        "insulinoma",
+        "pancreatic insulinoma",
+        "endogenous hyperinsulinism",
+        "fasting hypoglycemia tumor"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check documented low glucose during symptoms, fasting pattern, sulfonylurea or insulin exposure, weight change, neuroglycopenic symptoms, and endocrine testing pathway."
+      ],
+      "source_ids": [
+        "merck_insulinoma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "erythema_multiforme",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "多形性紅斑",
+      "name_en": "Erythema multiforme",
+      "system": "Dermatology/Reactive",
+      "urgency": "soon",
+      "summary_zh": "多形性紅斑 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Targetoid lesions with acral distribution, mucosal involvement, HSV or mycoplasma trigger, or medication context should include erythema multiforme.",
+      "signals": {
+        "rash": 4,
+        "mucosal_lesions": 3,
+        "diffuse_viral_rash": 2,
+        "new_medication_exposure": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "erythema multiforme",
+        "target lesions",
+        "targetoid rash",
+        "em"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check target morphology, mucosal sites, HSV or respiratory trigger, medication exposure, skin pain/sloughing overlap, and dermatology review need."
+      ],
+      "source_ids": [
+        "merck_erythema_multiforme",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "erythema_nodosum",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "結節性紅斑",
+      "name_en": "Erythema nodosum",
+      "system": "Dermatology/Inflammatory",
+      "urgency": "soon",
+      "summary_zh": "結節性紅斑 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tender red or violaceous subcutaneous nodules, especially on shins, with fever, arthralgia, streptococcal, sarcoid, IBD, pregnancy, or medication context should include erythema nodosum.",
+      "signals": {
+        "rash": 4,
+        "acute_joint_pain_swelling": 3,
+        "fever": 2,
+        "abdominal_pain": 1,
+        "pregnancy_possible": 1
+      },
+      "synonyms": [
+        "erythema nodosum",
+        "tender shin nodules",
+        "septal panniculitis",
+        "nodular erythema"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check nodule distribution/tenderness, sore throat or infection, sarcoid/IBD symptoms, pregnancy or medication exposure, and cause-directed workup context."
+      ],
+      "source_ids": [
+        "merck_erythema_nodosum",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "dacryocystitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "淚囊炎",
+      "name_en": "Dacryocystitis",
+      "system": "Ophthalmology/Infectious",
+      "urgency": "soon",
+      "summary_zh": "淚囊炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Medial canthal pain, erythema, swelling, tearing, discharge, fever, or lacrimal sac abscess concern should include dacryocystitis.",
+      "signals": {
+        "eye_pain_redness": 4,
+        "localized_skin_infection": 3,
+        "eye_discharge": 3,
+        "fever": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "dacryocystitis",
+        "lacrimal sac infection",
+        "tear sac infection",
+        "nasolacrimal infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check medial canthal swelling, purulent reflux, fever, orbital spread signs, nasolacrimal obstruction history, and ophthalmology or antibiotic pathway."
+      ],
+      "source_ids": [
+        "merck_dacryocystitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "scleritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鞏膜炎",
+      "name_en": "Scleritis",
+      "system": "Ophthalmology/Inflammatory",
+      "urgency": "urgent",
+      "summary_zh": "鞏膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Deep boring eye pain, red eye, photophobia, tearing, visual symptoms, or autoimmune disease context should include scleritis.",
+      "signals": {
+        "eye_pain_redness": 5,
+        "severe_pain": 3,
+        "visual_disturbance": 3,
+        "acute_joint_pain_swelling": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "scleritis",
+        "necrotizing scleritis",
+        "anterior scleritis",
+        "posterior scleritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain depth, photophobia, vision change, blanching response if examined, systemic autoimmune clues, and urgent ophthalmology/rheumatology context."
+      ],
+      "source_ids": [
+        "merck_scleritis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cerumen_impaction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "耳垢栓塞",
+      "name_en": "Cerumen impaction",
+      "system": "ENT/External ear",
+      "urgency": "routine",
+      "summary_zh": "耳垢栓塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Conductive hearing loss, tinnitus, fullness, itching, otalgia, or visible canal wax obstruction should include cerumen impaction.",
+      "signals": {
+        "hearing_loss_tinnitus": 5,
+        "ear_pain": 2,
+        "ear_discharge_or_tragal_tenderness": 1,
+        "vertigo": 1
+      },
+      "synonyms": [
+        "cerumen impaction",
+        "earwax impaction",
+        "impacted cerumen",
+        "ear wax blockage"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check otoscopy, hearing impact, tinnitus/fullness, pain or discharge, prior ear surgery/perforation risk, and safe removal method context."
+      ],
+      "source_ids": [
+        "merck_external_ear_obstructions",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "adhesive_capsulitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "沾黏性肩關節囊炎",
+      "name_en": "Adhesive capsulitis",
+      "system": "Musculoskeletal/Shoulder",
+      "urgency": "routine",
+      "summary_zh": "沾黏性肩關節囊炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual shoulder pain and stiffness with loss of active and passive range of motion, diabetes/thyroid context, or prolonged immobilization should include adhesive capsulitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 2,
+        "recent_trauma": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "adhesive capsulitis",
+        "frozen shoulder",
+        "adhesive shoulder capsulitis",
+        "shoulder capsulitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check active and passive shoulder range, onset stage, diabetes/thyroid risk, trauma or immobilization, night pain, and physical-therapy/orthopedic context."
+      ],
+      "source_ids": [
+        "ncbi_adhesive_capsulitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lateral_epicondylitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "外側上髁炎",
+      "name_en": "Lateral epicondylitis",
+      "system": "Musculoskeletal/Elbow",
+      "urgency": "routine",
+      "summary_zh": "外側上髁炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Lateral elbow pain worsened by gripping or resisted wrist extension, overuse, or racquet/tool activity should include lateral epicondylitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "lateral epicondylitis",
+        "tennis elbow",
+        "lateral elbow tendinopathy",
+        "extensor tendinopathy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lateral epicondyle tenderness, resisted wrist extension/grip pain, occupational or sport load, neurologic symptoms, trauma, and rehabilitation context."
+      ],
+      "source_ids": [
+        "merck_lateral_epicondylitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "de_quervain_tenosynovitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "狄奎凡氏腱鞘炎",
+      "name_en": "De Quervain tenosynovitis",
+      "system": "Musculoskeletal/Hand",
+      "urgency": "routine",
+      "summary_zh": "狄奎凡氏腱鞘炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Radial wrist and thumb pain worsened by thumb motion, gripping, lifting, or positive Finkelstein-type maneuver should include De Quervain tenosynovitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "de quervain tenosynovitis",
+        "de quervain syndrome",
+        "de quervain disease",
+        "first dorsal compartment tenosynovitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check radial styloid tenderness, Finkelstein-type pain, repetitive thumb/wrist load, pregnancy/postpartum context, and splint/hand therapy referral context."
+      ],
+      "source_ids": [
+        "merck_de_quervain_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "melasma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肝斑",
+      "name_en": "Melasma",
+      "system": "Dermatology/Pigmentation",
+      "urgency": "routine",
+      "summary_zh": "肝斑 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Symmetric brown facial hyperpigmentation on cheeks, forehead, upper lip, or nose with pregnancy, oral contraceptive, hormonal, or sun exposure context should include melasma.",
+      "signals": {
+        "rash": 1,
+        "pregnancy_possible": 2,
+        "new_medication_exposure": 1
+      },
+      "synonyms": [
+        "melasma",
+        "chloasma",
+        "mask of pregnancy",
+        "facial hyperpigmentation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution, pregnancy or hormonal exposure, sun exposure, medication context, concerning lesion mimics, and dermatology counseling context."
+      ],
+      "source_ids": [
+        "merck_hyperpigmentation_melasma",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "drug_eruption",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "藥物疹",
+      "name_en": "Drug eruption",
+      "system": "Dermatology/Medication",
+      "urgency": "soon",
+      "summary_zh": "藥物疹 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "New rash after medication, illicit drug, vaccine, or supplement exposure should include drug eruption while checking severe cutaneous adverse reaction red flags.",
+      "signals": {
+        "rash": 4,
+        "new_medication_exposure": 5,
+        "mucosal_lesions": 2,
+        "fever": 2,
+        "skin_sloughing_or_blistering": 3
+      },
+      "synonyms": [
+        "drug eruption",
+        "drug rash",
+        "medication rash",
+        "drug reaction rash"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check timing from new drug, mucosal lesions, blistering/sloughing, fever, facial swelling, eosinophilia/organ symptoms, and stop/escalation context."
+      ],
+      "source_ids": [
+        "merck_drug_eruptions",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypogonadism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "性腺功能低下",
+      "name_en": "Hypogonadism",
+      "system": "Endocrine/Reproductive",
+      "urgency": "routine",
+      "summary_zh": "性腺功能低下 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Low libido, erectile dysfunction, infertility, delayed puberty, low energy, gynecomastia, hot flashes, or testicular/pituitary context should include hypogonadism.",
+      "signals": {
+        "fatigue": 3,
+        "weight_loss": 1,
+        "extreme_thirst_polyuria": 1,
+        "decreased_need_for_sleep": 1
+      },
+      "synonyms": [
+        "hypogonadism",
+        "male hypogonadism",
+        "testosterone deficiency",
+        "androgen deficiency"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check puberty/fertility history, libido/erectile symptoms, testicular size, pituitary symptoms, opioid/steroid exposure, morning testosterone context, and endocrine review need."
+      ],
+      "source_ids": [
+        "merck_male_hypogonadism",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "paroxysmal_nocturnal_hemoglobinuria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "陣發性夜間血紅素尿症",
+      "name_en": "Paroxysmal nocturnal hemoglobinuria",
+      "system": "Hematology/Hemolysis/Thrombosis",
+      "urgency": "soon",
+      "summary_zh": "陣發性夜間血紅素尿症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Coombs-negative hemolysis pattern, dark urine, cytopenias, fatigue, abdominal pain, thrombosis, or marrow failure context should include paroxysmal nocturnal hemoglobinuria.",
+      "signals": {
+        "fatigue": 4,
+        "jaundice": 3,
+        "abdominal_pain": 2,
+        "easy_bruising_bleeding": 2,
+        "unilateral_leg_swelling": 2,
+        "decreased_urine_output": 1
+      },
+      "synonyms": [
+        "paroxysmal nocturnal hemoglobinuria",
+        "pnh",
+        "nocturnal hemoglobinuria",
+        "complement mediated hemolysis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hemolysis labs, dark urine, cytopenias, thrombosis sites, aplastic anemia context, flow cytometry testing, and hematology referral context."
+      ],
+      "source_ids": [
+        "merck_paroxysmal_nocturnal_hemoglobinuria",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "autoimmune_hemolytic_anemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "自體免疫性溶血性貧血",
+      "name_en": "Autoimmune hemolytic anemia",
+      "system": "Hematology/Hemolysis",
+      "urgency": "soon",
+      "summary_zh": "自體免疫性溶血性貧血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Anemia symptoms with jaundice, dark urine, splenomegaly context, medication/infection/autoimmune trigger, or positive hemolysis pattern should include autoimmune hemolytic anemia.",
+      "signals": {
+        "fatigue": 4,
+        "jaundice": 4,
+        "dyspnea": 2,
+        "palpitations": 2,
+        "easy_bruising_bleeding": 1,
+        "new_medication_exposure": 1
+      },
+      "synonyms": [
+        "autoimmune hemolytic anemia",
+        "aiha",
+        "warm autoimmune hemolytic anemia",
+        "cold agglutinin disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hemolysis markers, direct antiglobulin test context, cold symptoms, medication or infection trigger, lymphoproliferative clues, and hematology review need."
+      ],
+      "source_ids": [
+        "merck_autoimmune_hemolytic_anemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "superficial_thrombophlebitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "表淺性血栓性靜脈炎",
+      "name_en": "Superficial thrombophlebitis",
+      "system": "Vascular/Venous",
+      "urgency": "soon",
+      "summary_zh": "表淺性血栓性靜脈炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tender palpable cord, localized redness, warmth, or swelling along a superficial vein with varicose vein, IV catheter, cancer, or thrombosis risk should include superficial thrombophlebitis.",
+      "signals": {
+        "unilateral_leg_swelling": 3,
+        "localized_skin_infection": 2,
+        "severe_pain": 1,
+        "easy_bruising_bleeding": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "superficial thrombophlebitis",
+        "superficial venous thrombosis",
+        "superficial vein thrombosis",
+        "phlebitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check clot length and proximity to deep venous system, DVT/PE symptoms, catheter or varicose context, cancer/pregnancy risk, fever, and ultrasound/anticoagulation context."
+      ],
+      "source_ids": [
+        "merck_superficial_venous_thrombosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "raynaud_phenomenon",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "雷諾現象",
+      "name_en": "Raynaud phenomenon",
+      "system": "Vascular/Rheumatology",
+      "urgency": "routine",
+      "summary_zh": "雷諾現象 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cold- or stress-triggered reversible digital color change, numbness, pain, ulceration, or connective-tissue disease context should include Raynaud phenomenon.",
+      "signals": {
+        "acute_limb_pain_pallor_pulselessness": 2,
+        "severe_pain": 1,
+        "rash": 1,
+        "acute_joint_pain_swelling": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "raynaud phenomenon",
+        "raynaud's phenomenon",
+        "raynaud syndrome",
+        "raynaud disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check triphasic color change, symmetry, ulcers, late onset, medication or occupational triggers, connective-tissue symptoms, and vascular/rheumatology evaluation need."
+      ],
+      "source_ids": [
+        "merck_raynaud_phenomenon",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "granulomatosis_with_polyangiitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肉芽腫性多血管炎",
+      "name_en": "Granulomatosis with polyangiitis",
+      "system": "Rheumatology/Vasculitis",
+      "urgency": "urgent",
+      "summary_zh": "肉芽腫性多血管炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic sinus/ear/lung symptoms with hematuria/renal clues, hemoptysis, purpura, neuropathy, eye inflammation, or systemic inflammation should include granulomatosis with polyangiitis.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 2,
+        "ear_pain": 1,
+        "hearing_loss_tinnitus": 1,
+        "cough_sputum": 2,
+        "hemoptysis": 3,
+        "decreased_urine_output": 2,
+        "rash": 2,
+        "eye_pain_redness": 1
+      },
+      "synonyms": [
+        "granulomatosis with polyangiitis",
+        "gpa",
+        "wegeners granulomatosis",
+        "anca vasculitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ENT disease, pulmonary symptoms or hemoptysis, renal/urine findings, neuropathy, eye inflammation, ANCA/biopsy context, and rheumatology/nephrology urgency."
+      ],
+      "source_ids": [
+        "merck_granulomatosis_with_polyangiitis",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -21393,6 +22142,156 @@
       "publisher": "CDC ATSDR",
       "title": "Arsenic Medical Management Guidelines",
       "url": "https://wwwn.cdc.gov/Tsp/MMG/MMGDetails.aspx?mmgid=1424&toxid=3"
+    },
+    {
+      "source_id": "merck_globe_injury_hyphema",
+      "publisher": "Merck Manual Professional",
+      "title": "Globe Injury",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/eye-trauma/globe-injury"
+    },
+    {
+      "source_id": "merck_central_retinal_artery_occlusion",
+      "publisher": "Merck Manual Professional",
+      "title": "Central Retinal Artery Occlusion and Branch Retinal Artery Occlusion",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/retinal-disorders/central-retinal-artery-occlusion-and-branch-retinal-artery-occlusion"
+    },
+    {
+      "source_id": "merck_retinal_vein_occlusion",
+      "publisher": "Merck Manual Professional",
+      "title": "Central Retinal Vein Occlusion and Branch Retinal Vein Occlusion",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/retinal-disorders/central-retinal-vein-occlusion-and-branch-retinal-vein-occlusion"
+    },
+    {
+      "source_id": "merck_subconjunctival_hemorrhages",
+      "publisher": "Merck Manual Professional",
+      "title": "Subconjunctival Hemorrhages",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/conjunctival-and-scleral-disorders/subconjunctival-hemorrhages"
+    },
+    {
+      "source_id": "merck_submandibular_space_infection",
+      "publisher": "Merck Manual Professional",
+      "title": "Submandibular Space Infection (Ludwig Angina)",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/submandibular-space-infection"
+    },
+    {
+      "source_id": "merck_bacterial_tracheitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Bacterial Tracheitis",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-disorders-in-young-children/bacterial-tracheitis"
+    },
+    {
+      "source_id": "merck_cholesteatoma",
+      "publisher": "Merck Manual Professional",
+      "title": "Cholesteatoma",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/middle-ear-and-tympanic-membrane-disorders/cholesteatoma"
+    },
+    {
+      "source_id": "merck_idiopathic_intracranial_hypertension",
+      "publisher": "Merck Manual Professional",
+      "title": "Idiopathic Intracranial Hypertension",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/headache/idiopathic-intracranial-hypertension"
+    },
+    {
+      "source_id": "merck_insulinoma",
+      "publisher": "Merck Manual Professional",
+      "title": "Insulinoma",
+      "url": "https://www.merckmanuals.com/professional/oncology/gastrointestinal-and-pancreatic-neuroendocrine-tumors-nets/insulinoma"
+    },
+    {
+      "source_id": "merck_erythema_multiforme",
+      "publisher": "Merck Manual Professional",
+      "title": "Erythema Multiforme",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/hypersensitivity-and-reactive-skin-disorders/erythema-multiforme"
+    },
+    {
+      "source_id": "merck_erythema_nodosum",
+      "publisher": "Merck Manual Professional",
+      "title": "Erythema Nodosum",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/hypersensitivity-and-reactive-skin-disorders/erythema-nodosum"
+    },
+    {
+      "source_id": "merck_dacryocystitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Dacryocystitis",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/eyelid-and-lacrimal-disorders/dacryocystitis"
+    },
+    {
+      "source_id": "merck_scleritis",
+      "publisher": "Merck Manual Professional",
+      "title": "Scleritis",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/conjunctival-and-scleral-disorders/scleritis"
+    },
+    {
+      "source_id": "merck_external_ear_obstructions",
+      "publisher": "Merck Manual Professional",
+      "title": "External Ear Obstructions",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/external-ear-disorders/external-ear-obstructions"
+    },
+    {
+      "source_id": "ncbi_adhesive_capsulitis",
+      "publisher": "NCBI Bookshelf",
+      "title": "Adhesive Capsulitis (Frozen Shoulder)",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK532955/"
+    },
+    {
+      "source_id": "merck_lateral_epicondylitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Lateral Epicondylitis",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/sports-injury/lateral-epicondylitis"
+    },
+    {
+      "source_id": "merck_de_quervain_syndrome",
+      "publisher": "Merck Manual Professional",
+      "title": "De Quervain Syndrome",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/hand-disorders/de-quervain-syndrome"
+    },
+    {
+      "source_id": "merck_hyperpigmentation_melasma",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperpigmentation: Melasma",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/pigmentation-disorders/hyperpigmentation"
+    },
+    {
+      "source_id": "merck_drug_eruptions",
+      "publisher": "Merck Manual Professional",
+      "title": "Drug Eruptions and Reactions",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/hypersensitivity-and-reactive-skin-disorders/drug-eruptions-and-reactions"
+    },
+    {
+      "source_id": "merck_male_hypogonadism",
+      "publisher": "Merck Manual Professional",
+      "title": "Male Hypogonadism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/male-reproductive-endocrinology-and-related-disorders/male-hypogonadism"
+    },
+    {
+      "source_id": "merck_paroxysmal_nocturnal_hemoglobinuria",
+      "publisher": "Merck Manual Professional",
+      "title": "Paroxysmal Nocturnal Hemoglobinuria (PNH)",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/anemias-caused-by-hemolysis/paroxysmal-nocturnal-hemoglobinuria-pnh"
+    },
+    {
+      "source_id": "merck_autoimmune_hemolytic_anemia",
+      "publisher": "Merck Manual Professional",
+      "title": "Autoimmune Hemolytic Anemia",
+      "url": "https://www.merckmanuals.com/professional/hematology-and-oncology/anemias-caused-by-hemolysis/autoimmune-hemolytic-anemia"
+    },
+    {
+      "source_id": "merck_superficial_venous_thrombosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Superficial Venous Thrombosis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-venous-disorders/superficial-venous-thrombosis"
+    },
+    {
+      "source_id": "merck_raynaud_phenomenon",
+      "publisher": "Merck Manual Professional",
+      "title": "Raynaud Phenomenon",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/peripheral-artery-disorders/raynaud-phenomenon"
+    },
+    {
+      "source_id": "merck_granulomatosis_with_polyangiitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Granulomatosis with Polyangiitis (GPA)",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/granulomatosis-with-polyangiitis-gpa"
     }
   ]
 }
