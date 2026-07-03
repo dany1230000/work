@@ -687,6 +687,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_seventeenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("diphtheria", "diphtheria"),
+            ("poliomyelitis", "poliomyelitis"),
+            ("smallpox", "smallpox"),
+            ("yellow fever", "yellow_fever"),
+            ("japanese encephalitis", "japanese_encephalitis"),
+            ("la crosse encephalitis", "la_crosse_encephalitis"),
+            ("eastern equine encephalitis", "eastern_equine_encephalitis"),
+            ("powassan virus disease", "powassan_virus_disease"),
+            ("st louis encephalitis", "st_louis_encephalitis"),
+            ("colorado tick fever", "colorado_tick_fever"),
+            ("lymphocytic choriomeningitis", "lymphocytic_choriomeningitis"),
+            ("ebola disease", "ebola_disease"),
+            ("marburg virus disease", "marburg_virus_disease"),
+            ("lassa fever", "lassa_fever"),
+            ("crimean congo hemorrhagic fever", "crimean_congo_hemorrhagic_fever"),
+            ("rift valley fever", "rift_valley_fever"),
+            ("trichuriasis", "trichuriasis"),
+            ("sporotrichosis", "sporotrichosis"),
+            ("enterovirus d68", "enterovirus_d68"),
+            ("hand foot and mouth disease", "hand_foot_and_mouth_disease"),
+            ("melioidosis", "melioidosis"),
+            ("tickborne relapsing fever", "tickborne_relapsing_fever"),
+            ("epidemic typhus", "epidemic_typhus"),
+            ("scrub typhus", "scrub_typhus"),
+            ("middle east respiratory syndrome", "middle_east_respiratory_syndrome"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {
@@ -779,6 +812,29 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertTrue(first_row["url"].startswith("http"))
         publishers = {row["publisher"] for row in provenance["rows"]}
         self.assertIn(provenance["publisher_filters"][0]["publisher"], publishers)
+
+    def test_results_include_secondary_candidate_filter_metadata(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        filters = result["secondary_candidate_filters"]
+
+        self.assertGreaterEqual(filters["secondary_count"], 1)
+        self.assertGreaterEqual(len(filters["urgency_filters"]), 1)
+        self.assertGreaterEqual(len(filters["system_filters"]), 1)
+        self.assertEqual(filters["urgency_filters"][0]["filter_type"], "urgency")
+        self.assertEqual(filters["system_filters"][0]["filter_type"], "system")
+        self.assertIn("filter_value", filters["urgency_filters"][0])
+        self.assertIn("filter_value", filters["system_filters"][0])
 
     def test_results_include_compact_brief_for_scan_first_layout(self):
         result = evaluate_general_differential(

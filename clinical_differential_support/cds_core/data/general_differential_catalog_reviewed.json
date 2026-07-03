@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03-525",
-    "condition_count": 525,
-    "source_count": 603,
+    "catalog_version": "general-differential-starter-2026-07-03-550",
+    "condition_count": 550,
+    "source_count": 628,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03-525",
-      "condition_count": 525,
-      "source_count": 603,
+      "catalog_version": "general-differential-starter-2026-07-03-550",
+      "condition_count": 550,
+      "source_count": 628,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 525
+      "expansion_target_condition_count": 550
     }
   },
   "safety_scope": {
@@ -15046,6 +15046,761 @@
         "medlineplus_roseola",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "diphtheria",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "白喉",
+      "name_en": "Diphtheria",
+      "system": "Infectious/Respiratory/Vaccine-preventable",
+      "urgency": "urgent",
+      "summary_zh": "白喉 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pharyngitis with pseudomembrane, cervical swelling, laryngeal symptoms, cutaneous ulcers, or incomplete vaccination should include diphtheria.",
+      "signals": {
+        "sore_throat": 3,
+        "fever": 2,
+        "respiratory_distress": 3,
+        "neck_stiffness_swelling_dysphagia": 3
+      },
+      "synonyms": [
+        "diphtheria",
+        "respiratory diphtheria",
+        "cutaneous diphtheria",
+        "corynebacterium diphtheriae"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vaccination status, pseudomembrane or bull-neck swelling, airway symptoms, travel or exposure risk, and need for isolation/public-health notification."
+      ],
+      "source_ids": [
+        "cdc_diphtheria_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "poliomyelitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脊髓灰質炎",
+      "name_en": "Poliomyelitis",
+      "system": "Infectious/Neurologic/Vaccine-preventable",
+      "urgency": "urgent",
+      "summary_zh": "脊髓灰質炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute flaccid weakness, aseptic meningitis symptoms, fever, or under-immunized travel exposure should include poliomyelitis.",
+      "signals": {
+        "focal_neurologic_deficit": 4,
+        "weakness": 3,
+        "fever": 2,
+        "neck_stiffness_swelling_dysphagia": 1
+      },
+      "synonyms": [
+        "poliomyelitis",
+        "polio",
+        "poliovirus infection",
+        "acute flaccid paralysis polio"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vaccination status, asymmetric flaccid weakness, meningitis symptoms, travel or wastewater exposure, respiratory status, and public-health testing pathway."
+      ],
+      "source_ids": [
+        "cdc_polio_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "smallpox",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "天花",
+      "name_en": "Smallpox",
+      "system": "Infectious/Dermatologic/Bioterrorism",
+      "urgency": "emergent",
+      "summary_zh": "天花 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute high fever with deep-seated vesicular or pustular rash in the same stage of development should trigger smallpox consideration and immediate public-health escalation.",
+      "signals": {
+        "fever": 3,
+        "rash": 4,
+        "diffuse_viral_rash": 3,
+        "severe_pain": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "smallpox",
+        "variola",
+        "variola virus",
+        "orthopox smallpox"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check febrile prodrome, lesion depth and same-stage distribution, exposure or bioterrorism concern, isolation needs, and urgent public-health notification."
+      ],
+      "source_ids": [
+        "cdc_smallpox_diagnosis_evaluation",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "yellow_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "黃熱病",
+      "name_en": "Yellow fever",
+      "system": "Infectious/Viral/Travel",
+      "urgency": "urgent",
+      "summary_zh": "黃熱病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Travel-associated fever with headache, myalgia, jaundice, hemorrhage, renal injury, or exposure in endemic mosquito areas should include yellow fever.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "jaundice": 4,
+        "travel_or_tropical_exposure": 4,
+        "vomiting": 2
+      },
+      "synonyms": [
+        "yellow fever",
+        "yellow fever virus",
+        "yellow fever infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel geography, vaccination certificate, mosquito exposure, jaundice or bleeding, renal/hepatic labs, and public-health testing needs."
+      ],
+      "source_ids": [
+        "cdc_yellow_fever_clinical_diagnosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "japanese_encephalitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "日本腦炎",
+      "name_en": "Japanese encephalitis",
+      "system": "Infectious/Neurologic/Arboviral",
+      "urgency": "emergent",
+      "summary_zh": "日本腦炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever with headache, vomiting, encephalitis, seizures, movement disorder, or Asia/western Pacific mosquito exposure should include Japanese encephalitis.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "vomiting": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 4,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "japanese encephalitis",
+        "japanese encephalitis virus",
+        "je virus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or rural mosquito exposure, vaccination history, encephalitis signs, seizures, CSF context, and arboviral testing pathway."
+      ],
+      "source_ids": [
+        "cdc_japanese_encephalitis_clinical_diagnosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "la_crosse_encephalitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "拉克羅斯腦炎",
+      "name_en": "La Crosse encephalitis",
+      "system": "Infectious/Neurologic/Arboviral",
+      "urgency": "emergent",
+      "summary_zh": "拉克羅斯腦炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child or adolescent with summer mosquito exposure, fever, headache, vomiting, lethargy, or encephalitis should include La Crosse encephalitis.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "vomiting": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 4
+      },
+      "synonyms": [
+        "la crosse encephalitis",
+        "la crosse virus",
+        "lacrosse encephalitis",
+        "la crosse virus disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, season, geography, mosquito exposure, encephalitis or seizure signs, CSF context, and arboviral testing needs."
+      ],
+      "source_ids": [
+        "cdc_la_crosse_encephalitis_clinical_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "eastern_equine_encephalitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "東部馬腦炎",
+      "name_en": "Eastern equine encephalitis",
+      "system": "Infectious/Neurologic/Arboviral",
+      "urgency": "emergent",
+      "summary_zh": "東部馬腦炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute febrile or neurologic illness after mosquito exposure in an at-risk region should include eastern equine encephalitis.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "vomiting": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 4
+      },
+      "synonyms": [
+        "eastern equine encephalitis",
+        "eastern equine encephalitis virus",
+        "eee virus",
+        "eee"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mosquito exposure, region and season, encephalitis signs, seizures, transplant history if relevant, and public-health arboviral testing."
+      ],
+      "source_ids": [
+        "cdc_eastern_equine_encephalitis_clinical_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "powassan_virus_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "波瓦桑病毒病",
+      "name_en": "Powassan virus disease",
+      "system": "Infectious/Neurologic/Tick-borne",
+      "urgency": "emergent",
+      "summary_zh": "波瓦桑病毒病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, headache, vomiting, weakness, confusion, seizures, or focal deficits after tick exposure should include Powassan virus disease.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "vomiting": 2,
+        "weakness": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 4,
+        "tick_bite_or_exposure": 4
+      },
+      "synonyms": [
+        "powassan virus disease",
+        "powassan",
+        "powassan virus",
+        "powassan encephalitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tick exposure and geography, incubation window, encephalitis or meningitis signs, neurologic deficits, and arboviral testing pathway."
+      ],
+      "source_ids": [
+        "cdc_powassan_clinical_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "st_louis_encephalitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "聖路易腦炎",
+      "name_en": "St. Louis encephalitis",
+      "system": "Infectious/Neurologic/Arboviral",
+      "urgency": "emergent",
+      "summary_zh": "聖路易腦炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abrupt fever, headache, dizziness, nausea, weakness, or encephalitis after mosquito exposure should include St. Louis encephalitis.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "vomiting": 1,
+        "weakness": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 3
+      },
+      "synonyms": [
+        "st louis encephalitis",
+        "st. louis encephalitis",
+        "sle virus",
+        "saint louis encephalitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mosquito exposure, region and season, older age or severe neurologic features, CSF context, and public-health arboviral testing."
+      ],
+      "source_ids": [
+        "cdc_st_louis_encephalitis_clinical_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "colorado_tick_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "科羅拉多蜱熱",
+      "name_en": "Colorado tick fever",
+      "system": "Infectious/Tick-borne/Viral",
+      "urgency": "soon",
+      "summary_zh": "科羅拉多蜱熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Biphasic fever, chills, headache, myalgia, fatigue, rash, or western mountain tick exposure should include Colorado tick fever.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "fatigue": 2,
+        "rash": 1,
+        "tick_bite_or_exposure": 4
+      },
+      "synonyms": [
+        "colorado tick fever",
+        "ctf",
+        "colorado tick fever virus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tick exposure at elevation, western North America travel, biphasic fever pattern, cytopenias if available, and severe neurologic symptoms."
+      ],
+      "source_ids": [
+        "cdc_colorado_tick_fever_clinical_diagnosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lymphocytic_choriomeningitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "淋巴球性脈絡叢腦膜炎",
+      "name_en": "Lymphocytic choriomeningitis",
+      "system": "Infectious/Neurologic/Rodent-borne",
+      "urgency": "urgent",
+      "summary_zh": "淋巴球性脈絡叢腦膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Biphasic viral illness with meningitis or encephalitis signs after rodent exposure should include lymphocytic choriomeningitis.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "altered_mental_status": 4,
+        "weakness": 2
+      },
+      "synonyms": [
+        "lymphocytic choriomeningitis",
+        "lcm",
+        "lcmv",
+        "lymphocytic choriomeningitis virus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check rodent or pet rodent exposure, pregnancy or immunocompromise, meningitis/encephalitis signs, congenital risk, and testing availability."
+      ],
+      "source_ids": [
+        "cdc_lymphocytic_choriomeningitis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ebola_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "伊波拉病毒病",
+      "name_en": "Ebola disease",
+      "system": "Infectious/Viral hemorrhagic fever",
+      "urgency": "emergent",
+      "summary_zh": "伊波拉病毒病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever with compatible travel or exposure plus severe diarrhea, vomiting, abdominal pain, bleeding, rash, confusion, or shock should include Ebola disease.",
+      "signals": {
+        "fever": 4,
+        "travel_or_tropical_exposure": 4,
+        "vomiting": 3,
+        "abdominal_pain": 2,
+        "bloody_diarrhea": 4,
+        "altered_mental_status": 3,
+        "hemodynamic_instability": 4
+      },
+      "synonyms": [
+        "ebola disease",
+        "ebola",
+        "ebola virus disease",
+        "orthoebolavirus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or exposure history, PPE/isolation needs, diarrhea/vomiting or bleeding, hemodynamics, malaria mimics, and immediate public-health notification."
+      ],
+      "source_ids": [
+        "cdc_ebola_clinical_signs",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "marburg_virus_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "馬堡病毒病",
+      "name_en": "Marburg virus disease",
+      "system": "Infectious/Viral hemorrhagic fever",
+      "urgency": "emergent",
+      "summary_zh": "馬堡病毒病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden fever with rash, severe gastrointestinal symptoms, bleeding, shock, or compatible travel/exposure should include Marburg virus disease.",
+      "signals": {
+        "fever": 4,
+        "travel_or_tropical_exposure": 4,
+        "vomiting": 3,
+        "bloody_diarrhea": 3,
+        "rash": 2,
+        "hemodynamic_instability": 4,
+        "altered_mental_status": 3
+      },
+      "synonyms": [
+        "marburg virus disease",
+        "marburg",
+        "mvd",
+        "orthomarburgvirus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or outbreak exposure, cave/bat or healthcare exposure, isolation needs, bleeding or shock, and urgent public-health notification."
+      ],
+      "source_ids": [
+        "cdc_marburg_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lassa_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "拉薩熱",
+      "name_en": "Lassa fever",
+      "system": "Infectious/Viral hemorrhagic fever",
+      "urgency": "urgent",
+      "summary_zh": "拉薩熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever after West Africa rodent or healthcare exposure with sore throat, vomiting, chest or abdominal pain, facial swelling, bleeding, or shock should include Lassa fever.",
+      "signals": {
+        "fever": 4,
+        "travel_or_tropical_exposure": 4,
+        "vomiting": 2,
+        "abdominal_pain": 2,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "lassa fever",
+        "lassa virus",
+        "lassa hemorrhagic fever"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check West Africa travel or rodent exposure, contact with body fluids, sore throat/chest pain/facial swelling, pregnancy risk, and public-health testing route."
+      ],
+      "source_ids": [
+        "cdc_lassa_fever_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "crimean_congo_hemorrhagic_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "克里米亞-剛果出血熱",
+      "name_en": "Crimean-Congo hemorrhagic fever",
+      "system": "Infectious/Viral hemorrhagic fever/Tick-borne",
+      "urgency": "emergent",
+      "summary_zh": "克里米亞-剛果出血熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden high fever, severe headache, myalgia, abdominal symptoms, jaundice, mood changes, bleeding, livestock exposure, or tick exposure should include CCHF.",
+      "signals": {
+        "fever": 4,
+        "headache": 2,
+        "abdominal_pain": 2,
+        "jaundice": 3,
+        "tick_bite_or_exposure": 4,
+        "hemodynamic_instability": 3,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "crimean congo hemorrhagic fever",
+        "crimean-congo hemorrhagic fever",
+        "cchf",
+        "crimean congo fever"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tick or livestock exposure, geography, bleeding or jaundice, thrombocytopenia context if available, isolation needs, and public-health notification."
+      ],
+      "source_ids": [
+        "cdc_crimean_congo_hemorrhagic_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rift_valley_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "裂谷熱",
+      "name_en": "Rift Valley fever",
+      "system": "Infectious/Viral hemorrhagic fever/Mosquito-borne",
+      "urgency": "urgent",
+      "summary_zh": "裂谷熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Travel or livestock exposure with fever, weakness, back pain, jaundice, retinitis, encephalitis, or bleeding should include Rift Valley fever.",
+      "signals": {
+        "fever": 3,
+        "travel_or_tropical_exposure": 4,
+        "jaundice": 3,
+        "altered_mental_status": 3,
+        "eye_pain_redness": 2,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "rift valley fever",
+        "rvf",
+        "rift valley fever virus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check livestock, mosquito, or raw animal product exposure, travel geography, eye or neurologic symptoms, jaundice/bleeding, and public-health testing route."
+      ],
+      "source_ids": [
+        "cdc_rift_valley_fever_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "trichuriasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鞭蟲病",
+      "name_en": "Trichuriasis",
+      "system": "Gastrointestinal/Infectious/Parasitic",
+      "urgency": "routine",
+      "summary_zh": "鞭蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic abdominal symptoms, anemia, growth concerns, rectal prolapse, or tropical/sanitation exposure should include trichuriasis.",
+      "signals": {
+        "abdominal_pain": 3,
+        "bloody_diarrhea": 2,
+        "weight_loss": 2,
+        "fatigue": 1,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "trichuriasis",
+        "whipworm infection",
+        "trichuris trichiura",
+        "human whipworm"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sanitation or soil exposure, chronic diarrhea or anemia, rectal prolapse, travel/residence risk, stool ova/parasite context, and household exposure."
+      ],
+      "source_ids": [
+        "cdc_trichuriasis_dpdx",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sporotrichosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "孢子絲菌病",
+      "name_en": "Sporotrichosis",
+      "system": "Infectious/Fungal/Skin",
+      "urgency": "soon",
+      "summary_zh": "孢子絲菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nodular lymphangitic skin lesions after plant, soil, thorn, or cat exposure should include sporotrichosis.",
+      "signals": {
+        "rash": 2,
+        "localized_skin_infection": 4,
+        "immunocompromised_state": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "sporotrichosis",
+        "sporothrix",
+        "rose gardener disease",
+        "sporothrix schenckii"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gardening, thorn, soil, sphagnum moss, or cat scratch exposure, nodular lymphangitis, dissemination risk, and fungal testing/biopsy context."
+      ],
+      "source_ids": [
+        "cdc_sporotrichosis_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "enterovirus_d68",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腸病毒 D68",
+      "name_en": "Enterovirus D68",
+      "system": "Infectious/Respiratory/Viral/Pediatric",
+      "urgency": "soon",
+      "summary_zh": "腸病毒 D68 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child or adolescent with cough, rhinorrhea, wheezing, dyspnea, asthma exacerbation, pneumonia, or acute flaccid myelitis concern should include EV-D68.",
+      "signals": {
+        "cough": 3,
+        "wheezing": 3,
+        "dyspnea": 3,
+        "fever": 2,
+        "respiratory_distress": 3,
+        "focal_neurologic_deficit": 3
+      },
+      "synonyms": [
+        "enterovirus d68",
+        "ev-d68",
+        "evd68",
+        "enterovirus d-68"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check asthma or wheezing severity, respiratory distress, seasonal cluster, neurologic weakness, hydration, and respiratory viral testing context."
+      ],
+      "source_ids": [
+        "cdc_enterovirus_d68_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hand_foot_and_mouth_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "手足口病",
+      "name_en": "Hand, foot, and mouth disease",
+      "system": "Infectious/Viral/Dermatologic/Pediatric",
+      "urgency": "routine",
+      "summary_zh": "手足口病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, sore throat, painful oral blisters, and rash on palms or soles in a child should include hand, foot, and mouth disease.",
+      "signals": {
+        "fever": 2,
+        "sore_throat": 2,
+        "rash": 3,
+        "diffuse_viral_rash": 2,
+        "poor_oral_intake_dehydration": 2
+      },
+      "synonyms": [
+        "hand foot and mouth disease",
+        "hfmd",
+        "coxsackievirus hand foot mouth",
+        "enterovirus hand foot mouth"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oral intake, dehydration, palm/sole and mouth lesions, age and daycare exposure, neurologic complications, and return precautions."
+      ],
+      "source_ids": [
+        "cdc_hand_foot_mouth_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "melioidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "類鼻疽",
+      "name_en": "Melioidosis",
+      "system": "Infectious/Bacterial/Environmental",
+      "urgency": "urgent",
+      "summary_zh": "類鼻疽 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever with pneumonia, abscesses, sepsis, neurologic symptoms, diabetes, soil/water exposure, or endemic travel should include melioidosis.",
+      "signals": {
+        "fever": 3,
+        "cough": 2,
+        "dyspnea": 2,
+        "hemodynamic_instability": 4,
+        "altered_mental_status": 2,
+        "travel_or_tropical_exposure": 4
+      },
+      "synonyms": [
+        "melioidosis",
+        "burkholderia pseudomallei",
+        "whitmore disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check diabetes or renal disease, soil/floodwater exposure, endemic travel, pneumonia versus abscess/sepsis pattern, cultures, and targeted antimicrobial context."
+      ],
+      "source_ids": [
+        "cdc_melioidosis_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tickborne_relapsing_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "蜱媒回歸熱",
+      "name_en": "Tickborne relapsing fever",
+      "system": "Infectious/Tick-borne/Bacterial",
+      "urgency": "soon",
+      "summary_zh": "蜱媒回歸熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent episodes of fever, headache, myalgia, chills, sweats, hypotension, or cabin/soft tick exposure should include tickborne relapsing fever.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "fatigue": 2,
+        "tick_bite_or_exposure": 4,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "tickborne relapsing fever",
+        "tick-borne relapsing fever",
+        "relapsing fever",
+        "soft tick relapsing fever"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check recurrent fever pattern, rustic cabin or tick exposure, geography, pregnancy risk, Jarisch-Herxheimer risk if treated, and smear/serology context."
+      ],
+      "source_ids": [
+        "cdc_relapsing_fever_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "epidemic_typhus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "流行性斑疹傷寒",
+      "name_en": "Epidemic typhus",
+      "system": "Infectious/Rickettsial/Louse-borne",
+      "urgency": "urgent",
+      "summary_zh": "流行性斑疹傷寒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, severe headache, rash, altered mental status, crowding, poor hygiene, or body-louse exposure should include epidemic typhus.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "rash": 3,
+        "altered_mental_status": 3,
+        "travel_or_tropical_exposure": 2
+      },
+      "synonyms": [
+        "epidemic typhus",
+        "louse-borne typhus",
+        "prowazekii typhus",
+        "rickettsia prowazekii"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check body-louse exposure, crowded or displaced-person settings, rash timing, mental status, travel/outbreak risk, and rickettsial testing/treatment context."
+      ],
+      "source_ids": [
+        "cdc_epidemic_typhus_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "scrub_typhus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "恙蟲病",
+      "name_en": "Scrub typhus",
+      "system": "Infectious/Rickettsial/Mite-borne",
+      "urgency": "urgent",
+      "summary_zh": "恙蟲病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, headache, myalgia, eschar, lymphadenopathy, rash, confusion, or chigger exposure in endemic regions should include scrub typhus.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "rash": 3,
+        "altered_mental_status": 2,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "scrub typhus",
+        "bush typhus",
+        "orientia tsutsugamushi",
+        "chigger typhus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or outdoor exposure in endemic regions, eschar, lymph nodes, rash, organ dysfunction, and early rickettsial treatment/testing context."
+      ],
+      "source_ids": [
+        "cdc_scrub_typhus_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "middle_east_respiratory_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "中東呼吸症候群",
+      "name_en": "Middle East respiratory syndrome",
+      "system": "Infectious/Respiratory/Viral",
+      "urgency": "emergent",
+      "summary_zh": "中東呼吸症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, cough, dyspnea, severe pneumonia, gastrointestinal symptoms, camel exposure, or healthcare exposure in the Arabian Peninsula should include MERS.",
+      "signals": {
+        "fever": 3,
+        "cough": 3,
+        "dyspnea": 4,
+        "respiratory_distress": 4,
+        "vomiting": 1,
+        "travel_or_tropical_exposure": 4
+      },
+      "synonyms": [
+        "middle east respiratory syndrome",
+        "mers",
+        "mers-cov",
+        "middle east respiratory syndrome coronavirus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel or healthcare exposure, camel contact, severe lower respiratory disease, infection-control needs, and public-health testing route."
+      ],
+      "source_ids": [
+        "cdc_mers_clinical_overview",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -18666,6 +19421,156 @@
       "publisher": "MedlinePlus",
       "title": "Roseola",
       "url": "https://medlineplus.gov/ency/article/000968.htm"
+    },
+    {
+      "source_id": "cdc_diphtheria_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Diphtheria",
+      "url": "https://www.cdc.gov/diphtheria/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_polio_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Poliomyelitis",
+      "url": "https://www.cdc.gov/polio/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_smallpox_diagnosis_evaluation",
+      "publisher": "CDC",
+      "title": "Diagnosis and Evaluation of Smallpox",
+      "url": "https://www.cdc.gov/smallpox/hcp/diagnosis-testing/index.html"
+    },
+    {
+      "source_id": "cdc_yellow_fever_clinical_diagnosis",
+      "publisher": "CDC",
+      "title": "Clinical Features and Diagnosis of Yellow Fever",
+      "url": "https://www.cdc.gov/yellow-fever/hcp/clinical-diagnosis/index.html"
+    },
+    {
+      "source_id": "cdc_japanese_encephalitis_clinical_diagnosis",
+      "publisher": "CDC",
+      "title": "Clinical Features and Diagnosis of Japanese Encephalitis",
+      "url": "https://www.cdc.gov/japanese-encephalitis/hcp/clinical-diagnosis/index.html"
+    },
+    {
+      "source_id": "cdc_la_crosse_encephalitis_clinical_signs",
+      "publisher": "CDC",
+      "title": "Clinical Signs and Symptoms of La Crosse Virus Disease",
+      "url": "https://www.cdc.gov/la-crosse-encephalitis/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_eastern_equine_encephalitis_clinical_signs",
+      "publisher": "CDC",
+      "title": "Clinical Signs and Symptoms of Eastern Equine Encephalitis",
+      "url": "https://www.cdc.gov/eastern-equine-encephalitis/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_powassan_clinical_signs",
+      "publisher": "CDC",
+      "title": "Clinical Signs and Symptoms of Powassan Virus Disease",
+      "url": "https://www.cdc.gov/powassan/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_st_louis_encephalitis_clinical_signs",
+      "publisher": "CDC",
+      "title": "Clinical Signs and Symptoms of St. Louis Encephalitis",
+      "url": "https://www.cdc.gov/sle/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_colorado_tick_fever_clinical_diagnosis",
+      "publisher": "CDC",
+      "title": "Clinical Features and Diagnosis of Colorado Tick Fever",
+      "url": "https://www.cdc.gov/colorado-tick-fever/hcp/clinical-diagnosis/index.html"
+    },
+    {
+      "source_id": "cdc_lymphocytic_choriomeningitis_about",
+      "publisher": "CDC",
+      "title": "About Lymphocytic Choriomeningitis",
+      "url": "https://www.cdc.gov/lymphocytic-choriomeningitis/about/index.html"
+    },
+    {
+      "source_id": "cdc_ebola_clinical_signs",
+      "publisher": "CDC",
+      "title": "Clinical Features of Ebola Disease",
+      "url": "https://www.cdc.gov/ebola/hcp/clinical-signs/index.html"
+    },
+    {
+      "source_id": "cdc_marburg_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Marburg Virus Disease",
+      "url": "https://www.cdc.gov/marburg/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_lassa_fever_about",
+      "publisher": "CDC",
+      "title": "About Lassa Fever",
+      "url": "https://www.cdc.gov/lassa-fever/about/index.html"
+    },
+    {
+      "source_id": "cdc_crimean_congo_hemorrhagic_about",
+      "publisher": "CDC",
+      "title": "About Crimean-Congo Hemorrhagic Fever",
+      "url": "https://www.cdc.gov/crimean-congo-hemorrhagic/about/index.html"
+    },
+    {
+      "source_id": "cdc_rift_valley_fever_about",
+      "publisher": "CDC",
+      "title": "About Rift Valley Fever",
+      "url": "https://www.cdc.gov/rift-valley-fever/about/index.html"
+    },
+    {
+      "source_id": "cdc_trichuriasis_dpdx",
+      "publisher": "CDC DPDx",
+      "title": "Trichuriasis",
+      "url": "https://www.cdc.gov/dpdx/trichuriasis/index.html"
+    },
+    {
+      "source_id": "cdc_sporotrichosis_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Sporotrichosis",
+      "url": "https://www.cdc.gov/sporotrichosis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_enterovirus_d68_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Enterovirus D68",
+      "url": "https://www.cdc.gov/non-polio-enterovirus/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_hand_foot_mouth_about",
+      "publisher": "CDC",
+      "title": "About Hand, Foot, and Mouth Disease",
+      "url": "https://www.cdc.gov/hand-foot-mouth/about/index.html"
+    },
+    {
+      "source_id": "cdc_melioidosis_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Melioidosis",
+      "url": "https://www.cdc.gov/melioidosis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_relapsing_fever_about",
+      "publisher": "CDC",
+      "title": "About Tick and Louse-borne Relapsing Fevers",
+      "url": "https://www.cdc.gov/relapsing-fever/about/index.html"
+    },
+    {
+      "source_id": "cdc_epidemic_typhus_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Epidemic Typhus",
+      "url": "https://www.cdc.gov/typhus/hcp/clinical-overview/clinical-overview-of-epidemic-typhus.html"
+    },
+    {
+      "source_id": "cdc_scrub_typhus_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Scrub Typhus",
+      "url": "https://www.cdc.gov/typhus/hcp/clinical-overview/clinical-overview-of-scrub-typhus.html"
+    },
+    {
+      "source_id": "cdc_mers_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of MERS",
+      "url": "https://www.cdc.gov/mers/hcp/clinical-overview/index.html"
     }
   ]
 }

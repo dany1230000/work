@@ -1065,6 +1065,47 @@
     overflow-wrap: anywhere;
   }
 
+  .secondary-filter-panel {
+    display: grid;
+    gap: 0.55rem;
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .secondary-filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .secondary-filter-toolbar button {
+    border: 1px solid #c7d2de;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text);
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .secondary-filter-toolbar button.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
+  .secondary-filtered-results {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .secondary-filter-row[hidden] {
+    display: none;
+  }
+
   .compact-governance summary {
     cursor: pointer;
     font-weight: 700;
@@ -1559,9 +1600,30 @@
             <details class="secondary-result-drawer" data-secondary-result-drawer="true">
               <summary>More candidates</summary>
               <div class="secondary-result-body result-list">
+                <section class="secondary-filter-panel" data-secondary-filter-panel="true" aria-label="Secondary candidate filters">
+                  <strong>Filter more candidates</strong>
+                  <div class="secondary-filter-toolbar">
+                    <button type="button" class="is-active" data-secondary-filter-control="true" data-secondary-filter-type="all" data-secondary-filter-value="all" aria-pressed="true">All ({{ result.secondary_candidate_filters.secondary_count }})</button>
+                    {% for filter in result.secondary_candidate_filters.urgency_filters %}
+                      <button type="button" data-secondary-filter-control="true" data-secondary-filter-type="urgency" data-secondary-filter-value="{{ filter.filter_value }}" aria-pressed="false">
+                        {{ filter.label }} ({{ filter.count }})
+                      </button>
+                    {% endfor %}
+                    {% for filter in result.secondary_candidate_filters.system_filters|slice:":6" %}
+                      <button type="button" data-secondary-filter-control="true" data-secondary-filter-type="system" data-secondary-filter-value="{{ filter.filter_value }}" aria-pressed="false">
+                        {{ filter.label }} ({{ filter.count }})
+                      </button>
+                    {% endfor %}
+                  </div>
+                  <p class="secondary" data-secondary-filter-empty="true" hidden>No secondary candidates match this filter.</p>
+                </section>
+                <div class="secondary-filtered-results">
                 {% for entry in result.results|slice:"3:" %}
-                  {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=False %}
+                  <div class="secondary-filter-row" data-secondary-filter-row="true" data-secondary-filter-urgency="{{ entry.urgency_filter_value }}" data-secondary-filter-system="{{ entry.system_filter_value }}">
+                    {% include "cds_core/partials/general_differential_result_card.html" with entry=entry open_detail=False %}
+                  </div>
                 {% endfor %}
+                </div>
               </div>
             </details>
           {% endif %}

@@ -505,6 +505,41 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-primary-result-drawer="true"'),
         )
 
+    def test_posted_results_show_filterable_secondary_candidate_drawer(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-secondary-result-drawer="true"')
+        self.assertContains(response, 'data-secondary-filter-panel="true"')
+        self.assertContains(response, 'data-secondary-filter-control="true"')
+        self.assertContains(response, 'data-secondary-filter-type="urgency"')
+        self.assertContains(response, 'data-secondary-filter-type="system"')
+        self.assertContains(response, 'data-secondary-filter-row="true"')
+        self.assertContains(response, 'data-secondary-filter-empty="true"')
+        self.assertContains(response, "Filter more candidates")
+        self.assertContains(response, "initializeSecondaryCandidateFilters")
+        self.assertLess(
+            content.index('data-primary-result-drawer="true"'),
+            content.index('data-secondary-result-drawer="true"'),
+        )
+        self.assertLess(
+            content.index('data-secondary-filter-panel="true"'),
+            content.index('data-secondary-filter-row="true"'),
+        )
+
     def test_posted_findings_show_compact_step_rail_before_long_workflow(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

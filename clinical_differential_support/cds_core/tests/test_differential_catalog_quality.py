@@ -294,7 +294,7 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
 
     def test_sixteenth_generalist_batch_expands_catalog_to_525_without_warnings(self):
         report = build_general_differential_catalog_quality_report()
-        sixteenth_batch_slugs = {condition["slug"] for condition in CONDITIONS[-25:]}
+        sixteenth_batch_slugs = {condition["slug"] for condition in CONDITIONS[-50:-25]}
         single_source_slugs = {
             warning["subject"]
             for warning in report["warnings"]
@@ -309,11 +309,29 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(report["summary"]["warning_count"], 0)
         self.assertFalse(sixteenth_batch_slugs.intersection(single_source_slugs))
         self.assertTrue(report["summary"]["ready_for_public_reference"])
-        self.assertEqual(report["summary"]["expansion_target_condition_count"], 525)
+
+    def test_seventeenth_generalist_batch_expands_catalog_to_550_without_warnings(self):
+        report = build_general_differential_catalog_quality_report()
+        seventeenth_batch_slugs = {condition["slug"] for condition in CONDITIONS[-25:]}
+        single_source_slugs = {
+            warning["subject"]
+            for warning in report["warnings"]
+            if warning["code"] == "single_source_condition"
+        }
+
+        self.assertGreaterEqual(report["summary"]["condition_count"], 550)
+        self.assertGreaterEqual(report["summary"]["source_count"], 628)
+        self.assertGreaterEqual(len(CONDITIONS), 550)
+        self.assertGreaterEqual(len(SOURCES), 628)
+        self.assertEqual(report["summary"]["blocking_issue_count"], 0)
+        self.assertEqual(report["summary"]["warning_count"], 0)
+        self.assertFalse(seventeenth_batch_slugs.intersection(single_source_slugs))
+        self.assertTrue(report["summary"]["ready_for_public_reference"])
+        self.assertEqual(report["summary"]["expansion_target_condition_count"], 550)
         expansion_action = next(
             action
             for action in report["next_actions"]
-            if action["action_id"] == "expand_condition_catalog_to_525"
+            if action["action_id"] == "expand_condition_catalog_to_550"
         )
         self.assertEqual(expansion_action["status"], "done")
 

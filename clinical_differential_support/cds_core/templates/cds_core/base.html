@@ -807,6 +807,61 @@
       });
     }
 
+    function initializeSecondaryCandidateFilters(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-secondary-filter-panel]")).forEach(function (panel) {
+        if (panel.dataset.secondaryFilterReady === "true") {
+          return;
+        }
+        var drawer = panel.closest("[data-secondary-result-drawer]");
+        var buttons = Array.prototype.slice.call(panel.querySelectorAll("[data-secondary-filter-control]"));
+        var rows = drawer ? Array.prototype.slice.call(drawer.querySelectorAll("[data-secondary-filter-row]")) : [];
+        var empty = panel.querySelector("[data-secondary-filter-empty]");
+        if (!buttons.length || !rows.length) {
+          return;
+        }
+        panel.dataset.secondaryFilterReady = "true";
+
+        function rowMatches(row, filterType, filterValue) {
+          if (filterType === "all") {
+            return true;
+          }
+          return row.getAttribute("data-secondary-filter-" + filterType) === filterValue;
+        }
+
+        function applyFilter(filterType, filterValue) {
+          var visibleCount = 0;
+          rows.forEach(function (row) {
+            var visible = rowMatches(row, filterType, filterValue);
+            row.hidden = !visible;
+            if (visible) {
+              visibleCount += 1;
+            }
+          });
+          buttons.forEach(function (button) {
+            var active =
+              button.dataset.secondaryFilterType === filterType &&
+              button.dataset.secondaryFilterValue === filterValue;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          if (empty) {
+            empty.hidden = visibleCount !== 0;
+          }
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            applyFilter(
+              button.dataset.secondaryFilterType || "all",
+              button.dataset.secondaryFilterValue || "all"
+            );
+          });
+        });
+        applyFilter("all", "all");
+      });
+    }
+
     function setDifferentialSubmitState(form, pending, message) {
       var workbench = form.closest("[data-differential-workbench]");
       var status = form.querySelector("[data-differential-submit-status]");
@@ -852,6 +907,7 @@
       initializeFindingFilters(root);
       initializeCatalogQuickQueries(root);
       initializeSourceProvenanceFilters(root);
+      initializeSecondaryCandidateFilters(root);
       initializeGeneralDifferentialFetchSubmit(root);
       return replacedCount;
     }
@@ -925,6 +981,7 @@
       initializeFindingFilters(main);
       initializeCatalogQuickQueries(main);
       initializeSourceProvenanceFilters(main);
+      initializeSecondaryCandidateFilters(main);
       initializeGeneralDifferentialFetchSubmit(main);
     }
 
@@ -1058,6 +1115,7 @@
     initializeFindingFilters(main);
     initializeCatalogQuickQueries(main);
     initializeSourceProvenanceFilters(main);
+    initializeSecondaryCandidateFilters(main);
     initializeGeneralDifferentialFetchSubmit(main);
     scheduleFastNavPrefetch();
   })();
