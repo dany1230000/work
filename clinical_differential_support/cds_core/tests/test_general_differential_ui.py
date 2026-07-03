@@ -471,6 +471,43 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-primary-result-drawer="true"'),
         )
 
+    def test_candidate_scan_table_shows_quick_urgency_and_system_filters(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-candidate-scan-filter-panel="true"')
+        self.assertContains(response, 'data-candidate-scan-filter-control="true"')
+        self.assertContains(response, 'data-candidate-scan-filter-type="urgency"')
+        self.assertContains(response, 'data-candidate-scan-filter-type="system"')
+        self.assertContains(response, 'data-candidate-scan-row="acute_coronary_syndrome"')
+        self.assertContains(response, 'data-candidate-scan-urgency="emergent"')
+        self.assertContains(response, 'data-candidate-scan-system=')
+        self.assertContains(response, 'data-candidate-scan-empty="true"')
+        self.assertContains(response, "Filter scan")
+        self.assertContains(response, "initializeCandidateScanFilters")
+        self.assertLess(
+            content.index('data-candidate-scan-filter-panel="true"'),
+            content.index('data-candidate-scan-row="acute_coronary_syndrome"'),
+        )
+        self.assertLess(
+            content.index('data-candidate-scan-table="true"'),
+            content.index('data-primary-result-drawer="true"'),
+        )
+
     def test_posted_results_show_filterable_source_provenance_before_candidate_cards(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

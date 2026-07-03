@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03-550",
-    "condition_count": 550,
-    "source_count": 628,
+    "catalog_version": "general-differential-starter-2026-07-03-575",
+    "condition_count": 575,
+    "source_count": 653,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03-550",
-      "condition_count": 550,
-      "source_count": 628,
+      "catalog_version": "general-differential-starter-2026-07-03-575",
+      "condition_count": 575,
+      "source_count": 653,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 550
+      "expansion_target_condition_count": 575
     }
   },
   "safety_scope": {
@@ -15801,6 +15801,751 @@
         "cdc_mers_clinical_overview",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "glanders",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼻疽",
+      "name_en": "Glanders",
+      "system": "Infectious/Zoonotic/Respiratory",
+      "urgency": "urgent",
+      "summary_zh": "鼻疽 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, pneumonia, pustular or nodular skin lesions, abscesses, bacteremia, or horse/donkey/mule or laboratory exposure should include glanders.",
+      "signals": {
+        "fever": 3,
+        "cough_sputum": 2,
+        "respiratory_distress": 2,
+        "rash": 2,
+        "travel_or_tropical_exposure": 1
+      },
+      "synonyms": [
+        "glanders",
+        "burkholderia mallei",
+        "farcy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check equid or laboratory exposure, pneumonia or skin lesion pattern, bacteremia or abscess signs, travel context, and public-health notification needs."
+      ],
+      "source_ids": [
+        "cdc_glanders_maryland_mmwr",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rat_bite_fever",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼠咬熱",
+      "name_en": "Rat-bite fever",
+      "system": "Infectious/Zoonotic",
+      "urgency": "soon",
+      "summary_zh": "鼠咬熱 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, rash, migratory arthralgia, vomiting, or exposure to rats or other rodents should include rat-bite fever.",
+      "signals": {
+        "fever": 3,
+        "rash": 3,
+        "acute_joint_pain_swelling": 2,
+        "vomiting": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "rat bite fever",
+        "rat-bite fever",
+        "streptobacillus moniliformis",
+        "spirillum minus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check rodent bite, scratch, urine/saliva, pet or laboratory exposure; rash and joint pattern; fever timing; and blood culture or PCR context."
+      ],
+      "source_ids": [
+        "cdc_rat_bite_fever_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "cat_scratch_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "貓抓病",
+      "name_en": "Cat scratch disease",
+      "system": "Infectious/Zoonotic/Lymphatic",
+      "urgency": "routine",
+      "summary_zh": "貓抓病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Regional lymphadenopathy, fever, papule at scratch site, neuroretinitis, or cat/kitten exposure should include cat scratch disease.",
+      "signals": {
+        "fever": 2,
+        "rash": 2,
+        "fatigue": 1,
+        "eye_pain_redness": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "cat scratch disease",
+        "cat scratch fever",
+        "bartonella henselae infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check cat or kitten scratch/bite exposure, local papule, lymph node distribution, ocular or neurologic features, immune status, and Bartonella testing context."
+      ],
+      "source_ids": [
+        "cdc_cat_scratch_disease_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "actinomycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "放線菌病",
+      "name_en": "Actinomycosis",
+      "system": "Infectious/Anaerobic/Dental/Abdominal",
+      "urgency": "soon",
+      "summary_zh": "放線菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic cervicofacial mass, draining sinus, dental disease, thoracic or abdominal abscess-like illness should include actinomycosis.",
+      "signals": {
+        "dental_pain_or_facial_swelling": 3,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "abdominal_pain": 2,
+        "cough_sputum": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "actinomycosis",
+        "actinomyces infection",
+        "lumpy jaw"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check dental or mucosal disruption, chronic draining sinus, sulfur granules if present, thoracic/abdominal extension, and culture or pathology context."
+      ],
+      "source_ids": [
+        "merck_actinomycosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "whipple_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "惠普爾病",
+      "name_en": "Whipple disease",
+      "system": "Gastrointestinal/Infectious/Malabsorption",
+      "urgency": "soon",
+      "summary_zh": "惠普爾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Weight loss, chronic diarrhea or malabsorption, arthralgia, abdominal pain, fever, neurologic symptoms, or culture-negative systemic illness should include Whipple disease.",
+      "signals": {
+        "weight_loss": 3,
+        "abdominal_pain": 2,
+        "acute_joint_pain_swelling": 2,
+        "fatigue": 2,
+        "fever": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "whipple disease",
+        "whipple's disease",
+        "tropheryma whipplei"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check malabsorption, weight loss, arthralgia chronology, neurologic or cardiac features, endoscopy/biopsy context, and infectious disease review need."
+      ],
+      "source_ids": [
+        "merck_whipple_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "rickettsialpox",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "立克次體痘",
+      "name_en": "Rickettsialpox",
+      "system": "Infectious/Rickettsial/Dermatologic",
+      "urgency": "soon",
+      "summary_zh": "立克次體痘 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, headache, eschar, papulovesicular rash, or mouse mite exposure should include rickettsialpox.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "rash": 3,
+        "tick_bite_or_exposure": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "rickettsialpox",
+        "rickettsia akari",
+        "mouse mite rickettsiosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check eschar, vesicular rash timing, rodent or mite exposure, fever/headache pattern, and serology or PCR context."
+      ],
+      "source_ids": [
+        "merck_rickettsialpox",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "murine_typhus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼠型斑疹傷寒",
+      "name_en": "Murine typhus",
+      "system": "Infectious/Rickettsial/Flea-borne",
+      "urgency": "soon",
+      "summary_zh": "鼠型斑疹傷寒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, headache, rash, myalgia, abdominal symptoms, cough, altered mental status, or flea/rodent/opossum exposure should include murine typhus.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "rash": 2,
+        "vomiting": 1,
+        "abdominal_pain": 1,
+        "cough_sputum": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "murine typhus",
+        "flea-borne typhus",
+        "endemic typhus",
+        "rickettsia typhi"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check flea or rodent/opossum exposure, region and season, rash timing, headache and GI symptoms, and rickettsial testing/treatment context."
+      ],
+      "source_ids": [
+        "cdc_murine_typhus_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "borrelia_miyamotoi_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "宮本疏螺旋體病",
+      "name_en": "Borrelia miyamotoi disease",
+      "system": "Infectious/Tick-borne",
+      "urgency": "soon",
+      "summary_zh": "宮本疏螺旋體病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Single or relapsing fever with headache, myalgia, fatigue, or blacklegged tick exposure should include Borrelia miyamotoi disease.",
+      "signals": {
+        "fever": 3,
+        "headache": 2,
+        "fatigue": 2,
+        "tick_bite_or_exposure": 4,
+        "rash": 1
+      },
+      "synonyms": [
+        "borrelia miyamotoi disease",
+        "hard tick relapsing fever",
+        "b miyamotoi infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check blacklegged tick exposure, relapsing fever pattern, Lyme/anaplasma coinfection context, immune status, and PCR or serology availability."
+      ],
+      "source_ids": [
+        "cdc_hard_tick_relapsing_fever_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "oropouche_virus_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "奧羅普切病毒病",
+      "name_en": "Oropouche virus disease",
+      "system": "Infectious/Arboviral/Travel",
+      "urgency": "soon",
+      "summary_zh": "奧羅普切病毒病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abrupt fever, severe headache, chills, myalgia, arthralgia, rash, nausea, or travel to Oropouche transmission areas should include Oropouche virus disease.",
+      "signals": {
+        "fever": 3,
+        "headache": 3,
+        "acute_joint_pain_swelling": 2,
+        "rash": 1,
+        "vomiting": 1,
+        "travel_or_tropical_exposure": 4
+      },
+      "synonyms": [
+        "oropouche virus disease",
+        "oropouche fever",
+        "orov infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check travel geography, biting midge or mosquito exposure, pregnancy context, recurrent symptoms, neurologic signs, and public-health testing route."
+      ],
+      "source_ids": [
+        "cdc_oropouche_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mayaro_virus_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "馬亞羅病毒病",
+      "name_en": "Mayaro virus disease",
+      "system": "Infectious/Arboviral/Travel",
+      "urgency": "soon",
+      "summary_zh": "馬亞羅病毒病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, arthralgia, rash, headache, myalgia, or travel to forested tropical areas of the Americas should include Mayaro virus disease.",
+      "signals": {
+        "fever": 3,
+        "acute_joint_pain_swelling": 3,
+        "rash": 2,
+        "headache": 2,
+        "travel_or_tropical_exposure": 4
+      },
+      "synonyms": [
+        "mayaro virus disease",
+        "mayaro fever",
+        "mayaro virus infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check South or Central America travel, forest or mosquito exposure, prolonged arthralgia, dengue/chikungunya overlap, and public-health testing context."
+      ],
+      "source_ids": [
+        "cdc_mayaro_clinical_diagnosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "toxoplasmic_encephalitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "弓形蟲腦炎",
+      "name_en": "Toxoplasmic encephalitis",
+      "system": "Infectious/Neurologic/Immunocompromised",
+      "urgency": "urgent",
+      "summary_zh": "弓形蟲腦炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Immunocompromised patient with headache, focal neurologic deficit, seizure, fever, or intracranial mass lesion context should include toxoplasmic encephalitis.",
+      "signals": {
+        "immunocompromised": 4,
+        "headache": 2,
+        "focal_neurologic_deficit": 4,
+        "seizure_activity_or_postictal_state": 4,
+        "fever": 1,
+        "altered_mental_status": 3
+      },
+      "synonyms": [
+        "toxoplasmic encephalitis",
+        "toxoplasma gondii encephalitis",
+        "cns toxoplasmosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check HIV/transplant/steroid risk, CD4 or immune context, focal deficits or seizures, brain imaging pattern, serology/PCR context, and urgent ID/neurology review need."
+      ],
+      "source_ids": [
+        "nih_toxoplasma_encephalitis_oi",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "non_tuberculous_mycobacterial_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "非結核分枝桿菌病",
+      "name_en": "Nontuberculous mycobacterial disease",
+      "system": "Infectious/Pulmonary/Skin",
+      "urgency": "soon",
+      "summary_zh": "非結核分枝桿菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic cough, pulmonary nodules/bronchiectasis context, skin or device-associated infection, hot tub or healthcare water exposure, or immunocompromise should include nontuberculous mycobacterial disease.",
+      "signals": {
+        "cough_sputum": 3,
+        "dyspnea": 2,
+        "weight_loss": 2,
+        "localized_skin_infection": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "non tuberculous mycobacterial disease",
+        "nontuberculous mycobacteria infection",
+        "ntm infection",
+        "mycobacterium avium complex"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chronic lung disease, bronchiectasis or nodules, water-device exposure, skin or procedure site infection, immune status, and AFB culture/speciation context."
+      ],
+      "source_ids": [
+        "cdc_nontuberculous_mycobacteria_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "haemophilus_influenzae_type_b",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "b型流感嗜血桿菌病",
+      "name_en": "Haemophilus influenzae type b disease",
+      "system": "Infectious/Pediatric/Vaccine-preventable",
+      "urgency": "urgent",
+      "summary_zh": "b型流感嗜血桿菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Unvaccinated or under-immunized child with meningitis, epiglottitis, pneumonia, bacteremia, cellulitis, or septic arthritis context should include Hib disease.",
+      "signals": {
+        "fever": 3,
+        "neck_stiffness": 3,
+        "respiratory_distress": 3,
+        "acute_hot_swollen_joint": 2,
+        "localized_skin_infection": 2
+      },
+      "synonyms": [
+        "haemophilus influenzae type b",
+        "haemophilus influenzae disease",
+        "hib disease",
+        "hib meningitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age and immunization status, meningitis/epiglottitis/pneumonia features, bacteremia or joint/skin focus, exposure risk, and culture/PCR context."
+      ],
+      "source_ids": [
+        "cdc_haemophilus_influenzae_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pneumococcal_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肺炎鏈球菌病",
+      "name_en": "Pneumococcal disease",
+      "system": "Infectious/Respiratory/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "肺炎鏈球菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Abrupt fever with pneumonia, bacteremia, meningitis, sinusitis, otitis, or high-risk host context should include pneumococcal disease.",
+      "signals": {
+        "fever": 3,
+        "cough_sputum": 3,
+        "dyspnea": 2,
+        "neck_stiffness": 3,
+        "altered_mental_status": 2,
+        "ear_pain": 1
+      },
+      "synonyms": [
+        "pneumococcal disease",
+        "streptococcus pneumoniae infection",
+        "pneumococcal pneumonia",
+        "pneumococcal meningitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check syndrome focus, vaccination status, age or asplenia/immunocompromise risk, respiratory or meningitis severity, and culture/antigen testing context."
+      ],
+      "source_ids": [
+        "cdc_pneumococcal_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "talaromycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "馬爾尼菲籃狀菌病",
+      "name_en": "Talaromycosis",
+      "system": "Infectious/Fungal/Immunocompromised",
+      "urgency": "soon",
+      "summary_zh": "馬爾尼菲籃狀菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Immunocompromised patient with fever, weight loss, hepatosplenomegaly/lymphadenopathy context, respiratory or GI symptoms, or umbilicated skin papules after Southeast Asia exposure should include talaromycosis.",
+      "signals": {
+        "immunocompromised": 4,
+        "fever": 3,
+        "weight_loss": 2,
+        "cough_sputum": 1,
+        "rash": 3,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "talaromycosis",
+        "penicilliosis",
+        "talaromyces marneffei infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check HIV or immune status, Southeast Asia/southern China/India exposure, skin lesion pattern, pulmonary/GI symptoms, blood culture or fungal testing context."
+      ],
+      "source_ids": [
+        "cdc_talaromycosis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "paracoccidioidomycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "副球孢子菌病",
+      "name_en": "Paracoccidioidomycosis",
+      "system": "Infectious/Fungal/Pulmonary",
+      "urgency": "soon",
+      "summary_zh": "副球孢子菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic cough, fever, weight loss, mouth or throat lesions, skin lesions, lymphadenopathy, or Latin America exposure should include paracoccidioidomycosis.",
+      "signals": {
+        "cough_sputum": 3,
+        "fever": 2,
+        "weight_loss": 2,
+        "rash": 2,
+        "neck_stiffness_swelling_dysphagia": 1,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "paracoccidioidomycosis",
+        "paracoccidioides infection",
+        "south american blastomycosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check Latin America exposure, pulmonary symptoms, mucosal or skin lesions, lymph nodes, immune status, and microscopy/culture/serology context."
+      ],
+      "source_ids": [
+        "cdc_paracoccidioidomycosis_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chromoblastomycosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "著色芽生菌病",
+      "name_en": "Chromoblastomycosis",
+      "system": "Infectious/Fungal/Skin",
+      "urgency": "routine",
+      "summary_zh": "著色芽生菌病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic verrucous or plaque-like skin lesion after traumatic inoculation with soil, wood, or plant material should include chromoblastomycosis.",
+      "signals": {
+        "rash": 3,
+        "localized_skin_infection": 2,
+        "chronic_itchy_flexural_rash": 1,
+        "travel_or_tropical_exposure": 2
+      },
+      "synonyms": [
+        "chromoblastomycosis",
+        "chromomycosis",
+        "dematiaceous fungal skin infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check traumatic plant/wood/soil inoculation, chronic limb lesion morphology, occupational exposure, tropical/subtropical context, and fungal biopsy/culture need."
+      ],
+      "source_ids": [
+        "cdc_chromoblastomycosis_clinical_overview",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "mycetoma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "足菌腫",
+      "name_en": "Mycetoma",
+      "system": "Infectious/Skin/Soft tissue/Neglected tropical disease",
+      "urgency": "routine",
+      "summary_zh": "足菌腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless chronic subcutaneous mass, swelling, sinus tracts, grains, or foot lesion after soil/plant inoculation should include mycetoma.",
+      "signals": {
+        "localized_skin_infection": 3,
+        "unilateral_leg_swelling": 2,
+        "rash": 1,
+        "travel_or_tropical_exposure": 2
+      },
+      "synonyms": [
+        "mycetoma",
+        "madura foot",
+        "eumycetoma",
+        "actinomycetoma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chronic swelling, draining sinuses or grains, foot or limb involvement, farming/soil exposure, geography, and biopsy/culture/imaging context."
+      ],
+      "source_ids": [
+        "cdc_mycetoma_about",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "buruli_ulcer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "布如里潰瘍",
+      "name_en": "Buruli ulcer",
+      "system": "Infectious/Skin/Neglected tropical disease",
+      "urgency": "soon",
+      "summary_zh": "布如里潰瘍 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless nodule, plaque, edema, or undermined ulcer in endemic tropical/subtropical settings should include Buruli ulcer.",
+      "signals": {
+        "localized_skin_infection": 3,
+        "rash": 2,
+        "unilateral_leg_swelling": 1,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "buruli ulcer",
+        "mycobacterium ulcerans infection",
+        "bairnsdale ulcer"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check endemic geography, painless nodule/plaque/ulcer timing, edema, exposure context, PCR or mycobacterial testing, and wound/specialist review need."
+      ],
+      "source_ids": [
+        "who_buruli_ulcer_fact_sheet",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "yaws",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "雅司病",
+      "name_en": "Yaws",
+      "system": "Infectious/Skin/Neglected tropical disease",
+      "urgency": "routine",
+      "summary_zh": "雅司病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic papillomatous or ulcerative skin lesions, bone/joint symptoms, child in endemic warm humid rural setting, or nonvenereal treponemal exposure should include yaws.",
+      "signals": {
+        "rash": 3,
+        "localized_skin_infection": 2,
+        "acute_joint_pain_swelling": 1,
+        "travel_or_tropical_exposure": 3
+      },
+      "synonyms": [
+        "yaws",
+        "treponema pallidum pertenue",
+        "endemic treponematosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, endemic geography, skin lesion stage, bone/joint involvement, household/community contact, and treponemal testing/public-health context."
+      ],
+      "source_ids": [
+        "who_yaws_fact_sheet",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "toxic_shock_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "毒性休克症候群",
+      "name_en": "Toxic shock syndrome",
+      "system": "Infectious/Toxin-mediated/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "毒性休克症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, hypotension or shock, diffuse rash, vomiting/diarrhea, multisystem organ involvement, soft tissue infection, tampon, wound, or postpartum context should include toxic shock syndrome.",
+      "signals": {
+        "fever": 4,
+        "hemodynamic_instability": 4,
+        "rash": 3,
+        "vomiting": 2,
+        "bloody_diarrhea": 1,
+        "rapidly_spreading_skin_infection": 2
+      },
+      "synonyms": [
+        "toxic shock syndrome",
+        "streptococcal toxic shock syndrome",
+        "staphylococcal toxic shock syndrome",
+        "tss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check shock, rash, organ dysfunction, soft tissue or device/tampon/wound/postpartum source, cultures, infection-control/public-health context, and urgent escalation need."
+      ],
+      "source_ids": [
+        "cdc_stss_clinical_guidance",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "gas_gangrene",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "氣性壞疽",
+      "name_en": "Gas gangrene",
+      "system": "Infectious/Soft tissue/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "氣性壞疽 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Rapidly progressive severe wound pain, edema, skin discoloration, crepitus or gas, foul exudate, shock, or deep trauma should include gas gangrene.",
+      "signals": {
+        "pain_out_of_proportion_to_exam": 4,
+        "rapidly_spreading_skin_infection": 4,
+        "hemodynamic_instability": 3,
+        "localized_skin_infection": 3,
+        "severe_pain": 3
+      },
+      "synonyms": [
+        "gas gangrene",
+        "clostridial myonecrosis",
+        "clostridial soft tissue infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check deep trauma or ischemic tissue, pain out of proportion, crepitus/gas, systemic toxicity, wound odor or discharge, and urgent surgical/ID escalation."
+      ],
+      "source_ids": [
+        "merck_clostridial_soft_tissue_infections",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "methemoglobinemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高鐵血紅蛋白血症",
+      "name_en": "Methemoglobinemia",
+      "system": "Toxicology/Hematology/Emergency",
+      "urgency": "urgent",
+      "summary_zh": "高鐵血紅蛋白血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cyanosis or hypoxia not improving as expected, dyspnea, headache, fatigue, altered mental status, or oxidizing medication/chemical exposure should include methemoglobinemia.",
+      "signals": {
+        "dyspnea": 3,
+        "respiratory_distress": 3,
+        "headache": 1,
+        "fatigue": 2,
+        "altered_mental_status": 3,
+        "seizure_activity_or_postictal_state": 2
+      },
+      "synonyms": [
+        "methemoglobinemia",
+        "methemoglobin toxicity",
+        "oxidizing agent cyanosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pulse oximetry and blood gas discrepancy, chocolate-brown blood if noted, benzocaine/dapsone/nitrate exposure, G6PD risk, and co-oximetry context."
+      ],
+      "source_ids": [
+        "nih_methemoglobinemia",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "decompression_sickness",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "減壓病",
+      "name_en": "Decompression sickness",
+      "system": "Environmental/Diving/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "減壓病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Joint or muscle pain, fatigue, paresthesias, weakness, neurologic symptoms, dyspnea, rash, or symptoms after diving/compressed-air work or rapid ascent should include decompression sickness.",
+      "signals": {
+        "acute_joint_pain_swelling": 2,
+        "fatigue": 2,
+        "weakness": 2,
+        "progressive_bilateral_leg_weakness": 3,
+        "dyspnea": 2,
+        "rash": 1
+      },
+      "synonyms": [
+        "decompression sickness",
+        "the bends",
+        "caisson disease",
+        "diving decompression illness"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check dive profile, ascent timing, altitude after diving, neurologic deficits, cardiopulmonary symptoms, oxygen/recompression pathway, and diving medicine consultation need."
+      ],
+      "source_ids": [
+        "merck_decompression_sickness",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "high_altitude_illness",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高海拔疾病",
+      "name_en": "High altitude illness",
+      "system": "Environmental/Pulmonary/Neurologic",
+      "urgency": "urgent",
+      "summary_zh": "高海拔疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Headache, nausea/vomiting, fatigue, ataxia/confusion, dyspnea, cough, or hypoxemia after rapid ascent should include high altitude illness, HACE, or HAPE.",
+      "signals": {
+        "headache": 3,
+        "vomiting": 2,
+        "fatigue": 2,
+        "altered_mental_status": 4,
+        "dyspnea": 3,
+        "cough_sputum": 1,
+        "travel_or_tropical_exposure": 2
+      },
+      "synonyms": [
+        "high altitude illness",
+        "acute mountain sickness",
+        "high-altitude cerebral edema",
+        "high-altitude pulmonary edema",
+        "hace",
+        "hape"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check altitude, rate of ascent, sleep altitude, oxygen saturation, ataxia/confusion, dyspnea at rest or cough, descent feasibility, and emergency evacuation context."
+      ],
+      "source_ids": [
+        "cdc_yellow_book_high_altitude_illness",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -19571,6 +20316,156 @@
       "publisher": "CDC",
       "title": "Clinical Overview of MERS",
       "url": "https://www.cdc.gov/mers/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_glanders_maryland_mmwr",
+      "publisher": "CDC MMWR",
+      "title": "Laboratory-Acquired Human Glanders - Maryland",
+      "url": "https://www.cdc.gov/mmwr/preview/mmwrhtml/mm4924a3.htm"
+    },
+    {
+      "source_id": "cdc_rat_bite_fever_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Rat Bite Fever",
+      "url": "https://www.cdc.gov/rat-bite-fever/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_cat_scratch_disease_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Cat Scratch Disease",
+      "url": "https://www.cdc.gov/bartonella/hcp/clinical-overview/cat-scratch-disease.html"
+    },
+    {
+      "source_id": "merck_actinomycosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Actinomycosis",
+      "url": "https://www.merckmanuals.com/en-pr/professional/infectious-diseases/anaerobic-bacteria/actinomycosis"
+    },
+    {
+      "source_id": "merck_whipple_disease",
+      "publisher": "Merck Manual Professional",
+      "title": "Whipple Disease",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/malabsorption-syndromes/whipple-disease"
+    },
+    {
+      "source_id": "merck_rickettsialpox",
+      "publisher": "Merck Manual Professional",
+      "title": "Rickettsialpox",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/rickettsiae-and-related-organisms/rickettsialpox"
+    },
+    {
+      "source_id": "cdc_murine_typhus_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Flea-borne Typhus",
+      "url": "https://www.cdc.gov/typhus/hcp/clinical-overview/clinical-overview-of-murine-typhus.html"
+    },
+    {
+      "source_id": "cdc_hard_tick_relapsing_fever_about",
+      "publisher": "CDC",
+      "title": "About Hard Tick Relapsing Fever",
+      "url": "https://www.cdc.gov/relapsing-fever/about/about-htrf.html"
+    },
+    {
+      "source_id": "cdc_oropouche_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Oropouche Virus Disease",
+      "url": "https://www.cdc.gov/oropouche/hcp/clinical-overview/"
+    },
+    {
+      "source_id": "cdc_mayaro_clinical_diagnosis",
+      "publisher": "CDC",
+      "title": "Clinical Diagnosis, Treatment, and Prevention of Mayaro Virus Disease",
+      "url": "https://www.cdc.gov/mayaro-virus/hcp/clinical-diagnosis-treatment/index.html"
+    },
+    {
+      "source_id": "nih_toxoplasma_encephalitis_oi",
+      "publisher": "NIH ClinicalInfo HIV.gov",
+      "title": "Toxoplasma gondii Encephalitis",
+      "url": "https://clinicalinfo.hiv.gov/en/guidelines/hiv-clinical-guidelines-adult-and-adolescent-opportunistic-infections/toxoplasmosis"
+    },
+    {
+      "source_id": "cdc_nontuberculous_mycobacteria_about",
+      "publisher": "CDC",
+      "title": "About Nontuberculous Mycobacteria Infections",
+      "url": "https://www.cdc.gov/nontuberculous-mycobacteria/about/index.html"
+    },
+    {
+      "source_id": "cdc_haemophilus_influenzae_disease",
+      "publisher": "CDC",
+      "title": "Haemophilus influenzae Disease",
+      "url": "https://www.cdc.gov/hi-disease/index.html"
+    },
+    {
+      "source_id": "cdc_pneumococcal_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Pneumococcal Disease",
+      "url": "https://www.cdc.gov/pneumococcal/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_talaromycosis_about",
+      "publisher": "CDC",
+      "title": "Talaromycosis Basics",
+      "url": "https://www.cdc.gov/talaromycosis/about/index.html"
+    },
+    {
+      "source_id": "cdc_paracoccidioidomycosis_about",
+      "publisher": "CDC",
+      "title": "Paracoccidioidomycosis Basics",
+      "url": "https://www.cdc.gov/paracoccidioidomycosis/about/index.html"
+    },
+    {
+      "source_id": "cdc_chromoblastomycosis_clinical_overview",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Chromoblastomycosis",
+      "url": "https://www.cdc.gov/chromoblastomycosis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "cdc_mycetoma_about",
+      "publisher": "CDC",
+      "title": "Mycetoma Basics",
+      "url": "https://www.cdc.gov/mycetoma/about/index.html"
+    },
+    {
+      "source_id": "who_buruli_ulcer_fact_sheet",
+      "publisher": "WHO",
+      "title": "Buruli ulcer (Mycobacterium ulcerans infection)",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/buruli-ulcer-%28mycobacterium-ulcerans-infection%29"
+    },
+    {
+      "source_id": "who_yaws_fact_sheet",
+      "publisher": "WHO",
+      "title": "Yaws",
+      "url": "https://www.who.int/news-room/fact-sheets/detail/yaws"
+    },
+    {
+      "source_id": "cdc_stss_clinical_guidance",
+      "publisher": "CDC",
+      "title": "Clinical Guidance for Streptococcal Toxic Shock Syndrome",
+      "url": "https://www.cdc.gov/group-a-strep/hcp/clinical-guidance/streptococcal-toxic-shock-syndrome.html"
+    },
+    {
+      "source_id": "merck_clostridial_soft_tissue_infections",
+      "publisher": "Merck Manual Professional",
+      "title": "Clostridial Soft-Tissue Infections",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/anaerobic-bacteria/clostridial-soft-tissue-infections"
+    },
+    {
+      "source_id": "nih_methemoglobinemia",
+      "publisher": "NCBI Bookshelf",
+      "title": "Methemoglobinemia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK537317/"
+    },
+    {
+      "source_id": "merck_decompression_sickness",
+      "publisher": "Merck Manual Professional",
+      "title": "Decompression Sickness",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/injury-during-diving-or-work-in-compressed-air/decompression-sickness"
+    },
+    {
+      "source_id": "cdc_yellow_book_high_altitude_illness",
+      "publisher": "CDC Yellow Book",
+      "title": "High-Altitude Travel and Altitude Illness",
+      "url": "https://www.cdc.gov/yellow-book/hcp/environmental-hazards-risks/high-altitude-travel-and-altitude-illness.html"
     }
   ]
 }

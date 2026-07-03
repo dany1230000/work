@@ -862,6 +862,61 @@
       });
     }
 
+    function initializeCandidateScanFilters(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-candidate-scan-filter-panel]")).forEach(function (panel) {
+        if (panel.dataset.candidateScanFilterReady === "true") {
+          return;
+        }
+        var table = panel.closest("[data-candidate-scan-table]");
+        var buttons = Array.prototype.slice.call(panel.querySelectorAll("[data-candidate-scan-filter-control]"));
+        var rows = table ? Array.prototype.slice.call(table.querySelectorAll("[data-candidate-scan-row]")) : [];
+        var empty = panel.querySelector("[data-candidate-scan-empty]");
+        if (!buttons.length || !rows.length) {
+          return;
+        }
+        panel.dataset.candidateScanFilterReady = "true";
+
+        function rowMatches(row, filterType, filterValue) {
+          if (filterType === "all") {
+            return true;
+          }
+          return row.getAttribute("data-candidate-scan-" + filterType) === filterValue;
+        }
+
+        function applyFilter(filterType, filterValue) {
+          var visibleCount = 0;
+          rows.forEach(function (row) {
+            var visible = rowMatches(row, filterType, filterValue);
+            row.hidden = !visible;
+            if (visible) {
+              visibleCount += 1;
+            }
+          });
+          buttons.forEach(function (button) {
+            var active =
+              button.dataset.candidateScanFilterType === filterType &&
+              button.dataset.candidateScanFilterValue === filterValue;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          if (empty) {
+            empty.hidden = visibleCount !== 0;
+          }
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            applyFilter(
+              button.dataset.candidateScanFilterType || "all",
+              button.dataset.candidateScanFilterValue || "all"
+            );
+          });
+        });
+        applyFilter("all", "all");
+      });
+    }
+
     function setDifferentialSubmitState(form, pending, message) {
       var workbench = form.closest("[data-differential-workbench]");
       var status = form.querySelector("[data-differential-submit-status]");
@@ -907,6 +962,7 @@
       initializeFindingFilters(root);
       initializeCatalogQuickQueries(root);
       initializeSourceProvenanceFilters(root);
+      initializeCandidateScanFilters(root);
       initializeSecondaryCandidateFilters(root);
       initializeGeneralDifferentialFetchSubmit(root);
       return replacedCount;
@@ -981,6 +1037,7 @@
       initializeFindingFilters(main);
       initializeCatalogQuickQueries(main);
       initializeSourceProvenanceFilters(main);
+      initializeCandidateScanFilters(main);
       initializeSecondaryCandidateFilters(main);
       initializeGeneralDifferentialFetchSubmit(main);
     }
@@ -1115,6 +1172,7 @@
     initializeFindingFilters(main);
     initializeCatalogQuickQueries(main);
     initializeSourceProvenanceFilters(main);
+    initializeCandidateScanFilters(main);
     initializeSecondaryCandidateFilters(main);
     initializeGeneralDifferentialFetchSubmit(main);
     scheduleFastNavPrefetch();

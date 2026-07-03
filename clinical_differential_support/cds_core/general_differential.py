@@ -134,6 +134,7 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
         "source_provenance": _build_source_provenance(ranked_results),
+        "candidate_scan_filters": _build_candidate_scan_filters(ranked_results),
         "secondary_candidate_filters": _build_secondary_candidate_filters(ranked_results),
         "patient_workflow": _build_patient_workflow(
             ranked_results,
@@ -300,6 +301,49 @@ def _build_secondary_candidate_filters(results: list[dict[str, Any]]) -> dict[st
 
     return {
         "secondary_count": len(secondary_results),
+        "urgency_filters": sorted(
+            urgency_counts.values(),
+            key=lambda item: (URGENCY_ORDER.get(str(item["filter_value"]), 99), str(item["label"])),
+        ),
+        "system_filters": sorted(
+            system_counts.values(),
+            key=lambda item: (-int(item["count"]), str(item["label"])),
+        ),
+    }
+
+
+def _build_candidate_scan_filters(results: list[dict[str, Any]]) -> dict[str, Any]:
+    scan_results = results[:5]
+    urgency_counts: dict[str, dict[str, Any]] = {}
+    system_counts: dict[str, dict[str, Any]] = {}
+
+    for result in scan_results:
+        urgency_value = str(result["urgency_filter_value"])
+        urgency_counts.setdefault(
+            urgency_value,
+            {
+                "filter_type": "urgency",
+                "filter_value": urgency_value,
+                "label": str(result["urgency"]).title(),
+                "count": 0,
+            },
+        )
+        urgency_counts[urgency_value]["count"] += 1
+
+        system_value = str(result["system_filter_value"])
+        system_counts.setdefault(
+            system_value,
+            {
+                "filter_type": "system",
+                "filter_value": system_value,
+                "label": str(result["system"]),
+                "count": 0,
+            },
+        )
+        system_counts[system_value]["count"] += 1
+
+    return {
+        "scan_count": len(scan_results),
         "urgency_filters": sorted(
             urgency_counts.values(),
             key=lambda item: (URGENCY_ORDER.get(str(item["filter_value"]), 99), str(item["label"])),

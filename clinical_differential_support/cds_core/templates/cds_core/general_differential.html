@@ -445,6 +445,38 @@
     margin-top: 0.7rem;
   }
 
+  .candidate-scan-filter-panel {
+    display: grid;
+    gap: 0.45rem;
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.65rem;
+    margin-top: 0.7rem;
+  }
+
+  .candidate-scan-filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .candidate-scan-filter-toolbar button {
+    border: 1px solid #c7d2de;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--text);
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    font: inherit;
+  }
+
+  .candidate-scan-filter-toolbar button.is-active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+
   .candidate-scan-row {
     display: grid;
     grid-template-columns: minmax(0, 1.4fr) auto auto auto auto;
@@ -459,6 +491,10 @@
   .candidate-scan-row strong,
   .candidate-scan-row span {
     min-width: 0;
+  }
+
+  .candidate-scan-row[hidden] {
+    display: none;
   }
 
   .case-action-queue {
@@ -1547,9 +1583,26 @@
           <section class="candidate-scan-table" data-candidate-scan-table="true" data-candidate-scan-density="compact" aria-labelledby="candidate-scan-title">
             <h3 id="candidate-scan-title">候選快速掃描 / Candidate scan</h3>
             <p class="secondary">先比較前五個候選的分數、急迫性與來源數，再打開詳細卡片。</p>
+            <section class="candidate-scan-filter-panel" data-candidate-scan-filter-panel="true" aria-label="Candidate scan filters">
+              <strong>Filter scan</strong>
+              <div class="candidate-scan-filter-toolbar">
+                <button type="button" class="is-active" data-candidate-scan-filter-control="true" data-candidate-scan-filter-type="all" data-candidate-scan-filter-value="all" aria-pressed="true">All ({{ result.candidate_scan_filters.scan_count }})</button>
+                {% for filter in result.candidate_scan_filters.urgency_filters %}
+                  <button type="button" data-candidate-scan-filter-control="true" data-candidate-scan-filter-type="urgency" data-candidate-scan-filter-value="{{ filter.filter_value }}" aria-pressed="false">
+                    {{ filter.label }} ({{ filter.count }})
+                  </button>
+                {% endfor %}
+                {% for filter in result.candidate_scan_filters.system_filters|slice:":5" %}
+                  <button type="button" data-candidate-scan-filter-control="true" data-candidate-scan-filter-type="system" data-candidate-scan-filter-value="{{ filter.filter_value }}" aria-pressed="false">
+                    {{ filter.label }} ({{ filter.count }})
+                  </button>
+                {% endfor %}
+              </div>
+              <p class="secondary" data-candidate-scan-empty="true" hidden>No scan candidates match this filter.</p>
+            </section>
             <div class="candidate-scan-grid">
               {% for entry in result.results|slice:":5" %}
-                <article class="candidate-scan-row" data-candidate-scan-row="{{ entry.slug }}">
+                <article class="candidate-scan-row" data-candidate-scan-row="{{ entry.slug }}" data-candidate-scan-urgency="{{ entry.urgency_filter_value }}" data-candidate-scan-system="{{ entry.system_filter_value }}">
                   <strong>{{ entry.name_zh }} / {{ entry.name_en }}</strong>
                   <span class="tag">{{ entry.urgency }}</span>
                   <span class="tag">score {{ entry.score }}</span>

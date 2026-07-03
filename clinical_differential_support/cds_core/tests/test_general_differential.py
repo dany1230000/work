@@ -720,6 +720,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_eighteenth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("glanders", "glanders"),
+            ("rat bite fever", "rat_bite_fever"),
+            ("cat scratch disease", "cat_scratch_disease"),
+            ("actinomycosis", "actinomycosis"),
+            ("whipple disease", "whipple_disease"),
+            ("rickettsialpox", "rickettsialpox"),
+            ("murine typhus", "murine_typhus"),
+            ("borrelia miyamotoi disease", "borrelia_miyamotoi_disease"),
+            ("oropouche virus disease", "oropouche_virus_disease"),
+            ("mayaro virus disease", "mayaro_virus_disease"),
+            ("toxoplasmic encephalitis", "toxoplasmic_encephalitis"),
+            ("non tuberculous mycobacterial disease", "non_tuberculous_mycobacterial_disease"),
+            ("haemophilus influenzae type b", "haemophilus_influenzae_type_b"),
+            ("pneumococcal disease", "pneumococcal_disease"),
+            ("talaromycosis", "talaromycosis"),
+            ("paracoccidioidomycosis", "paracoccidioidomycosis"),
+            ("chromoblastomycosis", "chromoblastomycosis"),
+            ("mycetoma", "mycetoma"),
+            ("buruli ulcer", "buruli_ulcer"),
+            ("yaws", "yaws"),
+            ("toxic shock syndrome", "toxic_shock_syndrome"),
+            ("gas gangrene", "gas_gangrene"),
+            ("methemoglobinemia", "methemoglobinemia"),
+            ("decompression sickness", "decompression_sickness"),
+            ("high altitude illness", "high_altitude_illness"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {
@@ -829,6 +862,29 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         filters = result["secondary_candidate_filters"]
 
         self.assertGreaterEqual(filters["secondary_count"], 1)
+        self.assertGreaterEqual(len(filters["urgency_filters"]), 1)
+        self.assertGreaterEqual(len(filters["system_filters"]), 1)
+        self.assertEqual(filters["urgency_filters"][0]["filter_type"], "urgency")
+        self.assertEqual(filters["system_filters"][0]["filter_type"], "system")
+        self.assertIn("filter_value", filters["urgency_filters"][0])
+        self.assertIn("filter_value", filters["system_filters"][0])
+
+    def test_results_include_candidate_scan_filter_metadata(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        filters = result["candidate_scan_filters"]
+
+        self.assertGreaterEqual(filters["scan_count"], 1)
         self.assertGreaterEqual(len(filters["urgency_filters"]), 1)
         self.assertGreaterEqual(len(filters["system_filters"]), 1)
         self.assertEqual(filters["urgency_filters"][0]["filter_type"], "urgency")

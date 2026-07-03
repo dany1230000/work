@@ -30,8 +30,8 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
         report = build_general_differential_import_workbench()
 
         self.assertEqual(report["report_type"], "general_differential_import_workbench")
-        self.assertEqual(report["summary"]["condition_count"], 550)
-        self.assertEqual(report["summary"]["source_count"], 628)
+        self.assertEqual(report["summary"]["condition_count"], 575)
+        self.assertEqual(report["summary"]["source_count"], 653)
         self.assertEqual(
             report["summary"]["batch_template_format_version"],
             "general-differential-review-batch-v1",
@@ -74,8 +74,8 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "通用鑑別匯入工作台")
         self.assertContains(response, "General Differential Import Workbench")
-        self.assertContains(response, "550 conditions")
-        self.assertContains(response, "628 sources")
+        self.assertContains(response, "575 conditions")
+        self.assertContains(response, "653 sources")
         self.assertContains(response, 'data-next-batch-table="true"')
         self.assertContains(response, 'data-import-pipeline="true"')
         self.assertContains(response, "export_general_differential_batch_template")
@@ -99,8 +99,8 @@ class GeneralDifferentialImportWorkbenchTests(TestCase):
         payload = json.loads(body)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(payload["summary"]["condition_count"], 550)
-        self.assertEqual(payload["summary"]["source_count"], 628)
+        self.assertEqual(payload["summary"]["condition_count"], 575)
+        self.assertEqual(payload["summary"]["source_count"], 653)
         self.assertTrue(payload["safety_scope"]["staff_only"])
         self.assertFalse(payload["safety_scope"]["contains_patient_data"])
         self.assertTrue(payload["apply_policy"]["dry_run_first"])
