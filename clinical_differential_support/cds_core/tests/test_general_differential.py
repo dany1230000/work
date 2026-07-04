@@ -151,6 +151,27 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             "acute_coronary_syndrome",
         )
 
+    def test_results_include_priority_lane_for_critical_first_cases(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        priority_lane = result["next_step_command_center"]["priority_lane"]
+
+        self.assertEqual(priority_lane["lane_id"], "critical_first")
+        self.assertEqual(priority_lane["title_zh"], "危急先排")
+        self.assertEqual(priority_lane["title_en"], "Critical first")
+        self.assertEqual(priority_lane["top_urgency"], "emergent")
+        self.assertEqual(priority_lane["selected_finding_count"], 4)
+
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
         result = evaluate_general_differential(
             {
@@ -979,6 +1000,42 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("respiratory acidosis", "respiratory_acidosis"),
             ("molar pregnancy", "molar_pregnancy"),
             ("uterine rupture", "uterine_rupture"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_twenty_fourth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("cervical artery dissection", "cervical_artery_dissection"),
+            ("brain abscess", "brain_abscess"),
+            ("thyroid eye disease", "thyroid_eye_disease"),
+            ("functional dyspepsia", "functional_dyspepsia"),
+            ("diverticular bleeding", "diverticular_bleeding"),
+            ("esophageal varices", "esophageal_varices"),
+            ("choledocholithiasis", "choledocholithiasis"),
+            ("priapism", "priapism"),
+            ("phimosis", "phimosis"),
+            ("paraphimosis", "paraphimosis"),
+            ("vaginal atrophy", "vaginal_atrophy"),
+            ("folliculitis", "folliculitis"),
+            ("tinea versicolor", "tinea_versicolor"),
+            ("androgenetic alopecia", "androgenetic_alopecia"),
+            ("angioedema", "angioedema"),
+            ("aortic regurgitation", "aortic_regurgitation"),
+            ("tricuspid regurgitation", "tricuspid_regurgitation"),
+            ("pericardial effusion", "pericardial_effusion"),
+            ("hypertensive urgency", "hypertensive_urgency"),
+            (
+                "postural orthostatic tachycardia syndrome",
+                "postural_orthostatic_tachycardia_syndrome",
+            ),
+            ("long qt syndrome", "long_qt_syndrome"),
+            ("brugada syndrome", "brugada_syndrome"),
+            ("wolff parkinson white syndrome", "wolff_parkinson_white_syndrome"),
+            ("obesity hypoventilation syndrome", "obesity_hypoventilation_syndrome"),
+            ("central sleep apnea", "central_sleep_apnea"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):

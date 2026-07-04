@@ -611,6 +611,29 @@
     font-weight: 700;
   }
 
+  .priority-lane-strip {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 2fr) auto;
+    gap: 0.75rem;
+    align-items: center;
+    border: 1px solid #9fb6c9;
+    border-left: 4px solid #274c77;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .priority-lane-strip h3,
+  .priority-lane-strip p {
+    margin: 0;
+  }
+
+  .priority-lane-strip strong,
+  .priority-lane-strip span {
+    display: block;
+  }
+
   .progressive-detail-drawer {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -1362,6 +1385,7 @@
     .catalog-entry-grid,
     .case-action-list,
     .command-center-grid,
+    .priority-lane-strip,
     .concise-summary-grid,
     .next-step-summary-strip,
     .result-group-grid,
@@ -1581,6 +1605,22 @@
                   <a href="{{ card.anchor }}">前往 / Go</a>
                 </article>
               {% endfor %}
+            </div>
+          </section>
+        {% endif %}
+        {% if result.next_step_command_center.priority_lane %}
+          <section class="priority-lane-strip" data-priority-lane="{{ result.next_step_command_center.priority_lane.lane_id }}" aria-label="Priority lane">
+            <div>
+              <h3>優先層級 / Priority lane</h3>
+              <strong>{{ result.next_step_command_center.priority_lane.title_zh }} / {{ result.next_step_command_center.priority_lane.title_en }}</strong>
+            </div>
+            <p>
+              {{ result.next_step_command_center.priority_lane.instruction_zh }}
+              <span class="secondary">{{ result.next_step_command_center.priority_lane.instruction_en }}</span>
+            </p>
+            <div>
+              <span class="tag">{{ result.next_step_command_center.priority_lane.top_urgency }}</span>
+              <span class="tag">{{ result.next_step_command_center.priority_lane.selected_finding_count }} findings</span>
             </div>
           </section>
         {% endif %}

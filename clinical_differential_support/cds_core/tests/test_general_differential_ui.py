@@ -575,6 +575,39 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-source-provenance-panel="true"'),
         )
 
+    def test_posted_results_show_priority_lane_before_progressive_drawers(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-priority-lane="critical_first"')
+        self.assertContains(response, "Priority lane")
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-priority-lane="critical_first"'),
+        )
+        self.assertLess(
+            content.index('data-priority-lane="critical_first"'),
+            content.index('data-progressive-detail-drawer="workflow"'),
+        )
+        self.assertLess(
+            content.index('data-priority-lane="critical_first"'),
+            content.index('data-progressive-detail-drawer="evidence"'),
+        )
+
     def test_posted_findings_show_result_groups_before_long_candidate_cards(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

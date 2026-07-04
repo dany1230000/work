@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-04-700",
-    "condition_count": 700,
-    "source_count": 778,
+    "catalog_version": "general-differential-starter-2026-07-04-725",
+    "condition_count": 725,
+    "source_count": 803,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-04-700",
-      "condition_count": 700,
-      "source_count": 778,
+      "catalog_version": "general-differential-starter-2026-07-04-725",
+      "condition_count": 725,
+      "source_count": 803,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 700
+      "expansion_target_condition_count": 725
     }
   },
   "safety_scope": {
@@ -624,7 +624,7 @@
       "synonyms": [
         "anaphylaxis",
         "allergic shock",
-        "angioedema"
+        "systemic allergic reaction"
       ],
       "ask_next": [
         "確認暴露物、氣道腫脹、喘鳴、血壓與是否需立即急救。 / Identify exposure, airway swelling, wheeze, blood pressure, and emergency treatment need."
@@ -20322,6 +20322,743 @@
         "merck_uterine_rupture_phase700",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "cervical_artery_dissection",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "頸動脈或椎動脈剝離",
+      "name_en": "Cervical artery dissection",
+      "system": "Neurologic/Vascular/Headache",
+      "urgency": "emergent",
+      "summary_zh": "頸動脈或椎動脈剝離 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute head or neck pain, partial Horner pattern, transient ischemic symptoms, focal neurologic deficit, or recent neck trauma should include cervical carotid or vertebral artery dissection.",
+      "signals": {
+        "headache": 4,
+        "neck_stiffness_swelling_dysphagia": 2,
+        "neurologic_deficit": 4,
+        "speech_vision_changes": 3,
+        "recent_trauma": 2,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "cervical artery dissection",
+        "carotid artery dissection",
+        "vertebral artery dissection",
+        "neck artery dissection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sudden head or neck pain, neurologic deficits, transient ischemic symptoms, Horner signs, recent manipulation or trauma, and vascular imaging context."
+      ],
+      "source_ids": [
+        "cleveland_cervical_artery_dissection_phase725",
+        "merck_headache_red_flags"
+      ]
+    },
+    {
+      "slug": "brain_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腦膿瘍",
+      "name_en": "Brain abscess",
+      "system": "Neurologic/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "腦膿瘍 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Headache with fever, focal deficit, seizure, altered mental status, otitis/sinus/dental source, or immunocompromise should include brain abscess.",
+      "signals": {
+        "headache": 3,
+        "fever": 3,
+        "neurologic_deficit": 3,
+        "altered_mental_status": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "brain abscess",
+        "cerebral abscess",
+        "intracranial abscess",
+        "ring enhancing brain infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check fever, focal deficits, seizure, mental status, sinus/ear/dental infection, immune status, imaging pattern, and neurosurgical or infectious disease escalation."
+      ],
+      "source_ids": [
+        "merck_brain_abscess_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "thyroid_eye_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "甲狀腺眼病變",
+      "name_en": "Thyroid eye disease",
+      "system": "Endocrine/Ophthalmology",
+      "urgency": "soon",
+      "summary_zh": "甲狀腺眼病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Proptosis, diplopia, eyelid retraction, orbital discomfort, visual change, or hyperthyroid symptoms should include thyroid eye disease.",
+      "signals": {
+        "visual_disturbance": 3,
+        "eye_pain_redness": 2,
+        "palpitations": 2,
+        "weight_loss": 2,
+        "headache": 1
+      },
+      "synonyms": [
+        "thyroid eye disease",
+        "graves ophthalmopathy",
+        "thyroid ophthalmopathy",
+        "thyroid associated orbitopathy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vision threat, diplopia, proptosis, exposure symptoms, thyroid status, smoking risk, and ophthalmology/endocrinology follow-up urgency."
+      ],
+      "source_ids": [
+        "merck_thyroid_eye_orbit_phase725",
+        "merck_hyperthyroidism_phase725"
+      ]
+    },
+    {
+      "slug": "functional_dyspepsia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "功能性消化不良",
+      "name_en": "Functional dyspepsia",
+      "system": "Gastrointestinal/Functional",
+      "urgency": "routine",
+      "summary_zh": "功能性消化不良 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic or recurrent epigastric discomfort, early satiety, postprandial fullness, nausea, or bloating without alarm findings should include functional dyspepsia.",
+      "signals": {
+        "abdominal_pain": 2,
+        "vomiting": 1,
+        "weight_loss": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "functional dyspepsia",
+        "nonulcer dyspepsia",
+        "chronic dyspepsia",
+        "epigastric distress syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check alarm features, GI bleeding, weight loss, vomiting persistence, medication triggers, H pylori context, and endoscopy or follow-up threshold."
+      ],
+      "source_ids": [
+        "merck_dyspepsia_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "diverticular_bleeding",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "憩室出血",
+      "name_en": "Diverticular bleeding",
+      "system": "Gastrointestinal/Bleeding",
+      "urgency": "urgent",
+      "summary_zh": "憩室出血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painless hematochezia, known diverticulosis, anemia, anticoagulant exposure, or hemodynamic concern should include diverticular bleeding.",
+      "signals": {
+        "gi_bleeding": 4,
+        "rectal_pain_or_bleeding": 3,
+        "hemodynamic_instability": 2,
+        "easy_bruising_bleeding": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "diverticular bleeding",
+        "diverticular hemorrhage",
+        "colonic diverticular bleed",
+        "painless lower gi bleeding"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bleeding volume, orthostasis, anticoagulants, anemia, abdominal pain or fever alternatives, colonoscopy context, and resuscitation need."
+      ],
+      "source_ids": [
+        "merck_diverticulosis_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "esophageal_varices",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "食道靜脈曲張出血",
+      "name_en": "Esophageal varices",
+      "system": "Gastrointestinal/Hepatic bleeding",
+      "urgency": "emergent",
+      "summary_zh": "食道靜脈曲張出血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hematemesis or melena with cirrhosis, portal hypertension, jaundice, shock, or alcohol-related liver disease should include esophageal varices.",
+      "signals": {
+        "gi_bleeding": 5,
+        "jaundice": 2,
+        "hemodynamic_instability": 4,
+        "vomiting": 2,
+        "substance_use_concern": 1
+      },
+      "synonyms": [
+        "esophageal varices",
+        "variceal bleeding",
+        "esophageal variceal hemorrhage",
+        "portal hypertension bleeding"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check airway and hemodynamics, hematemesis or melena, known liver disease, portal hypertension signs, anticoagulants, and urgent endoscopy pathway."
+      ],
+      "source_ids": [
+        "merck_esophageal_varices_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "choledocholithiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "總膽管結石",
+      "name_en": "Choledocholithiasis",
+      "system": "Hepatic/Biliary",
+      "urgency": "urgent",
+      "summary_zh": "總膽管結石 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Right upper quadrant pain with jaundice, cholestatic labs, fever, pancreatitis pattern, or bile duct dilation should include choledocholithiasis.",
+      "signals": {
+        "ruq_pain": 4,
+        "jaundice": 3,
+        "vomiting": 2,
+        "fever": 2,
+        "abdominal_pain": 2
+      },
+      "synonyms": [
+        "choledocholithiasis",
+        "common bile duct stone",
+        "bile duct stone",
+        "gallstone in common bile duct"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check jaundice, fever or sepsis, bilirubin and liver enzymes, pancreatitis clues, duct dilation, and ERCP or surgical consultation threshold."
+      ],
+      "source_ids": [
+        "merck_choledocholithiasis_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "priapism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "陰莖異常持續勃起",
+      "name_en": "Priapism",
+      "system": "Urologic/Emergent",
+      "urgency": "emergent",
+      "summary_zh": "陰莖異常持續勃起 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful or prolonged erection, sickle cell disease, medication exposure, injection therapy, trauma, or substance use should include priapism.",
+      "signals": {
+        "severe_pain": 3,
+        "substance_use_concern": 2,
+        "recent_trauma": 1,
+        "dysuria": 1
+      },
+      "synonyms": [
+        "priapism",
+        "ischemic priapism",
+        "prolonged erection",
+        "painful prolonged erection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration, pain, rigidity, sickle cell or hematologic risk, medications or injections, trauma, and urgent urology pathway."
+      ],
+      "source_ids": [
+        "merck_priapism_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "phimosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "包莖",
+      "name_en": "Phimosis",
+      "system": "Urologic/Penile",
+      "urgency": "soon",
+      "summary_zh": "包莖 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nonretractable foreskin with urinary symptoms, balanitis, scarring, pain, or recurrent infection should include phimosis.",
+      "signals": {
+        "dysuria": 2,
+        "localized_skin_infection": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "phimosis",
+        "nonretractile foreskin",
+        "tight foreskin",
+        "foreskin cannot retract"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check urinary obstruction, infection, scarring, diabetes risk, hygiene, pain severity, and whether paraphimosis or ischemia is present."
+      ],
+      "source_ids": [
+        "merck_phimosis_paraphimosis_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "paraphimosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "嵌頓包莖",
+      "name_en": "Paraphimosis",
+      "system": "Urologic/Penile/Emergent",
+      "urgency": "emergent",
+      "summary_zh": "嵌頓包莖 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Retracted foreskin trapped behind the glans with swelling, pain, color change, urinary difficulty, or ischemia concern should include paraphimosis.",
+      "signals": {
+        "severe_pain": 4,
+        "dysuria": 2,
+        "localized_skin_infection": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "paraphimosis",
+        "trapped retracted foreskin",
+        "foreskin stuck behind glans",
+        "penile constriction paraphimosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check glans color and perfusion, swelling, urinary obstruction, duration, pain severity, and urgent reduction or urology pathway."
+      ],
+      "source_ids": [
+        "merck_phimosis_paraphimosis_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vaginal_atrophy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "陰道萎縮",
+      "name_en": "Vaginal atrophy",
+      "system": "Gynecologic/Menopause",
+      "urgency": "routine",
+      "summary_zh": "陰道萎縮 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Postmenopausal vaginal dryness, dyspareunia, urinary urgency, dysuria, recurrent irritation, or bleeding after fragile mucosa should include vaginal atrophy.",
+      "signals": {
+        "vaginal_discharge": 1,
+        "dysuria": 2,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "vaginal atrophy",
+        "genitourinary syndrome of menopause",
+        "atrophic vaginitis",
+        "menopausal vaginal dryness"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check menopausal status, bleeding, infection alternatives, urinary symptoms, sexual pain, malignancy red flags, and gynecology follow-up needs."
+      ],
+      "source_ids": [
+        "cleveland_vaginal_atrophy_phase725",
+        "merck_menopause"
+      ]
+    },
+    {
+      "slug": "folliculitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "毛囊炎",
+      "name_en": "Folliculitis",
+      "system": "Skin/Soft tissue/Infectious",
+      "urgency": "routine",
+      "summary_zh": "毛囊炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Follicle-centered papules or pustules with shaving, friction, occlusion, hot-tub exposure, or recurrent skin infection should include folliculitis.",
+      "signals": {
+        "localized_skin_infection": 3,
+        "rash": 2,
+        "fever": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "folliculitis",
+        "hair follicle infection",
+        "bacterial folliculitis",
+        "pustular folliculitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution, abscess or cellulitis spread, fever, exposure history, immunocompromise, recurrence, and need for culture or drainage evaluation."
+      ],
+      "source_ids": [
+        "merck_folliculitis_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tinea_versicolor",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "花斑癬",
+      "name_en": "Tinea versicolor",
+      "system": "Dermatology/Fungal",
+      "urgency": "routine",
+      "summary_zh": "花斑癬 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hypo- or hyperpigmented scaly patches on trunk, neck, or proximal arms that recur in heat or humidity should include tinea versicolor.",
+      "signals": {
+        "rash": 2,
+        "chronic_itchy_flexural_rash": 1
+      },
+      "synonyms": [
+        "tinea versicolor",
+        "pityriasis versicolor",
+        "malassezia skin infection",
+        "versicolor rash"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check scale, distribution, itch, recurrence, immunosuppression, alternate pigment disorders, and topical or oral treatment follow-up context."
+      ],
+      "source_ids": [
+        "merck_tinea_versicolor_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "androgenetic_alopecia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "雄性禿",
+      "name_en": "Androgenetic alopecia",
+      "system": "Dermatology/Hair",
+      "urgency": "routine",
+      "summary_zh": "雄性禿 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual patterned hair thinning in a male or female pattern without scarring, inflammation, or abrupt shedding should include androgenetic alopecia.",
+      "signals": {
+        "fatigue": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "androgenetic alopecia",
+        "male pattern hair loss",
+        "female pattern hair loss",
+        "pattern hair loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pattern, tempo, scarring or inflammatory signs, medication or endocrine triggers, iron or thyroid context, and dermatology follow-up needs."
+      ],
+      "source_ids": [
+        "merck_alopecia_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "angioedema",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "血管性水腫",
+      "name_en": "Angioedema",
+      "system": "Allergy/Immunology",
+      "urgency": "urgent",
+      "summary_zh": "血管性水腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Lip, tongue, face, airway, or bowel swelling with allergic exposure, ACE inhibitor use, hereditary pattern, or abdominal pain should include angioedema.",
+      "signals": {
+        "facial_lip_tongue_swelling": 5,
+        "severe_sore_throat_drooling_or_stridor": 3,
+        "respiratory_distress": 3,
+        "abdominal_pain": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "angioedema",
+        "facial angioedema",
+        "tongue swelling angioedema",
+        "ace inhibitor angioedema"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check airway voice or stridor, tongue and floor-of-mouth swelling, urticaria or anaphylaxis signs, ACE inhibitor exposure, hereditary pattern, and escalation threshold."
+      ],
+      "source_ids": [
+        "merck_angioedema_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "aortic_regurgitation",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "主動脈瓣逆流",
+      "name_en": "Aortic regurgitation",
+      "system": "Cardiovascular/Valvular",
+      "urgency": "soon",
+      "summary_zh": "主動脈瓣逆流 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dyspnea, fatigue, exertional chest discomfort, bounding pulses, murmur, heart failure signs, or endocarditis/aortic root context should include aortic regurgitation.",
+      "signals": {
+        "dyspnea": 3,
+        "orthopnea_edema": 2,
+        "chest_pain": 1,
+        "palpitations": 1,
+        "syncope": 1,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "aortic regurgitation",
+        "aortic insufficiency",
+        "aortic valve regurgitation",
+        "aortic valve leak"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check acute versus chronic symptoms, heart failure signs, murmur, pulse pressure, endocarditis or dissection context, and echocardiography pathway."
+      ],
+      "source_ids": [
+        "merck_aortic_regurgitation_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tricuspid_regurgitation",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "三尖瓣逆流",
+      "name_en": "Tricuspid regurgitation",
+      "system": "Cardiovascular/Valvular",
+      "urgency": "soon",
+      "summary_zh": "三尖瓣逆流 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Right-sided heart failure signs, edema, ascites, hepatic congestion, dyspnea, murmur, pulmonary hypertension, or device lead context should include tricuspid regurgitation.",
+      "signals": {
+        "orthopnea_edema": 3,
+        "dyspnea": 2,
+        "fatigue": 2,
+        "palpitations": 1,
+        "jaundice": 1
+      },
+      "synonyms": [
+        "tricuspid regurgitation",
+        "tricuspid insufficiency",
+        "tricuspid valve regurgitation",
+        "right sided valve leak"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check edema, jugular venous pressure, liver congestion, pulmonary hypertension or endocarditis risk, device leads, and echocardiography context."
+      ],
+      "source_ids": [
+        "merck_tricuspid_regurgitation_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pericardial_effusion",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "心包膜積液",
+      "name_en": "Pericardial effusion",
+      "system": "Cardiovascular/Pericardial",
+      "urgency": "urgent",
+      "summary_zh": "心包膜積液 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dyspnea, chest pressure, tachycardia, muffled heart sounds, hypotension, malignancy, renal failure, infection, or tamponade concern should include pericardial effusion.",
+      "signals": {
+        "dyspnea": 3,
+        "chest_pain": 2,
+        "hemodynamic_instability": 3,
+        "tachycardia": 2,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "pericardial effusion",
+        "fluid around heart",
+        "large pericardial effusion",
+        "pericardial fluid"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tamponade physiology, vital signs, pulsus paradoxus context, ECG or imaging findings, malignancy/infection/renal risks, and emergent drainage threshold."
+      ],
+      "source_ids": [
+        "merck_pericarditis_effusion_phase725",
+        "merck_cardiac_tamponade"
+      ]
+    },
+    {
+      "slug": "hypertensive_urgency",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高血壓急迫狀態",
+      "name_en": "Hypertensive urgency",
+      "system": "Cardiovascular/Hypertension",
+      "urgency": "urgent",
+      "summary_zh": "高血壓急迫狀態 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severely elevated blood pressure without clear acute target-organ damage should include hypertensive urgency while emergency findings are actively excluded.",
+      "signals": {
+        "hypertensive_emergency": 3,
+        "headache": 1,
+        "chest_pain": 1,
+        "dyspnea": 1,
+        "visual_disturbance": 1
+      },
+      "synonyms": [
+        "hypertensive urgency",
+        "severe asymptomatic hypertension",
+        "markedly elevated blood pressure",
+        "severe hypertension without organ damage"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check repeat BP technique, neurologic, cardiac, renal, retinal, pregnancy, and aortic symptoms to distinguish hypertensive emergency before outpatient planning."
+      ],
+      "source_ids": [
+        "ncbi_hypertensive_urgency_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "postural_orthostatic_tachycardia_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "姿勢性心搏過速症候群",
+      "name_en": "Postural orthostatic tachycardia syndrome",
+      "system": "Cardiovascular/Autonomic",
+      "urgency": "routine",
+      "summary_zh": "姿勢性心搏過速症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Orthostatic lightheadedness with excessive tachycardia, palpitations, fatigue, presyncope, brain fog, or exercise intolerance should include POTS.",
+      "signals": {
+        "orthostatic_lightheadedness": 4,
+        "tachycardia": 3,
+        "syncope": 2,
+        "palpitations": 2,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "postural orthostatic tachycardia syndrome",
+        "pots syndrome",
+        "orthostatic tachycardia syndrome",
+        "postural tachycardia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check orthostatic vitals, dehydration, anemia, thyroid or medication triggers, syncope red flags, and autonomic or cardiology follow-up context."
+      ],
+      "source_ids": [
+        "cleveland_pots_phase725",
+        "merck_orthostatic_hypotension"
+      ]
+    },
+    {
+      "slug": "long_qt_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "長QT症候群",
+      "name_en": "Long QT syndrome",
+      "system": "Cardiovascular/Arrhythmia/Channelopathy",
+      "urgency": "urgent",
+      "summary_zh": "長QT症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Syncope, seizure-like episodes, palpitations, torsades risk, family sudden death, electrolyte disturbance, or QT-prolonging medication exposure should include long QT syndrome.",
+      "signals": {
+        "syncope": 4,
+        "palpitations": 2,
+        "seizure_activity_or_postictal_state": 2,
+        "tachycardia": 1,
+        "hypoglycemia_risk": 1
+      },
+      "synonyms": [
+        "long qt syndrome",
+        "long qt interval syndrome",
+        "lqts",
+        "prolonged qt syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ECG QTc, medication and electrolyte triggers, exertional or auditory-startle syncope, family history, and cardiology or inherited arrhythmia pathway."
+      ],
+      "source_ids": [
+        "merck_long_qt_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "brugada_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Brugada症候群",
+      "name_en": "Brugada syndrome",
+      "system": "Cardiovascular/Arrhythmia/Channelopathy",
+      "urgency": "urgent",
+      "summary_zh": "Brugada症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Syncope, nocturnal agonal respirations, ventricular arrhythmia, fever-triggered events, or family sudden cardiac death should include Brugada syndrome.",
+      "signals": {
+        "syncope": 4,
+        "palpitations": 2,
+        "fever": 1,
+        "seizure_activity_or_postictal_state": 1
+      },
+      "synonyms": [
+        "brugada syndrome",
+        "brugada pattern",
+        "brugada ecg",
+        "inherited ventricular arrhythmia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ECG pattern, fever, syncope circumstances, family history, medication triggers, and inherited arrhythmia or cardiology escalation."
+      ],
+      "source_ids": [
+        "merck_brugada_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "wolff_parkinson_white_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Wolff-Parkinson-White症候群",
+      "name_en": "Wolff-Parkinson-White syndrome",
+      "system": "Cardiovascular/Arrhythmia",
+      "urgency": "urgent",
+      "summary_zh": "Wolff-Parkinson-White症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Palpitations with paroxysmal tachycardia, pre-excitation on ECG, syncope, dyspnea, or chest discomfort should include Wolff-Parkinson-White syndrome.",
+      "signals": {
+        "palpitations": 5,
+        "tachycardia": 4,
+        "syncope": 2,
+        "dyspnea": 1,
+        "chest_pain": 1
+      },
+      "synonyms": [
+        "wolff parkinson white syndrome",
+        "wpw syndrome",
+        "preexcitation syndrome",
+        "wolff-parkinson-white"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ECG for delta wave or wide-complex tachycardia, syncope, hemodynamic status, medication pitfalls, and cardiology or electrophysiology pathway."
+      ],
+      "source_ids": [
+        "merck_wpw_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "obesity_hypoventilation_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肥胖低通氣症候群",
+      "name_en": "Obesity hypoventilation syndrome",
+      "system": "Pulmonary/Sleep/Obesity",
+      "urgency": "urgent",
+      "summary_zh": "肥胖低通氣症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Obesity with daytime hypercapnia, hypoxemia, sleep-disordered breathing, pulmonary hypertension, edema, morning headache, or somnolence should include obesity hypoventilation syndrome.",
+      "signals": {
+        "dyspnea": 3,
+        "orthopnea_edema": 2,
+        "respiratory_distress": 2,
+        "fatigue": 2,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "obesity hypoventilation syndrome",
+        "pickwickian syndrome",
+        "obesity related hypoventilation",
+        "daytime hypercapnia obesity"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygenation, CO2 or bicarbonate context, sleep apnea symptoms, pulmonary hypertension signs, sedatives, and need for ventilatory support evaluation."
+      ],
+      "source_ids": [
+        "ncbi_obesity_hypoventilation_phase725",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "central_sleep_apnea",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "中樞型睡眠呼吸中止",
+      "name_en": "Central sleep apnea",
+      "system": "Pulmonary/Sleep",
+      "urgency": "soon",
+      "summary_zh": "中樞型睡眠呼吸中止 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Witnessed apneas without obstructive pattern, Cheyne-Stokes breathing, heart failure, neurologic disease, opioid exposure, or persistent sleepiness should include central sleep apnea.",
+      "signals": {
+        "fatigue": 3,
+        "dyspnea": 2,
+        "orthopnea_edema": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "central sleep apnea",
+        "central apnea",
+        "cheyne stokes respiration sleep apnea",
+        "central sleep disordered breathing"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check medication and opioid exposure, heart failure or neurologic context, sleep study pattern, hypoxemia burden, and sleep medicine follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_central_sleep_apnea_phase725",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -24992,6 +25729,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Uterine Rupture",
       "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/intrapartum-complications/uterine-rupture"
+    },
+    {
+      "source_id": "cleveland_cervical_artery_dissection_phase725",
+      "publisher": "Cleveland Clinic",
+      "title": "Cervical Artery Dissection",
+      "url": "https://my.clevelandclinic.org/health/diseases/16857-cervical-carotid-or-vertebral-artery-dissection"
+    },
+    {
+      "source_id": "merck_brain_abscess_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Brain Abscess",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/brain-infections/brain-abscess"
+    },
+    {
+      "source_id": "merck_thyroid_eye_orbit_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Inflammatory Orbital Disease",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/orbital-diseases/inflammatory-orbital-disease"
+    },
+    {
+      "source_id": "merck_dyspepsia_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Dyspepsia",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/symptoms-of-gastrointestinal-disorders/dyspepsia"
+    },
+    {
+      "source_id": "merck_diverticulosis_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Colonic Diverticulosis",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/diverticular-disease/colonic-diverticulosis"
+    },
+    {
+      "source_id": "merck_esophageal_varices_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Varices",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/gastrointestinal-bleeding/varices"
+    },
+    {
+      "source_id": "merck_choledocholithiasis_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Choledocholithiasis and Cholangitis",
+      "url": "https://www.merckmanuals.com/professional/hepatic-and-biliary-disorders/gallbladder-and-bile-duct-disorders/choledocholithiasis-and-cholangitis"
+    },
+    {
+      "source_id": "merck_priapism_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Priapism",
+      "url": "https://www.merckmanuals.com/en-ca/professional/genitourinary-disorders/symptoms-of-genitourinary-disorders/priapism"
+    },
+    {
+      "source_id": "merck_phimosis_paraphimosis_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Phimosis and Paraphimosis",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/penile-and-scrotal-disorders/phimosis-and-paraphimosis"
+    },
+    {
+      "source_id": "cleveland_vaginal_atrophy_phase725",
+      "publisher": "Cleveland Clinic",
+      "title": "Vaginal Atrophy",
+      "url": "https://my.clevelandclinic.org/health/diseases/15500-vaginal-atrophy"
+    },
+    {
+      "source_id": "merck_folliculitis_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Folliculitis",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/bacterial-skin-infections/folliculitis"
+    },
+    {
+      "source_id": "merck_tinea_versicolor_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Tinea Versicolor",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/fungal-skin-infections/tinea-versicolor"
+    },
+    {
+      "source_id": "merck_alopecia_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Alopecia",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/hair-disorders/alopecia"
+    },
+    {
+      "source_id": "merck_angioedema_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Angioedema",
+      "url": "https://www.merckmanuals.com/professional/immunology-allergic-disorders/allergic-autoimmune-and-other-hypersensitivity-disorders/angioedema"
+    },
+    {
+      "source_id": "merck_aortic_regurgitation_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Aortic Regurgitation",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/valvular-disorders/aortic-regurgitation"
+    },
+    {
+      "source_id": "merck_tricuspid_regurgitation_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Tricuspid Regurgitation",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/valvular-disorders/tricuspid-regurgitation"
+    },
+    {
+      "source_id": "merck_pericarditis_effusion_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Pericarditis",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/myocarditis-and-pericarditis/pericarditis"
+    },
+    {
+      "source_id": "ncbi_hypertensive_urgency_phase725",
+      "publisher": "NCBI Bookshelf",
+      "title": "Hypertensive Urgency",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK513351/"
+    },
+    {
+      "source_id": "cleveland_pots_phase725",
+      "publisher": "Cleveland Clinic",
+      "title": "Postural Orthostatic Tachycardia Syndrome (POTS)",
+      "url": "https://my.clevelandclinic.org/health/diseases/16560-postural-orthostatic-tachycardia-syndrome-pots"
+    },
+    {
+      "source_id": "merck_long_qt_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Long QT Interval Syndromes",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/arrhythmogenic-cardiac-disorders/long-qt-interval-syndromes"
+    },
+    {
+      "source_id": "merck_brugada_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Brugada Syndrome",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/arrhythmogenic-cardiac-disorders/brugada-syndrome"
+    },
+    {
+      "source_id": "merck_wpw_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Wolff-Parkinson-White Syndrome",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/specific-cardiac-arrhythmias/wolff-parkinson-white-syndrome-wpw-syndrome"
+    },
+    {
+      "source_id": "ncbi_obesity_hypoventilation_phase725",
+      "publisher": "NCBI Bookshelf",
+      "title": "Obesity-Hypoventilation Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK542216/"
+    },
+    {
+      "source_id": "merck_central_sleep_apnea_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Central Sleep Apnea",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/sleep-apnea/central-sleep-apnea"
+    },
+    {
+      "source_id": "merck_hyperthyroidism_phase725",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperthyroidism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/thyroid-disorders/hyperthyroidism"
     }
   ]
 }

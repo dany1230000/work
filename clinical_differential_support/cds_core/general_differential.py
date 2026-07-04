@@ -395,6 +395,7 @@ def _build_next_step_command_center(
 
     return {
         "status": str(patient_workflow.get("status", "needs_structured_findings")),
+        "priority_lane": _build_priority_lane(results, patient_workflow),
         "cards": [
             {
                 "command_id": "safety_gate",
@@ -451,6 +452,65 @@ def _build_next_step_command_center(
                 "source_count": source_count,
             },
         ],
+    }
+
+
+def _build_priority_lane(
+    results: list[dict[str, Any]],
+    patient_workflow: dict[str, Any],
+) -> dict[str, Any]:
+    selected_finding_count = int(patient_workflow.get("selected_finding_count", 0))
+    top_urgencies = [str(result.get("urgency", "")) for result in results[:3]]
+    top_urgency = next(
+        (
+            urgency
+            for urgency in ("emergent", "urgent", "soon", "routine")
+            if urgency in top_urgencies
+        ),
+        "none",
+    )
+
+    if not results or selected_finding_count < 2:
+        return {
+            "lane_id": "needs_more_data",
+            "title_zh": "先補資料",
+            "title_en": "Needs more data",
+            "instruction_zh": "先補主訴、時間軸、生命徵象與紅旗，再重新產生排序。",
+            "instruction_en": "Complete chief complaint, timeline, vitals, and red flags before relying on ranking.",
+            "selected_finding_count": selected_finding_count,
+            "top_urgency": top_urgency,
+        }
+
+    if top_urgency == "emergent":
+        return {
+            "lane_id": "critical_first",
+            "title_zh": "危急先排",
+            "title_en": "Critical first",
+            "instruction_zh": "先確認立即危險、生命徵象與急症處置需求，再補鑑別資料。",
+            "instruction_en": "Rule out immediate danger and emergency escalation needs before expanding the reference list.",
+            "selected_finding_count": selected_finding_count,
+            "top_urgency": top_urgency,
+        }
+
+    if top_urgency == "urgent":
+        return {
+            "lane_id": "urgent_workup",
+            "title_zh": "急性評估",
+            "title_en": "Urgent workup",
+            "instruction_zh": "先完成會改變急迫性的資料與來源核對，再安排下一步評估。",
+            "instruction_en": "Complete urgency-changing context and source checks before planning the next evaluation step.",
+            "selected_finding_count": selected_finding_count,
+            "top_urgency": top_urgency,
+        }
+
+    return {
+        "lane_id": "routine_followup",
+        "title_zh": "例行追蹤",
+        "title_en": "Routine follow-up",
+        "instruction_zh": "目前沒有前排急症訊號；補齊陰性資料、核對來源，並規劃追蹤或轉介。",
+        "instruction_en": "No urgent leader is in the front rank; add negative findings, check sources, and plan follow-up or referral.",
+        "selected_finding_count": selected_finding_count,
+        "top_urgency": top_urgency,
     }
 
 
