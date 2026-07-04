@@ -125,6 +125,32 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertIn("chest_pain", intake["cards"][0]["finding_shortcuts"])
         self.assertIn("dyspnea", intake["cards"][0]["finding_shortcuts"])
 
+    def test_results_include_next_step_command_center(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        command_center = result["next_step_command_center"]
+        command_ids = [card["command_id"] for card in command_center["cards"]]
+
+        self.assertEqual(command_center["status"], "ready_for_stepwise_review")
+        self.assertEqual(command_ids[0], "safety_gate")
+        self.assertIn("complaint_minimum_data", command_ids)
+        self.assertIn("leading_candidate_review", command_ids)
+        self.assertIn("source_review", command_ids)
+        self.assertEqual(
+            command_center["cards"][2]["primary_candidate_slug"],
+            "acute_coronary_syndrome",
+        )
+
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
         result = evaluate_general_differential(
             {
@@ -887,6 +913,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("perianal abscess", "perianal_abscess"),
             ("pilonidal disease", "pilonidal_disease"),
             ("small bowel obstruction", "small_bowel_obstruction"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_twenty_second_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("boerhaave syndrome", "boerhaave_syndrome"),
+            ("mallory weiss tear", "mallory_weiss_tear"),
+            ("spontaneous bacterial peritonitis", "spontaneous_bacterial_peritonitis"),
+            ("budd chiari syndrome", "budd_chiari_syndrome"),
+            ("empyema", "empyema"),
+            ("esophageal food impaction", "esophageal_food_impaction"),
+            ("hepatic abscess", "hepatic_abscess"),
+            ("hepatic encephalopathy", "hepatic_encephalopathy"),
+            ("spinal epidural abscess", "spinal_epidural_abscess"),
+            ("epidural hematoma", "epidural_hematoma"),
+            ("chronic subdural hematoma", "chronic_subdural_hematoma"),
+            ("wernicke encephalopathy", "wernicke_encephalopathy"),
+            ("transverse myelitis", "transverse_myelitis"),
+            ("benzodiazepine withdrawal", "benzodiazepine_withdrawal"),
+            ("cannabinoid hyperemesis syndrome", "cannabinoid_hyperemesis_syndrome"),
+            ("methanol poisoning", "methanol_poisoning"),
+            ("ethylene glycol poisoning", "ethylene_glycol_poisoning"),
+            ("relapsing polychondritis", "relapsing_polychondritis"),
+            ("refeeding syndrome", "refeeding_syndrome"),
+            ("hypocalcemia", "hypocalcemia"),
+            ("atrioventricular block", "atrioventricular_block"),
+            ("retinal tear", "retinal_tear"),
+            ("keratoconus", "keratoconus"),
+            ("bartholin gland abscess", "bartholin_gland_abscess"),
+            ("foreign body aspiration", "foreign_body_aspiration"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):

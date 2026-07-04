@@ -331,6 +331,16 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         ranked_results,
         selected_findings,
     )
+    complaint_guided_intake = _build_complaint_guided_intake(
+        selected_findings,
+        query,
+    )
+    source_provenance = _build_source_provenance(ranked_results)
+    patient_workflow = _build_patient_workflow(
+        ranked_results,
+        selected_findings,
+        guided_follow_up,
+    )
 
     return {
         "results": ranked_results,
@@ -344,18 +354,18 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
             guided_follow_up,
             selected_findings,
         ),
-        "complaint_guided_intake": _build_complaint_guided_intake(
-            selected_findings,
-            query,
+        "next_step_command_center": _build_next_step_command_center(
+            ranked_results,
+            guided_follow_up,
+            complaint_guided_intake,
+            source_provenance,
+            patient_workflow,
         ),
-        "source_provenance": _build_source_provenance(ranked_results),
+        "complaint_guided_intake": complaint_guided_intake,
+        "source_provenance": source_provenance,
         "candidate_scan_filters": _build_candidate_scan_filters(ranked_results),
         "secondary_candidate_filters": _build_secondary_candidate_filters(ranked_results),
-        "patient_workflow": _build_patient_workflow(
-            ranked_results,
-            selected_findings,
-            guided_follow_up,
-        ),
+        "patient_workflow": patient_workflow,
         "coverage": {
             "catalog_version": runtime_catalog["catalog_version"],
             "runtime_source": runtime_catalog.get(
@@ -367,6 +377,80 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
             "limitation_zh": "這是 starter catalog，不是完整疾病資料庫；未命中不代表排除疾病。",
             "limitation_en": "This is a starter catalog, not a complete disease database; no match does not rule out disease.",
         },
+}
+
+
+def _build_next_step_command_center(
+    results: list[dict[str, Any]],
+    guided_follow_up: list[dict[str, Any]],
+    complaint_guided_intake: dict[str, Any],
+    source_provenance: dict[str, Any],
+    patient_workflow: dict[str, Any],
+) -> dict[str, Any]:
+    top_result = results[0] if results else None
+    complaint_cards = list(complaint_guided_intake.get("cards", []))
+    first_complaint = complaint_cards[0] if complaint_cards else {}
+    source_count = int(source_provenance.get("unique_source_count", 0))
+    safety_step = _workflow_source_step(guided_follow_up, "safety")
+
+    return {
+        "status": str(patient_workflow.get("status", "needs_structured_findings")),
+        "cards": [
+            {
+                "command_id": "safety_gate",
+                "title_zh": "先排危險",
+                "title_en": "Safety gate",
+                "instruction_zh": "先確認 ABC、生命徵象、血氧、意識與立即紅旗，再看排序。",
+                "instruction_en": str(
+                    safety_step.get(
+                        "instruction_en",
+                        "Re-check ABCs, vitals, oxygenation, mental status, and red flags before using the ranking.",
+                    )
+                ),
+                "anchor": "#case-input",
+                "primary_candidate_slug": "",
+                "primary_candidate_name_en": "",
+            },
+            {
+                "command_id": "complaint_minimum_data",
+                "title_zh": "補主訴最少資料",
+                "title_en": "Minimum data",
+                "instruction_zh": "把主訴、起始時間、嚴重度、相關陽性與陰性 findings 補齊後再重跑。",
+                "instruction_en": (
+                    "Complete complaint-specific minimum data before relying on the candidate list."
+                ),
+                "anchor": "#finding-selection",
+                "primary_candidate_slug": "",
+                "primary_candidate_name_en": str(first_complaint.get("title_en", "")),
+                "complaint_id": str(first_complaint.get("complaint_id", "")),
+            },
+            {
+                "command_id": "leading_candidate_review",
+                "title_zh": "核對最高候選",
+                "title_en": "Leading candidate check",
+                "instruction_zh": "先核對最高候選的 matched findings、缺漏資料與不支持的線索。",
+                "instruction_en": (
+                    "Compare the leading candidate against matched findings, missing context, and disconfirming clues."
+                ),
+                "anchor": "#top-candidates",
+                "primary_candidate_slug": str(top_result["slug"]) if top_result else "",
+                "primary_candidate_name_en": str(top_result["name_en"]) if top_result else "",
+                "primary_candidate_urgency": str(top_result["urgency"]) if top_result else "",
+            },
+            {
+                "command_id": "source_review",
+                "title_zh": "開來源再下結論",
+                "title_en": "Source review",
+                "instruction_zh": "至少打開最高候選的來源，確認適用範圍後再整理交班或重跑。",
+                "instruction_en": (
+                    "Open linked sources for the top candidates before using this reference in clinical reasoning."
+                ),
+                "anchor": "#source-provenance",
+                "primary_candidate_slug": str(top_result["slug"]) if top_result else "",
+                "primary_candidate_name_en": str(top_result["name_en"]) if top_result else "",
+                "source_count": source_count,
+            },
+        ],
     }
 
 

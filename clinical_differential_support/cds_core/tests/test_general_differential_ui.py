@@ -487,6 +487,56 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_show_command_center_before_long_sections(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-next-step-command-center="true"')
+        self.assertContains(response, 'data-command-center-card="safety_gate"')
+        self.assertContains(response, 'data-command-center-card="complaint_minimum_data"')
+        self.assertContains(response, 'data-command-center-card="leading_candidate_review"')
+        self.assertContains(response, 'data-command-center-card="source_review"')
+        self.assertContains(response, "下一步指令中心 / Next-step command center")
+        self.assertContains(response, "Acute coronary syndrome")
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-stepwise-next-rail="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-patient-workflow="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-complaint-guided-intake="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-candidate-scan-table="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-source-provenance-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-next-step-command-center="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_show_result_groups_before_long_candidate_cards(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

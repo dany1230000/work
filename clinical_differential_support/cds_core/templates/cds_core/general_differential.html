@@ -562,6 +562,55 @@
     font-size: 0.85rem;
   }
 
+  .next-step-command-center {
+    border: 1px solid #9fb6c9;
+    border-left: 4px solid var(--action);
+    border-radius: 6px;
+    background: #f6f9fc;
+    padding: 0.9rem;
+    margin: 0.85rem 0;
+  }
+
+  .next-step-command-center header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .next-step-command-center h3,
+  .next-step-command-center p {
+    margin: 0;
+  }
+
+  .command-center-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .command-center-card {
+    display: grid;
+    gap: 0.45rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+    min-height: 9rem;
+  }
+
+  .command-center-card strong,
+  .command-center-card span {
+    display: block;
+  }
+
+  .command-center-card a {
+    justify-self: start;
+    color: var(--action);
+    font-weight: 700;
+  }
+
   .candidate-scan-table {
     border: 1px solid #b8c0cc;
     border-radius: 6px;
@@ -1294,6 +1343,7 @@
     .workflow-command-bar,
     .catalog-entry-grid,
     .case-action-list,
+    .command-center-grid,
     .concise-summary-grid,
     .next-step-summary-strip,
     .result-group-grid,
@@ -1489,6 +1539,33 @@
           {{ result.coverage.limitation_en }}
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
+        {% if result.next_step_command_center %}
+          <section class="next-step-command-center" data-next-step-command-center="true" aria-labelledby="next-step-command-center-title">
+            <header>
+              <div>
+                <h3 id="next-step-command-center-title">下一步指令中心 / Next-step command center</h3>
+                <p class="secondary">先照這四格做，再展開完整流程、來源與候選清單。</p>
+              </div>
+              <span class="tag">{{ result.next_step_command_center.status }}</span>
+            </header>
+            <div class="command-center-grid">
+              {% for card in result.next_step_command_center.cards %}
+                <article class="command-center-card" data-command-center-card="{{ card.command_id }}">
+                  <strong>{{ forloop.counter }}. {{ card.title_zh }} / {{ card.title_en }}</strong>
+                  <p>{{ card.instruction_zh }}</p>
+                  <p class="secondary">{{ card.instruction_en }}</p>
+                  {% if card.primary_candidate_name_en %}
+                    <span class="tag">{{ card.primary_candidate_name_en }}</span>
+                  {% endif %}
+                  {% if card.source_count %}
+                    <span class="tag">{{ card.source_count }} sources</span>
+                  {% endif %}
+                  <a href="{{ card.anchor }}">前往 / Go</a>
+                </article>
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
         {% if result.patient_workflow %}
           <section class="stepwise-next-rail" data-stepwise-next-rail="true" aria-labelledby="stepwise-next-rail-title">
             <header>
