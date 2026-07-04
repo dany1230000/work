@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-04-675",
-    "condition_count": 675,
-    "source_count": 753,
+    "catalog_version": "general-differential-starter-2026-07-04-700",
+    "condition_count": 700,
+    "source_count": 778,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-04-675",
-      "condition_count": 675,
-      "source_count": 753,
+      "catalog_version": "general-differential-starter-2026-07-04-700",
+      "condition_count": 700,
+      "source_count": 778,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 675
+      "expansion_target_condition_count": 700
     }
   },
   "safety_scope": {
@@ -3362,7 +3362,7 @@
         "hyponatremia",
         "low sodium",
         "sodium imbalance",
-        "siadh"
+        "low serum sodium"
       ],
       "ask_next": [
         "確認鈉值、症狀嚴重度與時間、利尿劑/SSRI/抗癲癇藥、嘔吐腹瀉、心肝腎病、水攝取與抽搐/昏迷風險。"
@@ -19573,6 +19573,755 @@
         "pmc_foreign_body_aspiration_phase675",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "lemierre_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Lemierre 症候群",
+      "name_en": "Lemierre syndrome",
+      "system": "Infectious/ENT/Vascular",
+      "urgency": "urgent",
+      "summary_zh": "Lemierre 症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recent pharyngitis or tonsillitis with persistent fever, neck pain or swelling, sepsis, pleuritic symptoms, or pulmonary embolic features should include Lemierre syndrome.",
+      "signals": {
+        "sore_throat": 3,
+        "neck_stiffness_swelling_dysphagia": 3,
+        "fever": 3,
+        "hemodynamic_instability": 2,
+        "dyspnea": 1,
+        "pleuritic_pain": 2
+      },
+      "synonyms": [
+        "lemierre syndrome",
+        "lemierre's syndrome",
+        "septic jugular thrombophlebitis",
+        "postanginal sepsis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check recent throat infection, unilateral neck pain or swelling, persistent fever, septic appearance, pleuritic chest symptoms, blood cultures, and jugular-vein imaging context."
+      ],
+      "source_ids": [
+        "ncbi_lemierre_syndrome_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "multisystem_inflammatory_syndrome_in_children",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "兒童多系統發炎症候群",
+      "name_en": "Multisystem inflammatory syndrome in children",
+      "system": "Pediatrics/Infectious/Inflammatory",
+      "urgency": "urgent",
+      "summary_zh": "兒童多系統發炎症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child or adolescent with persistent fever after SARS-CoV-2 exposure plus GI symptoms, rash, conjunctivitis, shock, or multisystem involvement should include MIS-C.",
+      "signals": {
+        "fever": 4,
+        "abdominal_pain": 2,
+        "vomiting": 2,
+        "bloody_diarrhea": 1,
+        "rash": 2,
+        "eye_pain_redness": 1,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "multisystem inflammatory syndrome in children",
+        "mis-c",
+        "misc",
+        "pediatric inflammatory multisystem syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, SARS-CoV-2 exposure timing, persistent fever, shock, cardiac findings, GI/mucocutaneous signs, inflammatory labs, and pediatric escalation pathway."
+      ],
+      "source_ids": [
+        "cdc_mis_c_clinical_overview_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "malrotation_with_midgut_volvulus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腸旋轉不良併中腸扭轉",
+      "name_en": "Malrotation with midgut volvulus",
+      "system": "Pediatrics/Gastrointestinal/Surgical",
+      "urgency": "emergent",
+      "summary_zh": "腸旋轉不良併中腸扭轉 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Bilious vomiting, abdominal distention or pain, shock, bloody stool, or neonatal obstruction pattern should include malrotation with midgut volvulus.",
+      "signals": {
+        "vomiting": 4,
+        "abdominal_pain": 3,
+        "constipation_obstipation": 2,
+        "bloody_diarrhea": 2,
+        "poor_oral_intake_dehydration": 2,
+        "hemodynamic_instability": 3
+      },
+      "synonyms": [
+        "malrotation with midgut volvulus",
+        "midgut volvulus",
+        "intestinal malrotation",
+        "bilious vomiting volvulus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bilious emesis, age, abdominal distention, stool blood, perfusion, imaging context, and urgent pediatric surgery pathway."
+      ],
+      "source_ids": [
+        "merck_malrotation_bowel_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hellp_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "HELLP 症候群",
+      "name_en": "HELLP syndrome",
+      "system": "Gynecologic/Obstetric/Hepatic",
+      "urgency": "emergent",
+      "summary_zh": "HELLP 症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pregnancy or postpartum context with right upper quadrant pain, headache, hypertension or preeclampsia signs, hemolysis, elevated liver enzymes, or low platelets should include HELLP syndrome.",
+      "signals": {
+        "pregnancy_possible": 4,
+        "preeclampsia_warning_features": 4,
+        "ruq_pain": 3,
+        "headache": 2,
+        "easy_bruising_bleeding": 2,
+        "jaundice": 1,
+        "seizure_activity_or_postictal_state": 2
+      },
+      "synonyms": [
+        "hellp syndrome",
+        "hemolysis elevated liver enzymes low platelets",
+        "pregnancy liver low platelets",
+        "postpartum hellp"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational or postpartum timing, blood pressure, headache or visual symptoms, RUQ pain, platelets, liver enzymes, hemolysis markers, and maternal-fetal escalation."
+      ],
+      "source_ids": [
+        "ncbi_hellp_syndrome_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "postpartum_endometritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "產後子宮內膜炎",
+      "name_en": "Postpartum endometritis",
+      "system": "Gynecologic/Obstetric/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "產後子宮內膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Postpartum fever with uterine tenderness, pelvic or abdominal pain, malaise, foul lochia, or discharge should include postpartum endometritis.",
+      "signals": {
+        "fever": 4,
+        "pelvic_pain": 3,
+        "abdominal_pain": 2,
+        "vaginal_discharge": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "postpartum endometritis",
+        "postpartum uterine infection",
+        "puerperal endometritis",
+        "endometritis after delivery"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check delivery mode, postpartum day, uterine tenderness, lochia odor, fever pattern, retained products or wound infection context, and sepsis risk."
+      ],
+      "source_ids": [
+        "merck_postpartum_endometritis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chorioamnionitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "絨毛羊膜炎",
+      "name_en": "Chorioamnionitis",
+      "system": "Gynecologic/Obstetric/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "絨毛羊膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pregnancy or labor with fever, uterine tenderness, foul amniotic fluid, maternal tachycardia, fetal concern, or prolonged membrane rupture should include intraamniotic infection.",
+      "signals": {
+        "pregnancy_possible": 3,
+        "fever": 4,
+        "abdominal_pain": 2,
+        "vaginal_discharge": 2,
+        "tachycardia": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "chorioamnionitis",
+        "intraamniotic infection",
+        "amniotic infection",
+        "foul amniotic fluid fever"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, membrane rupture timing, uterine tenderness, maternal fever or tachycardia, fetal status, discharge odor, and obstetric escalation pathway."
+      ],
+      "source_ids": [
+        "merck_intraamniotic_infection_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "neonatal_sepsis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒敗血症",
+      "name_en": "Neonatal sepsis",
+      "system": "Pediatrics/Neonatal/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "新生兒敗血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Ill neonate with poor feeding, temperature instability, lethargy, respiratory distress, apnea, perfusion concern, or maternal infection risk should include neonatal sepsis.",
+      "signals": {
+        "fever": 3,
+        "hypothermia": 3,
+        "poor_oral_intake_dehydration": 3,
+        "altered_mental_status": 3,
+        "respiratory_distress": 3,
+        "hemodynamic_instability": 2
+      },
+      "synonyms": [
+        "neonatal sepsis",
+        "newborn sepsis",
+        "early onset neonatal sepsis",
+        "late onset neonatal sepsis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age in hours or days, maternal fever or GBS risk, feeding and tone, temperature instability, respiratory status, perfusion, cultures, and neonatal escalation."
+      ],
+      "source_ids": [
+        "merck_neonatal_sepsis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "febrile_seizure",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "熱性痙攣",
+      "name_en": "Febrile seizure",
+      "system": "Pediatrics/Neurology",
+      "urgency": "urgent",
+      "summary_zh": "熱性痙攣 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child 6 months to 5 years with fever-associated generalized seizure should include febrile seizure while CNS infection and complex features are excluded.",
+      "signals": {
+        "fever": 4,
+        "seizure_activity_or_postictal_state": 4,
+        "altered_mental_status": 1,
+        "hypoglycemia_risk": 1
+      },
+      "synonyms": [
+        "febrile seizure",
+        "febrile convulsion",
+        "fever seizure child",
+        "simple febrile seizure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, seizure duration and focality, recurrence, recovery, meningitis signs, source of fever, glucose or electrolyte risk, and complex seizure features."
+      ],
+      "source_ids": [
+        "merck_febrile_seizures_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "status_epilepticus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "癲癇重積狀態",
+      "name_en": "Status epilepticus",
+      "system": "Neurology/Emergent",
+      "urgency": "emergent",
+      "summary_zh": "癲癇重積狀態 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Prolonged seizure, recurrent seizures without baseline recovery, hypoxia, trauma, infection, metabolic derangement, or medication withdrawal should include status epilepticus.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 6,
+        "altered_mental_status": 4,
+        "respiratory_distress": 2,
+        "hypoglycemia_risk": 2,
+        "fever": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "status epilepticus",
+        "prolonged seizure",
+        "refractory seizure",
+        "continuous seizure"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check seizure duration, recovery between events, glucose, oxygenation, trauma, infection, toxin or withdrawal, antiseizure medication history, and emergency seizure pathway."
+      ],
+      "source_ids": [
+        "merck_seizure_disorders_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "candida_vulvovaginitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "念珠菌陰道外陰炎",
+      "name_en": "Candida vulvovaginitis",
+      "system": "Gynecologic/Infectious",
+      "urgency": "routine",
+      "summary_zh": "念珠菌陰道外陰炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Vulvovaginal itching, burning, dysuria, thick discharge, erythema, diabetes, pregnancy, antibiotic exposure, or recurrent symptoms should include candidiasis.",
+      "signals": {
+        "vaginal_discharge": 4,
+        "dysuria": 1,
+        "rash": 1,
+        "pelvic_pain": 1,
+        "pregnancy_possible": 1,
+        "extreme_thirst_polyuria": 1
+      },
+      "synonyms": [
+        "candida vulvovaginitis",
+        "vaginal yeast infection",
+        "candida vaginitis",
+        "vulvar candida infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check discharge character, itching or burning, urinary symptoms, pregnancy, diabetes or immune risk, recent antibiotics, STI alternatives, and recurrent or complicated pattern."
+      ],
+      "source_ids": [
+        "cdc_vulvovaginal_candidiasis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "nursemaid_elbow",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "牽拉肘",
+      "name_en": "Nursemaid elbow",
+      "system": "Pediatrics/Musculoskeletal/Upper extremity",
+      "urgency": "soon",
+      "summary_zh": "牽拉肘 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Toddler refusing to use an arm after traction or pull injury without swelling or deformity should include radial head subluxation.",
+      "signals": {
+        "recent_trauma": 3,
+        "acute_joint_pain_swelling": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "nursemaid elbow",
+        "nursemaid's elbow",
+        "radial head subluxation",
+        "pulled elbow"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, traction mechanism, arm position, point tenderness, swelling or deformity, neurovascular status, and fracture red flags before reduction pathway."
+      ],
+      "source_ids": [
+        "merck_radial_head_subluxation_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "slipped_capital_femoral_epiphysis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "股骨頭骨骺滑脫",
+      "name_en": "Slipped capital femoral epiphysis",
+      "system": "Pediatrics/Musculoskeletal/Hip",
+      "urgency": "urgent",
+      "summary_zh": "股骨頭骨骺滑脫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adolescent hip, groin, thigh, or knee pain with limp, obesity, endocrine risk, or externally rotated leg should include slipped capital femoral epiphysis.",
+      "signals": {
+        "pelvic_pain": 3,
+        "acute_joint_pain_swelling": 2,
+        "severe_pain": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "slipped capital femoral epiphysis",
+        "scfe",
+        "slipped femoral epiphysis",
+        "adolescent hip slip"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check adolescent age, limp, hip range of motion, knee-referred pain, weight or endocrine risk, bilateral symptoms, and urgent hip imaging or non-weightbearing pathway."
+      ],
+      "source_ids": [
+        "merck_scfe_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "legg_calve_perthes_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Legg-Calve-Perthes 病",
+      "name_en": "Legg-Calve-Perthes disease",
+      "system": "Pediatrics/Musculoskeletal/Hip",
+      "urgency": "soon",
+      "summary_zh": "Legg-Calve-Perthes 病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child with gradual hip pain, limp, limited hip motion, or referred knee pain should include Legg-Calve-Perthes disease.",
+      "signals": {
+        "pelvic_pain": 3,
+        "acute_joint_pain_swelling": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "legg calve perthes disease",
+        "legg-calve-perthes disease",
+        "perthes disease",
+        "child hip avascular necrosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, gradual limp, hip range of motion, knee pain, trauma absence, imaging context, and orthopedic follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_legg_calve_perthes_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "toxic_synovitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "暫時性髖關節滑膜炎",
+      "name_en": "Toxic synovitis",
+      "system": "Pediatrics/Musculoskeletal/Hip",
+      "urgency": "soon",
+      "summary_zh": "暫時性髖關節滑膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child with acute limp or hip pain after viral illness, able to bear weight, and without toxic appearance should include transient or toxic synovitis while septic arthritis is excluded.",
+      "signals": {
+        "pelvic_pain": 3,
+        "acute_joint_pain_swelling": 2,
+        "fever": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "toxic synovitis",
+        "transient synovitis",
+        "transient synovitis of hip",
+        "irritable hip"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check fever, ability to bear weight, hip range, recent viral illness, inflammatory markers, septic arthritis red flags, and follow-up if symptoms persist."
+      ],
+      "source_ids": [
+        "posna_transient_synovitis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "juvenile_idiopathic_arthritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "幼年特發性關節炎",
+      "name_en": "Juvenile idiopathic arthritis",
+      "system": "Pediatrics/Rheumatology",
+      "urgency": "soon",
+      "summary_zh": "幼年特發性關節炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child with persistent joint swelling, morning stiffness, limp, fever, rash, uveitis symptoms, or systemic inflammation should include juvenile idiopathic arthritis.",
+      "signals": {
+        "acute_joint_pain_swelling": 4,
+        "fever": 2,
+        "rash": 2,
+        "eye_pain_redness": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "juvenile idiopathic arthritis",
+        "jia",
+        "juvenile rheumatoid arthritis",
+        "child chronic arthritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration of arthritis, morning stiffness, number of joints, fever or rash pattern, eye symptoms, growth impact, and rheumatology referral context."
+      ],
+      "source_ids": [
+        "merck_juvenile_idiopathic_arthritis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "developmental_dysplasia_of_the_hip",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "發展性髖關節發育不良",
+      "name_en": "Developmental dysplasia of the hip",
+      "system": "Pediatrics/Musculoskeletal/Hip",
+      "urgency": "routine",
+      "summary_zh": "發展性髖關節發育不良 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant hip instability, limited abduction, leg-length asymmetry, breech history, or later limp should include developmental dysplasia of the hip.",
+      "signals": {
+        "pelvic_pain": 1,
+        "acute_joint_pain_swelling": 1
+      },
+      "synonyms": [
+        "developmental dysplasia of the hip",
+        "ddh",
+        "hip dysplasia infant",
+        "developmental dislocation dysplasia hip"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check newborn hip exam, breech or family risk, asymmetric folds or abduction, leg length, gait when older, and ultrasound or orthopedic pathway."
+      ],
+      "source_ids": [
+        "aaos_developmental_dysplasia_hip_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "osteochondritis_dissecans",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "剝離性骨軟骨炎",
+      "name_en": "Osteochondritis dissecans",
+      "system": "Musculoskeletal/Sports medicine",
+      "urgency": "routine",
+      "summary_zh": "剝離性骨軟骨炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adolescent or young adult with activity-related joint pain, swelling, catching, locking, or instability should include osteochondritis dissecans.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "osteochondritis dissecans",
+        "ocd lesion",
+        "osteochondral defect",
+        "joint locking adolescent"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check joint involved, activity relation, effusion, mechanical symptoms, prior trauma, imaging context, and orthopedic follow-up."
+      ],
+      "source_ids": [
+        "aaos_osteochondritis_dissecans_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "osgood_schlatter_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Osgood-Schlatter 病",
+      "name_en": "Osgood-Schlatter disease",
+      "system": "Pediatrics/Musculoskeletal/Knee",
+      "urgency": "routine",
+      "summary_zh": "Osgood-Schlatter 病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adolescent athlete with anterior knee pain and tibial tubercle tenderness worsened by running or jumping should include Osgood-Schlatter disease.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "severe_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "osgood schlatter disease",
+        "osgood-schlatter disease",
+        "tibial tubercle apophysitis",
+        "adolescent anterior knee pain"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sports load, tibial tubercle tenderness, swelling, growth spurt, extensor mechanism injury red flags, and activity modification context."
+      ],
+      "source_ids": [
+        "aaos_osgood_schlatter_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "spondylolisthesis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脊椎滑脫",
+      "name_en": "Spondylolisthesis",
+      "system": "Musculoskeletal/Spine",
+      "urgency": "routine",
+      "summary_zh": "脊椎滑脫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Low back pain worse with standing or extension, hamstring tightness, radicular symptoms, or adolescent athlete context should include spondylolisthesis.",
+      "signals": {
+        "low_back_pain": 4,
+        "neurologic_deficit": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "spondylolisthesis",
+        "lumbar spondylolisthesis",
+        "vertebral slippage",
+        "pars defect back pain"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain triggers, neurologic symptoms, hamstring tightness, sports extension load, imaging context, and urgent cauda equina red flags."
+      ],
+      "source_ids": [
+        "merck_spondylolisthesis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "siadh",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "抗利尿激素不適當分泌症候群",
+      "name_en": "SIADH",
+      "system": "Endocrine/Metabolic/Electrolyte",
+      "urgency": "urgent",
+      "summary_zh": "抗利尿激素不適當分泌症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Euvolemic hyponatremia with confusion, seizure, headache, nausea, pulmonary or CNS disease, medication trigger, or malignancy context should include SIADH.",
+      "signals": {
+        "hyponatremia_confusion_or_seizure_risk": 4,
+        "altered_mental_status": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "headache": 1,
+        "vomiting": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "siadh",
+        "syndrome of inappropriate adh secretion",
+        "inappropriate antidiuretic hormone",
+        "euvolemic hyponatremia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sodium trend, serum and urine osmolality context, volume status, thyroid/adrenal alternatives, medication, CNS or pulmonary trigger, and seizure risk."
+      ],
+      "source_ids": [
+        "merck_siadh_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypomagnesemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "低血鎂",
+      "name_en": "Hypomagnesemia",
+      "system": "Endocrine/Metabolic/Electrolyte",
+      "urgency": "urgent",
+      "summary_zh": "低血鎂 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tremor, tetany, seizure, arrhythmia, refractory hypokalemia or hypocalcemia, alcohol use, diarrhea, diuretics, or PPI exposure should include hypomagnesemia.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 3,
+        "palpitations": 2,
+        "fatigue": 2,
+        "vomiting": 1,
+        "bloody_diarrhea": 1,
+        "substance_use_concern": 1
+      },
+      "synonyms": [
+        "hypomagnesemia",
+        "low magnesium",
+        "magnesium deficiency",
+        "low serum magnesium"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check magnesium level, potassium and calcium context, GI losses, alcohol use, diuretics or PPIs, arrhythmia risk, and neurologic symptoms."
+      ],
+      "source_ids": [
+        "merck_hypomagnesemia_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "metabolic_alkalosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "代謝性鹼中毒",
+      "name_en": "Metabolic alkalosis",
+      "system": "Metabolic/Acid-base",
+      "urgency": "urgent",
+      "summary_zh": "代謝性鹼中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Prolonged vomiting, diuretic use, volume depletion, hypokalemia, headache, lethargy, tetany, or abnormal bicarbonate context should include metabolic alkalosis.",
+      "signals": {
+        "vomiting": 4,
+        "poor_oral_intake_dehydration": 2,
+        "fatigue": 2,
+        "altered_mental_status": 1,
+        "seizure_activity_or_postictal_state": 1,
+        "palpitations": 1
+      },
+      "synonyms": [
+        "metabolic alkalosis",
+        "alkalosis vomiting",
+        "high bicarbonate alkalosis",
+        "chloride responsive alkalosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check vomiting or suction losses, diuretics, volume and chloride status, potassium, ABG or bicarbonate context, and severity symptoms."
+      ],
+      "source_ids": [
+        "merck_metabolic_alkalosis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "respiratory_acidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "呼吸性酸中毒",
+      "name_en": "Respiratory acidosis",
+      "system": "Pulmonary/Metabolic/Acid-base",
+      "urgency": "urgent",
+      "summary_zh": "呼吸性酸中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hypoventilation, COPD or airway disease, sedative exposure, neuromuscular weakness, drowsiness, headache, or hypercapnia context should include respiratory acidosis.",
+      "signals": {
+        "respiratory_distress": 3,
+        "dyspnea": 3,
+        "altered_mental_status": 3,
+        "substance_use_concern": 2,
+        "fatigue": 1,
+        "headache": 1
+      },
+      "synonyms": [
+        "respiratory acidosis",
+        "hypercapnic respiratory failure",
+        "high co2 acidosis",
+        "hypoventilation acidosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check respiratory rate and effort, oxygenation, CO2 or ABG context, COPD or neuromuscular disease, sedatives or opioids, and ventilatory support risk."
+      ],
+      "source_ids": [
+        "merck_respiratory_acidosis_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "molar_pregnancy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "葡萄胎",
+      "name_en": "Molar pregnancy",
+      "system": "Gynecologic/Obstetric/Trophoblastic",
+      "urgency": "urgent",
+      "summary_zh": "葡萄胎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Positive pregnancy context with vaginal bleeding, uterus larger than dates, severe nausea or vomiting, very high hCG, or early preeclampsia features should include molar pregnancy.",
+      "signals": {
+        "pregnancy_possible": 4,
+        "vaginal_bleeding": 3,
+        "vomiting": 3,
+        "abdominal_pain": 1,
+        "preeclampsia_warning_features": 2
+      },
+      "synonyms": [
+        "molar pregnancy",
+        "hydatidiform mole",
+        "gestational trophoblastic disease mole",
+        "complete mole pregnancy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy dating, bleeding, hyperemesis, ultrasound context, hCG level, thyroid or preeclampsia features, and gynecology follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_gestational_trophoblastic_disease_phase700",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "uterine_rupture",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "子宮破裂",
+      "name_en": "Uterine rupture",
+      "system": "Gynecologic/Obstetric/Emergent",
+      "urgency": "emergent",
+      "summary_zh": "子宮破裂 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Late pregnancy or labor with prior uterine surgery, sudden abdominal pain, fetal distress, vaginal bleeding, loss of station, or shock should include uterine rupture.",
+      "signals": {
+        "pregnancy_possible": 4,
+        "abdominal_pain": 4,
+        "vaginal_bleeding": 3,
+        "hemodynamic_instability": 4,
+        "severe_pain": 2,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "uterine rupture",
+        "ruptured uterus",
+        "uterine scar rupture",
+        "labor uterine rupture"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prior cesarean or uterine surgery, labor status, pain onset, fetal status, bleeding, maternal perfusion, and emergency obstetric surgery pathway."
+      ],
+      "source_ids": [
+        "merck_uterine_rupture_phase700",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -24093,6 +24842,156 @@
       "publisher": "Journal of Thoracic Disease",
       "title": "Foreign Body Aspiration in Adult Airway",
       "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5708401/"
+    },
+    {
+      "source_id": "ncbi_lemierre_syndrome_phase700",
+      "publisher": "NCBI Bookshelf",
+      "title": "Lemierre Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK499846/"
+    },
+    {
+      "source_id": "cdc_mis_c_clinical_overview_phase700",
+      "publisher": "CDC",
+      "title": "Clinical Overview of Multisystem Inflammatory Syndrome in Children",
+      "url": "https://www.cdc.gov/mis/hcp/clinical-overview/index.html"
+    },
+    {
+      "source_id": "merck_malrotation_bowel_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Malrotation of the Bowel",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/congenital-gastrointestinal-anomalies/malrotation-of-the-bowel"
+    },
+    {
+      "source_id": "ncbi_hellp_syndrome_phase700",
+      "publisher": "NCBI Bookshelf",
+      "title": "HELLP Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK560615/"
+    },
+    {
+      "source_id": "merck_postpartum_endometritis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Postpartum Endometritis",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/postpartum-care-and-associated-disorders/postpartum-endometritis"
+    },
+    {
+      "source_id": "merck_intraamniotic_infection_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Intraamniotic Infection",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/intrapartum-complications/intraamniotic-infection"
+    },
+    {
+      "source_id": "merck_neonatal_sepsis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Neonatal Sepsis",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/infections-in-neonates/neonatal-sepsis"
+    },
+    {
+      "source_id": "merck_febrile_seizures_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Febrile Seizures",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/neurologic-disorders-in-children/febrile-seizures"
+    },
+    {
+      "source_id": "merck_seizure_disorders_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Seizure Disorders",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/seizure-disorders/seizure-disorders"
+    },
+    {
+      "source_id": "cdc_vulvovaginal_candidiasis_phase700",
+      "publisher": "CDC",
+      "title": "Vulvovaginal Candidiasis - STI Treatment Guidelines",
+      "url": "https://www.cdc.gov/std/treatment-guidelines/candidiasis.htm"
+    },
+    {
+      "source_id": "merck_radial_head_subluxation_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Radial Head Subluxations",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/dislocations/radial-head-subluxations"
+    },
+    {
+      "source_id": "merck_scfe_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Slipped Capital Femoral Epiphysis (SCFE)",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/bone-disorders-in-children/slipped-capital-femoral-epiphysis-scfe"
+    },
+    {
+      "source_id": "merck_legg_calve_perthes_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Legg-Calve-Perthes Disease",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/bone-disorders-in-children/legg-calv%C3%A9-perthes-disease"
+    },
+    {
+      "source_id": "posna_transient_synovitis_phase700",
+      "publisher": "Pediatric Orthopaedic Society of North America",
+      "title": "Transient Synovitis of the Hip",
+      "url": "https://posna.org/physician-education/study-guide/transient-synovitis-of-the-hip"
+    },
+    {
+      "source_id": "merck_juvenile_idiopathic_arthritis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Juvenile Idiopathic Arthritis (JIA)",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/rheumatologic-disorders-in-children/juvenile-idiopathic-arthritis-jia"
+    },
+    {
+      "source_id": "aaos_developmental_dysplasia_hip_phase700",
+      "publisher": "AAOS OrthoInfo",
+      "title": "Developmental Dysplasia of the Hip",
+      "url": "https://orthoinfo.aaos.org/en/diseases--conditions/developmental-dislocation-dysplasia-of-the-hip-ddh/"
+    },
+    {
+      "source_id": "aaos_osteochondritis_dissecans_phase700",
+      "publisher": "AAOS OrthoInfo",
+      "title": "Osteochondritis Dissecans",
+      "url": "https://orthoinfo.aaos.org/en/diseases--conditions/osteochondritis-dissecans/"
+    },
+    {
+      "source_id": "aaos_osgood_schlatter_phase700",
+      "publisher": "AAOS OrthoInfo",
+      "title": "Osgood-Schlatter Disease (Knee Pain)",
+      "url": "https://orthoinfo.aaos.org/en/diseases--conditions/osgood-schlatter-disease-knee-pain/"
+    },
+    {
+      "source_id": "merck_spondylolisthesis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Spondylolisthesis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/neck-and-back-pain/spondylolisthesis"
+    },
+    {
+      "source_id": "merck_siadh_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Syndrome of Inappropriate ADH Secretion (SIADH)",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/syndrome-of-inappropriate-adh-secretion-siadh"
+    },
+    {
+      "source_id": "merck_hypomagnesemia_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypomagnesemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypomagnesemia"
+    },
+    {
+      "source_id": "merck_metabolic_alkalosis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Metabolic Alkalosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/acid-base-regulation-and-disorders/metabolic-alkalosis"
+    },
+    {
+      "source_id": "merck_respiratory_acidosis_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Respiratory Acidosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/acid-base-regulation-and-disorders/respiratory-acidosis"
+    },
+    {
+      "source_id": "merck_gestational_trophoblastic_disease_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Gestational Trophoblastic Disease",
+      "url": "https://www.merckmanuals.com/professional/oncology/gynecologic-tumors/gestational-trophoblastic-disease"
+    },
+    {
+      "source_id": "merck_uterine_rupture_phase700",
+      "publisher": "Merck Manual Professional",
+      "title": "Uterine Rupture",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/intrapartum-complications/uterine-rupture"
     }
   ]
 }

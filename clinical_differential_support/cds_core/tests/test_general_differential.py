@@ -952,6 +952,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twenty_third_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("lemierre syndrome", "lemierre_syndrome"),
+            ("multisystem inflammatory syndrome in children", "multisystem_inflammatory_syndrome_in_children"),
+            ("malrotation with midgut volvulus", "malrotation_with_midgut_volvulus"),
+            ("hellp syndrome", "hellp_syndrome"),
+            ("postpartum endometritis", "postpartum_endometritis"),
+            ("chorioamnionitis", "chorioamnionitis"),
+            ("neonatal sepsis", "neonatal_sepsis"),
+            ("febrile seizure", "febrile_seizure"),
+            ("status epilepticus", "status_epilepticus"),
+            ("candida vulvovaginitis", "candida_vulvovaginitis"),
+            ("nursemaid elbow", "nursemaid_elbow"),
+            ("slipped capital femoral epiphysis", "slipped_capital_femoral_epiphysis"),
+            ("legg calve perthes disease", "legg_calve_perthes_disease"),
+            ("toxic synovitis", "toxic_synovitis"),
+            ("juvenile idiopathic arthritis", "juvenile_idiopathic_arthritis"),
+            ("developmental dysplasia of the hip", "developmental_dysplasia_of_the_hip"),
+            ("osteochondritis dissecans", "osteochondritis_dissecans"),
+            ("osgood schlatter disease", "osgood_schlatter_disease"),
+            ("spondylolisthesis", "spondylolisthesis"),
+            ("siadh", "siadh"),
+            ("hypomagnesemia", "hypomagnesemia"),
+            ("metabolic alkalosis", "metabolic_alkalosis"),
+            ("respiratory acidosis", "respiratory_acidosis"),
+            ("molar pregnancy", "molar_pregnancy"),
+            ("uterine rupture", "uterine_rupture"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

@@ -611,6 +611,24 @@
     font-weight: 700;
   }
 
+  .progressive-detail-drawer {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    margin: 0.85rem 0;
+  }
+
+  .progressive-detail-drawer > summary {
+    cursor: pointer;
+    font-weight: 700;
+    padding: 0.75rem;
+  }
+
+  .progressive-detail-body {
+    border-top: 1px solid #e4e9ef;
+    padding: 0.75rem;
+  }
+
   .candidate-scan-table {
     border: 1px solid #b8c0cc;
     border-radius: 6px;
@@ -1567,6 +1585,9 @@
           </section>
         {% endif %}
         {% if result.patient_workflow %}
+          <details class="progressive-detail-drawer" data-progressive-detail-drawer="workflow">
+            <summary>完整逐步流程 / Full step-by-step workflow</summary>
+            <div class="progressive-detail-body">
           <section class="stepwise-next-rail" data-stepwise-next-rail="true" aria-labelledby="stepwise-next-rail-title">
             <header>
               <div>
@@ -1640,6 +1661,8 @@
               </section>
             {% endif %}
           </section>
+            </div>
+          </details>
         {% endif %}
         {% if result.results %}
           {% with summary=result.concise_result_summary %}
@@ -1865,6 +1888,9 @@
               {% endfor %}
             </div>
           </section>
+          <details class="progressive-detail-drawer" data-progressive-detail-drawer="evidence">
+            <summary>候選掃描與來源 / Candidate scan and source evidence</summary>
+            <div class="progressive-detail-body">
           <section class="candidate-scan-table" data-candidate-scan-table="true" data-candidate-scan-density="compact" aria-labelledby="candidate-scan-title">
             <h3 id="candidate-scan-title">候選快速掃描 / Candidate scan</h3>
             <p class="secondary">先比較前五個候選的分數、急迫性與來源數，再打開詳細卡片。</p>
@@ -1926,6 +1952,8 @@
               <p class="secondary" data-source-provenance-empty="true" hidden>No sources match this publisher filter.</p>
             </section>
           {% endif %}
+            </div>
+          </details>
           <details class="primary-result-drawer" id="top-candidates" data-primary-result-list="true" data-primary-result-drawer="true">
             <summary>Open detailed candidate cards</summary>
             <div class="primary-result-body result-list">
