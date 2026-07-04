@@ -396,6 +396,11 @@ def _build_next_step_command_center(
     return {
         "status": str(patient_workflow.get("status", "needs_structured_findings")),
         "priority_lane": _build_priority_lane(results, patient_workflow),
+        "first_screen_brief": _build_first_screen_brief(
+            results,
+            guided_follow_up,
+            complaint_guided_intake,
+        ),
         "cards": [
             {
                 "command_id": "safety_gate",
@@ -450,6 +455,58 @@ def _build_next_step_command_center(
                 "primary_candidate_slug": str(top_result["slug"]) if top_result else "",
                 "primary_candidate_name_en": str(top_result["name_en"]) if top_result else "",
                 "source_count": source_count,
+            },
+        ],
+    }
+
+
+def _build_first_screen_brief(
+    results: list[dict[str, Any]],
+    guided_follow_up: list[dict[str, Any]],
+    complaint_guided_intake: dict[str, Any],
+) -> dict[str, Any]:
+    top_result = results[0] if results else None
+    context_step = _workflow_source_step(guided_follow_up, "context")
+    complaint_cards = list(complaint_guided_intake.get("cards", []))
+    first_complaint = complaint_cards[0] if complaint_cards else {}
+    first_context_prompt = next(
+        iter(context_step.get("prompts", []) or []),
+        "Add the highest-yield positive and negative findings for the chief complaint.",
+    )
+
+    return {
+        "title_zh": "第一屏下一步",
+        "title_en": "First-screen next steps",
+        "items": [
+            {
+                "brief_id": "do_now",
+                "title_zh": "現在先做",
+                "title_en": "Do now",
+                "instruction_zh": "先確認 ABC、生命徵象、血氧、意識與紅旗。",
+                "instruction_en": "Re-check ABCs, vitals, oxygenation, mental status, and red flags.",
+                "anchor": "#reference-results",
+                "primary_candidate_slug": "",
+                "primary_candidate_name_en": "",
+            },
+            {
+                "brief_id": "ask_next",
+                "title_zh": "接著補問",
+                "title_en": "Ask next",
+                "instruction_zh": "補上最會改變排序的陽性與陰性資料。",
+                "instruction_en": str(first_context_prompt),
+                "anchor": "#finding-selection",
+                "primary_candidate_slug": "",
+                "primary_candidate_name_en": str(first_complaint.get("title_en", "")),
+            },
+            {
+                "brief_id": "compare",
+                "title_zh": "再核對",
+                "title_en": "Compare",
+                "instruction_zh": "用已符合 findings、缺少資料與來源連結核對第一候選。",
+                "instruction_en": "Compare the leading candidate against matched findings, missing context, and linked sources.",
+                "anchor": "#top-candidates",
+                "primary_candidate_slug": str(top_result["slug"]) if top_result else "",
+                "primary_candidate_name_en": str(top_result["name_en"]) if top_result else "",
             },
         ],
     }

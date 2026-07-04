@@ -634,6 +634,37 @@
     display: block;
   }
 
+  .first-screen-brief {
+    border: 1px solid #c7d2de;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .first-screen-brief h3 {
+    margin: 0 0 0.65rem;
+  }
+
+  .first-screen-brief-list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.65rem;
+  }
+
+  .first-screen-brief-item {
+    border: 1px solid #d5dde7;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.7rem;
+  }
+
+  .first-screen-brief-item strong,
+  .first-screen-brief-item span {
+    display: block;
+  }
+
   .progressive-detail-drawer {
     border: 1px solid #c7d2de;
     border-radius: 6px;
@@ -1385,6 +1416,7 @@
     .catalog-entry-grid,
     .case-action-list,
     .command-center-grid,
+    .first-screen-brief-list,
     .priority-lane-strip,
     .concise-summary-grid,
     .next-step-summary-strip,
@@ -1621,6 +1653,24 @@
             <div>
               <span class="tag">{{ result.next_step_command_center.priority_lane.top_urgency }}</span>
               <span class="tag">{{ result.next_step_command_center.priority_lane.selected_finding_count }} findings</span>
+            </div>
+          </section>
+        {% endif %}
+        {% if result.next_step_command_center.first_screen_brief %}
+          <section class="first-screen-brief" data-first-screen-brief="true" aria-labelledby="first-screen-brief-title">
+            <h3 id="first-screen-brief-title">{{ result.next_step_command_center.first_screen_brief.title_zh }} / {{ result.next_step_command_center.first_screen_brief.title_en }}</h3>
+            <div class="first-screen-brief-list">
+              {% for item in result.next_step_command_center.first_screen_brief.items %}
+                <article class="first-screen-brief-item" data-first-screen-brief-item="{{ item.brief_id }}">
+                  <strong>{{ forloop.counter }}. {{ item.title_zh }} / {{ item.title_en }}</strong>
+                  <span>{{ item.instruction_zh }}</span>
+                  <span class="secondary">{{ item.instruction_en }}</span>
+                  {% if item.primary_candidate_name_en %}
+                    <span class="tag">{{ item.primary_candidate_name_en }}</span>
+                  {% endif %}
+                  <a href="{{ item.anchor }}">前往 / Go</a>
+                </article>
+              {% endfor %}
             </div>
           </section>
         {% endif %}

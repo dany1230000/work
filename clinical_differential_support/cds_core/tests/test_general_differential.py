@@ -172,6 +172,31 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(priority_lane["top_urgency"], "emergent")
         self.assertEqual(priority_lane["selected_finding_count"], 4)
 
+    def test_results_include_first_screen_brief(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        brief = result["next_step_command_center"]["first_screen_brief"]
+        brief_ids = [item["brief_id"] for item in brief["items"]]
+
+        self.assertEqual(brief["title_zh"], "第一屏下一步")
+        self.assertEqual(brief["title_en"], "First-screen next steps")
+        self.assertEqual(brief_ids, ["do_now", "ask_next", "compare"])
+        self.assertIn("ABC", brief["items"][0]["instruction_en"])
+        self.assertEqual(
+            brief["items"][2]["primary_candidate_slug"],
+            "acute_coronary_syndrome",
+        )
+
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
         result = evaluate_general_differential(
             {
@@ -1036,6 +1061,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("wolff parkinson white syndrome", "wolff_parkinson_white_syndrome"),
             ("obesity hypoventilation syndrome", "obesity_hypoventilation_syndrome"),
             ("central sleep apnea", "central_sleep_apnea"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_twenty_fifth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("herpes labialis", "herpes_labialis"),
+            ("renal tubular acidosis", "renal_tubular_acidosis"),
+            ("abdominal aortic aneurysm", "abdominal_aortic_aneurysm"),
+            ("carotid artery stenosis", "carotid_artery_stenosis"),
+            ("diaper dermatitis", "diaper_dermatitis"),
+            ("cholangiocarcinoma", "cholangiocarcinoma"),
+            ("hepatorenal syndrome", "hepatorenal_syndrome"),
+            ("esophageal stricture", "esophageal_stricture"),
+            ("eosinophilic esophagitis", "eosinophilic_esophagitis"),
+            ("dumping syndrome", "dumping_syndrome"),
+            ("vocal cord dysfunction", "vocal_cord_dysfunction"),
+            ("goiter", "goiter"),
+            ("zenker diverticulum", "zenker_diverticulum"),
+            ("microscopic colitis", "microscopic_colitis"),
+            ("fecal incontinence", "fecal_incontinence"),
+            ("endometrial hyperplasia", "endometrial_hyperplasia"),
+            ("placenta accreta", "placenta_accreta_spectrum"),
+            ("premature rupture of membranes", "prelabor_rupture_of_membranes"),
+            ("meckel diverticulum", "meckel_diverticulum"),
+            ("achilles tendon rupture", "achilles_tendon_rupture"),
+            ("tympanic membrane perforation", "tympanic_membrane_perforation"),
+            ("meniscus tear", "meniscal_injury"),
+            ("acl tear", "anterior_cruciate_ligament_tear"),
+            ("ankle sprain", "ankle_sprain"),
+            ("stress fracture", "stress_fracture"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
