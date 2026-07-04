@@ -1100,6 +1100,42 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twenty_sixth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("idiopathic pulmonary fibrosis", "idiopathic_pulmonary_fibrosis"),
+            ("nonspecific interstitial pneumonia", "nonspecific_interstitial_pneumonia"),
+            ("acute interstitial pneumonia", "acute_interstitial_pneumonia"),
+            (
+                "respiratory bronchiolitis-associated interstitial lung disease",
+                "respiratory_bronchiolitis_interstitial_lung_disease",
+            ),
+            ("desquamative interstitial pneumonia", "desquamative_interstitial_pneumonia"),
+            ("lymphoid interstitial pneumonia", "lymphoid_interstitial_pneumonia"),
+            ("cryptogenic organizing pneumonia", "cryptogenic_organizing_pneumonia"),
+            ("hypersensitivity pneumonitis", "hypersensitivity_pneumonitis"),
+            ("acute eosinophilic pneumonia", "acute_eosinophilic_pneumonia"),
+            ("chronic eosinophilic pneumonia", "chronic_eosinophilic_pneumonia"),
+            ("pulmonary alveolar proteinosis", "pulmonary_alveolar_proteinosis"),
+            ("lymphangioleiomyomatosis", "lymphangioleiomyomatosis"),
+            ("pulmonary langerhans cell histiocytosis", "pulmonary_langerhans_cell_histiocytosis"),
+            ("asbestosis", "asbestosis"),
+            ("asbestos-related pleural disease", "asbestos_related_pleural_disease"),
+            ("mesothelioma", "mesothelioma"),
+            ("silicosis", "silicosis"),
+            ("coal worker pneumoconiosis", "coal_worker_pneumoconiosis"),
+            ("beryllium disease", "beryllium_disease"),
+            ("byssinosis", "byssinosis"),
+            ("work-related asthma", "work_related_asthma"),
+            ("cteph", "chronic_thromboembolic_pulmonary_hypertension"),
+            ("atelectasis", "atelectasis"),
+            ("pulmonary renal syndrome", "pulmonary_renal_syndrome"),
+            ("anti-gbm disease", "anti_gbm_disease"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

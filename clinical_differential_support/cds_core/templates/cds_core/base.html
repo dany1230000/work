@@ -377,7 +377,12 @@
     var progress = document.querySelector("[data-fast-nav-progress]");
     var fastNavStatus = document.querySelector("[data-fast-nav-status]");
     var fastNavStatusTimeout = null;
-    var FAST_NAV_CACHE_TTL_MS = 120000;
+    var fastNavProgressTimeout = null;
+    var fastNavProgressVisible = false;
+    var FAST_NAV_CACHE_TTL_MS = 600000;
+    var FAST_NAV_PROGRESS_DELAY_MS = 240;
+    var FAST_NAV_STORAGE_PREFIX = "cds-fast-nav:v2:";
+    var FAST_NAV_STORAGE_MAX_HTML = 350000;
     var fastNavCache = new Map();
     var PREFETCH_PATHS = {
       "/": true,
@@ -424,11 +429,17 @@
       }
       var key = cacheKey(rawUrl);
       var cachedPage = key ? fastNavCache.get(key) : null;
-      if (!cachedPage) {
-        return null;
-      }
-      if (Date.now() - cachedPage.cachedAt > FAST_NAV_CACHE_TTL_MS) {
+      if (cachedPage && Date.now() - cachedPage.cachedAt > FAST_NAV_CACHE_TTL_MS) {
         fastNavCache.delete(key);
+        cachedPage = null;
+      }
+      if (!cachedPage) {
+        cachedPage = readStoredPage(key);
+        if (cachedPage && key) {
+          fastNavCache.set(key, cachedPage);
+        }
+      }
+      if (!cachedPage) {
         return null;
       }
       return cachedPage;
@@ -446,6 +457,46 @@
         cachedAt: Date.now(),
         html: html
       });
+      writeStoredPage(key, html);
+    }
+
+    function readStoredPage(key) {
+      if (!key || !window.sessionStorage) {
+        return null;
+      }
+      try {
+        var raw = window.sessionStorage.getItem(FAST_NAV_STORAGE_PREFIX + key);
+        if (!raw) {
+          return null;
+        }
+        var cachedPage = JSON.parse(raw);
+        if (!cachedPage || !cachedPage.cachedAt || !cachedPage.html) {
+          window.sessionStorage.removeItem(FAST_NAV_STORAGE_PREFIX + key);
+          return null;
+        }
+        if (Date.now() - cachedPage.cachedAt > FAST_NAV_CACHE_TTL_MS) {
+          window.sessionStorage.removeItem(FAST_NAV_STORAGE_PREFIX + key);
+          return null;
+        }
+        return cachedPage;
+      } catch (error) {
+        return null;
+      }
+    }
+
+    function writeStoredPage(key, html) {
+      if (!key || !html || html.length > FAST_NAV_STORAGE_MAX_HTML || !window.sessionStorage) {
+        return;
+      }
+      try {
+        window.sessionStorage.setItem(
+          FAST_NAV_STORAGE_PREFIX + key,
+          JSON.stringify({
+            cachedAt: Date.now(),
+            html: html
+          })
+        );
+      } catch (error) {}
     }
 
     function shouldHandleLink(event, link) {
@@ -497,16 +548,33 @@
     }
 
     function startProgress() {
-      setFastNavStatus("loading", "Loading workspace");
-      if (!progress) {
-        return;
+      if (fastNavProgressTimeout) {
+        window.clearTimeout(fastNavProgressTimeout);
       }
-      document.body.classList.remove("is-fast-loaded");
-      document.body.classList.add("is-fast-loading");
+      fastNavProgressVisible = false;
+      fastNavProgressTimeout = window.setTimeout(function () {
+        fastNavProgressTimeout = null;
+        fastNavProgressVisible = true;
+        setFastNavStatus("loading", "Loading workspace");
+        if (!progress) {
+          return;
+        }
+        document.body.classList.remove("is-fast-loaded");
+        document.body.classList.add("is-fast-loading");
+      }, FAST_NAV_PROGRESS_DELAY_MS);
     }
 
     function stopProgress() {
-      setFastNavStatus("ready", "Workspace ready", 900);
+      if (fastNavProgressTimeout) {
+        window.clearTimeout(fastNavProgressTimeout);
+        fastNavProgressTimeout = null;
+      }
+      if (!fastNavProgressVisible) {
+        setFastNavStatus("idle", "");
+        return;
+      }
+      setFastNavStatus("ready", "Workspace ready", 650);
+      fastNavProgressVisible = false;
       if (!progress) {
         return;
       }

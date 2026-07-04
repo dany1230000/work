@@ -108,6 +108,38 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "Updating results")
         self.assertContains(response, "setDifferentialResultsRefreshing(main, true")
 
+    def test_posted_results_start_with_case_pathway_before_details(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-case-pathway="true"')
+        self.assertContains(response, 'data-case-pathway-step="safety_gate"')
+        self.assertContains(response, 'data-case-pathway-current="true"')
+        self.assertContains(response, 'data-progressive-detail-drawer="command-center"')
+        self.assertContains(response, "Follow these steps")
+        self.assertLess(
+            content.index('data-case-pathway="true"'),
+            content.index('data-next-step-command-center="true"'),
+        )
+        self.assertLess(
+            content.index('data-case-pathway="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_general_differential_page_keeps_replaceable_fetch_sections(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

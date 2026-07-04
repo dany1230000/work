@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-04-750",
-    "condition_count": 750,
-    "source_count": 828,
+    "catalog_version": "general-differential-starter-2026-07-04-775",
+    "condition_count": 775,
+    "source_count": 853,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-04-750",
-      "condition_count": 750,
-      "source_count": 828,
+      "catalog_version": "general-differential-starter-2026-07-04-775",
+      "condition_count": 775,
+      "source_count": 853,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 750
+      "expansion_target_condition_count": 775
     }
   },
   "safety_scope": {
@@ -21798,6 +21798,756 @@
         "merck_stress_fractures_phase750",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "idiopathic_pulmonary_fibrosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "特發性肺纖維化",
+      "name_en": "Idiopathic pulmonary fibrosis",
+      "system": "Pulmonary/Interstitial lung disease",
+      "urgency": "soon",
+      "summary_zh": "特發性肺纖維化 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive exertional dyspnea, dry cough, bibasilar crackles, clubbing, older age, smoking history, or usual interstitial pneumonia imaging pattern should include idiopathic pulmonary fibrosis.",
+      "signals": {
+        "dyspnea": 4,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "weight_loss": 1,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "idiopathic pulmonary fibrosis",
+        "ipf",
+        "usual interstitial pneumonia",
+        "progressive pulmonary fibrosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check chronicity, exertional oxygen desaturation, crackles or clubbing, HRCT pattern, medication or exposure mimics, and interstitial lung disease referral need."
+      ],
+      "source_ids": [
+        "merck_iip_overview_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "nonspecific_interstitial_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "非特異性間質性肺炎",
+      "name_en": "Nonspecific interstitial pneumonia",
+      "system": "Pulmonary/Interstitial lung disease/Autoimmune",
+      "urgency": "soon",
+      "summary_zh": "非特異性間質性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Subacute dyspnea, cough, ground-glass or reticular imaging, connective tissue disease, HIV, medication, toxin, or idiopathic inflammatory context should include nonspecific interstitial pneumonia.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "rash": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "nonspecific interstitial pneumonia",
+        "nsip",
+        "cellular nsip",
+        "fibrotic nsip"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check connective tissue disease features, medication and toxin exposure, HIV or immune status, HRCT pattern, pulmonary function trend, and rheumatology or ILD review pathway."
+      ],
+      "source_ids": [
+        "ncbi_nsip_phase775",
+        "merck_iip_features_phase775"
+      ]
+    },
+    {
+      "slug": "acute_interstitial_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性間質性肺炎",
+      "name_en": "Acute interstitial pneumonia",
+      "system": "Pulmonary/Critical care/Interstitial lung disease",
+      "urgency": "emergent",
+      "summary_zh": "急性間質性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Rapid fever, cough, dyspnea, hypoxemia, diffuse bilateral infiltrates, and ARDS-like respiratory failure without an obvious cause should include acute interstitial pneumonia.",
+      "signals": {
+        "dyspnea": 4,
+        "respiratory_distress": 4,
+        "fever": 2,
+        "cough_sputum": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "acute interstitial pneumonia",
+        "aip",
+        "hamman rich syndrome",
+        "idiopathic ards"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygenation, timing under three weeks, infectious and cardiogenic mimics, CT pattern, ventilation needs, and urgent pulmonary or critical-care escalation."
+      ],
+      "source_ids": [
+        "msd_acute_interstitial_pneumonia_phase775",
+        "merck_iip_overview_phase775"
+      ]
+    },
+    {
+      "slug": "respiratory_bronchiolitis_interstitial_lung_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "呼吸性細支氣管炎相關間質性肺病",
+      "name_en": "Respiratory bronchiolitis-associated interstitial lung disease",
+      "system": "Pulmonary/Interstitial lung disease/Smoking-related",
+      "urgency": "soon",
+      "summary_zh": "呼吸性細支氣管炎相關間質性肺病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Current or former smoker with chronic cough, exertional dyspnea, ground-glass or centrilobular nodules, and reduced diffusion capacity should include respiratory bronchiolitis-associated interstitial lung disease.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "wheeze": 1,
+        "fatigue": 1,
+        "pleuritic_pain": 1
+      },
+      "synonyms": [
+        "respiratory bronchiolitis ild",
+        "rb ild",
+        "smoking related interstitial lung disease",
+        "respiratory bronchiolitis-associated interstitial lung disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check smoking exposure, imaging distribution, pulmonary function and DLCO, infection or COPD overlap, and smoking cessation plus pulmonary review needs."
+      ],
+      "source_ids": [
+        "merck_iip_overview_phase775",
+        "merck_iip_features_phase775"
+      ]
+    },
+    {
+      "slug": "desquamative_interstitial_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "剝落性間質性肺炎",
+      "name_en": "Desquamative interstitial pneumonia",
+      "system": "Pulmonary/Interstitial lung disease/Smoking-related",
+      "urgency": "soon",
+      "summary_zh": "剝落性間質性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Current or former smoker with gradual dyspnea, cough, diffuse ground-glass opacities, reduced diffusion capacity, or inflammatory interstitial pattern should include desquamative interstitial pneumonia.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "weight_loss": 1,
+        "wheeze": 1
+      },
+      "synonyms": [
+        "desquamative interstitial pneumonia",
+        "dip lung disease",
+        "smoking related dip",
+        "macrophage interstitial pneumonia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check smoking history, HRCT pattern, oxygenation, exclusion of infection or other ILD, biopsy context, and pulmonary follow-up threshold."
+      ],
+      "source_ids": [
+        "merck_desquamative_interstitial_pneumonia_phase775",
+        "merck_iip_overview_phase775"
+      ]
+    },
+    {
+      "slug": "lymphoid_interstitial_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "淋巴性間質性肺炎",
+      "name_en": "Lymphoid interstitial pneumonia",
+      "system": "Pulmonary/Interstitial lung disease/Immune",
+      "urgency": "soon",
+      "summary_zh": "淋巴性間質性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic dyspnea, cough, diffuse interstitial or cystic lung findings with autoimmune disease, immunodeficiency, HIV, or Sjogren context should include lymphoid interstitial pneumonia.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "weight_loss": 1,
+        "immunocompromised": 2
+      },
+      "synonyms": [
+        "lymphoid interstitial pneumonia",
+        "lymphocytic interstitial pneumonia",
+        "lip lung disease",
+        "sjogren interstitial pneumonia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check immune status, Sjogren or autoimmune features, HIV or immunodeficiency context, CT cysts or nodules, lymphoma mimics, and pulmonary or rheumatology referral need."
+      ],
+      "source_ids": [
+        "merck_iip_features_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "cryptogenic_organizing_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "隱源性機化性肺炎",
+      "name_en": "Cryptogenic organizing pneumonia",
+      "system": "Pulmonary/Interstitial lung disease",
+      "urgency": "soon",
+      "summary_zh": "隱源性機化性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Subacute cough, dyspnea, fever, malaise, migratory consolidation, and pneumonia-like illness not behaving like routine infection should include cryptogenic organizing pneumonia.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "fever": 2,
+        "fatigue": 2,
+        "pleuritic_pain": 1
+      },
+      "synonyms": [
+        "cryptogenic organizing pneumonia",
+        "cop",
+        "bronchiolitis obliterans organizing pneumonia",
+        "organizing pneumonia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check symptom duration, antibiotic response, CT consolidation pattern, drug or autoimmune triggers, biopsy context, and pulmonary follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_cryptogenic_organizing_pneumonia_phase775",
+        "merck_iip_overview_phase775"
+      ]
+    },
+    {
+      "slug": "hypersensitivity_pneumonitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "過敏性肺炎",
+      "name_en": "Hypersensitivity pneumonitis",
+      "system": "Pulmonary/Interstitial lung disease/Exposure",
+      "urgency": "soon",
+      "summary_zh": "過敏性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cough, dyspnea, fatigue, recurrent flu-like episodes, bird, mold, farming, hot tub, occupational, or home antigen exposure should include hypersensitivity pneumonitis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "fatigue": 2,
+        "fever": 1,
+        "wheeze": 1
+      },
+      "synonyms": [
+        "hypersensitivity pneumonitis",
+        "extrinsic allergic alveolitis",
+        "bird fancier lung",
+        "farmer lung"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check temporal relation to home or workplace exposures, birds or mold, HRCT pattern, bronchoalveolar lavage or biopsy context, and exposure removal plan."
+      ],
+      "source_ids": [
+        "merck_hypersensitivity_pneumonitis_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "acute_eosinophilic_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性嗜酸性肺炎",
+      "name_en": "Acute eosinophilic pneumonia",
+      "system": "Pulmonary/Interstitial lung disease/Eosinophilic",
+      "urgency": "emergent",
+      "summary_zh": "急性嗜酸性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute febrile illness with cough, dyspnea, pleuritic pain, hypoxemia, diffuse infiltrates, new smoking or inhalational exposure, and poor antibiotic response should include acute eosinophilic pneumonia.",
+      "signals": {
+        "dyspnea": 4,
+        "respiratory_distress": 3,
+        "fever": 3,
+        "cough_sputum": 2,
+        "pleuritic_pain": 2
+      },
+      "synonyms": [
+        "acute eosinophilic pneumonia",
+        "aep",
+        "eosinophilic lung disease acute",
+        "febrile eosinophilic pneumonia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygenation, smoking or inhalational trigger, eosinophil pattern, BAL context, infection exclusion, and urgent pulmonary or inpatient care need."
+      ],
+      "source_ids": [
+        "merck_acute_eosinophilic_pneumonia_phase775",
+        "merck_chronic_eosinophilic_pneumonia_phase775"
+      ]
+    },
+    {
+      "slug": "chronic_eosinophilic_pneumonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "慢性嗜酸性肺炎",
+      "name_en": "Chronic eosinophilic pneumonia",
+      "system": "Pulmonary/Interstitial lung disease/Eosinophilic",
+      "urgency": "soon",
+      "summary_zh": "慢性嗜酸性肺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Weeks to months of cough, progressive dyspnea, fever, night sweats, wheeze, asthma or atopy history, and peripheral infiltrates should include chronic eosinophilic pneumonia.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "fever": 2,
+        "wheeze": 2,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "chronic eosinophilic pneumonia",
+        "recurrent eosinophilic pneumonia",
+        "cep",
+        "eosinophilic lung disease chronic"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check asthma or atopy, eosinophil count, imaging pattern, medication or parasitic mimics, relapse history, and pulmonary follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_chronic_eosinophilic_pneumonia_phase775",
+        "merck_acute_eosinophilic_pneumonia_phase775"
+      ]
+    },
+    {
+      "slug": "pulmonary_alveolar_proteinosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肺泡蛋白沉積症",
+      "name_en": "Pulmonary alveolar proteinosis",
+      "system": "Pulmonary/Interstitial lung disease/Rare",
+      "urgency": "soon",
+      "summary_zh": "肺泡蛋白沉積症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive dyspnea, cough, fatigue, hypoxemia, crazy-paving CT pattern, occupational dust exposure, or recurrent infection should include pulmonary alveolar proteinosis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "fever": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "pulmonary alveolar proteinosis",
+        "pap lung disease",
+        "alveolar proteinosis",
+        "crazy paving pulmonary"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygenation, HRCT pattern, occupational or immune context, bronchoscopy/BAL findings, infection risk, and pulmonary specialty pathway."
+      ],
+      "source_ids": [
+        "merck_pulmonary_alveolar_proteinosis_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "lymphangioleiomyomatosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "淋巴管平滑肌增生症",
+      "name_en": "Lymphangioleiomyomatosis",
+      "system": "Pulmonary/Interstitial lung disease/Cystic",
+      "urgency": "soon",
+      "summary_zh": "淋巴管平滑肌增生症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent pneumothorax, progressive dyspnea, chylous effusion, diffuse lung cysts, renal angiomyolipoma, tuberous sclerosis, or reproductive-age female context should include lymphangioleiomyomatosis.",
+      "signals": {
+        "dyspnea": 3,
+        "pleuritic_pain": 2,
+        "chest_pain": 2,
+        "orthopnea_edema": 1,
+        "syncope": 1
+      },
+      "synonyms": [
+        "lymphangioleiomyomatosis",
+        "lam lung disease",
+        "diffuse cystic lung disease",
+        "tuberous sclerosis lung"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pneumothorax history, CT cyst pattern, chylous effusion, renal angiomyolipoma or tuberous sclerosis, oxygenation, and ILD specialty referral need."
+      ],
+      "source_ids": [
+        "merck_lymphangioleiomyomatosis_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "pulmonary_langerhans_cell_histiocytosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肺朗格漢斯細胞組織球增生症",
+      "name_en": "Pulmonary Langerhans cell histiocytosis",
+      "system": "Pulmonary/Interstitial lung disease/Cystic",
+      "urgency": "soon",
+      "summary_zh": "肺朗格漢斯細胞組織球增生症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Young adult smoker with dyspnea, nonproductive cough, fatigue, weight loss, pleuritic pain, nodules, cysts, or spontaneous pneumothorax should include pulmonary Langerhans cell histiocytosis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "weight_loss": 2,
+        "pleuritic_pain": 2
+      },
+      "synonyms": [
+        "pulmonary langerhans cell histiocytosis",
+        "plch",
+        "eosinophilic granuloma lung",
+        "smoking cystic lung disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check smoking exposure, pneumothorax, CT nodules or cysts, extrapulmonary LCH signs, pulmonary function trend, and ILD referral pathway."
+      ],
+      "source_ids": [
+        "merck_pulmonary_langerhans_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "asbestosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "石綿肺",
+      "name_en": "Asbestosis",
+      "system": "Pulmonary/Occupational/Interstitial lung disease",
+      "urgency": "soon",
+      "summary_zh": "石綿肺 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Long-latency asbestos exposure with progressive exertional dyspnea, dry cough, crackles, pleural plaques, or interstitial fibrosis should include asbestosis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 1,
+        "pleuritic_pain": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "asbestosis",
+        "asbestos lung fibrosis",
+        "occupational asbestos lung disease",
+        "asbestos pulmonary fibrosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check job and building exposure history, latency, pleural plaques, CT fibrosis pattern, smoking and cancer risk, and occupational medicine or pulmonary follow-up."
+      ],
+      "source_ids": [
+        "merck_asbestosis_phase775",
+        "merck_asbestos_pleural_phase775"
+      ]
+    },
+    {
+      "slug": "asbestos_related_pleural_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "石綿相關胸膜疾病",
+      "name_en": "Asbestos-related pleural disease",
+      "system": "Pulmonary/Occupational/Pleural",
+      "urgency": "soon",
+      "summary_zh": "石綿相關胸膜疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Asbestos exposure with pleural plaques, pleural thickening, rounded atelectasis, adhesions, effusion, pleuritic pain, or dyspnea should include asbestos-related pleural disease.",
+      "signals": {
+        "dyspnea": 2,
+        "pleuritic_pain": 3,
+        "chest_pain": 2,
+        "cough_sputum": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "asbestos related pleural disease",
+        "pleural plaques",
+        "asbestos pleural thickening",
+        "rounded atelectasis asbestos"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check exposure latency, pleural imaging, effusion or thickening, mesothelioma red flags, occupational documentation, and pulmonary or occupational medicine pathway."
+      ],
+      "source_ids": [
+        "merck_asbestos_pleural_phase775",
+        "merck_asbestosis_phase775"
+      ]
+    },
+    {
+      "slug": "mesothelioma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "間皮瘤",
+      "name_en": "Mesothelioma",
+      "system": "Pulmonary/Occupational/Oncology",
+      "urgency": "soon",
+      "summary_zh": "間皮瘤 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Asbestos exposure with persistent pleuritic chest pain, dyspnea, unilateral pleural effusion, pleural thickening, weight loss, or long latency should include mesothelioma.",
+      "signals": {
+        "pleuritic_pain": 3,
+        "chest_pain": 3,
+        "dyspnea": 3,
+        "weight_loss": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "mesothelioma",
+        "malignant pleural mesothelioma",
+        "asbestos cancer",
+        "pleural malignancy asbestos"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check asbestos exposure and latency, pleural effusion or nodularity, weight loss, cytology or biopsy context, and oncology or thoracic referral need."
+      ],
+      "source_ids": [
+        "merck_mesothelioma_phase775",
+        "merck_asbestos_pleural_phase775"
+      ]
+    },
+    {
+      "slug": "silicosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "矽肺症",
+      "name_en": "Silicosis",
+      "system": "Pulmonary/Occupational/Interstitial lung disease",
+      "urgency": "soon",
+      "summary_zh": "矽肺症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Respirable crystalline silica exposure with chronic cough, dyspnea, nodular fibrosis, progressive massive fibrosis, or tuberculosis risk should include silicosis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "fatigue": 1,
+        "weight_loss": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "silicosis",
+        "silica lung disease",
+        "crystalline silica pneumoconiosis",
+        "occupational silica fibrosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mining, cutting, sandblasting, stone or construction exposure, imaging nodules, TB risk, pulmonary function trend, and occupational medicine reporting needs."
+      ],
+      "source_ids": [
+        "merck_silicosis_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "coal_worker_pneumoconiosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "煤工塵肺症",
+      "name_en": "Coal worker pneumoconiosis",
+      "system": "Pulmonary/Occupational/Interstitial lung disease",
+      "urgency": "soon",
+      "summary_zh": "煤工塵肺症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Coal mining dust exposure with chronic cough, dyspnea, black sputum, nodular opacities, emphysema, bronchitis, or progressive massive fibrosis should include coal worker pneumoconiosis.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 3,
+        "wheeze": 1,
+        "fatigue": 1,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "coal worker pneumoconiosis",
+        "black lung",
+        "coal miners pneumoconiosis",
+        "coal dust lung disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mining exposure duration, dust controls, imaging pattern, COPD or bronchitis overlap, oxygenation, and occupational medicine or pulmonary review needs."
+      ],
+      "source_ids": [
+        "merck_coal_worker_pneumoconiosis_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "beryllium_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鈹病",
+      "name_en": "Beryllium disease",
+      "system": "Pulmonary/Occupational/Granulomatous",
+      "urgency": "soon",
+      "summary_zh": "鈹病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Aerospace, electronics, machining, alloy, or dental exposure with chronic cough, dyspnea, fatigue, weight loss, granulomatous lung disease, or sarcoid-like findings should include beryllium disease.",
+      "signals": {
+        "dyspnea": 3,
+        "cough_sputum": 2,
+        "fatigue": 2,
+        "weight_loss": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "beryllium disease",
+        "chronic beryllium disease",
+        "berylliosis",
+        "beryllium sensitization"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check occupational beryllium exposure, sarcoidosis mimic, beryllium lymphocyte proliferation test context, imaging, pulmonary function, and occupational health pathway."
+      ],
+      "source_ids": [
+        "merck_beryllium_disease_phase775",
+        "merck_ild_overview_phase775"
+      ]
+    },
+    {
+      "slug": "byssinosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "棉塵肺樣反應",
+      "name_en": "Byssinosis",
+      "system": "Pulmonary/Occupational/Airway",
+      "urgency": "routine",
+      "summary_zh": "棉塵肺樣反應 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cotton, flax, or hemp textile exposure with work-week chest tightness, dyspnea, wheeze, cough, and improvement away from work should include byssinosis.",
+      "signals": {
+        "dyspnea": 2,
+        "wheeze": 3,
+        "cough_sputum": 2,
+        "chest_pain": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "byssinosis",
+        "brown lung disease",
+        "cotton dust lung disease",
+        "textile worker chest tightness"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check textile exposure, first-day-of-work pattern, spirometry shift across work, asthma overlap, dust controls, and occupational medicine follow-up."
+      ],
+      "source_ids": [
+        "merck_byssinosis_phase775",
+        "merck_work_related_asthma_phase775"
+      ]
+    },
+    {
+      "slug": "work_related_asthma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "工作相關氣喘",
+      "name_en": "Work-related asthma",
+      "system": "Pulmonary/Occupational/Airway",
+      "urgency": "soon",
+      "summary_zh": "工作相關氣喘 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Wheeze, cough, chest tightness, dyspnea, rhinitis, or asthma worsening with workplace dusts, cleaning agents, dampness, fumes, or sensitizers should include work-related asthma.",
+      "signals": {
+        "dyspnea": 3,
+        "wheeze": 4,
+        "cough_sputum": 2,
+        "chest_pain": 1,
+        "carbon_monoxide_or_combustion_exposure": 1
+      },
+      "synonyms": [
+        "work-related asthma",
+        "occupational asthma",
+        "work exacerbated asthma",
+        "workplace asthma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check job tasks, exposure timing, improvement away from work, peak flow or spirometry pattern, sensitizers and irritants, and occupational health reporting or mitigation needs."
+      ],
+      "source_ids": [
+        "merck_work_related_asthma_phase775",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "chronic_thromboembolic_pulmonary_hypertension",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "慢性血栓栓塞性肺高壓",
+      "name_en": "Chronic thromboembolic pulmonary hypertension",
+      "system": "Pulmonary/Vascular/Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "慢性血栓栓塞性肺高壓 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent exertional dyspnea, fatigue, syncope, right-heart strain, pulmonary hypertension, or unresolved symptoms after pulmonary embolism should include chronic thromboembolic pulmonary hypertension.",
+      "signals": {
+        "dyspnea": 4,
+        "fatigue": 2,
+        "syncope": 2,
+        "orthopnea_edema": 2,
+        "hemoptysis": 1
+      },
+      "synonyms": [
+        "chronic thromboembolic pulmonary hypertension",
+        "cteph",
+        "group 4 pulmonary hypertension",
+        "chronic pulmonary emboli pulmonary hypertension"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prior PE or DVT, exercise limitation, echo signs, V/Q scan context, anticoagulation history, and pulmonary hypertension center referral need."
+      ],
+      "source_ids": [
+        "phassociation_cteph_phase775",
+        "merck_pulmonary_hypertension"
+      ]
+    },
+    {
+      "slug": "atelectasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肺不張",
+      "name_en": "Atelectasis",
+      "system": "Pulmonary/Airway",
+      "urgency": "soon",
+      "summary_zh": "肺不張 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Postoperative, immobilized, mucus-plug, tumor, foreign body, or compression context with dyspnea, hypoxemia, pleuritic pain, fever, or volume loss on imaging should include atelectasis.",
+      "signals": {
+        "dyspnea": 3,
+        "respiratory_distress": 2,
+        "pleuritic_pain": 2,
+        "fever": 1,
+        "cough_sputum": 2
+      },
+      "synonyms": [
+        "atelectasis",
+        "lung collapse",
+        "mucus plug atelectasis",
+        "postoperative atelectasis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check surgery or immobilization, airway obstruction risk, oxygenation, fever or pneumonia, imaging volume loss, and need for airway clearance or bronchoscopy pathway."
+      ],
+      "source_ids": [
+        "merck_atelectasis_phase775",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pulmonary_renal_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肺腎症候群",
+      "name_en": "Pulmonary-renal syndrome",
+      "system": "Pulmonary/Renal/Autoimmune/Critical",
+      "urgency": "emergent",
+      "summary_zh": "肺腎症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hemoptysis or diffuse alveolar hemorrhage with glomerulonephritis, hematuria, edema, renal dysfunction, fever, dyspnea, or systemic vasculitis features should include pulmonary-renal syndrome.",
+      "signals": {
+        "hemoptysis": 4,
+        "dyspnea": 3,
+        "decreased_urine_output": 3,
+        "orthopnea_edema": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "pulmonary renal syndrome",
+        "diffuse alveolar hemorrhage glomerulonephritis",
+        "alveolar hemorrhage nephritis",
+        "pulmonary renal vasculitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hemoptysis, anemia, urinalysis, creatinine, ANCA and anti-GBM context, chest imaging, oxygenation, and urgent nephrology or pulmonary escalation."
+      ],
+      "source_ids": [
+        "merck_pulmonary_renal_syndrome_phase775",
+        "merck_anti_gbm_phase775"
+      ]
+    },
+    {
+      "slug": "anti_gbm_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "抗腎絲球基底膜疾病",
+      "name_en": "Anti-GBM disease",
+      "system": "Pulmonary/Renal/Autoimmune/Critical",
+      "urgency": "emergent",
+      "summary_zh": "抗腎絲球基底膜疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Rapidly progressive glomerulonephritis with hemoptysis, diffuse alveolar hemorrhage, dyspnea, anemia, hematuria, or renal dysfunction should include anti-GBM disease.",
+      "signals": {
+        "hemoptysis": 4,
+        "dyspnea": 3,
+        "decreased_urine_output": 4,
+        "easy_bruising_bleeding": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "anti gbm disease",
+        "goodpasture disease",
+        "goodpasture syndrome",
+        "anti glomerular basement membrane disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygenation, chest imaging, urinalysis, creatinine, anti-GBM antibody testing context, anemia, and urgent nephrology or pulmonary-renal escalation."
+      ],
+      "source_ids": [
+        "merck_anti_gbm_phase775",
+        "merck_pulmonary_renal_syndrome_phase775"
+      ]
     }
   ],
   "sources": [
@@ -26768,6 +27518,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Stress Fractures",
       "url": "https://www.merckmanuals.com/professional/injuries-poisoning/sports-injury/stress-fractures"
+    },
+    {
+      "source_id": "merck_ild_overview_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Overview of Interstitial Lung Disease",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/overview-of-interstitial-lung-disease"
+    },
+    {
+      "source_id": "merck_iip_overview_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Overview of Idiopathic Interstitial Pneumonias",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/overview-of-idiopathic-interstitial-pneumonias"
+    },
+    {
+      "source_id": "merck_iip_features_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Key Features of Idiopathic Interstitial Pneumonias",
+      "url": "https://www.merckmanuals.com/professional/multimedia/table/key-features-of-idiopathic-interstitial-pneumonias"
+    },
+    {
+      "source_id": "ncbi_nsip_phase775",
+      "publisher": "NCBI Bookshelf",
+      "title": "Nonspecific Interstitial Pneumonia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK518974/"
+    },
+    {
+      "source_id": "msd_acute_interstitial_pneumonia_phase775",
+      "publisher": "MSD Manual Professional",
+      "title": "Acute Interstitial Pneumonia (AIP)",
+      "url": "https://www.msdmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/acute-interstitial-pneumonia-aip"
+    },
+    {
+      "source_id": "merck_desquamative_interstitial_pneumonia_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Desquamative Interstitial Pneumonia (DIP)",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/desquamative-interstitial-pneumonia-dip"
+    },
+    {
+      "source_id": "merck_cryptogenic_organizing_pneumonia_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Cryptogenic Organizing Pneumonia (COP)",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/cryptogenic-organizing-pneumonia-cop"
+    },
+    {
+      "source_id": "merck_hypersensitivity_pneumonitis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypersensitivity Pneumonitis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/hypersensitivity-pneumonitis"
+    },
+    {
+      "source_id": "merck_acute_eosinophilic_pneumonia_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Eosinophilic Pneumonia",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/acute-eosinophilic-pneumonia"
+    },
+    {
+      "source_id": "merck_chronic_eosinophilic_pneumonia_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Chronic Eosinophilic Pneumonia",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/chronic-eosinophilic-pneumonia"
+    },
+    {
+      "source_id": "merck_pulmonary_alveolar_proteinosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Pulmonary Alveolar Proteinosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/pulmonary-alveolar-proteinosis"
+    },
+    {
+      "source_id": "merck_lymphangioleiomyomatosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Lymphangioleiomyomatosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/lymphangioleiomyomatosis"
+    },
+    {
+      "source_id": "merck_pulmonary_langerhans_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Pulmonary Langerhans Cell Histiocytosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/interstitial-lung-diseases/pulmonary-langerhans-cell-histiocytosis"
+    },
+    {
+      "source_id": "merck_asbestosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Asbestosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/asbestosis"
+    },
+    {
+      "source_id": "merck_asbestos_pleural_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Asbestos-Related Pleural Disease",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/asbestos-related-pleural-disease"
+    },
+    {
+      "source_id": "merck_mesothelioma_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Mesothelioma",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/mesothelioma"
+    },
+    {
+      "source_id": "merck_silicosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Silicosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/silicosis"
+    },
+    {
+      "source_id": "merck_coal_worker_pneumoconiosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Coal Worker Pneumoconiosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/coal-worker-pneumoconiosis"
+    },
+    {
+      "source_id": "merck_beryllium_disease_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Beryllium Disease",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/beryllium-disease"
+    },
+    {
+      "source_id": "merck_byssinosis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Byssinosis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/byssinosis"
+    },
+    {
+      "source_id": "merck_work_related_asthma_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Work-Related Asthma",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/environmental-and-occupational-pulmonary-diseases/work-related-asthma"
+    },
+    {
+      "source_id": "phassociation_cteph_phase775",
+      "publisher": "Pulmonary Hypertension Association",
+      "title": "Group 4: Chronic Thromboembolic Pulmonary Hypertension",
+      "url": "https://phassociation.org/pulmonary-hypertension/what-is-ph/group-4-chronic-thromboembolic-pulmonary-hypertension/"
+    },
+    {
+      "source_id": "merck_atelectasis_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Atelectasis",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/bronchiectasis-and-atelectasis/atelectasis"
+    },
+    {
+      "source_id": "merck_pulmonary_renal_syndrome_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Pulmonary-Renal Syndrome",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/diffuse-alveolar-hemorrhage-and-pulmonary-renal-syndrome/pulmonary-renal-syndrome"
+    },
+    {
+      "source_id": "merck_anti_gbm_phase775",
+      "publisher": "Merck Manual Professional",
+      "title": "Anti-Glomerular Basement Membrane (Anti-GBM) Disease",
+      "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/diffuse-alveolar-hemorrhage-and-pulmonary-renal-syndrome/anti-glomerular-basement-membrane-anti-gbm-disease"
     }
   ]
 }
