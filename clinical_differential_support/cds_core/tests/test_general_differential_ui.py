@@ -449,6 +449,44 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_show_complaint_guided_intake_before_long_sections(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-complaint-guided-intake="true"')
+        self.assertContains(response, 'data-complaint-intake-card="cardiopulmonary"')
+        self.assertContains(response, 'data-complaint-intake-minimum-data="true"')
+        self.assertContains(response, 'data-complaint-intake-shortcut="chest_pain"')
+        self.assertContains(response, 'data-complaint-intake-shortcut="dyspnea"')
+        self.assertContains(response, "主訴導向 / Complaint-guided intake")
+        self.assertContains(response, "Chest pain or dyspnea")
+        self.assertLess(
+            content.index('data-complaint-guided-intake="true"'),
+            content.index('data-candidate-scan-table="true"'),
+        )
+        self.assertLess(
+            content.index('data-complaint-guided-intake="true"'),
+            content.index('data-source-provenance-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-complaint-guided-intake="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_findings_show_result_groups_before_long_candidate_cards(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

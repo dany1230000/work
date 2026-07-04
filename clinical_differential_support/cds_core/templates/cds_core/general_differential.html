@@ -502,6 +502,66 @@
     display: block;
   }
 
+  .complaint-guided-intake {
+    border: 1px solid #c6d2dc;
+    border-left: 4px solid #6b7f3a;
+    border-radius: 6px;
+    background: #fbfcf8;
+    padding: 0.9rem;
+    margin: 0.85rem 0;
+  }
+
+  .complaint-guided-intake header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+
+  .complaint-guided-intake h3,
+  .complaint-guided-intake h4,
+  .complaint-guided-intake p {
+    margin: 0;
+  }
+
+  .complaint-intake-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 0.75rem;
+  }
+
+  .complaint-intake-card {
+    display: grid;
+    gap: 0.6rem;
+    border: 1px solid #d7dfcf;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+  }
+
+  .complaint-intake-card ol,
+  .complaint-intake-card ul {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding-left: 1.15rem;
+  }
+
+  .complaint-shortcut-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+  }
+
+  .complaint-shortcut-list span {
+    border: 1px solid #d7dfcf;
+    border-radius: 999px;
+    background: #f8fafc;
+    padding: 0.25rem 0.45rem;
+    font-size: 0.85rem;
+  }
+
   .candidate-scan-table {
     border: 1px solid #b8c0cc;
     border-radius: 6px;
@@ -1544,6 +1604,37 @@
               </div>
             </section>
           {% endwith %}
+          {% if result.complaint_guided_intake.cards %}
+            <section class="complaint-guided-intake" data-complaint-guided-intake="true" aria-labelledby="complaint-guided-intake-title">
+              <header>
+                <div>
+                  <h3 id="complaint-guided-intake-title">主訴導向 / Complaint-guided intake</h3>
+                  <p class="secondary">先補主訴最少資料，再看完整候選清單。 / Complete complaint-specific minimum data before the long candidate list.</p>
+                </div>
+                <span class="tag">{{ result.complaint_guided_intake.status }}</span>
+              </header>
+              <div class="complaint-intake-grid">
+                {% for card in result.complaint_guided_intake.cards %}
+                  <article class="complaint-intake-card" data-complaint-intake-card="{{ card.complaint_id }}">
+                    <h4>{{ card.title_zh }} / {{ card.title_en }}</h4>
+                    {% if card.matched_findings %}
+                      <p class="secondary">Matched: {{ card.matched_findings|join:", " }}</p>
+                    {% endif %}
+                    <ol data-complaint-intake-minimum-data="true">
+                      {% for prompt in card.minimum_data_prompts %}
+                        <li>{{ prompt }}</li>
+                      {% endfor %}
+                    </ol>
+                    <div class="complaint-shortcut-list" aria-label="Suggested structured findings">
+                      {% for shortcut in card.finding_shortcuts %}
+                        <span data-complaint-intake-shortcut="{{ shortcut }}">{{ shortcut }}</span>
+                      {% endfor %}
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+            </section>
+          {% endif %}
           <section class="next-step-summary-strip" data-next-step-summary-strip="true" aria-label="Next step summary">
             <article class="next-step-summary-card" data-next-step-summary-item="do-now">
               <strong>Do now</strong>

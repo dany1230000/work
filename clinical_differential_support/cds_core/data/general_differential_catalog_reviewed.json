@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-03-625",
-    "condition_count": 625,
-    "source_count": 703,
+    "catalog_version": "general-differential-starter-2026-07-04-650",
+    "condition_count": 650,
+    "source_count": 728,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-03-625",
-      "condition_count": 625,
-      "source_count": 703,
+      "catalog_version": "general-differential-starter-2026-07-04-650",
+      "condition_count": 650,
+      "source_count": 728,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 625
+      "expansion_target_condition_count": 650
     }
   },
   "safety_scope": {
@@ -18072,6 +18072,746 @@
         "merck_granulomatosis_with_polyangiitis",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "vitreous_hemorrhage",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "玻璃體出血",
+      "name_en": "Vitreous hemorrhage",
+      "system": "Ophthalmology/Retina",
+      "urgency": "urgent",
+      "summary_zh": "玻璃體出血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "New floaters, haze, red reflex loss, sudden monocular visual disturbance, diabetic or trauma context should include vitreous hemorrhage and retinal-tear evaluation.",
+      "signals": {
+        "visual_disturbance": 5,
+        "speech_vision_changes": 2,
+        "recent_trauma": 2,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "vitreous hemorrhage",
+        "vitreous haemorrhage",
+        "blood in vitreous",
+        "dense floaters"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check monocular onset, floaters/flashes, trauma, diabetic retinopathy or anticoagulant context, red reflex, retinal detachment symptoms, and urgent ophthalmology pathway."
+      ],
+      "source_ids": [
+        "ncbi_vitreous_hemorrhage",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "endophthalmitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "眼內炎",
+      "name_en": "Endophthalmitis",
+      "system": "Ophthalmology/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "眼內炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe eye pain, redness, reduced vision, hypopyon, recent intraocular surgery or penetrating injury should include endophthalmitis.",
+      "signals": {
+        "eye_pain_redness": 5,
+        "visual_disturbance": 5,
+        "fever": 2,
+        "eye_discharge": 1,
+        "recent_trauma": 2,
+        "severe_pain": 3
+      },
+      "synonyms": [
+        "endophthalmitis",
+        "postoperative endophthalmitis",
+        "endogenous endophthalmitis",
+        "intraocular infection"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check recent eye surgery or injection, penetrating trauma, immune status, pain severity, vision, hypopyon or red-reflex loss, and emergency ophthalmology treatment pathway."
+      ],
+      "source_ids": [
+        "merck_endophthalmitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "carcinoid_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "類癌症候群",
+      "name_en": "Carcinoid syndrome",
+      "system": "Oncology/Endocrine/Gastrointestinal",
+      "urgency": "soon",
+      "summary_zh": "類癌症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Episodic flushing pattern, diarrhea, abdominal cramping, wheeze, palpitations, or right-sided cardiac clues should include carcinoid syndrome.",
+      "signals": {
+        "bloody_diarrhea": 1,
+        "abdominal_pain": 2,
+        "wheeze": 2,
+        "palpitations": 2,
+        "dyspnea": 1,
+        "weight_loss": 2
+      },
+      "synonyms": [
+        "carcinoid syndrome",
+        "neuroendocrine tumor syndrome",
+        "flushing diarrhea wheeze syndrome",
+        "serotonin secreting tumor"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check episodic flushing, diarrhea frequency, wheeze, bronchospasm, palpitations, weight loss, valvular symptoms, liver metastasis context, and endocrine/oncology workup pathway."
+      ],
+      "source_ids": [
+        "merck_carcinoid_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hyperprolactinemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高泌乳素血症",
+      "name_en": "Hyperprolactinemia",
+      "system": "Endocrine/Pituitary/Reproductive",
+      "urgency": "routine",
+      "summary_zh": "高泌乳素血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Galactorrhea, menstrual or fertility change, sexual dysfunction, medication exposure, pregnancy, hypothyroid or pituitary symptoms should include hyperprolactinemia.",
+      "signals": {
+        "visual_disturbance": 2,
+        "headache": 2,
+        "pregnancy_possible": 1,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "hyperprolactinemia",
+        "high prolactin",
+        "elevated prolactin",
+        "galactorrhea prolactin"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy status, medications, thyroid symptoms, renal/liver disease, galactorrhea, menstrual or sexual symptoms, headache/visual field symptoms, and prolactin repeat context."
+      ],
+      "source_ids": [
+        "merck_hyperprolactinemia_causes",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "ramsay_hunt_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "Ramsay Hunt 症候群",
+      "name_en": "Ramsay Hunt syndrome",
+      "system": "Neurology/ENT/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "Ramsay Hunt 症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Ipsilateral facial weakness with otalgia, vesicles around the ear or mouth, hearing symptoms, vertigo, or zoster context should include Ramsay Hunt syndrome.",
+      "signals": {
+        "vesicular_dermatomal_rash": 3,
+        "ear_pain": 4,
+        "hearing_loss_tinnitus": 3,
+        "vertigo": 2,
+        "unilateral_facial_weakness": 5
+      },
+      "synonyms": [
+        "ramsay hunt syndrome",
+        "herpes zoster oticus",
+        "geniculate ganglion zoster",
+        "facial palsy ear vesicles"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check facial nerve pattern, ear canal or oral vesicles, severe otalgia, hearing loss, vertigo, eye closure safety, immune status, and early ENT/neurology review context."
+      ],
+      "source_ids": [
+        "ncbi_ramsay_hunt_syndrome",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sialolithiasis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "唾液腺結石",
+      "name_en": "Sialolithiasis",
+      "system": "ENT/Oral/Salivary",
+      "urgency": "routine",
+      "summary_zh": "唾液腺結石 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Meal-related salivary gland pain or swelling, palpable duct stone, dry mouth, or recurrent sialadenitis context should include sialolithiasis.",
+      "signals": {
+        "dental_pain_or_facial_swelling": 4,
+        "neck_stiffness_swelling_dysphagia": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "sialolithiasis",
+        "salivary stone",
+        "salivary gland stone",
+        "submandibular duct stone"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mealtime swelling, gland involved, duct drainage, fever or purulence, hydration and medication dryness context, palpable stone, and ENT/dental pathway."
+      ],
+      "source_ids": [
+        "merck_salivary_stones",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_parotitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性腮腺炎",
+      "name_en": "Acute parotitis",
+      "system": "ENT/Oral/Infectious",
+      "urgency": "soon",
+      "summary_zh": "急性腮腺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute painful parotid swelling with fever, erythema, purulent duct drainage, dehydration, obstruction, or Sjogren context should include acute parotitis or sialadenitis.",
+      "signals": {
+        "dental_pain_or_facial_swelling": 4,
+        "fever": 2,
+        "localized_skin_infection": 2,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "acute parotitis",
+        "parotitis",
+        "acute sialadenitis",
+        "bacterial parotitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gland tenderness, duct purulence, fever, obstruction, dehydration, immune status, dental or salivary stone context, and antibiotic or ENT review need."
+      ],
+      "source_ids": [
+        "merck_sialadenitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "bullous_pemphigoid",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "大皰性類天皰瘡",
+      "name_en": "Bullous pemphigoid",
+      "system": "Dermatology/Autoimmune blistering",
+      "urgency": "soon",
+      "summary_zh": "大皰性類天皰瘡 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with pruritic tense bullae, urticarial plaques, widespread blistering, or medication context should include bullous pemphigoid.",
+      "signals": {
+        "rash": 4,
+        "skin_sloughing_or_blistering": 3,
+        "chronic_itchy_flexural_rash": 1,
+        "mucosal_lesions": 1
+      },
+      "synonyms": [
+        "bullous pemphigoid",
+        "tense bullae",
+        "autoimmune blistering disease",
+        "pruritic bullous eruption"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check tense versus flaccid blisters, mucosal involvement, skin pain/sloughing, age, medication triggers, biopsy/immunofluorescence context, and dermatology urgency."
+      ],
+      "source_ids": [
+        "merck_bullous_pemphigoid",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lichen_sclerosus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "硬化性苔癬",
+      "name_en": "Lichen sclerosus",
+      "system": "Dermatology/Genitourinary",
+      "urgency": "routine",
+      "summary_zh": "硬化性苔癬 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic anogenital itch, white atrophic plaques, fissuring, dyspareunia, urinary symptoms, or scarring should include lichen sclerosus.",
+      "signals": {
+        "rash": 2,
+        "chronic_itchy_flexural_rash": 2,
+        "mucosal_lesions": 1
+      },
+      "synonyms": [
+        "lichen sclerosus",
+        "lichen sclerosis",
+        "anogenital lichen sclerosus",
+        "white vulvar plaques"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check anogenital distribution, pruritus, fissures, pain, scarring or urinary symptoms, malignancy warning lesions, and dermatology/gynecology confirmation pathway."
+      ],
+      "source_ids": [
+        "merck_lichen_sclerosus",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acanthosis_nigricans",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "黑棘皮症",
+      "name_en": "Acanthosis nigricans",
+      "system": "Dermatology/Endocrine",
+      "urgency": "routine",
+      "summary_zh": "黑棘皮症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Velvety hyperpigmented plaques on neck or axillae with insulin resistance, PCOS, obesity, medication, or rapid/widespread malignancy concern should include acanthosis nigricans.",
+      "signals": {
+        "rash": 1,
+        "extreme_thirst_polyuria": 2,
+        "weight_loss": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "acanthosis nigricans",
+        "velvety hyperpigmentation",
+        "neck acanthosis",
+        "axillary acanthosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution and tempo, diabetes/insulin resistance symptoms, PCOS features, medication context, rapid widespread onset, weight loss, and metabolic or malignancy evaluation need."
+      ],
+      "source_ids": [
+        "merck_hyperpigmentation_acanthosis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "takayasu_arteritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高安動脈炎",
+      "name_en": "Takayasu arteritis",
+      "system": "Rheumatology/Vasculitis/Large vessel",
+      "urgency": "soon",
+      "summary_zh": "高安動脈炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Young patient with constitutional symptoms, limb claudication, pulse or BP asymmetry, bruits, chest pain, syncope, or visual symptoms should include Takayasu arteritis.",
+      "signals": {
+        "acute_limb_pain_pallor_pulselessness": 2,
+        "syncope": 2,
+        "visual_disturbance": 2,
+        "chest_pain": 1,
+        "fatigue": 3,
+        "fever": 1
+      },
+      "synonyms": [
+        "takayasu arteritis",
+        "takayasu disease",
+        "large vessel vasculitis",
+        "pulseless disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pulse/BP asymmetry, bruits, limb claudication, vascular symptoms, inflammatory markers, aortic imaging context, and rheumatology/vascular referral need."
+      ],
+      "source_ids": [
+        "merck_takayasu_arteritis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "polyarteritis_nodosa",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "結節性多動脈炎",
+      "name_en": "Polyarteritis nodosa",
+      "system": "Rheumatology/Vasculitis/Medium vessel",
+      "urgency": "urgent",
+      "summary_zh": "結節性多動脈炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Multisystem fever, weight loss, livedo or nodules, neuropathy, renal hypertension, abdominal pain, or hepatitis B context should include polyarteritis nodosa.",
+      "signals": {
+        "acute_joint_pain_swelling": 2,
+        "abdominal_pain": 2,
+        "neurologic_deficit": 2,
+        "rash": 2,
+        "fever": 1,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "polyarteritis nodosa",
+        "pan vasculitis",
+        "medium vessel vasculitis",
+        "systemic necrotizing arteritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check organ involvement, neuropathy, skin nodules or livedo, renal/BP clues, abdominal ischemic pain, hepatitis B risk, and urgent rheumatology workup."
+      ],
+      "source_ids": [
+        "merck_polyarteritis_nodosa",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "microscopic_polyangiitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "顯微鏡下多血管炎",
+      "name_en": "Microscopic polyangiitis",
+      "system": "Rheumatology/Vasculitis/ANCA",
+      "urgency": "urgent",
+      "summary_zh": "顯微鏡下多血管炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Pulmonary-renal pattern with hemoptysis, dyspnea, rapidly progressive renal findings, purpura, neuropathy, or systemic inflammation should include microscopic polyangiitis.",
+      "signals": {
+        "hemoptysis": 3,
+        "decreased_urine_output": 3,
+        "rash": 2,
+        "dyspnea": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "microscopic polyangiitis",
+        "mpa vasculitis",
+        "anca vasculitis",
+        "pulmonary renal syndrome mpa"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check hematuria/proteinuria, creatinine trend, hemoptysis or alveolar hemorrhage, purpura, neuropathy, ANCA context, and urgent renal/rheumatology pathway."
+      ],
+      "source_ids": [
+        "merck_microscopic_polyangiitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "eosinophilic_granulomatosis_with_polyangiitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "嗜酸性肉芽腫性多血管炎",
+      "name_en": "Eosinophilic granulomatosis with polyangiitis",
+      "system": "Rheumatology/Vasculitis/ANCA",
+      "urgency": "soon",
+      "summary_zh": "嗜酸性肉芽腫性多血管炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adult-onset asthma, chronic rhinosinusitis or nasal polyps with eosinophilia, neuropathy, rash, pulmonary, cardiac, or renal symptoms should include EGPA.",
+      "signals": {
+        "wheeze": 3,
+        "nasal_congestion_rhinorrhea": 2,
+        "rash": 2,
+        "neurologic_deficit": 2,
+        "dyspnea": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "eosinophilic granulomatosis with polyangiitis",
+        "egpa",
+        "churg strauss syndrome",
+        "eosinophilic vasculitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check asthma onset, sinus disease or nasal polyps, eosinophilia, neuropathy, rash, pulmonary/cardiac/renal involvement, ANCA context, and rheumatology pathway."
+      ],
+      "source_ids": [
+        "merck_eosinophilic_granulomatosis_polyangiitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hereditary_angioedema",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "遺傳性血管性水腫",
+      "name_en": "Hereditary angioedema",
+      "system": "Allergy/Immunology/Complement",
+      "urgency": "urgent",
+      "summary_zh": "遺傳性血管性水腫 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent non-urticarial swelling of face, lips, tongue, airway, extremities, or abdominal attacks with family history should include hereditary angioedema.",
+      "signals": {
+        "facial_lip_tongue_swelling": 5,
+        "abdominal_pain": 2,
+        "respiratory_distress": 3,
+        "severe_sore_throat_drooling_or_stridor": 2
+      },
+      "synonyms": [
+        "hereditary angioedema",
+        "hae",
+        "c1 inhibitor deficiency",
+        "bradykinin angioedema"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check urticaria absence, airway symptoms, abdominal attacks, triggers, family history, ACE inhibitor exposure, C4/C1 inhibitor testing context, and airway safety pathway."
+      ],
+      "source_ids": [
+        "merck_c1_inhibitor_deficiency",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "septic_bursitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "感染性滑囊炎",
+      "name_en": "Septic bursitis",
+      "system": "Musculoskeletal/Infectious",
+      "urgency": "soon",
+      "summary_zh": "感染性滑囊炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Localized bursal swelling with warmth, erythema, pain, fever, overlying cellulitis, skin break, or immunocompromised context should include septic bursitis.",
+      "signals": {
+        "acute_joint_pain_swelling": 3,
+        "localized_skin_infection": 3,
+        "fever": 2,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "septic bursitis",
+        "infected bursitis",
+        "olecranon septic bursitis",
+        "prepatellar septic bursitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bursal location, overlying skin infection or trauma, fever, joint range preservation, aspiration/culture context, and septic arthritis distinction."
+      ],
+      "source_ids": [
+        "merck_bursitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "preseptal_cellulitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "眼眶前蜂窩性組織炎",
+      "name_en": "Preseptal cellulitis",
+      "system": "Ophthalmology/Infectious",
+      "urgency": "soon",
+      "summary_zh": "眼眶前蜂窩性組織炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Eyelid swelling, warmth, erythema, tenderness, fever, insect bite, chalazion, sinus or facial infection with normal vision and eye movements should include preseptal cellulitis.",
+      "signals": {
+        "eye_pain_redness": 3,
+        "localized_skin_infection": 4,
+        "fever": 2,
+        "eye_discharge": 1,
+        "painful_eye_movement_or_proptosis": 1
+      },
+      "synonyms": [
+        "preseptal cellulitis",
+        "periorbital cellulitis",
+        "eyelid cellulitis",
+        "cellulitis around eye"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check visual acuity, eye movements, proptosis, pain with movement, fever, sinus/facial source, age and immune status, and orbital cellulitis red flags."
+      ],
+      "source_ids": [
+        "merck_preseptal_orbital_cellulitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "corneal_foreign_body",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "角膜異物",
+      "name_en": "Corneal foreign body",
+      "system": "Ophthalmology/Trauma",
+      "urgency": "urgent",
+      "summary_zh": "角膜異物 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Foreign-body sensation, tearing, photophobia, red eye, trauma or grinding exposure, contact lens context, or corneal defect should include corneal foreign body.",
+      "signals": {
+        "eye_pain_redness": 4,
+        "recent_trauma": 3,
+        "visual_disturbance": 2,
+        "eye_discharge": 1,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "corneal foreign body",
+        "foreign body in cornea",
+        "metal in eye",
+        "eye foreign body"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mechanism, high-velocity injury, contact lens use, visual acuity, fluorescein pattern, rust ring, penetrating injury concern, and ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_corneal_abrasions_foreign_bodies",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sudden_sensorineural_hearing_loss",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "突發性感音神經性聽力損失",
+      "name_en": "Sudden sensorineural hearing loss",
+      "system": "ENT/Otology",
+      "urgency": "urgent",
+      "summary_zh": "突發性感音神經性聽力損失 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden unilateral moderate to severe hearing loss, tinnitus, ear fullness, vertigo, or neurologic symptoms should include sudden sensorineural hearing loss.",
+      "signals": {
+        "hearing_loss_tinnitus": 5,
+        "vertigo": 2,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "sudden sensorineural hearing loss",
+        "ssnhl",
+        "sudden hearing loss",
+        "acute sensorineural hearing loss"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check onset within 72 hours, unilateral versus bilateral pattern, tinnitus, vertigo, otoscopy, neurologic deficits, medication exposure, and urgent audiology/ENT pathway."
+      ],
+      "source_ids": [
+        "merck_sudden_hearing_loss",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "aphthous_stomatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "復發性阿弗他口炎",
+      "name_en": "Aphthous stomatitis",
+      "system": "Oral/Dental/Mucosal",
+      "urgency": "routine",
+      "summary_zh": "復發性阿弗他口炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Recurrent painful round oral ulcers on nonkeratinized mucosa, without vesicles, with stress, nutritional, IBD, Behcet, or immune context should include aphthous stomatitis.",
+      "signals": {
+        "mucosal_lesions": 4,
+        "severe_pain": 1,
+        "fever": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "aphthous stomatitis",
+        "recurrent aphthous stomatitis",
+        "canker sores",
+        "aphthous ulcers"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ulcer recurrence, location, vesicles, genital/eye/systemic symptoms, fever, weight loss, anemia/nutritional or IBD clues, and dental/medical review need."
+      ],
+      "source_ids": [
+        "merck_recurrent_aphthous_stomatitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "subacute_thyroiditis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "亞急性甲狀腺炎",
+      "name_en": "Subacute thyroiditis",
+      "system": "Endocrine/Thyroid",
+      "urgency": "soon",
+      "summary_zh": "亞急性甲狀腺炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful tender thyroid after viral illness with fever, neck pain, palpitations, weight change, fatigue, or transient hyperthyroid symptoms should include subacute thyroiditis.",
+      "signals": {
+        "neck_stiffness_swelling_dysphagia": 2,
+        "fever": 2,
+        "palpitations": 2,
+        "fatigue": 2,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "subacute thyroiditis",
+        "de quervain thyroiditis",
+        "painful thyroiditis",
+        "viral thyroiditis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check thyroid tenderness, recent viral illness, hyperthyroid symptoms, ESR/CRP and thyroid function context, airway/swallowing red flags, and endocrine follow-up."
+      ],
+      "source_ids": [
+        "msd_subacute_thyroiditis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "autoimmune_hepatitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "自體免疫性肝炎",
+      "name_en": "Autoimmune hepatitis",
+      "system": "Hepatic/Autoimmune",
+      "urgency": "soon",
+      "summary_zh": "自體免疫性肝炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, jaundice, right upper abdominal discomfort, arthralgia, rash, nausea, or chronic liver enzyme elevation should include autoimmune hepatitis.",
+      "signals": {
+        "jaundice": 4,
+        "fatigue": 3,
+        "abdominal_pain": 2,
+        "acute_joint_pain_swelling": 1,
+        "rash": 1
+      },
+      "synonyms": [
+        "autoimmune hepatitis",
+        "aih",
+        "autoimmune chronic hepatitis",
+        "immune mediated hepatitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check liver injury pattern, viral/drug/alcohol alternatives, IgG and autoantibody context, jaundice severity, coagulopathy/encephalopathy red flags, and hepatology pathway."
+      ],
+      "source_ids": [
+        "niddk_autoimmune_hepatitis",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "perianal_abscess",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肛周膿瘍",
+      "name_en": "Perianal abscess",
+      "system": "Gastrointestinal/Anorectal/Infectious",
+      "urgency": "urgent",
+      "summary_zh": "肛周膿瘍 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe anal or perianal pain, swelling, fever, fluctuance, drainage, diabetes, immunocompromise, or Crohn disease context should include perianal or anorectal abscess.",
+      "signals": {
+        "rectal_pain_or_bleeding": 4,
+        "fever": 2,
+        "localized_skin_infection": 3,
+        "severe_pain": 2,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "perianal abscess",
+        "anorectal abscess",
+        "perirectal abscess",
+        "anal abscess"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pain severity, visible swelling/fluctuance, fever, drainage, diabetes or immune risk, deep pelvic symptoms, Crohn context, and surgical drainage pathway."
+      ],
+      "source_ids": [
+        "merck_anorectal_abscess",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "pilonidal_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "藏毛疾病",
+      "name_en": "Pilonidal disease",
+      "system": "Skin/Soft tissue/Anorectal",
+      "urgency": "routine",
+      "summary_zh": "藏毛疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful or draining midline natal-cleft pits, recurrent sacrococcygeal abscess, swelling, erythema, or fever should include pilonidal disease.",
+      "signals": {
+        "low_back_pain": 1,
+        "localized_skin_infection": 3,
+        "severe_pain": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "pilonidal disease",
+        "pilonidal cyst",
+        "pilonidal abscess",
+        "pilonidal sinus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check natal-cleft pits, abscess drainage, fever, recurrent episodes, cellulitis extent, differential anorectal source, and drainage or surgical follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_pilonidal_disease",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "small_bowel_obstruction",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "小腸阻塞",
+      "name_en": "Small bowel obstruction",
+      "system": "Gastrointestinal/Surgical",
+      "urgency": "urgent",
+      "summary_zh": "小腸阻塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Crampy abdominal pain with vomiting, distention, obstipation, prior surgery, hernia, malignancy, dehydration, or ischemic signs should include small bowel obstruction.",
+      "signals": {
+        "abdominal_pain": 4,
+        "vomiting": 4,
+        "constipation_obstipation": 4,
+        "poor_oral_intake_dehydration": 2,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "small bowel obstruction",
+        "sbo",
+        "mechanical small bowel obstruction",
+        "intestinal obstruction small bowel"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prior surgery/adhesions, hernia, malignancy, bowel sounds, obstipation, vomiting/dehydration, peritonitis or ischemia signs, and imaging/surgical pathway."
+      ],
+      "source_ids": [
+        "merck_intestinal_obstruction",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -22292,6 +23032,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Granulomatosis with Polyangiitis (GPA)",
       "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/granulomatosis-with-polyangiitis-gpa"
+    },
+    {
+      "source_id": "ncbi_vitreous_hemorrhage",
+      "publisher": "NCBI Bookshelf",
+      "title": "Vitreous Hemorrhage",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK559131/"
+    },
+    {
+      "source_id": "merck_endophthalmitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Endophthalmitis",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/uveitis-and-related-disorders/endophthalmitis"
+    },
+    {
+      "source_id": "merck_carcinoid_syndrome",
+      "publisher": "Merck Manual Professional",
+      "title": "Gastrointestinal Neuroendocrine Tumors and Carcinoid Syndrome",
+      "url": "https://www.merckmanuals.com/professional/oncology/gastrointestinal-and-pancreatic-neuroendocrine-tumors-nets/gastrointestinal-neuroendocrine-tumors-and-carcinoid-syndrome"
+    },
+    {
+      "source_id": "merck_hyperprolactinemia_causes",
+      "publisher": "Merck Manual Professional",
+      "title": "Causes of Hyperprolactinemia",
+      "url": "https://www.merckmanuals.com/professional/multimedia/table/causes-of-hyperprolactinemia"
+    },
+    {
+      "source_id": "ncbi_ramsay_hunt_syndrome",
+      "publisher": "NCBI Bookshelf",
+      "title": "Ramsay Hunt Syndrome",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK557409/"
+    },
+    {
+      "source_id": "merck_salivary_stones",
+      "publisher": "Merck Manual Professional",
+      "title": "Salivary Stones",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/salivary-stones"
+    },
+    {
+      "source_id": "merck_sialadenitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Sialadenitis",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/oral-and-pharyngeal-disorders/sialadenitis"
+    },
+    {
+      "source_id": "merck_bullous_pemphigoid",
+      "publisher": "Merck Manual Professional",
+      "title": "Bullous Pemphigoid",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/bullous-diseases/bullous-pemphigoid"
+    },
+    {
+      "source_id": "merck_lichen_sclerosus",
+      "publisher": "Merck Manual Professional",
+      "title": "Lichen Sclerosus",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/psoriasis-and-other-papulosquamous-disorders/lichen-sclerosus"
+    },
+    {
+      "source_id": "merck_hyperpigmentation_acanthosis",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperpigmentation",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/pigmentation-disorders/hyperpigmentation"
+    },
+    {
+      "source_id": "merck_takayasu_arteritis",
+      "publisher": "Merck Manual Professional",
+      "title": "Takayasu Arteritis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/takayasu-arteritis"
+    },
+    {
+      "source_id": "merck_polyarteritis_nodosa",
+      "publisher": "Merck Manual Professional",
+      "title": "Polyarteritis Nodosa (PAN)",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/polyarteritis-nodosa-pan"
+    },
+    {
+      "source_id": "merck_microscopic_polyangiitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Microscopic Polyangiitis (MPA)",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/microscopic-polyangiitis-mpa"
+    },
+    {
+      "source_id": "merck_eosinophilic_granulomatosis_polyangiitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Eosinophilic Granulomatosis with Polyangiitis (EGPA)",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/eosinophilic-granulomatosis-with-polyangiitis-egpa"
+    },
+    {
+      "source_id": "merck_c1_inhibitor_deficiency",
+      "publisher": "Merck Manual Professional",
+      "title": "Hereditary and Acquired C1 Inhibitor Deficiency or Dysfunction",
+      "url": "https://www.merckmanuals.com/professional/immunology-allergic-disorders/allergic-autoimmune-and-other-hypersensitivity-disorders/hereditary-and-acquired-c1-inhibitor-deficiency-or-dysfunction"
+    },
+    {
+      "source_id": "merck_bursitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Bursitis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/bursa-muscle-and-tendon-disorders/bursitis"
+    },
+    {
+      "source_id": "merck_preseptal_orbital_cellulitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Preseptal and Orbital Cellulitis",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/orbital-diseases/preseptal-and-orbital-cellulitis"
+    },
+    {
+      "source_id": "merck_corneal_abrasions_foreign_bodies",
+      "publisher": "Merck Manual Professional",
+      "title": "Corneal Abrasions and Corneal Foreign Bodies",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/eye-trauma/corneal-abrasions-and-corneal-foreign-bodies"
+    },
+    {
+      "source_id": "merck_sudden_hearing_loss",
+      "publisher": "Merck Manual Professional",
+      "title": "Sudden Hearing Loss",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/hearing-loss/sudden-hearing-loss"
+    },
+    {
+      "source_id": "merck_recurrent_aphthous_stomatitis",
+      "publisher": "Merck Manual Professional",
+      "title": "Recurrent Aphthous Stomatitis",
+      "url": "https://www.merckmanuals.com/professional/dental-disorders/symptoms-of-dental-and-oral-disorders/recurrent-aphthous-stomatitis"
+    },
+    {
+      "source_id": "msd_subacute_thyroiditis",
+      "publisher": "MSD Manual Professional",
+      "title": "Subacute Thyroiditis",
+      "url": "https://www.msdmanuals.com/professional/endocrine-and-metabolic-disorders/thyroid-disorders/subacute-thyroiditis"
+    },
+    {
+      "source_id": "niddk_autoimmune_hepatitis",
+      "publisher": "NIDDK",
+      "title": "Autoimmune Hepatitis",
+      "url": "https://www.niddk.nih.gov/health-information/liver-disease/autoimmune-hepatitis"
+    },
+    {
+      "source_id": "merck_anorectal_abscess",
+      "publisher": "Merck Manual Professional",
+      "title": "Anorectal Abscess",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/anorectal-disorders/anorectal-abscess"
+    },
+    {
+      "source_id": "merck_pilonidal_disease",
+      "publisher": "Merck Manual Professional",
+      "title": "Pilonidal Disease",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/anorectal-disorders/pilonidal-disease"
+    },
+    {
+      "source_id": "merck_intestinal_obstruction",
+      "publisher": "Merck Manual Professional",
+      "title": "Intestinal Obstruction",
+      "url": "https://www.merckmanuals.com/professional/gastrointestinal-disorders/acute-abdomen-and-surgical-gastroenterology/intestinal-obstruction"
     }
   ]
 }

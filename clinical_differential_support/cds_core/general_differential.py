@@ -83,6 +83,212 @@ FOCUSED_ASK_NEXT_CONTEXTS = [
     ),
 ]
 
+COMPLAINT_GUIDED_INTAKE_PRESETS = [
+    {
+        "complaint_id": "cardiopulmonary",
+        "display_order": 10,
+        "title_zh": "胸痛或呼吸困難",
+        "title_en": "Chest pain or dyspnea",
+        "trigger_findings": {
+            "chest_pain",
+            "dyspnea",
+            "pleuritic_pain",
+            "positional_pleuritic_chest_pain",
+            "palpitations",
+            "syncope",
+            "orthopnea_edema",
+            "hemoptysis",
+        },
+        "query_keywords": ("chest pain", "dyspnea", "shortness of breath", "breathless"),
+        "minimum_data_prompts": [
+            "先補生命徵象、血氧、血壓、心電圖風險與休克或低氧線索。 / Add vitals, oxygenation, BP, ECG risk, and shock or hypoxemia clues first.",
+            "釐清開始時間、誘發因子、運動相關、胸膜性/姿勢性、手臂或下顎放射痛。 / Clarify onset, triggers, exertional pattern, pleuritic or positional features, and arm or jaw radiation.",
+            "補 PE/DVT、感染、心衰、氣胸、創傷、藥物或物質使用等會改變急迫性的風險。 / Add PE/DVT, infection, heart failure, pneumothorax, trauma, medication, or substance risks that change urgency.",
+        ],
+        "finding_shortcuts": [
+            "chest_pain",
+            "dyspnea",
+            "diaphoresis",
+            "radiating_arm_jaw_pain",
+            "syncope",
+            "palpitations",
+        ],
+    },
+    {
+        "complaint_id": "abdominal_urinary",
+        "display_order": 20,
+        "title_zh": "腹痛、嘔吐或泌尿症狀",
+        "title_en": "Abdominal, vomiting, or urinary symptoms",
+        "trigger_findings": {
+            "abdominal_pain",
+            "ruq_pain",
+            "rlq_pain",
+            "llq_pain",
+            "vomiting",
+            "gi_bleeding",
+            "bloody_diarrhea",
+            "constipation_obstipation",
+            "dysuria",
+            "flank_pain",
+        },
+        "query_keywords": ("abdominal pain", "vomiting", "dysuria", "flank pain", "bloody diarrhea"),
+        "minimum_data_prompts": [
+            "先定位疼痛、病程、腹膜刺激徵象、嘔吐/排便/排氣與脫水或血流不穩。 / First localize pain, tempo, peritoneal signs, vomiting, stool/flatus, dehydration, and instability.",
+            "補懷孕可能、泌尿症狀、血便/黑便、近期抗生素、手術史與疝氣風險。 / Add pregnancy possibility, urinary symptoms, bleeding, antibiotics, surgery history, and hernia risk.",
+            "確認是否需要影像、尿液、血液檢查或外科/婦產/泌尿急評估。 / Decide whether imaging, urine, labs, or surgical/gynecology/urology review is needed.",
+        ],
+        "finding_shortcuts": [
+            "abdominal_pain",
+            "vomiting",
+            "constipation_obstipation",
+            "gi_bleeding",
+            "dysuria",
+            "pregnancy_possible",
+        ],
+    },
+    {
+        "complaint_id": "neuro_headache",
+        "display_order": 30,
+        "title_zh": "頭痛、眩暈或神經症狀",
+        "title_en": "Headache, vertigo, or neurologic symptoms",
+        "trigger_findings": {
+            "headache",
+            "neurologic_deficit",
+            "unilateral_weakness",
+            "speech_vision_changes",
+            "thunderclap_headache",
+            "seizure_activity_or_postictal_state",
+            "vertigo",
+        },
+        "query_keywords": ("headache", "weakness", "speech", "vision", "seizure", "vertigo"),
+        "minimum_data_prompts": [
+            "先補 last-known-well、神經缺損、意識、血糖、血壓與突發最痛時間。 / Add last-known-well, focal deficits, mental status, glucose, BP, and thunderclap timing.",
+            "釐清外傷、抗凝、發燒頸僵、免疫低下、癌症、妊娠/產後與 50 歲後新發。 / Check trauma, anticoagulation, fever/neck stiffness, immune risk, cancer, pregnancy/postpartum, and new onset after 50.",
+            "確認是否需要中風、癲癇、感染或出血急症路徑。 / Decide if stroke, seizure, infection, or hemorrhage emergency pathways apply.",
+        ],
+        "finding_shortcuts": [
+            "headache",
+            "thunderclap_headache",
+            "neurologic_deficit",
+            "speech_vision_changes",
+            "seizure_activity_or_postictal_state",
+            "vertigo",
+        ],
+    },
+    {
+        "complaint_id": "fever_rash",
+        "display_order": 40,
+        "title_zh": "發燒、皮疹或感染",
+        "title_en": "Fever, rash, or infection",
+        "trigger_findings": {
+            "fever",
+            "rash",
+            "mucosal_lesions",
+            "rapidly_spreading_skin_infection",
+            "purulent_skin_lesion",
+            "immunocompromised",
+        },
+        "query_keywords": ("fever", "rash", "infection", "cellulitis", "mucosal lesion"),
+        "minimum_data_prompts": [
+            "先補敗血症警訊、免疫狀態、暴露史、旅遊、接觸者與感染管制需求。 / Add sepsis red flags, immune status, exposure, travel, contacts, and infection-control needs.",
+            "描述皮疹形態、分布、黏膜、水泡/脫皮、紫斑、疼痛程度與新藥。 / Describe morphology, distribution, mucosa, blisters/sloughing, purpura, pain, and new medications.",
+            "確認是否需要隔離、培養、影像、抗菌路徑或皮膚科/感染科急評估。 / Decide on isolation, cultures, imaging, antimicrobial pathway, or dermatology/infectious review.",
+        ],
+        "finding_shortcuts": [
+            "fever",
+            "rash",
+            "mucosal_lesions",
+            "skin_sloughing_or_blistering",
+            "new_medication_exposure",
+            "immunocompromised",
+        ],
+    },
+    {
+        "complaint_id": "eye_ent",
+        "display_order": 50,
+        "title_zh": "眼、耳鼻喉或口腔症狀",
+        "title_en": "Eye, ENT, or oral symptoms",
+        "trigger_findings": {
+            "eye_pain_redness",
+            "visual_disturbance",
+            "ear_pain",
+            "hearing_loss_tinnitus",
+            "severe_sore_throat_drooling_or_stridor",
+            "neck_stiffness_swelling_dysphagia",
+        },
+        "query_keywords": ("eye pain", "red eye", "vision loss", "ear pain", "hearing loss", "sore throat"),
+        "minimum_data_prompts": [
+            "先補視力、眼球轉動痛/突出、外傷、隱形眼鏡、聽力、吞嚥與呼吸道警訊。 / Add vision, painful eye movement/proptosis, trauma, contact lens, hearing, swallowing, and airway red flags.",
+            "釐清發燒、分泌物、臉/牙源感染、鼻竇症狀、耳水泡或神經症狀。 / Clarify fever, discharge, facial/dental source, sinus symptoms, ear vesicles, or neurologic signs.",
+            "確認是否需要眼科、ENT、牙科或急診 airway 路徑。 / Decide if ophthalmology, ENT, dental, or emergency airway pathway is needed.",
+        ],
+        "finding_shortcuts": [
+            "eye_pain_redness",
+            "visual_disturbance",
+            "ear_pain",
+            "hearing_loss_tinnitus",
+            "dental_pain_or_facial_swelling",
+            "severe_sore_throat_drooling_or_stridor",
+        ],
+    },
+    {
+        "complaint_id": "trauma_toxin",
+        "display_order": 60,
+        "title_zh": "外傷、暴露或中毒",
+        "title_en": "Trauma, exposure, or toxicology",
+        "trigger_findings": {
+            "recent_trauma",
+            "substance_use_concern",
+            "carbon_monoxide_or_combustion_exposure",
+            "hypothermia",
+            "pain_out_of_proportion_to_exam",
+            "hemodynamic_instability",
+        },
+        "query_keywords": ("trauma", "overdose", "poisoning", "carbon monoxide", "hypothermia"),
+        "minimum_data_prompts": [
+            "先補 ABC、出血、神經狀態、暴露時間、同場他人症狀與安全隔離。 / Add ABCs, bleeding, neurologic status, exposure time, co-exposed people, and scene safety.",
+            "釐清藥物/物質、燃燒密閉空間、低溫/高溫、疼痛與理學檢查不成比例。 / Clarify substances, combustion in enclosed spaces, temperature exposure, and pain out of proportion.",
+            "確認是否需要毒物中心、創傷、CO、高壓氧或外科急症路徑。 / Decide on poison center, trauma, CO, hyperbaric, or surgical emergency pathways.",
+        ],
+        "finding_shortcuts": [
+            "recent_trauma",
+            "substance_use_concern",
+            "altered_mental_status",
+            "carbon_monoxide_or_combustion_exposure",
+            "hemodynamic_instability",
+            "pain_out_of_proportion_to_exam",
+        ],
+    },
+    {
+        "complaint_id": "fatigue_systemic",
+        "display_order": 70,
+        "title_zh": "疲倦、體重變化或全身症狀",
+        "title_en": "Fatigue, weight change, or systemic symptoms",
+        "trigger_findings": {
+            "fatigue",
+            "weight_loss",
+            "jaundice",
+            "easy_bruising_bleeding",
+            "extreme_thirst_polyuria",
+            "hypoglycemia_risk",
+        },
+        "query_keywords": ("fatigue", "weight loss", "jaundice", "bruising", "polyuria"),
+        "minimum_data_prompts": [
+            "先補病程、體重、食慾、發燒夜汗、出血、黃疸、口渴多尿與低血糖風險。 / Add tempo, weight, appetite, fever/night sweats, bleeding, jaundice, thirst/polyuria, and hypoglycemia risk.",
+            "釐清藥物、妊娠、內分泌、肝腎、血液腫瘤、感染與自體免疫線索。 / Clarify medication, pregnancy, endocrine, liver/kidney, hematology/oncology, infection, and autoimmune clues.",
+            "確認需要的基礎檢查與需要立即升級的貧血、肝衰、代謝或敗血症警訊。 / Decide baseline tests and escalation for anemia, liver failure, metabolic, or sepsis red flags.",
+        ],
+        "finding_shortcuts": [
+            "fatigue",
+            "weight_loss",
+            "jaundice",
+            "easy_bruising_bleeding",
+            "extreme_thirst_polyuria",
+            "hypoglycemia_risk",
+        ],
+    },
+]
+
 
 def get_general_differential_catalog_summary() -> dict[str, Any]:
     runtime_catalog = get_general_differential_runtime_catalog()
@@ -137,6 +343,10 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
             ranked_results,
             guided_follow_up,
             selected_findings,
+        ),
+        "complaint_guided_intake": _build_complaint_guided_intake(
+            selected_findings,
+            query,
         ),
         "source_provenance": _build_source_provenance(ranked_results),
         "candidate_scan_filters": _build_candidate_scan_filters(ranked_results),
@@ -221,6 +431,71 @@ def _query_match_score(condition: dict[str, Any], query: str) -> int:
     ):
         return 7
     return 0
+
+
+def _build_complaint_guided_intake(
+    selected_findings: set[str],
+    query: str,
+) -> dict[str, Any]:
+    matched_cards: list[dict[str, Any]] = []
+    fallback_cards: list[dict[str, Any]] = []
+    normalized_query = query.strip().lower()
+
+    for preset in COMPLAINT_GUIDED_INTAKE_PRESETS:
+        trigger_findings = set(preset["trigger_findings"])
+        matched_findings = sorted(selected_findings.intersection(trigger_findings))
+        matched_query = bool(
+            normalized_query
+            and any(
+                str(keyword).lower() in normalized_query
+                for keyword in preset.get("query_keywords", ())
+            )
+        )
+        card = _complaint_guided_intake_card(
+            preset,
+            matched_findings,
+            matched_query,
+        )
+        if matched_findings or matched_query:
+            matched_cards.append(card)
+        else:
+            fallback_cards.append(card)
+
+    matched_cards.sort(
+        key=lambda card: (
+            -len(card["matched_findings"]),
+            int(card["display_order"]),
+        )
+    )
+    fallback_cards.sort(key=lambda card: int(card["display_order"]))
+
+    if matched_cards:
+        return {
+            "status": "matched",
+            "cards": matched_cards[:3],
+        }
+
+    return {
+        "status": "needs_complaint_selection",
+        "cards": fallback_cards[:3],
+    }
+
+
+def _complaint_guided_intake_card(
+    preset: dict[str, Any],
+    matched_findings: list[str],
+    matched_query: bool,
+) -> dict[str, Any]:
+    return {
+        "complaint_id": str(preset["complaint_id"]),
+        "display_order": int(preset["display_order"]),
+        "title_zh": str(preset["title_zh"]),
+        "title_en": str(preset["title_en"]),
+        "matched_findings": matched_findings,
+        "matched_query": matched_query,
+        "minimum_data_prompts": list(preset["minimum_data_prompts"]),
+        "finding_shortcuts": list(preset["finding_shortcuts"]),
+    }
 
 
 def _build_source_provenance(results: list[dict[str, Any]]) -> dict[str, Any]:

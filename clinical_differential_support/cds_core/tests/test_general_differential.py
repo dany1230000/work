@@ -105,6 +105,26 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertGreaterEqual(len(summary["danger_checks"]), 1)
         self.assertTrue(summary["has_structured_findings"])
 
+    def test_results_include_complaint_guided_intake_cards(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                ],
+            }
+        )
+
+        intake = result["complaint_guided_intake"]
+
+        self.assertEqual(intake["status"], "matched")
+        self.assertEqual(intake["cards"][0]["complaint_id"], "cardiopulmonary")
+        self.assertIn("Chest pain or dyspnea", intake["cards"][0]["title_en"])
+        self.assertGreaterEqual(len(intake["cards"][0]["minimum_data_prompts"]), 3)
+        self.assertIn("chest_pain", intake["cards"][0]["finding_shortcuts"])
+        self.assertIn("dyspnea", intake["cards"][0]["finding_shortcuts"])
+
     def test_sepsis_ranks_first_for_infectious_shock_pattern(self):
         result = evaluate_general_differential(
             {
@@ -834,6 +854,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
             ("superficial thrombophlebitis", "superficial_thrombophlebitis"),
             ("raynaud phenomenon", "raynaud_phenomenon"),
             ("granulomatosis with polyangiitis", "granulomatosis_with_polyangiitis"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
+    def test_twenty_first_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("vitreous hemorrhage", "vitreous_hemorrhage"),
+            ("endophthalmitis", "endophthalmitis"),
+            ("carcinoid syndrome", "carcinoid_syndrome"),
+            ("hyperprolactinemia", "hyperprolactinemia"),
+            ("ramsay hunt syndrome", "ramsay_hunt_syndrome"),
+            ("sialolithiasis", "sialolithiasis"),
+            ("acute parotitis", "acute_parotitis"),
+            ("bullous pemphigoid", "bullous_pemphigoid"),
+            ("lichen sclerosus", "lichen_sclerosus"),
+            ("acanthosis nigricans", "acanthosis_nigricans"),
+            ("takayasu arteritis", "takayasu_arteritis"),
+            ("polyarteritis nodosa", "polyarteritis_nodosa"),
+            ("microscopic polyangiitis", "microscopic_polyangiitis"),
+            ("eosinophilic granulomatosis with polyangiitis", "eosinophilic_granulomatosis_with_polyangiitis"),
+            ("hereditary angioedema", "hereditary_angioedema"),
+            ("septic bursitis", "septic_bursitis"),
+            ("preseptal cellulitis", "preseptal_cellulitis"),
+            ("corneal foreign body", "corneal_foreign_body"),
+            ("sudden sensorineural hearing loss", "sudden_sensorineural_hearing_loss"),
+            ("aphthous stomatitis", "aphthous_stomatitis"),
+            ("subacute thyroiditis", "subacute_thyroiditis"),
+            ("autoimmune hepatitis", "autoimmune_hepatitis"),
+            ("perianal abscess", "perianal_abscess"),
+            ("pilonidal disease", "pilonidal_disease"),
+            ("small bowel obstruction", "small_bowel_obstruction"),
         ]
         for query, slug in expectations:
             with self.subTest(query=query):
