@@ -1136,6 +1136,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twenty_seventh_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("primary aldosteronism", "primary_aldosteronism"),
+            ("hypopituitarism", "hypopituitarism"),
+            ("lactic acidosis", "lactic_acidosis"),
+            ("secondary hyperparathyroidism", "secondary_hyperparathyroidism"),
+            ("hypercalcemia", "hypercalcemia"),
+            ("metabolic acidosis", "metabolic_acidosis"),
+            ("hypernatremia", "hypernatremia"),
+            ("hypermagnesemia", "hypermagnesemia"),
+            ("hypophosphatemia", "hypophosphatemia"),
+            ("hyperphosphatemia", "hyperphosphatemia"),
+            ("hemolytic anemia", "hemolytic_anemia"),
+            ("acute myeloid leukemia", "acute_myeloid_leukemia"),
+            ("acute lymphoblastic leukemia", "acute_lymphoblastic_leukemia"),
+            ("erysipelas", "erysipelas"),
+            ("keratitis", "keratitis"),
+            ("giant cell arteritis", "giant_cell_arteritis"),
+            ("pseudogout", "calcium_pyrophosphate_deposition_disease"),
+            ("sjogren syndrome", "sjogren_syndrome"),
+            ("eosinophilic fasciitis", "eosinophilic_fasciitis"),
+            ("iga nephropathy", "iga_nephropathy"),
+            ("minimal change disease", "minimal_change_disease"),
+            ("focal segmental glomerulosclerosis", "focal_segmental_glomerulosclerosis"),
+            ("membranous nephropathy", "membranous_nephropathy"),
+            ("poststreptococcal glomerulonephritis", "postinfectious_glomerulonephritis"),
+            ("renal vein thrombosis", "renal_vein_thrombosis"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

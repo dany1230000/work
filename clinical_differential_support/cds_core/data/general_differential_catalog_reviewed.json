@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-04-775",
-    "condition_count": 775,
-    "source_count": 853,
+    "catalog_version": "general-differential-starter-2026-07-04-800",
+    "condition_count": 800,
+    "source_count": 878,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-04-775",
-      "condition_count": 775,
-      "source_count": 853,
+      "catalog_version": "general-differential-starter-2026-07-04-800",
+      "condition_count": 800,
+      "source_count": 878,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 775
+      "expansion_target_condition_count": 800
     }
   },
   "safety_scope": {
@@ -22548,6 +22548,756 @@
         "merck_anti_gbm_phase775",
         "merck_pulmonary_renal_syndrome_phase775"
       ]
+    },
+    {
+      "slug": "primary_aldosteronism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "原發性醛固酮增多症",
+      "name_en": "Primary aldosteronism",
+      "system": "Endocrine/Metabolic/Cardiovascular",
+      "urgency": "soon",
+      "summary_zh": "原發性醛固酮增多症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hypertension with hypokalemia, episodic weakness, cramps, resistant blood pressure, adrenal incidentaloma, or suppressed renin context should include primary aldosteronism.",
+      "signals": {
+        "hypertensive_emergency": 2,
+        "weakness": 3,
+        "fatigue": 2,
+        "palpitations": 1,
+        "decreased_urine_output": 1
+      },
+      "synonyms": [
+        "primary aldosteronism",
+        "conn syndrome",
+        "hyperaldosteronism",
+        "aldosterone excess"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check blood pressure pattern, potassium, renin and aldosterone context, adrenal imaging history, medication confounders, and endocrine referral need."
+      ],
+      "source_ids": [
+        "merck_primary_aldosteronism_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypopituitarism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "垂體功能低下",
+      "name_en": "Hypopituitarism",
+      "system": "Endocrine/Metabolic",
+      "urgency": "soon",
+      "summary_zh": "垂體功能低下 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, weight loss, hypotension, amenorrhea or sexual dysfunction, cold intolerance, hyponatremia, pituitary tumor, surgery, radiation, or postpartum hemorrhage should include hypopituitarism.",
+      "signals": {
+        "fatigue": 3,
+        "weight_loss": 2,
+        "orthostatic_lightheadedness": 2,
+        "hyponatremia_confusion_or_seizure_risk": 2,
+        "hypoglycemia_risk": 1
+      },
+      "synonyms": [
+        "hypopituitarism",
+        "generalized hypopituitarism",
+        "pituitary hormone deficiency",
+        "panhypopituitarism"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pituitary surgery or radiation, postpartum hemorrhage, headache or visual symptoms, cortisol and thyroid axis context, sodium or glucose abnormalities, and endocrine review."
+      ],
+      "source_ids": [
+        "merck_generalized_hypopituitarism_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "lactic_acidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乳酸性酸中毒",
+      "name_en": "Lactic acidosis",
+      "system": "Nephrology/Metabolic/Critical care",
+      "urgency": "emergent",
+      "summary_zh": "乳酸性酸中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Shock, sepsis, hypoxia, seizure, metformin or toxin exposure, liver failure, high anion gap acidosis, elevated lactate, or poor perfusion should include lactic acidosis.",
+      "signals": {
+        "hemodynamic_instability": 4,
+        "respiratory_distress": 3,
+        "altered_mental_status": 2,
+        "seizure_activity_or_postictal_state": 2,
+        "carbon_monoxide_or_combustion_exposure": 1
+      },
+      "synonyms": [
+        "lactic acidosis",
+        "elevated lactate",
+        "lactate acidosis",
+        "high anion gap lactic acidosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lactate, pH and bicarbonate, perfusion and oxygenation, sepsis or shock source, seizure or toxin exposure, medication context, and ICU escalation threshold."
+      ],
+      "source_ids": [
+        "merck_lactic_acidosis_phase800",
+        "merck_metabolic_acidosis_phase800"
+      ]
+    },
+    {
+      "slug": "secondary_hyperparathyroidism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "續發性副甲狀腺功能亢進",
+      "name_en": "Secondary hyperparathyroidism",
+      "system": "Endocrine/Metabolic/Renal",
+      "urgency": "routine",
+      "summary_zh": "續發性副甲狀腺功能亢進 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic kidney disease, vitamin D deficiency, hypocalcemia or phosphate retention with elevated parathyroid hormone, bone pain, pruritus, fractures, or renal osteodystrophy context should include secondary hyperparathyroidism.",
+      "signals": {
+        "bone_back_pain": 2,
+        "decreased_urine_output": 2,
+        "chronic_itchy_flexural_rash": 1,
+        "fatigue": 1,
+        "weakness": 1
+      },
+      "synonyms": [
+        "secondary hyperparathyroidism",
+        "renal secondary hyperparathyroidism",
+        "ckd mineral bone disorder",
+        "high pth kidney disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CKD stage, calcium, phosphate, PTH, vitamin D, bone pain or fracture history, pruritus, phosphate binder or vitamin D therapy context, and nephrology/endocrine follow-up."
+      ],
+      "source_ids": [
+        "merck_hyperparathyroidism_phase800",
+        "merck_hyperphosphatemia_phase800"
+      ]
+    },
+    {
+      "slug": "hypercalcemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高鈣血症",
+      "name_en": "Hypercalcemia",
+      "system": "Endocrine/Metabolic/Nephrology",
+      "urgency": "soon",
+      "summary_zh": "高鈣血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Polyuria, thirst, constipation, weakness, confusion, kidney stones, malignancy, vitamin D excess, or parathyroid disease context should include hypercalcemia.",
+      "signals": {
+        "extreme_thirst_polyuria": 3,
+        "altered_mental_status": 3,
+        "constipation_obstipation": 2,
+        "weakness": 2,
+        "flank_pain": 1
+      },
+      "synonyms": [
+        "hypercalcemia",
+        "high calcium",
+        "calcium excess",
+        "malignancy hypercalcemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check corrected or ionized calcium, PTH, malignancy clues, medications or supplements, kidney function, ECG or severe neurologic symptoms, and urgent threshold."
+      ],
+      "source_ids": [
+        "merck_hypercalcemia_phase800",
+        "merck_hyperparathyroidism_phase800"
+      ]
+    },
+    {
+      "slug": "metabolic_acidosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "代謝性酸中毒",
+      "name_en": "Metabolic acidosis",
+      "system": "Nephrology/Metabolic/Critical care",
+      "urgency": "emergent",
+      "summary_zh": "代謝性酸中毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Tachypnea, shock, kidney failure, diabetic ketoacidosis, lactic acidosis, toxic ingestion, diarrhea, or low bicarbonate context should include metabolic acidosis.",
+      "signals": {
+        "respiratory_distress": 3,
+        "tachycardia": 2,
+        "hemodynamic_instability": 3,
+        "severe_hyperglycemia_dehydration_confusion": 2,
+        "altered_mental_status": 2
+      },
+      "synonyms": [
+        "metabolic acidosis",
+        "anion gap acidosis",
+        "low bicarbonate",
+        "acid base disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check blood gas, bicarbonate, anion gap, lactate, ketones, renal function, toxin exposure, diarrhea losses, and hemodynamic or ICU escalation threshold."
+      ],
+      "source_ids": [
+        "merck_metabolic_acidosis_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypernatremia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高鈉血症",
+      "name_en": "Hypernatremia",
+      "system": "Nephrology/Metabolic/Critical care",
+      "urgency": "soon",
+      "summary_zh": "高鈉血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Thirst, dehydration, poor access to water, altered mental status, seizures, fever, diarrhea, osmotic diuresis, or high sodium context should include hypernatremia.",
+      "signals": {
+        "poor_oral_intake_dehydration": 4,
+        "altered_mental_status": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "vomiting": 1,
+        "extreme_thirst_polyuria": 2
+      },
+      "synonyms": [
+        "hypernatremia",
+        "high sodium",
+        "water deficit",
+        "hyperosmolar sodium"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check sodium level, rate of change, volume status, urine output and osmolality, access to water, neurologic symptoms, and safe correction pathway."
+      ],
+      "source_ids": [
+        "merck_hypernatremia_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypermagnesemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高鎂血症",
+      "name_en": "Hypermagnesemia",
+      "system": "Nephrology/Metabolic/Toxicology",
+      "urgency": "soon",
+      "summary_zh": "高鎂血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Renal failure, magnesium-containing laxatives or antacids, weakness, hyporeflexia, bradycardia, hypotension, confusion, or respiratory depression should include hypermagnesemia.",
+      "signals": {
+        "weakness": 3,
+        "altered_mental_status": 2,
+        "respiratory_distress": 2,
+        "hemodynamic_instability": 2,
+        "decreased_urine_output": 2
+      },
+      "synonyms": [
+        "hypermagnesemia",
+        "high magnesium",
+        "magnesium toxicity",
+        "magnesium excess"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check magnesium level, renal function, laxative or antacid exposure, reflexes, ECG and hemodynamics, respiratory status, and severe-toxicity escalation threshold."
+      ],
+      "source_ids": [
+        "merck_hypermagnesemia_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hypophosphatemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "低磷血症",
+      "name_en": "Hypophosphatemia",
+      "system": "Nephrology/Metabolic/Nutrition",
+      "urgency": "soon",
+      "summary_zh": "低磷血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Weakness, respiratory failure, heart failure, seizures, alcohol use disorder, burns, starvation, refeeding, DKA recovery, or low phosphate context should include hypophosphatemia.",
+      "signals": {
+        "weakness": 3,
+        "respiratory_distress": 2,
+        "seizure_activity_or_postictal_state": 2,
+        "fatigue": 2,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "hypophosphatemia",
+        "low phosphate",
+        "phosphate depletion",
+        "refeeding hypophosphatemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check phosphate level, nutrition and refeeding risk, DKA recovery, alcohol or burn context, respiratory muscle weakness, renal function, and replacement safety pathway."
+      ],
+      "source_ids": [
+        "merck_hypophosphatemia_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "hyperphosphatemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高磷血症",
+      "name_en": "Hyperphosphatemia",
+      "system": "Nephrology/Metabolic",
+      "urgency": "routine",
+      "summary_zh": "高磷血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic kidney disease, hypoparathyroidism, tumor lysis, rhabdomyolysis, acidosis, tetany, or high phosphate context should include hyperphosphatemia.",
+      "signals": {
+        "decreased_urine_output": 2,
+        "acute_joint_pain_swelling": 1,
+        "weakness": 2,
+        "recent_cancer_treatment": 1,
+        "altered_mental_status": 1
+      },
+      "synonyms": [
+        "hyperphosphatemia",
+        "high phosphate",
+        "phosphate excess",
+        "ckd phosphate elevation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check phosphate, calcium, kidney function, CKD or dialysis context, tumor lysis or rhabdomyolysis clues, hypocalcemia symptoms, and medication or binder context."
+      ],
+      "source_ids": [
+        "merck_hyperphosphatemia_phase800",
+        "merck_nephrotic_syndrome"
+      ]
+    },
+    {
+      "slug": "hemolytic_anemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "溶血性貧血",
+      "name_en": "Hemolytic anemia",
+      "system": "Hematology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "溶血性貧血 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, pallor, jaundice, dark urine, splenomegaly, high reticulocytes, elevated LDH, low haptoglobin, or medication, infection, autoimmune, or mechanical hemolysis context should include hemolytic anemia.",
+      "signals": {
+        "fatigue": 3,
+        "jaundice": 3,
+        "weakness": 2,
+        "abdominal_pain": 1,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "hemolytic anemia",
+        "hemolysis",
+        "autoimmune hemolytic anemia",
+        "dark urine anemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC and reticulocytes, bilirubin, LDH, haptoglobin, smear, direct antiglobulin test context, drug or infection triggers, and hematology review need."
+      ],
+      "source_ids": [
+        "msd_hemolytic_anemia_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_myeloid_leukemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性骨髓性白血病",
+      "name_en": "Acute myeloid leukemia",
+      "system": "Hematology/Oncology",
+      "urgency": "emergent",
+      "summary_zh": "急性骨髓性白血病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fatigue, pallor, fever, recurrent infection, bruising, bleeding, cytopenias, circulating blasts, gum swelling, or prior chemotherapy context should include acute myeloid leukemia.",
+      "signals": {
+        "fatigue": 3,
+        "fever": 2,
+        "easy_bruising_bleeding": 4,
+        "immunocompromised": 2,
+        "weight_loss": 2
+      },
+      "synonyms": [
+        "acute myeloid leukemia",
+        "aml",
+        "acute myelogenous leukemia",
+        "acute nonlymphocytic leukemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC with differential, blasts, fever or infection, bleeding severity, leukostasis symptoms, prior chemo/radiation, and urgent hematology pathway."
+      ],
+      "source_ids": [
+        "merck_aml_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "acute_lymphoblastic_leukemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性淋巴性白血病",
+      "name_en": "Acute lymphoblastic leukemia",
+      "system": "Hematology/Oncology",
+      "urgency": "emergent",
+      "summary_zh": "急性淋巴性白血病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Fever, fatigue, pallor, bruising, bleeding, bone pain, lymphadenopathy, hepatosplenomegaly, cytopenias, or blasts should include acute lymphoblastic leukemia.",
+      "signals": {
+        "fever": 2,
+        "fatigue": 3,
+        "easy_bruising_bleeding": 4,
+        "bone_back_pain": 2,
+        "weight_loss": 2
+      },
+      "synonyms": [
+        "acute lymphoblastic leukemia",
+        "all leukemia",
+        "acute lymphocytic leukemia",
+        "lymphoblast leukemia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check CBC and smear, bone pain, lymph nodes or organomegaly, CNS or testicular symptoms, infection or bleeding severity, and urgent hematology pathway."
+      ],
+      "source_ids": [
+        "merck_all_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "erysipelas",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "丹毒",
+      "name_en": "Erysipelas",
+      "system": "Skin/Soft tissue/Infectious",
+      "urgency": "soon",
+      "summary_zh": "丹毒 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute tender, bright red, raised, sharply demarcated skin plaque with fever, lymphatic involvement, facial or leg distribution, or recurrent cellulitis context should include erysipelas.",
+      "signals": {
+        "localized_skin_infection": 4,
+        "rapidly_spreading_skin_infection": 3,
+        "fever": 2,
+        "rash": 2,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "erysipelas",
+        "superficial cellulitis",
+        "streptococcal skin infection",
+        "well demarcated cellulitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check border sharpness, fever, lymphangitis, facial or limb involvement, recurrence, immunocompromise, necrotizing infection red flags, and antibiotic or inpatient threshold."
+      ],
+      "source_ids": [
+        "merck_erysipelas_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "keratitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "角膜炎",
+      "name_en": "Keratitis",
+      "system": "Ophthalmology/Infectious",
+      "urgency": "emergent",
+      "summary_zh": "角膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Eye pain, redness, photophobia, tearing, blurred vision, contact lens use, corneal opacity, foreign body sensation, or trauma should include keratitis.",
+      "signals": {
+        "eye_pain_redness": 4,
+        "visual_disturbance": 3,
+        "eye_trauma_or_contact_lens": 4,
+        "itchy_red_watery_eyes": 1,
+        "severe_pain": 2
+      },
+      "synonyms": [
+        "keratitis",
+        "corneal inflammation",
+        "corneal infection",
+        "photophobia red eye"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check contact lens use, trauma or UV exposure, photophobia, vision change, corneal opacity or fluorescein finding, and urgent ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_superficial_punctate_keratitis_phase800",
+        "msd_uveitis"
+      ]
+    },
+    {
+      "slug": "giant_cell_arteritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "巨細胞動脈炎",
+      "name_en": "Giant cell arteritis",
+      "system": "Rheumatologic/Vascular/Ophthalmology",
+      "urgency": "emergent",
+      "summary_zh": "巨細胞動脈炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "New headache after age 50, scalp tenderness, jaw claudication, visual symptoms, polymyalgia rheumatica symptoms, or elevated inflammatory markers should include giant cell arteritis.",
+      "signals": {
+        "new_headache_after_50": 4,
+        "headache": 3,
+        "jaw_claudication": 4,
+        "visual_disturbance": 4,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "giant cell arteritis",
+        "temporal arteritis",
+        "jaw claudication arteritis",
+        "cranial arteritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, new headache pattern, jaw claudication, transient or persistent visual symptoms, PMR symptoms, ESR/CRP context, and urgent vision-protection pathway."
+      ],
+      "source_ids": [
+        "merck_giant_cell_arteritis_phase800",
+        "merck_polymyalgia_rheumatica"
+      ]
+    },
+    {
+      "slug": "calcium_pyrophosphate_deposition_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "焦磷酸鈣沉積病",
+      "name_en": "Calcium pyrophosphate deposition disease",
+      "system": "Rheumatologic/Musculoskeletal",
+      "urgency": "soon",
+      "summary_zh": "焦磷酸鈣沉積病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute hot swollen joint, knee or wrist attack, older age, chondrocalcinosis, crowned dens neck pain, or gout mimic should include calcium pyrophosphate deposition disease.",
+      "signals": {
+        "acute_hot_swollen_joint": 4,
+        "acute_joint_pain_swelling": 4,
+        "neck_stiffness": 1,
+        "severe_pain": 2,
+        "fever": 1
+      },
+      "synonyms": [
+        "calcium pyrophosphate deposition disease",
+        "cppd",
+        "pseudogout",
+        "chondrocalcinosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check involved joint, fever or septic arthritis risk, synovial fluid crystals and culture context, chondrocalcinosis, metabolic associations, and rheumatology follow-up."
+      ],
+      "source_ids": [
+        "merck_cppd_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "sjogren_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "乾燥症",
+      "name_en": "Sjogren syndrome",
+      "system": "Rheumatologic/Ophthalmology/Oral",
+      "urgency": "routine",
+      "summary_zh": "乾燥症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Dry eyes, dry mouth, parotid swelling, fatigue, arthralgia, dental caries, neuropathy, interstitial lung disease, or autoimmune overlap should include Sjogren syndrome.",
+      "signals": {
+        "fatigue": 2,
+        "itchy_red_watery_eyes": 2,
+        "dental_pain_or_facial_swelling": 1,
+        "acute_joint_pain_swelling": 1,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "sjogren syndrome",
+        "sicca syndrome",
+        "dry eye dry mouth autoimmune",
+        "sjogrens"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ocular and oral dryness, parotid swelling, dental issues, neuropathy or lung symptoms, autoimmune overlap, antibodies or biopsy context, and rheumatology pathway."
+      ],
+      "source_ids": [
+        "merck_sjogren_syndrome_phase800",
+        "merck_sle"
+      ]
+    },
+    {
+      "slug": "eosinophilic_fasciitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "嗜酸性筋膜炎",
+      "name_en": "Eosinophilic fasciitis",
+      "system": "Rheumatologic/Skin/Musculoskeletal",
+      "urgency": "soon",
+      "summary_zh": "嗜酸性筋膜炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful limb swelling, skin induration, orange-peel texture, groove sign, restricted range of motion, eosinophilia, or exercise or trauma trigger should include eosinophilic fasciitis.",
+      "signals": {
+        "rash": 3,
+        "acute_joint_pain_swelling": 2,
+        "severe_pain": 1,
+        "fatigue": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "eosinophilic fasciitis",
+        "shulman syndrome",
+        "diffuse fasciitis",
+        "groove sign fasciitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check limb distribution, skin induration and groove sign, range of motion, eosinophil count, medication or trauma triggers, scleroderma mimics, and rheumatology/biopsy pathway."
+      ],
+      "source_ids": [
+        "merck_eosinophilic_fasciitis_phase800",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "iga_nephropathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "IgA 腎病變",
+      "name_en": "IgA nephropathy",
+      "system": "Renal/Nephrology",
+      "urgency": "soon",
+      "summary_zh": "IgA 腎病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hematuria soon after upper respiratory or mucosal infection, flank pain, proteinuria, hypertension, or recurrent cola-colored urine should include IgA nephropathy.",
+      "signals": {
+        "flank_pain": 2,
+        "decreased_urine_output": 2,
+        "sore_throat": 1,
+        "hypertensive_emergency": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "iga nephropathy",
+        "berger disease",
+        "synpharyngitic hematuria",
+        "recurrent gross hematuria"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check timing after mucosal infection, urinalysis with protein and casts, blood pressure, kidney function trend, complement context, and nephrology review need."
+      ],
+      "source_ids": [
+        "merck_iga_nephropathy_phase800",
+        "merck_nephritic_syndrome"
+      ]
+    },
+    {
+      "slug": "minimal_change_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "微小變化病",
+      "name_en": "Minimal change disease",
+      "system": "Renal/Nephrology",
+      "urgency": "soon",
+      "summary_zh": "微小變化病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Nephrotic syndrome with edema, heavy proteinuria, hypoalbuminemia, preserved renal function, child or adult NSAID or lymphoma context should include minimal change disease.",
+      "signals": {
+        "orthopnea_edema": 3,
+        "decreased_urine_output": 2,
+        "fatigue": 1,
+        "known_cancer": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "minimal change disease",
+        "minimal change nephrotic syndrome",
+        "lipoid nephrosis",
+        "mcd kidney"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check edema distribution, urine protein, albumin and lipids, age and drug exposures, kidney function, hematuria or hypertension, and nephrology pathway."
+      ],
+      "source_ids": [
+        "merck_minimal_change_disease_phase800",
+        "merck_nephrotic_syndrome"
+      ]
+    },
+    {
+      "slug": "focal_segmental_glomerulosclerosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "局灶節段性腎小球硬化症",
+      "name_en": "Focal segmental glomerulosclerosis",
+      "system": "Renal/Nephrology",
+      "urgency": "soon",
+      "summary_zh": "局灶節段性腎小球硬化症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Proteinuria, nephrotic syndrome, edema, hypertension, reduced kidney function, obesity, HIV, reduced nephron mass, or APOL1 risk context should include focal segmental glomerulosclerosis.",
+      "signals": {
+        "orthopnea_edema": 3,
+        "decreased_urine_output": 3,
+        "hypertensive_emergency": 1,
+        "fatigue": 1,
+        "immunocompromised": 1
+      },
+      "synonyms": [
+        "focal segmental glomerulosclerosis",
+        "fsgs",
+        "segmental glomerulosclerosis",
+        "proteinuric kidney disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check proteinuria degree, kidney function, blood pressure, secondary causes such as obesity or HIV, nephrotic complications, and biopsy or nephrology context."
+      ],
+      "source_ids": [
+        "merck_fsgs_phase800",
+        "merck_nephrotic_syndrome"
+      ]
+    },
+    {
+      "slug": "membranous_nephropathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "膜性腎病變",
+      "name_en": "Membranous nephropathy",
+      "system": "Renal/Nephrology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "膜性腎病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Adult nephrotic syndrome, edema, proteinuria, thromboembolism, malignancy, hepatitis, autoimmune disease, or PLA2R context should include membranous nephropathy.",
+      "signals": {
+        "orthopnea_edema": 3,
+        "unilateral_leg_swelling": 2,
+        "known_cancer": 2,
+        "decreased_urine_output": 2,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "membranous nephropathy",
+        "membranous glomerulonephritis",
+        "pla2r nephropathy",
+        "adult nephrotic syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check urine protein, albumin, renal function, PLA2R or secondary-cause context, malignancy or hepatitis clues, thrombosis symptoms, and nephrology referral need."
+      ],
+      "source_ids": [
+        "merck_membranous_nephropathy_phase800",
+        "merck_nephrotic_syndrome"
+      ]
+    },
+    {
+      "slug": "postinfectious_glomerulonephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "感染後腎小球腎炎",
+      "name_en": "Postinfectious glomerulonephritis",
+      "system": "Renal/Nephrology/Infectious",
+      "urgency": "soon",
+      "summary_zh": "感染後腎小球腎炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Hematuria, edema, hypertension, oliguria, low complement, or cola-colored urine after throat, skin, or other infection should include postinfectious glomerulonephritis.",
+      "signals": {
+        "decreased_urine_output": 3,
+        "orthopnea_edema": 2,
+        "sore_throat": 2,
+        "localized_skin_infection": 1,
+        "hypertensive_emergency": 1
+      },
+      "synonyms": [
+        "postinfectious glomerulonephritis",
+        "poststreptococcal glomerulonephritis",
+        "pign",
+        "acute postinfectious nephritis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check infection timing, urinalysis, creatinine, complement, blood pressure, edema severity, and nephrology or inpatient threshold."
+      ],
+      "source_ids": [
+        "merck_postinfectious_glomerulonephritis_phase800",
+        "merck_nephritic_syndrome"
+      ]
+    },
+    {
+      "slug": "renal_vein_thrombosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "腎靜脈血栓",
+      "name_en": "Renal vein thrombosis",
+      "system": "Renal/Vascular/Hematology",
+      "urgency": "emergent",
+      "summary_zh": "腎靜脈血栓 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Flank pain, hematuria, acute kidney injury, nephrotic syndrome, renal cancer, hypercoagulability, pulmonary embolism, or unexplained kidney decline should include renal vein thrombosis.",
+      "signals": {
+        "flank_pain": 3,
+        "decreased_urine_output": 3,
+        "unilateral_leg_swelling": 2,
+        "pleuritic_pain": 1,
+        "known_cancer": 1
+      },
+      "synonyms": [
+        "renal vein thrombosis",
+        "renal venous thrombosis",
+        "kidney vein clot",
+        "nephrotic thrombosis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check nephrotic syndrome and malignancy risk, hematuria, kidney function, DVT or PE symptoms, vascular imaging context, and urgent anticoagulation-specialist pathway."
+      ],
+      "source_ids": [
+        "merck_renal_vein_thrombosis_phase800",
+        "merck_membranous_nephropathy_phase800"
+      ]
     }
   ],
   "sources": [
@@ -27668,6 +28418,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Anti-Glomerular Basement Membrane (Anti-GBM) Disease",
       "url": "https://www.merckmanuals.com/professional/pulmonary-disorders/diffuse-alveolar-hemorrhage-and-pulmonary-renal-syndrome/anti-glomerular-basement-membrane-anti-gbm-disease"
+    },
+    {
+      "source_id": "merck_primary_aldosteronism_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Primary Aldosteronism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/adrenal-disorders/primary-aldosteronism"
+    },
+    {
+      "source_id": "merck_generalized_hypopituitarism_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Generalized Hypopituitarism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/pituitary-disorders/generalized-hypopituitarism"
+    },
+    {
+      "source_id": "merck_lactic_acidosis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Lactic Acidosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/acid-base-regulation-and-disorders/lactic-acidosis"
+    },
+    {
+      "source_id": "merck_hyperparathyroidism_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperparathyroidism",
+      "url": "https://www.merckmanuals.com/professional/endocrine-and-metabolic-disorders/parathyroid-disorders/hyperparathyroidism"
+    },
+    {
+      "source_id": "merck_hypercalcemia_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypercalcemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypercalcemia"
+    },
+    {
+      "source_id": "merck_metabolic_acidosis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Metabolic Acidosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/acid-base-regulation-and-disorders/metabolic-acidosis"
+    },
+    {
+      "source_id": "merck_hypernatremia_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypernatremia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypernatremia"
+    },
+    {
+      "source_id": "merck_hypermagnesemia_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypermagnesemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypermagnesemia"
+    },
+    {
+      "source_id": "merck_hypophosphatemia_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hypophosphatemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hypophosphatemia"
+    },
+    {
+      "source_id": "merck_hyperphosphatemia_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Hyperphosphatemia",
+      "url": "https://www.merckmanuals.com/professional/nephrology/electrolyte-disorders/hyperphosphatemia"
+    },
+    {
+      "source_id": "msd_hemolytic_anemia_phase800",
+      "publisher": "MSD Manual Professional",
+      "title": "Overview of Hemolytic Anemia",
+      "url": "https://www.msdmanuals.com/professional/hematology-and-oncology/anemias-caused-by-hemolysis/overview-of-hemolytic-anemia"
+    },
+    {
+      "source_id": "merck_aml_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Myeloid Leukemia (AML)",
+      "url": "https://www.merckmanuals.com/professional/oncology/leukemias/acute-myeloid-leukemia-aml"
+    },
+    {
+      "source_id": "merck_all_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Acute Lymphoblastic Leukemia (ALL)",
+      "url": "https://www.merckmanuals.com/professional/oncology/leukemias/acute-lymphoblastic-leukemia-all"
+    },
+    {
+      "source_id": "merck_erysipelas_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Erysipelas",
+      "url": "https://www.merckmanuals.com/professional/infectious-diseases/bacterial-skin-infections/erysipelas"
+    },
+    {
+      "source_id": "merck_superficial_punctate_keratitis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Superficial Punctate Keratitis",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/corneal-disorders/superficial-punctate-keratitis"
+    },
+    {
+      "source_id": "merck_giant_cell_arteritis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Giant Cell Arteritis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/vasculitis/giant-cell-arteritis"
+    },
+    {
+      "source_id": "merck_cppd_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Calcium Pyrophosphate Deposition Disease",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/crystal-induced-arthritides/calcium-pyrophosphate-deposition-disease"
+    },
+    {
+      "source_id": "merck_sjogren_syndrome_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Sjogren Syndrome",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/systemic-rheumatic-diseases/sj%C3%B6gren-syndrome"
+    },
+    {
+      "source_id": "merck_eosinophilic_fasciitis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Eosinophilic Fasciitis",
+      "url": "https://www.merckmanuals.com/professional/musculoskeletal-and-connective-tissue-disorders/systemic-rheumatic-diseases/eosinophilic-fasciitis"
+    },
+    {
+      "source_id": "merck_iga_nephropathy_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Immunoglobulin A Nephropathy",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/immunoglobulin-a-nephropathy"
+    },
+    {
+      "source_id": "merck_minimal_change_disease_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Minimal Change Disease",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/minimal-change-disease"
+    },
+    {
+      "source_id": "merck_fsgs_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Focal Segmental Glomerulosclerosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/focal-segmental-glomerulosclerosis"
+    },
+    {
+      "source_id": "merck_membranous_nephropathy_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Membranous Nephropathy",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/membranous-nephropathy"
+    },
+    {
+      "source_id": "merck_postinfectious_glomerulonephritis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Postinfectious Glomerulonephritis (PIGN)",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/postinfectious-glomerulonephritis-pign"
+    },
+    {
+      "source_id": "merck_renal_vein_thrombosis_phase800",
+      "publisher": "Merck Manual Professional",
+      "title": "Renal Vein Thrombosis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/renovascular-disorders/renal-vein-thrombosis"
     }
   ]
 }

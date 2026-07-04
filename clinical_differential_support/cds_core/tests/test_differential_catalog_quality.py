@@ -474,7 +474,7 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
 
     def test_twenty_sixth_generalist_batch_expands_catalog_to_775_without_warnings(self):
         report = build_general_differential_catalog_quality_report()
-        twenty_sixth_batch_slugs = {condition["slug"] for condition in CONDITIONS[-25:]}
+        twenty_sixth_batch_slugs = {condition["slug"] for condition in CONDITIONS[-50:-25]}
         single_source_slugs = {
             warning["subject"]
             for warning in report["warnings"]
@@ -489,12 +489,30 @@ class GeneralDifferentialCatalogQualityTests(SimpleTestCase):
         self.assertEqual(report["summary"]["warning_count"], 0)
         self.assertFalse(twenty_sixth_batch_slugs.intersection(single_source_slugs))
         self.assertTrue(report["summary"]["ready_for_public_reference"])
-        self.assertEqual(report["summary"]["expansion_target_condition_count"], 775)
+
+    def test_twenty_seventh_generalist_batch_expands_catalog_to_800_without_warnings(self):
+        report = build_general_differential_catalog_quality_report()
+        twenty_seventh_batch_slugs = {condition["slug"] for condition in CONDITIONS[-25:]}
+        single_source_slugs = {
+            warning["subject"]
+            for warning in report["warnings"]
+            if warning["code"] == "single_source_condition"
+        }
+
+        self.assertGreaterEqual(report["summary"]["condition_count"], 800)
+        self.assertGreaterEqual(report["summary"]["source_count"], 878)
+        self.assertGreaterEqual(len(CONDITIONS), 800)
+        self.assertGreaterEqual(len(SOURCES), 878)
+        self.assertEqual(report["summary"]["blocking_issue_count"], 0)
+        self.assertEqual(report["summary"]["warning_count"], 0)
+        self.assertFalse(twenty_seventh_batch_slugs.intersection(single_source_slugs))
+        self.assertTrue(report["summary"]["ready_for_public_reference"])
+        self.assertEqual(report["summary"]["expansion_target_condition_count"], 800)
         expansion_action = next(
             (
                 action
                 for action in report["next_actions"]
-                if action["action_id"] == "expand_condition_catalog_to_775"
+                if action["action_id"] == "expand_condition_catalog_to_800"
             ),
             None,
         )
