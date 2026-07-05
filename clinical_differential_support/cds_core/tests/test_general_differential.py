@@ -105,6 +105,40 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertGreaterEqual(len(summary["danger_checks"]), 1)
         self.assertTrue(summary["has_structured_findings"])
 
+    def test_results_include_top_three_candidate_comparison(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        comparison = result["candidate_comparison"]
+        first_row = comparison["rows"][0]
+        support_labels = {
+            point["label_en"] for point in first_row["support_points"]
+        }
+        against_labels = {
+            point["label_en"] for point in first_row["against_points"]
+        }
+
+        self.assertEqual(comparison["title_en"], "Top-three comparison")
+        self.assertEqual(comparison["selected_finding_count"], 4)
+        self.assertEqual(len(comparison["rows"]), 3)
+        self.assertEqual(first_row["slug"], "acute_coronary_syndrome")
+        self.assertIn("Chest pain", support_labels)
+        self.assertIn("Arm or jaw radiation", support_labels)
+        self.assertIn(
+            "No negative findings entered; absence of a checkbox is not exclusion",
+            against_labels,
+        )
+        self.assertIn("ECG", " ".join(first_row["next_questions"]))
+
     def test_results_include_complaint_guided_intake_cards(self):
         result = evaluate_general_differential(
             {

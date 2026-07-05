@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from typing import Any
 
-from .differential_catalog import DEFAULT_ASK_NEXT, URGENCY_ORDER
+from .differential_catalog import DEFAULT_ASK_NEXT, FINDING_GROUPS, URGENCY_ORDER
 from .differential_catalog_data import get_general_differential_runtime_catalog
 
 FOCUSED_ASK_NEXT_CONTEXTS = [
@@ -349,6 +349,10 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
+        "candidate_comparison": _build_candidate_comparison(
+            ranked_results,
+            selected_findings,
+        ),
         "concise_result_summary": _build_concise_result_summary(
             ranked_results,
             guided_follow_up,
@@ -1038,6 +1042,134 @@ def _build_results_brief(
         "next_step_title_en": str(next_step.get("title_en", "")),
         "next_step_instruction_zh": str(next_step.get("instruction_zh", "")),
         "next_step_instruction_en": str(next_step.get("instruction_en", "")),
+    }
+
+
+def _finding_label_map() -> dict[str, dict[str, str]]:
+    labels: dict[str, dict[str, str]] = {}
+    for group in FINDING_GROUPS:
+        for finding_id, label_en, label_zh in group["findings"]:
+            labels[str(finding_id)] = {
+                "label_zh": str(label_zh),
+                "label_en": str(label_en),
+                "group_zh": str(group["group_zh"]),
+                "group_en": str(group["group_en"]),
+            }
+    return labels
+
+
+def _format_finding_label(
+    finding_id: str,
+    labels: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    label = labels.get(finding_id)
+    if label:
+        return {
+            "finding_id": finding_id,
+            "label_zh": label["label_zh"],
+            "label_en": label["label_en"],
+        }
+    fallback = finding_id.replace("_", " ")
+    return {
+        "finding_id": finding_id,
+        "label_zh": fallback,
+        "label_en": fallback,
+    }
+
+
+def _build_candidate_comparison(
+    results: list[dict[str, Any]],
+    selected_findings: set[str],
+) -> dict[str, Any]:
+    labels = _finding_label_map()
+    rows: list[dict[str, Any]] = []
+    for result in results[:3]:
+        matched_findings = [
+            str(finding)
+            for finding in result.get("matched_findings", [])
+        ]
+        support_points = [
+            {
+                "kind": "matched_finding",
+                **_format_finding_label(finding, labels),
+            }
+            for finding in matched_findings[:4]
+        ]
+        if result.get("matched_text_search"):
+            support_points.append(
+                {
+                    "kind": "text_match",
+                    "finding_id": "text_match",
+                    "label_zh": "主訴文字命中此候選",
+                    "label_en": "Query text matched this candidate",
+                }
+            )
+        if result.get("sources"):
+            support_points.append(
+                {
+                    "kind": "source_count",
+                    "finding_id": "source_count",
+                    "label_zh": f"{len(result['sources'])} 個已連結來源",
+                    "label_en": f"{len(result['sources'])} linked sources",
+                }
+            )
+        if not support_points:
+            support_points.append(
+                {
+                    "kind": "limited_support",
+                    "finding_id": "limited_support",
+                    "label_zh": "目前結構化支持點不足，需先補資料",
+                    "label_en": "Limited structured support; add more data first",
+                }
+            )
+
+        if matched_findings:
+            against_points = [
+                {
+                    "kind": "missing_negative_data",
+                    "label_zh": "尚未輸入陰性資料；不要把未勾選當作排除",
+                    "label_en": "No negative findings entered; absence of a checkbox is not exclusion",
+                }
+            ]
+        elif selected_findings:
+            against_points = [
+                {
+                    "kind": "no_direct_structured_match",
+                    "label_zh": "已選 findings 目前未直接支持此候選",
+                    "label_en": "Selected findings do not directly support this candidate yet",
+                }
+            ]
+        else:
+            against_points = [
+                {
+                    "kind": "needs_structured_findings",
+                    "label_zh": "尚未輸入結構化 findings，不能比較反對點",
+                    "label_en": "No structured findings entered, so opposing evidence cannot be compared",
+                }
+            ]
+
+        rows.append(
+            {
+                "slug": result["slug"],
+                "name_zh": result["name_zh"],
+                "name_en": result["name_en"],
+                "urgency": result["urgency"],
+                "score": result["score"],
+                "system": result["system"],
+                "source_count": len(result.get("sources", [])),
+                "support_points": support_points[:5],
+                "against_points": against_points,
+                "next_questions": list(result.get("ask_next", []))[:2],
+            }
+        )
+
+    return {
+        "rows": rows,
+        "selected_finding_count": len(selected_findings),
+        "title_zh": "前三名比較",
+        "title_en": "Top-three comparison",
+        "caution_zh": "反對點只代表目前資料缺口；未輸入陰性資料不能排除疾病。",
+        "caution_en": "Opposing evidence here means current data gaps; absent negative findings do not rule out disease.",
     }
 
 

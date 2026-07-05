@@ -667,6 +667,70 @@
     margin-top: 0.3rem;
   }
 
+  .candidate-comparison-panel {
+    border: 1px solid #a8cec8;
+    border-left: 4px solid var(--primary);
+    border-radius: 6px;
+    background: #f7fbfa;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .candidate-comparison-panel header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.65rem;
+  }
+
+  .candidate-comparison-panel h3,
+  .candidate-comparison-panel p {
+    margin: 0;
+  }
+
+  .candidate-comparison-grid {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .candidate-comparison-row {
+    display: grid;
+    grid-template-columns: minmax(170px, 1fr) minmax(190px, 1.2fr) minmax(190px, 1.2fr) minmax(190px, 1.2fr);
+    gap: 0.55rem;
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.65rem;
+  }
+
+  .candidate-comparison-row h4,
+  .candidate-comparison-row p {
+    margin: 0;
+  }
+
+  .candidate-comparison-cell {
+    min-width: 0;
+  }
+
+  .candidate-comparison-cell strong,
+  .candidate-comparison-cell span {
+    display: block;
+  }
+
+  .candidate-comparison-cell ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1rem;
+  }
+
+  .candidate-comparison-cell li + li {
+    margin-top: 0.25rem;
+  }
+
+  .candidate-comparison-caution {
+    margin-top: 0.6rem;
+  }
+
   .next-step-command-center {
     border: 1px solid #9fb6c9;
     border-left: 4px solid var(--action);
@@ -1531,6 +1595,7 @@
     .workflow-command-bar,
     .catalog-entry-grid,
     .case-pathway-steps,
+    .candidate-comparison-row,
     .case-action-list,
     .command-center-grid,
     .first-screen-brief-list,
@@ -1565,6 +1630,10 @@
 
     .candidate-scan-row {
       grid-template-columns: 1fr;
+    }
+
+    .candidate-comparison-panel header {
+      display: grid;
     }
 
     .finding-filter-status {
@@ -1773,6 +1842,57 @@
               {% endfor %}
             </ol>
           </section>
+          {% if result.candidate_comparison.rows %}
+            <section class="candidate-comparison-panel" data-candidate-comparison-panel="true" aria-labelledby="candidate-comparison-title">
+              <header>
+                <div>
+                  <h3 id="candidate-comparison-title">{{ result.candidate_comparison.title_zh }} / {{ result.candidate_comparison.title_en }}</h3>
+                  <p class="secondary">先比較支持點、目前不能當作排除的資料缺口、以及下一個最該問的問題。</p>
+                </div>
+                <span class="tag">{{ result.candidate_comparison.selected_finding_count }} findings</span>
+              </header>
+              <div class="candidate-comparison-grid">
+                {% for row in result.candidate_comparison.rows %}
+                  <article class="candidate-comparison-row" data-candidate-comparison-row="{{ row.slug }}">
+                    <div class="candidate-comparison-cell" data-comparison-candidate="true">
+                      <h4>{{ row.name_zh }}</h4>
+                      <p class="secondary">{{ row.name_en }}</p>
+                      <span class="tag">{{ row.urgency }}</span>
+                      <span class="tag">score {{ row.score }}</span>
+                      <span class="tag">{{ row.source_count }} sources</span>
+                    </div>
+                    <div class="candidate-comparison-cell" data-comparison-support="true">
+                      <strong>支持點 / Supports</strong>
+                      <ul>
+                        {% for point in row.support_points|slice:":3" %}
+                          <li>{{ point.label_zh }} / <span class="secondary">{{ point.label_en }}</span></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="candidate-comparison-cell" data-comparison-against="true">
+                      <strong>反對或缺口 / Against or gap</strong>
+                      <ul>
+                        {% for point in row.against_points %}
+                          <li>{{ point.label_zh }} / <span class="secondary">{{ point.label_en }}</span></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="candidate-comparison-cell" data-comparison-next-question="true">
+                      <strong>下一問 / Next question</strong>
+                      <ul>
+                        {% for question in row.next_questions|slice:":2" %}
+                          <li>{{ question }}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+              <p class="secondary candidate-comparison-caution" data-candidate-comparison-caution="true">
+                {{ result.candidate_comparison.caution_zh }} / {{ result.candidate_comparison.caution_en }}
+              </p>
+            </section>
+          {% endif %}
           <details class="progressive-detail-drawer" data-progressive-detail-drawer="command-center">
             <summary>更多下一步細節 / More next-step details</summary>
             <div class="progressive-detail-body">

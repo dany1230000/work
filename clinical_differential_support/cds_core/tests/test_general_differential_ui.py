@@ -144,6 +144,64 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_show_candidate_comparison_before_detail_drawers(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-candidate-comparison-panel="true"')
+        self.assertContains(
+            response,
+            'data-candidate-comparison-row="acute_coronary_syndrome"',
+        )
+        self.assertContains(response, 'data-comparison-support="true"')
+        self.assertContains(response, 'data-comparison-against="true"')
+        self.assertContains(response, 'data-comparison-next-question="true"')
+        self.assertContains(response, 'data-candidate-comparison-caution="true"')
+        self.assertContains(response, "Supports")
+        self.assertContains(response, "Against or gap")
+        self.assertContains(response, "Next question")
+        self.assertContains(response, "Chest pain")
+        self.assertContains(response, "Arm or jaw radiation")
+        self.assertContains(
+            response,
+            "No negative findings entered; absence of a checkbox is not exclusion",
+        )
+        self.assertContains(
+            response,
+            "absent negative findings do not rule out disease",
+        )
+        self.assertContains(response, "ECG")
+        self.assertLess(
+            content.index('data-case-pathway="true"'),
+            content.index('data-candidate-comparison-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-candidate-comparison-panel="true"'),
+            content.index('data-progressive-detail-drawer="command-center"'),
+        )
+        self.assertLess(
+            content.index('data-candidate-comparison-panel="true"'),
+            content.index('data-source-provenance-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-candidate-comparison-panel="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_general_differential_page_keeps_replaceable_fetch_sections(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),
