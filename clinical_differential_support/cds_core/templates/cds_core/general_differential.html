@@ -731,6 +731,105 @@
     margin-top: 0.6rem;
   }
 
+  .intake-gap-panel {
+    border: 1px solid #b8c9a4;
+    border-left: 4px solid #6b7f3a;
+    border-radius: 6px;
+    background: #fbfcf8;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .intake-gap-panel header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.65rem;
+  }
+
+  .intake-gap-panel h3,
+  .intake-gap-panel h4,
+  .intake-gap-panel p {
+    margin: 0;
+  }
+
+  .intake-gap-priority {
+    display: grid;
+    grid-template-columns: minmax(9rem, 0.7fr) minmax(0, 2fr);
+    gap: 0.55rem;
+    border: 1px solid #d7dfcf;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.65rem;
+    margin-bottom: 0.65rem;
+  }
+
+  .intake-gap-priority-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .intake-gap-chip {
+    border: 1px solid #cbd8b6;
+    border-radius: 999px;
+    background: #f8fafc;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .intake-gap-chip span {
+    display: block;
+  }
+
+  .intake-gap-rows {
+    display: grid;
+    gap: 0.55rem;
+  }
+
+  .intake-gap-row {
+    display: grid;
+    grid-template-columns: minmax(170px, 0.85fr) minmax(170px, 1fr) minmax(170px, 1fr) minmax(190px, 1.1fr);
+    gap: 0.55rem;
+    border: 1px solid #d7dfcf;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.65rem;
+  }
+
+  .intake-gap-cell {
+    min-width: 0;
+  }
+
+  .intake-gap-cell strong,
+  .intake-gap-cell span {
+    display: block;
+  }
+
+  .intake-gap-cell ul {
+    margin: 0.35rem 0 0;
+    padding-left: 1rem;
+  }
+
+  .intake-gap-meter {
+    height: 0.5rem;
+    border-radius: 999px;
+    background: #e7ede0;
+    overflow: hidden;
+    margin-top: 0.45rem;
+  }
+
+  .intake-gap-meter span {
+    display: block;
+    height: 100%;
+    background: #6b7f3a;
+  }
+
+  .intake-gap-caution {
+    margin-top: 0.6rem;
+  }
+
   .next-step-command-center {
     border: 1px solid #9fb6c9;
     border-left: 4px solid var(--action);
@@ -1596,6 +1695,8 @@
     .catalog-entry-grid,
     .case-pathway-steps,
     .candidate-comparison-row,
+    .intake-gap-priority,
+    .intake-gap-row,
     .case-action-list,
     .command-center-grid,
     .first-screen-brief-list,
@@ -1633,6 +1734,10 @@
     }
 
     .candidate-comparison-panel header {
+      display: grid;
+    }
+
+    .intake-gap-panel header {
       display: grid;
     }
 
@@ -1890,6 +1995,77 @@
               </div>
               <p class="secondary candidate-comparison-caution" data-candidate-comparison-caution="true">
                 {{ result.candidate_comparison.caution_zh }} / {{ result.candidate_comparison.caution_en }}
+              </p>
+            </section>
+          {% endif %}
+          {% if result.intake_gap_tracker.rows %}
+            <section class="intake-gap-panel" data-intake-gap-tracker="true" aria-labelledby="intake-gap-title">
+              <header>
+                <div>
+                  <h3 id="intake-gap-title">{{ result.intake_gap_tracker.title_zh }} / {{ result.intake_gap_tracker.title_en }}</h3>
+                  <p class="secondary">把前排候選缺的資料排成下一步，不把未輸入當成陰性。 / Turn missing data into the next step without treating blanks as negatives.</p>
+                </div>
+                <span class="tag">{{ result.intake_gap_tracker.selected_finding_count }} findings</span>
+              </header>
+              {% if result.intake_gap_tracker.priority_next %}
+                <section class="intake-gap-priority" data-intake-gap-priority="true">
+                  <strong>{{ result.intake_gap_tracker.priority_title_zh }} / {{ result.intake_gap_tracker.priority_title_en }}</strong>
+                  <div class="intake-gap-priority-list">
+                    {% for item in result.intake_gap_tracker.priority_next %}
+                      <span
+                        class="intake-gap-chip"
+                        data-intake-gap-priority-item="{{ item.finding_id }}"
+                        {% if forloop.first %}data-intake-gap-primary-next="true"{% endif %}
+                      >
+                        {{ item.label_zh }} / {{ item.label_en }}
+                        <span class="secondary">{{ item.reason_zh }} / {{ item.reason_en }}</span>
+                      </span>
+                    {% endfor %}
+                  </div>
+                </section>
+              {% endif %}
+              <div class="intake-gap-rows">
+                {% for row in result.intake_gap_tracker.rows %}
+                  <article class="intake-gap-row" data-intake-gap-row="{{ row.slug }}">
+                    <div class="intake-gap-cell">
+                      <h4>{{ row.name_zh }}</h4>
+                      <p class="secondary">{{ row.name_en }}</p>
+                      <span class="tag">{{ row.urgency }}</span>
+                      <span class="tag">{{ row.completion_label }} core findings</span>
+                      <div class="intake-gap-meter" aria-label="{{ row.completion_percent }} percent complete">
+                        <span style="width: {{ row.completion_percent }}%"></span>
+                      </div>
+                    </div>
+                    <div class="intake-gap-cell" data-intake-gap-known="true">
+                      <strong>已輸入支持 / Already entered</strong>
+                      <ul>
+                        {% for point in row.known_findings %}
+                          <li>{{ point.label_zh }} / <span class="secondary">{{ point.label_en }}</span></li>
+                        {% empty %}
+                          <li>尚無結構化支持點 / <span class="secondary">No structured support entered yet</span></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="intake-gap-cell" data-intake-gap-missing="true">
+                      <strong>還缺資料 / Missing data</strong>
+                      <ul>
+                        {% for point in row.missing_findings %}
+                          <li>{{ point.label_zh }} / <span class="secondary">{{ point.label_en }}</span></li>
+                        {% empty %}
+                          <li>核心資料已初步輸入 / <span class="secondary">Core data is initially entered</span></li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class="intake-gap-cell" data-intake-gap-next-step="true">
+                      <strong>下一步 / Next</strong>
+                      <p>{{ row.next_step_zh }}</p>
+                      <p class="secondary">{{ row.next_step_en }}</p>
+                    </div>
+                  </article>
+                {% endfor %}
+              </div>
+              <p class="secondary intake-gap-caution" data-intake-gap-caution="true">
+                {{ result.intake_gap_tracker.caution_zh }} / {{ result.intake_gap_tracker.caution_en }}
               </p>
             </section>
           {% endif %}

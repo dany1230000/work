@@ -202,6 +202,55 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_show_intake_gap_tracker_as_next_step(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-intake-gap-tracker="true"')
+        self.assertContains(response, 'data-intake-gap-priority="true"')
+        self.assertContains(response, 'data-intake-gap-primary-next="true"')
+        self.assertContains(
+            response,
+            'data-intake-gap-row="acute_coronary_syndrome"',
+        )
+        self.assertContains(response, 'data-intake-gap-known="true"')
+        self.assertContains(response, 'data-intake-gap-missing="true"')
+        self.assertContains(response, 'data-intake-gap-next-step="true"')
+        self.assertContains(response, "Intake gap tracker")
+        self.assertContains(response, "Ask these next")
+        self.assertContains(response, "Already entered")
+        self.assertContains(response, "Missing data")
+        self.assertContains(response, "Hemodynamic instability")
+        self.assertContains(response, "Syncope")
+        self.assertContains(response, "Ask next: Hemodynamic instability")
+        self.assertContains(response, "not a negative finding or exclusion")
+        self.assertLess(
+            content.index('data-candidate-comparison-panel="true"'),
+            content.index('data-intake-gap-tracker="true"'),
+        )
+        self.assertLess(
+            content.index('data-intake-gap-tracker="true"'),
+            content.index('data-progressive-detail-drawer="command-center"'),
+        )
+        self.assertLess(
+            content.index('data-intake-gap-tracker="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_general_differential_page_keeps_replaceable_fetch_sections(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

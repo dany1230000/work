@@ -353,6 +353,10 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
             ranked_results,
             selected_findings,
         ),
+        "intake_gap_tracker": _build_intake_gap_tracker(
+            ranked_results,
+            selected_findings,
+        ),
         "concise_result_summary": _build_concise_result_summary(
             ranked_results,
             guided_follow_up,
@@ -582,8 +586,9 @@ def _score_condition(
     sources: dict[str, dict[str, Any]],
 ) -> dict[str, Any]:
     signals = condition["signals"]
+    signal_findings = _rank_signal_findings(signals)
     matched_findings = [
-        finding for finding in selected_findings if finding in signals
+        finding for finding in signal_findings if finding in selected_findings
     ]
     score = sum(signals[finding] for finding in matched_findings)
     query_match_score = _query_match_score(condition, query)
@@ -602,11 +607,22 @@ def _score_condition(
         "urgency_filter_value": condition["urgency"],
         "system_filter_value": _source_filter_slug(condition["system"]),
         "matched_findings": matched_findings,
+        "signal_findings": signal_findings,
         "matched_text_search": matched_text_search,
         "ask_next": condition["ask_next"],
         "action_items": _build_result_action_items(condition, matched_findings),
         "sources": [sources[source_id] for source_id in condition["source_ids"]],
     }
+
+
+def _rank_signal_findings(signals: dict[str, int]) -> list[str]:
+    return [
+        str(finding)
+        for finding, _weight in sorted(
+            signals.items(),
+            key=lambda item: (-int(item[1]), str(item[0])),
+        )
+    ]
 
 
 def _query_match_score(condition: dict[str, Any], query: str) -> int:
@@ -1170,6 +1186,106 @@ def _build_candidate_comparison(
         "title_en": "Top-three comparison",
         "caution_zh": "反對點只代表目前資料缺口；未輸入陰性資料不能排除疾病。",
         "caution_en": "Opposing evidence here means current data gaps; absent negative findings do not rule out disease.",
+    }
+
+
+def _build_intake_gap_tracker(
+    results: list[dict[str, Any]],
+    selected_findings: set[str],
+) -> dict[str, Any]:
+    labels = _finding_label_map()
+    priority_map: dict[str, dict[str, Any]] = {}
+    rows: list[dict[str, Any]] = []
+
+    for result in results[:3]:
+        signal_findings = [
+            str(finding)
+            for finding in result.get("signal_findings", [])
+        ]
+        matched_findings = [
+            str(finding)
+            for finding in result.get("matched_findings", [])
+        ]
+        missing_findings = [
+            finding
+            for finding in signal_findings
+            if finding not in selected_findings
+        ]
+        signal_count = len(signal_findings)
+        completion_percent = (
+            round((len(matched_findings) / signal_count) * 100)
+            if signal_count
+            else 0
+        )
+
+        for finding in missing_findings[:4]:
+            entry = priority_map.setdefault(
+                finding,
+                {
+                    **_format_finding_label(finding, labels),
+                    "candidate_names_en": [],
+                    "candidate_names_zh": [],
+                },
+            )
+            entry["candidate_names_en"].append(str(result["name_en"]))
+            entry["candidate_names_zh"].append(str(result["name_zh"]))
+
+        if missing_findings:
+            next_label = _format_finding_label(missing_findings[0], labels)
+            next_step_zh = f"先確認：{next_label['label_zh']}"
+            next_step_en = f"Ask next: {next_label['label_en']}"
+        else:
+            next_step_zh = "核心 findings 已初步輸入，接著看來源與下一問。"
+            next_step_en = "Core findings are entered; review sources and the next question."
+
+        rows.append(
+            {
+                "slug": result["slug"],
+                "name_zh": result["name_zh"],
+                "name_en": result["name_en"],
+                "urgency": result["urgency"],
+                "matched_count": len(matched_findings),
+                "signal_count": signal_count,
+                "completion_percent": completion_percent,
+                "completion_label": f"{len(matched_findings)}/{signal_count}",
+                "known_findings": [
+                    _format_finding_label(finding, labels)
+                    for finding in matched_findings[:3]
+                ],
+                "missing_findings": [
+                    _format_finding_label(finding, labels)
+                    for finding in missing_findings[:4]
+                ],
+                "next_step_zh": next_step_zh,
+                "next_step_en": next_step_en,
+            }
+        )
+
+    priority_next = sorted(
+        priority_map.values(),
+        key=lambda item: (
+            -len(item["candidate_names_en"]),
+            item["label_en"],
+        ),
+    )
+    for item in priority_next:
+        candidate_count = len(item["candidate_names_en"])
+        item["candidate_count"] = candidate_count
+        item["candidate_names_en"] = item["candidate_names_en"][:2]
+        item["candidate_names_zh"] = item["candidate_names_zh"][:2]
+        item["reason_zh"] = f"可同時釐清 {candidate_count} 個前排候選"
+        item["reason_en"] = f"Clarifies {candidate_count} leading candidates"
+
+    return {
+        "rows": rows,
+        "priority_next": priority_next[:5],
+        "selected_finding_count": len(selected_findings),
+        "title_zh": "資料缺口追蹤",
+        "title_en": "Intake gap tracker",
+        "priority_title_zh": "下一步先補",
+        "priority_title_en": "Ask these next",
+        "caution_zh": "還缺代表尚未詢問或尚未輸入，不是陰性，也不是排除。",
+        "caution_en": "Missing means not asked or not entered; it is not a negative finding or exclusion.",
     }
 
 

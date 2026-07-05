@@ -139,6 +139,41 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         )
         self.assertIn("ECG", " ".join(first_row["next_questions"]))
 
+    def test_results_include_intake_gap_tracker_for_next_data_step(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        tracker = result["intake_gap_tracker"]
+        first_row = tracker["rows"][0]
+        known_labels = {
+            point["label_en"] for point in first_row["known_findings"]
+        }
+        missing_labels = {
+            point["label_en"] for point in first_row["missing_findings"]
+        }
+        priority_labels = {
+            point["label_en"] for point in tracker["priority_next"]
+        }
+
+        self.assertEqual(tracker["title_en"], "Intake gap tracker")
+        self.assertEqual(tracker["selected_finding_count"], 4)
+        self.assertEqual(first_row["slug"], "acute_coronary_syndrome")
+        self.assertEqual(first_row["completion_label"], "4/6")
+        self.assertIn("Chest pain", known_labels)
+        self.assertIn("Hemodynamic instability", missing_labels)
+        self.assertIn("Syncope", missing_labels)
+        self.assertIn("Hemodynamic instability", priority_labels)
+        self.assertIn("not a negative finding", tracker["caution_en"])
+
     def test_results_include_complaint_guided_intake_cards(self):
         result = evaluate_general_differential(
             {
