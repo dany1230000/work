@@ -56,6 +56,7 @@ class StepwiseUiTests(TestCase):
         self.assertContains(response, "sessionStorage")
         self.assertContains(response, "FAST_NAV_STORAGE_PREFIX")
         self.assertContains(response, "FAST_NAV_PROGRESS_DELAY_MS")
+        self.assertContains(response, "FAST_NAV_PROGRESS_DELAY_MS = 480")
         self.assertContains(response, "工作台 / Dashboard")
         self.assertContains(response, "下一步 / Next Steps")
         self.assertContains(response, "頭痛 / Headache")
@@ -77,6 +78,18 @@ class StepwiseUiTests(TestCase):
         self.assertContains(response, "Loading workspace")
         self.assertContains(response, "Workspace ready")
         self.assertContains(response, '"X-Fast-Nav": "1"')
+
+    def test_fast_navigation_cached_pages_skip_progress_toast(self):
+        response = self.client.get(reverse("cds_core:home"))
+        body = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, "var cachedPage = getCachedPage(targetUrl);")
+        cached_branch = body[
+            body.index("if (cachedPage) {") : body.index("startProgress();")
+        ]
+        self.assertIn("replaceMainFromHtml(cachedPage.html, targetUrl, pushHistory);", cached_branch)
+        self.assertNotIn("setFastNavStatus", cached_branch)
 
     def test_public_symptom_pages_show_a_three_step_workflow(self):
         route_expectations = [

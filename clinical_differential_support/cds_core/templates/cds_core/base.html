@@ -380,7 +380,7 @@
     var fastNavProgressTimeout = null;
     var fastNavProgressVisible = false;
     var FAST_NAV_CACHE_TTL_MS = 600000;
-    var FAST_NAV_PROGRESS_DELAY_MS = 240;
+    var FAST_NAV_PROGRESS_DELAY_MS = 480;
     var FAST_NAV_STORAGE_PREFIX = "cds-fast-nav:v2:";
     var FAST_NAV_STORAGE_MAX_HTML = 350000;
     var fastNavCache = new Map();
@@ -1166,7 +1166,6 @@
       var cachedPage = getCachedPage(targetUrl);
       if (cachedPage) {
         replaceMainFromHtml(cachedPage.html, targetUrl, pushHistory);
-        setFastNavStatus("ready", "Workspace ready", 650);
         return;
       }
       startProgress();

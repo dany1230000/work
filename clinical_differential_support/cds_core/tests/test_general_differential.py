@@ -1202,6 +1202,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twenty_ninth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("spinal muscular atrophy", "spinal_muscular_atrophy"),
+            ("rapidly progressive glomerulonephritis", "rapidly_progressive_glomerulonephritis"),
+            ("lupus nephritis", "lupus_nephritis"),
+            ("acute interstitial nephritis", "acute_interstitial_nephritis"),
+            ("pemphigus vulgaris", "pemphigus_vulgaris"),
+            ("actinic keratosis", "actinic_keratosis"),
+            ("squamous cell skin cancer", "squamous_cell_skin_cancer"),
+            ("deviated nasal septum", "deviated_nasal_septum"),
+            ("complete heart block", "complete_heart_block"),
+            ("sick sinus syndrome", "sick_sinus_syndrome"),
+            ("factitious disorder", "factitious_disorder"),
+            ("functional neurological symptom disorder", "functional_neurological_symptom_disorder"),
+            ("oppositional defiant disorder", "oppositional_defiant_disorder"),
+            ("conduct disorder", "conduct_disorder"),
+            ("postpartum depression", "postpartum_depression"),
+            ("premenstrual dysphoric disorder", "premenstrual_dysphoric_disorder"),
+            ("urethral stricture", "urethral_stricture"),
+            ("vascular dementia", "vascular_dementia"),
+            ("myotonic dystrophy", "myotonic_dystrophy"),
+            ("frontotemporal dementia", "frontotemporal_dementia"),
+            ("tardive dyskinesia", "tardive_dyskinesia"),
+            ("dystonia", "dystonia"),
+            ("retinitis pigmentosa", "retinitis_pigmentosa"),
+            ("vocal fold nodules", "vocal_fold_nodules"),
+            ("chronic rhinosinusitis", "chronic_rhinosinusitis"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

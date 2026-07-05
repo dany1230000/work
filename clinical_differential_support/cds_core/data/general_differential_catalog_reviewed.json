@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-05-825",
-    "condition_count": 825,
-    "source_count": 903,
+    "catalog_version": "general-differential-starter-2026-07-05-850",
+    "condition_count": 850,
+    "source_count": 928,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-05-825",
-      "condition_count": 825,
-      "source_count": 903,
+      "catalog_version": "general-differential-starter-2026-07-05-850",
+      "condition_count": 850,
+      "source_count": 928,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 825
+      "expansion_target_condition_count": 850
     }
   },
   "safety_scope": {
@@ -24048,6 +24048,752 @@
         "merck_cervical_spondylotic_myelopathy_phase825",
         "merck_professional"
       ]
+    },
+    {
+      "slug": "spinal_muscular_atrophy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "脊髓性肌肉萎縮症",
+      "name_en": "Spinal muscular atrophy",
+      "system": "Neurology/Pediatrics/Neuromuscular",
+      "urgency": "soon",
+      "summary_zh": "脊髓性肌肉萎縮症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant or child hypotonia, delayed milestones, progressive symmetric weakness, poor feeding, swallowing difficulty, respiratory weakness, or reduced reflexes should include spinal muscular atrophy.",
+      "signals": {
+        "weakness": 4,
+        "respiratory_distress": 2,
+        "poor_oral_intake_dehydration": 2,
+        "progressive_bilateral_leg_weakness": 3,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "spinal muscular atrophy",
+        "sma",
+        "infant hypotonia motor delay",
+        "progressive anterior horn cell weakness"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age at onset, motor milestones, feeding and swallowing symptoms, breathing effort, reflexes and tone, family or newborn-screen result, genetic testing context, and neuromuscular referral urgency."
+      ],
+      "source_ids": [
+        "merck_spinal_muscular_atrophy_phase850",
+        "merck_myasthenia_gravis"
+      ]
+    },
+    {
+      "slug": "rapidly_progressive_glomerulonephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "快速進行性腎小球腎炎",
+      "name_en": "Rapidly progressive glomerulonephritis",
+      "system": "Nephrology/Emergency",
+      "urgency": "emergent",
+      "summary_zh": "快速進行性腎小球腎炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Rapid kidney function decline with hematuria, proteinuria, edema, hypertension, pulmonary hemorrhage, systemic vasculitis clues, or crescentic GN concern should include RPGN.",
+      "signals": {
+        "decreased_urine_output": 4,
+        "hemoptysis": 3,
+        "dyspnea": 2,
+        "rash": 1,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "rapidly progressive glomerulonephritis",
+        "rpgn",
+        "crescentic glomerulonephritis",
+        "pulmonary renal syndrome"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check creatinine trajectory, urine microscopy, pulmonary hemorrhage, ANCA/anti-GBM/complement/SLE clues, biopsy urgency, and nephrology escalation."
+      ],
+      "source_ids": [
+        "merck_rpgn_phase850",
+        "merck_nephritic_syndrome"
+      ]
+    },
+    {
+      "slug": "lupus_nephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "狼瘡腎炎",
+      "name_en": "Lupus nephritis",
+      "system": "Nephrology/Rheumatology",
+      "urgency": "soon",
+      "summary_zh": "狼瘡腎炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Known or suspected SLE with proteinuria, hematuria, edema, hypertension, rising creatinine, active urine sediment, or systemic flare should include lupus nephritis.",
+      "signals": {
+        "rash": 2,
+        "acute_joint_pain_swelling": 2,
+        "decreased_urine_output": 3,
+        "orthopnea_edema": 2,
+        "fatigue": 2
+      },
+      "synonyms": [
+        "lupus nephritis",
+        "sle kidney disease",
+        "proteinuria lupus",
+        "active urine sediment lupus"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check SLE activity, urine protein and sediment, creatinine, complements, anti-dsDNA, blood pressure, pregnancy context, and renal biopsy or rheumatology-nephrology pathway."
+      ],
+      "source_ids": [
+        "merck_lupus_nephritis_phase850",
+        "merck_sle"
+      ]
+    },
+    {
+      "slug": "acute_interstitial_nephritis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "急性間質性腎炎",
+      "name_en": "Acute interstitial nephritis",
+      "system": "Nephrology/Drug reaction",
+      "urgency": "soon",
+      "summary_zh": "急性間質性腎炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Acute kidney injury after antibiotics, NSAIDs, PPIs, infection, rash, fever, eosinophilia, sterile pyuria, or allergic drug reaction context should include acute interstitial nephritis.",
+      "signals": {
+        "decreased_urine_output": 4,
+        "rash": 2,
+        "fever": 2,
+        "new_medication_exposure": 4,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "acute interstitial nephritis",
+        "acute tubulointerstitial nephritis",
+        "drug induced interstitial nephritis",
+        "ain kidney"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check medication timeline, creatinine and urinalysis, fever/rash/eosinophilia, infection or autoimmune mimics, drug discontinuation, and nephrology review need."
+      ],
+      "source_ids": [
+        "merck_tubulointerstitial_nephritis_phase850",
+        "merck_adverse_drug_reactions"
+      ]
+    },
+    {
+      "slug": "pemphigus_vulgaris",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "尋常型天疱瘡",
+      "name_en": "Pemphigus vulgaris",
+      "system": "Dermatology/Autoimmune",
+      "urgency": "emergent",
+      "summary_zh": "尋常型天疱瘡 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Painful flaccid bullae, erosions on normal skin, oral mucosal erosions, widespread skin pain, positive Nikolsky context, or dehydration risk should include pemphigus vulgaris.",
+      "signals": {
+        "skin_sloughing_or_blistering": 4,
+        "mucosal_lesions": 4,
+        "rash": 3,
+        "severe_pain": 2,
+        "poor_oral_intake_dehydration": 2
+      },
+      "synonyms": [
+        "pemphigus vulgaris",
+        "flaccid bullae",
+        "painful oral erosions",
+        "nikolsky sign"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check mucosal involvement, body surface area, medication or SJS mimics, hydration, infection risk, biopsy with immunofluorescence context, and dermatology escalation."
+      ],
+      "source_ids": [
+        "merck_pemphigus_vulgaris_phase850",
+        "merck_sjs_ten"
+      ]
+    },
+    {
+      "slug": "actinic_keratosis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "日光性角化症",
+      "name_en": "Actinic keratosis",
+      "system": "Dermatology/Precancerous",
+      "urgency": "routine",
+      "summary_zh": "日光性角化症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Rough scaly sun-exposed papules or plaques, chronic UV exposure, fair skin, older age, immunosuppression, or field cancerization context should include actinic keratosis.",
+      "signals": {
+        "rash": 2,
+        "chronic_itchy_flexural_rash": 1,
+        "immunocompromised": 1,
+        "weight_loss": 1
+      },
+      "synonyms": [
+        "actinic keratosis",
+        "solar keratosis",
+        "rough sun damaged spot",
+        "premalignant scaly lesion"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion number, growth or tenderness, bleeding, immunosuppression, prior skin cancer, sun exposure, and dermatology biopsy or treatment pathway."
+      ],
+      "source_ids": [
+        "merck_actinic_keratoses_phase850",
+        "merck_squamous_cell_carcinoma_phase850"
+      ]
+    },
+    {
+      "slug": "squamous_cell_skin_cancer",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "皮膚鱗狀細胞癌",
+      "name_en": "Squamous cell skin cancer",
+      "system": "Dermatology/Oncology",
+      "urgency": "soon",
+      "summary_zh": "皮膚鱗狀細胞癌 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Growing scaly or crusted skin lesion, nonhealing ulcer, tender keratotic nodule, sun-exposed area, immunosuppression, or actinic keratosis history should include squamous cell skin cancer.",
+      "signals": {
+        "rash": 2,
+        "chronic_itchy_flexural_rash": 1,
+        "immunocompromised": 2,
+        "weight_loss": 1,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "squamous cell skin cancer",
+        "cutaneous squamous cell carcinoma",
+        "scc skin",
+        "nonhealing scaly skin lesion"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check lesion growth, ulceration or bleeding, pain, high-risk site, immunosuppression, lymph nodes, biopsy need, and dermatology or oncology pathway."
+      ],
+      "source_ids": [
+        "merck_squamous_cell_carcinoma_phase850",
+        "merck_actinic_keratoses_phase850"
+      ]
+    },
+    {
+      "slug": "deviated_nasal_septum",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "鼻中隔偏曲",
+      "name_en": "Deviated nasal septum",
+      "system": "ENT/Nasal",
+      "urgency": "routine",
+      "summary_zh": "鼻中隔偏曲 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic unilateral nasal obstruction, recurrent congestion, post-traumatic nasal blockage, mouth breathing, snoring context, or recurrent sinus symptoms should include deviated nasal septum.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "facial_sinus_pain_pressure": 1,
+        "recent_trauma": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "deviated nasal septum",
+        "septal deviation",
+        "unilateral nasal obstruction",
+        "crooked nasal septum"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check laterality, trauma history, allergic rhinitis or sinusitis overlap, epistaxis, sleep or snoring burden, endoscopic exam context, and ENT review threshold."
+      ],
+      "source_ids": [
+        "merck_septal_deviation_phase850",
+        "merck_chronic_rhinosinusitis_phase850"
+      ]
+    },
+    {
+      "slug": "complete_heart_block",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "完全性房室傳導阻滯",
+      "name_en": "Complete heart block",
+      "system": "Cardiovascular/Arrhythmia",
+      "urgency": "emergent",
+      "summary_zh": "完全性房室傳導阻滯 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Severe bradycardia, syncope, dizziness, fatigue, hypotension, AV dissociation, medication toxicity, or ECG third-degree AV block context should include complete heart block.",
+      "signals": {
+        "syncope": 4,
+        "palpitations": 2,
+        "fatigue": 2,
+        "hemodynamic_instability": 3,
+        "chest_pain": 1
+      },
+      "synonyms": [
+        "complete heart block",
+        "third degree av block",
+        "atrioventricular dissociation",
+        "complete av block"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ECG, perfusion, medication or ischemia triggers, electrolyte context, temporary pacing threshold, and emergency cardiology escalation."
+      ],
+      "source_ids": [
+        "merck_av_block_phase850",
+        "merck_sick_sinus_phase850"
+      ]
+    },
+    {
+      "slug": "sick_sinus_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "病竇症候群",
+      "name_en": "Sick sinus syndrome",
+      "system": "Cardiovascular/Arrhythmia",
+      "urgency": "soon",
+      "summary_zh": "病竇症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sinus pauses, bradycardia-tachycardia episodes, syncope, presyncope, fatigue, palpitations, older age, or atrial fibrillation with slow ventricular response should include sick sinus syndrome.",
+      "signals": {
+        "syncope": 3,
+        "palpitations": 3,
+        "fatigue": 2,
+        "orthostatic_lightheadedness": 2,
+        "dyspnea": 1
+      },
+      "synonyms": [
+        "sick sinus syndrome",
+        "sinus node dysfunction",
+        "brady tachy syndrome",
+        "sinus pause"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check ECG or ambulatory monitor, symptom-rhythm correlation, medication contributors, AF overlap, reversible causes, and cardiology pacemaker evaluation threshold."
+      ],
+      "source_ids": [
+        "merck_sick_sinus_phase850",
+        "merck_av_block_phase850"
+      ]
+    },
+    {
+      "slug": "factitious_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "人為障礙",
+      "name_en": "Factitious disorder",
+      "system": "Psychiatry/Somatic symptoms",
+      "urgency": "routine",
+      "summary_zh": "人為障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Inconsistent illness story, recurrent dramatic presentations, unexplained test manipulation, symptoms without clear external incentive, or high health-care use should include factitious disorder after medical causes are considered.",
+      "signals": {
+        "new_medication_exposure": 1,
+        "risky_impulsive_behavior": 2,
+        "self_harm_behavior": 2,
+        "fatigue": 1,
+        "abdominal_pain": 1
+      },
+      "synonyms": [
+        "factitious disorder",
+        "factitious disorder imposed on self",
+        "munchausen syndrome",
+        "falsified symptoms without external incentive"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check objective inconsistencies, safety and self-harm risk, collateral history, iatrogenic harm risk, therapeutic alliance, and psychiatric consultation context."
+      ],
+      "source_ids": [
+        "merck_factitious_self_phase850",
+        "merck_psychosis_medical_condition"
+      ]
+    },
+    {
+      "slug": "functional_neurological_symptom_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "功能性神經症狀障礙",
+      "name_en": "Functional neurological symptom disorder",
+      "system": "Psychiatry/Neurology",
+      "urgency": "soon",
+      "summary_zh": "功能性神經症狀障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Motor or sensory neurologic symptoms incompatible with recognized pathways, seizure-like episodes, weakness, gait disturbance, tremor, stress context, or normal investigations should include functional neurological symptom disorder while dangerous mimics are excluded.",
+      "signals": {
+        "neurologic_deficit": 3,
+        "seizure_activity_or_postictal_state": 2,
+        "weakness": 3,
+        "syncope": 1,
+        "self_harm_behavior": 1
+      },
+      "synonyms": [
+        "functional neurological symptom disorder",
+        "conversion disorder",
+        "functional neurologic disorder",
+        "psychogenic nonepileptic seizures"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check positive functional signs, neurologic red flags, seizure or stroke mimics, trauma and stress context, patient explanation, and neurology or mental health pathway."
+      ],
+      "source_ids": [
+        "merck_functional_neuro_symptom_phase850",
+        "merck_dystonias_phase850"
+      ]
+    },
+    {
+      "slug": "oppositional_defiant_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "對立反抗症",
+      "name_en": "Oppositional defiant disorder",
+      "system": "Pediatrics/Psychiatry",
+      "urgency": "routine",
+      "summary_zh": "對立反抗症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Child or adolescent with persistent angry, irritable, argumentative, defiant, or vindictive behavior toward authority figures should include oppositional defiant disorder while mood, trauma, ADHD, and safety risks are assessed.",
+      "signals": {
+        "risky_impulsive_behavior": 2,
+        "severe_agitation": 2,
+        "self_harm_behavior": 1,
+        "hallucinations_delusions": 1,
+        "substance_use_concern": 1
+      },
+      "synonyms": [
+        "oppositional defiant disorder",
+        "odd child",
+        "defiant behavior child",
+        "argumentative vindictive child"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration, settings, impairment, caregiver and school reports, ADHD/mood/trauma/substance mimics, aggression or safety risk, and family-based treatment context."
+      ],
+      "source_ids": [
+        "merck_odd_phase850",
+        "merck_conduct_disorder_phase850"
+      ]
+    },
+    {
+      "slug": "conduct_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "品行障礙",
+      "name_en": "Conduct disorder",
+      "system": "Pediatrics/Psychiatry",
+      "urgency": "soon",
+      "summary_zh": "品行障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Repetitive aggression, property destruction, deceit, theft, serious rule violations, cruelty, or law-breaking behavior in a child or adolescent should include conduct disorder and safety assessment.",
+      "signals": {
+        "risky_impulsive_behavior": 4,
+        "severe_agitation": 2,
+        "self_harm_behavior": 1,
+        "substance_use_concern": 2,
+        "hallucinations_delusions": 1
+      },
+      "synonyms": [
+        "conduct disorder",
+        "aggression rule violations child",
+        "antisocial behavior adolescent",
+        "property destruction child"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check aggression severity, weapons or cruelty, legal/school context, trauma and substance use, mood or psychosis mimics, caregiver safety, and child psychiatry pathway."
+      ],
+      "source_ids": [
+        "merck_conduct_disorder_phase850",
+        "merck_odd_phase850"
+      ]
+    },
+    {
+      "slug": "postpartum_depression",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "產後憂鬱症",
+      "name_en": "Postpartum depression",
+      "system": "Obstetric/Psychiatry",
+      "urgency": "soon",
+      "summary_zh": "產後憂鬱症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Depressive symptoms after delivery, anhedonia, guilt, anxiety, insomnia, impaired bonding, intrusive thoughts, self-harm concern, or psychosis screen context should include postpartum depression.",
+      "signals": {
+        "pregnancy_possible": 2,
+        "self_harm_behavior": 3,
+        "fatigue": 2,
+        "severe_agitation": 1,
+        "hallucinations_delusions": 1
+      },
+      "synonyms": [
+        "postpartum depression",
+        "postnatal depression",
+        "depression after delivery",
+        "peripartum depression"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check postpartum timing, severity and duration, suicidal or infant-harm thoughts, psychosis or mania, sleep deprivation, support, and urgent maternal mental health pathway."
+      ],
+      "source_ids": [
+        "merck_postpartum_depression_phase850",
+        "merck_preeclampsia_phase825"
+      ]
+    },
+    {
+      "slug": "premenstrual_dysphoric_disorder",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "經前不悅症",
+      "name_en": "Premenstrual dysphoric disorder",
+      "system": "Gynecology/Psychiatry",
+      "urgency": "routine",
+      "summary_zh": "經前不悅症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cyclic severe mood symptoms, irritability, depression, anxiety, functional impairment in the luteal phase, and improvement after menses should include premenstrual dysphoric disorder.",
+      "signals": {
+        "fatigue": 2,
+        "headache": 2,
+        "pelvic_pain": 1,
+        "self_harm_behavior": 1,
+        "severe_agitation": 1
+      },
+      "synonyms": [
+        "premenstrual dysphoric disorder",
+        "pmdd",
+        "severe premenstrual mood symptoms",
+        "cyclic luteal phase depression"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prospective cycle pattern, impairment, depression or bipolar mimics, self-harm risk, medications, pregnancy possibility, and gynecology or mental health pathway."
+      ],
+      "source_ids": [
+        "merck_pms_pmdd_phase850",
+        "merck_postpartum_depression_phase850"
+      ]
+    },
+    {
+      "slug": "urethral_stricture",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "尿道狹窄",
+      "name_en": "Urethral stricture",
+      "system": "Urology/Lower urinary tract",
+      "urgency": "routine",
+      "summary_zh": "尿道狹窄 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Gradual obstructive voiding symptoms, weak urinary stream, difficult catheterization, recurrent UTI, urinary retention, pelvic trauma, or prior instrumentation should include urethral stricture.",
+      "signals": {
+        "inability_to_void": 3,
+        "dysuria": 2,
+        "decreased_urine_output": 1,
+        "pelvic_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "urethral stricture",
+        "weak urinary stream stricture",
+        "difficult catheterization urethra",
+        "recurrent uti obstructive voiding"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check stream strength, spraying or straining, retention severity, catheterization difficulty, trauma or instrumentation history, infection, renal risk, and urology pathway."
+      ],
+      "source_ids": [
+        "merck_urethral_stricture_phase850",
+        "merck_uti"
+      ]
+    },
+    {
+      "slug": "vascular_dementia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "血管性失智症",
+      "name_en": "Vascular dementia",
+      "system": "Neurology/Cognitive",
+      "urgency": "routine",
+      "summary_zh": "血管性失智症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Stepwise or post-stroke cognitive decline, executive dysfunction, gait change, vascular risk factors, focal neurologic signs, or imaging ischemic disease should include vascular dementia.",
+      "signals": {
+        "altered_mental_status": 2,
+        "neurologic_deficit": 3,
+        "weakness": 1,
+        "orthostatic_lightheadedness": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "vascular dementia",
+        "vascular cognitive impairment",
+        "post stroke dementia",
+        "stepwise cognitive decline"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check timing after stroke, vascular risk factors, focal signs, delirium and medication mimics, function and safety, neuroimaging context, and cognitive clinic pathway."
+      ],
+      "source_ids": [
+        "merck_vascular_cognitive_impairment_phase850",
+        "merck_dementia"
+      ]
+    },
+    {
+      "slug": "myotonic_dystrophy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌強直性肌營養不良症",
+      "name_en": "Myotonic dystrophy",
+      "system": "Neurology/Genetic/Neuromuscular",
+      "urgency": "routine",
+      "summary_zh": "肌強直性肌營養不良症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Distal weakness, myotonia, delayed muscle relaxation, cataracts, cardiac conduction symptoms, endocrine issues, or family history should include myotonic dystrophy.",
+      "signals": {
+        "weakness": 3,
+        "fatigue": 2,
+        "neurologic_deficit": 2,
+        "palpitations": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "myotonic dystrophy",
+        "delayed muscle relaxation",
+        "distal weakness myotonia",
+        "myotonic muscular dystrophy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check grip or percussion myotonia, weakness pattern, cataracts, cardiac conduction symptoms or ECG, endocrine and respiratory issues, family history, genetic testing, and neuromuscular pathway."
+      ],
+      "source_ids": [
+        "merck_myotonic_dystrophy_phase850",
+        "merck_spinal_muscular_atrophy_phase850"
+      ]
+    },
+    {
+      "slug": "frontotemporal_dementia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "額顳葉失智症",
+      "name_en": "Frontotemporal dementia",
+      "system": "Neurology/Cognitive",
+      "urgency": "routine",
+      "summary_zh": "額顳葉失智症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Early behavioral disinhibition, apathy, loss of empathy, compulsive behavior, executive decline, language variant symptoms, or younger-onset dementia context should include frontotemporal dementia.",
+      "signals": {
+        "altered_mental_status": 2,
+        "risky_impulsive_behavior": 3,
+        "hallucinations_delusions": 1,
+        "fatigue": 1,
+        "weakness": 1
+      },
+      "synonyms": [
+        "frontotemporal dementia",
+        "ftd",
+        "behavioral variant frontotemporal dementia",
+        "primary progressive aphasia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check behavioral and language timeline, age at onset, function and safety, psychiatric mimics, caregiver collateral, imaging context, and cognitive neurology pathway."
+      ],
+      "source_ids": [
+        "merck_frontotemporal_dementia_phase850",
+        "merck_dementia"
+      ]
+    },
+    {
+      "slug": "tardive_dyskinesia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "遲發性運動障礙",
+      "name_en": "Tardive dyskinesia",
+      "system": "Neurology/Psychiatry/Medication adverse effect",
+      "urgency": "soon",
+      "summary_zh": "遲發性運動障礙 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic dopamine-blocking medication exposure with involuntary choreiform, athetoid, or stereotyped oral-facial, trunk, or limb movements should include tardive dyskinesia.",
+      "signals": {
+        "new_medication_exposure": 3,
+        "neurologic_deficit": 2,
+        "risky_impulsive_behavior": 1,
+        "fatigue": 1,
+        "severe_agitation": 1
+      },
+      "synonyms": [
+        "tardive dyskinesia",
+        "orofacial dyskinesia antipsychotic",
+        "dopamine blocker involuntary movements",
+        "late movement disorder"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check antipsychotic or antiemetic exposure, movement pattern and duration, AIMS context, akathisia/dystonia mimics, medication risk-benefit, and psychiatry or neurology review."
+      ],
+      "source_ids": [
+        "ncbi_tardive_dyskinesia_phase850",
+        "merck_functional_neuro_symptom_phase850"
+      ]
+    },
+    {
+      "slug": "dystonia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌張力不全",
+      "name_en": "Dystonia",
+      "system": "Neurology/Movement disorders",
+      "urgency": "soon",
+      "summary_zh": "肌張力不全 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sustained or intermittent involuntary muscle contractions, abnormal posture, twisting movements, cervical spasms, medication exposure, or focal task-specific symptoms should include dystonia.",
+      "signals": {
+        "neurologic_deficit": 2,
+        "neck_stiffness": 2,
+        "new_medication_exposure": 2,
+        "weakness": 1,
+        "severe_pain": 1
+      },
+      "synonyms": [
+        "dystonia",
+        "cervical dystonia",
+        "abnormal posturing",
+        "involuntary muscle contractions"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check distribution, triggers, medication exposure, acute dystonic reaction, neurologic signs, pain and airway involvement, and movement-disorder or emergency pathway."
+      ],
+      "source_ids": [
+        "merck_dystonias_phase850",
+        "ncbi_tardive_dyskinesia_phase850"
+      ]
+    },
+    {
+      "slug": "retinitis_pigmentosa",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "視網膜色素變性",
+      "name_en": "Retinitis pigmentosa",
+      "system": "Ophthalmology/Retina",
+      "urgency": "routine",
+      "summary_zh": "視網膜色素變性 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Progressive night blindness, peripheral visual field loss, tunnel vision, family history, characteristic retinal pigment changes, or syndromic hearing loss context should include retinitis pigmentosa.",
+      "signals": {
+        "visual_disturbance": 4,
+        "hearing_loss_tinnitus": 1,
+        "fatigue": 1,
+        "neurologic_deficit": 1
+      },
+      "synonyms": [
+        "retinitis pigmentosa",
+        "night blindness peripheral vision loss",
+        "tunnel vision retinal degeneration",
+        "bone spicule retina"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check night vision, peripheral field loss, family history, hearing symptoms, fundus findings, electroretinography context, genetic counseling, and ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_retinitis_pigmentosa_phase850",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "vocal_fold_nodules",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "聲帶結節",
+      "name_en": "Vocal fold nodules",
+      "system": "ENT/Laryngeal/Voice",
+      "urgency": "routine",
+      "summary_zh": "聲帶結節 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Chronic hoarseness, vocal fatigue, voice overuse, professional voice demand, throat discomfort, or persistent dysphonia should include vocal fold nodules.",
+      "signals": {
+        "severe_sore_throat_drooling_or_stridor": 1,
+        "cough_sputum": 1,
+        "fatigue": 2,
+        "nasal_congestion_rhinorrhea": 1
+      },
+      "synonyms": [
+        "vocal fold nodules",
+        "vocal cord nodules",
+        "singer's nodules",
+        "chronic hoarseness voice overuse"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check voice-use pattern, duration, smoking or reflux contributors, airway or dysphagia red flags, laryngoscopy context, voice therapy needs, and ENT referral threshold."
+      ],
+      "source_ids": [
+        "merck_vocal_fold_nodules_phase850",
+        "nhs_laryngitis"
+      ]
+    },
+    {
+      "slug": "chronic_rhinosinusitis",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "慢性鼻竇炎",
+      "name_en": "Chronic rhinosinusitis",
+      "system": "ENT/Nasal/Sinus",
+      "urgency": "routine",
+      "summary_zh": "慢性鼻竇炎 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Persistent nasal congestion, purulent drainage, facial pressure, hyposmia, cough, fatigue, or symptoms lasting weeks to months should include chronic rhinosinusitis.",
+      "signals": {
+        "nasal_congestion_rhinorrhea": 4,
+        "facial_sinus_pain_pressure": 3,
+        "headache": 1,
+        "cough_sputum": 1,
+        "fatigue": 1
+      },
+      "synonyms": [
+        "chronic rhinosinusitis",
+        "persistent sinus congestion",
+        "facial pressure nasal drainage",
+        "long duration sinus inflammation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check duration, purulent drainage, smell change, allergy or asthma overlap, dental or immune risk, orbital or neurologic red flags, imaging or endoscopy context, and ENT pathway."
+      ],
+      "source_ids": [
+        "merck_chronic_rhinosinusitis_phase850",
+        "merck_septal_deviation_phase850"
+      ]
     }
   ],
   "sources": [
@@ -29468,6 +30214,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Traumatic Brain Injury (TBI)",
       "url": "https://www.merckmanuals.com/professional/injuries-poisoning/traumatic-brain-injury-tbi/traumatic-brain-injury-tbi"
+    },
+    {
+      "source_id": "merck_spinal_muscular_atrophy_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Spinal Muscular Atrophies (SMAs)",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/peripheral-nervous-system-and-motor-unit-disorders/spinal-muscular-atrophies-smas"
+    },
+    {
+      "source_id": "merck_rpgn_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Rapidly Progressive Glomerulonephritis (RPGN)",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/rapidly-progressive-glomerulonephritis-rpgn"
+    },
+    {
+      "source_id": "merck_lupus_nephritis_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Lupus Nephritis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/glomerular-disorders/lupus-nephritis"
+    },
+    {
+      "source_id": "merck_tubulointerstitial_nephritis_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Tubulointerstitial Nephritis",
+      "url": "https://www.merckmanuals.com/professional/nephrology/tubulointerstitial-diseases/tubulointerstitial-nephritis"
+    },
+    {
+      "source_id": "merck_pemphigus_vulgaris_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Pemphigus Vulgaris",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/bullous-diseases/pemphigus-vulgaris"
+    },
+    {
+      "source_id": "merck_actinic_keratoses_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Actinic Keratoses",
+      "url": "https://www.merckmanuals.com/professional/dermatologic-disorders/reactions-to-sunlight/actinic-keratoses"
+    },
+    {
+      "source_id": "merck_squamous_cell_carcinoma_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Squamous Cell Carcinoma",
+      "url": "https://www.merckmanuals.com/professional/oncology/cancers-of-the-skin/squamous-cell-carcinoma"
+    },
+    {
+      "source_id": "merck_septal_deviation_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Septal Deviation and Perforation",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/nose-and-paranasal-sinus-disorders/septal-deviation-and-perforation"
+    },
+    {
+      "source_id": "merck_av_block_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Atrioventricular Block",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/specific-cardiac-arrhythmias/atrioventricular-block"
+    },
+    {
+      "source_id": "merck_sick_sinus_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Sick Sinus Syndrome",
+      "url": "https://www.merckmanuals.com/professional/cardiovascular-disorders/specific-cardiac-arrhythmias/sick-sinus-syndrome"
+    },
+    {
+      "source_id": "merck_factitious_self_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Factitious Disorder Imposed on Self",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/somatic-symptom-and-related-disorders/factitious-disorder-imposed-on-self"
+    },
+    {
+      "source_id": "merck_functional_neuro_symptom_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Functional Neurological Symptom Disorder",
+      "url": "https://www.merckmanuals.com/professional/psychiatric-disorders/somatic-symptom-and-related-disorders/functional-neurological-symptom-disorder"
+    },
+    {
+      "source_id": "merck_odd_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Oppositional Defiant Disorder (ODD)",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/psychiatric-disorders-in-children-and-adolescents/oppositional-defiant-disorder-odd"
+    },
+    {
+      "source_id": "merck_conduct_disorder_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Conduct Disorder",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/psychiatric-disorders-in-children-and-adolescents/conduct-disorder"
+    },
+    {
+      "source_id": "merck_postpartum_depression_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Postpartum Depression",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/postpartum-care-and-associated-disorders/postpartum-depression"
+    },
+    {
+      "source_id": "merck_pms_pmdd_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Premenstrual Syndrome (PMS)",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/abnormal-uterine-bleeding/premenstrual-syndrome-pms"
+    },
+    {
+      "source_id": "merck_urethral_stricture_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Urethral Stricture",
+      "url": "https://www.merckmanuals.com/professional/genitourinary-disorders/penile-and-scrotal-disorders/urethral-stricture"
+    },
+    {
+      "source_id": "merck_vascular_cognitive_impairment_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Vascular Cognitive Impairment and Dementia",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/delirium-and-dementia/vascular-cognitive-impairment-and-dementia"
+    },
+    {
+      "source_id": "merck_myotonic_dystrophy_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Myotonic Dystrophy",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/inherited-muscular-disorders/myotonic-dystrophy"
+    },
+    {
+      "source_id": "merck_frontotemporal_dementia_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Frontotemporal Dementia (FTD)",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/delirium-and-dementia/frontotemporal-dementia-ftd"
+    },
+    {
+      "source_id": "ncbi_tardive_dyskinesia_phase850",
+      "publisher": "NCBI Bookshelf",
+      "title": "Tardive Dyskinesia",
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK448207/"
+    },
+    {
+      "source_id": "merck_dystonias_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Dystonias",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/movement-and-cerebellar-disorders/dystonias"
+    },
+    {
+      "source_id": "merck_retinitis_pigmentosa_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Retinitis Pigmentosa",
+      "url": "https://www.merckmanuals.com/professional/eye-disorders/retinal-disorders/retinitis-pigmentosa"
+    },
+    {
+      "source_id": "merck_vocal_fold_nodules_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Vocal Fold Polyps, Nodules, and Granulomas",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/laryngeal-disorders/vocal-fold-polyps-nodules-and-granulomas"
+    },
+    {
+      "source_id": "merck_chronic_rhinosinusitis_phase850",
+      "publisher": "Merck Manual Professional",
+      "title": "Sinusitis",
+      "url": "https://www.merckmanuals.com/professional/ear-nose-and-throat-disorders/nose-and-paranasal-sinus-disorders/sinusitis"
     }
   ]
 }
