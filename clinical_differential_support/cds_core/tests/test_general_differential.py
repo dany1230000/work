@@ -1169,6 +1169,39 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
                 match = evaluate_general_differential({"query": query, "findings": []})
                 self.assertEqual(match["results"][0]["slug"], slug)
 
+    def test_twenty_eighth_generalist_batch_adds_25_more_searchable_conditions(self):
+        expectations = [
+            ("neonatal hyperbilirubinemia", "neonatal_hyperbilirubinemia"),
+            ("infantile spasms", "infantile_spasms"),
+            ("neonatal respiratory distress syndrome", "neonatal_respiratory_distress_syndrome"),
+            ("patent ductus arteriosus", "patent_ductus_arteriosus"),
+            ("tetralogy of fallot", "tetralogy_of_fallot"),
+            ("transposition of the great arteries", "transposition_of_the_great_arteries"),
+            ("meconium aspiration syndrome", "meconium_aspiration_syndrome"),
+            ("transient tachypnea of the newborn", "transient_tachypnea_of_the_newborn"),
+            ("apnea of prematurity", "apnea_of_prematurity"),
+            ("neonatal hypoglycemia", "neonatal_hypoglycemia"),
+            ("retinopathy of prematurity", "retinopathy_of_prematurity"),
+            ("neonatal abstinence syndrome", "neonatal_abstinence_syndrome"),
+            ("abusive head trauma", "abusive_head_trauma"),
+            ("postpartum preeclampsia", "postpartum_preeclampsia"),
+            ("intrahepatic cholestasis of pregnancy", "intrahepatic_cholestasis_of_pregnancy"),
+            ("peripartum cardiomyopathy", "peripartum_cardiomyopathy"),
+            ("gestational trophoblastic disease", "gestational_trophoblastic_disease"),
+            ("amniotic fluid embolism", "amniotic_fluid_embolism"),
+            ("elder abuse", "elder_abuse"),
+            ("cervical spondylotic myelopathy", "cervical_spondylotic_myelopathy"),
+            ("sarcopenia", "sarcopenia"),
+            ("frailty", "frailty"),
+            ("polypharmacy adverse drug event", "polypharmacy_adverse_drug_event"),
+            ("hip fracture", "hip_fracture"),
+            ("cervical radiculopathy", "cervical_radiculopathy"),
+        ]
+        for query, slug in expectations:
+            with self.subTest(query=query):
+                match = evaluate_general_differential({"query": query, "findings": []})
+                self.assertEqual(match["results"][0]["slug"], slug)
+
     def test_ranked_results_are_grouped_by_urgency(self):
         result = evaluate_general_differential(
             {

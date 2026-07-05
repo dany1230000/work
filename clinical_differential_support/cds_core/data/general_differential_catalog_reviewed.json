@@ -1,17 +1,17 @@
 {
   "format_version": "general-differential-review-seed-v1",
   "catalog": {
-    "catalog_version": "general-differential-starter-2026-07-04-800",
-    "condition_count": 800,
-    "source_count": 878,
+    "catalog_version": "general-differential-starter-2026-07-05-825",
+    "condition_count": 825,
+    "source_count": 903,
     "quality": {
-      "catalog_version": "general-differential-starter-2026-07-04-800",
-      "condition_count": 800,
-      "source_count": 878,
+      "catalog_version": "general-differential-starter-2026-07-05-825",
+      "condition_count": 825,
+      "source_count": 903,
       "blocking_issue_count": 0,
       "warning_count": 0,
       "ready_for_public_reference": true,
-      "expansion_target_condition_count": 800
+      "expansion_target_condition_count": 825
     }
   },
   "safety_scope": {
@@ -23298,6 +23298,756 @@
         "merck_renal_vein_thrombosis_phase800",
         "merck_membranous_nephropathy_phase800"
       ]
+    },
+    {
+      "slug": "neonatal_hyperbilirubinemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒高膽紅素血症",
+      "name_en": "Neonatal hyperbilirubinemia",
+      "system": "Pediatrics/Neonatal/Hepatic",
+      "urgency": "soon",
+      "summary_zh": "新生兒高膽紅素血症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn jaundice, cephalocaudal yellowing, prematurity, bruising, hemolysis risk, poor feeding, lethargy, or high bilirubin context should include neonatal hyperbilirubinemia.",
+      "signals": {
+        "jaundice": 4,
+        "fatigue": 1,
+        "poor_oral_intake_dehydration": 2,
+        "altered_mental_status": 2,
+        "easy_bruising_bleeding": 1
+      },
+      "synonyms": [
+        "neonatal hyperbilirubinemia",
+        "newborn jaundice",
+        "neonatal jaundice",
+        "high bilirubin newborn"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age in hours, gestational age, bilirubin trend, feeding and weight loss, hemolysis risk, neurotoxicity signs, and phototherapy or escalation threshold."
+      ],
+      "source_ids": [
+        "merck_neonatal_hyperbilirubinemia_phase825",
+        "merck_neonatal_hypoglycemia_phase825"
+      ]
+    },
+    {
+      "slug": "infantile_spasms",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "嬰兒點頭痙攣",
+      "name_en": "Infantile spasms",
+      "system": "Pediatrics/Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "嬰兒點頭痙攣 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant with clusters of brief flexion or extension spasms, head drops, developmental regression, abnormal startle-like events, or suspected hypsarrhythmia should include infantile spasms.",
+      "signals": {
+        "seizure_activity_or_postictal_state": 4,
+        "altered_mental_status": 2,
+        "focal_neurologic_deficit": 1,
+        "weakness": 1,
+        "vomiting": 1
+      },
+      "synonyms": [
+        "infantile spasms",
+        "west syndrome",
+        "epileptic spasms",
+        "hypsarrhythmia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check event clusters, age of onset, developmental regression, video description, EEG urgency, underlying neurologic disorder, and urgent pediatric neurology pathway."
+      ],
+      "source_ids": [
+        "merck_infantile_spasms_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "neonatal_respiratory_distress_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒呼吸窘迫症候群",
+      "name_en": "Neonatal respiratory distress syndrome",
+      "system": "Pediatrics/Neonatal/Pulmonary",
+      "urgency": "emergent",
+      "summary_zh": "新生兒呼吸窘迫症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Preterm newborn with grunting, nasal flaring, retractions, tachypnea, hypoxemia, surfactant deficiency risk, or respiratory distress soon after birth should include neonatal respiratory distress syndrome.",
+      "signals": {
+        "respiratory_distress": 4,
+        "dyspnea": 3,
+        "wheeze": 1,
+        "poor_oral_intake_dehydration": 1,
+        "hemodynamic_instability": 1
+      },
+      "synonyms": [
+        "neonatal respiratory distress syndrome",
+        "rds newborn",
+        "hyaline membrane disease",
+        "surfactant deficiency newborn"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, timing after birth, oxygen need, chest radiograph context, sepsis or TTN mimics, and NICU respiratory support threshold."
+      ],
+      "source_ids": [
+        "merck_neonatal_rds_phase825",
+        "merck_ttn_phase825"
+      ]
+    },
+    {
+      "slug": "patent_ductus_arteriosus",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "開放性動脈導管",
+      "name_en": "Patent ductus arteriosus",
+      "system": "Pediatrics/Cardiovascular/Neonatal",
+      "urgency": "soon",
+      "summary_zh": "開放性動脈導管 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant with continuous murmur, bounding pulses, tachypnea, poor feeding, failure to thrive, prematurity, respiratory distress, or left-to-right shunt context should include patent ductus arteriosus.",
+      "signals": {
+        "dyspnea": 3,
+        "tachycardia": 2,
+        "respiratory_distress": 2,
+        "poor_oral_intake_dehydration": 2,
+        "orthopnea_edema": 1
+      },
+      "synonyms": [
+        "patent ductus arteriosus",
+        "pda heart",
+        "ductus arteriosus",
+        "machinery murmur"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prematurity, murmur and pulse findings, feeding and growth, respiratory support need, echocardiography context, and pediatric cardiology pathway."
+      ],
+      "source_ids": [
+        "merck_pda_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "tetralogy_of_fallot",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "法洛氏四重症",
+      "name_en": "Tetralogy of Fallot",
+      "system": "Pediatrics/Cardiovascular/Congenital",
+      "urgency": "emergent",
+      "summary_zh": "法洛氏四重症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Cyanosis, dyspnea with feeding, poor growth, harsh systolic murmur, hypercyanotic spells, squatting, or congenital heart disease context should include tetralogy of Fallot.",
+      "signals": {
+        "dyspnea": 3,
+        "respiratory_distress": 3,
+        "syncope": 2,
+        "tachycardia": 2,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "tetralogy of fallot",
+        "tof",
+        "tet spell",
+        "cyanotic congenital heart disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check oxygen saturation, cyanotic spell history, feeding dyspnea, murmur, growth, echocardiography context, and urgent pediatric cardiology threshold."
+      ],
+      "source_ids": [
+        "merck_tetralogy_phase825",
+        "merck_tga_phase825"
+      ]
+    },
+    {
+      "slug": "transposition_of_the_great_arteries",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "大動脈轉位",
+      "name_en": "Transposition of the great arteries",
+      "system": "Pediatrics/Cardiovascular/Congenital",
+      "urgency": "emergent",
+      "summary_zh": "大動脈轉位 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn with severe cyanosis, respiratory distress, poor oxygen response, parallel circulation concern, or critical congenital heart disease screen failure should include transposition of the great arteries.",
+      "signals": {
+        "respiratory_distress": 4,
+        "dyspnea": 3,
+        "hemodynamic_instability": 3,
+        "poor_oral_intake_dehydration": 1,
+        "syncope": 1
+      },
+      "synonyms": [
+        "transposition of the great arteries",
+        "tga",
+        "d transposition",
+        "cyanotic newborn heart disease"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pre/post-ductal oxygen saturation, response to oxygen, murmur or shock, ductal-dependent circulation concern, echo urgency, and neonatal cardiac escalation."
+      ],
+      "source_ids": [
+        "merck_tga_phase825",
+        "merck_pda_phase825"
+      ]
+    },
+    {
+      "slug": "meconium_aspiration_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "胎便吸入症候群",
+      "name_en": "Meconium aspiration syndrome",
+      "system": "Pediatrics/Neonatal/Pulmonary",
+      "urgency": "emergent",
+      "summary_zh": "胎便吸入症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Term or post-term newborn with meconium-stained fluid, tachypnea, grunting, retractions, cyanosis, rales, rhonchi, or hypoxemia should include meconium aspiration syndrome.",
+      "signals": {
+        "respiratory_distress": 4,
+        "dyspnea": 3,
+        "cough_sputum": 1,
+        "hemodynamic_instability": 1,
+        "fever": 1
+      },
+      "synonyms": [
+        "meconium aspiration syndrome",
+        "mas newborn",
+        "meconium stained fluid respiratory distress",
+        "meconium pneumonitis"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check delivery history, meconium-stained fluid, oxygenation, chest radiograph context, pulmonary hypertension signs, infection mimics, and NICU escalation threshold."
+      ],
+      "source_ids": [
+        "merck_meconium_aspiration_phase825",
+        "merck_neonatal_rds_phase825"
+      ]
+    },
+    {
+      "slug": "transient_tachypnea_of_the_newborn",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒暫時性呼吸急促",
+      "name_en": "Transient tachypnea of the newborn",
+      "system": "Pediatrics/Neonatal/Pulmonary",
+      "urgency": "soon",
+      "summary_zh": "新生兒暫時性呼吸急促 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Respiratory distress shortly after birth, tachypnea, retractions, grunting, nasal flaring, cesarean delivery, or delayed fetal lung fluid clearance should include transient tachypnea of the newborn.",
+      "signals": {
+        "respiratory_distress": 3,
+        "dyspnea": 3,
+        "wheeze": 1,
+        "poor_oral_intake_dehydration": 1,
+        "tachycardia": 1
+      },
+      "synonyms": [
+        "transient tachypnea of the newborn",
+        "ttn",
+        "wet lung newborn",
+        "delayed fetal lung fluid clearance"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check delivery mode, onset timing, oxygen need, chest radiograph pattern, sepsis or RDS mimics, feeding safety, and neonatal monitoring threshold."
+      ],
+      "source_ids": [
+        "merck_ttn_phase825",
+        "merck_neonatal_rds_phase825"
+      ]
+    },
+    {
+      "slug": "apnea_of_prematurity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "早產兒呼吸暫停",
+      "name_en": "Apnea of prematurity",
+      "system": "Pediatrics/Neonatal/Pulmonary",
+      "urgency": "emergent",
+      "summary_zh": "早產兒呼吸暫停 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Preterm infant with respiratory pauses, bradycardia, desaturation, color change, feeding-associated events, or immature respiratory control should include apnea of prematurity.",
+      "signals": {
+        "respiratory_distress": 4,
+        "syncope": 2,
+        "seizure_activity_or_postictal_state": 1,
+        "poor_oral_intake_dehydration": 1,
+        "hypothermia": 1
+      },
+      "synonyms": [
+        "apnea of prematurity",
+        "preterm apnea",
+        "bradycardia desaturation newborn",
+        "apnea bradycardia desaturation"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, event duration, bradycardia and oxygen saturation, feeding relation, infection/metabolic/cardiac mimics, and NICU monitoring pathway."
+      ],
+      "source_ids": [
+        "merck_apnea_prematurity_phase825",
+        "merck_neonatal_hypoglycemia_phase825"
+      ]
+    },
+    {
+      "slug": "neonatal_hypoglycemia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒低血糖",
+      "name_en": "Neonatal hypoglycemia",
+      "system": "Pediatrics/Neonatal/Metabolic",
+      "urgency": "emergent",
+      "summary_zh": "新生兒低血糖 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn jitteriness, lethargy, poor feeding, apnea, cyanosis, seizure, hypothermia, maternal diabetes, prematurity, or low glucose should include neonatal hypoglycemia.",
+      "signals": {
+        "hypoglycemia_risk": 4,
+        "seizure_activity_or_postictal_state": 3,
+        "altered_mental_status": 3,
+        "poor_oral_intake_dehydration": 2,
+        "hypothermia": 2
+      },
+      "synonyms": [
+        "neonatal hypoglycemia",
+        "newborn low glucose",
+        "jittery newborn hypoglycemia",
+        "low blood sugar newborn"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check bedside glucose, risk factors, feeding status, symptoms, persistent versus transient pattern, sepsis or endocrine mimics, and dextrose or NICU threshold."
+      ],
+      "source_ids": [
+        "merck_neonatal_hypoglycemia_phase825",
+        "merck_neonatal_hyperbilirubinemia_phase825"
+      ]
+    },
+    {
+      "slug": "retinopathy_of_prematurity",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "早產兒視網膜病變",
+      "name_en": "Retinopathy of prematurity",
+      "system": "Pediatrics/Ophthalmology/Neonatal",
+      "urgency": "soon",
+      "summary_zh": "早產兒視網膜病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Very preterm or very low birth weight infant, oxygen exposure, abnormal retinal vascularization, failed screening, or later visual impairment should include retinopathy of prematurity.",
+      "signals": {
+        "visual_disturbance": 3,
+        "eye_pain_redness": 1,
+        "respiratory_distress": 1,
+        "hypothermia": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "retinopathy of prematurity",
+        "rop",
+        "premature infant retinal disease",
+        "abnormal retinal vascularization"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age and birth weight, oxygen exposure, screening schedule, retinal stage/zone context, follow-up reliability, and pediatric ophthalmology pathway."
+      ],
+      "source_ids": [
+        "merck_retinopathy_prematurity_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "neonatal_abstinence_syndrome",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "新生兒戒斷症候群",
+      "name_en": "Neonatal abstinence syndrome",
+      "system": "Pediatrics/Neonatal/Toxicology",
+      "urgency": "soon",
+      "summary_zh": "新生兒戒斷症候群 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Newborn tremor, irritability, poor feeding, high-pitched cry, vomiting, diarrhea, fever, tachypnea, or prenatal opioid or substance exposure should include neonatal abstinence syndrome.",
+      "signals": {
+        "substance_use_concern": 3,
+        "poor_oral_intake_dehydration": 2,
+        "vomiting": 2,
+        "fever": 1,
+        "respiratory_distress": 1
+      },
+      "synonyms": [
+        "neonatal abstinence syndrome",
+        "neonatal opioid withdrawal syndrome",
+        "nows",
+        "nas newborn"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check prenatal substance exposure, timing after birth, feeding and weight loss, autonomic and neurologic signs, safe-care planning, and neonatal monitoring pathway."
+      ],
+      "source_ids": [
+        "cdc_neonatal_opioid_withdrawal_phase825",
+        "merck_neonatal_hypoglycemia_phase825"
+      ]
+    },
+    {
+      "slug": "abusive_head_trauma",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "兒童虐待性頭部外傷",
+      "name_en": "Abusive head trauma",
+      "system": "Pediatrics/Trauma/Safeguarding",
+      "urgency": "emergent",
+      "summary_zh": "兒童虐待性頭部外傷 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Infant or young child with vomiting, lethargy, seizure, apnea, unexplained bruising, retinal hemorrhage, subdural bleeding, inconsistent history, or suspected maltreatment should include abusive head trauma.",
+      "signals": {
+        "vomiting": 2,
+        "altered_mental_status": 4,
+        "seizure_activity_or_postictal_state": 3,
+        "respiratory_distress": 2,
+        "recent_trauma": 2
+      },
+      "synonyms": [
+        "abusive head trauma",
+        "shaken baby syndrome",
+        "inflicted head injury",
+        "nonaccidental head trauma"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check age, history consistency, neurologic status, bruising or fractures, retinal exam and neuroimaging context, mandatory safeguarding steps, and urgent pediatric escalation."
+      ],
+      "source_ids": [
+        "merck_child_maltreatment_phase825",
+        "merck_tbi_phase825"
+      ]
+    },
+    {
+      "slug": "postpartum_preeclampsia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "產後子癲前症",
+      "name_en": "Postpartum preeclampsia",
+      "system": "Obstetric/Cardiovascular/Neurologic",
+      "urgency": "emergent",
+      "summary_zh": "產後子癲前症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Postpartum hypertension, severe headache, visual symptoms, right upper quadrant pain, dyspnea, edema, seizure, or abnormal liver/platelet/renal tests should include postpartum preeclampsia.",
+      "signals": {
+        "preeclampsia_warning_features": 4,
+        "headache": 3,
+        "visual_disturbance": 3,
+        "ruq_pain": 2,
+        "seizure_activity_or_postictal_state": 3
+      },
+      "synonyms": [
+        "postpartum preeclampsia",
+        "postpartum eclampsia",
+        "preeclampsia after delivery",
+        "postpartum hypertension headache"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check postpartum day, BP, headache and vision symptoms, RUQ pain, dyspnea or edema, platelets/liver/renal context, and obstetric emergency pathway."
+      ],
+      "source_ids": [
+        "merck_preeclampsia_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "intrahepatic_cholestasis_of_pregnancy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "妊娠肝內膽汁鬱積",
+      "name_en": "Intrahepatic cholestasis of pregnancy",
+      "system": "Obstetric/Hepatic",
+      "urgency": "soon",
+      "summary_zh": "妊娠肝內膽汁鬱積 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Second or third trimester intense pruritus, especially palms or soles, dark urine, jaundice, elevated bile acids, or recurrent pregnancy cholestasis should include intrahepatic cholestasis of pregnancy.",
+      "signals": {
+        "chronic_itchy_flexural_rash": 3,
+        "jaundice": 2,
+        "pregnancy_possible": 2,
+        "fatigue": 1,
+        "ruq_pain": 1
+      },
+      "synonyms": [
+        "intrahepatic cholestasis of pregnancy",
+        "obstetric cholestasis",
+        "pregnancy cholestasis",
+        "pruritus pregnancy bile acids"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gestational age, pruritus distribution, bile acids and liver tests, jaundice or dark urine, fetal risk context, and obstetric follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_hepatic_pregnancy_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "peripartum_cardiomyopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "圍產期心肌病變",
+      "name_en": "Peripartum cardiomyopathy",
+      "system": "Obstetric/Cardiovascular",
+      "urgency": "emergent",
+      "summary_zh": "圍產期心肌病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Late pregnancy or postpartum dyspnea, orthopnea, edema, fatigue, tachycardia, pulmonary edema, reduced ejection fraction, or heart failure without another cause should include peripartum cardiomyopathy.",
+      "signals": {
+        "dyspnea": 4,
+        "orthopnea_edema": 4,
+        "tachycardia": 2,
+        "fatigue": 2,
+        "chest_pain": 1
+      },
+      "synonyms": [
+        "peripartum cardiomyopathy",
+        "postpartum cardiomyopathy",
+        "pregnancy related cardiomyopathy",
+        "heart failure postpartum"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy or postpartum timing, oxygenation, edema and orthopnea, echo and BNP context, preeclampsia or PE mimics, and cardio-obstetric escalation."
+      ],
+      "source_ids": [
+        "nhlbi_peripartum_cardiomyopathy_phase825",
+        "merck_hepatic_pregnancy_phase825"
+      ]
+    },
+    {
+      "slug": "gestational_trophoblastic_disease",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "妊娠滋養層疾病",
+      "name_en": "Gestational trophoblastic disease",
+      "system": "Obstetric/Oncology",
+      "urgency": "soon",
+      "summary_zh": "妊娠滋養層疾病 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Early pregnancy bleeding, uterus larger than dates, very high hCG, hyperemesis, absent fetus, molar pregnancy concern, or persistent bleeding after pregnancy should include gestational trophoblastic disease.",
+      "signals": {
+        "early_pregnancy_bleeding": 3,
+        "vaginal_bleeding": 3,
+        "vomiting": 2,
+        "pregnancy_possible": 2,
+        "pelvic_pain": 1
+      },
+      "synonyms": [
+        "gestational trophoblastic disease",
+        "molar pregnancy",
+        "hydatidiform mole",
+        "gestational trophoblastic neoplasia"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check pregnancy status, hCG level and trend, ultrasound findings, bleeding severity, hyperemesis or preeclampsia clues, and gynecology/oncology follow-up pathway."
+      ],
+      "source_ids": [
+        "merck_gtd_phase825",
+        "merck_professional"
+      ]
+    },
+    {
+      "slug": "amniotic_fluid_embolism",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "羊水栓塞",
+      "name_en": "Amniotic fluid embolism",
+      "system": "Obstetric/Critical care/Hematology",
+      "urgency": "emergent",
+      "summary_zh": "羊水栓塞 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Sudden hypoxia, hypotension, cardiac arrest, altered mental status, coagulopathy, uterine or venipuncture bleeding during labor, delivery, or immediate postpartum should include amniotic fluid embolism.",
+      "signals": {
+        "hemodynamic_instability": 4,
+        "respiratory_distress": 4,
+        "easy_bruising_bleeding": 3,
+        "altered_mental_status": 3,
+        "pregnancy_possible": 2
+      },
+      "synonyms": [
+        "amniotic fluid embolism",
+        "afe",
+        "anaphylactoid syndrome of pregnancy",
+        "obstetric collapse coagulopathy"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check timing around labor or delivery, oxygenation, BP, bleeding and coagulation labs, seizure or embolic mimics, and immediate obstetric critical-care response."
+      ],
+      "source_ids": [
+        "merck_amniotic_fluid_embolism_phase825",
+        "merck_preeclampsia_phase825"
+      ]
+    },
+    {
+      "slug": "elder_abuse",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "高齡者虐待",
+      "name_en": "Elder abuse",
+      "system": "Geriatrics/Safeguarding",
+      "urgency": "soon",
+      "summary_zh": "高齡者虐待 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with unexplained injuries, fearfulness, neglect, malnutrition, medication withholding, financial exploitation concern, caregiver mismatch, or repeated delayed care should include elder abuse.",
+      "signals": {
+        "recent_trauma": 2,
+        "easy_bruising_bleeding": 2,
+        "poor_oral_intake_dehydration": 2,
+        "altered_mental_status": 1,
+        "self_harm_behavior": 1
+      },
+      "synonyms": [
+        "elder abuse",
+        "older adult abuse",
+        "elder neglect",
+        "financial exploitation older adult"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check injury explanation, caregiver dynamics, neglect signs, medication and nutrition access, decisional capacity, mandated reporting rules, and safe disposition."
+      ],
+      "source_ids": [
+        "msd_elder_abuse_phase825",
+        "merck_medication_older_adults_phase825"
+      ]
+    },
+    {
+      "slug": "cervical_spondylotic_myelopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "頸椎退化性脊髓病變",
+      "name_en": "Cervical spondylotic myelopathy",
+      "system": "Geriatrics/Neurologic/Spine",
+      "urgency": "soon",
+      "summary_zh": "頸椎退化性脊髓病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with neck pain, hand clumsiness, gait imbalance, falls, hyperreflexia, spasticity, limb weakness, or cervical stenosis should include cervical spondylotic myelopathy.",
+      "signals": {
+        "neck_stiffness": 2,
+        "progressive_bilateral_leg_weakness": 3,
+        "weakness": 2,
+        "recent_trauma": 1,
+        "focal_neurologic_deficit": 2
+      },
+      "synonyms": [
+        "cervical spondylotic myelopathy",
+        "cervical myelopathy",
+        "degenerative cervical myelopathy",
+        "cervical cord compression"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gait, hand dexterity, upper motor neuron signs, bladder symptoms, cervical imaging context, radiculopathy overlap, and spine or neurology referral threshold."
+      ],
+      "source_ids": [
+        "merck_cervical_spondylotic_myelopathy_phase825",
+        "merck_tbi_phase825"
+      ]
+    },
+    {
+      "slug": "sarcopenia",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "肌少症",
+      "name_en": "Sarcopenia",
+      "system": "Geriatrics/Musculoskeletal",
+      "urgency": "routine",
+      "summary_zh": "肌少症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with progressive weakness, low muscle mass, slow gait, falls, frailty, weight loss, poor nutrition, or functional decline should include sarcopenia.",
+      "signals": {
+        "weakness": 3,
+        "fatigue": 2,
+        "weight_loss": 2,
+        "recent_trauma": 1,
+        "low_back_pain": 1
+      },
+      "synonyms": [
+        "sarcopenia",
+        "age related muscle loss",
+        "low muscle mass older adult",
+        "slow gait weakness"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check gait speed, grip strength, weight loss, nutrition and activity level, falls, inflammatory or endocrine mimics, and physical therapy or geriatric pathway."
+      ],
+      "source_ids": [
+        "merck_physical_changes_aging_phase825",
+        "merck_frailty_phase825"
+      ]
+    },
+    {
+      "slug": "frailty",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "衰弱症",
+      "name_en": "Frailty",
+      "system": "Geriatrics/Functional status",
+      "urgency": "routine",
+      "summary_zh": "衰弱症 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with unintentional weight loss, exhaustion, slow walking, weakness, low activity, recurrent falls, or poor reserve after minor stressors should include frailty.",
+      "signals": {
+        "weakness": 3,
+        "fatigue": 3,
+        "weight_loss": 2,
+        "recent_trauma": 1,
+        "poor_oral_intake_dehydration": 1
+      },
+      "synonyms": [
+        "frailty",
+        "frailty syndrome",
+        "geriatric frailty",
+        "low physiologic reserve"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check falls, gait speed, grip strength, nutrition, cognition and mood, medication burden, social support, and comprehensive geriatric assessment need."
+      ],
+      "source_ids": [
+        "merck_frailty_phase825",
+        "merck_physical_changes_aging_phase825"
+      ]
+    },
+    {
+      "slug": "polypharmacy_adverse_drug_event",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "多重用藥不良事件",
+      "name_en": "Polypharmacy adverse drug event",
+      "system": "Geriatrics/Pharmacology/Toxicology",
+      "urgency": "soon",
+      "summary_zh": "多重用藥不良事件 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult with confusion, falls, orthostasis, urinary retention, constipation, sedation, bleeding, kidney injury, or symptoms after medication changes should include polypharmacy adverse drug event.",
+      "signals": {
+        "altered_mental_status": 3,
+        "recent_trauma": 2,
+        "orthostatic_lightheadedness": 2,
+        "new_medication_exposure": 4,
+        "inability_to_void": 1
+      },
+      "synonyms": [
+        "polypharmacy adverse drug event",
+        "medication related problem older adult",
+        "adverse drug effect elderly",
+        "drug drug interaction older adult"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check full medication list, recent starts or dose changes, anticholinergic/sedative/anticoagulant burden, renal function, falls or delirium, and deprescribing review pathway."
+      ],
+      "source_ids": [
+        "merck_medication_older_adults_phase825",
+        "merck_physical_changes_aging_phase825"
+      ]
+    },
+    {
+      "slug": "hip_fracture",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "髖部骨折",
+      "name_en": "Hip fracture",
+      "system": "Geriatrics/Orthopedic/Trauma",
+      "urgency": "emergent",
+      "summary_zh": "髖部骨折 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Older adult after fall with hip or groin pain, inability to bear weight, shortened or externally rotated leg, osteoporosis, or occult fracture concern should include hip fracture.",
+      "signals": {
+        "recent_trauma": 3,
+        "severe_pain": 3,
+        "low_back_pain": 1,
+        "acute_limb_pain_pallor_pulselessness": 1,
+        "weakness": 1
+      },
+      "synonyms": [
+        "hip fracture",
+        "femoral neck fracture",
+        "intertrochanteric fracture",
+        "older adult fall hip pain"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check fall mechanism, ability to bear weight, limb position, neurovascular status, anticoagulation, radiograph or MRI need, and orthopedic pathway."
+      ],
+      "source_ids": [
+        "merck_hip_fractures_phase825",
+        "merck_tbi_phase825"
+      ]
+    },
+    {
+      "slug": "cervical_radiculopathy",
+      "review_status": "seed_needs_clinician_review",
+      "name_zh": "頸椎神經根病變",
+      "name_en": "Cervical radiculopathy",
+      "system": "Neurologic/Spine",
+      "urgency": "soon",
+      "summary_zh": "頸椎神經根病變 需納入臨床鑑別，並依病程、紅旗、危險因子與來源資料做分層。",
+      "summary_en": "Neck pain with radiating arm pain, dermatomal numbness or paresthesia, reflex change, weakness, disc herniation, foraminal stenosis, or cervical spondylosis context should include cervical radiculopathy.",
+      "signals": {
+        "neck_stiffness": 3,
+        "neurologic_deficit": 3,
+        "weakness": 2,
+        "severe_pain": 1,
+        "recent_trauma": 1
+      },
+      "synonyms": [
+        "cervical radiculopathy",
+        "neck pinched nerve",
+        "cervical nerve root compression",
+        "neck pain radiating to arm"
+      ],
+      "ask_next": [
+        "確認病程、紅旗表現、危險因子、相關檢查脈絡與是否需要升級或專科評估。 / Check dermatomal pain or numbness, reflex and motor deficits, myelopathy red flags, trauma or cancer/infection risk, imaging context, and spine or neurology referral threshold."
+      ],
+      "source_ids": [
+        "merck_cervical_spondylotic_myelopathy_phase825",
+        "merck_professional"
+      ]
     }
   ],
   "sources": [
@@ -28568,6 +29318,156 @@
       "publisher": "Merck Manual Professional",
       "title": "Renal Vein Thrombosis",
       "url": "https://www.merckmanuals.com/professional/nephrology/renovascular-disorders/renal-vein-thrombosis"
+    },
+    {
+      "source_id": "merck_neonatal_hyperbilirubinemia_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Neonatal Hyperbilirubinemia",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/metabolic-electrolyte-and-toxic-disorders-in-neonates/neonatal-hyperbilirubinemia"
+    },
+    {
+      "source_id": "merck_infantile_spasms_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Infantile Spasms",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/neurologic-disorders-in-children/infantile-spasms"
+    },
+    {
+      "source_id": "merck_neonatal_rds_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Respiratory Distress Syndrome in Neonates",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-problems-in-neonates/respiratory-distress-syndrome-in-neonates"
+    },
+    {
+      "source_id": "merck_pda_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Patent Ductus Arteriosus (PDA)",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/patent-ductus-arteriosus-pda"
+    },
+    {
+      "source_id": "merck_tetralogy_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Tetralogy of Fallot",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/tetralogy-of-fallot"
+    },
+    {
+      "source_id": "merck_tga_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Transposition of the Great Arteries (TGA)",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/congenital-cardiovascular-anomalies/transposition-of-the-great-arteries-tga"
+    },
+    {
+      "source_id": "merck_meconium_aspiration_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Meconium Aspiration Syndrome",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-problems-in-neonates/meconium-aspiration-syndrome"
+    },
+    {
+      "source_id": "merck_ttn_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Transient Tachypnea of the Newborn",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-problems-in-neonates/transient-tachypnea-of-the-newborn"
+    },
+    {
+      "source_id": "merck_apnea_prematurity_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Apnea of Prematurity",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/respiratory-problems-in-neonates/apnea-of-prematurity"
+    },
+    {
+      "source_id": "merck_neonatal_hypoglycemia_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Neonatal Hypoglycemia",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/metabolic-electrolyte-and-toxic-disorders-in-neonates/neonatal-hypoglycemia"
+    },
+    {
+      "source_id": "merck_retinopathy_prematurity_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Retinopathy of Prematurity",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/eye-defects-and-conditions-in-children/retinopathy-of-prematurity"
+    },
+    {
+      "source_id": "cdc_neonatal_opioid_withdrawal_phase825",
+      "publisher": "CDC",
+      "title": "Treat and Manage Infants Affected by Prenatal Opioid Exposure",
+      "url": "https://www.cdc.gov/opioid-use-during-pregnancy/treatment/infants-opioid.html"
+    },
+    {
+      "source_id": "merck_child_maltreatment_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Overview of Child Maltreatment",
+      "url": "https://www.merckmanuals.com/professional/pediatrics/child-maltreatment/overview-of-child-maltreatment"
+    },
+    {
+      "source_id": "merck_preeclampsia_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Preeclampsia and Eclampsia",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/antenatal-complications/preeclampsia-and-eclampsia"
+    },
+    {
+      "source_id": "merck_hepatic_pregnancy_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Hepatic Disorders in Pregnancy",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/pregnancy-complicated-by-disease/hepatic-disorders-in-pregnancy"
+    },
+    {
+      "source_id": "nhlbi_peripartum_cardiomyopathy_phase825",
+      "publisher": "NHLBI",
+      "title": "Peripartum Cardiomyopathy and Pregnancy Issues",
+      "url": "https://www.nhlbi.nih.gov/health/cardiomyopathy/pregnancy"
+    },
+    {
+      "source_id": "merck_gtd_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Gestational Trophoblastic Disease",
+      "url": "https://www.merckmanuals.com/professional/oncology/gynecologic-tumors/gestational-trophoblastic-disease"
+    },
+    {
+      "source_id": "merck_amniotic_fluid_embolism_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Amniotic Fluid Embolism",
+      "url": "https://www.merckmanuals.com/professional/gynecology-and-obstetrics/intrapartum-complications/amniotic-fluid-embolism"
+    },
+    {
+      "source_id": "msd_elder_abuse_phase825",
+      "publisher": "MSD Manual Professional",
+      "title": "Elder Abuse",
+      "url": "https://www.msdmanuals.com/professional/geriatrics/elder-abuse/elder-abuse"
+    },
+    {
+      "source_id": "merck_cervical_spondylotic_myelopathy_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Cervical Spondylosis and Spondylotic Cervical Myelopathy",
+      "url": "https://www.merckmanuals.com/professional/neurologic-disorders/spinal-cord-disorders/cervical-spondylosis-and-spondylotic-cervical-myelopathy"
+    },
+    {
+      "source_id": "merck_physical_changes_aging_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Physical Changes With Aging",
+      "url": "https://www.merckmanuals.com/professional/geriatrics/approach-to-the-geriatric-patient/physical-changes-with-aging"
+    },
+    {
+      "source_id": "merck_frailty_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Prevention of Frailty",
+      "url": "https://www.merckmanuals.com/professional/geriatrics/prevention-of-disease-and-disability-in-older-adults/prevention-of-frailty"
+    },
+    {
+      "source_id": "merck_medication_older_adults_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Medication-Related Problems in Older Adults",
+      "url": "https://www.merckmanuals.com/professional/geriatrics/pharmacologic-therapy-in-older-adults/medication-related-problems-in-older-adults"
+    },
+    {
+      "source_id": "merck_hip_fractures_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Hip Fractures",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/fractures/hip-fractures"
+    },
+    {
+      "source_id": "merck_tbi_phase825",
+      "publisher": "Merck Manual Professional",
+      "title": "Traumatic Brain Injury (TBI)",
+      "url": "https://www.merckmanuals.com/professional/injuries-poisoning/traumatic-brain-injury-tbi/traumatic-brain-injury-tbi"
     }
   ]
 }
