@@ -195,6 +195,8 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertEqual(plan["current_step_id"], "ask_missing_finding")
         self.assertEqual(plan["title_en"], "Ask this gap now")
         self.assertEqual(plan["command_en"], "Ask next: Hemodynamic instability")
+        self.assertEqual(plan["finding_id"], "hemodynamic_instability")
+        self.assertTrue(plan["can_add_finding"])
         self.assertEqual(plan["top_candidate_slug"], "acute_coronary_syndrome")
         self.assertEqual(step_statuses["minimum_data"], "current")
         self.assertEqual(step_statuses["candidate_compare"], "after")

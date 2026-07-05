@@ -833,6 +833,42 @@
       });
     }
 
+    function initializeAddFindingShortcuts(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-add-finding-shortcut]")).forEach(function (button) {
+        if (button.dataset.addFindingShortcutReady === "true") {
+          return;
+        }
+        button.dataset.addFindingShortcutReady = "true";
+        button.addEventListener("click", function () {
+          var findingId = button.dataset.findingId || "";
+          var form = document.querySelector("[data-differential-form]");
+          if (!findingId || !form) {
+            return;
+          }
+          var alreadySelected = Array.prototype.slice.call(
+            form.querySelectorAll('input[name="findings"]')
+          ).some(function (input) {
+            return input.value === findingId;
+          });
+          if (!alreadySelected) {
+            var hidden = document.createElement("input");
+            hidden.type = "hidden";
+            hidden.name = "findings";
+            hidden.value = findingId;
+            hidden.setAttribute("data-selected-finding-hidden", "true");
+            hidden.setAttribute("data-current-action-added-finding", "true");
+            form.appendChild(hidden);
+          }
+          if (typeof form.requestSubmit === "function") {
+            form.requestSubmit();
+            return;
+          }
+          form.submit();
+        });
+      });
+    }
+
     function initializeSourceProvenanceFilters(root) {
       root = root || document;
       Array.prototype.slice.call(root.querySelectorAll("[data-source-provenance-panel]")).forEach(function (panel) {
@@ -1081,6 +1117,7 @@
       initializeFindingLibraryLoader(root);
       initializeFindingFilters(root);
       initializeCatalogQuickQueries(root);
+      initializeAddFindingShortcuts(root);
       initializeSourceProvenanceFilters(root);
       initializeCandidateScanFilters(root);
       initializeSecondaryCandidateFilters(root);
@@ -1156,6 +1193,7 @@
       initializeFindingLibraryLoader(main);
       initializeFindingFilters(main);
       initializeCatalogQuickQueries(main);
+      initializeAddFindingShortcuts(main);
       initializeSourceProvenanceFilters(main);
       initializeCandidateScanFilters(main);
       initializeSecondaryCandidateFilters(main);
@@ -1290,6 +1328,7 @@
     initializeFindingLibraryLoader(main);
     initializeFindingFilters(main);
     initializeCatalogQuickQueries(main);
+    initializeAddFindingShortcuts(main);
     initializeSourceProvenanceFilters(main);
     initializeCandidateScanFilters(main);
     initializeSecondaryCandidateFilters(main);

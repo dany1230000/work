@@ -705,7 +705,8 @@
     display: block;
   }
 
-  .current-action-command a {
+  .current-action-command a,
+  .current-action-add-finding {
     align-self: end;
     justify-self: start;
     border: 1px solid var(--primary);
@@ -715,6 +716,7 @@
     padding: 0.42rem 0.62rem;
     text-decoration: none;
     font-weight: 700;
+    font: inherit;
   }
 
   .current-action-steps {
@@ -2020,6 +2022,16 @@
               <div>
                 <p>{{ result.current_action_plan.reason_zh }}</p>
                 <p class="secondary">{{ result.current_action_plan.reason_en }}</p>
+                {% if result.current_action_plan.can_add_finding %}
+                  <button
+                    type="button"
+                    class="current-action-add-finding"
+                    data-add-finding-shortcut="true"
+                    data-finding-id="{{ result.current_action_plan.finding_id }}"
+                  >
+                    加入此 finding / Add finding
+                  </button>
+                {% endif %}
                 <a href="{{ result.current_action_plan.anchor }}" data-current-action-jump="true">去做這一步 / Go</a>
               </div>
             </div>

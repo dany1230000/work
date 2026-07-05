@@ -1316,6 +1316,7 @@ def _build_current_action_plan(
     top_priority = priority_next[0] if priority_next else {}
     safety_step = _workflow_source_step(guided_follow_up, "safety")
     source_count = int(source_provenance.get("unique_source_count", 0))
+    finding_id = ""
 
     if not results:
         current_step_id = "case_input"
@@ -1339,6 +1340,7 @@ def _build_current_action_plan(
         current_step_id = "ask_missing_finding"
         title_zh = "現在先問這個缺口"
         title_en = "Ask this gap now"
+        finding_id = str(top_priority.get("finding_id", ""))
         command_zh = f"先確認：{top_priority['label_zh']}"
         command_en = f"Ask next: {top_priority['label_en']}"
         reason_zh = str(top_priority.get("reason_zh", "可釐清前排候選。"))
@@ -1428,6 +1430,8 @@ def _build_current_action_plan(
         "top_candidate_name_en": str(top_result.get("name_en", "")),
         "top_candidate_name_zh": str(top_result.get("name_zh", "")),
         "top_candidate_urgency": str(top_result.get("urgency", "")),
+        "finding_id": finding_id,
+        "can_add_finding": bool(finding_id),
         "source_count": source_count,
         "steps": steps,
         "safety_note_zh": "這是臨床人員參考步驟，不是診斷或治療指令。",
