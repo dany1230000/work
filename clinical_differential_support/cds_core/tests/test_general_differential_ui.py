@@ -588,8 +588,10 @@ class GeneralDifferentialUiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-next-step-command-center="true"')
+        self.assertContains(response, 'data-progressive-detail-drawer="clinical-context"')
         self.assertContains(response, 'data-progressive-detail-drawer="workflow"')
         self.assertContains(response, 'data-progressive-detail-drawer="evidence"')
+        self.assertContains(response, "Clinical context, groups, and detailed next steps")
         self.assertLess(
             content.index('data-next-step-command-center="true"'),
             content.index('data-progressive-detail-drawer="workflow"'),
@@ -597,6 +599,18 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertLess(
             content.index('data-progressive-detail-drawer="workflow"'),
             content.index('data-stepwise-next-rail="true"'),
+        )
+        self.assertLess(
+            content.index('data-progressive-detail-drawer="clinical-context"'),
+            content.index('data-concise-result-summary="true"'),
+        )
+        self.assertLess(
+            content.index('data-progressive-detail-drawer="clinical-context"'),
+            content.index('data-result-groups="true"'),
+        )
+        self.assertLess(
+            content.index('data-progressive-detail-drawer="clinical-context"'),
+            content.index('data-progressive-detail-drawer="evidence"'),
         )
         self.assertLess(
             content.index('data-progressive-detail-drawer="evidence"'),

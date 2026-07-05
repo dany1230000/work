@@ -1879,6 +1879,9 @@
           </details>
         {% endif %}
         {% if result.results %}
+          <details class="progressive-detail-drawer clinical-context-drawer" data-progressive-detail-drawer="clinical-context">
+            <summary>Clinical context, groups, and detailed next steps</summary>
+            <div class="progressive-detail-body">
           {% with summary=result.concise_result_summary %}
             <section class="concise-result-summary" data-concise-result-summary="true" aria-labelledby="concise-result-summary-title">
               <header>
@@ -2102,6 +2105,8 @@
               {% endfor %}
             </div>
           </section>
+            </div>
+          </details>
           <details class="progressive-detail-drawer" data-progressive-detail-drawer="evidence">
             <summary>候選掃描與來源 / Candidate scan and source evidence</summary>
             <div class="progressive-detail-body">
