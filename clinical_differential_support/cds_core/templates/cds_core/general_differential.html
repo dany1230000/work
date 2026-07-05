@@ -667,6 +667,86 @@
     margin-top: 0.3rem;
   }
 
+  .current-action-panel {
+    border: 1px solid #7fb6ad;
+    border-left: 5px solid var(--primary);
+    border-radius: 6px;
+    background: #f7fbfa;
+    padding: 0.9rem;
+    margin: 0.85rem 0;
+  }
+
+  .current-action-panel header {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: flex-start;
+    margin-bottom: 0.65rem;
+  }
+
+  .current-action-panel h3,
+  .current-action-panel h4,
+  .current-action-panel p {
+    margin: 0;
+  }
+
+  .current-action-command {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: 0.75rem;
+    border: 1px solid #a8cec8;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.75rem;
+  }
+
+  .current-action-command strong,
+  .current-action-command span {
+    display: block;
+  }
+
+  .current-action-command a {
+    align-self: end;
+    justify-self: start;
+    border: 1px solid var(--primary);
+    border-radius: 4px;
+    background: #e8f5ee;
+    color: var(--primary-dark);
+    padding: 0.42rem 0.62rem;
+    text-decoration: none;
+    font-weight: 700;
+  }
+
+  .current-action-steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0.7rem 0 0;
+    padding: 0;
+  }
+
+  .current-action-step {
+    border: 1px solid #c7d2de;
+    border-radius: 6px;
+    background: #ffffff;
+    padding: 0.55rem;
+  }
+
+  .current-action-step[data-current-action-status="current"] {
+    border-color: var(--primary);
+    background: #e8f5ee;
+  }
+
+  .current-action-step strong,
+  .current-action-step span {
+    display: block;
+  }
+
+  .current-action-safety-note {
+    margin-top: 0.6rem;
+  }
+
   .candidate-comparison-panel {
     border: 1px solid #a8cec8;
     border-left: 4px solid var(--primary);
@@ -1694,6 +1774,8 @@
     .workflow-command-bar,
     .catalog-entry-grid,
     .case-pathway-steps,
+    .current-action-command,
+    .current-action-steps,
     .candidate-comparison-row,
     .intake-gap-priority,
     .intake-gap-row,
@@ -1734,6 +1816,10 @@
     }
 
     .candidate-comparison-panel header {
+      display: grid;
+    }
+
+    .current-action-panel header {
       display: grid;
     }
 
@@ -1904,6 +1990,55 @@
           {{ result.coverage.limitation_en }}
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
+        {% if result.current_action_plan %}
+          <section
+            class="current-action-panel"
+            data-current-action-plan="true"
+            data-current-action-step="{{ result.current_action_plan.current_step_id }}"
+            aria-labelledby="current-action-title"
+          >
+            <header>
+              <div>
+                <h3 id="current-action-title">現在先做 / Now do this</h3>
+                <p class="secondary">{{ result.current_action_plan.safety_note_zh }} / {{ result.current_action_plan.safety_note_en }}</p>
+              </div>
+              <div>
+                {% if result.current_action_plan.top_candidate_name_en %}
+                  <span class="tag">{{ result.current_action_plan.top_candidate_name_en }}</span>
+                {% endif %}
+                {% if result.current_action_plan.top_candidate_urgency %}
+                  <span class="tag">{{ result.current_action_plan.top_candidate_urgency }}</span>
+                {% endif %}
+              </div>
+            </header>
+            <div class="current-action-command" data-current-action-command="true">
+              <div>
+                <h4>{{ result.current_action_plan.title_zh }} / {{ result.current_action_plan.title_en }}</h4>
+                <strong>{{ result.current_action_plan.command_zh }}</strong>
+                <span class="secondary">{{ result.current_action_plan.command_en }}</span>
+              </div>
+              <div>
+                <p>{{ result.current_action_plan.reason_zh }}</p>
+                <p class="secondary">{{ result.current_action_plan.reason_en }}</p>
+                <a href="{{ result.current_action_plan.anchor }}" data-current-action-jump="true">去做這一步 / Go</a>
+              </div>
+            </div>
+            <ol class="current-action-steps" data-current-action-steps="true">
+              {% for step in result.current_action_plan.steps %}
+                <li
+                  class="current-action-step"
+                  data-current-action-step-item="{{ step.step_id }}"
+                  data-current-action-status="{{ step.status }}"
+                >
+                  <strong>{{ forloop.counter }}. {{ step.title_zh }} / {{ step.title_en }}</strong>
+                  <span class="tag">{{ step.status }}</span>
+                  <span>{{ step.instruction_zh }}</span>
+                  <span class="secondary">{{ step.instruction_en }}</span>
+                </li>
+              {% endfor %}
+            </ol>
+          </section>
+        {% endif %}
         {% if result.next_step_command_center %}
           <section class="case-pathway" data-case-pathway="true" data-compact-decision-board="true" aria-labelledby="case-pathway-title">
             <div class="case-pathway-header">

@@ -341,6 +341,21 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         selected_findings,
         guided_follow_up,
     )
+    candidate_comparison = _build_candidate_comparison(
+        ranked_results,
+        selected_findings,
+    )
+    intake_gap_tracker = _build_intake_gap_tracker(
+        ranked_results,
+        selected_findings,
+    )
+    current_action_plan = _build_current_action_plan(
+        ranked_results,
+        guided_follow_up,
+        intake_gap_tracker,
+        source_provenance,
+        patient_workflow,
+    )
 
     return {
         "results": ranked_results,
@@ -349,14 +364,9 @@ def evaluate_general_differential(raw_findings: dict[str, Any]) -> dict[str, Any
         "action_checklist": _build_action_checklist(results, selected_findings),
         "guided_follow_up": guided_follow_up,
         "results_brief": _build_results_brief(ranked_results, guided_follow_up),
-        "candidate_comparison": _build_candidate_comparison(
-            ranked_results,
-            selected_findings,
-        ),
-        "intake_gap_tracker": _build_intake_gap_tracker(
-            ranked_results,
-            selected_findings,
-        ),
+        "candidate_comparison": candidate_comparison,
+        "intake_gap_tracker": intake_gap_tracker,
+        "current_action_plan": current_action_plan,
         "concise_result_summary": _build_concise_result_summary(
             ranked_results,
             guided_follow_up,
@@ -1197,7 +1207,7 @@ def _build_intake_gap_tracker(
     priority_map: dict[str, dict[str, Any]] = {}
     rows: list[dict[str, Any]] = []
 
-    for result in results[:3]:
+    for result_rank, result in enumerate(results[:3]):
         signal_findings = [
             str(finding)
             for finding in result.get("signal_findings", [])
@@ -1218,13 +1228,15 @@ def _build_intake_gap_tracker(
             else 0
         )
 
-        for finding in missing_findings[:4]:
+        for missing_rank, finding in enumerate(missing_findings[:4]):
             entry = priority_map.setdefault(
                 finding,
                 {
                     **_format_finding_label(finding, labels),
                     "candidate_names_en": [],
                     "candidate_names_zh": [],
+                    "first_seen_rank": result_rank,
+                    "first_missing_rank": missing_rank,
                 },
             )
             entry["candidate_names_en"].append(str(result["name_en"]))
@@ -1264,6 +1276,8 @@ def _build_intake_gap_tracker(
     priority_next = sorted(
         priority_map.values(),
         key=lambda item: (
+            item["first_seen_rank"],
+            item["first_missing_rank"],
             -len(item["candidate_names_en"]),
             item["label_en"],
         ),
@@ -1286,6 +1300,138 @@ def _build_intake_gap_tracker(
         "priority_title_en": "Ask these next",
         "caution_zh": "還缺代表尚未詢問或尚未輸入，不是陰性，也不是排除。",
         "caution_en": "Missing means not asked or not entered; it is not a negative finding or exclusion.",
+    }
+
+
+def _build_current_action_plan(
+    results: list[dict[str, Any]],
+    guided_follow_up: list[dict[str, Any]],
+    intake_gap_tracker: dict[str, Any],
+    source_provenance: dict[str, Any],
+    patient_workflow: dict[str, Any],
+) -> dict[str, Any]:
+    selected_count = int(patient_workflow.get("selected_finding_count", 0))
+    top_result = results[0] if results else {}
+    priority_next = list(intake_gap_tracker.get("priority_next", []))
+    top_priority = priority_next[0] if priority_next else {}
+    safety_step = _workflow_source_step(guided_follow_up, "safety")
+    source_count = int(source_provenance.get("unique_source_count", 0))
+
+    if not results:
+        current_step_id = "case_input"
+        title_zh = "先完成主訴與結構化 findings"
+        title_en = "Complete case input first"
+        command_zh = "輸入主訴、時間軸、生命徵象與至少一個關鍵 finding。"
+        command_en = "Enter the chief complaint, timeline, vitals, and at least one key finding."
+        reason_zh = "目前沒有足夠資料產生可用的候選比較。"
+        reason_en = "There is not enough information to produce a useful candidate comparison."
+        anchor = "#case-input"
+    elif selected_count < 2:
+        current_step_id = "minimum_data"
+        title_zh = "先補最低限度資料"
+        title_en = "Add minimum data first"
+        command_zh = "至少再補一個與主訴相關的 positive 或 negative finding。"
+        command_en = "Add at least one more chief-complaint-specific positive or negative finding."
+        reason_zh = "少於兩個 findings 時，排序只能當作粗略搜尋入口。"
+        reason_en = "With fewer than two findings, the ranking is only a coarse search entry."
+        anchor = "#finding-selection"
+    elif top_priority:
+        current_step_id = "ask_missing_finding"
+        title_zh = "現在先問這個缺口"
+        title_en = "Ask this gap now"
+        command_zh = f"先確認：{top_priority['label_zh']}"
+        command_en = f"Ask next: {top_priority['label_en']}"
+        reason_zh = str(top_priority.get("reason_zh", "可釐清前排候選。"))
+        reason_en = str(top_priority.get("reason_en", "Clarifies leading candidates."))
+        anchor = "#finding-selection"
+    else:
+        current_step_id = "compare_and_source_check"
+        title_zh = "比較前三名並看來源"
+        title_en = "Compare top candidates and sources"
+        command_zh = "確認支持點、資料缺口與來源後，再決定下一個臨床問題。"
+        command_en = "Review supports, data gaps, and sources before choosing the next clinical question."
+        reason_zh = "核心 findings 已初步輸入，下一步是確認推理依據。"
+        reason_en = "Core findings are entered; the next step is to check reasoning support."
+        anchor = "#top-candidates"
+
+    step_statuses = {
+        "safety_gate": "required",
+        "minimum_data": "next",
+        "candidate_compare": "after",
+        "source_review": "after",
+    }
+    if current_step_id in ("case_input", "minimum_data", "ask_missing_finding"):
+        step_statuses["minimum_data"] = "current"
+    elif current_step_id == "compare_and_source_check":
+        step_statuses["minimum_data"] = "done"
+        step_statuses["candidate_compare"] = "current"
+        step_statuses["source_review"] = "next"
+
+    steps = [
+        {
+            "step_id": "safety_gate",
+            "title_zh": "安全先行",
+            "title_en": "Safety first",
+            "status": step_statuses["safety_gate"],
+            "instruction_zh": "先確認生命徵象、意識、ABC 與紅旗。",
+            "instruction_en": str(
+                safety_step.get(
+                    "instruction_en",
+                    "Check vitals, mental status, ABCs, and red flags first.",
+                )
+            ),
+            "anchor": "#case-input",
+        },
+        {
+            "step_id": "minimum_data",
+            "title_zh": "補資料缺口",
+            "title_en": "Fill data gap",
+            "status": step_statuses["minimum_data"],
+            "instruction_zh": command_zh
+            if current_step_id in ("minimum_data", "ask_missing_finding")
+            else "確認主訴相關的 positive 與 negative findings。",
+            "instruction_en": command_en
+            if current_step_id in ("minimum_data", "ask_missing_finding")
+            else "Confirm chief-complaint-specific positive and negative findings.",
+            "anchor": "#finding-selection",
+        },
+        {
+            "step_id": "candidate_compare",
+            "title_zh": "比較候選",
+            "title_en": "Compare candidates",
+            "status": step_statuses["candidate_compare"],
+            "instruction_zh": "看前三名的支持點、反對或缺口、下一問。",
+            "instruction_en": "Review top-three supports, gaps, and next questions.",
+            "anchor": "#top-candidates",
+        },
+        {
+            "step_id": "source_review",
+            "title_zh": "來源稽核",
+            "title_en": "Source review",
+            "status": step_statuses["source_review"],
+            "instruction_zh": f"查看前排候選連結的 {source_count} 個 unique sources。",
+            "instruction_en": f"Review {source_count} unique linked sources for leading candidates.",
+            "anchor": "#source-provenance",
+        },
+    ]
+
+    return {
+        "current_step_id": current_step_id,
+        "title_zh": title_zh,
+        "title_en": title_en,
+        "command_zh": command_zh,
+        "command_en": command_en,
+        "reason_zh": reason_zh,
+        "reason_en": reason_en,
+        "anchor": anchor,
+        "top_candidate_slug": str(top_result.get("slug", "")),
+        "top_candidate_name_en": str(top_result.get("name_en", "")),
+        "top_candidate_name_zh": str(top_result.get("name_zh", "")),
+        "top_candidate_urgency": str(top_result.get("urgency", "")),
+        "source_count": source_count,
+        "steps": steps,
+        "safety_note_zh": "這是臨床人員參考步驟，不是診斷或治療指令。",
+        "safety_note_en": "This is a clinician reference step, not a diagnosis or treatment order.",
     }
 
 

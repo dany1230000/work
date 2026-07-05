@@ -144,6 +144,48 @@ class GeneralDifferentialUiTests(TestCase):
             content.index('data-result-card="true"'),
         )
 
+    def test_posted_results_start_with_current_action_plan(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-current-action-plan="true"')
+        self.assertContains(response, 'data-current-action-step="ask_missing_finding"')
+        self.assertContains(response, 'data-current-action-command="true"')
+        self.assertContains(response, 'data-current-action-jump="true"')
+        self.assertContains(response, 'data-current-action-steps="true"')
+        self.assertContains(response, 'data-current-action-step-item="minimum_data"')
+        self.assertContains(response, 'data-current-action-status="current"')
+        self.assertContains(response, "現在先做 / Now do this")
+        self.assertContains(response, "Ask this gap now")
+        self.assertContains(response, "Ask next: Hemodynamic instability")
+        self.assertContains(response, "This is a clinician reference step")
+        self.assertLess(
+            content.index('data-current-action-plan="true"'),
+            content.index('data-case-pathway="true"'),
+        )
+        self.assertLess(
+            content.index('data-current-action-plan="true"'),
+            content.index('data-candidate-comparison-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-current-action-plan="true"'),
+            content.index('data-result-card="true"'),
+        )
+
     def test_posted_results_show_candidate_comparison_before_detail_drawers(self):
         response = self.client.post(
             reverse("cds_core:general_differential"),

@@ -174,6 +174,32 @@ class GeneralDifferentialEngineTests(SimpleTestCase):
         self.assertIn("Hemodynamic instability", priority_labels)
         self.assertIn("not a negative finding", tracker["caution_en"])
 
+    def test_results_include_current_action_plan(self):
+        result = evaluate_general_differential(
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+            }
+        )
+
+        plan = result["current_action_plan"]
+        step_statuses = {
+            step["step_id"]: step["status"] for step in plan["steps"]
+        }
+
+        self.assertEqual(plan["current_step_id"], "ask_missing_finding")
+        self.assertEqual(plan["title_en"], "Ask this gap now")
+        self.assertEqual(plan["command_en"], "Ask next: Hemodynamic instability")
+        self.assertEqual(plan["top_candidate_slug"], "acute_coronary_syndrome")
+        self.assertEqual(step_statuses["minimum_data"], "current")
+        self.assertEqual(step_statuses["candidate_compare"], "after")
+        self.assertIn("clinician reference step", plan["safety_note_en"])
+
     def test_results_include_complaint_guided_intake_cards(self):
         result = evaluate_general_differential(
             {
