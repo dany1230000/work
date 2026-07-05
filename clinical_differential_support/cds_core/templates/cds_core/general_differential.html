@@ -594,7 +594,7 @@
   .case-pathway-steps {
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 0.6rem;
+    gap: 0.55rem;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -608,8 +608,8 @@
     border: 1px solid #c7d2de;
     border-radius: 6px;
     background: #ffffff;
-    padding: 0.75rem;
-    min-height: 8.25rem;
+    padding: 0.65rem;
+    min-height: 6rem;
   }
 
   .case-pathway-step[data-case-pathway-current="true"] {
@@ -633,12 +633,38 @@
     display: block;
   }
 
+  .case-pathway-step-summary {
+    display: grid;
+    gap: 0.4rem;
+    min-width: 0;
+  }
+
+  .case-pathway-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
   .case-pathway-step a {
     display: inline-block;
-    margin-top: 0.45rem;
     color: var(--action);
     font-weight: 700;
     text-decoration: none;
+  }
+
+  .case-pathway-step-detail {
+    border-top: 1px solid #e4e9ef;
+    padding-top: 0.35rem;
+  }
+
+  .case-pathway-step-detail summary {
+    cursor: pointer;
+    color: var(--action);
+    font-weight: 700;
+  }
+
+  .case-pathway-step-detail span {
+    margin-top: 0.3rem;
   }
 
   .next-step-command-center {
@@ -1333,6 +1359,17 @@
     margin-top: 0.75rem;
   }
 
+  details.next-step-panel > summary {
+    cursor: pointer;
+    font-weight: 700;
+  }
+
+  .ask-next-drawer-body {
+    border-top: 1px solid #d5dde7;
+    margin-top: 0.65rem;
+    padding-top: 0.65rem;
+  }
+
   .next-step-panel h3,
   .next-step-panel h4 {
     margin-top: 0;
@@ -1694,11 +1731,11 @@
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
         {% if result.next_step_command_center %}
-          <section class="case-pathway" data-case-pathway="true" aria-labelledby="case-pathway-title">
+          <section class="case-pathway" data-case-pathway="true" data-compact-decision-board="true" aria-labelledby="case-pathway-title">
             <div class="case-pathway-header">
               <div>
-                <h3 id="case-pathway-title">照順序做 / Follow these steps</h3>
-                <p class="secondary">先處理安全，再補資料、比對前三名，最後檢查來源。Detailed reference sections are collapsed below.</p>
+                <h3 id="case-pathway-title">下一步決策板 / Next-step decision board</h3>
+                <p class="secondary">Follow these steps: 先處理安全、補最低資料、比對前三名，最後檢查來源。長說明收在每格內。</p>
               </div>
               <div class="case-pathway-meta" aria-label="Case pathway status">
                 <span class="tag">{{ result.next_step_command_center.status }}</span>
@@ -1715,17 +1752,22 @@
                   {% if forloop.first %}data-case-pathway-current="true"{% endif %}
                 >
                   <span class="case-pathway-index">{{ forloop.counter }}</span>
-                  <div>
+                  <div class="case-pathway-step-summary" data-compact-step-summary="true">
                     <strong>{{ card.title_zh }} / {{ card.title_en }}</strong>
-                    <span>{{ card.instruction_zh }}</span>
-                    <span class="secondary">{{ card.instruction_en }}</span>
-                    {% if card.primary_candidate_name_en %}
-                      <span class="tag">{{ card.primary_candidate_name_en }}</span>
-                    {% endif %}
-                    {% if card.source_count %}
-                      <span class="tag">{{ card.source_count }} sources</span>
-                    {% endif %}
+                    <div class="case-pathway-tags">
+                      {% if card.primary_candidate_name_en %}
+                        <span class="tag">{{ card.primary_candidate_name_en }}</span>
+                      {% endif %}
+                      {% if card.source_count %}
+                        <span class="tag">{{ card.source_count }} sources</span>
+                      {% endif %}
+                    </div>
                     <a href="{{ card.anchor }}">前往 / Go</a>
+                    <details class="case-pathway-step-detail" data-case-pathway-step-detail="true">
+                      <summary>指令 / Instructions</summary>
+                      <span>{{ card.instruction_zh }}</span>
+                      <span class="secondary">{{ card.instruction_en }}</span>
+                    </details>
                   </div>
                 </li>
               {% endfor %}
@@ -2218,15 +2260,17 @@
             / Not enough findings to rank yet. Confirm vital signs and red flags, then ask the prompts below.
           </div>
         {% endif %}
-        <section class="next-step-panel">
-          <h3>下一步 / Ask next</h3>
-          <p class="secondary">下一步要問 / Ask next</p>
-          <ul>
-            {% for prompt in result.ask_next %}
-              <li>{{ prompt }}</li>
-            {% endfor %}
-          </ul>
-        </section>
+        <details class="next-step-panel ask-next-drawer" data-ask-next-drawer="true">
+          <summary>下一步問題 / Ask-next prompts</summary>
+          <div class="ask-next-drawer-body">
+            <p class="secondary">需要時再展開完整問題清單。 / Expand only when the full prompt list is needed.</p>
+            <ul>
+              {% for prompt in result.ask_next %}
+                <li>{{ prompt }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
       {% else %}
         <section class="next-step-panel">
           <h3>下一步 / Next step</h3>

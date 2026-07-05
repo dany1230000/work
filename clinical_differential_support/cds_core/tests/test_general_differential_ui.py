@@ -127,9 +127,13 @@ class GeneralDifferentialUiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'data-case-pathway="true"')
+        self.assertContains(response, 'data-compact-decision-board="true"')
         self.assertContains(response, 'data-case-pathway-step="safety_gate"')
         self.assertContains(response, 'data-case-pathway-current="true"')
+        self.assertContains(response, 'data-compact-step-summary="true"')
+        self.assertContains(response, 'data-case-pathway-step-detail="true"')
         self.assertContains(response, 'data-progressive-detail-drawer="command-center"')
+        self.assertContains(response, "下一步決策板 / Next-step decision board")
         self.assertContains(response, "Follow these steps")
         self.assertLess(
             content.index('data-case-pathway="true"'),
@@ -244,8 +248,8 @@ class GeneralDifferentialUiTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertLess(content.index('data-result-card="true"'), content.index("Catalog governance"))
-        self.assertContains(response, 'class="next-step-panel"')
-        self.assertContains(response, "下一步 / Ask next")
+        self.assertContains(response, 'data-ask-next-drawer="true"')
+        self.assertContains(response, "下一步問題 / Ask-next prompts")
         self.assertContains(response, "已選 findings / Selected findings")
         self.assertContains(response, 'data-selected-finding-hidden="true"')
         self.assertContains(response, 'name="findings" value="chest_pain"')
