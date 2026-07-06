@@ -120,12 +120,12 @@ class NextActionDownstreamReadinessTests(TestCase):
         self.client.force_login(reviewer)
         return reviewer
 
-    def test_selector_advances_to_general_catalog_import_when_downstream_audits_are_clear(self):
+    def test_selector_advances_to_regression_gate_when_catalog_and_downstream_audits_are_clear(self):
         from cds_core.next_actions import build_next_action_plan
 
         plan = build_next_action_plan(today=date(2026, 6, 24))
 
-        self.assertEqual(plan["completion_status"], "general_catalog_import_ready")
+        self.assertEqual(plan["completion_status"], "ready_for_regression_gate")
         self.assertEqual(
             plan["downstream_readiness"]["coverage_depth"]["complaints_with_gaps"],
             0,
@@ -142,17 +142,18 @@ class NextActionDownstreamReadinessTests(TestCase):
         )
         self.assertEqual(
             plan["next_actions"][0]["action_id"],
-            "expand_general_differential_catalog_via_import_workbench",
+            "run_full_regression_and_smoke_checks",
         )
         self.assertEqual(plan["next_actions"][0]["status"], "ready_to_start")
         self.assertEqual(plan["general_catalog"]["condition_count"], 850)
         self.assertEqual(plan["general_catalog"]["source_count"], 928)
+        self.assertTrue(plan["general_catalog"]["catalog_target_met"])
         self.assertEqual(
-            plan["general_catalog"]["import_workbench_path"],
-            "/review/general-differential-import/",
+            plan["general_catalog"]["first_action"],
+            "run_full_regression_and_smoke_checks",
         )
         self.assertEqual(
-            plan["next_actions"][0]["url"],
+            plan["general_catalog"]["import_workbench_path"],
             "/review/general-differential-import/",
         )
 
@@ -165,8 +166,8 @@ class NextActionDownstreamReadinessTests(TestCase):
         self.assertContains(response, "Downstream readiness")
         self.assertContains(response, "Coverage depth")
         self.assertContains(response, "Source freshness")
-        self.assertContains(response, "general_catalog_import_ready")
-        self.assertContains(response, "General Differential Import Workbench")
+        self.assertContains(response, "ready_for_regression_gate")
+        self.assertContains(response, "Run full regression and smoke checks")
         self.assertContains(response, "850 conditions")
         self.assertContains(response, "928 sources")
         self.assertContains(response, reverse("cds_core:general_differential_import"))
@@ -179,7 +180,7 @@ class NextActionDownstreamReadinessTests(TestCase):
         body = response.content.decode("utf-8")
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(payload["completion_status"], "general_catalog_import_ready")
+        self.assertEqual(payload["completion_status"], "ready_for_regression_gate")
         self.assertEqual(
             payload["downstream_readiness"]["source_freshness"]["first_action"],
             "run_full_regression_and_smoke_checks",
@@ -188,7 +189,11 @@ class NextActionDownstreamReadinessTests(TestCase):
         self.assertEqual(payload["general_catalog"]["source_count"], 928)
         self.assertEqual(
             payload["general_catalog"]["first_action"],
-            "expand_general_differential_catalog_via_import_workbench",
+            "run_full_regression_and_smoke_checks",
+        )
+        self.assertEqual(
+            payload["next_actions"][0]["action_id"],
+            "run_full_regression_and_smoke_checks",
         )
         self.assertNotIn("Thunderclap headache", body)
         self.assertNotIn("Possible acute coronary syndrome", body)

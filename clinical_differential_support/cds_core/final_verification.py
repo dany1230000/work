@@ -151,7 +151,7 @@ def _build_required_commands() -> list[dict[str, str]]:
         {
             "command_id": "full_regression",
             "command": FULL_REGRESSION_COMMAND,
-            "expected_result": "203 tests pass",
+            "expected_result": "414 tests pass",
             "evidence_status": "external_command_required",
         },
         {

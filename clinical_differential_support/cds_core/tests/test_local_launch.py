@@ -151,7 +151,7 @@ class LocalLaunchStatusTests(TestCase):
         self.assertTrue(all(check["status"] == "passed" for check in report["environment_checks"]))
         self.assertEqual(
             report["next_actions"]["completion_status"],
-            "general_catalog_import_ready",
+            "ready_for_regression_gate",
         )
         self.assertTrue(report["next_actions"]["allows_local_operation"])
         self.assertEqual(report["next_step"]["action_id"], "start_local_server")

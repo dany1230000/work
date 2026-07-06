@@ -43,17 +43,17 @@ class FinalVerificationGateTests(TestCase):
             )
 
         self.assertEqual(report["report_type"], "final_verification_gate")
-        self.assertEqual(report["gate_status"], "blocked_by_next_action_gate")
+        self.assertEqual(report["gate_status"], "ready_for_final_verification")
         self.assertEqual(
             report["next_action"]["action_id"],
-            "resolve_final_gate_blockers",
+            "run_required_verification_commands",
         )
-        self.assertEqual(report["next_action"]["status"], "blocked")
+        self.assertEqual(report["next_action"]["status"], "ready_to_run")
         self.assertEqual(
             report["required_commands"][0]["command"],
             r"py -B .\clinical_differential_support\manage.py test -v 2",
         )
-        self.assertEqual(report["required_commands"][0]["expected_result"], "203 tests pass")
+        self.assertEqual(report["required_commands"][0]["expected_result"], "414 tests pass")
         self.assertEqual(
             report["handoff_exports"]["handoff_bundle_zip"],
             "/review/exports/handoff-bundle.zip",
@@ -125,8 +125,8 @@ class FinalVerificationGateTests(TestCase):
 
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, "Final Verification Gate")
-        self.assertContains(response, "blocked_by_next_action_gate")
-        self.assertContains(response, "resolve_final_gate_blockers")
+        self.assertContains(response, "ready_for_final_verification")
+        self.assertContains(response, "run_required_verification_commands")
         self.assertContains(response, "manage.py test -v 2")
         self.assertContains(response, "handoff-bundle.zip")
 
@@ -145,10 +145,10 @@ class FinalVerificationGateTests(TestCase):
         payload = json.loads(body)
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(payload["gate_status"], "blocked_by_next_action_gate")
+        self.assertEqual(payload["gate_status"], "ready_for_final_verification")
         self.assertEqual(
             payload["next_action_gate"]["completion_status"],
-            "general_catalog_import_ready",
+            "ready_for_regression_gate",
         )
         self.assertIn("final-verification.json", response["Content-Disposition"])
         self.assertNotIn("Thunderclap headache", body)

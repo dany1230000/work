@@ -67,37 +67,33 @@ class ProjectCompletionGateTests(TestCase):
         self.assertTrue(report["safety_scope"]["does_not_create_credentials"])
         self.assertTrue(report["safety_scope"]["does_not_print_credentials"])
 
-    def test_gate_stays_incomplete_when_general_catalog_import_is_next(self):
+    def test_gate_is_final_complete_when_staff_evidence_and_regression_gate_are_ready(self):
         self.create_staff_reviewer()
 
         report = self.build_report(evidence_payload=self.verified_evidence())
 
-        self.assertEqual(report["status"], "manual_setup_required")
-        self.assertEqual(report["exit_code"], 2)
+        self.assertEqual(report["status"], "final_complete")
+        self.assertEqual(report["exit_code"], 0)
         self.assertEqual(
             report["next_actions"]["completion_status"],
-            "general_catalog_import_ready",
+            "ready_for_regression_gate",
         )
         self.assertEqual(
             report["deployment_readiness"]["status"],
-            "deployable_non_final",
+            "final_ready",
         )
         self.assertTrue(report["deployment_readiness"]["is_deployable"])
         self.assertEqual(
             report["next_action"]["action_id"],
-            "expand_general_differential_catalog_via_import_workbench",
-        )
-        self.assertEqual(
-            report["next_action"]["url"],
-            "http://127.0.0.1:8000/review/general-differential-import/",
+            "project_final_complete",
         )
         self.assertEqual(report["deployment_status"]["url"], "http://127.0.0.1:8000/deployment/")
         self.assertIn("Deploy_Status.cmd", report["deployment_status"]["windows_entry_command"])
         next_action_check = next(
             check for check in report["completion_checks"] if check["check_id"] == "next_action_gate"
         )
-        self.assertEqual(next_action_check["status"], "action_required")
-        self.assertEqual(next_action_check["value"], "general_catalog_import_ready")
+        self.assertEqual(next_action_check["status"], "passed")
+        self.assertEqual(next_action_check["value"], "ready_for_regression_gate")
 
     def test_formatter_outputs_chinese_first_final_gate(self):
         report = self.build_report(evidence_payload=self.verified_evidence())

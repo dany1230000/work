@@ -57,6 +57,7 @@ def build_next_action_plan(today: date | None = None) -> dict[str, Any]:
         expansion_complete=expansion_complete,
         governance=governance,
         downstream_readiness=downstream_readiness,
+        general_catalog=general_catalog,
     )
 
     return {
@@ -159,6 +160,9 @@ def build_next_actions(
             _regression_action(2, "pending_source_review"),
         ]
 
+    if general_catalog["catalog_target_met"]:
+        return [_regression_action(1, "ready_to_start")]
+
     return [
         _general_catalog_import_action(1, general_catalog),
         _regression_action(2, "pending_general_catalog_import"),
@@ -186,7 +190,11 @@ def _build_general_catalog_summary() -> dict[str, Any]:
         "catalog_target_met": summary["catalog_target_met"],
         "import_workbench_path": GENERAL_DIFFERENTIAL_IMPORT_PATH,
         "lowest_coverage_buckets": lowest_buckets,
-        "first_action": "expand_general_differential_catalog_via_import_workbench",
+        "first_action": (
+            "run_full_regression_and_smoke_checks"
+            if summary["catalog_target_met"]
+            else "expand_general_differential_catalog_via_import_workbench"
+        ),
         "batch_template_format_version": summary["batch_template_format_version"],
         "review_seed_format_version": summary["review_seed_format_version"],
     }
@@ -328,6 +336,7 @@ def _build_completion_status(
     expansion_complete: bool,
     governance: dict[str, int],
     downstream_readiness: dict[str, Any],
+    general_catalog: dict[str, Any],
 ) -> str:
     if headache_only:
         return "not_final_beyond_headache"
@@ -336,6 +345,8 @@ def _build_completion_status(
     if _has_governance_blockers(governance):
         return "governance_blocked"
     if downstream_readiness["status"] == "ready_for_regression_gate":
+        if general_catalog["catalog_target_met"]:
+            return "ready_for_regression_gate"
         return "general_catalog_import_ready"
     return downstream_readiness["status"]
 
