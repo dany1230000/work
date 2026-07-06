@@ -23,6 +23,26 @@
   <p class="secondary">{{ report.completion_url }}</p>
 </section>
 
+<section class="panel" data-public-release-summary="true">
+  <h2>公開版本狀態 / Public Release Status</h2>
+  <p>
+    <span class="status {{ report.public_release.status }}">{{ report.public_release.status }}</span>
+    {% if report.public_release.is_verified %}
+      <span class="tag">HTTP {{ report.public_release.http_status }}</span>
+      <span class="tag">database {{ report.public_release.database_check }}</span>
+      {% if report.public_release.branch %}<span class="tag">{{ report.public_release.branch }}</span>{% endif %}
+    {% endif %}
+  </p>
+  <p class="secondary">{{ report.public_release.detail_en }}</p>
+  {% if report.public_release.is_verified %}
+    <p><a class="button-link" href="{{ report.public_release.service_url }}">開啟公開站 / Open public site</a></p>
+    <p class="secondary">
+      Verified at: {{ report.public_release.verified_at }}<br>
+      Scope: {{ report.public_release.verification_scope }}
+    </p>
+  {% endif %}
+</section>
+
 <section class="panel">
   <h2>完成條件 / Completion Checks</h2>
   <div class="control-grid">

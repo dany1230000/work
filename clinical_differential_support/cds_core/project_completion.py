@@ -1,5 +1,6 @@
 """Final project completion gate for the clinician-support MVP."""
 
+import json
 from datetime import date
 from pathlib import Path
 from typing import Any
@@ -26,12 +27,15 @@ DEPLOYABLE_NEXT_ACTION_STATUSES = {
     FINAL_NEXT_ACTION_STATUS,
     DEPLOYABLE_NON_FINAL_NEXT_ACTION_STATUS,
 }
+PROJECT_DIR = Path(__file__).resolve().parents[1]
+PUBLIC_DEPLOYMENT_EVIDENCE_FILENAME = "render-public-deployment.json"
 
 
 def build_project_completion_report(
     base_url: str = DEFAULT_BASE_URL,
     today: date | None = None,
     evidence_path: str | Path | None = None,
+    public_deployment_evidence_path: str | Path | None = None,
 ) -> dict[str, Any]:
     current_date = today or timezone.localdate()
     normalized_base_url = base_url.rstrip("/")
@@ -55,6 +59,9 @@ def build_project_completion_report(
         "launch_control_url": setup_report["launch_control_url"],
         "completion_checks": completion_checks,
         "deployment_readiness": deployment_readiness,
+        "public_release": _build_public_release_summary(
+            public_deployment_evidence_path=public_deployment_evidence_path,
+        ),
         "manual_blockers": [] if is_complete else setup_report["manual_blockers"],
         "next_action": _build_next_action(
             setup_report=setup_report,
@@ -100,6 +107,7 @@ def format_project_completion_report(report: dict[str, Any]) -> str:
         f"狀態 / Status: {report['status']}",
         f"exit_code={report['exit_code']}",
         f"Completion URL: {report['completion_url']}",
+        f"Public release: {report['public_release']['status']}",
         f"Launch Control: {report['launch_control_url']}",
         f"Windows command: {report['final_check']['command']}",
         f"Shell command: {report['final_check']['shell_command']}",
@@ -288,6 +296,72 @@ def _build_deployment_readiness(setup_report: dict[str, Any]) -> dict[str, Any]:
             if status == "final_ready"
             else "Local deployment inputs are not ready yet."
         ),
+    }
+
+
+def _default_public_deployment_evidence_path() -> Path:
+    return PROJECT_DIR / "verification_artifacts" / PUBLIC_DEPLOYMENT_EVIDENCE_FILENAME
+
+
+def _build_public_release_summary(
+    public_deployment_evidence_path: str | Path | None = None,
+) -> dict[str, Any]:
+    path = (
+        Path(public_deployment_evidence_path)
+        if public_deployment_evidence_path
+        else _default_public_deployment_evidence_path()
+    )
+    payload = _read_public_deployment_payload(path)
+    checks = payload.get("checks") if isinstance(payload, dict) else None
+    is_live = (
+        payload.get("artifact_type") == "render_public_deployment_verification"
+        and payload.get("status") == "live"
+        and payload.get("http_status") == 200
+        and isinstance(checks, dict)
+        and checks.get("database") == "ok"
+        and bool(payload.get("service_url"))
+    )
+    if not is_live:
+        return {
+            "status": "not_verified",
+            "is_verified": False,
+            "evidence_path": str(path),
+            "detail_en": "No committed public deployment verification evidence is available.",
+            "safety_scope": _public_release_safety_scope(),
+        }
+
+    return {
+        "status": "public_deploy_live",
+        "is_verified": True,
+        "service_url": payload.get("service_url", ""),
+        "health_url": payload.get("health_url", ""),
+        "http_status": payload.get("http_status", ""),
+        "database_check": checks.get("database", ""),
+        "branch": payload.get("branch", ""),
+        "verified_at": payload.get("verified_at", ""),
+        "verification_scope": payload.get("verification_scope", ""),
+        "evidence_path": str(path),
+        "detail_en": "Public Render deployment evidence shows the service health endpoint and database check are live.",
+        "safety_scope": _public_release_safety_scope(),
+    }
+
+
+def _read_public_deployment_payload(path: Path) -> dict[str, Any]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return {}
+    return payload if isinstance(payload, dict) else {}
+
+
+def _public_release_safety_scope() -> dict[str, bool]:
+    return {
+        "summary_only": True,
+        "contains_credentials": False,
+        "contains_patient_data": False,
+        "approves_clinical_production_use": False,
     }
 
 

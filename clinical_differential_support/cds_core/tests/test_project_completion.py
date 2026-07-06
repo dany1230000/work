@@ -21,15 +21,21 @@ class ProjectCompletionGateTests(TestCase):
         "dyspnea_mvp.json",
     ]
 
-    def build_report(self, evidence_payload=None):
+    def build_report(self, evidence_payload=None, public_deployment_payload=None):
         with tempfile.TemporaryDirectory() as tmp_dir:
             evidence_path = Path(tmp_dir) / "final-verification-evidence.json"
+            public_deployment_path = Path(tmp_dir) / "render-public-deployment.json"
             if evidence_payload is not None:
                 evidence_path.write_text(json.dumps(evidence_payload), encoding="utf-8")
+            if public_deployment_payload is not None:
+                public_deployment_path.write_text(
+                    json.dumps(public_deployment_payload), encoding="utf-8"
+                )
             return build_project_completion_report(
                 base_url="http://127.0.0.1:8000/",
                 today=date(2026, 6, 24),
                 evidence_path=evidence_path,
+                public_deployment_evidence_path=public_deployment_path,
             )
 
     def create_staff_reviewer(self):
@@ -53,6 +59,19 @@ class ProjectCompletionGateTests(TestCase):
             ],
         }
 
+    def verified_public_deployment(self):
+        return {
+            "artifact_type": "render_public_deployment_verification",
+            "status": "live",
+            "service_url": "https://clinical-differential-support.onrender.com",
+            "health_url": "https://clinical-differential-support.onrender.com/health/",
+            "http_status": 200,
+            "checks": {"database": "ok"},
+            "branch": "master",
+            "verified_at": "2026-07-06T12:00:00+08:00",
+            "verification_scope": "service health endpoint and database check",
+        }
+
     def test_gate_reports_manual_setup_required_until_staff_reviewer_exists(self):
         report = self.build_report(evidence_payload=self.verified_evidence())
 
@@ -66,6 +85,20 @@ class ProjectCompletionGateTests(TestCase):
         self.assertIn("Final_Check.cmd", report["final_check"]["command"])
         self.assertTrue(report["safety_scope"]["does_not_create_credentials"])
         self.assertTrue(report["safety_scope"]["does_not_print_credentials"])
+
+    def test_gate_includes_public_release_summary_when_render_evidence_is_live(self):
+        report = self.build_report(
+            evidence_payload=self.verified_evidence(),
+            public_deployment_payload=self.verified_public_deployment(),
+        )
+
+        self.assertEqual(report["public_release"]["status"], "public_deploy_live")
+        self.assertTrue(report["public_release"]["is_verified"])
+        self.assertEqual(report["public_release"]["http_status"], 200)
+        self.assertEqual(report["public_release"]["database_check"], "ok")
+        self.assertEqual(report["public_release"]["branch"], "master")
+        self.assertFalse(report["public_release"]["safety_scope"]["contains_credentials"])
+        self.assertFalse(report["public_release"]["safety_scope"]["contains_patient_data"])
 
     def test_gate_is_final_complete_when_staff_evidence_and_regression_gate_are_ready(self):
         self.create_staff_reviewer()
@@ -102,6 +135,7 @@ class ProjectCompletionGateTests(TestCase):
 
         self.assertIn("最終版完成判斷 / Final Project Gate", output)
         self.assertIn("manual_setup_required", output)
+        self.assertIn("Public release: not_verified", output)
         self.assertIn("exit_code=2", output)
         self.assertIn("Final_Check.cmd", output)
         self.assertIn("http://127.0.0.1:8000/completion/", output)
@@ -131,6 +165,10 @@ class ProjectCompletionGateTests(TestCase):
         self.assertContains(response, "manual_setup_required")
         self.assertContains(response, "Final_Check.cmd")
         self.assertContains(response, "Deployment Operations Center")
+        self.assertContains(response, 'data-public-release-summary="true"')
+        self.assertContains(response, "Public Release Status")
+        self.assertContains(response, "public_deploy_live")
+        self.assertContains(response, "Open public site")
         self.assertContains(response, "Deploy_Status.cmd")
         self.assertContains(response, "/deployment/")
         self.assertContains(response, "create_staff_reviewer")
