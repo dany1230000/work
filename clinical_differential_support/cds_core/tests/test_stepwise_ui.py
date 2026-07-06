@@ -56,7 +56,8 @@ class StepwiseUiTests(TestCase):
         self.assertContains(response, "sessionStorage")
         self.assertContains(response, "FAST_NAV_STORAGE_PREFIX")
         self.assertContains(response, "FAST_NAV_PROGRESS_DELAY_MS")
-        self.assertContains(response, "FAST_NAV_PROGRESS_DELAY_MS = 480")
+        self.assertContains(response, "FAST_NAV_PROGRESS_DELAY_MS = 900")
+        self.assertContains(response, "FAST_NAV_STATUS_DELAY_MS = 1600")
         self.assertContains(response, "工作台 / Dashboard")
         self.assertContains(response, "下一步 / Next Steps")
         self.assertContains(response, "頭痛 / Headache")
@@ -76,8 +77,31 @@ class StepwiseUiTests(TestCase):
         self.assertContains(response, "pointerenter")
         self.assertContains(response, "focusin")
         self.assertContains(response, "Loading workspace")
-        self.assertContains(response, "Workspace ready")
+        self.assertContains(response, "fastNavStatusDelayTimeout")
         self.assertContains(response, '"X-Fast-Nav": "1"')
+
+    def test_fast_navigation_delays_progress_and_status_feedback(self):
+        response = self.client.get(reverse("cds_core:home"))
+        body = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        start_block = body[
+            body.index("function startProgress()") : body.index("function stopProgress()")
+        ]
+        stop_block = body[
+            body.index("function stopProgress()") : body.index("function normalizeFilterText")
+        ]
+        progress_timer_block = start_block[
+            start_block.index("fastNavProgressTimeout = window.setTimeout")
+            : start_block.index("fastNavStatusDelayTimeout = window.setTimeout")
+        ]
+        self.assertIn("FAST_NAV_PROGRESS_DELAY_MS", progress_timer_block)
+        self.assertNotIn("setFastNavStatus", progress_timer_block)
+        self.assertIn("FAST_NAV_STATUS_DELAY_MS", start_block)
+        self.assertIn('setFastNavStatus("loading", "Loading workspace");', start_block)
+        self.assertIn("window.clearTimeout(fastNavStatusDelayTimeout);", stop_block)
+        self.assertIn('setFastNavStatus("idle", "");', stop_block)
+        self.assertNotIn("Workspace ready", stop_block)
 
     def test_fast_navigation_cached_pages_skip_progress_toast(self):
         response = self.client.get(reverse("cds_core:home"))

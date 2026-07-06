@@ -377,10 +377,12 @@
     var progress = document.querySelector("[data-fast-nav-progress]");
     var fastNavStatus = document.querySelector("[data-fast-nav-status]");
     var fastNavStatusTimeout = null;
+    var fastNavStatusDelayTimeout = null;
     var fastNavProgressTimeout = null;
     var fastNavProgressVisible = false;
     var FAST_NAV_CACHE_TTL_MS = 600000;
-    var FAST_NAV_PROGRESS_DELAY_MS = 480;
+    var FAST_NAV_PROGRESS_DELAY_MS = 900;
+    var FAST_NAV_STATUS_DELAY_MS = 1600;
     var FAST_NAV_STORAGE_PREFIX = "cds-fast-nav:v2:";
     var FAST_NAV_STORAGE_MAX_HTML = 350000;
     var fastNavCache = new Map();
@@ -551,17 +553,23 @@
       if (fastNavProgressTimeout) {
         window.clearTimeout(fastNavProgressTimeout);
       }
+      if (fastNavStatusDelayTimeout) {
+        window.clearTimeout(fastNavStatusDelayTimeout);
+      }
       fastNavProgressVisible = false;
       fastNavProgressTimeout = window.setTimeout(function () {
         fastNavProgressTimeout = null;
         fastNavProgressVisible = true;
-        setFastNavStatus("loading", "Loading workspace");
         if (!progress) {
           return;
         }
         document.body.classList.remove("is-fast-loaded");
         document.body.classList.add("is-fast-loading");
       }, FAST_NAV_PROGRESS_DELAY_MS);
+      fastNavStatusDelayTimeout = window.setTimeout(function () {
+        fastNavStatusDelayTimeout = null;
+        setFastNavStatus("loading", "Loading workspace");
+      }, FAST_NAV_STATUS_DELAY_MS);
     }
 
     function stopProgress() {
@@ -569,11 +577,15 @@
         window.clearTimeout(fastNavProgressTimeout);
         fastNavProgressTimeout = null;
       }
+      if (fastNavStatusDelayTimeout) {
+        window.clearTimeout(fastNavStatusDelayTimeout);
+        fastNavStatusDelayTimeout = null;
+      }
       if (!fastNavProgressVisible) {
         setFastNavStatus("idle", "");
         return;
       }
-      setFastNavStatus("ready", "Workspace ready", 650);
+      setFastNavStatus("idle", "");
       fastNavProgressVisible = false;
       if (!progress) {
         return;
