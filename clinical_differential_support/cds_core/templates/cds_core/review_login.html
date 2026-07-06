@@ -55,4 +55,28 @@
     <button type="submit">登入 / Sign in</button>
   </form>
 </section>
+
+<section class="panel auth-panel" data-login-troubleshooting="true">
+  <h2>登入失敗時</h2>
+  <p class="secondary">If sign-in fails</p>
+  <ol class="review-list">
+    <li>
+      正式站與本機是不同資料庫；本機建立過的帳號不會自動出現在 Render。
+      <span class="secondary">Production and local databases are separate; local users are not synced to Render.</span>
+    </li>
+    <li>
+      帳號必須同時是 active 與 staff。
+      <span class="secondary">The account must be active and marked as staff.</span>
+    </li>
+    <li>
+      如果正式站密碼確定正確但仍失敗，請在 Render Dashboard 開啟 Shell 後重設正式站帳號。
+      <span class="secondary">If the production password should work but still fails, open Render Shell and reset the production reviewer account.</span>
+    </li>
+  </ol>
+  <p>帳號存在但密碼不通：</p>
+  <pre class="command"><code>python manage.py changepassword &lt;username&gt;</code></pre>
+  <p>正式站尚未建立 staff reviewer：</p>
+  <pre class="command"><code>python manage.py createsuperuser</code></pre>
+  <p class="secondary">以上命令都會互動輸入密碼；系統不會列印或保存密碼，也不會自動建立密碼。 / These commands prompt for the password interactively; the system does not print, store, or automatically create passwords.</p>
+</section>
 {% endblock %}

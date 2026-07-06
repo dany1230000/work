@@ -519,6 +519,17 @@ class GovernanceDashboardTests(TestCase):
         self.assertContains(response, "Staff reviewer access")
         self.assertContains(response, "Reference support only")
 
+    def test_review_login_page_explains_production_account_recovery(self):
+        response = self.client.get(reverse("cds_core:review_login"))
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-login-troubleshooting="true"')
+        self.assertContains(response, "正式站與本機是不同資料庫")
+        self.assertContains(response, "Production and local databases are separate")
+        self.assertContains(response, "python manage.py changepassword &lt;username&gt;")
+        self.assertContains(response, "python manage.py createsuperuser")
+        self.assertContains(response, "不會列印或保存密碼")
+
     def test_staff_can_login_through_reviewer_login_and_continue_to_source_form(self):
         reviewer = get_user_model().objects.create_user(
             "login-reviewer", password="test-pass", is_staff=True
