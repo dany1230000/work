@@ -869,6 +869,52 @@
       });
     }
 
+    function initializeResultFocusToolbar(root) {
+      root = root || document;
+      Array.prototype.slice.call(root.querySelectorAll("[data-result-focus-toolbar]")).forEach(function (toolbar) {
+        if (toolbar.dataset.resultFocusReady === "true") {
+          return;
+        }
+        var panel = toolbar.closest("[data-differential-results-panel]");
+        var buttons = Array.prototype.slice.call(toolbar.querySelectorAll("[data-result-focus-control]"));
+        var sections = panel
+          ? Array.prototype.slice.call(panel.querySelectorAll("[data-result-focus-section]"))
+          : [];
+        if (!panel || !buttons.length || !sections.length) {
+          return;
+        }
+        toolbar.dataset.resultFocusReady = "true";
+
+        function sectionMatches(section, mode) {
+          if (mode === "all") {
+            return true;
+          }
+          var tokens = (section.getAttribute("data-result-focus-section") || "").split(/\s+/);
+          return tokens.indexOf(mode) !== -1;
+        }
+
+        function applyFocusMode(mode) {
+          var nextMode = mode || toolbar.dataset.resultFocusDefault || "next";
+          panel.dataset.resultFocusMode = nextMode;
+          buttons.forEach(function (button) {
+            var active = button.dataset.resultFocusMode === nextMode;
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", active ? "true" : "false");
+          });
+          sections.forEach(function (section) {
+            section.hidden = !sectionMatches(section, nextMode);
+          });
+        }
+
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            applyFocusMode(button.dataset.resultFocusMode || "next");
+          });
+        });
+        applyFocusMode(toolbar.dataset.resultFocusDefault || "next");
+      });
+    }
+
     function initializeSourceProvenanceFilters(root) {
       root = root || document;
       Array.prototype.slice.call(root.querySelectorAll("[data-source-provenance-panel]")).forEach(function (panel) {
@@ -1118,6 +1164,7 @@
       initializeFindingFilters(root);
       initializeCatalogQuickQueries(root);
       initializeAddFindingShortcuts(root);
+      initializeResultFocusToolbar(root);
       initializeSourceProvenanceFilters(root);
       initializeCandidateScanFilters(root);
       initializeSecondaryCandidateFilters(root);
@@ -1194,6 +1241,7 @@
       initializeFindingFilters(main);
       initializeCatalogQuickQueries(main);
       initializeAddFindingShortcuts(main);
+      initializeResultFocusToolbar(main);
       initializeSourceProvenanceFilters(main);
       initializeCandidateScanFilters(main);
       initializeSecondaryCandidateFilters(main);
@@ -1329,6 +1377,7 @@
     initializeFindingFilters(main);
     initializeCatalogQuickQueries(main);
     initializeAddFindingShortcuts(main);
+    initializeResultFocusToolbar(main);
     initializeSourceProvenanceFilters(main);
     initializeCandidateScanFilters(main);
     initializeSecondaryCandidateFilters(main);

@@ -59,6 +59,7 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "initializeFindingLibraryLoader")
         self.assertContains(response, "initializeFindingPresets")
         self.assertContains(response, "initializeAddFindingShortcuts")
+        self.assertContains(response, "initializeResultFocusToolbar")
         self.assertContains(response, "initializeGeneralDifferentialFetchSubmit")
         self.assertContains(response, "replaceDifferentialWorkspaceSections")
         self.assertContains(response, "setDifferentialResultsRefreshing")
@@ -106,6 +107,7 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertContains(response, "captureDifferentialReviewPosition")
         self.assertContains(response, "restoreDifferentialReviewPosition")
         self.assertContains(response, "initializeAddFindingShortcuts")
+        self.assertContains(response, "initializeResultFocusToolbar")
         self.assertContains(response, "keepReviewPosition")
         self.assertContains(response, "Updating results")
         self.assertContains(response, "setDifferentialResultsRefreshing(main, true")
@@ -188,6 +190,56 @@ class GeneralDifferentialUiTests(TestCase):
         self.assertLess(
             content.index('data-current-action-plan="true"'),
             content.index('data-result-card="true"'),
+        )
+
+    def test_posted_results_show_focus_modes_for_stepwise_review(self):
+        response = self.client.post(
+            reverse("cds_core:general_differential"),
+            {
+                "query": "",
+                "findings": [
+                    "chest_pain",
+                    "dyspnea",
+                    "diaphoresis",
+                    "radiating_arm_jaw_pain",
+                ],
+                "clinician_notes": "",
+            },
+        )
+
+        content = response.content.decode("utf-8")
+
+        self.assertEqual(response.status_code, 200)
+        self.assertContains(response, 'data-result-focus-toolbar="true"')
+        self.assertContains(response, 'data-result-focus-default="next"')
+        self.assertContains(response, 'data-result-focus-control="true"')
+        self.assertContains(response, 'data-result-focus-mode="next"')
+        self.assertContains(response, 'data-result-focus-mode="compare"')
+        self.assertContains(response, 'data-result-focus-mode="sources"')
+        self.assertContains(response, 'data-result-focus-mode="all"')
+        self.assertContains(response, 'aria-pressed="true">下一步 / Next')
+        self.assertContains(response, "比較 / Compare")
+        self.assertContains(response, "來源 / Sources")
+        self.assertContains(response, "完整 / All")
+        self.assertContains(response, 'data-result-focus-section="next all"')
+        self.assertContains(response, 'data-result-focus-section="next compare all"')
+        self.assertContains(response, 'data-result-focus-section="compare all"')
+        self.assertContains(response, 'data-result-focus-section="sources compare all"')
+        self.assertContains(response, 'data-result-focus-section="sources all"')
+        self.assertContains(response, "initializeResultFocusToolbar")
+        self.assertContains(response, "applyFocusMode")
+        self.assertNotIn('hidden data-result-focus-section="compare all"', content)
+        self.assertLess(
+            content.index('data-result-focus-toolbar="true"'),
+            content.index('data-current-action-plan="true"'),
+        )
+        self.assertLess(
+            content.index('data-result-focus-toolbar="true"'),
+            content.index('data-candidate-comparison-panel="true"'),
+        )
+        self.assertLess(
+            content.index('data-result-focus-toolbar="true"'),
+            content.index('data-source-provenance-panel="true"'),
         )
 
     def test_posted_results_show_candidate_comparison_before_detail_drawers(self):

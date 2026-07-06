@@ -667,6 +667,53 @@
     margin-top: 0.3rem;
   }
 
+  .result-focus-toolbar {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.6fr);
+    gap: 0.75rem;
+    align-items: center;
+    border: 1px solid #b8c7d7;
+    border-left: 5px solid #334155;
+    border-radius: 6px;
+    background: #f8fafc;
+    padding: 0.85rem;
+    margin: 0.85rem 0;
+  }
+
+  .result-focus-toolbar h3,
+  .result-focus-toolbar p {
+    margin: 0;
+  }
+
+  .result-focus-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.45rem;
+  }
+
+  .result-focus-controls button {
+    border: 1px solid #c7d2de;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #1f2937;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 700;
+    padding: 0.45rem 0.65rem;
+  }
+
+  .result-focus-controls button.is-active {
+    border-color: var(--primary);
+    background: #e8f5ee;
+    color: var(--primary-dark);
+  }
+
+  .result-focus-controls button:focus-visible {
+    outline: 2px solid var(--action);
+    outline-offset: 2px;
+  }
+
   .current-action-panel {
     border: 1px solid #7fb6ad;
     border-left: 5px solid var(--primary);
@@ -1771,6 +1818,7 @@
   }
 
   @media (max-width: 860px) {
+    .result-focus-toolbar,
     .step-strip,
     .workflow-stepper,
     .workflow-command-bar,
@@ -1799,6 +1847,10 @@
 
     .workflow-command-bar {
       position: static;
+    }
+
+    .result-focus-controls {
+      justify-content: flex-start;
     }
 
     .step-pill {
@@ -1992,10 +2044,23 @@
           {{ result.coverage.limitation_en }}
         </p>
         <p>{{ result.coverage.limitation_zh }}</p>
+        <section class="result-focus-toolbar" data-result-focus-toolbar="true" data-result-focus-default="next" aria-labelledby="result-focus-title">
+          <div>
+            <h3 id="result-focus-title">下一步檢視 / Result focus</h3>
+            <p class="secondary">先看下一步；需要時切到比較、來源或完整結果。</p>
+          </div>
+          <div class="result-focus-controls" role="group" aria-label="Result focus controls">
+            <button type="button" class="is-active" data-result-focus-control="true" data-result-focus-mode="next" aria-pressed="true">下一步 / Next</button>
+            <button type="button" data-result-focus-control="true" data-result-focus-mode="compare" aria-pressed="false">比較 / Compare</button>
+            <button type="button" data-result-focus-control="true" data-result-focus-mode="sources" aria-pressed="false">來源 / Sources</button>
+            <button type="button" data-result-focus-control="true" data-result-focus-mode="all" aria-pressed="false">完整 / All</button>
+          </div>
+        </section>
         {% if result.current_action_plan %}
           <section
             class="current-action-panel"
             data-current-action-plan="true"
+            data-result-focus-section="next all"
             data-current-action-step="{{ result.current_action_plan.current_step_id }}"
             aria-labelledby="current-action-title"
           >
@@ -2052,7 +2117,7 @@
           </section>
         {% endif %}
         {% if result.next_step_command_center %}
-          <section class="case-pathway" data-case-pathway="true" data-compact-decision-board="true" aria-labelledby="case-pathway-title">
+          <section class="case-pathway" data-case-pathway="true" data-compact-decision-board="true" data-result-focus-section="next all" aria-labelledby="case-pathway-title">
             <div class="case-pathway-header">
               <div>
                 <h3 id="case-pathway-title">下一步決策板 / Next-step decision board</h3>
@@ -2095,7 +2160,7 @@
             </ol>
           </section>
           {% if result.candidate_comparison.rows %}
-            <section class="candidate-comparison-panel" data-candidate-comparison-panel="true" aria-labelledby="candidate-comparison-title">
+            <section class="candidate-comparison-panel" data-candidate-comparison-panel="true" data-result-focus-section="compare all" aria-labelledby="candidate-comparison-title">
               <header>
                 <div>
                   <h3 id="candidate-comparison-title">{{ result.candidate_comparison.title_zh }} / {{ result.candidate_comparison.title_en }}</h3>
@@ -2146,7 +2211,7 @@
             </section>
           {% endif %}
           {% if result.intake_gap_tracker.rows %}
-            <section class="intake-gap-panel" data-intake-gap-tracker="true" aria-labelledby="intake-gap-title">
+            <section class="intake-gap-panel" data-intake-gap-tracker="true" data-result-focus-section="next compare all" aria-labelledby="intake-gap-title">
               <header>
                 <div>
                   <h3 id="intake-gap-title">{{ result.intake_gap_tracker.title_zh }} / {{ result.intake_gap_tracker.title_en }}</h3>
@@ -2216,7 +2281,7 @@
               </p>
             </section>
           {% endif %}
-          <details class="progressive-detail-drawer" data-progressive-detail-drawer="command-center">
+          <details class="progressive-detail-drawer" data-progressive-detail-drawer="command-center" data-result-focus-section="next all">
             <summary>更多下一步細節 / More next-step details</summary>
             <div class="progressive-detail-body">
           <section class="next-step-command-center" data-next-step-command-center="true" aria-labelledby="next-step-command-center-title">
@@ -2246,7 +2311,7 @@
           </section>
         {% endif %}
         {% if result.next_step_command_center.priority_lane %}
-          <section class="priority-lane-strip" data-priority-lane="{{ result.next_step_command_center.priority_lane.lane_id }}" aria-label="Priority lane">
+          <section class="priority-lane-strip" data-priority-lane="{{ result.next_step_command_center.priority_lane.lane_id }}" data-result-focus-section="next all" aria-label="Priority lane">
             <div>
               <h3>優先層級 / Priority lane</h3>
               <strong>{{ result.next_step_command_center.priority_lane.title_zh }} / {{ result.next_step_command_center.priority_lane.title_en }}</strong>
@@ -2262,7 +2327,7 @@
           </section>
         {% endif %}
         {% if result.next_step_command_center.first_screen_brief %}
-          <section class="first-screen-brief" data-first-screen-brief="true" aria-labelledby="first-screen-brief-title">
+          <section class="first-screen-brief" data-first-screen-brief="true" data-result-focus-section="next all" aria-labelledby="first-screen-brief-title">
             <h3 id="first-screen-brief-title">{{ result.next_step_command_center.first_screen_brief.title_zh }} / {{ result.next_step_command_center.first_screen_brief.title_en }}</h3>
             <div class="first-screen-brief-list">
               {% for item in result.next_step_command_center.first_screen_brief.items %}
@@ -2284,7 +2349,7 @@
           </details>
         {% endif %}
         {% if result.patient_workflow %}
-          <details class="progressive-detail-drawer" data-progressive-detail-drawer="workflow">
+          <details class="progressive-detail-drawer" data-progressive-detail-drawer="workflow" data-result-focus-section="next all">
             <summary>完整逐步流程 / Full step-by-step workflow</summary>
             <div class="progressive-detail-body">
           <section class="stepwise-next-rail" data-stepwise-next-rail="true" aria-labelledby="stepwise-next-rail-title">
@@ -2364,7 +2429,7 @@
           </details>
         {% endif %}
         {% if result.results %}
-          <details class="progressive-detail-drawer clinical-context-drawer" data-progressive-detail-drawer="clinical-context">
+          <details class="progressive-detail-drawer clinical-context-drawer" data-progressive-detail-drawer="clinical-context" data-result-focus-section="compare all">
             <summary>Clinical context, groups, and detailed next steps</summary>
             <div class="progressive-detail-body">
           {% with summary=result.concise_result_summary %}
@@ -2592,7 +2657,7 @@
           </section>
             </div>
           </details>
-          <details class="progressive-detail-drawer" data-progressive-detail-drawer="evidence">
+          <details class="progressive-detail-drawer" data-progressive-detail-drawer="evidence" data-result-focus-section="sources compare all">
             <summary>候選掃描與來源 / Candidate scan and source evidence</summary>
             <div class="progressive-detail-body">
           <section class="candidate-scan-table" data-candidate-scan-table="true" data-candidate-scan-density="compact" aria-labelledby="candidate-scan-title">
@@ -2628,7 +2693,7 @@
             </div>
           </section>
           {% if result.source_provenance.rows %}
-            <section class="source-provenance-panel" data-source-provenance-panel="true" aria-labelledby="source-provenance-title">
+            <section class="source-provenance-panel" data-source-provenance-panel="true" data-result-focus-section="sources all" aria-labelledby="source-provenance-title">
               <header>
                 <div>
                   <h3 id="source-provenance-title">來源稽核 / Source provenance</h3>
@@ -2658,7 +2723,7 @@
           {% endif %}
             </div>
           </details>
-          <details class="primary-result-drawer" id="top-candidates" data-primary-result-list="true" data-primary-result-drawer="true">
+          <details class="primary-result-drawer" id="top-candidates" data-primary-result-list="true" data-primary-result-drawer="true" data-result-focus-section="compare all">
             <summary>Open detailed candidate cards</summary>
             <div class="primary-result-body result-list">
               {% for entry in result.results|slice:":3" %}
@@ -2667,7 +2732,7 @@
             </div>
           </details>
           {% if result.results|length > 3 %}
-            <details class="secondary-result-drawer" data-secondary-result-drawer="true">
+            <details class="secondary-result-drawer" data-secondary-result-drawer="true" data-result-focus-section="compare all">
               <summary>More candidates</summary>
               <div class="secondary-result-body result-list">
                 <section class="secondary-filter-panel" data-secondary-filter-panel="true" aria-label="Secondary candidate filters">
@@ -2703,7 +2768,7 @@
             / Not enough findings to rank yet. Confirm vital signs and red flags, then ask the prompts below.
           </div>
         {% endif %}
-        <details class="next-step-panel ask-next-drawer" data-ask-next-drawer="true">
+        <details class="next-step-panel ask-next-drawer" data-ask-next-drawer="true" data-result-focus-section="next all">
           <summary>下一步問題 / Ask-next prompts</summary>
           <div class="ask-next-drawer-body">
             <p class="secondary">需要時再展開完整問題清單。 / Expand only when the full prompt list is needed.</p>
