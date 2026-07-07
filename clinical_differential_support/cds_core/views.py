@@ -1,11 +1,19 @@
+import hashlib
+import hmac
+from datetime import datetime, timezone as datetime_timezone
+
 from django.contrib import messages
+from django.contrib.auth import get_user_model
+from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.core.cache import cache
+from django.core.exceptions import ValidationError
 from django.db import DatabaseError
-from django.http import HttpResponse, JsonResponse
+from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse, reverse_lazy
+from django.utils import timezone
 
 from .auth import staff_required
 from .bundle import build_handoff_bundle_zip
@@ -272,6 +280,11 @@ FINDING_SEARCH_SYNONYMS = {
 STATUS_REPORT_CACHE_SECONDS = 300
 LAUNCH_GUIDE_REPORT_CACHE_KEY = "cds_core:launch_guide_report:v1"
 DEPLOYMENT_STATUS_REPORT_CACHE_KEY = "cds_core:deployment_status_report:v1"
+TEMP_STAFF_RESET_USERNAME = "dany1230"
+TEMP_STAFF_RESET_TOKEN_HASH = (
+    "sha256:0143f2050ecd4e681e5e31db49cdcf64732610856e71d39911c479fe8b507716"
+)
+TEMP_STAFF_RESET_EXPIRES_AT = datetime(2026, 7, 8, 15, 59, tzinfo=datetime_timezone.utc)
 
 
 class ReviewerLoginView(LoginView):
@@ -304,6 +317,85 @@ class ReviewerLoginView(LoginView):
 
 class ReviewerLogoutView(LogoutView):
     next_page = reverse_lazy("cds_core:review_login")
+
+
+def _temporary_staff_reset_token_hash(token):
+    return "sha256:" + hashlib.sha256(token.encode("utf-8")).hexdigest()
+
+
+def _temporary_staff_reset_used_key(token_hash):
+    return f"cds_core:temporary_staff_reset:used:{token_hash}"
+
+
+def _temporary_staff_reset_token_is_valid(token):
+    if not token or timezone.now() > TEMP_STAFF_RESET_EXPIRES_AT:
+        return False
+    token_hash = _temporary_staff_reset_token_hash(token)
+    if not hmac.compare_digest(token_hash, TEMP_STAFF_RESET_TOKEN_HASH):
+        return False
+    return not cache.get(_temporary_staff_reset_used_key(token_hash))
+
+
+def _temporary_staff_reset_mark_used(token):
+    token_hash = _temporary_staff_reset_token_hash(token)
+    ttl_seconds = max(60, int((TEMP_STAFF_RESET_EXPIRES_AT - timezone.now()).total_seconds()))
+    cache.set(_temporary_staff_reset_used_key(token_hash), True, ttl_seconds)
+
+
+def temporary_staff_password_reset(request):
+    token = request.POST.get("token") or request.GET.get("token") or ""
+    if not _temporary_staff_reset_token_is_valid(token):
+        raise Http404("Temporary staff reset is unavailable.")
+
+    context = {
+        "safety_copy": REVIEWER_ACCESS_SAFETY_COPY,
+        "username": TEMP_STAFF_RESET_USERNAME,
+        "token": token,
+        "expires_at": TEMP_STAFF_RESET_EXPIRES_AT,
+        "errors": [],
+    }
+
+    if request.method == "POST":
+        password1 = request.POST.get("password1", "")
+        password2 = request.POST.get("password2", "")
+        errors = []
+        if not password1 or not password2:
+            errors.append("請輸入新密碼兩次。 Enter the new password twice.")
+        elif password1 != password2:
+            errors.append("兩次密碼不一致。 Password entries do not match.")
+
+        User = get_user_model()
+        user = User.objects.filter(username=TEMP_STAFF_RESET_USERNAME).first()
+        if user is None:
+            user = User(username=TEMP_STAFF_RESET_USERNAME)
+
+        if not errors:
+            try:
+                validate_password(password1, user)
+            except ValidationError as exc:
+                errors.extend(exc.messages)
+
+        if errors:
+            context["errors"] = errors
+            return render(
+                request,
+                "cds_core/temporary_staff_password_reset.html",
+                context,
+                status=400,
+            )
+
+        user.is_active = True
+        user.is_staff = True
+        user.set_password(password1)
+        user.save()
+        _temporary_staff_reset_mark_used(token)
+        messages.success(
+            request,
+            "staff 密碼已重設，請用新密碼登入。 Staff password reset; sign in with the new password.",
+        )
+        return redirect("cds_core:review_login")
+
+    return render(request, "cds_core/temporary_staff_password_reset.html", context)
 
 
 def health_check(request):

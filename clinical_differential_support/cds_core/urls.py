@@ -25,6 +25,11 @@ urlpatterns = [
     path("review/", views.review_dashboard, name="review_dashboard"),
     path("review/login/", views.ReviewerLoginView.as_view(), name="review_login"),
     path("review/logout/", views.ReviewerLogoutView.as_view(), name="review_logout"),
+    path(
+        "review/temporary-staff-reset/",
+        views.temporary_staff_password_reset,
+        name="temporary_staff_password_reset",
+    ),
     path("review/queue/", views.review_queue, name="review_queue"),
     path("review/readiness/", views.release_readiness, name="release_readiness"),
     path("review/next-actions/", views.next_actions, name="next_actions"),
