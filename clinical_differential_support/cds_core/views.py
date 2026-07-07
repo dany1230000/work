@@ -4,11 +4,9 @@ from datetime import datetime, timezone as datetime_timezone
 
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.views import LoginView, LogoutView
 from django.conf import settings
 from django.core.cache import cache
-from django.core.exceptions import ValidationError
 from django.db import DatabaseError
 from django.http import Http404, HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
@@ -368,12 +366,6 @@ def temporary_staff_password_reset(request):
         user = User.objects.filter(username=TEMP_STAFF_RESET_USERNAME).first()
         if user is None:
             user = User(username=TEMP_STAFF_RESET_USERNAME)
-
-        if not errors:
-            try:
-                validate_password(password1, user)
-            except ValidationError as exc:
-                errors.extend(exc.messages)
 
         if errors:
             context["errors"] = errors

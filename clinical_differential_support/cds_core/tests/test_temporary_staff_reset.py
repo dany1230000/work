@@ -86,3 +86,20 @@ class TemporaryStaffResetTests(TestCase):
         self.assertEqual(response.status_code, 400)
         self.assertContains(response, "兩次密碼不一致", status_code=400)
         self.assertFalse(get_user_model().objects.filter(username="dany1230").exists())
+
+    def test_reset_allows_password_similar_to_username(self):
+        reset_url = reverse("cds_core:temporary_staff_password_reset")
+        password = "dany1230-reset"
+
+        response = self.client.post(
+            reset_url,
+            {
+                "token": self.token,
+                "password1": password,
+                "password2": password,
+            },
+        )
+
+        self.assertRedirects(response, reverse("cds_core:review_login"))
+        user = get_user_model().objects.get(username="dany1230")
+        self.assertTrue(user.check_password(password))
