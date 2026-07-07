@@ -280,7 +280,7 @@ LAUNCH_GUIDE_REPORT_CACHE_KEY = "cds_core:launch_guide_report:v1"
 DEPLOYMENT_STATUS_REPORT_CACHE_KEY = "cds_core:deployment_status_report:v1"
 TEMP_STAFF_RESET_USERNAME = "dany1230"
 TEMP_STAFF_RESET_TOKEN_HASH = (
-    "sha256:0143f2050ecd4e681e5e31db49cdcf64732610856e71d39911c479fe8b507716"
+    "sha256:64491d37edeecffbd6f31cdf357224f55a040bdf0ca93d6032500706dc4dd305"
 )
 TEMP_STAFF_RESET_EXPIRES_AT = datetime(2026, 7, 8, 15, 59, tzinfo=datetime_timezone.utc)
 
